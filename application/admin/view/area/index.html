@@ -1,0 +1,47 @@
+{extend name="index_layout"/}
+{block name="main"}
+<style>
+.layui-table-view .layui-table {
+    position: relative;
+    width: 100%;
+    margin: 0;
+}
+</style>
+<div class="layui-card">
+    <div class="layui-card-header">管理</div>
+    <div class="layui-card-body">
+        <div class="layui-form">
+            <table class="layui-hide" id="table" lay-filter="table"></table>
+            <script type="text/html" id="toolbarDemo">
+                <div class="layui-btn-container">
+                <a class="layui-btn layui-btn-sm" href="{:url('add')}">添加</a>
+              </div>
+            </script>
+            <script type="text/html" id="barTool">
+                <a href='{:url("edit")}?id={{ d.id }}' class="layui-btn layui-btn-xs">编辑</a>
+                <a href='{:url("del")}?id={{ d.id }}' class="layui-btn layui-btn-danger layui-btn-xs layui-tr-del">删除</a>
+            </script>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="script"}
+<script>
+layui.use('table', function() {
+    var table = layui.table,
+        $ = layui.$;
+    table.render({
+        elem: '#table',
+        toolbar: '#toolbarDemo',
+        url: '{:url("index")}',
+        cols: [
+            [
+{ field: 'id', width: 200, title: 'ID'},
+                { field: 'name', width: 200, title: '区名'},
+                { fixed: 'right', width: 160, title: '操作', toolbar: '#barTool' }
+            ]
+        ],
+    });
+});
+</script>
+{/block}

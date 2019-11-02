@@ -1,0 +1,63 @@
+{extend name="index_layout"/}
+{block name="main"}
+<div class="layui-card">
+    <div class="layui-card-body">
+        <form class="layui-form" action="/mall/material/edit" method="post">
+            <div class="layui-form-item">
+                <label class="layui-form-label">库存</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="store" lay-verify="required|number" autocomplete="off" placeholder="库存" class="layui-input" value="{$store}">
+                </div>
+                <div class="layui-form-mid layui-word-aux">填写库存</div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">类型</label>
+                <div class="layui-input-inline">
+                    <select name="type" lay-filter="roleid" lay-verify="required">
+                        
+                        <option value="1" {eq name="$type" value="1" }selected{/eq}>图片</option>
+                        <option value="2" {eq name="$type" value="2" }selected{/eq}>视频</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">视频</label>
+                <div class="layui-input-inline">
+			<input type="file" id="video"  placeholder="请上传视频" class="layui-input"  />
+			<input id="url" type="hidden" name="url" />
+<input type="hidden" name="id" value="1" />
+                </div>
+		<div class="layui-form-mid layui-word-aux">请上传视频</div><br> 
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit="" lay-filter="formSubmit">立即提交</button>
+                    <button class="layui-btn layui-btn-normal" type="button" onclick="javascript:history.back(-1);">返回</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="upload-btn">
+    
+</div>
+<script>
+    //上传
+    $('#video').change(function(event) {
+        var formData = new FormData();
+        formData.append("file", $(this).get(0).files[0]);
+        $.ajax({
+            url:'/upload/video/index',
+            type:'POST',
+            data:formData,
+            cache: false,
+            contentType: false,    //不可缺
+            processData: false,    //不可缺
+            success:function(data){
+$("#url").attr("value",data.photo);
+            }
+        });
+    });
+</script>
+{/block}

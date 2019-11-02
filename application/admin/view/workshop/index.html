@@ -1,0 +1,67 @@
+{extend name="index_layout"/}
+{block name="main"}
+<div class="layui-card">
+    <div class="layui-card-header">管理</div>
+    <div class="layui-card-body">
+        <div class="layui-form">
+            <table class="layui-hide" id="table" lay-filter="table"></table>
+            <script type="text/html" id="toolbarDemo">
+                <div class="layui-btn-container">
+                <a class="layui-btn layui-btn-sm" href="{:url('add')}">添加</a>
+              </div>
+            </script>
+            <script type="text/html" id="barTool">
+                {{#  if(d.id == 1){ }}
+                <a href='{:url("edit")}?id={{ d.id }}' class="layui-btn layui-btn-xs">编辑</a>
+                {{#  } else { }}
+                <a href='{:url("edit")}?id={{ d.id }}' class="layui-btn layui-btn-xs">编辑</a>
+                <a href='{:url("del")}?id={{ d.id }}' class="layui-btn layui-btn-danger layui-btn-xs layui-tr-del">删除</a>
+                {{#  } }}
+            </script>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="script"}
+<script type="text/javascript">
+layui.use('table', function() {
+    var table = layui.table,
+        $ = layui.$;
+    table.render({
+        elem: '#table',
+        toolbar: '#toolbarDemo',
+        url: '{:url("index")}',
+        cols: [
+            [
+                { field: 'id', width: 80, title: 'ID'},
+                { field: 'title', width: 80, title: '标题'},
+                { field: 'region', width: 80, title: '区域'},
+                { field: 'measurearea', width: 120, title: '面积'},
+                { field: 'floor', title: '楼层' },
+                { field: 'structure', width: 200, title: '结构' },
+                { field: 'releasetime',width: 200, title: '发布时间' },
+/*                { field: 'expire', title: '有效期' },*/
+{ field: 'officespace', width: 80, title: '办公面积'},
+                { field: 'plantrent', width: 80, title: '厂房租金'},
+                { field: 'dormitory_area', width: 120, title: '宿舍面积'},
+                { field: 'numberbuildings', title: '厂房栋数' },
+                { field: 'layernumber', width: 200, title: '厂房层数' },/*
+                { field: 'distributioncapacity',width: 200, title: '配电量' },
+                { field: 'lengthwidth', title: '长宽' },
+{ field: 'canteen', width: 80, title: '食堂'},
+                { field: 'newolddegree', width: 80, title: '新旧程度'},
+                { field: 'elevator', width: 120, title: '电梯'},
+                { field: 'firecontrol', title: '消防' },*/
+                { field: 'applicableindustries', width: 200, title: '适用行业' },
+                { field: 'name',width: 200, title: '姓名' },
+                { field: 'tel', title: '电话' },/*
+{ field: 'detail', width: 200, title: '详情' },*/
+                { field: 'tag',width: 200, title: '标签' },
+                /*{ field: 'imgs', title: '图片' },*/
+                { fixed: 'right', width: 160, title: '操作', toolbar: '#barTool' }
+            ]
+        ],
+    });
+});
+</script>
+{/block}

@@ -1,0 +1,38 @@
+{extend name="index_layout"/}
+{block name="main"}
+ <style type="text/css">.layui-upload-img {
+    width: 92px;
+    height: 92px;
+    margin: 0 10px 10px 0;
+}</style>
+<link rel="stylesheet" href="__STATIC__/admin/css/umeditor.css">
+<div class="layui-card">
+    <div class="layui-card-header">添加</div>
+    <div class="layui-card-body">
+        <form class="layui-form" method="post">
+             <div class="layui-form-item">
+                <label class="layui-form-label">父级</label>
+                <div class="layui-input-block w300">
+                    <select name="parentId">
+                        <option value="0">选择市</option>
+                        {$citys|raw}
+                    </select>
+                </div>
+            </div>
+<div class="layui-form-item">
+    <label class="layui-form-label">区名</label>
+    <div class="layui-input-inline w300">
+        <input type="text" name="name"  autocomplete="off" placeholder="" class="layui-input" value='{$area["name"]}' >
+    </div>
+</div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit="" lay-filter="formSubmit">立即提交</button>
+                    <button class="layui-btn layui-btn-normal" type="button" onclick="javascript:history.back(-1);">返回</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{/block}

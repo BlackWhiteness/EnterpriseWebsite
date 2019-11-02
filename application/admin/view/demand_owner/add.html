@@ -1,0 +1,181 @@
+{extend name="index_layout"/}
+{block name="main"}
+<div class="layui-card">
+    <div class="layui-card-header">添加</div>
+    <div class="layui-card-body">
+        <form class="layui-form" method="post">
+<div class="layui-form-item">
+    <label class="layui-form-label">标题</label>
+    <div class="layui-input-inline w300">
+        <input type="text" name="title"  autocomplete="off" placeholder="" class="layui-input">
+    </div>
+</div>
+<div class="layui-form-item">
+     <label class="layui-form-label">市</label>
+      <div class="layui-input-inline w300">
+          <select name="city" lay-filter="city" lay-verify="required" id="city">
+              <option value>选择市</option>
+              {$citys|raw}
+          </select>
+      </div>
+</div>
+<div class="layui-form-item">
+                <label class="layui-form-label">区</label>
+                <div class="layui-input-inline w300">
+                    <select name="area" id="area" lay-verify="required">
+                        <option value>选择区</option>
+                        {$areas|raw}
+                    </select>
+                </div>
+</div>
+<div class="layui-form-item">
+                <label class="layui-form-label">行业类别</label>
+                <div class="layui-input-inline w300">
+                    <select name="leibie" id="industrycategory" lay-verify="required">
+                        <option value>行业类别</option>
+                        <option value="厂房" selected="">厂房</option>
+                        <option value="仓库">仓库</option>
+                        <option value="土地">土地</option>
+                    </select>
+</div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">信息类型</label>
+        <div class="layui-input-inline w300">
+            <select name="leixing" id="leixing" lay-verify="required">
+                <option value="出租" selected="">出租</option>
+                <option value="出售">出售</option>
+                <option value="转让">转让</option>
+            </select>
+        </div>
+<div class="layui-form-item">
+    <label class="layui-form-label">联 系 人</label>
+    <div class="layui-input-inline w300">
+        <input type="text" name="name"  autocomplete="off" placeholder="" class="layui-input">
+    </div>
+</div>
+<div class="layui-form-item">
+    <label class="layui-form-label">电话</label>
+    <div class="layui-input-inline w300">
+        <input type="text" name="tel"  autocomplete="off" placeholder="" class="layui-input">
+    </div>
+</div>
+<div class="layui-form-item">
+    <label class="layui-form-label">面积</label>
+    <div class="layui-input-inline w300">
+        <input type="text" name="measurearea"  autocomplete="off" placeholder="" class="layui-input">
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="layui-form-label">详情</label>
+    <div class="layui-input-inline w300">
+        <input type="text" name="detail"  autocomplete="off" placeholder="" class="layui-input">
+    </div>
+</div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit="" lay-filter="formSubmit">立即提交</button>
+                    <button class="layui-btn layui-btn-normal" type="button" onclick="javascript:history.back(-1);">返回</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{/block}
+{block name="script"}
+<script type="text/javascript">
+layui.use(['iconPicker', 'form', 'layer'], function() {
+    var iconPicker = layui.iconPicker,
+        form = layui.form,
+        layer = layui.layer,
+        $ = layui.$;
+        iconPicker.render({
+            elem: '#iconPicker4',
+            type: 'fontClass'
+        });
+
+            iconPicker.render({
+                // 选择器，推荐使用input
+                elem: '#iconPicker',
+                // 数据类型：fontClass/unicode，推荐使用fontClass
+                type: 'fontClass',
+                // 是否开启搜索：true/false，默认true
+                search: true,
+                // 是否开启分页：true/false，默认true
+                page: true,
+                // 每页显示数量，默认12
+                limit: 12,
+                // 点击回调
+                click: function (data) {
+                    console.log(data);
+                },
+                // 渲染成功后的回调
+                success: function(d) {
+                    console.log(d);
+                }
+            });
+    $("#city option[value='" + {$data.city} + "']").attr("selected", "selected");
+    $("#area option[value='" + {$data.area} + "']").attr("selected", "selected");
+    form.render('select');
+    iconPicker.render({
+        // 选择器，推荐使用input
+        elem: '#iconPicker',
+        // 数据类型：fontClass/unicode，推荐使用fontClass
+        type: 'fontClass',
+        // 是否开启搜索：true/false，默认true
+        search: true,
+        // 是否开启分页：true/false，默认true
+        page: true,
+        // 每页显示数量，默认12
+        limit: 12,
+        // 点击回调
+        click: function (data) {
+            console.log(data);
+        },
+        // 渲染成功后的回调
+        success: function(d) {
+            //console.log(d);
+        }
+    });
+    form.verify({
+        mustradio: function (value, item) { //单选按钮必选
+            var va = $(item).find("input[type='radio']:checked").val();
+            if (typeof (va) == "undefined") {
+                return $(item).attr("lay-verify-msg");
+            }
+        }
+    });
+    form.on('select(city)', function(data){
+        var val=data.value;
+
+        $.ajax({
+            url:"/admin/area/getByParentId", //请求的url地址
+            dataType:"json", //返回格式为json
+            async:true,//请求是否异步，默认为异步，这也是ajax重要特性
+            data:{"id":data.value}, //参数值
+            type:"GET", //请求方式
+            beforeSend:function(){
+                //请求前的处理
+            },
+            success:function(req){
+                var data = req.data;
+                $("#area").empty().append('<option value="">选择区</option>');
+                for (var i = 0; i < data.length; i++) {  console.log(data[i]);
+                    $("#area").append('<option value="'+data[i]['id']+'">'+data[i]['name']+'</option>');
+                }
+                form.render('select');
+                //请求成功时处理
+            },
+            complete:function(){
+                //请求完成的处理
+            },
+            error:function(){
+                //请求出错处理
+            }
+        });
+
+    });
+
+});
+</script>
+{/block}

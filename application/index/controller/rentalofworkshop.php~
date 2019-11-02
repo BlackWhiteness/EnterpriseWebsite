@@ -1,0 +1,17 @@
+<?php
+namespace app\index\controller;
+use app\common\controller\Homebase;
+class search extends Homebase
+{
+        //初始化
+    protected function initialize()
+    {
+        parent::initialize();
+    }
+
+    //会员中心首页
+    public function index()
+    {
+        return $this->fetch();
+    }
+}

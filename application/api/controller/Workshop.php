@@ -1,0 +1,49 @@
+<?php
+// +----------------------------------------------------------------------
+// | Yzncms [ 御宅男工作室 ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2018 http://yzncms.com All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 御宅男 <530765310@qq.com>
+// +----------------------------------------------------------------------
+
+// +----------------------------------------------------------------------
+// | 后台菜单管理
+// +----------------------------------------------------------------------
+namespace app\api\controller;
+
+use app\common\controller\Base;
+use app\admin\model\Workshop as Workshop_Model;
+
+use think\Db;
+
+class Workshop extends Base
+{
+    //添加后台菜单
+    public function add()
+    {
+        if ($this->request->isPost()) {
+            $data = $this->request->param();
+            /**if (!isset($data['status'])) {
+                $data['status'] = 0;
+            } else {
+                $data['status'] = 1;
+            }**/
+
+            //$result = $this->validate($data, 'Menu.add');var_dump($result);exit;
+            if (!$data) {
+                return $this->error($data);
+            }
+            if (Workshop_Model::create($data)) {
+                $this->success("添加成功！", url("index"));
+            } else {
+                $this->error('添加失败！');
+            }
+        } else {
+            return $this->fetch();
+        }
+    }
+
+}

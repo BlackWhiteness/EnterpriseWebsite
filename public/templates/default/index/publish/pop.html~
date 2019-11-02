@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>移动页面div居中效果-移动</title><base target="_blank"/>
+<meta charset="utf-8" />
+<style>
+.hovertreecenter{margin:0px auto;border:0px solid gray;}
+a{color:blue;text-decoration:none;}
+.in{    border: 1px solid #CCC;
+    border-radius: 2px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    width: 100%;
+    padding: 4px 0;
+    font-size: 12px;
+    font-weight: normal;
+    text-indent: 5px;
+    line-height: 20px;
+    color: #555;
+    background: #FFF;}
+</style>
+</head>
+<body style="    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;">
+<div class="hovertreecenter" style="width: 80%;">      <div id="join_div">
+        <form id="form1">
+            <div class="form-group mt20">
+              <label class="field-title">姓名</label>
+              <div class="field-content">
+                <input name="name" id="name" type="text" class="in"></div>
+            </div>
+			<div class="form-group">
+
+                <label class="field-title">评分</label>
+<div class="field-content">
+                <input type="radio" name="score" style="font-size:14px;" value="1" class="a-radio"><span class="b-radio"></span>1
+<input type="radio" name="score" style="font-size:14px;" value="2" class="a-radio"><span class="b-radio"></span>2
+<input type="radio" name="score" style="font-size:14px;" value="3" class="a-radio"><span class="b-radio"></span>3
+    <input type="radio" name="score" style="font-size:14px;" value="4" class="a-radio"><span class="b-radio"></span>4                
+                 </div>
+            </div>
+			<div class="form-group">
+              <label class="field-title">内容</label>
+              <div class="field-content">
+                <textarea name="content" id="content" class="in"></textarea></div>
+            </div>
+<div style="text-align:center;">
+			  <input id="subbtn" type="button" class="btn btn-primary" style="padding: 13px 85px;text-align:center;font-size:14px;" onclick="submitP();" value="填写好了  确认提交">
+			  </form>
+			  </div>
+</div>
+</div>
+<script>
+function submitP(){
+var content= '';
+var content=document.getElementById("content").value;
+$.ajax({
+					type : "POST",  //提交方式
+					url : "/api/pingjia/add",			
+					data : $("#form1").serialize(),
+					dataType : "json",
+					success : function(result) {
+var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+parent.layer.close(index); //再执行关闭return;
+						if (result.code=="1"){
+							layer.close();
+							window.location.href = "/";						
+						}else{
+							layer.close();
+							$('#subbtn').removeAttr("disabled");
+							layer.open({content: result.msg,btn: '我知道了'});
+						}
+					},error:function(){
+							layer.close();
+							$('#subbtn').removeAttr("disabled");
+							layer.open({content: '您的网络不稳定，请关闭页面后重试！',btn: '我知道了'});
+					}
+				});
+
+}
+</script>
+<script src="/public/static/index/js/jquery.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="/public/static/index/js/areaselector.js"></script>
+<script src="/public/static/index/js/layer.js"></script>
+</body>
+</html>

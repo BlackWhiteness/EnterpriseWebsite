@@ -1,0 +1,13 @@
+
+#忽略文件
+/thinkphp/
+/vendor/
+/runtime/
+/public/upload
+*.log
+LICENSE.txt
+/log/
+
+
+composer.lock
+

@@ -1,0 +1,39 @@
+{extend name="index_layout"/}
+{block name="main"}
+<div class="layui-card">
+    <div class="layui-card-header">订单</div>
+    <div class="layui-card-body">
+        <table class="layui-hide" id="table" lay-filter="table"></table>
+        <script type="text/html" id="toolbarDemo">
+            
+        </script>
+    </div>
+</div>
+{/block}
+{block name="script"}
+<script>
+layui.use('table', function() {
+    var table = layui.table,
+        $ = layui.$;
+    table.render({
+        elem: '#table',
+        toolbar: '#toolbarDemo',
+        url: '{:url("mall/order/index")}',
+        cols: [
+            [
+                { field: 'id', width: 80, title: 'ID', sort: true },
+                { field: 'pattern', width: 80, title: '产品款式' },
+                { field: 'sex', title: '尺码' },
+                { field: 'attr', title: '其它' },
+                { field: 'name', width: 180, title: '姓名' },
+                { field: 'mobile', width: 120, title: '电话' },
+{ field: 'province', title: '省' },
+                { field: 'city', width: 180, title: '市' },
+                { field: 'district', width: 120, title: '区' },{ field: 'detailaddress', width: 120, title: '详细地址' },
+            ]
+        ],
+        page: {}
+    });
+});
+</script>
+{/block}

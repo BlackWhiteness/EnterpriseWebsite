@@ -1,0 +1,94 @@
+{extend name="index_layout"/}
+{block name="main"}
+<div class="layui-card">
+    <div class="layui-card-header">添加</div>
+    <div class="layui-card-body">
+        <form class="layui-form" method="post">
+<div class="layui-form-item">
+    <label class="layui-form-label">标题</label>
+    <div class="layui-input-inline w300">
+        <input type="text" name="title"  autocomplete="off" placeholder="" class="layui-input">
+    </div>
+</div>
+            <div class="layui-form-item">
+    <label class="layui-form-label">区域</label>
+    <div class="layui-input-inline w300">
+        <input type="text" name="region"  autocomplete="off" placeholder="" class="layui-input">
+    </div>
+</div>
+<div class="layui-form-item">
+    <label class="layui-form-label">行业类别</label>
+    <div class="layui-input-inline w300">
+        <input type="text" name="industrycategory"  autocomplete="off" placeholder="" class="layui-input">
+    </div>
+</div>
+<div class="layui-form-item">
+    <label class="layui-form-label">联 系 人</label>
+    <div class="layui-input-inline w300">
+        <input type="text" name="name"  autocomplete="off" placeholder="" class="layui-input">
+    </div>
+</div>
+<div class="layui-form-item">
+    <label class="layui-form-label">电话</label>
+    <div class="layui-input-inline w300">
+        <input type="text" name="tel"  autocomplete="off" placeholder="" class="layui-input">
+    </div>
+</div>
+<div class="layui-form-item">
+    <label class="layui-form-label">面积</label>
+    <div class="layui-input-inline w300">
+        <input type="text" name="measurearea"  autocomplete="off" placeholder="" class="layui-input">
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="layui-form-label">详情</label>
+    <div class="layui-input-inline w300">
+        <input type="text" name="detail"  autocomplete="off" placeholder="" class="layui-input">
+    </div>
+</div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit="" lay-filter="formSubmit">立即提交</button>
+                    <button class="layui-btn layui-btn-normal" type="button" onclick="javascript:history.back(-1);">返回</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{/block}
+{block name="script"}
+<script type="text/javascript">
+layui.use(['iconPicker', 'form', 'layer'], function() {
+    var iconPicker = layui.iconPicker,
+        form = layui.form,
+        layer = layui.layer,
+        $ = layui.$;
+        iconPicker.render({
+            elem: '#iconPicker4',
+            type: 'fontClass'
+        });
+
+            iconPicker.render({
+                // 选择器，推荐使用input
+                elem: '#iconPicker',
+                // 数据类型：fontClass/unicode，推荐使用fontClass
+                type: 'fontClass',
+                // 是否开启搜索：true/false，默认true
+                search: true,
+                // 是否开启分页：true/false，默认true
+                page: true,
+                // 每页显示数量，默认12
+                limit: 12,
+                // 点击回调
+                click: function (data) {
+                    console.log(data);
+                },
+                // 渲染成功后的回调
+                success: function(d) {
+                    console.log(d);
+                }
+            });
+});
+</script>
+{/block}

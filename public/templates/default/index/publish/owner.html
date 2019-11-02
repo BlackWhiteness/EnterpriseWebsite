@@ -1,0 +1,1591 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0037)/publish.php?id=2 -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="/public/static/index/css/css.css">
+
+<title>信息发布|886厂房信息网|886厂房网</title>
+<meta name="keywords" content="龙岗厂房出租,龙岗厂房招租,龙岗厂房网,龙岗厂房,886厂房网,南联厂房出租,爱联厂房出租,龙东厂房出租,同乐厂房出租,龙西厂房出租">
+<meta name="description" content="886厂房网专注于提供厂房出租，龙岗厂房出租,龙岗厂房招租等,886厂房网提供龙岗厂房信息服务，包含有龙岗厂房出租和龙岗厂房招租以及南联厂房,爱联厂房,横岗厂房,龙东厂房,龙西厂房,五联厂房以及龙岗仓库招租和龙岗工业园招商等工业地产信息,是龙岗最大的专业的厂房网。">
+<script src="/public/static/index/js/hm.js"></script><script src="/public/static/index/js/share.js"></script><link rel="stylesheet" href="/public/static/index/css/slide_share.css"></head>
+<body>
+            <style>
+.nav_bar{ background:url(/img/home4_02.jpg) repeat-x left top; height:39px; line-height:39px; overflow:hidden; color:#666;}
+.w960{width:960px;margin:0 auto;}
+.fl{float:left;}
+.fr{float:right;}
+.f12{font-size:12px;}
+.c303{ color: #AF5303}
+.nav_bar_left em{ margin-left:8px; margin-right:8px;}
+.nav_bar_left a{color:#AF5303 ;}
+.nav_bar_left span{font-weight:bold;color:#fff; padding:3px 8px; background-color: brown}
+
+.nav_bar_right{
+font-style: normal;
+  color: #666;
+  padding: 0 0 0 25px;
+  background: url(/public/static/index/img/tel.png) no-repeat 10px center;
+  padding: 0 0 0 30px;
+  display: inline-block;
+}
+.nav li a span {
+    display: block;
+    float: left;
+    padding: 0 0 0 0;
+    height: 39px;
+    line-height: 39px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #fff;
+}
+.nav li {
+    padding: 0 13px;
+}
+</style>
+<div class="nav_bar">
+  <div class="w960 f12">
+    <div class="nav_bar_left fl">
+    当前城市：<span>{$cityInfo[0]['name']}</span>
+    <em>|</em>切换城市：
+{volist name="cityList" id="data"}
+     <a  href="javascript:document.cookie = 'city={$data.id};path=/;';location.reload();">{$data.name}</a>
+     <em>|</em> {/volist}  </div>
+<div class="nav_bar_right fr">
+<strong>24小时免费服务热线：陈生159-1411-6601</strong>
+	</div>
+  </div>
+</div><!--<table width="960" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr align="center">
+    <td align="center">
+
+<div id="logo">
+      <div id="logo_left"><A href="/city_dg/search.php" target=_blank><IMG  src="/gg/area/area1/bt1/logo.png" width="210" ></A></div>
+      <div id="logo_center"> </div>
+
+    </div>
+</td>
+  </tr>
+</table>-->
+
+<style>
+
+.W1000{width:960px;margin:0 auto;}
+.LH24{ line-height:24px; }
+.F12{font-size:12px;}
+.head .t-r .FL a{ color:#fd443b; margin-right: 10px;}
+.head .t-r .FL a:hover{ color:#d90700;}
+.cGray{color: #999;}
+.clear{clear: both;}
+
+.mr_search {
+	width: 500px;
+	height: 32px;
+	border: 2px solid #093;
+}
+.mr_search form {
+	display: block;
+}
+.mr_search form .select {
+	position: relative;
+}
+.mr_search form input {
+	display: block;
+	float: left;
+}
+.mr_search form .select input {
+	padding-left: 0px;
+	width: 77px;
+	cursor: pointer;
+	height: 32px;
+	overflow:hidden;
+	font: 12px/34px "宋体";
+	color: #676767;
+	border: none;
+	background:url(/public/static/index/img/zx_icons.jpg) no-repeat 0 -70px; padding-right:12px;
+}
+.mr_search form .select .s_xialamenu {
+	width: 69px;
+	border: 1px solid #D4D4D4;
+	border-top: none;
+	background-color: #F5F5F5;
+	position: absolute;
+	top: 32px;
+	left:0;
+	z-index: 100;
+	display: none;
+}
+.mr_search form .select .s_xialamenu ul {
+	list-style: none;
+}
+.mr_search form .select .s_xialamenu ul li {
+	float: left;
+	font: 12px/26px "宋体";
+	text-align: center;
+	background-color: #F5F5F5;
+}
+.mr_search form .select .s_xialamenu ul li a {
+	display: block;
+	width: 69px;
+	height: 26px;
+	color: #676767;
+	text-decoration: none;
+}
+.mr_search form .select .s_xialamenu ul li a:hover {
+	background: #00499a;
+	color: white;
+}
+.mr_search form .text input {
+	width: 300px;
+	height: 30px;
+	vertical-align:middle;
+	border: none;
+	padding-left: 2px;
+	padding-top: 2px;
+	font: 12px/22px "宋体";
+	color: #c4c4c4;
+	outline:none;
+}
+.mr_search form .searbut input {
+	width: 87px;
+	height: 32px;
+	padding-left: 17px;
+	text-align: center;
+	font: bold 16px/32px "宋体";
+	color: white;
+	border: none;
+	cursor: pointer;
+	background:url(/public/static/index/img/zx_icons.jpg) no-repeat 0 -107px;
+}
+.fl {
+	float: left;
+}
+.fr {
+	float: right;
+}
+.cl {
+	clear: both;
+}
+textarea,input{word-wrap:break-word;word-break:break-all;padding:0px;}
+ul, li {margin: 0px;padding: 0px;list-style-type: none;}
+.marginT5{margin-top:5px;}
+.marginT8 {margin-top: 8px;}
+.marginT10 {margin-top: 10px;}
+.marginB20 { margin-bottom: 20px;}
+.marginT14{ margin-top:14px;}
+.marginT15{ margin-top:15px;}
+.marginT17{ margin-top:17px;}
+.marginT20 {margin-top: 20px;}
+.marginT40 {margin-top: 40px;}
+.marginB10 {margin-bottom: 10px;}
+.marginL9 {margin-left: 9px;}
+.marginL13 {margin-left: 13px;}
+.marginL15 {margin-left: 13px;}
+.marginL20 {margin-left: 20px;}
+.marginL25 {margin-left: 25px;}
+.marginL35 {margin-left: 35px;}
+.marginL40 {margin-left: 40px;}
+.marginL45 {margin-left: 47px;}
+.marginL65 {margin-left: 65px;}
+.marginL85 {margin-left: 85px;}
+.marginR10 {margin-right: 10px;}
+.marginR15 {margin-right: 15px;}
+.marginR20 {margin-right: 20px;}
+.marginR30 {margin-right: 30px;}
+.margin13{ margin:0 13px;}
+.t-l{text-align:left;}
+.t-c{text-align:center;}
+.t-r{text-align:right;}
+
+.FL{float:left;}
+.FR{float:right;}
+
+.qhcity_box{border:1px solid #dbb876; padding:10px 15px 0px 15px; width:510px; font-size:12px; background-color:#FFFFFF; text-align:left;}
+.qhcity_hot{color:#f24400; border-bottom:1px dashed #ccc; line-height:34px; padding-left:3px;}
+.qhcity_hot a{color:#f24400; text-decoration:none; padding-right:10px;}
+.qhcity_hot a:link{color:#f24400; text-decoration:none;}
+.qhcity_hot a:visited{color:#f24400; text-decoration:none;}
+.qhcity_hot a:hover{color:#f24400; text-decoration:underline;}
+.qhcity_hot a:active{color:#f24400; text-decoration:underline;}
+.qhcity_area{color:#888888; border-bottom:1px dashed #ccc; line-height:34px; padding-left:3px;}
+.qhcity_area a{color:#444444; text-decoration:none; padding-right:10px;}
+.qhcity_area a:link{color:#444444; text-decoration:none;}
+.qhcity_area a:visited{color:#444444; text-decoration:none;}
+.qhcity_area a:hover{color:#f24400; text-decoration:underline;}
+.qhcity_area a:active{color:#f24400; text-decoration:underline;}
+.qhcity_more{color:#f24400; text-align:right; line-height:34px;}
+.qhcity_more a{color:#f24400;}
+.qhcity_more a:link{color:#f24400; text-decoration:none;}
+.qhcity_more a:visited{color:#f24400; text-decoration:none;}
+.qhcity_more a:hover{color:#f24400; text-decoration:underline;}
+.qhcity_more a:active{color:#f24400; text-decoration:underline;}
+.qhcity_close{float:right;}
+</style>
+
+<script src="/public/static/index/js/push.js"></script><script type="text/javascript">
+var run=0;
+var rtime;
+	function time(){
+		ChangeCity(0);
+		clearTimeout(rtime);
+	}
+	function ChangeCity(show){
+		$("#popwindow").css("position","absolute");
+		$("#popwindow").css("top",40);
+		if($.browser.msie)
+			$("#popwindow").css("left",20);
+		else
+			$("#popwindow").css("left",20);
+		if(show==1){
+			$("#popwindow").slideDown(300,function(){run=0});
+		}else{
+			$("#popwindow").slideUp(100,function(){run=0});
+		}
+	}
+
+
+</script>
+<div class="marginT20 marginB20 W1000 head ">
+      <div class="FL marginT10"><a href="/"><img src="/public/static/index/img/logo.png"></a></div>
+      <div class="FL LH24 marginL20" style="margin-top:37px;">
+				<div class="m_city fl" style="position:relative;">
+						<div id="change_city"><font color="#D90700" style="font-
+size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityInfo[0]['name']}</strong></font> <a class="F12 cGray" href="javascript:void(0);" onclick="javascript:ChangeCity(1);">[切换城市]</a></div>
+					  <div class="qhcity_box" id="popwindow" style="z-index: 20; position: absolute; top: 40px; left: 20px; display: none; min-height:300px; position:relative;">
+							  <div class="qhcity_close" onclick="javascript:ChangeCity
+();"><img src="./业主发布_files/close.gif" alt="关闭" title="关闭"></div>
+							  <div class="qhcity_hot">热门城市：<a href="/search.php?area=sz">深圳市</a><a href="/search.php?area=dg">东莞市</a><a href="/search.php?area=hz">惠州市</a></div>
+                   <div class="qhcity_area" style="line-height:20px; padding-top:5px; padding-bottom:5px;">
+                        大湾区：
+                        <a href="/search.php?area=sz">深圳</a>
+                        <a href="/search.php?area=dg">东莞</a>
+                        <a href="/search.php?area=hz">惠州</a>
+                        <a href="/search.php?area=zs">中山</a>
+                        <a href="/search.php?area=fs">佛山</a>
+                        <a href="/search.php?area=gz">广州</a>
+                        <a href="/search.php?area=jm">江门</a>
+                    </div>
+
+
+							 
+
+
+<!--<div class="qhcity_area" style="line-height:20px;padding-top:5px; padding-bottom:5px;"><div style=" float:left; width:60px; overflow:hidden;text-align:center;">深圳市：</div><div style=" float:left;">
+
+</div>
+<div style="clear:both;"></div>
+</div>
+-->
+
+
+							 
+<div class="qhcity_more" style="position:absolute; bottom:5px; right:15px;"><a href="javascript:alert(&#39;其他城市正在开通中！！！&#39;)" target="_blank">其他城市正在开通中&gt;&gt;</a></div>
+						</div>
+				</div></div>
+
+
+      <div class="FR" style="width:504px;">
+    <div class="t-r F12">
+          <div class="FL">  <span style=" padding-right:5px;">热门搜索:</span><a target="_blank" href="/index/search/officebuilding?city={$cityInfo[0]['id']}&title=带装修厂房">带装修厂房</a><a target="_blank" href="/index/search/officebuilding?city={$cityInfo[0]['id']}&floor=1">一楼厂房</a><a target="_blank" href="/index/search/officebuilding?city={$cityInfo[0]['id']}&title=高新科技园厂房">高新科技园厂房</a></div>
+          <div class="FR"></div>
+        </div>
+    <div class="clear"></div>
+    <div class="mr_search FR marginT5">
+		<form method="get" action="/index/search/workshop" class="form" id="search111" onsubmit="return clickThis(this);">
+        <div class="select fl" onmouseover="xiala(&#39;s_xlmenu&#39;,true)" onmouseout="xiala(&#39;s_xlmenu&#39;,false)">
+              <div class="s_xiala">
+			</div>
+			<div class="s_xialamenu" id="s_xlmenu">
+				<ul>
+					<li><a onclick="SelText(this);return false;">找厂房</a></li>
+					<li><a onclick="SelText(this);return false;">写字楼</a></li>
+
+				</ul>
+          </div>
+            </div>
+        <div class="text fl">
+            <input name="city" type="hidden" value="{$cityInfo[0]['id']}">
+			<input name="title" type="text" placeholder="请输入园区名称或工业区商圈">
+		</div>
+        <div class="searbut fr" style="height:32px; overflow:hidden;">
+			  <input type="submit" class="searanniu" value="搜索">
+            </div>
+      </form>
+        </div>
+  </div>
+      <div class="clear"></div>
+    </div>
+<script type="text/javascript">
+        function xiaoshi(obj) {
+            obj.value = "";
+        }
+        function xianshi(obj, message) {
+            if (obj.value == null || obj.value == "")
+                obj.value = message;
+        }
+
+        /*
+        导航条.显示函数
+        */
+        function block_show(id,isHome) {
+            var list = document.getElementsByClassName("n_ejmenu FR");
+            for(var i=0,j = list.length;i < j;i++ ){
+                list[i].style.display = "none";
+            }
+            if (!isHome) {
+                document.getElementById(id).style.display = "block";
+                document.getElementById("line").style.display = "none";
+            }
+            else {
+                document.getElementById("line").style.display = "block";
+            }
+        }
+
+	function SelText(obj) {
+		document.getElementById("ct_input").value = obj.innerHTML;
+		document.getElementById("s_xlmenu").style.display = "none";
+		var tna=obj.innerHTML;
+		var soty=0;
+		if(tna=="厂房"){
+			soty = 1;
+		}else if(tna=="写字楼"){
+			soty = 3;
+		}else if(tna=="土地"){
+			soty = 5;
+		}else if(tna=="商铺"){
+			soty = 4;
+		}else if(tna=="产业园区"){
+			soty = 2;
+		}
+		document.getElementById("sotype").value = soty;
+	}
+
+        function xiala(id,isShow) {
+            var _disply = "none";
+            if(isShow)
+                _disply = "block";
+            document.getElementById(id).style.display = _disply;
+        }
+		function xiala1(){
+            document.getElementById("ywhz").style.background="url(/images/zs_topnavlibg2.jpg) no-repeat center";
+            document.getElementById("jtxl").style.display="block";
+        }
+        function xiala2(){
+            document.getElementById("ywhz").style.background="url(/images/zs_topnavlibg1.jpg) no-repeat center";
+            document.getElementById("jtxl").style.display="none";
+        }
+		function xiala3(id,isShow) {
+            var _disply = "none";
+            if(isShow)
+                _disply = "block";
+            document.getElementById(id).style.display = _disply;
+        }
+    </script>
+
+<div id="header">
+
+<table width="960" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tbody><tr>
+    <td>
+<script type="text/javascript" src="/public/static/index/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript">
+(function(a){a.fn.hoverClass=function(b){var a=this;a.each(function(c){a.eq(c).hover(function(){$(this).addClass(b)},function(){$(this).removeClass(b)})});return a};})(jQuery);
+
+$(function(){
+
+	var site_url = window.location.href.toLowerCase();	
+	switch (true) {
+		case site_url == 'http://www.dg-cfw.com' :
+			$(".nav li").attr("class","");
+			$(".nav li").eq(0).attr("class","current");
+			break;
+		case site_url == 'http://www.dg-cfw.com/' :
+			$(".nav li").attr("class","");
+			$(".nav li").eq(0).attr("class","current");
+			break;
+		case site_url.indexOf("index.php") > 0 :
+			$(".nav li").attr("class","");
+			$(".nav li").eq(0).attr("class","current");
+			break;
+		case site_url.indexOf("search.php") > 0 ://判断当前频道属于哪个根目录模块就设置频道标签高亮
+			$(".nav li").attr("class","");
+			$(".nav li").eq(1).attr("class","current"); //设置当前频道标签高亮
+			break;
+        case site_url.indexOf("publish.php") > 0 :
+			$(".nav li").attr("class","");
+			$(".nav li").eq(4).attr("class","current");
+			break;	
+		case site_url.indexOf("publish.php?id=2") > 0 :
+			$(".nav li").attr("class","");
+			$(".nav li").eq(5).attr("class","current");
+			break;
+		/*case site_url.indexOf("dg_xgz") > 0 :
+			$(".nav li").attr("class","");
+			$(".nav li").eq(6).attr("class","current");
+			break;
+		case site_url.indexOf("area=dg_hjz") > 0 :
+			$(".nav li").attr("class","");
+			$(".nav li").eq(7).attr("class","current");
+			break;
+		case site_url.indexOf("area=dg_lbz") > 0 :
+			$(".nav li").attr("class","");
+			$(".nav li").eq(8).attr("class","current");
+			break;
+		case site_url.indexOf("area=dg") > 0 : 
+			$(".nav li").attr("class","");
+			$(".nav li").eq(1).attr("class","current");
+			break;*/
+/*		default :
+			$(".nav li").attr("class","");
+			$(".nav li").eq(1).attr("class","current");*/
+	}
+	
+		switch (true) {
+	    case site_url.indexOf("title=%E5%9C%B0%E9%93%81".toLowerCase()) > 0 :
+			$(".othernav li a").eq(1).attr("class","current");
+			break;
+		case site_url.indexOf("title=%E8%A3%85%E4%BF%AE".toLowerCase()) > 0 :
+			$(".othernav li a").eq(2).attr("class","current");
+			break;
+		case site_url.indexOf("title=%E9%AB%98%E6%96%B0".toLowerCase()) > 0 :
+			$(".othernav li a").eq(3).attr("class","current");
+			break;
+		 case site_url.indexOf("floor=1") > 0 :
+			$(".othernav li a").eq(4).attr("class","current");
+			break;
+		case site_url.indexOf("floor=3") > 0 :
+			$(".othernav li a").eq(5).attr("class","current");
+			break;
+		case site_url.indexOf("title=%E4%BD%8E%E4%BB%B7".toLowerCase()) > 0 :
+			$(".othernav li a").eq(6).attr("class","current");
+			break;
+	      }
+	
+	$(".nav li").hover(function(){
+		$(".nav li.current").attr("id","shutAhover");
+		//$(".nav li.current").removeClass("current");
+	},function(){
+		if($(this).attr("class") != "current"){
+			$(".nav li.current").attr("class","");
+		}
+		$(".nav li#shutAhover").attr("class","current");
+	});
+	
+	//导航
+	$(".nav li").hoverClass("hover");
+});
+
+
+</script>
+<!--解决 IE6 背景缓存-->
+<!--[if IE 6]><script type="text/javascript">document.execCommand("BackgroundImageCache", false, true);</script><![endif]-->   
+<div class="navbox">
+			<div class="container">
+<div class="nav">
+					<ul>
+						<li class=""> <a href="/" class="menubox"><span>首页</span></a> </li> 
+           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>厂房出租</span></a> </li>        
+           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>厂房出售</span></a> </li>
+           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>仓库出租</span></a> </li>
+           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>土地</span></a> </li>
+           <li class=""> <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}" class="menubox"><span>写字楼</span></a> </li> 
+           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>园区招商</span></a> </li>
+           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>民宅商铺</span></a> </li>
+           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>包租厂房</span></a> </li>
+           <li class=""> <a href="/index/publish/customer" class="menubox" target="_blank"><span>求租</span></a> </li> 
+           <li class="current"> <a href="/index/publish/owner" class="menubox"><span>求购</span></a> </li> 
+					</ul>
+				</div>
+
+</div>
+</div>
+
+
+
+</td>
+  </tr>
+</tbody></table>
+
+</div>
+<div class="zs_newmbx" style="display:none; width:936px;margin:auto;text-align:left;">
+		<a target="_blank" href="/">东莞厂房网</a>&nbsp;&gt;&nbsp;<a target="_blank" href="/search.php?area=dg">东莞厂房出租</a>
+ </div>
+
+<table width="960" align="center">
+<tbody><tr align="center">
+<td align="center">
+<a href="javascript:void(0)" target="_blank"><img src="/public/static/index/img/img_13.jpg" width="960" height="180"></a>
+</td>
+</tr>
+</tbody></table>
+
+   
+<script language="JavaScript">
+//判断提交号码是否正确
+    function ValidatePhone(val){
+    var isPhone = /^(\(\d{3,4}\)|\d{3,4}-|\s)?\d{7,14}$/;//座机号码
+    var isMob= /^0?1[3|4|5|6|7|8|9][0-9]\d{8}$/;// 手机号码
+    if(isMob.test(val)||isPhone.test(val)){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+
+//验证提交数据
+	function checkdata()
+	{
+	
+/*   if(checkspace(document.form2.title.value)) {
+	document.form2.title.focus();
+    alert("标题不能为空，请重新输入！");
+	return false;
+  }*/
+  
+  
+/*        if(checkspace(document.form2.lx.value)) {
+	document.form2.lx.focus();
+    alert("联系人不能为空，请重新输入！");
+	return false;
+  }*/
+  
+        if(checkspace(document.form2.tel.value)) {
+	document.form2.tel.focus();
+    alert("联系方式不能为空，请重新输入！");
+	return false;
+  }
+   if (ValidatePhone(document.form2.tel.value) == false) {
+         alert('联系电话格式错误');
+         document.form2.tel.focus();
+         return false;
+   }
+  
+  
+
+/*   if(checkspace(document.form2.mianji.value)) {
+	document.form2.mianji.focus();
+    alert("面积不能为空，请重新输入！");
+	return false;
+  }*/
+  
+
+  
+/*  if(isNaN(document.form2.mianji.value)){
+		alert("面积只能是数字！");
+		return  false;}*/
+	 
+/*	var num=document.getElementById("mianji_1").value;
+if(num>=0&&num<=100000) 
+return true; 
+else 
+document.form2.mianji.focus();
+    alert("面积不是数字或范围太大，请重新输入！");
+return false; */
+
+
+}
+
+	function checkspace(checkstr) 
+{
+  var str = '';
+  for(i = 0; i < checkstr.length; i++) {
+    str = str + ' ';
+  }
+  return (str == checkstr);
+}
+	
+//-->
+</script>
+
+  <!--wrap begin-->
+ <table width="960" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tbody><tr>
+    <td>
+
+     <div class="content">
+        <div class="tit01"><span>业主放盘登记</span></div>
+        <div class="con-box clearfix">
+            <div class="left-nav">
+            	<ul>
+                                <li><a href="/publish.php?id=1">客户需求登记</a></li>
+                <li class="cur">业主放盘登记</li>
+                                </ul>
+            </div>
+            <div class="right-box">
+<table width="725" align="center" cellpadding="0" cellspacing="0">
+  <tbody><tr> 
+    <td width="720" align="center" valign="middle" class="linkfont"> 
+<form name="form2" method="post" action="/api/Demand/owner" onsubmit="return checkdata()">
+      
+
+
+
+      
+        <table width="100%" border="0" cellspacing="5" cellpadding="0">
+          
+          <tbody><tr align="left" valign="middle"> 
+            <td width="72" height="30" align="right" class="font"><font color="#000000" size="-1">标　　题</font>: </td>
+            <td class="font" height="30"> 
+              <div class="input-skin" style="padding-left:1px;"><input name="title" type="text" class="textinput"> </div><em>*</em></td>
+          </tr>
+		    
+            
+            <tr align="left"> 
+            <td width="72" height="30" align="right" class="font"><font color="#000000" size="-1">所在区域</font>: </td>
+            <td class="font" height="30">
+            <script>
+    var xmlhttp;
+    if(window.XMLHttpRequest){
+        xmlhttp=new XMLHttpRequest();
+    }
+    else
+    {
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    function get_district(city_name_en){
+        xmlhttp.onreadystatechange=function(){
+            if(xmlhttp.readyState==4 && xmlhttp.status==200){
+                var jsonData =  xmlhttp.responseText;
+                var jsonData = JSON.parse(jsonData);
+                var jsonData = jsonData.result
+                if(city_name_en&&jsonData.length>0){
+                    document.getElementById("list_district").length=0;
+                    var html = '<option value="">请选择区/镇</option>';
+                    for (var i = 0; i < jsonData.length; i++) {
+                        html += '<option value="'+jsonData[i].district_name_en+'">'+jsonData[i].name+'</option>';}
+                    document.getElementById("list_district").innerHTML = html;
+                    document.getElementById("list_street").style.display = "none";
+                    document.getElementById("list_street").length=0;
+                }
+                else{
+                    document.getElementById("list_district").innerHTML = '<option value="">请选择区/县</option>';
+
+                }
+            }
+        }
+        xmlhttp.open("GET","/api/city/getRegionByParentId?city="+city_name_en,true);
+        xmlhttp.send();
+    }
+
+    function get_street(district_name_en){
+        xmlhttp.onreadystatechange=function(){
+            if(xmlhttp.readyState==4 && xmlhttp.status==200){
+                var jsonData =  xmlhttp.responseText;
+                var jsonData = JSON.parse(jsonData);
+                console.log(jsonData);
+                if(district_name_en&&jsonData.length>0){
+                    document.getElementById("list_street").style.display = "inline-block";
+                    document.getElementById("list_street").length=0;
+                    var html = '<option value="">请选择街道/镇</option>';
+                    for (var i = 0; i < jsonData.length; i++) {
+                        html += '<option value="'+jsonData[i].street_name_en+'">'+jsonData[i].street_name+'</option>';}
+                    document.getElementById("list_street").innerHTML = html;}
+                else{
+                    document.getElementById("list_street").style.display = "none";
+                    document.getElementById("list_street").length=0;
+                }
+            }
+        }
+        xmlhttp.open("GET","/api/getjson_area.php?district="+district_name_en,true);
+        xmlhttp.send();
+    }
+ </script>
+
+<style>
+#city_list_css select{width:128px;height:32px;line-height:35px;font-size:16px; padding-left:2px;background-color: #FCC;border: 2px solid #dedede;}
+#city_list_css #list_city{width:90px;}
+</style>
+
+<div id="city_list_css" style="display:inline">
+<select name="city" id="list_city" onchange="get_district(this.value);">
+{volist name="cityInfo" id="data" key="k"}
+<option value="{$data.id}" {eq name="k" value="1"}selected=""{/eq}>{$data.name}</option>
+{/volist}
+	{volist name="cityList" id="data" key="k"}
+	<option value="{$data.id}">{$data.name}</option>
+	{/volist}
+</select>
+ 
+<select name="area" id="list_district" onchange="get_street(this.value);">
+<option value="">请选择区/镇</option>
+ {volist name="areaInfo" id="value"}
+	<option value="{$value.id}">{$value.name}</option>
+ {/volist}
+</select>
+
+<select name="list_street" id="list_street" style="display:none;">
+</select>
+
+</div>
+<!--ajax城市列表结束-->            </td>
+          </tr>        
+		  
+
+		            <tr align="left" valign="middle"> 
+            <td height="30" align="right" class="font" width="72"><font size="-1">行业类别</font>: </td>
+            <td height="30" class="font">
+
+<table width="403" border="0" cellspacing="0" cellpadding="0">
+  <tbody><tr>
+    <td width="96" align="left"><select name="leibie" id="leibie" style="width:90px; height:32px; line-height:32px; font-size:16px; padding-left:2px;">
+	<option value="厂房" selected="">厂房</option>
+	<option value="仓库">仓库</option>
+	<option value="土地">土地</option>  
+   </select></td>
+    <td width="61"><font color="#000000" size="-1">信息类型</font>: </td>
+    <td width="246" align="left"><select name="leixing" id="leixing" style="width:90px; height:32px; line-height:32px; background-color: #FC9; font-size:16px; padding-left:2px;">
+              			  <option value="出租" selected="">出租</option>
+			  <option value="出售">出售</option>
+			  <option value="转让">转让</option>
+                           </select></td>
+  </tr>
+</tbody></table>
+
+
+
+
+			</td>
+          </tr>
+          
+          
+          
+          
+		  <tr align="left" valign="middle"> 
+            <td height="30" align="right" class="font" width="72"><font color="#000000" size="-1">联 系 人</font>: </td>
+            <td class="font" height="30"> 
+             <div class="input-skin" style="padding-left:1px;">
+              <input name="name" type="text" class="textinput" id="lx" size="60" maxlength="50"></div><em>*</em></td>
+          </tr>
+	
+		  
+ 
+
+          <tr align="left" valign="middle"> 
+            <td width="72" height="30" align="right" class="font"><font color="#000000" size="-1">联系电话</font>: </td>
+            <td class="font" height="30"> 
+             <div class="input-skin" style="padding-left:1px;">
+              <input name="tel" type="text" class="textinput" id="tel" size="60" maxlength="50"></div><em>*</em>        </td>
+          </tr>
+		  <tr align="left" valign="middle"> 
+            <td width="72" height="30" align="right" class="font"><font color="#000000" size="-1">面　　积</font>: </td>
+            <td class="font" height="30"> 
+             <div class="input-skin" style="padding-left:1px;">
+              <input name="mianji" type="text" id="mianji_1" class="textinput" size="40" maxlength="50"></div>
+
+
+
+              <em>*</em>&nbsp;&nbsp;请输入数字&nbsp;&nbsp;        </td>
+          </tr>
+        		  <tr>
+
+    <td align="right" valign="top" class="font"><font color="#000000" size="-1">详细信息</font>: </td>
+    <td>
+     
+      <textarea id="bz" name="detail" class="textinput" style="width:560px;height:180px;border:1px solid;border-radius:8px;"></textarea>
+      <input type="hidden" name="action" value="submitted">
+      </td>
+  </tr>  
+        </tbody></table>
+        <table width="100%" border="0" cellspacing="5" cellpadding="0">
+		
+
+		
+		  		  <tbody><tr height="8">
+
+    <td></td>
+    <td></td>
+  </tr>
+        </tbody></table>
+<style>
+.tijiao{
+  width: 118px;
+  height: 36px;
+  line-height: 36px !important;
+  border-radius: 3px;
+  cursor: pointer;
+  outline: none;
+  display: inline-block;
+  text-align: center;
+  font-size: 14px;
+  color: #fff;
+  border: 1px solid transparent;
+  background-color: #f56060;
+  margin-bottom:25px;}
+.tijiao:hover{background-color: #ed4f4f; color:#fff;}
+</style>
+        <table width="616" border="0" cellpadding="0" cellspacing="0">
+          <tbody><tr>
+            <td width="616" align="center" valign="middle">
+            
+               <input type="submit" name="Submit2" value="发  布" class="textbotton tijiao">
+              　 
+               <input type="reset" name="Submit2" value="重  填" class="textbotton tijiao">            </td>
+          </tr>
+		
+		            <tr>
+            <td align="center" valign="middle">
+</td>
+          </tr>
+        </tbody></table>
+      </form>    </td>
+  </tr>
+</tbody></table>
+
+
+
+
+
+                  <div class="tips-m"> <div align="left"><span class="STYLE13">注意事项：</span>
+                  
+                  <br>
+              
+              &nbsp;&nbsp;&nbsp;&nbsp;为杜绝发布不良网络信息，本站实行先审核后发布，发布的信息将会延时公布，请发信息者留意：<br> 
+             &nbsp;&nbsp;&nbsp; 1、网站管理员上班时间为：周一至周六上午；<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;2、审核工作时间：8：30——18：00<br>
+             &nbsp;&nbsp;&nbsp; 3、节假日不上班；<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;4、管理员有权修改或删除您的信息。<br>
+            &nbsp;&nbsp;&nbsp;  5、请广大网友支持我们的工作，我们将会一如既往地为大家提供优质的服务！<br>
+            </div></div>
+                  
+            </div>
+        </div>
+ 
+
+    </div>
+</td>
+  </tr>
+</tbody></table>
+
+<div id="tuijian">
+      <div class="part_title"><strong>推荐厂房</strong></div>
+      <div id="tuijian_cont">
+        <div id="white_bg">
+          <div id="demo">
+            <div id="indemo">
+              <div id="demo1">
+              {volist name="recommend" id="data" offset="0" length="3" mod="3" empty="$empty" key="i"}
+              <div class="right_p_one">
+                  <div class="right_p_img"><a href="/article.php?city=sz&amp;id=15583" target="_blank"><img src="./业主发布_files/2014082015385388107.jpg"></a><span class="imgmid"></span></div>
+                  <div class="right_p_title"><a href="/article.php?city=sz&amp;id=15583" target="_blank">1000㎡精装修、横...</a></div>
+                </div>
+                {/volist}
+                   </div>
+            </div>
+            <div id="demo2">
+              <div class="right_p_one">
+                  <div class="right_p_img"><a href="/article.php?city=sz&amp;id=15583" target="_blank"><img src="./业主发布_files/2014082015385388107.jpg"></a><span class="imgmid"></span></div>
+                  <div class="right_p_title"><a href="/article.php?city=sz&amp;id=15583" target="_blank">1000㎡精装修、横...</a></div>
+                </div>
+                   </div>
+            <script type="text/javascript" src="/public/static/index/js/rolljs.js"></script>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   <div class="clear"></div>
+
+
+<div class="W960 link slideTxtBox1" id="demoContent">
+		<div class="top hd">
+			<div class="FL">
+     <a href="javascript:;" id="cc0" class="hov">深圳分站</a>
+   <a href="javascript:;" id="cc1">东莞分站</a>
+   <a href="javascript:;" id="cc2">惠州分站</a>
+   <a href="javascript:;" id="cc3">中山分站</a>
+   <a href="javascript:;" id="cc4">佛山分站</a>
+   <a href="javascript:;" id="cc5">广州分站</a>
+   <a href="javascript:;" id="cc6">江门分站</a>
+   			</div>
+		</div>
+		<p class="infoList0" id="qlist0" style="display: block;">
+        <a href="/search.php?area=sz" target="_blank" title="深圳厂房出租">深圳厂房出租</a>
+        
+			<a href="/search.php?area=sz_lg" target="_blank" title="龙岗区厂房出租">龙岗区厂房出租</a>
+		        <a href="/search.php?area=sz_lg_lg" target="_blank" title="龙岗厂房出租">龙岗厂房出租</a>
+			        <a href="/search.php?area=sz_lg_bt" target="_blank" title="坂田厂房出租">坂田厂房出租</a>
+			        <a href="/search.php?area=sz_lg_ph" target="_blank" title="平湖厂房出租">平湖厂房出租</a>
+			        <a href="/search.php?area=sz_lg_bj" target="_blank" title="布吉厂房出租">布吉厂房出租</a>
+			        <a href="/search.php?area=sz_lg_hg" target="_blank" title="横岗厂房出租">横岗厂房出租</a>
+			        <a href="/search.php?area=sz_lg_pd" target="_blank" title="坪地厂房出租">坪地厂房出租</a>
+			                   
+			<a href="/search.php?area=sz_ps" target="_blank" title="坪山区厂房出租">坪山区厂房出租</a>
+		        <a href="/search.php?area=sz_ps_ps" target="_blank" title="坪山厂房出租">坪山厂房出租</a>
+			        <a href="/search.php?area=sz_ps_kz" target="_blank" title="坑梓厂房出租">坑梓厂房出租</a>
+			                   
+			<a href="/search.php?area=sz_lh" target="_blank" title="龙华区厂房出租">龙华区厂房出租</a>
+		        <a href="/search.php?area=sz_lh_mz" target="_blank" title="民治厂房出租">民治厂房出租</a>
+			        <a href="/search.php?area=sz_lh_lh" target="_blank" title="龙华厂房出租">龙华厂房出租</a>
+			        <a href="/search.php?area=sz_lh_dl" target="_blank" title="大浪厂房出租">大浪厂房出租</a>
+			        <a href="/search.php?area=sz_lh_gn" target="_blank" title="观澜厂房出租">观澜厂房出租</a>
+			                   
+			<a href="/search.php?area=sz_baoanq" target="_blank" title="宝安区厂房出租">宝安区厂房出租</a>
+		        <a href="/search.php?area=sz_baoanq_xinanjd" target="_blank" title="新安厂房出租">新安厂房出租</a>
+			        <a href="/search.php?area=sz_baoanq_xixiangjd" target="_blank" title="西乡厂房出租">西乡厂房出租</a>
+			        <a href="/search.php?area=sz_baoanq_fuyongjd" target="_blank" title="福永厂房出租">福永厂房出租</a>
+			        <a href="/search.php?area=sz_baoanq_shajingjd" target="_blank" title="沙井厂房出租">沙井厂房出租</a>
+			        <a href="/search.php?area=sz_baoanq_songgangjd" target="_blank" title="松岗厂房出租">松岗厂房出租</a>
+			        <a href="/search.php?area=sz_baoanq_shiyanjd" target="_blank" title="石岩厂房出租">石岩厂房出租</a>
+			                   
+			<a href="/search.php?area=sz_guangmq" target="_blank" title="光明区厂房出租">光明区厂房出租</a>
+		        <a href="/search.php?area=sz_guangmq_guangmjd" target="_blank" title="光明厂房出租">光明厂房出租</a>
+			        <a href="/search.php?area=sz_guangmq_gongmjd" target="_blank" title="公明厂房出租">公明厂房出租</a>
+			                   
+			<a href="/search.php?area=sz_yantianq" target="_blank" title="盐田区厂房出租">盐田区厂房出租</a>
+		        <a href="/search.php?area=sz_yantianq_shatoujiaojd" target="_blank" title="沙头角厂房出租">沙头角厂房出租</a>
+			        <a href="/search.php?area=sz_yantianq_haishanjd" target="_blank" title="海山厂房出租">海山厂房出租</a>
+			        <a href="/search.php?area=sz_yantianq_yantianjd" target="_blank" title="盐田厂房出租">盐田厂房出租</a>
+			        <a href="/search.php?area=sz_yantianq_meishajd" target="_blank" title="梅沙厂房出租">梅沙厂房出租</a>
+			                   
+			<a href="/search.php?area=sz_dapengq" target="_blank" title="大鹏新区厂房出租">大鹏新区厂房出租</a>
+		        <a href="/search.php?area=sz_dapengq_kuichongjd" target="_blank" title="葵涌厂房出租">葵涌厂房出租</a>
+			        <a href="/search.php?area=sz_dapengq_dapengjd" target="_blank" title="大鹏厂房出租">大鹏厂房出租</a>
+			        <a href="/search.php?area=sz_dapengq_nanaojd" target="_blank" title="南澳厂房出租">南澳厂房出租</a>
+			                        </p>
+    		<p class="infoList1" id="qlist1" style="display: none;">
+        <a href="/search.php?area=dg" target="_blank" title="东莞厂房出租">东莞厂房出租</a>
+        
+			<a href="/search.php?area=dg_caz" target="_blank" title="长安厂房出租">长安厂房出租</a>
+		                   
+			<a href="/search.php?area=dg_hmz" target="_blank" title="虎门厂房出租">虎门厂房出租</a>
+		                   
+			<a href="/search.php?area=dg_stz" target="_blank" title="沙田厂房出租">沙田厂房出租</a>
+		                   
+			<a href="/search.php?area=dg_houjiez" target="_blank" title="厚街厂房出租">厚街厂房出租</a>
+		                   
+			<a href="/search.php?area=dg_dcz" target="_blank" title="东城厂房出租">东城厂房出租</a>
+		                   
+			<a href="/search.php?area=dg_ncz" target="_blank" title="南城厂房出租">南城厂房出租</a>
+		                   
+			<a href="/search.php?area=dg_gcz" target="_blank" title="莞城厂房出租">莞城厂房出租</a>
+		                   
+			<a href="/search.php?area=dg_dlsz" target="_blank" title="大岭山厂房出租">大岭山厂房出租</a>
+		                   
+			<a href="/search.php?area=dg_dlz" target="_blank" title="大朗厂房出租">大朗厂房出租</a>
+		                   
+			<a href="/search.php?area=dg_hjz" target="_blank" title="黄江厂房出租">黄江厂房出租</a>
+		                   
+			<a href="/search.php?area=dg_txz" target="_blank" title="塘厦厂房出租">塘厦厂房出租</a>
+		                   
+			<a href="/search.php?area=dg_fgz" target="_blank" title="凤岗厂房出租">凤岗厂房出租</a>
+		                   
+			<a href="/search.php?area=dg_qxz" target="_blank" title="清溪厂房出租">清溪厂房出租</a>
+		                   
+			<a href="/search.php?area=dg_zmtz" target="_blank" title="樟木头厂房出租">樟木头厂房出租</a>
+		                   
+			<a href="/search.php?area=dg_xgz" target="_blank" title="谢岗厂房出租">谢岗厂房出租</a>
+		                   
+			<a href="/search.php?area=dg_qtz" target="_blank" title="桥头厂房出租">桥头厂房出租</a>
+		                   
+			<a href="/search.php?area=dg_cpz" target="_blank" title="常平厂房出租">常平厂房出租</a>
+		                   
+			<a href="/search.php?area=dg_qsz" target="_blank" title="企石厂房出租">企石厂房出租</a>
+		                   
+			<a href="/search.php?area=dg_hlz" target="_blank" title="横沥厂房出租">横沥厂房出租</a>
+		                   
+			<a href="/search.php?area=dg_dkz" target="_blank" title="东坑厂房出租">东坑厂房出租</a>
+		                   
+			<a href="/search.php?area=dg_lbz" target="_blank" title="寮步厂房出租">寮步厂房出租</a>
+		                   
+			<a href="/search.php?area=dg_csz" target="_blank" title="茶山厂房出租">茶山厂房出租</a>
+		                   
+			<a href="/search.php?area=dg_spz" target="_blank" title="石排厂房出租">石排厂房出租</a>
+		                   
+			<a href="/search.php?area=dg_slz" target="_blank" title="石龙厂房出租">石龙厂房出租</a>
+		                   
+			<a href="/search.php?area=dg_sjz" target="_blank" title="石碣厂房出租">石碣厂房出租</a>
+		                   
+			<a href="/search.php?area=dg_gbz" target="_blank" title="高埗厂房出租">高埗厂房出租</a>
+		                   
+			<a href="/search.php?area=dg_wndz" target="_blank" title="望牛墩厂房出租">望牛墩厂房出租</a>
+		                   
+			<a href="/search.php?area=dg_hongmeiz" target="_blank" title="洪梅厂房出租">洪梅厂房出租</a>
+		                   
+			<a href="/search.php?area=dg_wjz" target="_blank" title="万江厂房出租">万江厂房出租</a>
+		                   
+			<a href="/search.php?area=dg_djz" target="_blank" title="道滘厂房出租">道滘厂房出租</a>
+		                   
+			<a href="/search.php?area=dg_ztz" target="_blank" title="中堂厂房出租">中堂厂房出租</a>
+		                   
+			<a href="/search.php?area=dg_mcz" target="_blank" title="麻涌厂房出租">麻涌厂房出租</a>
+		                        </p>
+    		<p class="infoList2" id="qlist2" style="display: none;">
+        <a href="/search.php?area=hz" target="_blank" title="惠州厂房出租">惠州厂房出租</a>
+        
+			<a href="/search.php?area=hz_huiyangq" target="_blank" title="惠阳区厂房出租">惠阳区厂房出租</a>
+		        <a href="/search.php?area=hz_huiyangq_xinxuz" target="_blank" title="新圩厂房出租">新圩厂房出租</a>
+			        <a href="/search.php?area=hz_huiyangq_zhenlongz" target="_blank" title="镇隆厂房出租">镇隆厂房出租</a>
+			        <a href="/search.php?area=hz_huiyangq_qiuchangjd" target="_blank" title="秋长厂房出租">秋长厂房出租</a>
+			        <a href="/search.php?area=hz_huiyangq_danshuijd" target="_blank" title="淡水厂房出租">淡水厂房出租</a>
+			        <a href="/search.php?area=hz_huiyangq_shatianz" target="_blank" title="沙田厂房出租">沙田厂房出租</a>
+			        <a href="/search.php?area=hz_huiyangq_yonghuz" target="_blank" title="永湖厂房出租">永湖厂房出租</a>
+			        <a href="/search.php?area=hz_huiyangq_liangjingz" target="_blank" title="良井厂房出租">良井厂房出租</a>
+			        <a href="/search.php?area=hz_huiyangq_pingtanz" target="_blank" title="平潭厂房出租">平潭厂房出租</a>
+			        <a href="/search.php?area=hz_huiyangq_sanhejd" target="_blank" title="三和厂房出租">三和厂房出租</a>
+			                   
+			<a href="/search.php?area=hz_dayawanq" target="_blank" title="大亚湾区厂房出租">大亚湾区厂房出租</a>
+		        <a href="/search.php?area=hz_dayawanq_xiachongjd" target="_blank" title="霞涌厂房出租">霞涌厂房出租</a>
+			        <a href="/search.php?area=hz_dayawanq_aotoujd" target="_blank" title="澳头厂房出租">澳头厂房出租</a>
+			        <a href="/search.php?area=hz_dayawanq_xiqujd" target="_blank" title="西区厂房出租">西区厂房出租</a>
+			                   
+			<a href="/search.php?area=hz_zhongkaiq" target="_blank" title="仲恺高新区厂房出租">仲恺高新区厂房出租</a>
+		        <a href="/search.php?area=hz_zhongkaiq_chenjiangjd" target="_blank" title="陈江厂房出租">陈江厂房出租</a>
+			        <a href="/search.php?area=hz_zhongkaiq_huihuaijd" target="_blank" title="惠环厂房出租">惠环厂房出租</a>
+			        <a href="/search.php?area=hz_zhongkaiq_lilinz" target="_blank" title="沥林厂房出租">沥林厂房出租</a>
+			        <a href="/search.php?area=hz_zhongkaiq_tongqiaoz" target="_blank" title="潼侨厂房出租">潼侨厂房出租</a>
+			        <a href="/search.php?area=hz_zhongkaiq_tonghuz" target="_blank" title="潼湖厂房出租">潼湖厂房出租</a>
+			                   
+			<a href="/search.php?area=hz_huichengq" target="_blank" title="惠城区厂房出租">惠城区厂房出租</a>
+		        <a href="/search.php?area=hz_huichengq_qiaodongjd" target="_blank" title="桥东厂房出租">桥东厂房出租</a>
+			        <a href="/search.php?area=hz_huichengq_qiaoxijd" target="_blank" title="桥西厂房出租">桥西厂房出租</a>
+			        <a href="/search.php?area=hz_huichengq_jiangnanjd" target="_blank" title="江南厂房出租">江南厂房出租</a>
+			        <a href="/search.php?area=hz_huichengq_huihuaijd" target="_blank" title="惠环厂房出租">惠环厂房出租</a>
+			        <a href="/search.php?area=hz_huichengq_jiangbeijd" target="_blank" title="江北厂房出租">江北厂房出租</a>
+			        <a href="/search.php?area=hz_huichengq_longfengjd" target="_blank" title="龙丰厂房出租">龙丰厂房出租</a>
+			        <a href="/search.php?area=hz_huichengq_shuikoujd" target="_blank" title="水口厂房出租">水口厂房出租</a>
+			        <a href="/search.php?area=hz_huichengq_chenjiangjd" target="_blank" title="陈江厂房出租">陈江厂房出租</a>
+			        <a href="/search.php?area=hz_huichengq_henananjd" target="_blank" title="河南岸厂房出租">河南岸厂房出租</a>
+			        <a href="/search.php?area=hz_huichengq_xiaojinkoujd" target="_blank" title="小金口厂房出租">小金口厂房出租</a>
+			        <a href="/search.php?area=hz_huichengq_tonghuz" target="_blank" title="潼湖厂房出租">潼湖厂房出租</a>
+			        <a href="/search.php?area=hz_huichengq_tongqiaoz" target="_blank" title="潼侨厂房出租">潼侨厂房出租</a>
+			        <a href="/search.php?area=hz_huichengq_lilinz" target="_blank" title="沥林厂房出租">沥林厂房出租</a>
+			        <a href="/search.php?area=hz_huichengq_maanz" target="_blank" title="马安厂房出租">马安厂房出租</a>
+			        <a href="/search.php?area=hz_huichengq_hengliz" target="_blank" title="横沥厂房出租">横沥厂房出租</a>
+			        <a href="/search.php?area=hz_huichengq_luzhouz" target="_blank" title="芦洲厂房出租">芦洲厂房出租</a>
+			        <a href="/search.php?area=hz_huichengq_ruhuz" target="_blank" title="汝湖厂房出租">汝湖厂房出租</a>
+			        <a href="/search.php?area=hz_huichengq_sandongz" target="_blank" title="三栋厂房出租">三栋厂房出租</a>
+			                   
+			<a href="/search.php?area=hz_huidongx" target="_blank" title="惠东县厂房出租">惠东县厂房出租</a>
+		        <a href="/search.php?area=hz_huidongx_pingshanjd" target="_blank" title="平山厂房出租">平山厂房出租</a>
+			        <a href="/search.php?area=hz_huidongx_dalingz" target="_blank" title="大岭厂房出租">大岭厂房出租</a>
+			        <a href="/search.php?area=hz_huidongx_baihuaz" target="_blank" title="白花厂房出租">白花厂房出租</a>
+			        <a href="/search.php?area=hz_huidongx_lianghuaz" target="_blank" title="梁化厂房出租">梁化厂房出租</a>
+			        <a href="/search.php?area=hz_huidongx_renshanz" target="_blank" title="稔山厂房出租">稔山厂房出租</a>
+			        <a href="/search.php?area=hz_huidongx_tiechongz" target="_blank" title="铁涌厂房出租">铁涌厂房出租</a>
+			        <a href="/search.php?area=hz_huidongx_pinghaiz" target="_blank" title="平海厂房出租">平海厂房出租</a>
+			        <a href="/search.php?area=hz_huidongx_jilongz" target="_blank" title="吉隆厂房出租">吉隆厂房出租</a>
+			        <a href="/search.php?area=hz_huidongx_huangbuz" target="_blank" title="黄埠厂房出租">黄埠厂房出租</a>
+			        <a href="/search.php?area=hz_huidongx_duozhuz" target="_blank" title="多祝厂房出租">多祝厂房出租</a>
+			        <a href="/search.php?area=hz_huidongx_baipenzhuz" target="_blank" title="白盆珠厂房出租">白盆珠厂房出租</a>
+			        <a href="/search.php?area=hz_huidongx_andunz" target="_blank" title="安墩厂房出租">安墩厂房出租</a>
+			        <a href="/search.php?area=hz_huidongx_gaotanz" target="_blank" title="高潭厂房出租">高潭厂房出租</a>
+			        <a href="/search.php?area=hz_huidongx_baokouz" target="_blank" title="宝口厂房出租">宝口厂房出租</a>
+			                   
+			<a href="/search.php?area=hz_boluox" target="_blank" title="博罗县厂房出租">博罗县厂房出租</a>
+		        <a href="/search.php?area=hz_boluox_luoyangz" target="_blank" title="罗阳厂房出租">罗阳厂房出租</a>
+			        <a href="/search.php?area=hz_boluox_longxiz" target="_blank" title="龙溪厂房出租">龙溪厂房出租</a>
+			        <a href="/search.php?area=hz_boluox_longhuaz" target="_blank" title="龙华厂房出租">龙华厂房出租</a>
+			        <a href="/search.php?area=hz_boluox_yuanzhouz" target="_blank" title="园洲厂房出租">园洲厂房出租</a>
+			        <a href="/search.php?area=hz_boluox_shiwanz" target="_blank" title="石湾厂房出租">石湾厂房出租</a>
+			        <a href="/search.php?area=hz_boluox_futianz" target="_blank" title="福田厂房出租">福田厂房出租</a>
+			        <a href="/search.php?area=hz_boluox_changniz" target="_blank" title="长宁厂房出租">长宁厂房出租</a>
+			        <a href="/search.php?area=hz_boluox_huzhenz" target="_blank" title="湖镇厂房出租">湖镇厂房出租</a>
+			        <a href="/search.php?area=hz_boluox_henghez" target="_blank" title="横河厂房出租">横河厂房出租</a>
+			        <a href="/search.php?area=hz_boluox_baitangz" target="_blank" title="柏塘厂房出租">柏塘厂房出租</a>
+			        <a href="/search.php?area=hz_boluox_gongzhuangz" target="_blank" title="公庄厂房出租">公庄厂房出租</a>
+			        <a href="/search.php?area=hz_boluox_guanyingez" target="_blank" title="观音阁厂房出租">观音阁厂房出租</a>
+			        <a href="/search.php?area=hz_boluox_yangqiaoz" target="_blank" title="杨侨厂房出租">杨侨厂房出租</a>
+			        <a href="/search.php?area=hz_boluox_mapiz" target="_blank" title="麻陂厂房出租">麻陂厂房出租</a>
+			        <a href="/search.php?area=hz_boluox_shibaz" target="_blank" title="石坝厂房出租">石坝厂房出租</a>
+			        <a href="/search.php?area=hz_boluox_taimeiz" target="_blank" title="泰美厂房出租">泰美厂房出租</a>
+			        <a href="/search.php?area=hz_boluox_yangcunz" target="_blank" title="杨村厂房出租">杨村厂房出租</a>
+			                   
+			<a href="/search.php?area=hz_longmenx" target="_blank" title="龙门县厂房出租">龙门县厂房出租</a>
+		        <a href="/search.php?area=hz_longmenx_pinglingjd" target="_blank" title="平陵厂房出租">平陵厂房出租</a>
+			        <a href="/search.php?area=hz_longmenx_longchengjd" target="_blank" title="龙城厂房出租">龙城厂房出租</a>
+			        <a href="/search.php?area=hz_longmenx_dipaiz" target="_blank" title="地派厂房出租">地派厂房出租</a>
+			        <a href="/search.php?area=hz_longmenx_longhuaz" target="_blank" title="龙华厂房出租">龙华厂房出租</a>
+			        <a href="/search.php?area=hz_longmenx_longtianz" target="_blank" title="龙田厂房出租">龙田厂房出租</a>
+			        <a href="/search.php?area=hz_longmenx_mazhaz" target="_blank" title="麻榨厂房出租">麻榨厂房出租</a>
+			        <a href="/search.php?area=hz_longmenx_longjiangz" target="_blank" title="龙江厂房出租">龙江厂房出租</a>
+			        <a href="/search.php?area=hz_longmenx_longtanz" target="_blank" title="龙潭厂房出租">龙潭厂房出租</a>
+			                        </p>
+    		<p class="infoList3" id="qlist3" style="display: none;">
+        <a href="/search.php?area=zs" target="_blank" title="中山厂房出租">中山厂房出租</a>
+        
+			<a href="/search.php?area=zs_huangpu" target="_blank" title="黄圃厂房出租">黄圃厂房出租</a>
+		                   
+			<a href="/search.php?area=zs_nantou" target="_blank" title="南头厂房出租">南头厂房出租</a>
+		                   
+			<a href="/search.php?area=zs_dongfeng" target="_blank" title="东凤厂房出租">东凤厂房出租</a>
+		                   
+			<a href="/search.php?area=zs_fusha" target="_blank" title="阜沙厂房出租">阜沙厂房出租</a>
+		                   
+			<a href="/search.php?area=zs_xiaolan" target="_blank" title="小榄厂房出租">小榄厂房出租</a>
+		                   
+			<a href="/search.php?area=zs_dongsheng" target="_blank" title="东升厂房出租">东升厂房出租</a>
+		                   
+			<a href="/search.php?area=zs_guzhen" target="_blank" title="古镇厂房出租">古镇厂房出租</a>
+		                   
+			<a href="/search.php?area=zs_henglan" target="_blank" title="横栏厂房出租">横栏厂房出租</a>
+		                   
+			<a href="/search.php?area=zs_sanjiao" target="_blank" title="三角厂房出租">三角厂房出租</a>
+		                   
+			<a href="/search.php?area=zs_minzhong" target="_blank" title="民众厂房出租">民众厂房出租</a>
+		                   
+			<a href="/search.php?area=zs_nanlang" target="_blank" title="南朗厂房出租">南朗厂房出租</a>
+		                   
+			<a href="/search.php?area=zs_gangkou" target="_blank" title="港口厂房出租">港口厂房出租</a>
+		                   
+			<a href="/search.php?area=zs_dachong" target="_blank" title="大涌厂房出租">大涌厂房出租</a>
+		                   
+			<a href="/search.php?area=zs_shaxi" target="_blank" title="沙溪厂房出租">沙溪厂房出租</a>
+		                   
+			<a href="/search.php?area=zs_sanxiang" target="_blank" title="三乡厂房出租">三乡厂房出租</a>
+		                   
+			<a href="/search.php?area=zs_banfu" target="_blank" title="板芙厂房出租">板芙厂房出租</a>
+		                   
+			<a href="/search.php?area=zs_shenwan" target="_blank" title="神湾厂房出租">神湾厂房出租</a>
+		                   
+			<a href="/search.php?area=zs_tanzhou" target="_blank" title="坦洲厂房出租">坦洲厂房出租</a>
+		                   
+			<a href="/search.php?area=zs_huoju" target="_blank" title="火炬开发区厂房出租">火炬开发区厂房出租</a>
+		                   
+			<a href="/search.php?area=zs_shiqi" target="_blank" title="石岐厂房出租">石岐厂房出租</a>
+		                   
+			<a href="/search.php?area=zs_wuguishan" target="_blank" title="五桂山厂房出租">五桂山厂房出租</a>
+		                        </p>
+    		<p class="infoList4" id="qlist4" style="display: none;">
+        <a href="/search.php?area=fs" target="_blank" title="佛山厂房出租">佛山厂房出租</a>
+        
+			<a href="/search.php?area=fs_chanchengq" target="_blank" title="禅城区厂房出租">禅城区厂房出租</a>
+		        <a href="/search.php?area=fs_chanchengq_zumiaojd" target="_blank" title="祖庙厂房出租">祖庙厂房出租</a>
+			        <a href="/search.php?area=fs_chanchengq_shiwanjd" target="_blank" title="石湾厂房出租">石湾厂房出租</a>
+			        <a href="/search.php?area=fs_chanchengq_zhangchuojd" target="_blank" title="张槎厂房出租">张槎厂房出租</a>
+			        <a href="/search.php?area=fs_chanchengq_nanzhuangz" target="_blank" title="南庄厂房出租">南庄厂房出租</a>
+			                   
+			<a href="/search.php?area=fs_nanhaiq" target="_blank" title="南海区厂房出租">南海区厂房出租</a>
+		        <a href="/search.php?area=fs_nanhaiq_guichengjd" target="_blank" title="桂城厂房出租">桂城厂房出租</a>
+			        <a href="/search.php?area=fs_nanhaiq_lishuiz" target="_blank" title="里水厂房出租">里水厂房出租</a>
+			        <a href="/search.php?area=fs_nanhaiq_jiujiangz" target="_blank" title="九江厂房出租">九江厂房出租</a>
+			        <a href="/search.php?area=fs_nanhaiq_danzaoz" target="_blank" title="丹灶厂房出租">丹灶厂房出租</a>
+			        <a href="/search.php?area=fs_nanhaiq_daliz" target="_blank" title="大沥厂房出租">大沥厂房出租</a>
+			        <a href="/search.php?area=fs_nanhaiq_shishanz" target="_blank" title="狮山厂房出租">狮山厂房出租</a>
+			        <a href="/search.php?area=fs_nanhaiq_xijiaoz" target="_blank" title="西樵厂房出租">西樵厂房出租</a>
+			                   
+			<a href="/search.php?area=fs_shundeq" target="_blank" title="顺德区厂房出租">顺德区厂房出租</a>
+		        <a href="/search.php?area=fs_shundeq_daliangjd" target="_blank" title="大良厂房出租">大良厂房出租</a>
+			        <a href="/search.php?area=fs_shundeq_rongguijd" target="_blank" title="容桂厂房出租">容桂厂房出租</a>
+			        <a href="/search.php?area=fs_shundeq_lunjiaojd" target="_blank" title="伦教厂房出租">伦教厂房出租</a>
+			        <a href="/search.php?area=fs_shundeq_leliujd" target="_blank" title="勒流厂房出租">勒流厂房出租</a>
+			        <a href="/search.php?area=fs_shundeq_chencunz" target="_blank" title="陈村厂房出租">陈村厂房出租</a>
+			        <a href="/search.php?area=fs_shundeq_junanz" target="_blank" title="均安厂房出租">均安厂房出租</a>
+			        <a href="/search.php?area=fs_shundeq_xingtanz" target="_blank" title="杏坛厂房出租">杏坛厂房出租</a>
+			        <a href="/search.php?area=fs_shundeq_longjiangz" target="_blank" title="龙江厂房出租">龙江厂房出租</a>
+			        <a href="/search.php?area=fs_shundeq_lecongz" target="_blank" title="乐从厂房出租">乐从厂房出租</a>
+			        <a href="/search.php?area=fs_shundeq_beijiaoz" target="_blank" title="北滘厂房出租">北滘厂房出租</a>
+			                   
+			<a href="/search.php?area=fs_sanshuiq" target="_blank" title="三水区厂房出租">三水区厂房出租</a>
+		        <a href="/search.php?area=fs_sanshuiq_xinanjd" target="_blank" title="西南厂房出租">西南厂房出租</a>
+			        <a href="/search.php?area=fs_sanshuiq_yundonghaijd" target="_blank" title="云东海厂房出租">云东海厂房出租</a>
+			        <a href="/search.php?area=fs_sanshuiq_bainiz" target="_blank" title="白坭厂房出租">白坭厂房出租</a>
+			        <a href="/search.php?area=fs_sanshuiq_lepingz" target="_blank" title="乐平厂房出租">乐平厂房出租</a>
+			        <a href="/search.php?area=fs_sanshuiq_datangz" target="_blank" title="大塘厂房出租">大塘厂房出租</a>
+			        <a href="/search.php?area=fs_sanshuiq_lubaoz" target="_blank" title="芦苞厂房出租">芦苞厂房出租</a>
+			        <a href="/search.php?area=fs_sanshuiq_nanshanz" target="_blank" title="南山厂房出租">南山厂房出租</a>
+			                   
+			<a href="/search.php?area=fs_gaomingq" target="_blank" title="高明区厂房出租">高明区厂房出租</a>
+		        <a href="/search.php?area=fs_gaomingq_hechengjd" target="_blank" title="荷城厂房出租">荷城厂房出租</a>
+			        <a href="/search.php?area=fs_gaomingq_yanghez" target="_blank" title="杨和厂房出租">杨和厂房出租</a>
+			        <a href="/search.php?area=fs_gaomingq_genghez" target="_blank" title="更合厂房出租">更合厂房出租</a>
+			        <a href="/search.php?area=fs_gaomingq_mingchengz" target="_blank" title="明城厂房出租">明城厂房出租</a>
+			                        </p>
+    		<p class="infoList5" id="qlist5" style="display: none;">
+        <a href="/search.php?area=gz" target="_blank" title="广州厂房出租">广州厂房出租</a>
+        
+			<a href="/search.php?area=gz_yuexiuq" target="_blank" title="越秀区厂房出租">越秀区厂房出租</a>
+		        <a href="/search.php?area=gz_yuexiuq_hongqiaojd" target="_blank" title="洪桥厂房出租">洪桥厂房出租</a>
+			        <a href="/search.php?area=gz_yuexiuq_beijingjd" target="_blank" title="北京厂房出租">北京厂房出租</a>
+			        <a href="/search.php?area=gz_yuexiuq_liurongjd" target="_blank" title="六榕厂房出租">六榕厂房出租</a>
+			        <a href="/search.php?area=gz_yuexiuq_liuhuajd" target="_blank" title="流花厂房出租">流花厂房出租</a>
+			        <a href="/search.php?area=gz_yuexiuq_guangtajd" target="_blank" title="光塔厂房出租">光塔厂房出租</a>
+			        <a href="/search.php?area=gz_yuexiuq_renmingjd" target="_blank" title="人民厂房出租">人民厂房出租</a>
+			        <a href="/search.php?area=gz_yuexiuq_dongshanjd" target="_blank" title="东山厂房出租">东山厂房出租</a>
+			        <a href="/search.php?area=gz_yuexiuq_nonglinjd" target="_blank" title="农林厂房出租">农林厂房出租</a>
+			        <a href="/search.php?area=gz_yuexiuq_dadongjd" target="_blank" title="大东厂房出租">大东厂房出租</a>
+			        <a href="/search.php?area=gz_yuexiuq_datangjd" target="_blank" title="大塘厂房出租">大塘厂房出租</a>
+			        <a href="/search.php?area=gz_yuexiuq_zhuguangjd" target="_blank" title="珠光厂房出租">珠光厂房出租</a>
+			        <a href="/search.php?area=gz_yuexiuq_baiyunjd" target="_blank" title="白云厂房出租">白云厂房出租</a>
+			        <a href="/search.php?area=gz_yuexiuq_jinashejd" target="_blank" title="建设厂房出租">建设厂房出租</a>
+			        <a href="/search.php?area=gz_yuexiuq_hualejd" target="_blank" title="华乐厂房出租">华乐厂房出租</a>
+			        <a href="/search.php?area=gz_yuexiuq_meihuacunjd" target="_blank" title="梅花村厂房出租">梅花村厂房出租</a>
+			        <a href="/search.php?area=gz_yuexiuq_huanghuagangjd" target="_blank" title="黄花岗厂房出租">黄花岗厂房出租</a>
+			        <a href="/search.php?area=gz_yuexiuq_kuaquanjd" target="_blank" title="矿泉厂房出租">矿泉厂房出租</a>
+			        <a href="/search.php?area=gz_yuexiuq_dengfengjd" target="_blank" title="登峰厂房出租">登峰厂房出租</a>
+			                   
+			<a href="/search.php?area=gz_liwanq" target="_blank" title="荔湾区厂房出租">荔湾区厂房出租</a>
+		        <a href="/search.php?area=gz_liwanq_shamianjd" target="_blank" title="沙面厂房出租">沙面厂房出租</a>
+			        <a href="/search.php?area=gz_liwanq_lingnanjd" target="_blank" title="岭南厂房出租">岭南厂房出租</a>
+			        <a href="/search.php?area=gz_liwanq_hualinjd" target="_blank" title="华林厂房出租">华林厂房出租</a>
+			        <a href="/search.php?area=gz_liwanq_duobaojd" target="_blank" title="多宝厂房出租">多宝厂房出租</a>
+			        <a href="/search.php?area=gz_liwanq_changhuajd" target="_blank" title="昌华厂房出租">昌华厂房出租</a>
+			        <a href="/search.php?area=gz_liwanq_pengyuanjd" target="_blank" title="逢源厂房出租">逢源厂房出租</a>
+			        <a href="/search.php?area=gz_liwanq_longjinjd" target="_blank" title="龙津厂房出租">龙津厂房出租</a>
+			        <a href="/search.php?area=gz_liwanq_jinhuajd" target="_blank" title="金花厂房出租">金花厂房出租</a>
+			        <a href="/search.php?area=gz_liwanq_caihongjd" target="_blank" title="彩虹厂房出租">彩虹厂房出租</a>
+			        <a href="/search.php?area=gz_liwanq_nanyuanjd" target="_blank" title="南源厂房出租">南源厂房出租</a>
+			        <a href="/search.php?area=gz_liwanq_xicunjd" target="_blank" title="西村厂房出租">西村厂房出租</a>
+			        <a href="/search.php?area=gz_liwanq_zhanqianjd" target="_blank" title="站前厂房出租">站前厂房出租</a>
+			        <a href="/search.php?area=gz_liwanq_qiaozhongjd" target="_blank" title="桥中厂房出租">桥中厂房出租</a>
+			        <a href="/search.php?area=gz_liwanq_baihedongjd" target="_blank" title="白鹤洞厂房出租">白鹤洞厂房出租</a>
+			        <a href="/search.php?area=gz_liwanq_chongkoujd" target="_blank" title="冲口厂房出租">冲口厂房出租</a>
+			        <a href="/search.php?area=gz_liwanq_huadijd" target="_blank" title="花地厂房出租">花地厂房出租</a>
+			        <a href="/search.php?area=gz_liwanq_shiweitangjd" target="_blank" title="石围塘厂房出租">石围塘厂房出租</a>
+			        <a href="/search.php?area=gz_liwanq_chajiaojd" target="_blank" title="茶滘厂房出租">茶滘厂房出租</a>
+			        <a href="/search.php?area=gz_liwanq_dongdunjd" target="_blank" title="东漖厂房出租">东漖厂房出租</a>
+			        <a href="/search.php?area=gz_liwanq_hailongjd" target="_blank" title="海龙厂房出租">海龙厂房出租</a>
+			        <a href="/search.php?area=gz_liwanq_dongshajd" target="_blank" title="东沙厂房出租">东沙厂房出租</a>
+			        <a href="/search.php?area=gz_liwanq_zhongnanjd" target="_blank" title="中南厂房出租">中南厂房出租</a>
+			                   
+			<a href="/search.php?area=gz_haizhuq" target="_blank" title="海珠区厂房出租">海珠区厂房出租</a>
+		        <a href="/search.php?area=gz_haizhuq_chegangjd" target="_blank" title="赤岗厂房出租">赤岗厂房出租</a>
+			        <a href="/search.php?area=gz_haizhuq_xingangjd" target="_blank" title="新港厂房出租">新港厂房出租</a>
+			        <a href="/search.php?area=gz_haizhuq_changgangjd" target="_blank" title="昌岗厂房出租">昌岗厂房出租</a>
+			        <a href="/search.php?area=gz_haizhuq_jiangnanzhongjd" target="_blank" title="江南中厂房出租">江南中厂房出租</a>
+			        <a href="/search.php?area=gz_haizhuq_binjiangjd" target="_blank" title="滨江厂房出租">滨江厂房出租</a>
+			        <a href="/search.php?area=gz_haizhuq_sushejd" target="_blank" title="素社厂房出租">素社厂房出租</a>
+			        <a href="/search.php?area=gz_haizhuq_haidongjd" target="_blank" title="海幢厂房出租">海幢厂房出租</a>
+			        <a href="/search.php?area=gz_haizhuq_nanhuaxijd" target="_blank" title="南华西厂房出租">南华西厂房出租</a>
+			        <a href="/search.php?area=gz_haizhuq_longfengjd" target="_blank" title="龙凤厂房出租">龙凤厂房出租</a>
+			        <a href="/search.php?area=gz_haizhuq_shayuanjd" target="_blank" title="沙园厂房出租">沙园厂房出租</a>
+			        <a href="/search.php?area=gz_haizhuq_nanshitoujd" target="_blank" title="南石头厂房出租">南石头厂房出租</a>
+			        <a href="/search.php?area=gz_haizhuq_fengyangjd" target="_blank" title="凤阳厂房出租">凤阳厂房出租</a>
+			        <a href="/search.php?area=gz_haizhuq_ruibaojd" target="_blank" title="瑞宝厂房出租">瑞宝厂房出租</a>
+			        <a href="/search.php?area=gz_haizhuq_honghaijd" target="_blank" title="江海厂房出租">江海厂房出租</a>
+			        <a href="/search.php?area=gz_haizhuq_pazhoujd" target="_blank" title="琶洲厂房出租">琶洲厂房出租</a>
+			        <a href="/search.php?area=gz_haizhuq_nanzhoujd" target="_blank" title="南洲厂房出租">南洲厂房出租</a>
+			        <a href="/search.php?area=gz_haizhuq_huazhoujd" target="_blank" title="华洲厂房出租">华洲厂房出租</a>
+			        <a href="/search.php?area=gz_haizhuq_guanzhoujd" target="_blank" title="官洲厂房出租">官洲厂房出租</a>
+			                   
+			<a href="/search.php?area=gz_tianheq" target="_blank" title="天河区厂房出租">天河区厂房出租</a>
+		        <a href="/search.php?area=gz_tianheq_shahejd" target="_blank" title="沙河厂房出租">沙河厂房出租</a>
+			        <a href="/search.php?area=gz_tianheq_wushanjd" target="_blank" title="五山厂房出租">五山厂房出租</a>
+			        <a href="/search.php?area=gz_tianheq_yuancunjd" target="_blank" title="员村厂房出租">员村厂房出租</a>
+			        <a href="/search.php?area=gz_tianheq_chepojd" target="_blank" title="车陂厂房出租">车陂厂房出租</a>
+			        <a href="/search.php?area=gz_tianheq_shipaijd" target="_blank" title="石牌厂房出租">石牌厂房出租</a>
+			        <a href="/search.php?area=gz_tianheq_tianhenanjd" target="_blank" title="天河南厂房出租">天河南厂房出租</a>
+			        <a href="/search.php?area=gz_tianheq_linhejd" target="_blank" title="林和厂房出租">林和厂房出租</a>
+			        <a href="/search.php?area=gz_tianheq_shadongjd" target="_blank" title="沙东厂房出租">沙东厂房出租</a>
+			        <a href="/search.php?area=gz_tianheq_xinghuajd" target="_blank" title="兴华厂房出租">兴华厂房出租</a>
+			        <a href="/search.php?area=gz_tianheq_tangxiajd" target="_blank" title="棠下厂房出租">棠下厂房出租</a>
+			        <a href="/search.php?area=gz_tianheq_tianyuanjd" target="_blank" title="天园厂房出租">天园厂房出租</a>
+			        <a href="/search.php?area=gz_tianheq_xicunjd" target="_blank" title="冼村厂房出租">冼村厂房出租</a>
+			        <a href="/search.php?area=gz_tianheq_ledejd" target="_blank" title="猎德厂房出租">猎德厂房出租</a>
+			        <a href="/search.php?area=gz_tianheq_yuangangjd" target="_blank" title="元岗厂房出租">元岗厂房出租</a>
+			        <a href="/search.php?area=gz_tianheq_huangcunjd" target="_blank" title="黄村厂房出租">黄村厂房出租</a>
+			        <a href="/search.php?area=gz_tianheq_longdongjd" target="_blank" title="龙洞厂房出租">龙洞厂房出租</a>
+			        <a href="/search.php?area=gz_tianheq_changxingjd" target="_blank" title="长兴厂房出租">长兴厂房出租</a>
+			        <a href="/search.php?area=gz_tianheq_fenghuangjd" target="_blank" title="凤凰厂房出租">凤凰厂房出租</a>
+			        <a href="/search.php?area=gz_tianheq_qianjinjd" target="_blank" title="前进厂房出租">前进厂房出租</a>
+			        <a href="/search.php?area=gz_tianheq_zhujijd" target="_blank" title="珠吉厂房出租">珠吉厂房出租</a>
+			        <a href="/search.php?area=gz_tianheq_xintangjd" target="_blank" title="新塘厂房出租">新塘厂房出租</a>
+			                   
+			<a href="/search.php?area=gz_baiyunq" target="_blank" title="白云区厂房出租">白云区厂房出租</a>
+		        <a href="/search.php?area=gz_baiyunq_sanyuanlijd" target="_blank" title="三元里厂房出租">三元里厂房出租</a>
+			        <a href="/search.php?area=gz_baiyunq_songzhoujd" target="_blank" title="松洲厂房出租">松洲厂房出租</a>
+			        <a href="/search.php?area=gz_baiyunq_jingtaijd" target="_blank" title="景泰厂房出租">景泰厂房出租</a>
+			        <a href="/search.php?area=gz_baiyunq_tongdejd" target="_blank" title="同德厂房出租">同德厂房出租</a>
+			        <a href="/search.php?area=gz_baiyunq_huangshijd" target="_blank" title="黄石厂房出租">黄石厂房出租</a>
+			        <a href="/search.php?area=gz_baiyunq_tangjingjd" target="_blank" title="棠景厂房出租">棠景厂房出租</a>
+			        <a href="/search.php?area=gz_baiyunq_xinshijd" target="_blank" title="新市厂房出租">新市厂房出租</a>
+			        <a href="/search.php?area=gz_baiyunq_tonghejd" target="_blank" title="同和厂房出租">同和厂房出租</a>
+			        <a href="/search.php?area=gz_baiyunq_jingxijd" target="_blank" title="京溪厂房出租">京溪厂房出租</a>
+			        <a href="/search.php?area=gz_baiyunq_yongpingjd" target="_blank" title="永平厂房出租">永平厂房出租</a>
+			        <a href="/search.php?area=gz_baiyunq_jiahejd" target="_blank" title="嘉禾厂房出租">嘉禾厂房出租</a>
+			        <a href="/search.php?area=gz_baiyunq_junhejd" target="_blank" title="均禾厂房出租">均禾厂房出租</a>
+			        <a href="/search.php?area=gz_baiyunq_shijingjd" target="_blank" title="石井厂房出租">石井厂房出租</a>
+			        <a href="/search.php?area=gz_baiyunq_jinshajd" target="_blank" title="金沙厂房出租">金沙厂房出租</a>
+			        <a href="/search.php?area=gz_baiyunq_yunchengjd" target="_blank" title="云城厂房出租">云城厂房出租</a>
+			        <a href="/search.php?area=gz_baiyunq_helongjd" target="_blank" title="鹤龙厂房出租">鹤龙厂房出租</a>
+			        <a href="/search.php?area=gz_baiyunq_baiyunhujd" target="_blank" title="白云湖厂房出租">白云湖厂房出租</a>
+			        <a href="/search.php?area=gz_baiyunq_shimenjd" target="_blank" title="石门厂房出租">石门厂房出租</a>
+			        <a href="/search.php?area=gz_baiyunq_renhez" target="_blank" title="人和厂房出租">人和厂房出租</a>
+			        <a href="/search.php?area=gz_baiyunq_taihez" target="_blank" title="太和厂房出租">太和厂房出租</a>
+			        <a href="/search.php?area=gz_baiyunq_zhongluotanz" target="_blank" title="钟落潭厂房出租">钟落潭厂房出租</a>
+			        <a href="/search.php?area=gz_baiyunq_jianggaoz" target="_blank" title="江高厂房出租">江高厂房出租</a>
+			                   
+			<a href="/search.php?area=gz_huangpuq" target="_blank" title="黄埔区厂房出租">黄埔区厂房出租</a>
+		        <a href="/search.php?area=gz_huangpuq_huangpujd" target="_blank" title="黄埔厂房出租">黄埔厂房出租</a>
+			        <a href="/search.php?area=gz_huangpuq_hongshanjd" target="_blank" title="红山厂房出租">红山厂房出租</a>
+			        <a href="/search.php?area=gz_huangpuq_yunzhujd" target="_blank" title="鱼珠厂房出租">鱼珠厂房出租</a>
+			        <a href="/search.php?area=gz_huangpuq_dashajd" target="_blank" title="大沙厂房出租">大沙厂房出租</a>
+			        <a href="/search.php?area=gz_huangpuq_wenchongjd" target="_blank" title="文冲厂房出租">文冲厂房出租</a>
+			        <a href="/search.php?area=gz_huangpuq_huidongjd" target="_blank" title="穗东厂房出租">穗东厂房出租</a>
+			        <a href="/search.php?area=gz_huangpuq_nangangjd" target="_blank" title="南岗厂房出租">南岗厂房出租</a>
+			        <a href="/search.php?area=gz_huangpuq_changzhoujd" target="_blank" title="长洲厂房出租">长洲厂房出租</a>
+			        <a href="/search.php?area=gz_huangpuq_xiagangjd" target="_blank" title="夏港厂房出租">夏港厂房出租</a>
+			        <a href="/search.php?area=gz_huangpuq_luogangjd" target="_blank" title="萝岗厂房出租">萝岗厂房出租</a>
+			        <a href="/search.php?area=gz_huangpuq_yunpujd" target="_blank" title="云埔厂房出租">云埔厂房出租</a>
+			        <a href="/search.php?area=gz_huangpuq_lianhejd" target="_blank" title="联和厂房出租">联和厂房出租</a>
+			        <a href="/search.php?area=gz_huangpuq_yonghejd" target="_blank" title="永和厂房出租">永和厂房出租</a>
+			        <a href="/search.php?area=gz_huangpuq_changlingjd" target="_blank" title="长岭厂房出租">长岭厂房出租</a>
+			        <a href="/search.php?area=gz_huangpuq_jiulongz" target="_blank" title="九龙厂房出租">九龙厂房出租</a>
+			                   
+			<a href="/search.php?area=gz_panyuq" target="_blank" title="番禺区厂房出租">番禺区厂房出租</a>
+		        <a href="/search.php?area=gz_panyuq_shiqiaojd" target="_blank" title="市桥厂房出租">市桥厂房出租</a>
+			        <a href="/search.php?area=gz_panyuq_shatoujd" target="_blank" title="沙头厂房出租">沙头厂房出租</a>
+			        <a href="/search.php?area=gz_panyuq_donghuanjd" target="_blank" title="东环厂房出租">东环厂房出租</a>
+			        <a href="/search.php?area=gz_panyuq_qiaonanjd" target="_blank" title="桥南厂房出租">桥南厂房出租</a>
+			        <a href="/search.php?area=gz_panyuq_xiaoguweijd" target="_blank" title="小谷围厂房出租">小谷围厂房出租</a>
+			        <a href="/search.php?area=gz_panyuq_dashijd" target="_blank" title="大石厂房出租">大石厂房出租</a>
+			        <a href="/search.php?area=gz_panyuq_luopujd" target="_blank" title="洛浦厂房出租">洛浦厂房出租</a>
+			        <a href="/search.php?area=gz_panyuq_shipijd" target="_blank" title="石壁厂房出租">石壁厂房出租</a>
+			        <a href="/search.php?area=gz_panyuq_zhongcunjd" target="_blank" title="钟村厂房出租">钟村厂房出租</a>
+			        <a href="/search.php?area=gz_panyuq_dalongjd" target="_blank" title="大龙厂房出租">大龙厂房出租</a>
+			        <a href="/search.php?area=gz_panyuq_nancunz" target="_blank" title="南村厂房出租">南村厂房出租</a>
+			        <a href="/search.php?area=gz_panyuq_xinzaoz" target="_blank" title="新造厂房出租">新造厂房出租</a>
+			        <a href="/search.php?area=gz_panyuq_hualongz" target="_blank" title="化龙厂房出租">化龙厂房出租</a>
+			        <a href="/search.php?area=gz_panyuq_shilonz" target="_blank" title="石楼厂房出租">石楼厂房出租</a>
+			        <a href="/search.php?area=gz_panyuq_shawanz" target="_blank" title="沙湾厂房出租">沙湾厂房出租</a>
+			        <a href="/search.php?area=gz_panyuq_shijiz" target="_blank" title="石碁厂房出租">石碁厂房出租</a>
+			                   
+			<a href="/search.php?area=gz_huaduq" target="_blank" title="花都区厂房出租">花都区厂房出租</a>
+		        <a href="/search.php?area=gz_huaduq_huachengjd" target="_blank" title="花城厂房出租">花城厂房出租</a>
+			        <a href="/search.php?area=gz_huaduq_xinhuajd" target="_blank" title="新华厂房出租">新华厂房出租</a>
+			        <a href="/search.php?area=gz_huaduq_xinyajd" target="_blank" title="新雅厂房出租">新雅厂房出租</a>
+			        <a href="/search.php?area=gz_huaduq_xiuquanjd" target="_blank" title="秀全厂房出租">秀全厂房出租</a>
+			        <a href="/search.php?area=gz_huaduq_shilingz" target="_blank" title="狮岭厂房出租">狮岭厂房出租</a>
+			        <a href="/search.php?area=gz_huaduq_tanbuz" target="_blank" title="炭步厂房出租">炭步厂房出租</a>
+			        <a href="/search.php?area=gz_huaduq_huashanz" target="_blank" title="花山厂房出租">花山厂房出租</a>
+			        <a href="/search.php?area=gz_huaduq_cheniz" target="_blank" title="赤坭厂房出租">赤坭厂房出租</a>
+			        <a href="/search.php?area=gz_huaduq_timianz" target="_blank" title="梯面厂房出租">梯面厂房出租</a>
+			        <a href="/search.php?area=gz_huaduq_huadongz" target="_blank" title="花东厂房出租">花东厂房出租</a>
+			                   
+			<a href="/search.php?area=gz_nanshaq" target="_blank" title="南沙区厂房出租">南沙区厂房出租</a>
+		        <a href="/search.php?area=gz_nanshaq_nanshajd" target="_blank" title="南沙厂房出租">南沙厂房出租</a>
+			        <a href="/search.php?area=gz_nanshaq_zhujiangjd" target="_blank" title="珠江厂房出租">珠江厂房出租</a>
+			        <a href="/search.php?area=gz_nanshaq_huajuejd" target="_blank" title="龙穴厂房出租">龙穴厂房出租</a>
+			        <a href="/search.php?area=gz_nanshaq_wanqingshaz" target="_blank" title="万顷沙厂房出租">万顷沙厂房出租</a>
+			        <a href="/search.php?area=gz_nanshaq_huanggez" target="_blank" title="黄阁厂房出租">黄阁厂房出租</a>
+			        <a href="/search.php?area=gz_nanshaq_hengliz" target="_blank" title="横沥厂房出租">横沥厂房出租</a>
+			        <a href="/search.php?area=gz_nanshaq_dongchongz" target="_blank" title="东涌厂房出租">东涌厂房出租</a>
+			        <a href="/search.php?area=gz_nanshaq_dagangz" target="_blank" title="大岗厂房出租">大岗厂房出租</a>
+			        <a href="/search.php?area=gz_nanshaq_lanhez" target="_blank" title="榄核厂房出租">榄核厂房出租</a>
+			                   
+			<a href="/search.php?area=gz_zengchengq" target="_blank" title="增城区厂房出租">增城区厂房出租</a>
+		        <a href="/search.php?area=gz_zengchengq_lichengjd" target="_blank" title="荔城厂房出租">荔城厂房出租</a>
+			        <a href="/search.php?area=gz_zengchengq_zengjiangjd" target="_blank" title="增江厂房出租">增江厂房出租</a>
+			        <a href="/search.php?area=gz_zengchengq_zhucunjd" target="_blank" title="朱村厂房出租">朱村厂房出租</a>
+			        <a href="/search.php?area=gz_zengchengq_yongningjd" target="_blank" title="永宁厂房出租">永宁厂房出租</a>
+			        <a href="/search.php?area=gz_zengchengq_zhongxinz" target="_blank" title="中新厂房出租">中新厂房出租</a>
+			        <a href="/search.php?area=gz_zengchengq_shitanz" target="_blank" title="石滩厂房出租">石滩厂房出租</a>
+			        <a href="/search.php?area=gz_zengchengq_xintangz" target="_blank" title="新塘厂房出租">新塘厂房出租</a>
+			        <a href="/search.php?area=gz_zengchengq_xiaolouz" target="_blank" title="小楼厂房出租">小楼厂房出租</a>
+			        <a href="/search.php?area=gz_zengchengq_paitanz" target="_blank" title="派潭厂房出租">派潭厂房出租</a>
+			        <a href="/search.php?area=gz_zengchengq_zhengguoz" target="_blank" title="正果厂房出租">正果厂房出租</a>
+			        <a href="/search.php?area=gz_zengchengq_xiancunz" target="_blank" title="仙村厂房出租">仙村厂房出租</a>
+			                   
+			<a href="/search.php?area=gz_conghuaq" target="_blank" title="从化区厂房出租">从化区厂房出租</a>
+		        <a href="/search.php?area=gz_conghuaq_jiekoujd" target="_blank" title="街口厂房出租">街口厂房出租</a>
+			        <a href="/search.php?area=gz_conghuaq_chengjiaojd" target="_blank" title="城郊厂房出租">城郊厂房出租</a>
+			        <a href="/search.php?area=gz_conghuaq_jiangpujd" target="_blank" title="江埔厂房出租">江埔厂房出租</a>
+			        <a href="/search.php?area=gz_conghuaq_taipingz" target="_blank" title="太平厂房出租">太平厂房出租</a>
+			        <a href="/search.php?area=gz_conghuaq_wenquanz" target="_blank" title="温泉厂房出租">温泉厂房出租</a>
+			        <a href="/search.php?area=gz_conghuaq_liangkouz" target="_blank" title="良口厂房出租">良口厂房出租</a>
+			        <a href="/search.php?area=gz_conghuaq_lvtianz" target="_blank" title="吕田厂房出租">吕田厂房出租</a>
+			        <a href="/search.php?area=gz_conghuaq_aotouz" target="_blank" title="鳌头厂房出租">鳌头厂房出租</a>
+			                        </p>
+    		<p class="infoList6" id="qlist6" style="display: none;">
+        <a href="/search.php?area=jm" target="_blank" title="江门厂房出租">江门厂房出租</a>
+        
+			<a href="/search.php?area=jm_pengjiangq" target="_blank" title="蓬江区厂房出租">蓬江区厂房出租</a>
+		        <a href="/search.php?area=jm_pengjiangq_tangxiaz" target="_blank" title="棠下厂房出租">棠下厂房出租</a>
+			        <a href="/search.php?area=jm_pengjiangq_hetangz" target="_blank" title="荷塘厂房出租">荷塘厂房出租</a>
+			        <a href="/search.php?area=jm_pengjiangq_duyuanz" target="_blank" title="杜阮厂房出租">杜阮厂房出租</a>
+			        <a href="/search.php?area=jm_pengjiangq_huanshijd" target="_blank" title="环市厂房出租">环市厂房出租</a>
+			        <a href="/search.php?area=jm_pengjiangq_chaolianjd" target="_blank" title="潮连厂房出租">潮连厂房出租</a>
+			        <a href="/search.php?area=jm_pengjiangq_beijiejd" target="_blank" title="北街厂房出租">北街厂房出租</a>
+			        <a href="/search.php?area=jm_pengjiangq_didongjd" target="_blank" title="堤东厂房出租">堤东厂房出租</a>
+			        <a href="/search.php?area=jm_pengjiangq_canghoujd" target="_blank" title="仓后厂房出租">仓后厂房出租</a>
+			        <a href="/search.php?area=jm_pengjiangq_baishajd" target="_blank" title="白沙厂房出租">白沙厂房出租</a>
+			                   
+			<a href="/search.php?area=jm_jianghaiq" target="_blank" title="江海区厂房出租">江海区厂房出租</a>
+		        <a href="/search.php?area=jm_jianghaiq_waihaijd" target="_blank" title="外海厂房出租">外海厂房出租</a>
+			        <a href="/search.php?area=jm_jianghaiq_lilejd" target="_blank" title="礼乐厂房出租">礼乐厂房出租</a>
+			        <a href="/search.php?area=jm_jianghaiq_jiangnanjd" target="_blank" title="江南厂房出租">江南厂房出租</a>
+			        <a href="/search.php?area=jm_jianghaiq_jiaotoujd" target="_blank" title="滘头厂房出租">滘头厂房出租</a>
+			        <a href="/search.php?area=jm_jianghaiq_jiaobeijd" target="_blank" title="滘北厂房出租">滘北厂房出租</a>
+			                   
+			<a href="/search.php?area=jm_xinhuiq" target="_blank" title="新会区厂房出租">新会区厂房出租</a>
+		        <a href="/search.php?area=jm_xinhuiq_huichengjd" target="_blank" title="会城厂房出租">会城厂房出租</a>
+			        <a href="/search.php?area=jm_xinhuiq_dazez" target="_blank" title="大泽厂房出租">大泽厂房出租</a>
+			        <a href="/search.php?area=jm_xinhuiq_siqianz" target="_blank" title="司前厂房出租">司前厂房出租</a>
+			        <a href="/search.php?area=jm_xinhuiq_shaduiz" target="_blank" title="沙堆厂房出租">沙堆厂房出租</a>
+			        <a href="/search.php?area=jm_xinhuiq_gujingz" target="_blank" title="古井厂房出租">古井厂房出租</a>
+			        <a href="/search.php?area=jm_xinhuiq_sanjiangz" target="_blank" title="三江厂房出租">三江厂房出租</a>
+			        <a href="/search.php?area=jm_xinhuiq_anmenz" target="_blank" title="崖门厂房出租">崖门厂房出租</a>
+			        <a href="/search.php?area=jm_xinhuiq_shuangshuiz" target="_blank" title="双水厂房出租">双水厂房出租</a>
+			        <a href="/search.php?area=jm_xinhuiq_luokengz" target="_blank" title="罗坑厂房出租">罗坑厂房出租</a>
+			        <a href="/search.php?area=jm_xinhuiq_daaoz" target="_blank" title="大鳌厂房出租">大鳌厂房出租</a>
+			        <a href="/search.php?area=jm_xinhuiq_kuizhouz" target="_blank" title="睦洲厂房出租">睦洲厂房出租</a>
+			                   
+			<a href="/search.php?area=jm_taishans" target="_blank" title="台山市厂房出租">台山市厂房出租</a>
+		        <a href="/search.php?area=jm_taishans_taichengjd" target="_blank" title="台城厂房出租">台城厂房出租</a>
+			        <a href="/search.php?area=jm_taishans_dajiangz" target="_blank" title="大江厂房出租">大江厂房出租</a>
+			        <a href="/search.php?area=jm_taishans_shuibuz" target="_blank" title="水步厂房出租">水步厂房出租</a>
+			        <a href="/search.php?area=jm_taishans_sijiuz" target="_blank" title="四九厂房出租">四九厂房出租</a>
+			        <a href="/search.php?area=jm_taishans_duhuz" target="_blank" title="都斛厂房出租">都斛厂房出租</a>
+			        <a href="/search.php?area=jm_taishans_chexiz" target="_blank" title="赤溪厂房出租">赤溪厂房出租</a>
+			        <a href="/search.php?area=jm_taishans_chonglouz" target="_blank" title="冲蒌厂房出租">冲蒌厂房出租</a>
+			        <a href="/search.php?area=jm_taishans_doushanz" target="_blank" title="斗山厂房出租">斗山厂房出租</a>
+			        <a href="/search.php?area=jm_taishans_guanghaiz" target="_blank" title="广海厂房出租">广海厂房出租</a>
+			        <a href="/search.php?area=jm_taishans_chuangdaoz" target="_blank" title="川岛厂房出租">川岛厂房出租</a>
+			        <a href="/search.php?area=jm_taishans_duanfenz" target="_blank" title="端芬厂房出租">端芬厂房出租</a>
+			        <a href="/search.php?area=jm_taishans_haiyanz" target="_blank" title="海宴厂房出租">海宴厂房出租</a>
+			        <a href="/search.php?area=jm_taishans_wencunz" target="_blank" title="汶村厂房出租">汶村厂房出租</a>
+			        <a href="/search.php?area=jm_taishans_sanhez" target="_blank" title="三合厂房出租">三合厂房出租</a>
+			        <a href="/search.php?area=jm_taishans_beidouz" target="_blank" title="北陡厂房出租">北陡厂房出租</a>
+			        <a href="/search.php?area=jm_taishans_shenjingz" target="_blank" title="深井厂房出租">深井厂房出租</a>
+			        <a href="/search.php?area=jm_taishans_baishaz" target="_blank" title="白沙厂房出租">白沙厂房出租</a>
+			                   
+			<a href="/search.php?area=jm_kaipings" target="_blank" title="开平市厂房出租">开平市厂房出租</a>
+		        <a href="/search.php?area=jm_kaipings_sanfujd" target="_blank" title="三埠厂房出租">三埠厂房出租</a>
+			        <a href="/search.php?area=jm_kaipings_changshajd" target="_blank" title="长沙厂房出租">长沙厂房出租</a>
+			        <a href="/search.php?area=jm_kaipings_yueshanz" target="_blank" title="月山厂房出租">月山厂房出租</a>
+			        <a href="/search.php?area=jm_kaipings_yuekouz" target="_blank" title="水口厂房出租">水口厂房出租</a>
+			        <a href="/search.php?area=jm_kaipings_shatangz" target="_blank" title="沙塘厂房出租">沙塘厂房出租</a>
+			        <a href="/search.php?area=jm_kaipings_cangchengz" target="_blank" title="苍城厂房出租">苍城厂房出租</a>
+			        <a href="/search.php?area=jm_kaipings_dashaz" target="_blank" title="大沙厂房出租">大沙厂房出租</a>
+			        <a href="/search.php?area=jm_kaipings_magangz" target="_blank" title="马冈厂房出租">马冈厂房出租</a>
+			        <a href="/search.php?area=jm_kaipings_longshengz" target="_blank" title="龙胜厂房出租">龙胜厂房出租</a>
+			        <a href="/search.php?area=jm_kaipings_chekanz" target="_blank" title="赤坎厂房出租">赤坎厂房出租</a>
+			        <a href="/search.php?area=jm_kaipings_tangkouz" target="_blank" title="塘口厂房出租">塘口厂房出租</a>
+			        <a href="/search.php?area=jm_kaipings_baihez" target="_blank" title="百合厂房出租">百合厂房出租</a>
+			        <a href="/search.php?area=jm_kaipings_xiangangz" target="_blank" title="蚬冈厂房出租">蚬冈厂房出租</a>
+			        <a href="/search.php?area=jm_kaipings_jinjiz" target="_blank" title="金鸡厂房出租">金鸡厂房出租</a>
+			        <a href="/search.php?area=jm_kaipings_cheshuiz" target="_blank" title="赤水厂房出租">赤水厂房出租</a>
+			                   
+			<a href="/search.php?area=jm_heshans" target="_blank" title="鹤山市厂房出租">鹤山市厂房出租</a>
+		        <a href="/search.php?area=jm_heshans_shapingjd" target="_blank" title="沙坪厂房出租">沙坪厂房出租</a>
+			        <a href="/search.php?area=jm_heshans_yayaoz" target="_blank" title="雅瑶厂房出租">雅瑶厂房出租</a>
+			        <a href="/search.php?area=jm_heshans_longkouz" target="_blank" title="龙口厂房出租">龙口厂房出租</a>
+			        <a href="/search.php?area=jm_heshans_gulaoz" target="_blank" title="古劳厂房出租">古劳厂房出租</a>
+			        <a href="/search.php?area=jm_heshans_taoyuanz" target="_blank" title="桃源厂房出租">桃源厂房出租</a>
+			        <a href="/search.php?area=jm_heshans_gonghez" target="_blank" title="共和厂房出租">共和厂房出租</a>
+			        <a href="/search.php?area=jm_heshans_zhishanz" target="_blank" title="址山厂房出租">址山厂房出租</a>
+			        <a href="/search.php?area=jm_heshans_hechengz" target="_blank" title="鹤城厂房出租">鹤城厂房出租</a>
+			        <a href="/search.php?area=jm_heshans_zhaiwuz" target="_blank" title="宅梧厂房出租">宅梧厂房出租</a>
+			        <a href="/search.php?area=jm_heshans_shuanghez" target="_blank" title="双合厂房出租">双合厂房出租</a>
+			                   
+			<a href="/search.php?area=jm_enpings" target="_blank" title="恩平市厂房出租">恩平市厂房出租</a>
+		        <a href="/search.php?area=jm_enpings_enchengjd" target="_blank" title="恩城厂房出租">恩城厂房出租</a>
+			        <a href="/search.php?area=jm_enpings_datianz" target="_blank" title="大田厂房出租">大田厂房出租</a>
+			        <a href="/search.php?area=jm_enpings_liangxiz" target="_blank" title="良西厂房出租">良西厂房出租</a>
+			        <a href="/search.php?area=jm_enpings_shengtangz" target="_blank" title="圣堂厂房出租">圣堂厂房出租</a>
+			        <a href="/search.php?area=jm_enpings_niujiangz" target="_blank" title="牛江厂房出租">牛江厂房出租</a>
+			        <a href="/search.php?area=jm_enpings_shahuz" target="_blank" title="沙湖厂房出租">沙湖厂房出租</a>
+			        <a href="/search.php?area=jm_enpings_juntangz" target="_blank" title="君堂厂房出租">君堂厂房出租</a>
+			        <a href="/search.php?area=jm_enpings_dongchengz" target="_blank" title="东成厂房出租">东成厂房出租</a>
+			        <a href="/search.php?area=jm_enpings_hengpoz" target="_blank" title="横陂厂房出租">横陂厂房出租</a>
+			        <a href="/search.php?area=jm_enpings_dahuaiz" target="_blank" title="大槐厂房出租">大槐厂房出租</a>
+			        <a href="/search.php?area=jm_enpings_najiz" target="_blank" title="那吉厂房出租">那吉厂房出租</a>
+			                        </p>
+    
+        
+		<div class="cl"></div>
+<script type="text/javascript">
+	$(document).ready(function(e) {
+        $(".link .top a").click(function(){
+			$(".link .top a").eq($(this).index()).addClass("hov").siblings().removeClass("hov");
+			$(".link  p").hide().eq($(this).index()).show();
+		})
+    });
+</script>
+
+</div>
+
+
+<div class="link_list">
+		<div style="overflow:hidden"><span style="float:left;">友情链接：</span><span style="float:left; height:28px;"><a href="http://wpa.qq.com/msgrd?v=3&amp;uin=21814439&amp;site=qq&amp;menu=yes" target="_blank"><img title="点击这里给我发消息" style="VERTICAL-ALIGN: middle" alt="点击这里给我发消息" src="./业主发布_files/pa" border="0"></a></span></div>
+		<span style="float:left;"><a href="/" target="_blank">深圳厂房出租</a><a href="http://dg.886cf.com/" target="_blank">东莞厂房出租</a><a href="http://hz.886cf.com/" target="_blank">惠州厂房出租</a><a href="http://m.886cf.com/" target="_blank">深圳厂房出租</a><a href="http://www.886cf.cn/" target="_blank">深圳厂房出租</a><a href="http://dg.886cf.cn/" target="_blank">东莞厂房出租</a><a href="http://hz.886cf.cn/" target="_blank">惠州厂房出租</a><a href="http://m.886cf.cn/" target="_blank">深圳厂房出租</a></span>
+	</div>
+
+<div id="footer1">
+<style>
+#footer1{background:#434343;color:#999; width:100%}
+#footer1 a{color:#ccc}
+</style>
+<div class="foot W960">
+      　&nbsp;<a href="/about.php?id=1" target="_blank">关于我们</a>　&nbsp;|　&nbsp;<a href="/about.php?id=2" target="_blank">联系方式</a>&nbsp;　|&nbsp;<a href="/about.php?id=3" target="_blank">网站地图</a>&nbsp;　| <a href="javascript:alert(&#39;当前IP未在管理者IP中,不允许登录,请联系管理人员&#39;)" target="_blank">后台登陆</a>&nbsp;　|&nbsp;<a href="javascript:alert(&#39;请登录后使用！！！&#39;)" target="_blank">ERP(电脑版)</a>　&nbsp;|　&nbsp;<a href="javascript:alert(&#39;请登录后使用！！！&#39;)" target="_blank">ERP(手机版)</a>　&nbsp;
+
+
+<br>备案/许可证编号为：<a href="http://www.miit.gov.cn/" target="_blank">粤ICP备16098285号-2</a>
+    
+  地址：深圳市龙岗区龙岗中心城南联九州家园&nbsp;&nbsp;邮编:518000<br>
+     886厂房网- 电话:15914116601&nbsp;&nbsp;QQ:21814439&nbsp;E-mail:<a href="mailto:xiaoping2j@126.com">xiaoping2j@126.com</a>  
+
+</div>
+
+<script type="text/javascript">
+$(function(){
+   $.ajax({url:"/include/web_tongji.php?request_url=%2Fpublish.php%3Fid%3D2&id=2",async:false});
+	});
+</script>
+
+<!-- Baidu js 自动提交网页 -->
+<!--百度自动提交-->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https'){
+   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+$.ajax({
+					type : "POST",  //提交方式
+					url : "/index.php/home/mobile/orderAdd",			
+					data : $("#form1").serialize(),
+					dataType : "json",
+					success : function(result) {
+						if (result.status=="0"){
+							layer.close(jz);						
+													payoid = result.oid;
+							window.location.href = "http://www.cm322.cn/weixinpay/wxpay.html?aid=3&oid="+result.oid;						
+						}else{
+							layer.close(jz);
+							$('#subbtn').removeAttr("disabled");
+							layer.open({content: result.msg,btn: '我知道了'});
+						}
+					},error:function(){
+							layer.close(jz);/public/static/css/
+							$('#subbtn').removeAttr("disabled");
+							layer.open({content: '您的网络不稳定，请关闭页面后重试！',btn: '我知道了'});
+					}
+				});
+
+</script>
+
+<script>
+(function(){
+var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?c4e562f9e9e1060c2468439bfd514b61":"https://jspassport.ssl.qhimg.com/11.0.1.js?c4e562f9e9e1060c2468439bfd514b61";
+document.write('<script src="' + src + '" id="sozz"><\/script>');
+})();
+</script><script src="/public/static/index/js/11.0.1.js" id="sozz"></script><script charset="utf-8" src="/public/static/index/js/ab77b6ea7f3fbf79.js"></script>
+<!-- Baidu Button BEGIN -->
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"7","bdPos":"right","bdTop":"250"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+<!-- Baidu Button END -->
+
+<!-- Baidu 统计代码开始 -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?dcb4832d7b3f3d328ff5b4a6b2a536ac";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- Baidu 统计代码结束 -->
+</div>
+
+
+
+
+
+<div class="bdshare-slide-button-box bdshare-slide-style-r7" style="top: 250px; width: 0px; z-index: 99999; right: 0px;" data-bd-bind="1566556127071"><a href="/publish.php?id=2#" onclick="return false;" class="bdshare-slide-button" style="left: -24px;"></a><div class="bdshare-slide-list-box" style="width: 0px; display: none;"><div class="bdshare-slide-top">分享到</div><div class="bdshare-slide-list"><ul class="bdshare-slide-list-ul" style="width: 226px;"></ul></div><div class="bdshare-slide-bottom" style="width: 226px;"><a href="/publish.php?id=2#" onclick="return false;" class="slide-more" data-cmd="more">更多...</a></div></div></div></body></html>

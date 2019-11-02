@@ -1,0 +1,56 @@
+{extend name="index_layout"/}
+{block name="main"}
+ <style type="text/css">.layui-upload-img {
+    width: 92px;
+    height: 92px;
+    margin: 0 10px 10px 0;
+}</style>
+<link rel="stylesheet" href="__STATIC__/admin/css/umeditor.css">
+<div class="layui-card">
+    <div class="layui-card-header">添加</div>
+    <div class="layui-card-body">
+        <form class="layui-form" method="post">
+            
+<div class="layui-form-item">
+    <label class="layui-form-label">城市名</label>
+    <div class="layui-input-inline w300">
+        <input type="text" name="name"  autocomplete="off" placeholder="" class="layui-input">
+    </div>
+</div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit="" lay-filter="formSubmit">立即提交</button>
+                    <button class="layui-btn layui-btn-normal" type="button" onclick="javascript:history.back(-1);">返回</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{/block}
+{block name="script"}
+<script>
+    $(function () {
+
+        // 富文本编辑器
+        UM.getEditor('container');
+
+        // 选择图片
+        $('.upload-file').selectImages({
+            name: 'goods[images][]'
+            , multiple: true
+        });
+
+        // 图片列表拖动
+        $('.uploader-list').DDSort({
+            target: '.file-item',
+            delay: 100, // 延时处理，默认为 50 ms，防止手抖点击 A 链接无效
+            floatStyle: {
+                'border': '1px solid #ccc',
+                'background-color': '#fff'
+            }
+        });
+
+    });
+</script>
+{/block}
