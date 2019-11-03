@@ -27,13 +27,13 @@ class Search extends Homebase
         $cityInfo = Db::name('city')->where('id','in', $city)->select();
         $areaInfo = Db::name('area')->where('parentId','in', $city)->select();
         $keywords = 1;
-        $d = $this->Workshopsearch->searchDoc($data,1, 10);
+//        $d = $this->Workshopsearch->searchDoc($data,1, 10);
         $ids = array();
-        if(count($d['hits']['hits'])){
-            foreach ($d['hits']['hits'] as $value) {
-                array_push($ids, $value['_id']);
-            }
-        }
+//        if(count($d['hits']['hits'])){
+//            foreach ($d['hits']['hits'] as $value) {
+//                array_push($ids, $value['_id']);
+//            }
+//        }
         $id_str = implode(',', $ids);
         $where['id'] = array('in', $id_str);
         $list = Db::name('workshop')->where('id','in', $id_str)->order(array('releasetime' => 'DESC'))->paginate(2, false, [

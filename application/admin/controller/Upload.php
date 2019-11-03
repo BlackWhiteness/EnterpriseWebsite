@@ -24,39 +24,40 @@ class Upload extends Adminbase
     //后台菜单首页
     public function imgs()
     {
-       $file = request()->file('file');
+        $file = request()->file('file');
 	   
-	    // 移动到框架应用根目录/public/uploads/ 目录下
-	                    if(!empty($file)){
-                    // 移动到框架应用根目录/public/uploads/ 目录下
-$s =  'public' . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . date('Y-m-d');
+        // 移动到框架应用根目录/public/uploads/ 目录下
+        if (!empty($file)) {
+            // 移动到框架应用根目录/public/uploads/ 目录下
+            $s = 'public' . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . date('Y-m-d');
 //,'ext'=>'jpg,png,gif'
-                    $info = $file->validate(['size'=>1048576])->rule('uniqid')->move(ROOT_PATH . $s);
-                    $error = $file->getError();
-                    //验证文件后缀后大小
-                    if(!empty($error)){
-                        dump($error);exit;
-                    }
-                    if($info){
-                        // 成功上传后 获取上传信息
-                        // 输出 jpg
-                        $info->getExtension();
-                        // 输出 20160820/42a79759f284b767dfcb2a0197904287.jpg
-                        $info->getSaveName();
-                        // 输出 42a79759f284b767dfcb2a0197904287.jpg
-                        $photo = $info->getFilename();
- 
-                    }else{
-                        // 上传失败获取错误信息
-                        $file->getError();
-                    }
-                }else{
-                    $photo = '';
-                }
-        if($photo !== ''){
-            return ['code'=>1,'msg'=>'成功','photo'=> '/' . $s . '/'.$photo];
-        }else{
-            return ['code'=>404,'msg'=>'失败'];
+            $info = $file->validate(['size' => 1048576])->rule('uniqid')->move(ROOT_PATH . $s);
+            $error = $file->getError();
+            //验证文件后缀后大小
+            if (!empty($error)) {
+                dump($error);
+                exit;
+            }
+            if ($info) {
+                // 成功上传后 获取上传信息
+                // 输出 jpg
+                $info->getExtension();
+                // 输出 20160820/42a79759f284b767dfcb2a0197904287.jpg
+                $info->getSaveName();
+                // 输出 42a79759f284b767dfcb2a0197904287.jpg
+                $photo = $info->getFilename();
+
+            } else {
+                // 上传失败获取错误信息
+                $file->getError();
+            }
+        } else {
+            $photo = '';
+        }
+        if ($photo !== '') {
+            return ['code' => 1, 'msg' => '成功', 'photo' => '/' . $s . '/' . $photo];
+        } else {
+            return ['code' => 404, 'msg' => '失败'];
         }
 
     }
@@ -67,10 +68,10 @@ $s =  'public' . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . date('Y
         if ($this->request->isPost()) {
             $data = $this->request->param();
             /**if (!isset($data['status'])) {
-                $data['status'] = 0;
-            } else {
-                $data['status'] = 1;
-            }**/
+             * $data['status'] = 0;
+             * } else {
+             * $data['status'] = 1;
+             * }**/
 
             //$result = $this->validate($data, 'Menu.add');var_dump($result);exit;
             if (!$data) {
@@ -127,7 +128,7 @@ $s =  'public' . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . date('Y
         if (empty($id)) {
             $this->error('ID错误');
         }
-	$workshop= new Workshop_Model();
+        $workshop = new Workshop_Model();
         if ($workshop->del($id) !== false) {
             $this->success("删除成功！");
         } else {
