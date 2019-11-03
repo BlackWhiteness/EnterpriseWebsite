@@ -24,7 +24,8 @@
         "guzzlehttp/guzzle": "^6.3",
         "overtrue/pinyin": "~4.0",
         "yansongda/pay": "^2.7",
-        "endroid/qr-code": "^2.5"
+        "endroid/qr-code": "^2.5",
+        "elasticsearch/elasticsearch": "~6.0"
     },
     "autoload": {
         "psr-4": {

@@ -1,8 +1,7 @@
 <?php
 namespace app\search\model;
 
-require_once __DIR__ . '/../../../vendor/elasticsearch-php/vendor/autoload.php';
-require_once __DIR__ . '/../../../vendor/elasticsearch-php/vendor/elasticsearch/elasticsearch/src/Elasticsearch/ClientBuilder.php';
+use Elasticsearch\ClientBuilder;
 
 class Clientapiofes {
 
@@ -15,14 +14,14 @@ class Clientapiofes {
         $config = array(
             '127.0.0.1:52301'
         );//exit;
-        $this->mEs = \Elasticsearch\ClientBuilder::create()->setHosts($config)->build();
+        $this->mEs = ClientBuilder::create()->setHosts($config)->build();
     }
 
     // 创建索引
     public function createIndex($params) { // 只能创建一次
         try {
             return $this->mEs->indices()->create($params);
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             Utils_Log::err(self::LOG_FILE, 'createIndex', array('message:' => $e->getMessage()));
             return ErrorCode::ERR_FAIL;
         }

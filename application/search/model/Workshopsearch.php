@@ -1,45 +1,57 @@
 <?php
+
 namespace app\search\model;
+
 use app\search\model\Clientapiofes as Clientapiofes;
-class Workshopsearch {
-  const BOOST_LEVEL_1 = 4;
-  const BOOST_LEVEL_2 = 2;
-  const BOOST_LEVEL_3 = 1;
-  const PRE_TAGS  = "<font color='red'>";
-  const POST_TAGS = "</font>";
-  const HIGHLIGHT_TYPE = 'fvh';
-  const PINYIN         = 'pinyin';
-  const SEPARATOR      = '.';
-  private $mSearchObj = null;
-  private $mIndexName = 'work_shop';
-  private $mIndexType = 'work_shop';
-  public function __construct() {
-    $this->mSearchObj = new Clientapiofes();
-  }
-  // 删除文档
-  public function deleteDoc($id) {
-    $params = [
-                'index' => $this->mIndexName,
-                'type'  => $this->mIndexType,
-                'id'    => $id
-            ];
-    return $this->mSearchObj->deleteDoc($params);
-  }
-  // 查询文档 (分页，排序，权重，过滤)
-  public function searchDoc($keywords, $cursor = 1, $pageSize, $type = 1) {
-    $from = ($cursor - 1) * $pageSize;
-    $params = [
-                'from'  => $from,
-                'size'  => $pageSize,
-                'index' => $this->mIndexName,
-                'type'  => $this->mIndexType,
-                'body'  => [
-                    "sort"      => [
-                        "_score" => [
-                            "order" => "desc"
-                        ]
-                    ]                  ]
-              ];/*,
+
+class Workshopsearch
+{
+    const BOOST_LEVEL_1 = 4;
+    const BOOST_LEVEL_2 = 2;
+    const BOOST_LEVEL_3 = 1;
+    const PRE_TAGS = "<font color='red'>";
+    const POST_TAGS = "</font>";
+    const HIGHLIGHT_TYPE = 'fvh';
+    const PINYIN = 'pinyin';
+    const SEPARATOR = '.';
+    private $mSearchObj = null;
+    private $mIndexName = 'work_shop';
+    private $mIndexType = 'work_shop';
+
+    public function __construct()
+    {
+        $this->mSearchObj = new Clientapiofes();
+    }
+
+    // 删除文档
+    public function deleteDoc($id)
+    {
+        $params = [
+            'index' => $this->mIndexName,
+            'type' => $this->mIndexType,
+            'id' => $id
+        ];
+        return $this->mSearchObj->deleteDoc($params);
+    }
+
+    // 查询文档 (分页，排序，权重，过滤)
+    public function searchDoc($keywords, $cursor = 1, $pageSize, $type = 1)
+    {
+        $from = ($cursor - 1) * $pageSize;
+
+        $params = [
+            'from' => $from,
+            'size' => $pageSize,
+            'index' => $this->mIndexName,
+            'type' => $this->mIndexType,
+            'body' => [
+                "sort" => [
+                    "_score" => [
+                        "order" => "desc"
+                    ]
+                ]]
+        ];
+        /*,
                                 [
                                     "term" => [
                                         'area' => 1,
@@ -60,80 +72,80 @@ class Workshopsearch {
                                         'measurearea' => array('lte' => 1)
                                     ]
                                 ]*/;
-                                $i = 0;
-    if (isset($keywords['city'])) {
-      $params['body']['query']['bool']['must'][$i] = [
-        "term" => [
-            'city' => $keywords['city'],
-        ]
-      ];
-      $i++;
-    }
-    if (isset($keywords['area'])) {
-      $params['body']['query']['bool']['must'][$i] = [
-        "term" => [
-            'area' => $keywords['area'],
-        ]
-      ];
-      $i++;
-    }
-    if (isset($keywords['floor'])) {
-      $params['body']['query']['bool']['must'][$i] = [
-        "term" => [
-            'floor' => $keywords['floor'],
-        ]
-      ];
-      $i++;
-    }
-    if (isset($keywords['structure'])) {
-      $params['body']['query']['bool']['must'][$i] = [
-        "term" => [
-            'structure' => $keywords['structure'],
-        ]
-      ];
-      $i++;
-    }
-    if (isset($keywords['type'])) {
-      $params['body']['query']['bool']['must'][$i] = [
-        "term" => [
-            'type' => $keywords['type'],
-        ]
-      ];
-      $i++;
-    }
-    if (isset($keywords['category'])) {
-      $params['body']['query']['bool']['must'][$i] = [
-        "term" => [
-            'category' => $keywords['category'],
-        ]
-      ];
-      $i++;
-    }
-    if (isset($keywords['measurearea'])) {
-      $measurearea = explode('-', $keywords['measurearea']);
-      $params['body']['query']['bool']['must'][$i] = [
-                                    "range" => [
-                                        'measurearea' => array('gte' => $measurearea[0],'lte' => $measurearea[1]?:1000000)
-                                    ]
-                                ];
-      $i++;
-    } 
-    if (isset($keywords['title'])) {
-            
-        $params['body']['query']['bool']['must'][$i] = 
-        [
-            "match" => [
-                "title"  => [
-                  "query" => $keywords['title'],
-                  "minimum_should_match"=> "10%"
+        $i = 0;
+        if (isset($keywords['city'])) {
+            $params['body']['query']['bool']['must'][$i] = [
+                "term" => [
+                    'city' => $keywords['city'],
                 ]
-            ]
-        ];
-      $i++;
+            ];
+            $i++;
+        }
+        if (isset($keywords['area'])) {
+            $params['body']['query']['bool']['must'][$i] = [
+                "term" => [
+                    'area' => $keywords['area'],
+                ]
+            ];
+            $i++;
+        }
+        if (isset($keywords['floor'])) {
+            $params['body']['query']['bool']['must'][$i] = [
+                "term" => [
+                    'floor' => $keywords['floor'],
+                ]
+            ];
+            $i++;
+        }
+        if (isset($keywords['structure'])) {
+            $params['body']['query']['bool']['must'][$i] = [
+                "term" => [
+                    'structure' => $keywords['structure'],
+                ]
+            ];
+            $i++;
+        }
+        if (isset($keywords['type'])) {
+            $params['body']['query']['bool']['must'][$i] = [
+                "term" => [
+                    'type' => $keywords['type'],
+                ]
+            ];
+            $i++;
+        }
+        if (isset($keywords['category'])) {
+            $params['body']['query']['bool']['must'][$i] = [
+                "term" => [
+                    'category' => $keywords['category'],
+                ]
+            ];
+            $i++;
+        }
+        if (isset($keywords['measurearea'])) {
+            $measurearea = explode('-', $keywords['measurearea']);
+            $params['body']['query']['bool']['must'][$i] = [
+                "range" => [
+                    'measurearea' => array('gte' => $measurearea[0], 'lte' => $measurearea[1] ?: 1000000)
+                ]
+            ];
+            $i++;
+        }
+        if (isset($keywords['title'])) {
 
+            $params['body']['query']['bool']['must'][$i] =
+                [
+                    "match" => [
+                        "title" => [
+                            "query" => $keywords['title'],
+                            "minimum_should_match" => "10%"
+                        ]
+                    ]
+                ];
+            $i++;
+
+        }
+        return $this->mSearchObj->search($params);
     }
-    return $this->mSearchObj->search($params);
-  }
 }
 /*
 POST /work_shop/work_shop/_mapping 
