@@ -15,15 +15,15 @@ return [
     // 数据库类型
     'type' => 'mysql',
     // 服务器地址
-    'hostname' => '127.0.0.1',
+    'hostname' => \env('database.host','127.0.0.1'),
     // 数据库名
-    'database' => 'search',
+    'database' => \env('database.database',''),
     // 用户名
-    'username' => 'root',
+    'username' =>  \env('database.user_name','root'),
     // 密码
-    'password' => 'Rx9@mJp41',
+    'password' => \env('database.password',''),
     // 端口
-    'hostport' => '',
+    'hostport' => \env('database.port',''),
     // 连接dsn
     'dsn' => '',
     // 数据库连接参数
