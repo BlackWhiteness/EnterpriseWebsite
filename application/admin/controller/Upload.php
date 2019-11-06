@@ -25,7 +25,7 @@ class Upload extends Adminbase
     public function imgs()
     {
         $file = request()->file('file');
-	   
+
         // 移动到框架应用根目录/public/uploads/ 目录下
         if (!empty($file)) {
             // 移动到框架应用根目录/public/uploads/ 目录下

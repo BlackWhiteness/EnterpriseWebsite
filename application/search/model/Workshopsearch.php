@@ -51,27 +51,7 @@ class Workshopsearch
                     ]
                 ]]
         ];
-        /*,
-                                [
-                                    "term" => [
-                                        'area' => 1,
-                                    ]
-                                ],
-                                [
-                                    "term" => [
-                                        'floor' => 1,
-                                    ]
-                                ],
-                                [
-                                    "term" => [
-                                        'structure' => 1,
-                                    ]
-                                ],
-                                [
-                                    "range" => [
-                                        'measurearea' => array('lte' => 1)
-                                    ]
-                                ]*/;
+
         $i = 0;
         if (isset($keywords['city'])) {
             $params['body']['query']['bool']['must'][$i] = [
@@ -144,6 +124,7 @@ class Workshopsearch
             $i++;
 
         }
+
         return $this->mSearchObj->search($params);
     }
 }

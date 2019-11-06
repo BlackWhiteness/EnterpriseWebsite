@@ -2,6 +2,7 @@
 namespace app\search\model;
 
 use Elasticsearch\ClientBuilder;
+use think\Exception;
 
 class Clientapiofes {
 
@@ -12,7 +13,7 @@ class Clientapiofes {
     // 构造函数
     public function __construct() {
         $config = array(
-            '127.0.0.1:52301'
+            '127.0.0.1:9200'
         );//exit;
         $this->mEs = ClientBuilder::create()->setHosts($config)->build();
     }
@@ -88,6 +89,7 @@ class Clientapiofes {
         }
     }
 
+
     // 删除文档
     public function deleteDoc($params) {
         try{
@@ -100,6 +102,7 @@ class Clientapiofes {
 
     // 查询文档 (分页，排序，权重，过滤)
     public function search($params) {
+
         try{
             return $this->mEs->search($params);
         } catch (Exception $e) {

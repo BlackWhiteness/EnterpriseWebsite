@@ -20,15 +20,20 @@ use think\Db;
 use app\search\model\Indexoffbuilding;
 use app\admin\model\Area as Area_Model;
 use app\admin\model\City as City_Model;
+
 class Officebuilding extends Adminbase
 {
-
-protected function initialize()
+    public $City_Model;
+    public $Area_Model;
+    public $Indexoffbuilding;
+    protected function initialize()
     {
         parent::initialize();
-        $this->City_Model = new City_Model();$this->Area_Model = new Area_Model();
+        $this->City_Model = new City_Model();
+        $this->Area_Model = new Area_Model();
         $this->Indexoffbuilding = new Indexoffbuilding();
     }
+
     //后台菜单首页
     public function index()
     {
@@ -38,7 +43,7 @@ protected function initialize()
             $result = array("code" => 0, "count" => $total, "data" => $result);
             return json($result);
         }
-            return $this->fetch();
+        return $this->fetch();
 
     }
 
@@ -55,8 +60,9 @@ protected function initialize()
 
             //$result = $this->validate($data, 'Menu.add');
             if (!$data) {
-                return $this->error($result);
+                return $this->error('error');
             }
+
             $result = Officebuilding_Model::create($data);
 
             if (intval($result->id)) {
@@ -67,12 +73,12 @@ protected function initialize()
                 $this->error('添加失败！');
             }
         } else {
-        $result = $this->City_Model->order(array('id' => 'DESC'))->select()->toArray();
-$citys = '';
+            $result = $this->City_Model->order(array('id' => 'DESC'))->select()->toArray();
+            $citys = '';
             foreach ($result as $r) {
-                $citys .= "<option value='". $r["id"] ."'>  ".$r["name"]."</option>";
+                $citys .= "<option value='" . $r["id"] . "'>  " . $r["name"] . "</option>";
             }
-            
+
             $this->assign("citys", $citys);
             return $this->fetch();
         }
@@ -106,14 +112,14 @@ $citys = '';
             //var_dump($rs);exit;
             $this->assign("data", $rs);
             $result = $this->City_Model->order(array('id' => 'DESC'))->select()->toArray();
-$citys = '';
+            $citys = '';
             foreach ($result as $r) {
-                $citys .= "<option value='". $r["id"] ."' ". ($r['id'] == $rs['city'] ? 'checked' : '') ." >  ".$r["name"]."</option>";
+                $citys .= "<option value='" . $r["id"] . "' " . ($r['id'] == $rs['city'] ? 'checked' : '') . " >  " . $r["name"] . "</option>";
             }
-            $result = $this->Area_Model->where(array("parentId"=>$rs['city']))->order(array('id' => 'DESC'))->select()->toArray();
-$areas = '';
+            $result = $this->Area_Model->where(array("parentId" => $rs['city']))->order(array('id' => 'DESC'))->select()->toArray();
+            $areas = '';
             foreach ($result as $r) {
-                $areas .= "<option value='". $r["id"] ."' ". ($r['id'] == $rs['area'] ? 'checked' : '') ." >  ".$r["name"]."</option>";
+                $areas .= "<option value='" . $r["id"] . "' " . ($r['id'] == $rs['area'] ? 'checked' : '') . " >  " . $r["name"] . "</option>";
             }
             $this->assign("id", $id);
             $this->assign("citys", $citys);
@@ -132,7 +138,7 @@ $areas = '';
         if (empty($id)) {
             $this->error('ID错误');
         }
-$officebuilding= new Officebuilding_Model();
+        $officebuilding = new Officebuilding_Model();
         if ($officebuilding->del($id) !== false) {
             $this->success("删除菜单成功！");
         } else {

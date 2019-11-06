@@ -23,12 +23,12 @@ class Workshop extends Model
 {
 
     protected $type = [
-        'imgs'    =>  'serialize',
+        'imgs' => 'serialize',
     ];
 
-  public function del($id)
+    public function del($id)
     {
-        $id = (int) $id;
+        $id = (int)$id;
         if (empty($id)) {
             $this->error = '请指定需要删除的ID！';
             return false;

@@ -20,12 +20,24 @@ use app\admin\model\Area as Area_Model;
 use app\common\controller\Adminbase;
 use think\Db;
 use app\search\model\Indexworkshop;
+
+/**
+ * Class Workshop
+ * @package app\admin\controller
+ */
 class Workshop extends Adminbase
 {
-protected function initialize()
+    public $City_Model;
+    public $Area_Model;
+    public $indexworkshop;
+
+    /**
+     *
+     */
+    protected function initialize()
     {
         parent::initialize();
-    	$this->City_Model = new City_Model();
+        $this->City_Model = new City_Model();
         $this->Area_Model = new Area_Model();
         $this->indexworkshop = new Indexworkshop();
     }
@@ -43,7 +55,10 @@ protected function initialize()
 
     }
 
-    //添加后台菜单
+    /**
+     * 后台添加厂房
+     * @return mixed|void
+     */
     public function add()
     {
         if ($this->request->isPost()) {
@@ -51,7 +66,6 @@ protected function initialize()
             if (isset($data['imgs'])) {
                 $data['imgs'] = json_encode($data['imgs']);
             }
-
             //$result = $this->validate($data, 'Menu.add');var_dump($result);exit;
             if (!$data) {
                 return $this->error($data);
@@ -66,13 +80,12 @@ protected function initialize()
                 $this->error('添加失败！');
             }
         } else {
-		$result = $this->City_Model->order(array('id' => 'DESC'))->select()->toArray();
-$citys = '';
+            $result = $this->City_Model->order(array('id' => 'DESC'))->select()->toArray();
+            $citys = '';
             foreach ($result as $r) {
-                $citys .= "<option value='". $r["id"] ."'>  ".$r["name"]."</option>";
+                $citys .= "<option value='" . $r["id"] . "'>  " . $r["name"] . "</option>";
             }
-            
-            $this->assign("citys", $citys);//var_dump($citys);exit;
+            $this->assign("citys", $citys);
             return $this->fetch();
         }
     }
@@ -104,18 +117,18 @@ $citys = '';
             $rs = Workshop_Model::where(["id" => $id])->find();
             $this->assign("data", $rs);
             $result = $this->City_Model->order(array('id' => 'DESC'))->select()->toArray();
-$citys = '';
+            $citys = '';
             foreach ($result as $r) {
-                $citys .= "<option value='". $r["id"] ."' ". ($r['id'] == $rs['city'] ? 'checked' : '') ." >  ".$r["name"]."</option>";
+                $citys .= "<option value='" . $r["id"] . "' " . ($r['id'] == $rs['city'] ? 'checked' : '') . " >  " . $r["name"] . "</option>";
             }
-            $result = $this->Area_Model->where(array("parentId"=>$rs['city']))->order(array('id' => 'DESC'))->select()->toArray();
-$areas = '';
+            $result = $this->Area_Model->where(array("parentId" => $rs['city']))->order(array('id' => 'DESC'))->select()->toArray();
+            $areas = '';
             foreach ($result as $r) {
-                $areas .= "<option value='". $r["id"] ."' ". ($r['id'] == $rs['area'] ? 'checked' : '') ." >  ".$r["name"]."</option>";
+                $areas .= "<option value='" . $r["id"] . "' " . ($r['id'] == $rs['area'] ? 'checked' : '') . " >  " . $r["name"] . "</option>";
             }
             $this->assign("id", $id);
             $this->assign("citys", $citys);
-             $this->assign("areas", $areas);//var_dump($citys);exit;
+            $this->assign("areas", $areas);//var_dump($citys);exit;
             return $this->fetch();
         }
 
@@ -130,8 +143,9 @@ $areas = '';
         if (empty($id)) {
             $this->error('ID错误');
         }
-	$workshop= new Workshop_Model();
+        $workshop = new Workshop_Model();
         if ($workshop->del($id) !== false) {
+            $this->indexworkshop->delete($id);
             $this->success("删除成功！");
         } else {
             $this->error("删除失败！");

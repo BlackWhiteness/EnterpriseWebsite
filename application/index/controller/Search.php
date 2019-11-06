@@ -1,5 +1,7 @@
 <?php
+
 namespace app\index\controller;
+
 use app\common\controller\Homebase;
 use app\admin\model\Workshop as Workshop_Model;
 use app\search\model\Workshopsearch as Workshopsearch;
@@ -7,9 +9,14 @@ use app\search\model\Offbuildingsearch as Offbuildingsearch;
 use app\admin\model\City;
 use app\admin\model\Area;
 use \think\Db;
+
 class Search extends Homebase
 {
-        //初始化
+    public $Workshopsearch;
+    public $Offbuildingsearch;
+    public $City;
+
+    //初始化
     protected function initialize()
     {
         parent::initialize();
@@ -20,25 +27,28 @@ class Search extends Homebase
 
     //会员中心首页
     public function workshop()
-    {    
+    {
         $data = $this->request->param();
-        $city = isset($_COOKIE['city'])?$_COOKIE['city']:8;
-           $cityList = Db::name('city')->where('id','not in', $city)->select();
-        $cityInfo = Db::name('city')->where('id','in', $city)->select();
-        $areaInfo = Db::name('area')->where('parentId','in', $city)->select();
+
+        $city = isset($_COOKIE['city']) ? $_COOKIE['city'] : 8;
+        $cityList = Db::name('city')->where('id', 'not in', $city)->select();
+        $cityInfo = Db::name('city')->where('id', 'in', $city)->select();
+        $areaInfo = Db::name('area')->where('parentId', 'in', $city)->select();
         $keywords = 1;
-//        $d = $this->Workshopsearch->searchDoc($data,1, 10);
+
+        $d = $this->Workshopsearch->searchDoc($data, 1, 10);
         $ids = array();
-//        if(count($d['hits']['hits'])){
-//            foreach ($d['hits']['hits'] as $value) {
-//                array_push($ids, $value['_id']);
-//            }
-//        }
+        if (count($d['hits']['hits'])) {
+            foreach ($d['hits']['hits'] as $value) {
+                array_push($ids, $value['_id']);
+            }
+        }
+
         $id_str = implode(',', $ids);
         $where['id'] = array('in', $id_str);
-        $list = Db::name('workshop')->where('id','in', $id_str)->order(array('releasetime' => 'DESC'))->paginate(2, false, [
-                'query' => $this->request->param(),//不丢失已存在的url参数
-            ]);
+        $list = Db::name('workshop')->where('id', 'in', $id_str)->order(array('releasetime' => 'DESC'))->paginate(2, false, [
+            'query' => $this->request->param(),//不丢失已存在的url参数
+        ]);
         $this->assign("cityInfo", $cityInfo);
         $this->assign("areaInfo", $areaInfo);
         $this->assign("cityList", $cityList);
@@ -52,18 +62,18 @@ class Search extends Homebase
         $this->assign("floor2", $floor2);
         $floor3 = Db::name('workshop')->where(["floor" => 3])->order(array('releasetime' => 'DESC'))->paginate(10);
         $this->assign("floor3", $floor3);
-        return $this->fetch('rentalofworkshop');     
-    } 
+        return $this->fetch('rentalofworkshop');
+    }
 
-public function workshopdetail()
-    { 
+    public function workshopdetail()
+    {
         $id = $this->request->param('id/d', '');
-        $info = Db::name('workshop')->where(['id'=> $id])->find();//var_dump($info);exit;
-        $cityInfo = Db::name('city')->where('id','in', $info['city'])->select();
-        $areaInfo = Db::name('area')->where('parentId','in', $info['city'])->select();
-           $cityList = Db::name('city')->where('id','not in', $info['city'])->select();
+        $info = Db::name('workshop')->where(['id' => $id])->find();//var_dump($info);exit;
+        $cityInfo = Db::name('city')->where('id', 'in', $info['city'])->select();
+        $areaInfo = Db::name('area')->where('parentId', 'in', $info['city'])->select();
+        $cityList = Db::name('city')->where('id', 'not in', $info['city'])->select();
         $this->assign("cityList", $cityList);
-        
+
         $this->assign("info", $info);
         $this->assign("cityInfo", $cityInfo);
         $this->assign("areaInfo", $areaInfo);
@@ -75,28 +85,29 @@ public function workshopdetail()
         $this->assign("floor2", $floor2);
         $floor3 = Db::name('workshop')->where(["floor" => 3])->order(array('releasetime' => 'DESC'))->paginate(10);
         $this->assign("floor3", $floor3);
-        return $this->fetch('workshopdetail');  
+        return $this->fetch('workshopdetail');
     }
-public function officebuilding()
-    {    
+
+    public function officebuilding()
+    {
         $data = $this->request->param();
-        $city = isset($_COOKIE['city'])?$_COOKIE['city']:8;
-        $cityInfo = Db::name('city')->where('id','in', $city)->select();
-        $areaInfo = Db::name('area')->where('parentId','in', $city)->select();
-           $cityList = Db::name('city')->where('id','not in', $city)->select();
+        $city = isset($_COOKIE['city']) ? $_COOKIE['city'] : 8;
+        $cityInfo = Db::name('city')->where('id', 'in', $city)->select();
+        $areaInfo = Db::name('area')->where('parentId', 'in', $city)->select();
+        $cityList = Db::name('city')->where('id', 'not in', $city)->select();
         $keywords = 1;
-        $d = $this->Offbuildingsearch->searchDoc($data,1, 10);
+        $d = $this->Offbuildingsearch->searchDoc($data, 1, 10);
         $ids = array();
-        if(count($d['hits']['hits'])){
+        if (count($d['hits']['hits'])) {
             foreach ($d['hits']['hits'] as $value) {
                 array_push($ids, $value['_id']);
             }
         }
         $id_str = implode(',', $ids);
         $where['id'] = array('in', $id_str);
-        $list = Db::name('officebuilding')->where('id','in', $id_str)->order(array('releasetime' => 'DESC'))->paginate(2, false, [
-                'query' => $this->request->param(),//不丢失已存在的url参数
-            ]);
+        $list = Db::name('officebuilding')->where('id', 'in', $id_str)->order(array('releasetime' => 'DESC'))->paginate(2, false, [
+            'query' => $this->request->param(),//不丢失已存在的url参数
+        ]);
         $this->assign("cityInfo", $cityInfo);
         $this->assign("areaInfo", $areaInfo);
         $this->assign("cityList", $cityList);
@@ -108,20 +119,20 @@ public function officebuilding()
         $this->assign("new", $new);
         $hot = Db::name('officebuilding')->where(["type" => 2])->order(array('releasetime' => 'DESC'))->paginate(10);
         $this->assign("hot", $hot);
-        
+
         return $this->fetch('officebuilding');
-        
+
     }
 
     public function offbuilddetail()
-    { 
+    {
         $id = $this->request->param('id/d', '');
-        $info = Db::name('officebuilding')->where(['id'=> $id])->find();
-        $cityInfo = Db::name('city')->where('id','in', $info['city'])->select();
-        $areaInfo = Db::name('area')->where('parentId','in', $info['city'])->select();
-           $cityList = Db::name('city')->where('id','not in', $info['city'])->select();
+        $info = Db::name('officebuilding')->where(['id' => $id])->find();
+        $cityInfo = Db::name('city')->where('id', 'in', $info['city'])->select();
+        $areaInfo = Db::name('area')->where('parentId', 'in', $info['city'])->select();
+        $cityList = Db::name('city')->where('id', 'not in', $info['city'])->select();
         $this->assign("cityList", $cityList);
-        
+
         $this->assign("info", $info);
         $this->assign("cityInfo", $cityInfo);
         $this->assign("areaInfo", $areaInfo);
@@ -131,6 +142,6 @@ public function officebuilding()
         $this->assign("new", $new);
         $hot = Db::name('officebuilding')->where(["type" => 2])->order(array('releasetime' => 'DESC'))->paginate(10);
         $this->assign("hot", $hot);
-        return $this->fetch('offbuilddetail');  
+        return $this->fetch('offbuilddetail');
     }
 }

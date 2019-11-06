@@ -12,6 +12,7 @@ class Index extends Homebase
 {
     public function test(Request $request)
     {
+
         echo $request->method();
         echo $request->ext();
         echo 1111111111;
