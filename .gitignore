@@ -3,7 +3,7 @@
 /thinkphp/
 /vendor/
 /runtime/
-/public/upload
+/public/upload/
 *.log
 LICENSE.txt
 /log/
