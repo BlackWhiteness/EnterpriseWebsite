@@ -26,6 +26,7 @@ class Officebuilding extends Adminbase
     public $City_Model;
     public $Area_Model;
     public $Indexoffbuilding;
+
     protected function initialize()
     {
         parent::initialize();
@@ -52,6 +53,7 @@ class Officebuilding extends Adminbase
     {
         if ($this->request->isPost()) {
             $data = $this->request->param();
+
             if (!isset($data['status'])) {
                 $data['status'] = 0;
             } else {
@@ -60,7 +62,7 @@ class Officebuilding extends Adminbase
 
             //$result = $this->validate($data, 'Menu.add');
             if (!$data) {
-                return $this->error('error');
+                return $this->error('输入有误！');
             }
 
             $result = Officebuilding_Model::create($data);

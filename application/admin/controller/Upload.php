@@ -29,9 +29,10 @@ class Upload extends Adminbase
         // 移动到框架应用根目录/public/uploads/ 目录下
         if (!empty($file)) {
             // 移动到框架应用根目录/public/uploads/ 目录下
-            $s = 'public' . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . date('Y-m-d');
+
+            $s =   'uploads' . DIRECTORY_SEPARATOR . date('Y-m-d');
 //,'ext'=>'jpg,png,gif'
-            $info = $file->validate(['size' => 1048576])->rule('uniqid')->move(ROOT_PATH . $s);
+            $info = $file->validate(['size' => 1048576])->rule('uniqid')->move(ROOT_PATH .'public' . DIRECTORY_SEPARATOR. $s);
             $error = $file->getError();
             //验证文件后缀后大小
             if (!empty($error)) {
