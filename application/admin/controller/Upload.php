@@ -30,7 +30,7 @@ class Upload extends Adminbase
         if (!empty($file)) {
             // 移动到框架应用根目录/public/uploads/ 目录下
 
-            $s =   'uploads' . DIRECTORY_SEPARATOR . date('Y-m-d');
+            $s =   'uploads/'  . date('Y-m-d');
 //,'ext'=>'jpg,png,gif'
             $info = $file->validate(['size' => 1048576])->rule('uniqid')->move(ROOT_PATH .'public' . DIRECTORY_SEPARATOR. $s);
             $error = $file->getError();

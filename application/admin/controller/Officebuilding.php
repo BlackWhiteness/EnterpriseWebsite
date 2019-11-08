@@ -53,13 +53,19 @@ class Officebuilding extends Adminbase
     {
         if ($this->request->isPost()) {
             $data = $this->request->param();
-
             if (!isset($data['status'])) {
                 $data['status'] = 0;
             } else {
                 $data['status'] = 1;
             }
 
+            //图片处理
+            if (!empty($data['imgs'])) {
+                $data['imgs'] = implode(',', $data['imgs']);
+            } else {
+                $data['imgs'] = '';
+            }
+//            dump($data);die;
             //$result = $this->validate($data, 'Menu.add');
             if (!$data) {
                 return $this->error('输入有误！');
@@ -97,6 +103,13 @@ class Officebuilding extends Adminbase
                 $data['status'] = 0;
             } else {
                 $data['status'] = 1;
+            }
+
+            //图片处理
+            if (!empty($data['imgs'])) {
+                $data['imgs'] = implode(',', $data['imgs']);
+            } else {
+                $data['imgs'] = '';
             }
             //$result = $this->validate($data, 'Menu.edit');
             if (!$data) {

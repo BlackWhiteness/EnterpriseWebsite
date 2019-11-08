@@ -107,22 +107,50 @@ class Search extends Homebase
         }
         $id_str = implode(',', $ids);
         $where['id'] = array('in', $id_str);
-        $list = Db::name('officebuilding')->where('id', 'in', $id_str)->order(array('releasetime' => 'DESC'))->paginate(2, false, [
-            'query' => $this->request->param(),//不丢失已存在的url参数
-        ]);
-//        dump($list);die;
-        $this->assign("cityInfo", $cityInfo);
-        $this->assign("areaInfo", $areaInfo);
-        $this->assign("cityList", $cityList);
+        $data = Db::name('officebuilding')->where('id', 'in', $id_str)->order(array('releasetime' => 'DESC'))
+            ->paginate(10, false, ['query' => $this->request->param(),//不丢失已存在的url参数
+            ]);
 
-        $this->assign("list", $list);
-        $recommend = Db::name('officebuilding')->where(["type" => 1])->order(array('releasetime' => 'DESC'))->paginate(10);
-        $this->assign("recommend", $recommend);
+        $list = [];
+        foreach ($data as $row) {
+            $list[] = [
+                'id' => $row['id'],
+                'region' => $row['region'],
+                'measurearea' => $row['measurearea'],
+                'releasetime' => $row['releasetime'],
+                'plantrent' => $row['plantrent'],
+                'newolddegree' => $row['newolddegree'],
+                'name' => $row['name'],
+                'tel' => $row['tel'],
+                'detail' => $row['detail'],
+                'tag' => $row['tag'],
+                'imgs' => $row['imgs'] ? explode(',', $row['imgs'])[0] : '',
+                'buildingname' => $row['buildingname'],
+                'address' => $row['address'],
+                'managementfee' => $row['managementfee'],
+                'decoration' => $row['decoration'],
+                'city' => $row['city'],
+                'area' => $row['area'],
+                'type' => $row['type'],
+                'title' => $row['title']];
+        }
+        $page = $data->render();
+        $recommend = Db::name('officebuilding')
+            ->where(["type" => 1])->order(array('releasetime' => 'DESC'))
+            ->paginate(10);
         $new = Db::name('officebuilding')->order(array('releasetime' => 'DESC'))->paginate(10);
-        $this->assign("new", $new);
-        $hot = Db::name('officebuilding')->where(["type" => 2])->order(array('releasetime' => 'DESC'))->paginate(10);
-        $this->assign("hot", $hot);
-
+        $hot = Db::name('officebuilding')->where(["type" => 2])
+            ->order(array('releasetime' => 'DESC'))->paginate(10);
+        $this->assign([
+            'recommend' => $recommend,
+            'new' => $new,
+            'hot' => $hot,
+            'list' => $list,
+            'page' => $page,
+            'cityInfo' => $cityInfo,
+            'areaInfo' => $areaInfo,
+            'cityList' => $cityList
+        ]);
         return $this->fetch('officebuilding');
 
     }

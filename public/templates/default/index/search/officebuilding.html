@@ -591,10 +591,11 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
 
         <a href="/index/search/offbuilddetail?id={$data.id}" target="_blank">
             <div class="list-item" link="/index/search/offbuilddetail?id={$data.id}">
-                <img src="{$data.imgs}" alt="{$data.title}" class="item-img" width="150" height="115"/>
+                <img src="{$data.imgs}" alt="{$data.title}" class="item-img"
+                     width="150" height="115"/>
                 <dl class="item-info">
                     <dt class="item-title" title="{$data.title}">
-                     {$data.title}
+                        {$data.title}
                     </dt>
                     <dd>
                         <span>{$data.buildingname}</span>
@@ -618,8 +619,11 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
         </a>
 
         {/volist}
+
         <div id="page">
-            {$list->render()|html_entity_decode}
+            {if !empty($page)}
+                {$page|raw}
+            {/if}
         </div>
     </div>
     <div class="leftList">
@@ -845,7 +849,7 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
                                     </div>
                                 </div>
                             </div>
-                            <script type="text/javascript" src="/public/static/index/js/rolljs.js"></script>
+                            <script type="text/javascript" src="/static/index/js/rolljs.js"></script>
                         </div>
                     </div>
                 </div>
