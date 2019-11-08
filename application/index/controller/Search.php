@@ -54,6 +54,7 @@ class Search extends Homebase
         $this->assign("cityList", $cityList);
 
         $this->assign("list", $list);
+
         $recommend = Db::name('workshop')->where(["type" => 1])->order(array('releasetime' => 'DESC'))->paginate(10);
         $this->assign("recommend", $recommend);
         $floor1 = Db::name('workshop')->where(["floor" => 1])->order(array('releasetime' => 'DESC'))->paginate(10);
@@ -92,6 +93,7 @@ class Search extends Homebase
     {
         $data = $this->request->param();
         $city = isset($_COOKIE['city']) ? $_COOKIE['city'] : 8;
+//        dump($city);die;
         $cityInfo = Db::name('city')->where('id', 'in', $city)->select();
         $areaInfo = Db::name('area')->where('parentId', 'in', $city)->select();
         $cityList = Db::name('city')->where('id', 'not in', $city)->select();
@@ -108,6 +110,7 @@ class Search extends Homebase
         $list = Db::name('officebuilding')->where('id', 'in', $id_str)->order(array('releasetime' => 'DESC'))->paginate(2, false, [
             'query' => $this->request->param(),//不丢失已存在的url参数
         ]);
+//        dump($list);die;
         $this->assign("cityInfo", $cityInfo);
         $this->assign("areaInfo", $areaInfo);
         $this->assign("cityList", $cityList);
