@@ -622,7 +622,7 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
 
         <div id="page">
             {if !empty($page)}
-                {$page|raw}
+            {$page|raw}
             {/if}
         </div>
     </div>
@@ -635,13 +635,13 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
                 {volist name="hot" id="data"}
                 <?php $sz_img = json_decode($list[0]['imgs']); $sz_img = $sz_img[0]; ?>
                 <li><a class="clearfix" href="/index/search/offbuilddetail?id={$data.id}" target="_blank"> <img
-                        class="hotImg" src="{$sz_img}"/>
+                        class="hotImg" src="{$data.imgs}"/>
                     <div class="hotInfo">
-                        <div class="hotName one" title="正中时代">
-                            正中时代
+                        <div class="hotName one" title="{$data.title}">
+                            {$data.title}
                         </div>
-                        <p class="one">￥80元/m&sup2;.月起</p>
-                        <span class="one"> 龙岗区 龙岗中心城</span>
+                        <p class="one">￥{$data.managementfee}元/m&sup2;.月起</p>
+                        <span class="one"> {$data.address}</span>
                     </div>
                 </a></li>
                 {/volist}
@@ -656,13 +656,13 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
                 {volist name="new" id="data"}
                 <?php $sz_img = json_decode($list[0]['imgs']); $sz_img = $sz_img[0]; ?>
                 <li><a class="clearfix" href="/index/search/offbuilddetail?id={$data.id}" target="_blank"> <img
-                        class="hotImg" src="{$sz_img}"/>
+                        class="hotImg" src="{$data.imgs}"/>
                     <div class="hotInfo">
-                        <div class="hotName one" title="花样年华大厦">
-                            花样年华大厦
+                        <div class="hotName one" title="{$data.title}">
+                            {$data.title}
                         </div>
-                        <p class="one">￥60元/m&sup2;.月起</p>
-                        <span class="one"> 龙岗区 龙岗中心城</span>
+                        <p class="one">￥{$data.managementfee}元/m&sup2;.月起</p>
+                        <span class="one"> {$data.address}</span>
                     </div>
                 </a></li>
                 {/volist}
@@ -685,169 +685,23 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
                         <div id="demo">
                             <div id="indemo">
                                 <div id="demo1">
-                                    {volist name="recommend" id="data" offset="0" length="3" mod="3" empty="$empty"
-                                    key="i"}
+                                    {volist name="recommend" id="data" offset="0" length="10" mod="3" empty="$empty" key="i"}
                                     <?php $sz_img = json_decode($list[0]['imgs']); $sz_img = $sz_img[0]; ?>
                                     <div class="right_p_one">
                                         <div class="right_p_img">
                                             <a href="/index/search/offbuilddetail?id={$data.id}" target="_blank"><img
-                                                    src="{$sz_img}"/></a>
+                                                    src="{$data.imgs}"/></a>
                                             <span class="imgmid"></span>
                                         </div>
                                         <div class="right_p_title">
                                             <a href="/index/search/offbuilddetail?id={$data.id}" target="_blank">
-                                                观澜环观南路牛湖收...</a>
+                                                {$data.title}</a>
                                         </div>
                                     </div>
                                     {/volist}
                                 </div>
                             </div>
                             <div id="demo2">
-                                <div class="right_p_one">
-                                    <div class="right_p_img">
-                                        <a href="/index/search/offbuilddetail?id={$data.id}" target="_blank"><img
-                                                src="./深圳写字楼_深圳写字楼出租_深圳写字楼招租-【深圳886写字楼网】_files/201709041929466831.jpg"/></a>
-                                        <span class="imgmid"></span>
-                                    </div>
-                                    <div class="right_p_title">
-                                        <a href="/index/search/offbuilddetail?id={$data.id}" target="_blank">龙岗中心城地标级物业...</a>
-                                    </div>
-                                </div>
-                                <div class="right_p_one">
-                                    <div class="right_p_img">
-                                        <a href="/index/search/offbuilddetail?id={$data.id}" target="_blank"><img
-                                                src="./深圳写字楼_深圳写字楼出租_深圳写字楼招租-【深圳886写字楼网】_files/201709041929459145.jpg"/></a>
-                                        <span class="imgmid"></span>
-                                    </div>
-                                    <div class="right_p_title">
-                                        <a href="/index/search/offbuilddetail?id={$data.id}" target="_blank">地铁口旁精装写字楼
-                                            ...</a>
-                                    </div>
-                                </div>
-                                <div class="right_p_one">
-                                    <div class="right_p_img">
-                                        <a href="/index/search/offbuilddetail?id={$data.id}" target="_blank"><img
-                                                src="./深圳写字楼_深圳写字楼出租_深圳写字楼招租-【深圳886写字楼网】_files/201709041929424113.jpg"/></a>
-                                        <span class="imgmid"></span>
-                                    </div>
-                                    <div class="right_p_title">
-                                        <a href="/index/search/offbuilddetail?id={$data.id}" target="_blank">满京华盈丰中心,地铁...</a>
-                                    </div>
-                                </div>
-                                <div class="right_p_one">
-                                    <div class="right_p_img">
-                                        <a href="/index/search/offbuilddetail?id={$data.id}" target="_blank"><img
-                                                src="./深圳写字楼_深圳写字楼出租_深圳写字楼招租-【深圳886写字楼网】_files/201709041929393513.jpg"/></a>
-                                        <span class="imgmid"></span>
-                                    </div>
-                                    <div class="right_p_title">
-                                        <a href="/index/search/offbuilddetail?id={$data.id}" target="_blank">龙年大厦130平
-                                            近...</a>
-                                    </div>
-                                </div>
-                                <div class="right_p_one">
-                                    <div class="right_p_img">
-                                        <a href="/index/search/offbuilddetail?id={$data.id}" target="_blank"><img
-                                                src="./深圳写字楼_深圳写字楼出租_深圳写字楼招租-【深圳886写字楼网】_files/201709041929365290.jpg"/></a>
-                                        <span class="imgmid"></span>
-                                    </div>
-                                    <div class="right_p_title">
-                                        <a href="/index/search/offbuilddetail?id={$data.id}" target="_blank">房东直租龙岗写字楼招...</a>
-                                    </div>
-                                </div>
-                                <div class="right_p_one">
-                                    <div class="right_p_img">
-                                        <a href="/index/search/offbuilddetail?id={$data.id}" target="_blank"><img
-                                                src="./深圳写字楼_深圳写字楼出租_深圳写字楼招租-【深圳886写字楼网】_files/201709041929348620.jpg"/></a>
-                                        <span class="imgmid"></span>
-                                    </div>
-                                    <div class="right_p_title">
-                                        <a href="/index/search/offbuilddetail?id={$data.id}" target="_blank">全新装修！！龙城广场...</a>
-                                    </div>
-                                </div>
-                                <div class="right_p_one">
-                                    <div class="right_p_img">
-                                        <a href="/index/search/offbuilddetail?id={$data.id}" target="_blank"><img
-                                                src="./深圳写字楼_深圳写字楼出租_深圳写字楼招租-【深圳886写字楼网】_files/201709041929322373.jpg"/></a>
-                                        <span class="imgmid"></span>
-                                    </div>
-                                    <div class="right_p_title">
-                                        <a href="/index/search/offbuilddetail?id={$data.id}" target="_blank">超抵价格，限时抢够，...</a>
-                                    </div>
-                                </div>
-                                <div class="right_p_one">
-                                    <div class="right_p_img">
-                                        <a href="/index/search/offbuilddetail?id={$data.id}" target="_blank"><img
-                                                src="./深圳写字楼_深圳写字楼出租_深圳写字楼招租-【深圳886写字楼网】_files/201709041929296026.jpg"/></a>
-                                        <span class="imgmid"></span>
-                                    </div>
-                                    <div class="right_p_title">
-                                        <a href="/index/search/offbuilddetail?id={$data.id}" target="_blank">龙年大厦360平精美...</a>
-                                    </div>
-                                </div>
-                                <div class="right_p_one">
-                                    <div class="right_p_img">
-                                        <a href="/index/search/offbuilddetail?id={$data.id}" target="_blank"><img
-                                                src="./深圳写字楼_深圳写字楼出租_深圳写字楼招租-【深圳886写字楼网】_files/201709041929266647.jpg"/></a>
-                                        <span class="imgmid"></span>
-                                    </div>
-                                    <div class="right_p_title">
-                                        <a href="/index/search/offbuilddetail?id={$data.id}" target="_blank">龙岗万科广场商务公寓...</a>
-                                    </div>
-                                </div>
-                                <div class="right_p_one">
-                                    <div class="right_p_img">
-                                        <a href="/index/search/offbuilddetail?id={$data.id}" target="_blank"><img
-                                                src="./深圳写字楼_深圳写字楼出租_深圳写字楼招租-【深圳886写字楼网】_files/201709041929247137.jpg"/></a>
-                                        <span class="imgmid"></span>
-                                    </div>
-                                    <div class="right_p_title">
-                                        <a href="/index/search/offbuilddetail?id={$data.id}" target="_blank">龙年大厦复式结构全新...</a>
-                                    </div>
-                                </div>
-                                <div class="right_p_one">
-                                    <div class="right_p_img">
-                                        <a href="/index/search/offbuilddetail?id={$data.id}" target="_blank"><img
-                                                src="./深圳写字楼_深圳写字楼出租_深圳写字楼招租-【深圳886写字楼网】_files/201709041929166069.jpg"/></a>
-                                        <span class="imgmid"></span>
-                                    </div>
-                                    <div class="right_p_title">
-                                        <a href="/index/search/offbuilddetail?id={$data.id}" target="_blank">高档写字楼
-                                            带办公隔...</a>
-                                    </div>
-                                </div>
-                                <div class="right_p_one">
-                                    <div class="right_p_img">
-                                        <a href="/index/search/offbuilddetail?id={$data.id}" target="_blank"><img
-                                                src="./深圳写字楼_深圳写字楼出租_深圳写字楼招租-【深圳886写字楼网】_files/201709041929136368.jpg"/></a>
-                                        <span class="imgmid"></span>
-                                    </div>
-                                    <div class="right_p_title">
-                                        <a href="/index/search/offbuilddetail?id={$data.id}" target="_blank">风临国际
-                                            复试打通共...</a>
-                                    </div>
-                                </div>
-                                <div class="right_p_one">
-                                    <div class="right_p_img">
-                                        <a href="/index/search/offbuilddetail?id={$data.id}" target="_blank"><img
-                                                src="./深圳写字楼_深圳写字楼出租_深圳写字楼招租-【深圳886写字楼网】_files/201709041929103044.jpg"/></a>
-                                        <span class="imgmid"></span>
-                                    </div>
-                                    <div class="right_p_title">
-                                        <a href="/index/search/offbuilddetail?id={$data.id}" target="_blank">龙岗吉祥站，风临国际...</a>
-                                    </div>
-                                </div>
-                                <div class="right_p_one">
-                                    <div class="right_p_img">
-                                        <a href="/index/search/offbuilddetail?id=21710" target="_blank"><img
-                                                src="./深圳写字楼_深圳写字楼出租_深圳写字楼招租-【深圳886写字楼网】_files/201709041929074523.jpg"/></a>
-                                        <span class="imgmid"></span>
-                                    </div>
-                                    <div class="right_p_title">
-                                        <a href="/index/search/offbuilddetail?id=21710" target="_blank">维百盛大厦
-                                            物业整层...</a>
-                                    </div>
-                                </div>
                             </div>
                             <script type="text/javascript" src="/static/index/js/rolljs.js"></script>
                         </div>

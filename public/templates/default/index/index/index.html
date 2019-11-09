@@ -87,7 +87,7 @@
     <div class="w960 f12">
         <div class="nav_bar_left fl">
             当前城市：
-            <span>{$cityInfo[0]['name']}</span>
+            <span>{$cityInfo.name}</span>
             <em>|</em>切换城市：
             {volist name="cityList" id="data"}
             <a href="javascript:document.cookie = 'city={$data.id};path=/;';location.reload();">{$data.name}</a>
@@ -964,15 +964,14 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
                     </div>
                     <div id="huobao_cont">
                         {volist name="hot" id="data"}
-                        <?php $hot_img = $data['imgs']; $hot_img = $hot_img[0]; ?>
                         <div class="hb_one">
                             <div class="hb_one_img">
                                 <a href="/index/search/workshopdetail?id={$data.id}" target="_blank"><img
-                                        src="{$hot_img}" width="134px" height="114px"/></a>
+                                        src="{$data.imgs}" width="134px" height="114px"/></a>
                                 <span class="imgmid"></span>
                             </div>
                             <div class="hb_one_text">
-                                <strong><a href="/index/search/workshopdetail?id={$data.id}" target="_blank">{$data.name}</a></strong>
+                                <strong><a href="/index/search/workshopdetail?id={$data.id}" target="_blank">{$data.title}</a></strong>
                                 <span> {$data.detail}</span>
                             </div>
                         </div>
@@ -994,16 +993,15 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
                 <div id="indemo">
                     <div id="demo1">
                         {volist name="recommend" id="data"}
-                        <?php $recommend_img = $data['imgs']; $recommend_img = $recommend_img[0]; ?>
                         <div class="right_p_one">
                             <div class="right_p_img">
                                 <a href="/index/search/workshopdetail?id={$data.id}" target="_blank"><img
-                                        src="{$recommend_img}"/></a>
+                                        src="{$data.imgs}"/></a>
                                 <span class="imgmid"></span>
                             </div>
                             <div class="right_p_title">
-                                <a href="/index/search/workshopdetail?city={$cityInfo[0]['id']}&id={$data.id}"
-                                   target="_blank">{$data.name}...</a>
+                                <a href="/index/search/workshopdetail?city={$cityInfo.id}&id={$data.id}"
+                                   target="_blank">{$data.title}...</a>
                             </div>
                         </div>
                         {/volist}
@@ -1018,15 +1016,18 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
 <div class="W960 link slideTxtBox1" id="demoContent">
     <div class="top hd">
         <div class="FL">
-            <a href="javascript:;" id="cc0" class="hov">深圳分站</a>
-            {volist name="cityInfo" id="data"}
+            <a href="javascript:;" id="cc0" class="hov">{$cityInfo.name}分站</a>
+            {volist name="cityList" id="data"}
             <a href="javascript:;" id="cc1">{$data.name}分站</a>
             {/volist}
         </div>
     </div>
-    <p class="infoList0" id="qlist0" style="display: block;"> {volist name="areaInfo" id="data"}<a
-            href="/index/search/workshop?city={$cityInfo[0]['id']}&area={$data.id}" target="_blank"
-            title="{$data.name}">{$data.name}厂房出租</a>{/volist} </p>
+    <p class="infoList0" id="qlist0" style="display: block;">
+        {volist name="areaInfo" id="data"}<a
+            href="/index/search/workshop?city={$cityInfo.id}&area={$data.id}" target="_blank"
+            title="{$data.name}">{$data.name}厂房出租</a>
+        {/volist}
+    </p>
     <p class="infoList1" id="qlist1" style="display: none;"> {volist name="areaInfo" id="data"}<a
             href="/index/search/workshop?city={$cityInfo[0]['id']}&area={$data.id}" target="_blank"
             title="{$data.name}">{$data.name}厂房出租</a>{/volist} </p>

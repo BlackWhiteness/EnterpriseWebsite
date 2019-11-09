@@ -110,10 +110,40 @@ class Search extends Homebase
         $data = Db::name('officebuilding')->where('id', 'in', $id_str)->order(array('releasetime' => 'DESC'))
             ->paginate(10, false, ['query' => $this->request->param(),//不丢失已存在的url参数
             ]);
+        $page = $data->render();
+        $recommend = Db::name('officebuilding')
+            ->where(["type" => 1])->order(array('releasetime' => 'DESC'))
+            ->paginate(10);
+        $new = Db::name('officebuilding')->order(array('releasetime' => 'DESC'))
+            ->limit(10)->select();
+        $hot = Db::name('officebuilding')->where(["type" => 2])
+            ->order(array('releasetime' => 'DESC'))->limit(10)->select();
 
-        $list = [];
+        $this->assign([
+            'recommend' => $this->formatOffice($recommend),
+            'new' => $this->formatOffice($new),
+            'hot' => $this->formatOffice($hot),
+            'list' => $this->formatOffice($data),
+            'page' => $page,
+            'cityInfo' => $cityInfo,
+            'areaInfo' => $areaInfo,
+            'cityList' => $cityList,
+            'empty' => '<span class="empty">没有数据</span>'
+        ]);
+        return $this->fetch('officebuilding');
+
+    }
+
+    /**
+     * 格式化写字楼用于列表展示
+     * @param $data
+     * @return array
+     */
+    public function formatOffice($data)
+    {
+        $rtn = [];
         foreach ($data as $row) {
-            $list[] = [
+            $rtn[] = [
                 'id' => $row['id'],
                 'region' => $row['region'],
                 'measurearea' => $row['measurearea'],
@@ -134,25 +164,7 @@ class Search extends Homebase
                 'type' => $row['type'],
                 'title' => $row['title']];
         }
-        $page = $data->render();
-        $recommend = Db::name('officebuilding')
-            ->where(["type" => 1])->order(array('releasetime' => 'DESC'))
-            ->paginate(10);
-        $new = Db::name('officebuilding')->order(array('releasetime' => 'DESC'))->paginate(10);
-        $hot = Db::name('officebuilding')->where(["type" => 2])
-            ->order(array('releasetime' => 'DESC'))->paginate(10);
-        $this->assign([
-            'recommend' => $recommend,
-            'new' => $new,
-            'hot' => $hot,
-            'list' => $list,
-            'page' => $page,
-            'cityInfo' => $cityInfo,
-            'areaInfo' => $areaInfo,
-            'cityList' => $cityList
-        ]);
-        return $this->fetch('officebuilding');
-
+        return $rtn;
     }
 
     public function offbuilddetail()
