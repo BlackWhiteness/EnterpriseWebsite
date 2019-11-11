@@ -524,8 +524,8 @@
     <div class="FL LH24 marginL20" style="margin-top:37px;">
         <div class="m_city fl" style="position:relative;">
             <div id="change_city">
-                <font color="#D90700" style="font-
-size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityInfo[0]['name']}</strong></font>
+                <font color="#D90700" style="font-size:18px;"><strong class="c303"
+                                                                      style="font-size:18px; color:#D90700;">{$cityInfo[0]['name']}</strong></font>
                 <a class="F12 cGray" href="javascript:void(0);" onclick="javascript:ChangeCity(1);">[切换城市]</a>
             </div>
             <div class="qhcity_box" id="popwindow"
@@ -786,7 +786,9 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
                     <div class="container">
                         <div class="nav">
                             <ul>
-                                <li class="current"><a href="/" class="menubox"><span>首页</span></a></li>
+                                <li class="current">
+                                    <a href="/" class="menubox"><span>首页</span></a>
+                                </li>
                                 <li class=""><a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1"
                                                 class="menubox"><span>厂房出租</span></a></li>
                                 <li class=""><a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1"

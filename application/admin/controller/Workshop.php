@@ -63,6 +63,7 @@ class Workshop extends Adminbase
     {
         if ($this->request->isPost()) {
             $data = $this->request->param();
+
             if (isset($data['imgs'])) {
                 $data['imgs'] = json_encode($data['imgs']);
             }
