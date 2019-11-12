@@ -225,7 +225,7 @@ UL, P{PADDING: 0px; MARGIN: 0px;}
 
 
 #huobao {width:1000px; float:left; overflow:hidden;}
-#huobao_cont {width:942px; float:left; padding:8px 8px 17px; border:1px solid #d9d9d9; border-top:0; overflow:hidden;}
+#huobao_cont {width:982px; float:left; padding:8px 8px 17px; border:1px solid #d9d9d9; border-top:0; overflow:hidden;}
 .hb_one {width:446px; height:115px; float:left; padding:25px 9px 22px 0; margin:0 8px; display:inline; border-bottom:1px solid #d9d9d9; overflow:hidden;}
 .hb_one_img {width:134px; height:114px; float:left; margin:0 12px 1px 0; display:inline; text-align:center; overflow:hidden;}
 .hb_one_img img {vertical-align:middle;}
@@ -237,7 +237,7 @@ UL, P{PADDING: 0px; MARGIN: 0px;}
 
 
 #tuijian {width:1000px;  overflow:hidden; margin:10px auto;}
-#tuijian_cont {width:944px; float:left; border:1px solid #d9d9d9; border-top:0; padding:6px 7px; background-color:#f0f0f0; overflow:hidden;}
+#tuijian_cont {width:984px; float:left; border:1px solid #d9d9d9; border-top:0; padding:6px 7px; background-color:#f0f0f0; overflow:hidden;}
 #white_bg {width:918px; height:151px; float:left; background-color:#fff; padding:12px 13px 10px; overflow:hidden;}
 #demo {width:918px; overflow:hidden; float:left;}
 #indemo {float:left; width:800%;}
