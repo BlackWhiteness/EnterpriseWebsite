@@ -64,8 +64,11 @@ class Workshop extends Adminbase
         if ($this->request->isPost()) {
             $data = $this->request->param();
 
-            if (isset($data['imgs'])) {
-                $data['imgs'] = json_encode($data['imgs']);
+            //图片处理
+            if (!empty($data['imgs'])) {
+                $data['imgs'] = implode(',', $data['imgs']);
+            } else {
+                $data['imgs'] = '';
             }
             //$result = $this->validate($data, 'Menu.add');var_dump($result);exit;
             if (!$data) {
