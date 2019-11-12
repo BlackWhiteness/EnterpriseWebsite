@@ -21,10 +21,13 @@ use \think\Model;
 
 class Officebuilding extends Model
 {
+    protected $type = [
+        'imgs' => 'serialize',
+    ];
 
-	  public function del($id)
+    public function del($id)
     {
-        $id = (int) $id;
+        $id = (int)$id;
         if (empty($id)) {
             $this->error = '请指定需要删除的ID！';
             return false;

@@ -41,6 +41,7 @@ class OfficeBuildFormat
     public function formatList($data)
     {
         $rtn = [];
+
         foreach ($data as $row) {
             $rtn[] = [
                 'id' => $row['id'],
@@ -53,7 +54,7 @@ class OfficeBuildFormat
                 'tel' => $row['tel'],
                 'detail' => $row['detail'],
                 'tag' => $row['tag'],
-                'imgs' => $row['imgs'] ? explode(',', $row['imgs'])[0] : '',
+                'imgs' => $row['imgs'][0],
                 'buildingname' => $row['buildingname'],
                 'address' => $row['address'],
                 'managementfee' => $row['managementfee'],

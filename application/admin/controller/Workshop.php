@@ -64,12 +64,6 @@ class Workshop extends Adminbase
         if ($this->request->isPost()) {
             $data = $this->request->param();
 
-            //图片处理
-            if (!empty($data['imgs'])) {
-                $data['imgs'] = implode(',', $data['imgs']);
-            } else {
-                $data['imgs'] = '';
-            }
             //$result = $this->validate($data, 'Menu.add');var_dump($result);exit;
             if (!$data) {
                 return $this->error($data);
@@ -106,6 +100,7 @@ class Workshop extends Adminbase
             } else {
                 $data['status'] = 1;
             }
+//            dump($data);die;
             //$result = $this->validate($data, 'Menu.edit');
             if (!$data) {
                 return $this->error($result);

@@ -122,6 +122,13 @@
                         <button type="button" class="layui-btn" id="test2">多图片上传</button>
                         <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
                             预览图：
+                            {if condition="$data.imgs"}
+                            <div class="layui-upload-list" id="demo3">
+                                {volist name="$data.imgs" id="vo"}
+                                <img src="{$vo}" class="layui-upload-img"/>
+                                {/volist}
+                            </div>
+                            {/if}
                             <div class="layui-upload-list" id="demo2"></div>
                         </blockquote>
                     </div>
