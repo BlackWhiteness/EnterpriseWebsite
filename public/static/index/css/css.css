@@ -253,7 +253,7 @@ UL, P{PADDING: 0px; MARGIN: 0px;}
 
 
 /*-- 内部链接 --*/
-.link{ border-top:2px solid #2D348E; background:#f7f7f7; text-align:left;}
+.link{ border-top:2px solid #009BE5; background:#f7f7f7; text-align:left;}
 .link .top{ height:42px; border-bottom:1px solid #dedede; line-height:42px; color:#999; font-size:14px;}
 .link .top .FL{ padding-left:5PX;}
 .link .top .FL a{ margin:0 5px; color:#999;}
