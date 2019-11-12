@@ -46,7 +46,7 @@ body{font:12px/180% Arial,Lucida,Verdana,"宋体",Helvetica,sans-serif;color:#33
 
 /* background */
 .shortcut,.shortcut .quickbtn .collect,.searchinfo,.searchinfo #options dt b,.searchinfo #inputbox input,.searchinfo .hover dt b,.navbox,.nav li,.nav li a.menubox,.nav li a.menubox span,.othernav li a,.othernav li a span{}
-#shutAhover{ background-color:#FFF;}
+#shutAhover,.current{ background-color:#FFF;}
 /* layout */
 .container{width:1000px;margin:0 auto;}
 
@@ -184,7 +184,7 @@ UL, P{PADDING: 0px; MARGIN: 0px;}
 #zuixin {width:1000px; float:left; background:url(../img/shadow_bg.jpg) repeat-x left 355px; overflow:hidden;}
 .part_title {width:1000px; height:34px; line-height:34px; padding:2px 1px 0 9px; float:left; background:url(../img/title_bg_1.jpg) repeat-x; overflow:hidden;}
 .part_title strong {width:110px; height:34px; float:left; background:url(../img/title_strong_bg.jpg) no-repeat; text-align:center; font-size:14px; color:#d00; overflow:hidden;}
-#zuixin_cont {width:942px; height:999px; float:left; border:1px solid #d9d9d9; border-top:0; padding:0 8px 6px; overflow:hidden;}
+#zuixin_cont {width:982px; height:999px; float:left; border:1px solid #d9d9d9; border-top:0; padding:0 8px 6px; overflow:hidden;}
 .zx_one {width:298px; height:290px; float:left; margin:17px 8px 26px; display:inline; overflow:hidden;}
 .zx_one_title {width:281px; line-height:30px; float:left; padding:0 6px 0 11px; font-size:14px; font-weight:bold; background-color: #00A2E9; color:#fff; overflow:hidden;}
 .zx_one_title a.more {float:right; color:#fff; font-weight:normal; font-size:12px; font-family:'宋体';}
