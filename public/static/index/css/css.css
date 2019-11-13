@@ -273,7 +273,7 @@ ins, a {
 }
 
 /*-- 友情链接 --*/
-.link_list{width: 985px;margin: 0 auto;padding-left: 15px;background: #F9F9F9;line-height: 24px;padding-top: 6px;padding-bottom: 4px;border-bottom: #E0E0E0 1px solid;border-top: #E0E0E0 1px solid;overflow: hidden;}
+.link_list{width:985px;margin: 0 auto;padding-left: 15px;background: #F9F9F9;line-height: 24px;padding-top: 6px;padding-bottom: 4px;border-bottom: #E0E0E0 1px solid;border-top: #E0E0E0 1px solid;overflow: hidden;}
 .link_list span{ font-size: 14px; font-weight: bold;}
 .link_list span a{display: inline-block; padding-right:10px;font-size: 12px;font-weight: normal;width: 89px; line-height: 26px; text-align: left;color: #666; overflow: hidden;}
 .link_list span a:hover{ text-decoration: underline;}
