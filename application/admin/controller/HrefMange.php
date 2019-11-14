@@ -4,6 +4,7 @@ namespace app\admin\controller;
 
 use app\admin\model\HrefManage;
 use app\common\controller\Adminbase;
+use think\Request;
 
 
 /**
@@ -29,10 +30,10 @@ class HrefMange extends Adminbase
     public function index()
     {
         if ($this->request->isAjax()) {
-            $result = HrefManage::order(array('sort' => 'DESC'))
-                ->select()->toArray();
-            $total = count($result);
-            $result = array("code" => 0, "count" => $total, "data" => $result);
+            $result = HrefManage::order(array('sort' => 'DESC'))->
+                paginate(10);
+            $total = $result->total();
+            $result = array("code" => 0, "count" => $total, "data" => $result->items());
             return json($result);
         }
         return $this->fetch();

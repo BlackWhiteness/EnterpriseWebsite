@@ -31,9 +31,10 @@ class AdMange extends Adminbase
     {
         if ($this->request->isAjax()) {
             $result = AdManage::order(array('id' => 'DESC','sort' => 'DESC'))
-                ->select()->toArray();
+                ->paginate(10);
+            $total = $result->total();
             $total = count($result);
-            $result = array("code" => 0, "count" => $total, "data" => $result);
+            $result = array("code" => 0, "count" => $total, "data" => $result->items());
             return json($result);
         }
         return $this->fetch();
