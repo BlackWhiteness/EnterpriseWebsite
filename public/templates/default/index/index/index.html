@@ -23,7 +23,7 @@
     }
 
     .w960 {
-        width: 960px;
+        width: 1000px;
         margin: 0 auto;
     }
 
@@ -532,7 +532,7 @@
                  style="z-index: 20; position: absolute; top: 40px; left: 20px; display: none; min-height:300px; position:relative;">
                 <div class="qhcity_close" onclick="javascript:ChangeCity
 ();">
-                    <img src="./深圳厂房出租_深圳厂房招租_深圳厂房出租网-_files/close.gif" alt="关闭" title="关闭"/>
+                    <img src="files/close.gif" alt="关闭" title="关闭"/>
                 </div>
                 <div class="qhcity_hot">
                     热门城市：
@@ -804,7 +804,7 @@
                                 <li class=""><a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1"
                                                 class="menubox"><span>私宅商铺</span></a></li>
                                 <li class=""><a href="/index/publish/customer"
-                                                class="menubox"><span>求租求购合</span></a></li>
+                                                class="menubox"><span>求租求购</span></a></li>
                                 
 
                             </ul>
@@ -890,18 +890,46 @@
                         {/volist}
                         <div style="clear:both"></div>
                         <div><img src="/static/index/img/bannergao.jpg" width="980" height="159" alt="" /></div>
+                        {volist name="newWorkShop" id="data"}
+                        <div class="zx_one">
+                            <div class="zx_one_title">
+                                <a class="more" href="javascript:"
+                                   onclick="workurl('/index/search/workshop',{$data['city']['id']})" target="_blank">更多&gt;&gt;</a>
+                                <a href="javascript:" onclick="workurl('/index/search/workshop',{$data['city']['id']})"
+                                   target="_blank">{$data['city']['name']}厂房出租</a>
+                            </div>
+                            <div class="zx_one_cont">
+                                <div class="zx_one_top">
+                                    <div class="zx_one_top_img">
+                                        <?php $sz_img = $data['workshop'][0]['imgs']; $sz_img = $sz_img[0]; ?>
+                                        <a href="/index/search/workshopdetail?id={$data['workshop'][0]['id']}"
+                                           target="_blank"><img src="{$sz_img}" width="130" height="103"/></a>
+                                        <span class="imgmid"></span>
+                                    </div>
+                                    <div class="zx_one_top_text">
+                                        <strong><a href="/index/search/workshopdetail?id={$data['workshop'][0]['id']}"
+                                                   target="_blank"> {$data[0]['title']}</a></strong>
+                                        <span> {$data['workshop'][0]['detail']}...</span>
+                                    </div>
+                                </div>
+                                <div class="zx_one_list">
+                                    <ul>
+                                        {volist name="data.workshop" id="v" offset="2" length="3" mod="3" empty="$empty"
+                                        key="i"}
+                                        <li><a href="javascript:"
+                                               onclick="workurl('/index/search/workshop',{$data['city']['id']})"
+                                               target="_blank">[{$data['city']['name']}厂房]</a> <a
+                                                href="/index/search/workshopdetail?id={$v.id}" target="_blank">{$v.title}</a>
+                                        </li>
+                                        {/volist}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        {/volist}
                   </div>
                 </div>
-                <div id="home_ad">
-                    <a href="/index/search/workshop?city={$cityInfo[0]['id']}&structure=2" target="_blank"><img
-                            src="/static/index/img/bt501.jpg" border="0" width="478" height="68"/></a>
-                    <a href="/index/search/workshop?city={$cityInfo[0]['id']}&floor=1" target="_blank"><img
-                            src="/static/index/img/bt502.jpg" border="0" width="478" height="68"/></a>
-                    <a href="/index/search/workshop?city={$cityInfo[0]['id']}&floor=3" target="_blank"><img
-                            src="/static/index/img/bt601.jpg" border="0" width="478" height="68"/></a>
-                    <a href="/index/search/workshop?city={$cityInfo[0]['id']}&floor=2" target="_blank"><img
-                            src="/static/index/img/bt602.jpg" border="0" width="478" height="68"/></a>
-                </div>
+                
                 <div id="huobao">
                     <div class="part_title">
                         <strong>火爆厂房</strong>
