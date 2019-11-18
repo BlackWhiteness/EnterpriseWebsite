@@ -875,7 +875,7 @@
                                 </div>
                                 <div class="zx_one_list">
                                     <ul>
-                                        {volist name="data.workshop" id="v" offset="2" length="3" mod="3" empty="$empty"
+                                        {volist name="data.workshop" id="v" offset="1" length="3" mod="3" empty="$empty"
                                         key="i"}
                                         <li><a href="javascript:"
                                                onclick="workurl('/index/search/workshop',{$data['city']['id']})"
@@ -1021,7 +1021,9 @@
                 title="点击这里给我发消息" style="VERTICAL-ALIGN: middle" alt="点击这里给我发消息" src="/static/index/img/pa"
                 border="0"/></a></span>
     </div>
-    <span style="float:left;"><a href="/" target="_blank">深圳厂房出租</a></span>
+    {volist name="href" id="data"}
+        <span style="float:left;"><a href="{$data.href}" target="_blank">{$data.title}</a></span>
+    {/volist}
 </div>
 <div id="footer1">
     <style>

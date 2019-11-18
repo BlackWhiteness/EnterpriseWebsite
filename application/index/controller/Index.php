@@ -2,6 +2,7 @@
 
 namespace app\index\controller;
 
+use app\admin\model\HrefManage;
 use app\common\controller\Homebase;
 use app\admin\model\Workshop as Workshop_Model;
 use app\admin\model\City as City_Model;
@@ -42,7 +43,7 @@ class Index extends Homebase
         $hot = Workshop_Model::where(array('type' => 2))->order(array('releasetime' => 'DESC'))->page(1, 6)->select()->toArray();
         $this->assign("hot", $hot);
         $recommend = Workshop_Model::where(array('type' => 1))->order(array('releasetime' => 'DESC'))->page(1, 10)->select()->toArray();
-
+        $href = HrefManage::order('sort', 'desc')->select()->toArray();
         $officeInstance = OfficeBuildFormat::getInstance();
         $this->assign([
             'recommend' => $officeInstance->formatList($recommend),
@@ -50,7 +51,8 @@ class Index extends Homebase
             'cityList' => $cityList,
             'areaInfo' => $areaInfo,
             'newWorkShop' => $newWorkShop,
-            "hot"=>$hot
+            "hot" => $hot,
+            'href' => $href
         ]);
         return $this->fetch();
     }
