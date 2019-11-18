@@ -96,7 +96,7 @@
             }
             ,done: function(res){console.log(res);
                 if(res.code == 1){
-                    $('form').append('<input type="hidden" name="imgs" value="' + res.photo + '"  autocomplete="off" placeholder="" class="layui-input">');
+                    $('form').append('<input type="hidden" name="pic_path" value="' + res.photo + '"  autocomplete="off" placeholder="" class="layui-input">');
                 }
 
                 //上传完毕
