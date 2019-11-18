@@ -823,7 +823,7 @@
 <table width="1000" align="center">
     <tbody>
     <tr align="center">
-        <td align="center"><a href="javascript:void(0)" target="_blank"><img src="/static/index/img/img_13.jpg"
+        <td align="center"><a href="javascript:void(0)" target="_blank"><img src="{$ad['top']['pic_path']}"
                                                                              width="1000" height="267"/></a></td>
     </tr>
     </tbody>
@@ -868,8 +868,8 @@
                                         <span class="imgmid"></span>
                                     </div>
                                     <div class="zx_one_top_text">
-                                        <strong><a href="/index/search/workshopdetail?id={$data['workshop'][0]['id']}"
-                                                   target="_blank"> {$data[0]['title']}</a></strong>
+                                        <strong>
+                                            <a href="/index/search/workshopdetail?id={$data['workshop'][0]['id']}" target="_blank"> {$data['workshop'][0]['title']}</a></strong>
                                         <span> {$data['workshop'][0]['detail']}...</span>
                                     </div>
                                 </div>

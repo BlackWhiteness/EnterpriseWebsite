@@ -2,6 +2,7 @@
 
 namespace app\index\controller;
 
+use app\admin\model\AdManage;
 use app\admin\model\HrefManage;
 use app\common\controller\Homebase;
 use app\admin\model\Workshop as Workshop_Model;
@@ -45,6 +46,22 @@ class Index extends Homebase
         $recommend = Workshop_Model::where(array('type' => 1))->order(array('releasetime' => 'DESC'))->page(1, 10)->select()->toArray();
         $href = HrefManage::order('sort', 'desc')->select()->toArray();
         $officeInstance = OfficeBuildFormat::getInstance();
+        $ad = AdManage::where('is_enable', '=', 1)->order(['code' => 'asc', 'sort' => 'desc'])->select();
+        $adList = [];
+        foreach ($ad as $row) {
+            $detail = [
+                'title' => $row->title,
+                'pic_path' => $row->pic_path,
+                'href' => $row->href
+            ];
+            if ($row->code == '001') {
+                $adList['top'] = $detail;
+            } elseif ($row->code == '002') {
+                $adList['mid_ad'][] = $detail;
+            } elseif ($row->code == '003') {
+                $adList['bottom_ad'][] = $detail;
+            }
+        }
         $this->assign([
             'recommend' => $officeInstance->formatList($recommend),
             'cityInfo' => $cityInfo,
@@ -52,7 +69,8 @@ class Index extends Homebase
             'areaInfo' => $areaInfo,
             'newWorkShop' => $newWorkShop,
             "hot" => $hot,
-            'href' => $href
+            'href' => $href,
+            'ad' => $adList
         ]);
         return $this->fetch();
     }
