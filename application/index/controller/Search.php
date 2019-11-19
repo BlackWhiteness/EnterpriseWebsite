@@ -187,4 +187,23 @@ class Search extends Homebase
         $this->assign("hot", $hot);
         return $this->fetch('offbuilddetail');
     }
+
+    public function ajaxSearchWs()
+    {
+        $data = $this->request->param();
+        $d = $this->Workshopsearch->searchDoc($data, 1, 10);
+        $ids = array();
+        if (count($d['hits']['hits'])) {
+            foreach ($d['hits']['hits'] as $value) {
+                array_push($ids, $value['_id']);
+            }
+        }
+        $id_str = implode(',', $ids);
+        $where['id'] = array('in', $id_str);
+        $list = Db::name('workshop')->where('id', 'in', $id_str)->order(array('releasetime' => 'DESC'))->paginate(2, false, [
+            'query' => $this->request->param(),//不丢失已存在的url参数
+        ]);
+
+        return json($list);
+    }
 }

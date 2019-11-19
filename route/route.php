@@ -13,4 +13,4 @@
 // | 全局路由
 // +----------------------------------------------------------------------
 //Route::get('/', '\app\index/Index@index');
-Route::get('test','app\index\controller\Index@test');
+Route::post('ajax_search_ws', 'app\index\controller\Search@ajaxSearchWs');

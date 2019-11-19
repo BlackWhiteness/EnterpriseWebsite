@@ -8,7 +8,7 @@
     <meta name="keywords" content="{:config('web_site_keywords')}"/>
     <meta name="description" content="{:config('web_site_description')}"/>
     <link rel="stylesheet" href="/static/index/css/css.css"/>
-    
+
     <script src="/static/index/js/share.js"></script>
     <link rel="stylesheet" href="/static/index/css/slide_share.css"/>
 </head>
@@ -830,15 +830,15 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
                                 <li class=""><a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1"
                                                 class="menubox"><span>土地</span></a></li>
                                 <li class=""><a href="/index/search/officebuilding?city={$cityInfo[0]['id']}"
-                                                       class="menubox"><span>写字楼</span></a></li>
+                                                class="menubox"><span>写字楼</span></a></li>
                                 <li class=""><a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1"
                                                 class="menubox"><span>园区招商</span></a></li>
                                 <li class=""><a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1"
                                                 class="menubox"><span>私宅商铺</span></a></li>
-                                
+
                                 <li class=""><a href="/index/publish/customer" class="menubox"
                                                 target="_blank"><span>求租求购</span></a></li>
-                                
+
                             </ul>
                         </div>
                     </div>
@@ -1014,42 +1014,159 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
         <dt>
             面积：
         </dt>
-        <dd>
-            <a class="current" href="/index/search/workshop?area=sz">不限</a>
-            <a href="/index/search/workshop?city={$cityInfo[0]['id']}&measurearea=0-500">500平米以下</a>
-            <a href="/index/search/workshop?city={$cityInfo[0]['id']}&measurearea=500-800">500-800平米</a>
-            <a href="/index/search/workshop?city={$cityInfo[0]['id']}&measurearea=800-1300">800-1300平米</a>
-            <a href="/index/search/workshop?city={$cityInfo[0]['id']}&measurearea=1300-2000">1300-2000平米</a>
-            <a href="/index/search/workshop?city={$cityInfo[0]['id']}&measurearea=2000-3000">2000-3000平米</a>
-            <a href="/index/search/workshop?city={$cityInfo[0]['id']}&measurearea=3000-5000">3000-5000平米</a>
-            <a href="/index/search/workshop?city={$cityInfo[0]['id']}&measurearea=5000-10000">5000-10000平米</a>
-            <a href="/index/search/workshop?city={$cityInfo[0]['id']}&measurearea=10000">10000平米以上</a>
+        <dd id="mianji">
+            <a class="current" href="javascript:void(0)" value="0">不限</a>
+            <a href="javascript:void(0)" value="0-500">500平米以下</a>
+            <a href="javascript:void(0)" value="500-800">500-800平米</a>
+            <a href="javascript:void(0)" value="800-1300">800-1300平米</a>
+            <a href="javascript:void(0)" value="1300-2000">1300-2000平米</a>
+            <a href="javascript:void(0)" value="2000-3000">2000-3000平米</a>
+            <a href="javascript:void(0)" value="3000-5000">3000-5000平米</a>
+            <a href="javascript:void(0)" value="5000-10000">5000-10000平米</a>
+            <a href="javascript:void(0)" value="10000">10000平米以上</a>
         </dd>
     </dl>
     <dl>
         <dt>
             楼层：
         </dt>
-        <dd>
-            <a class="current" href="/index/search/workshop?area=sz">不限</a>
-            <a href="/index/search/workshop?city={$cityInfo[0]['id']}&floor=1">一楼厂房</a>
-            <a href="/index/search/workshop?city={$cityInfo[0]['id']}&floor=2">二楼以上</a>
-            <a href="/index/search/workshop?city={$cityInfo[0]['id']}&floor=3">独院厂房</a>
-            <a href="/index/search/workshop?city={$cityInfo[0]['id']}&floor=4">独栋厂房</a>
+        <dd id="floor">
+            <a class="current" href="javascript:void(0)" value="0">不限</a>
+            <a href="javascript:void(0)" value="1">一楼厂房</a>
+            <a href="javascript:void(0)" value="2">二楼以上</a>
+            <a href="javascript:void(0)" value="3">独院厂房</a>
+            <a href="javascript:void(0)" value="4">独栋厂房</a>
         </dd>
     </dl>
     <dl>
         <dt>
             结构：
         </dt>
-        <dd>
-            <a class="current" href="/index/search/workshop?area=sz">不限</a>
-            <a href="/index/search/workshop?city={$cityInfo[0]['id']}&structure=1">标准厂房</a>
-            <a href="/index/search/workshop?city={$cityInfo[0]['id']}&structure=3">钢构结构厂房</a>
-            <a href="/index/search/workshop?city={$cityInfo[0]['id']}&structure=2">简易厂房(铁皮房)</a>
-            <a href="/index/search/workshop?city={$cityInfo[0]['id']}&structure=4">各类型仓库(单层仓库/多层仓库)</a>
+        <dd id="struck">
+            <a class="current" href="javascript:void(0)" value="0">不限</a>
+            <a href="javascript:void(0)" value="1">标准厂房</a>
+            <a href="javascript:void(0)" value="2">钢构结构厂房</a>
+            <a href="javascript:void(0)" value="3">简易厂房(铁皮房)</a>
+            <a href="javascript:void(0)" value="4">各类型仓库(单层仓库/多层仓库)</a>
         </dd>
     </dl>
+    <script>
+        //处理点击事件
+        $("#mianji a").click(function () {
+            var position = $("#mianji a").index(this);
+            $("#mianji a").attr("class", "");
+            $("#mianji a").eq(position).attr("class", 'current');
+            action();
+        });
+        $("#screen_area a").click(function () {
+            var position = $("#screen_area a").index(this);
+            $("#screen_area a").attr("class", "");
+            $("#screen_area a").eq(position).attr("class", 'current');
+            action();
+        });
+        $("#floor a").click(function () {
+            var position = $("#floor a").index(this);
+            $("#floor a").attr("class", "");
+            $("#floor a").eq(position).attr("class", 'current')
+            action();
+        });
+        $("#struck a").click(function () {
+            var position = $("#struck a").index(this);
+            $("#struck a").attr("class", "");
+            $("#struck a").eq(position).attr("class", 'current');
+            action();
+        });
+
+        function action() {
+            var measurearea = $("#mianji .current").attr('value'),
+                floor = $("#floor .current").attr('value'),
+                structure = $("#struck .current").attr('value'),
+                data = {};
+            if (measurearea != 0) {
+                data.measurearea = measurearea;
+            }
+            if (floor != 0) {
+                data.floor = floor;
+            }
+            if (structure != 0) {
+                data.structure = structure;
+            }
+            $.ajax({
+                type: "POST",
+                url: "/ajax_search_ws",
+                data: data,
+                success: function (result) {
+                    resultFilter(result);
+                }
+            });
+        }
+
+        function resultFilter(result){
+            $.each(result.data,function(index,row){
+
+            });
+        }
+
+
+
+
+
+
+        // <div class="list_one">
+        //     <div class="list_one_img">
+        // <?php $sz_img = json_decode($list[0]['imgs']); $sz_img = $sz_img[0]; ?>
+        // <a href="//index/search/workshopdetail?city={$cityInfo[0]['id']}&r=1&id=15590"
+        // target="_blank" title="办公室出租,整层厂房出租,独门独院_深圳厂房出租"> <img
+        // src="/static/index/img/201408201539437269.jpg"
+        // alt="办公室出租,整层厂房出租,独门独院_深圳厂房出租" border="0" width="146" height="130"/> </a>
+        //     <span class="imgmid"></span>
+        //     </div>
+        //     <div class="list_one_text">
+        //     <strong><a href="//index/search/workshopdetail?city={$cityInfo[0]['id']}&r=1&id=15590"
+        // target="_blank">办公室出租,整层厂房出租,独门独院</a></strong>
+        // <div class="cf_jianjie">
+        //     整层厂房带电梯,三层面积2000平米,有电梯。两栋办公楼三层/四层2000平米，独门独院.欢迎来电咨询。随时看房。
+        // </div>
+        // <div class="text_prm">
+        //     <span>联系人:<font style="color: #C60;font-weight:bold;">王生</font><img
+        // src="/static/index/img/jjr_rz.jpg"/></span>
+        //     <span>联系方式:<font
+        // style="color: #933;font-weight:bold;background: url(img/list2_icopho.jpg) no-repeat left center; padding-left:11px;">134-8076-0100</font></span>
+        // <span>发布时间:<font style="color: #639;font-weight:bold;">2019-08-22</font></span>
+        // </div>
+        // <div class="text_prm1" style="display:none">
+        //     <span style="border-color: #330;">独院厂房</span>
+        //     <span style="border-color: #C30;">提供租赁合同</span>
+        //     <span style="border-color: #660;">消防验收合格</span>
+        //     </div>
+        //     </div>
+        //     <div class="list_one_prm">
+        //     <p style="font-size:15px; font-weight:600;">龙岗区-横岗</p>
+        //     <p><span class="f16" style="color:#53160F;">20.00</span>元/㎡</p>
+        // <p>面积:<span class="f16">40000{$data.id}</span>㎡</p>
+        // <a class="cf_ckxq" href="/index/search/workshopdetail?id={$data.id}" target="_blank">查看详情</a>
+        //     </div>
+        //     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
     <style>
         #title_search {
             width: 840px;
@@ -1646,8 +1763,8 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
         <br/> 886厂房网- 电话:15914116601&nbsp;&nbsp;QQ:21814439&nbsp;E-mail:
         <a href="mailto:xiaoping2j@126.com">xiaoping2j@126.com</a>
     </div>
-    
-   
+
+
 </div>
 <div class="bdshare-slide-button-box bdshare-slide-style-r7" style="top: 250px; width: 0px; z-index: 99999; right: 0px;"
      data-bd-bind="1566556033721">

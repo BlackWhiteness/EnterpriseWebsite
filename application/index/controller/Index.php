@@ -20,6 +20,12 @@ class Index extends Homebase
         $this->City_Model = new City_Model;
     }
 
+    public function test(Request $request)
+    {
+        $param = $request->param();
+        return json($param);
+    }
+
     /**
      * 网站首页
      * @return mixed|string
