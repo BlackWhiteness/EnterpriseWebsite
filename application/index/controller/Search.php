@@ -4,6 +4,7 @@ namespace app\index\controller;
 
 use app\common\controller\Homebase;
 use app\admin\model\Workshop as Workshop_Model;
+use app\format\WorkShopFormat;
 use app\search\model\Workshopsearch as Workshopsearch;
 use app\search\model\Offbuildingsearch as Offbuildingsearch;
 use app\admin\model\City;
@@ -200,10 +201,14 @@ class Search extends Homebase
         }
         $id_str = implode(',', $ids);
         $where['id'] = array('in', $id_str);
-        $list = Db::name('workshop')->where('id', 'in', $id_str)->order(array('releasetime' => 'DESC'))->paginate(2, false, [
-            'query' => $this->request->param(),//不丢失已存在的url参数
+        $data = Db::name('workshop')
+            ->where('id', 'in', $id_str)
+            ->order(array('releasetime' => 'DESC'))
+            ->paginate(10);
+        return json([
+            'data'=>WorkShopFormat::getInstance()->formatList($data),
+            'page' => paginate($data)
         ]);
-
-        return json($list);
     }
+
 }

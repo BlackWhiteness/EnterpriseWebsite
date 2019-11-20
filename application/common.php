@@ -138,8 +138,8 @@ function isModuleInstall($moduleName)
  * 处理插件钩子
  * @param string $hook 钩子名称
  * @param mixed $params 传入参数
- * @param  boolean $is_return 是否返回（true:返回值，false:直接输入）
- * @param  bool   $once   只获取一个有效返回值
+ * @param boolean $is_return 是否返回（true:返回值，false:直接输入）
+ * @param bool $once 只获取一个有效返回值
  * @return void
  */
 function hook($hook, $params = [], $is_return = false, $once = false)
@@ -186,14 +186,14 @@ function get_addon_instance($name)
 
 /**
  * 数据签名认证
- * @param  array  $data 被认证的数据
+ * @param array $data 被认证的数据
  * @return string       签名
  */
 function data_auth_sign($data)
 {
     //数据类型检测
     if (!is_array($data)) {
-        $data = (array) $data;
+        $data = (array)$data;
     }
     ksort($data); //排序
     $code = http_build_query($data); //url编码并生成query字符串
@@ -204,12 +204,11 @@ function data_auth_sign($data)
 /**
  * select返回的数组进行整数映射转换
  *
- * @param array $map  映射关系二维数组  array(
+ * @param array $map 映射关系二维数组  array(
  *                                          '字段名1'=>array(映射关系数组),
  *                                          '字段名2'=>array(映射关系数组),
  *                                           ......
  *                                       )
- * @author 朱亚杰 <zhuyajie@topthink.net>
  * @return array
  *
  *  array(
@@ -217,13 +216,14 @@ function data_auth_sign($data)
  *      ....
  *  )
  *
+ * @author 朱亚杰 <zhuyajie@topthink.net>
  */
 function int_to_string(&$data, $map = array('status' => array(1 => '正常', -1 => '删除', 0 => '禁用', 2 => '未审核', 3 => '草稿')))
 {
     if ($data === false || $data === null) {
         return $data;
     }
-    $data = (array) $data;
+    $data = (array)$data;
     foreach ($data as $key => $row) {
         foreach ($map as $col => $pair) {
             if (isset($row[$col]) && isset($pair[$row[$col]])) {
@@ -236,8 +236,8 @@ function int_to_string(&$data, $map = array('status' => array(1 => '正常', -1 
 
 /**
  * 字符串转换为数组，主要用于把分隔符调整到第二个参数
- * @param  string $str  要分割的字符串
- * @param  string $glue 分割符
+ * @param string $str 要分割的字符串
+ * @param string $glue 分割符
  * @return array
  */
 function str2arr($str, $glue = ',')
@@ -247,8 +247,8 @@ function str2arr($str, $glue = ',')
 
 /**
  * 数组转换为字符串，主要用于把分隔符调整到第二个参数
- * @param  array  $arr  要连接的数组
- * @param  string $glue 分割符
+ * @param array $arr 要连接的数组
+ * @param string $glue 分割符
  * @return string
  */
 function arr2str($arr, $glue = ',')
@@ -303,9 +303,9 @@ function str_cut($sourcestr, $length, $dot = '...')
 
 /**
  * 时间转换
- * @param array $arr        传入数组
- * @param string $field     字段名
- * @param string $format    格式
+ * @param array $arr 传入数组
+ * @param string $field 字段名
+ * @param string $format 格式
  * @return mixed
  */
 function to_time(&$arr, $field = 'time', $format = 'Y-m-d H:i:s')
@@ -318,8 +318,8 @@ function to_time(&$arr, $field = 'time', $format = 'Y-m-d H:i:s')
 
 /**
  * ip转换
- * @param array $arr        传入数组
- * @param string $field     字段名
+ * @param array $arr 传入数组
+ * @param string $field 字段名
  * @return mixed
  */
 function to_ip(&$arr, $field = 'ip')
@@ -435,8 +435,8 @@ function time_format($time = null, $type = 0)
 
 /**
  * 格式化字节大小
- * @param  number $size      字节数
- * @param  string $delimiter 数字和单位分隔符
+ * @param number $size 字节数
+ * @param string $delimiter 数字和单位分隔符
  * @return string            格式化后的带单位的大小
  */
 function format_bytes($size, $delimiter = '')
@@ -617,10 +617,10 @@ function thumb($imgurl, $width = 100, $height = 100, $thumbType = 1, $smallpic =
 
 /**
  * 下载远程文件，默认保存在temp下
- * @param  string  $url     网址
- * @param  string  $filename    保存文件名
- * @param  integer $timeout 过期时间
- * @param  bool $repalce 是否覆盖已存在文件
+ * @param string $url 网址
+ * @param string $filename 保存文件名
+ * @param integer $timeout 过期时间
+ * @param bool $repalce 是否覆盖已存在文件
  * @return string 本地文件名
  */
 function http_down($url, $filename = "", $timeout = 60)
@@ -690,10 +690,12 @@ function safe_replace($string)
     $string = str_replace('\\', '', $string);
     return $string;
 }
-function substr_cut($user_name){
-    $strlen     = mb_strlen($user_name, 'utf-8');
-    $firstStr     = mb_substr($user_name, 0, 1, 'utf-8');
-    $lastStr     = "";
+
+function substr_cut($user_name)
+{
+    $strlen = mb_strlen($user_name, 'utf-8');
+    $firstStr = mb_substr($user_name, 0, 1, 'utf-8');
+    $lastStr = "";
     return $strlen == 2 ? $firstStr . str_repeat('*', mb_strlen($user_name, 'utf-8') - 1) : $firstStr . str_repeat("*", $strlen - 1) . $lastStr;
 }
 
@@ -733,7 +735,21 @@ function pf($only, $overWrite = false)
         mkdir($dir, 0755, true);
     }
     if (!$overWrite)
-        file_put_contents($path, print_r($only, true)."\n", FILE_APPEND);
+        file_put_contents($path, print_r($only, true) . "\n", FILE_APPEND);
     else
         file_put_contents($path, print_r($only, true));
+}
+
+/**
+ * @param $data
+ * @return array
+ */
+function paginate($data)
+{
+    return [
+        'total' => $data->total(),
+        'per_page' => $data->listRows(),
+        'current_page' => $data->currentPage(),
+        'last_page' => $data->lastPage(),
+    ];
 }
