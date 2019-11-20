@@ -13,7 +13,7 @@
 <body>
             <style>
 .nav_bar{ background:url(/static/index/img/home4_02.jpg) repeat-x left top; height:39px; line-height:39px; overflow:hidden; color:#666;}
-.w960{width:960px;margin:0 auto;}
+.w960{width:1000px;margin:0 auto;}
 .fl{float:left;}
 .fr{float:right;}
 .f12{font-size:12px;}
@@ -71,7 +71,7 @@ font-style: normal;
 
 <style>
 
-.W1000{width:960px;margin:0 auto;}
+.W1000{width:1000px;margin:0 auto;}
 .LH24{ line-height:24px; }
 .F12{font-size:12px;}
 .head .t-r .FL a{ color:#fd443b; margin-right: 10px;}
@@ -82,7 +82,7 @@ font-style: normal;
 .mr_search {
 	width: 500px;
 	height: 32px;
-	border: 2px solid #093;
+	border: 2px solid #00A2E9;
 }
 .mr_search form {
 	display: block;
@@ -385,7 +385,7 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
 
 <div id="header">
 
-<table width="960" border="0" cellspacing="0" cellpadding="0" align="center">
+<table width="1000" border="0" cellspacing="0" cellpadding="0" align="center">
   <tbody><tr>
     <td>
 <script type="text/javascript" src="/static/index/js/jquery-1.4.2.min.js"></script>
@@ -483,21 +483,30 @@ $(function(){
 <div class="navbox">
 			<div class="container">
 <div class="nav">
-					<ul>
-						<li class=""> <a href="/" class="menubox"><span>首页</span></a> </li> 
-           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>厂房出租</span></a> </li>        
-           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>厂房出售</span></a> </li>
-           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>仓库出租</span></a> </li>
-           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>土地</span></a> </li>
-           <li class=""> <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}" class="menubox"><span>写字楼</span></a> </li> 
-           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>园区招商</span></a> </li>
-           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>民宅商铺</span></a> </li>
-           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>包租厂房</span></a> </li>
-           <li class="current"> <a href="/index/publish/customer" class="menubox" target="_blank"><span>求租</span></a> </li> 
-           <li class=""> <a href="/index/publish/owner" class="menubox"><span>求购</span></a> </li> 
-	
-					</ul>
-				</div>
+                            <ul>
+                                <li class="">
+                                    <a href="/" class="menubox"><span>首页</span></a>
+                                </li>
+                                <li class=""><a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1"
+                                                class="menubox"><span>厂房出租</span></a></li>
+                                <li class=""><a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1"
+                                                class="menubox"><span>厂房出售</span></a></li>
+                                <li class=""><a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1"
+                                                class="menubox"><span>仓库出租</span></a></li>
+                                <li class=""><a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1"
+                                                class="menubox"><span>土地</span></a></li>
+                                <li class=""><a href="/index/search/officebuilding?city={$cityInfo[0]['id']}"
+                                                class="menubox"><span>写字楼</span></a></li>
+                                <li class=""><a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1"
+                                                class="menubox"><span>园区招商</span></a></li>
+                                <li class=""><a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1"
+                                                class="menubox"><span>私宅商铺</span></a></li>
+                                <li class="current"><a href="/index/publish/customer"
+                                                class="menubox"><span>求租求购</span></a></li>
+                                
+
+                            </ul>
+                        </div>
 
 </div>
 </div>
@@ -611,8 +620,8 @@ return false; */
         <div class="con-box clearfix">
             <div class="left-nav">
             	<ul>
-                                <li class="cur">客户需求登记</li>
-                <li><a href="/publish.php?id=2">业主放盘登记</a></li>
+                                <li class="cur">求租信息</li>
+                <li><a href="/publish.php?id=2">求购信息</a></li>
                                 </ul>
             </div>
             <div class="right-box">
