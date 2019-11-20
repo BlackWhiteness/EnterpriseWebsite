@@ -576,7 +576,7 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
                     <a href="/index/search/workshop?area=hz">惠州市</a>
                 </div>
                 <div class="qhcity_area" style="line-height:20px; padding-top:5px; padding-bottom:5px;">
-                    大湾区：
+                    服务地区：
                     <a href="/index/search/workshop?area=sz">深圳</a>
                     <a href="/index/search/workshop?area=dg">东莞</a>
                     <a href="/index/search/workshop?area=hz">惠州</a>
@@ -1709,13 +1709,14 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
 <div class="link_list">
     <div style="overflow:hidden">
         <span style="float:left;">友情链接：</span>
-        <span style="float:left; height:28px;"><a href="http://wpa.qq.com/msgrd?v=3&uin=21814439&site=qq&menu=yes"
-                                                  target="_blank"><img title="点击这里给我发消息" style="VERTICAL-ALIGN: middle"
-                                                                       alt="点击这里给我发消息" src="/static/index/img/pa"
-                                                                       border="0"/></a></span>
+        <span style="float:left; height:28px;"><a
+                href="http://wpa.qq.com/msgrd?v=3&amp;uin=21814439&amp;site=qq&amp;menu=yes" target="_blank"><img
+                title="点击这里给我发消息" style="VERTICAL-ALIGN: middle" alt="点击这里给我发消息" src="/static/index/img/pa"
+                border="0"/></a></span>
     </div>
-    <span style="float:left;">{volist name="areaInfo" id="data"}<a
-            href="/index/search/workshop?city={$cityInfo[0]['id']}&area={$data.id}" target="_blank">{$data.name}厂房出租</a>{/volist}</span>
+    {volist name="href" id="data"}
+        <span style="float:left;"><a href="{$data.href}" target="_blank">{$data.title}</a></span>
+    {/volist}
 </div>
 <div id="footer1">
     <style>
@@ -1731,15 +1732,17 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
     </style>
     <div class="foot W960">
         　&nbsp;
-        <a href="/index/about/index" target="_blank">关于我们</a>　&nbsp;|　&nbsp;<a href="//index/about/lx" target="_blank">联系方式</a>&nbsp;　|&nbsp;<a
-            href="/index/about/map" target="_blank">网站地图</a>&nbsp;　| <a
+        <a href="/index/about/index" target="_blank">关于我们</a>　&nbsp;|　&nbsp;<a href="//index/about/index"
+                                                                               target="_blank">联系方式</a>&nbsp;　|&nbsp;<a
+            href="/index/about/index" target="_blank">网站地图</a>&nbsp;　| <a
             href="javascript:alert(&#39;当前IP未在管理者IP中,不允许登录,请联系管理人员&#39;)" target="_blank">后台登陆</a>&nbsp;　|&nbsp;<a
             href="javascript:alert(&#39;请登录后使用！！！&#39;)" target="_blank">ERP(电脑版)</a>　&nbsp;|　&nbsp;<a
-            href="javascript:alert(&#39;请登录后使用！！！&#39;)" target="_blank">ERP(手机版)</a>　&nbsp;
+            href="javascript:alert(&#39;请登录后使用！！！&#39;)" target="_blank">ERP(手机版)</a>
         <br/>备案/许可证编号为：
-        <a href="http://www.miit.gov.cn/" target="_blank">粤ICP备16098285号-2</a> 地址：深圳市龙岗区龙岗中心城南联九州家园&nbsp;&nbsp;邮编:518000
-        <br/> 886厂房网- 电话:15914116601&nbsp;&nbsp;QQ:21814439&nbsp;E-mail:
-        <a href="mailto:xiaoping2j@126.com">xiaoping2j@126.com</a>
+        <a href="http://www.beian.miit.gov.cn" target="_blank">{:config('web_site_icp')}</a>
+        地址：{:config('web_site_add')}&nbsp;&nbsp;邮编:518000
+        <br/> {:config('web_site_banquan')}- 电话:{:config('web_site_phone')}&nbsp;&nbsp;QQ:{:config('web_site_qq')}&nbsp;E-mail:
+        <a href="mailto:{:config('web_site_email')}">{:config('web_site_email')}</a>
     </div>
 
 

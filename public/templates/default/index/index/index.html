@@ -541,7 +541,7 @@
                     <a href="/index/search/workshop?area=hz">惠州市</a>
                 </div>
                 <div class="qhcity_area" style="line-height:20px; padding-top:5px; padding-bottom:5px;">
-                    大湾区：
+                    服务地区：
                     <a href="/index/search/workshop?area=sz">深圳</a>
                     <a href="/index/search/workshop?area=dg">东莞</a>
                     <a href="/index/search/workshop?area=hz">惠州</a>
@@ -1013,6 +1013,7 @@
         });
     </script>
 </div>
+
 <div class="link_list">
     <div style="overflow:hidden">
         <span style="float:left;">友情链接：</span>
@@ -1051,48 +1052,8 @@
         <br/> {:config('web_site_banquan')}- 电话:{:config('web_site_phone')}&nbsp;&nbsp;QQ:{:config('web_site_qq')}&nbsp;E-mail:
         <a href="mailto:{:config('web_site_email')}">{:config('web_site_email')}</a>
     </div>
-    <script type="text/javascript">
-        $(function () {
-            $.ajax({url: "/include/web_tongji.php?request_url=%2Findex.php&", async: false});
-        });
-    </script>
-    <!-- Baidu js 自动提交网页 -->
-    <!--百度自动提交-->
-    <script>
-        (function () {
-            var bp = document.createElement('script');
-            var curProtocol = window.location.protocol.split(':')[0];
-            if (curProtocol === 'https') {
-                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-            } else {
-                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-            }
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(bp, s);
-        })();
-    </script>
-    <script>
-        (function () {
-            var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?c4e562f9e9e1060c2468439bfd514b61" : "https://jspassport.ssl.qhimg.com/11.0.1.js?c4e562f9e9e1060c2468439bfd514b61";
-            document.write('<script src="' + src + '" id="sozz"><\/script>');
-        })();
-    </script>
-    <script src="/static/index/js/11.0.1.js" id="sozz"></script>
-    <script charset="utf-8" src="/static/index/js/ab77b6ea7f3fbf79.js"></script>
-    <!-- Baidu Button BEGIN -->
-    <script>window._bd_share_config = {
-        "common": {
-            "bdSnsKey": {},
-            "bdText": "",
-            "bdMini": "2",
-            "bdMiniList": false,
-            "bdPic": "",
-            "bdStyle": "0",
-            "bdSize": "16"
-        }, "slide": {"type": "slide", "bdImg": "7", "bdPos": "right", "bdTop": "250"}
-    };
-    with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
-    <!-- Baidu Button END -->
+    
+    
 
 </div>
 <div class="bdshare-slide-button-box bdshare-slide-style-r7" style="top: 250px; width: 0px; z-index: 99999; right: 0px;"

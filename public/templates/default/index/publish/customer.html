@@ -1,16 +1,19 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!-- saved from url=(0037)/publish.php?id=1 -->
+
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="/static/index/css/css.css">
 
-<title>信息发布|886厂房信息网|886厂房网</title>
-<meta name="keywords" content="龙岗厂房出租,龙岗厂房招租,龙岗厂房网,龙岗厂房,886厂房网,南联厂房出租,爱联厂房出租,龙东厂房出租,同乐厂房出租,龙西厂房出租">
-<meta name="description" content="886厂房网专注于提供厂房出租，龙岗厂房出租,龙岗厂房招租等,886厂房网提供龙岗厂房信息服务，包含有龙岗厂房出租和龙岗厂房招租以及南联厂房,爱联厂房,横岗厂房,龙东厂房,龙西厂房,五联厂房以及龙岗仓库招租和龙岗工业园招商等工业地产信息,是龙岗最大的专业的厂房网。">
-<script src="/static/index/js/hm.js"></script><script src="/static/index/js/share.js"></script><link rel="stylesheet" href="/static/index/css/slide_share.css"></head>
+ <title>{:config('web_site_title')}</title>
+    <meta name="keywords" content="{:config('web_site_keywords')}"/>
+    <meta name="description" content="{:config('web_site_description')}"/>
+    <link rel="Shortcut Icon" href="/static/index/img/favicon.ico"/>
+
+<script src="/static/index/js/share.js"></script>
+<link rel="stylesheet" href="/static/index/css/slide_share.css"></head>
 <body>
             <style>
 .nav_bar{ background:url(/static/index/img/home4_02.jpg) repeat-x left top; height:39px; line-height:39px; overflow:hidden; color:#666;}
-.w960{width:960px;margin:0 auto;}
+.w960{width:1000px;margin:0 auto;}
 .fl{float:left;}
 .fr{float:right;}
 .f12{font-size:12px;}
@@ -50,7 +53,7 @@ font-style: normal;
      <a  href="javascript:document.cookie = 'city={$data.id};path=/;';location.reload();">{$data.name}</a>
      <em>|</em> {/volist}   </div>
 <div class="nav_bar_right fr">
-<strong>24小时免费服务热线：陈生159-1411-6601</strong>
+<strong>24小时免费服务热线：陈生{:config('web_site_tel')}</strong>
 	</div>
   </div>
 </div><!--<table width="960" border="0" cellspacing="0" cellpadding="0" align="center">
@@ -68,7 +71,7 @@ font-style: normal;
 
 <style>
 
-.W1000{width:960px;margin:0 auto;}
+.W1000{width:1000px;margin:0 auto;}
 .LH24{ line-height:24px; }
 .F12{font-size:12px;}
 .head .t-r .FL a{ color:#fd443b; margin-right: 10px;}
@@ -79,7 +82,7 @@ font-style: normal;
 .mr_search {
 	width: 500px;
 	height: 32px;
-	border: 2px solid #093;
+	border: 2px solid #00A2E9;
 }
 .mr_search form {
 	display: block;
@@ -254,7 +257,7 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
 ();"><img src="./求组_files/close.gif" alt="关闭" title="关闭"></div>
 							  <div class="qhcity_hot">热门城市：<a href="/search.php?area=sz">深圳市</a><a href="/search.php?area=dg">东莞市</a><a href="/search.php?area=hz">惠州市</a></div>
                    <div class="qhcity_area" style="line-height:20px; padding-top:5px; padding-bottom:5px;">
-                        大湾区：
+                        服务地区：
                         <a href="/search.php?area=sz">深圳</a>
                         <a href="/search.php?area=dg">东莞</a>
                         <a href="/search.php?area=hz">惠州</a>
@@ -382,7 +385,7 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
 
 <div id="header">
 
-<table width="960" border="0" cellspacing="0" cellpadding="0" align="center">
+<table width="1000" border="0" cellspacing="0" cellpadding="0" align="center">
   <tbody><tr>
     <td>
 <script type="text/javascript" src="/static/index/js/jquery-1.4.2.min.js"></script>
@@ -480,21 +483,30 @@ $(function(){
 <div class="navbox">
 			<div class="container">
 <div class="nav">
-					<ul>
-						<li class=""> <a href="/" class="menubox"><span>首页</span></a> </li> 
-           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>厂房出租</span></a> </li>        
-           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>厂房出售</span></a> </li>
-           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>仓库出租</span></a> </li>
-           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>土地</span></a> </li>
-           <li class=""> <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}" class="menubox"><span>写字楼</span></a> </li> 
-           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>园区招商</span></a> </li>
-           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>民宅商铺</span></a> </li>
-           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>包租厂房</span></a> </li>
-           <li class="current"> <a href="/index/publish/customer" class="menubox" target="_blank"><span>求租</span></a> </li> 
-           <li class=""> <a href="/index/publish/owner" class="menubox"><span>求购</span></a> </li> 
-	
-					</ul>
-				</div>
+                            <ul>
+                                <li class="">
+                                    <a href="/" class="menubox"><span>首页</span></a>
+                                </li>
+                                <li class=""><a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1"
+                                                class="menubox"><span>厂房出租</span></a></li>
+                                <li class=""><a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1"
+                                                class="menubox"><span>厂房出售</span></a></li>
+                                <li class=""><a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1"
+                                                class="menubox"><span>仓库出租</span></a></li>
+                                <li class=""><a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1"
+                                                class="menubox"><span>土地</span></a></li>
+                                <li class=""><a href="/index/search/officebuilding?city={$cityInfo[0]['id']}"
+                                                class="menubox"><span>写字楼</span></a></li>
+                                <li class=""><a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1"
+                                                class="menubox"><span>园区招商</span></a></li>
+                                <li class=""><a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1"
+                                                class="menubox"><span>私宅商铺</span></a></li>
+                                <li class="current"><a href="/index/publish/customer"
+                                                class="menubox"><span>求租求购</span></a></li>
+                                
+
+                            </ul>
+                        </div>
 
 </div>
 </div>
@@ -510,10 +522,10 @@ $(function(){
 		<a target="_blank" href="/">东莞厂房网</a>&nbsp;&gt;&nbsp;<a target="_blank" href="/search.php?area=dg">东莞厂房出租</a>
  </div>
 
-<table width="960" align="center">
+<table width="1000" align="center">
 <tbody><tr align="center">
 <td align="center">
-<a href="javascript:void(0)" target="_blank"><img src="/static/index/img/img_13.jpg" width="960" height="180"></a>
+<a href="javascript:void(0)" target="_blank"><img src="/static/index/img/img_13.jpg" width="1000" height="267"></a>
 </td>
 </tr>
 </tbody></table>
@@ -599,7 +611,7 @@ return false; */
 </script>
 
   <!--wrap begin-->
- <table width="960" border="0" cellspacing="0" cellpadding="0" align="center">
+ <table width="1000" border="0" cellspacing="0" cellpadding="0" align="center">
   <tbody><tr>
     <td>
 
@@ -608,8 +620,8 @@ return false; */
         <div class="con-box clearfix">
             <div class="left-nav">
             	<ul>
-                                <li class="cur">客户需求登记</li>
-                <li><a href="/publish.php?id=2">业主放盘登记</a></li>
+                                <li class="cur">求租信息</li>
+                <li><a href="/publish.php?id=2">求购信息</a></li>
                                 </ul>
             </div>
             <div class="right-box">
@@ -1502,9 +1514,17 @@ function get_street(district_name_en){
 
 
 <div class="link_list">
-		<div style="overflow:hidden"><span style="float:left;">友情链接：</span><span style="float:left; height:28px;"><a href="http://wpa.qq.com/msgrd?v=3&amp;uin=21814439&amp;site=qq&amp;menu=yes" target="_blank"><img title="点击这里给我发消息" style="VERTICAL-ALIGN: middle" alt="点击这里给我发消息" src="./求组_files/pa" border="0"></a></span></div>
-		<span style="float:left;"><a href="/" target="_blank">深圳厂房出租</a><a href="http://dg.886cf.com/" target="_blank">东莞厂房出租</a><a href="http://hz.886cf.com/" target="_blank">惠州厂房出租</a><a href="http://m.886cf.com/" target="_blank">深圳厂房出租</a><a href="http://www.886cf.cn/" target="_blank">深圳厂房出租</a><a href="http://dg.886cf.cn/" target="_blank">东莞厂房出租</a><a href="http://hz.886cf.cn/" target="_blank">惠州厂房出租</a><a href="http://m.886cf.cn/" target="_blank">深圳厂房出租</a></span>
-	</div>
+    <div style="overflow:hidden">
+        <span style="float:left;">友情链接：</span>
+        <span style="float:left; height:28px;"><a
+                href="http://wpa.qq.com/msgrd?v=3&amp;uin=21814439&amp;site=qq&amp;menu=yes" target="_blank"><img
+                title="点击这里给我发消息" style="VERTICAL-ALIGN: middle" alt="点击这里给我发消息" src="/static/index/img/pa"
+                border="0"/></a></span>
+    </div>
+    {volist name="href" id="data"}
+        <span style="float:left;"><a href="{$data.href}" target="_blank">{$data.title}</a></span>
+    {/volist}
+</div>
 
 <div id="footer1">
 <style>
@@ -1512,83 +1532,22 @@ function get_street(district_name_en){
 #footer1 a{color:#ccc}
 </style>
 <div class="foot W960">
-      　&nbsp;<a href="/about.php?id=1" target="_blank">关于我们</a>　&nbsp;|　&nbsp;<a href="/about.php?id=2" target="_blank">联系方式</a>&nbsp;　|&nbsp;<a href="/about.php?id=3" target="_blank">网站地图</a>&nbsp;　| <a href="javascript:alert(&#39;当前IP未在管理者IP中,不允许登录,请联系管理人员&#39;)" target="_blank">后台登陆</a>&nbsp;　|&nbsp;<a href="javascript:alert(&#39;请登录后使用！！！&#39;)" target="_blank">ERP(电脑版)</a>　&nbsp;|　&nbsp;<a href="javascript:alert(&#39;请登录后使用！！！&#39;)" target="_blank">ERP(手机版)</a>　&nbsp;
+        　&nbsp;
+        <a href="/index/about/index" target="_blank">关于我们</a>　&nbsp;|　&nbsp;<a href="//index/about/index"
+                                                                               target="_blank">联系方式</a>&nbsp;　|&nbsp;<a
+            href="/index/about/index" target="_blank">网站地图</a>&nbsp;　| <a
+            href="javascript:alert(&#39;当前IP未在管理者IP中,不允许登录,请联系管理人员&#39;)" target="_blank">后台登陆</a>&nbsp;　|&nbsp;<a
+            href="javascript:alert(&#39;请登录后使用！！！&#39;)" target="_blank">ERP(电脑版)</a>　&nbsp;|　&nbsp;<a
+            href="javascript:alert(&#39;请登录后使用！！！&#39;)" target="_blank">ERP(手机版)</a>
+        <br/>备案/许可证编号为：
+        <a href="http://www.beian.miit.gov.cn" target="_blank">{:config('web_site_icp')}</a>
+        地址：{:config('web_site_add')}&nbsp;&nbsp;邮编:518000
+        <br/> {:config('web_site_banquan')}- 电话:{:config('web_site_phone')}&nbsp;&nbsp;QQ:{:config('web_site_qq')}&nbsp;E-mail:
+        <a href="mailto:{:config('web_site_email')}">{:config('web_site_email')}</a>
+    </div>
 
 
-<br>备案/许可证编号为：<a href="http://www.miit.gov.cn/" target="_blank">粤ICP备16098285号-2</a>
-    
-  地址：深圳市龙岗区龙岗中心城南联九州家园&nbsp;&nbsp;邮编:518000<br>
-     886厂房网- 电话:15914116601&nbsp;&nbsp;QQ:21814439&nbsp;E-mail:<a href="mailto:xiaoping2j@126.com">xiaoping2j@126.com</a>  
 
-</div>
-
-<script type="text/javascript">
-$(function(){
-   $.ajax({url:"/include/web_tongji.php?request_url=%2Fpublish.php%3Fid%3D1&id=1",async:false});
-	});
-</script>
-
-<!-- Baidu js 自动提交网页 -->
-<!--百度自动提交-->
-<script>
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https'){
-   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-  }
-  else{
-  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-  }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
-
-<script>
-$.ajax({
-					type : "POST",  //提交方式
-					url : "/index.php/home/mobile/orderAdd",			
-					data : $("#form1").serialize(),
-					dataType : "json",
-					success : function(result) {
-						if (result.status=="0"){
-							layer.close(jz);						
-													payoid = result.oid;
-							window.location.href = "http://www.cm322.cn/weixinpay/wxpay.html?aid=3&oid="+result.oid;						
-						}else{
-							layer.close(jz);
-							$('#subbtn').removeAttr("disabled");
-							layer.open({content: result.msg,btn: '我知道了'});
-						}
-					},error:function(){
-							layer.close(jz);/static/css/
-							$('#subbtn').removeAttr("disabled");
-							layer.open({content: '您的网络不稳定，请关闭页面后重试！',btn: '我知道了'});
-					}
-				});
-
-(function(){
-var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?c4e562f9e9e1060c2468439bfd514b61":"https://jspassport.ssl.qhimg.com/11.0.1.js?c4e562f9e9e1060c2468439bfd514b61";
-document.write('<script src="' + src + '" id="sozz"><\/script>');
-})();
-</script><script src="/static/index/js/11.0.1.js" id="sozz"></script>
-	<script charset="utf-8" src="/static/index/js/ab77b6ea7f3fbf79.js"></script>
-<!-- Baidu Button BEGIN -->
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"7","bdPos":"right","bdTop":"250"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-<!-- Baidu Button END -->
-
-<!-- Baidu 统计代码开始 -->
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?dcb4832d7b3f3d328ff5b4a6b2a536ac";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-<!-- Baidu 统计代码结束 -->
 </div>
 
 
