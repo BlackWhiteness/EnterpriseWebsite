@@ -1,3 +1,5 @@
+
+
 $(function () {
     action(1);
 });
@@ -71,7 +73,6 @@ function action(current_page) {
         data.structure = structure;
     }
     data.page = current_page;
-    // data.page = page;
     $.ajax({
         type: "POST",
         url: "/ajax_search_ws",
@@ -95,28 +96,11 @@ function pageinit(total,current,last_page){
         showData:1,
         jump: true,
         callback: function (api) {
-            // var data = {
-            //     page: api.getCurrent(),
-            //     name: 'mss',
-            //     say: 'oh'
-            // };
-
             action( api.getCurrent());
         }
     });
 }
 
-
-function offlinePageCallback(page) {
-    // var pageNum = page_index+1;
-    // page_index++;
-    // if (page_index != 1) {
-    $('#pageIndex').val(page+1);
-        action(page);
-    // }
-    // console.log(page_index);
-    return false;
-}
 
 //渲染html
 function resultFilter(result) {
@@ -144,5 +128,4 @@ function resultFilter(result) {
         html += "<a class='cf_ckxq' href=/index/search/workshopdetail?id=" + row.id + " target='_blank'>查看详情</a>" + "</div></div>"
         $(".right_cont").append(html);
     });
-    return true;
 }

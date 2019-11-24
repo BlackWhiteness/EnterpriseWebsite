@@ -239,7 +239,6 @@
     };
 
     $.fn.pagination = function (parameter, callback) {
-        console.log(parameter);
         if (typeof parameter == 'function') { //重载
             callback = parameter;
             parameter = {};

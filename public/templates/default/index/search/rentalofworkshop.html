@@ -119,6 +119,7 @@
         </div>
     </div>
 </div>
+
 <!--<table width="960" border="0" cellspacing="0" cellpadding="0" align="center">
 <tr align="center">
   <td align="center">
@@ -536,10 +537,10 @@
     function ChangeCity(show) {
         $("#popwindow").css("position", "absolute");
         $("#popwindow").css("top", 40);
-        if ($.browser.msie)
-            $("#popwindow").css("left", 20);
-        else
-            $("#popwindow").css("left", 20);
+        // if ($.browser.msie)
+        //     $("#popwindow").css("left", 20);
+        // else
+         $("#popwindow").css("left", 20);
         if (show == 1) {
             $("#popwindow").slideDown(300, function () {
                 run = 0
@@ -550,8 +551,6 @@
             });
         }
     }
-
-
 </script>
 <div class="marginT20 marginB20 W1000 head ">
     <div class="FL marginT10">
@@ -560,8 +559,7 @@
     <div class="FL LH24 marginL20" style="margin-top:37px;">
         <div class="m_city fl" style="position:relative;">
             <div id="change_city">
-                <font color="#D90700" style="font-
-size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityInfo[0]['name']}</strong></font>
+                <font color="#D90700" style="font-size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityInfo[0]['name']}</strong></font>
                 <a class="F12 cGray" href="javascript:void(0);" onclick="javascript:ChangeCity(1);">[切换城市]</a>
             </div>
             <div class="qhcity_box" id="popwindow"
@@ -572,26 +570,16 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
                 </div>
                 <div class="qhcity_hot">
                     热门城市：
-                    <a href="/index/search/workshop?area=sz">深圳市</a>
-                    <a href="/index/search/workshop?area=dg">东莞市</a>
-                    <a href="/index/search/workshop?area=hz">惠州市</a>
+                    {volist name="cityList" id="data"}
+                    <a href="javascript:document.cookie = 'city={$data.id};path=/;';location.reload();">{$data.name}</a>
+                    {/volist}
                 </div>
                 <div class="qhcity_area" style="line-height:20px; padding-top:5px; padding-bottom:5px;">
                     服务地区：
-                    <a href="/index/search/workshop?area=sz">深圳</a>
-                    <a href="/index/search/workshop?area=dg">东莞</a>
-                    <a href="/index/search/workshop?area=hz">惠州</a>
-                    <a href="/index/search/workshop?area=zs">中山</a>
-                    <a href="/index/search/workshop?area=fs">佛山</a>
-                    <a href="/index/search/workshop?area=gz">广州</a>
-                    <a href="/index/search/workshop?area=jm">江门</a>
+                    {volist name="cityList" id="data"}
+                    <a href="javascript:document.cookie = 'city={$data.id};path=/;';location.reload();">{$data.name}</a>
+                    {/volist}
                 </div>
-                <!--<div class="qhcity_area" style="line-height:20px;padding-top:5px; padding-bottom:5px;"><div style=" float:left; width:60px; overflow:hidden;text-align:center;">深圳市：</div><div style=" float:left;">
-
-          </div>
-          <div style="clear:both;"></div>
-          </div>
-          -->
                 <div class="qhcity_more" style="position:absolute; bottom:5px; right:15px;">
                     <a href="javascript:alert('其他城市正在开通中！！！')" target="_blank">其他城市正在开通中&gt;&gt;</a>
                 </div>
