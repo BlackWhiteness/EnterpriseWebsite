@@ -8,7 +8,8 @@
     <meta name="keywords" content="{:config('web_site_keywords')}"/>
     <meta name="description" content="{:config('web_site_description')}"/>
     <link rel="stylesheet" href="/static/index/css/css.css"/>
-
+<!--    <script type="text/javascript" src="/static/index/js/jquery-1.4.2.min.js"></script>-->
+    <script type="text/javascript" src="/static/index/js/jquery-1.10.2.js"></script>
     <script src="/static/index/js/share.js"></script>
     <link rel="stylesheet" href="/static/index/css/slide_share.css"/>
 </head>
@@ -709,7 +710,6 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
         <tbody>
         <tr>
             <td>
-                <script type="text/javascript" src="/static/index/js/jquery-1.4.2.min.js"></script>
                 <script type="text/javascript">
                     (function (a) {
                         a.fn.hoverClass = function (b) {
@@ -1051,136 +1051,7 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
         </dd>
     </dl>
     <script type="text/javascript" src="/static/index/js/jquery.pagination.js"></script>
-    <script>
-        $(function () {
-            action();
-        });
-        //处理点击事件
-        $("#mianji a").click(function () {
-            var position = $("#mianji a").index(this);
-            $("#mianji a").attr("class", "");
-            $("#mianji a").eq(position).attr("class", 'current');
-            action();
-        });
-        $(".screen_area a").click(function () {
-            var position = $(".screen_area a").index(this);
-            $(".screen_area a").attr("class", "");
-            $(".screen_area a").eq(position).attr("class", 'current');
-            action();
-        });
-        $("#floor a").click(function () {
-            var position = $("#floor a").index(this);
-            $("#floor a").attr("class", "");
-            $("#floor a").eq(position).attr("class", 'current')
-            action();
-        });
-        $("#struck a").click(function () {
-            var position = $("#struck a").index(this);
-            $("#struck a").attr("class", "");
-            $("#struck a").eq(position).attr("class", 'current');
-            action();
-        });
-
-        $(function () {
-            $("#title_click").click(function () {
-                var title = $("#title_input").val();
-                action(title);
-            });
-            $("#title_click_all").click(function () {
-                var title = $("#title_input").val();
-                action(title, true)
-            });
-        });
-
-        function action(title = "", all = false) {
-            //screen_area
-            //city_id
-            var measurearea = $("#mianji .current").attr('value'),
-                floor = $("#floor .current").attr('value'),
-                structure = $("#struck .current").attr('value'),
-                city = $("#city_id").attr('value'),
-                area = $(".screen_area .current").attr('value'),
-                data = {};
-            var scree_position = $('.screen_area .current').index();
-            if (city != 0) {
-                data.city = city;
-            }
-            if(title!=""){
-                data.title=title;
-            }
-            if (!all && scree_position != 0) {
-                data.area = area;
-            }
-            if (measurearea != 0) {
-                data.measurearea = measurearea;
-            }
-            if (floor != 0) {
-                data.floor = floor;
-            }
-            if (structure != 0) {
-                data.structure = structure;
-            }
-            // data.page = page;
-            $.ajax({
-                type: "POST",
-                url: "/ajax_search_ws",
-                data: data,
-                success: function (result) {
-                    $(".right_cont").empty();
-                    resultFilter(result);
-                    if (result.page.total > 0) {
-                        console.log(result.page);
-                        $(".right_cont").append("<div id='page'></div>");
-                        $("#page").pagination(result.page.total, {
-                            items_per_page: 10,
-                            link_to: "javascript:void(0)",
-                            current_page: result.page.current_page,
-                            num_edge_entries: 2,
-                            num_display_entries: 4,
-                            // callback: offlinePageCallback,
-                            prev_text: "<上一页",
-                            next_text: "下一页>"
-                        });
-                    }
-                }
-            });
-        }
-
-        function offlinePageCallback(page_index, jq) {
-            var page_index = parseInt(page_index + 1);
-            action(page_index);
-        }
-
-        function resultFilter(result) {
-            $.each(result.data, function (index, row) {
-                var html = '';
-                html += "<div class='list_one'>";
-                html += "<div class='list_one_img'>";
-                html += "<a href=/index/search/workshopdetail?id=" + row.id + " target='_blank' title=" + row.title + ">";
-                html += "<img src=" + row.imgs + " alt=" + row.title + " border='0' width='146' height='130'/></a> ";
-                html += "<span class='imgmid'></span></div><div class='list_one_text'> <strong>";
-                html += "<a href=/index/search/workshopdetail?id=" + row.id + " target='_blank'>";
-                html += row.title + "</a></strong>";
-                html += "<div class='cf_jianjie'>" + row.title + "</div>";
-                html += "<div class='text_prm'><span>联系人:<font style='color: #C60;font-weight:bold;'>" + row.name + "</font><img src='/static/index/img/jjr_rz.jpg'/></span>";
-                html += "<span>联系方式:<font " + "style='color: #933;font-weight:bold;background: url(img/list2_icopho.jpg) no-repeat left center; padding-left:11px;'>";
-                html += row.tel + "</font></span>" + "<span>发布时间:<font style='color: #639;font-weight:bold;'>";
-                html += row.releasetime + "</font></span>" + "</div> <div class='text_prm1' style='display:none'>";
-                html += "<span style='border-color: #330;'>" + row.tag + "</span>";
-                // "<span style='border-color: #C30;'>提供租赁合同</span>" +
-                // "<span style='border-color: #660;'>消防验收合格</span>" +
-                html += "</div></div>" + "<div class='list_one_prm'>" +
-                    "<p style='font-size:15px; font-weight:600;'>" + row.area_name + "</p>" +
-                    "<p><span class='f16' style='color:#53160F;'>" + row.plantrent + "</span>元/㎡</p>" +
-                    "<p>面积:<span class='f16'>" + row.measurearea + "</span>㎡</p>";
-                html += "<a class='cf_ckxq' href=/index/search/workshopdetail?id=" + row.id + " target='_blank'>查看详情</a>" + "</div></div>"
-                $(".right_cont").append(html);
-            });
-            return true;
-        }
-
-
-    </script>
+    <script type="text/javascript" src="/static/index/js/search.js"></script>
     <style>
         #title_search {
             width: 840px;
@@ -1413,48 +1284,8 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
                     <div class="right_cont">
                         <div class="clear"></div>
                         <div class="clear"></div>
-                        {volist name="list" id="data"}
-                        <div class="list_one">
-                            <div class="list_one_img">
-                                <?php $sz_img = json_decode($list[0]['imgs']); $sz_img = $sz_img[0]; ?>
-                                <a href="//index/search/workshopdetail?city={$cityInfo[0]['id']}&r=1&id=15590"
-                                   target="_blank" title="办公室出租,整层厂房出租,独门独院_深圳厂房出租"> <img
-                                        src="/static/index/img/201408201539437269.jpg"
-                                        alt="办公室出租,整层厂房出租,独门独院_深圳厂房出租" border="0" width="146" height="130"/> </a>
-                                <span class="imgmid"></span>
-                            </div>
-                            <div class="list_one_text">
-                                <strong><a href="//index/search/workshopdetail?city={$cityInfo[0]['id']}&r=1&id=15590"
-                                           target="_blank">办公室出租,整层厂房出租,独门独院</a></strong>
-                                <div class="cf_jianjie">
-                                    整层厂房带电梯,三层面积2000平米,有电梯。两栋办公楼三层/四层2000平米，独门独院.欢迎来电咨询。随时看房。
-                                </div>
-                                <div class="text_prm">
-                                    <span>联系人:<font style="color: #C60;font-weight:bold;">王生</font><img
-                                            src="/static/index/img/jjr_rz.jpg"/></span>
-                                    <span>联系方式:<font
-                                            style="color: #933;font-weight:bold;background: url(img/list2_icopho.jpg) no-repeat left center; padding-left:11px;">134-8076-0100</font></span>
-                                    <span>发布时间:<font style="color: #639;font-weight:bold;">2019-08-22</font></span>
-                                </div>
-                                <div class="text_prm1" style="display:none">
-                                    <span style="border-color: #330;">独院厂房</span>
-                                    <span style="border-color: #C30;">提供租赁合同</span>
-                                    <span style="border-color: #660;">消防验收合格</span>
-                                </div>
-                            </div>
-                            <div class="list_one_prm">
-                                <p style="font-size:15px; font-weight:600;">龙岗区-横岗</p>
-                                <p><span class="f16" style="color:#53160F;">20.00</span>元/㎡</p>
-                                <p>面积:<span class="f16">40000{$data.id}</span>㎡</p>
-                                <a class="cf_ckxq" href="/index/search/workshopdetail?id={$data.id}" target="_blank">查看详情</a>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                        {/volist}
-                        <div id="page">
-                            {$list->render()|html_entity_decode}
-                        </div>
                     </div>
+                    <div id="page"></div>
                 </div>
                 <div id="main_left">
                     <div class="left_one">

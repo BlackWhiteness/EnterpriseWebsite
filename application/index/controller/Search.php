@@ -204,7 +204,7 @@ class Search extends Homebase
         $data = Db::name('workshop')
             ->where('id', 'in', $id_str)
             ->order(array('releasetime' => 'DESC'))
-            ->paginate(10);
+            ->paginate(1);
         return json([
             'data'=>WorkShopFormat::getInstance()->formatList($data),
             'page' => paginate($data)
