@@ -1,6 +1,14 @@
+var search_title = false;
+var search_title_all = false;
+var area = '', city = '', measurearea = '', floor = '', structure = '', mianji = '', title = '',category=1;
 
+function initOnclickTitle() {
+    search_title = false;
+    search_title_all = false;
+}
 
 $(function () {
+    category = getQueryString('category');
     action(1);
 });
 
@@ -9,6 +17,7 @@ $("#mianji a").click(function () {
     var position = $("#mianji a").index(this);
     $("#mianji a").attr("class", "");
     $("#mianji a").eq(position).attr("class", 'current');
+    mianji = $("#mianji a").eq(position).attr('value');
     action();
 });
 
@@ -16,55 +25,54 @@ $(".screen_area a").click(function () {
     var position = $(".screen_area a").index(this);
     $(".screen_area a").attr("class", "");
     $(".screen_area a").eq(position).attr("class", 'current');
+    area = $(".screen_area a").eq(position).attr('value');
     action();
 });
 
 $("#floor a").click(function () {
     var position = $("#floor a").index(this);
     $("#floor a").attr("class", "");
-    $("#floor a").eq(position).attr("class", 'current')
+    $("#floor a").eq(position).attr("class", 'current');
+    floor = $("#floor a").eq(position).attr('value');
     action();
 });
 $("#struck a").click(function () {
     var position = $("#struck a").index(this);
     $("#struck a").attr("class", "");
     $("#struck a").eq(position).attr("class", 'current');
+    structure = $("#struck a").eq(position).attr('value');
     action();
 });
 
 $(function () {
     $("#title_click").click(function () {
-        var title = $("#title_input").val();
-        action(title);
+        title = $("#title_input").val();
+        search_title_all = false;
+        search_title = true;
+        action();
     });
     $("#title_click_all").click(function () {
-        var title = $("#title_input").val();
-        action(title, true)
+        title = $("#title_input").val();
+        search_title = false;
+        search_title_all = true;
+        action()
     });
 });
 
-function action(current_page) {
-// function action(title = "", all = false, page) {
-    //screen_area
-    //city_id
-    var measurearea = $("#mianji .current").attr('value'),
-        floor = $("#floor .current").attr('value'),
-        structure = $("#struck .current").attr('value'),
-        city = $("#city_id").attr('value'),
-        area = $(".screen_area .current").attr('value'),
-        data = {};
-    var scree_position = $('.screen_area .current').index();
+function action(current_page = 1) {
+    console.log(search_title);
+    console.log(search_title_all);
+    var data = {}, city = $("#city_id").attr('value');
+
     if (city != 0) {
         data.city = city;
     }
-    // if (title != "") {
-    //     data.title = title;
-    // }
-    // if (!all && scree_position != 0) {
-    //     data.area = area;
-    // }
-    if (measurearea != 0) {
-        data.measurearea = measurearea;
+    if (area != "" && !search_title_all) {
+        data.area = area;
+    }
+
+    if (mianji != 0) {
+        data.measurearea = mianji;
     }
     if (floor != 0) {
         data.floor = floor;
@@ -72,6 +80,10 @@ function action(current_page) {
     if (structure != 0) {
         data.structure = structure;
     }
+    if ((search_title_all || search_title) && title != '') {
+        data.title = title;
+    }
+    data.category=category;
     data.page = current_page;
     $.ajax({
         type: "POST",
@@ -80,23 +92,23 @@ function action(current_page) {
         success: function (result) {
             $(".right_cont").empty();
             resultFilter(result);
-            pageinit(result.page.total,result.page.current_page,result.page.last_page)
+            pageinit(result.page.total, result.page.current_page, result.page.last_page)
         },
-        error:function(result){
+        error: function (result) {
             alert('数据加载失败！');
         }
     });
 }
 
-function pageinit(total,current,last_page){
+function pageinit(total, current, last_page) {
     $('#page').pagination({
         pageCount: total,
-        current:current,
-        pageCount:last_page,
-        showData:1,
+        current: current,
+        pageCount: last_page,
+        showData: 1,
         jump: true,
         callback: function (api) {
-            action( api.getCurrent());
+            action(api.getCurrent());
         }
     });
 }
@@ -128,4 +140,11 @@ function resultFilter(result) {
         html += "<a class='cf_ckxq' href=/index/search/workshopdetail?id=" + row.id + " target='_blank'>查看详情</a>" + "</div></div>"
         $(".right_cont").append(html);
     });
+}
+
+function getQueryString(name){
+    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    console.log(r);
+    if(r!=null)return  unescape(r[2]); return null;
 }
