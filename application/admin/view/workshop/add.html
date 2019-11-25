@@ -11,7 +11,7 @@
     <div class="layui-card-body">
         <form class="layui-form" method="post">
         <div class="layui-form-item">
-    <label class="layui-form-label">性质</label>
+    <label class="layui-form-label">类型</label>
     <div class="layui-input-inline w300" lay-verify-msg="必选项不能为空" lay-verify="mustradio" >
         <input type="radio" name="category" autocomplete="off" placeholder="" class="layui-input"  value="1">厂房出租
         <input type="radio" name="category" autocomplete="off" placeholder="" class="layui-input"  value="2">厂房出售
@@ -42,7 +42,7 @@
     </div>
 </div>
 <div class="layui-form-item">
-    <label class="layui-form-label">类型</label>
+    <label class="layui-form-label">结构</label>
     <div class="layui-input-inline w300" lay-verify-msg="必选项不能为空" lay-verify="mustradio" >
             <input type="radio" name="structure"  autocomplete="off" placeholder="" class="layui-input"  value="1">标准
         <input type="radio" name="structure"  autocomplete="off" placeholder="" class="layui-input"  value="2">钢构结构
@@ -60,7 +60,7 @@
 <div class="layui-form-item">
     <label class="layui-form-label">厂房面积</label>
     <div class="layui-input-inline w300">
-        <input type="text" name="changfangmianji" lay-verify="required"  autocomplete="off" placeholder="" class="layui-input">
+        <input type="text" name="lengthwidth"  autocomplete="off" placeholder="" class="layui-input">
     </div>
 </div>
 <div class="layui-form-item">
@@ -77,7 +77,7 @@
 </div>
 
 <div class="layui-form-item">
-    <label class="layui-form-label">楼层</label>
+    <label class="layui-form-label">所在楼层</label>
     <div class="layui-input-inline w300" lay-verify-msg="必选项不能为空" lay-verify="mustradio" >
         <input type="radio" name="floor"  autocomplete="off" placeholder="" class="layui-input"  value="1">一楼
         <input type="radio" name="floor"  autocomplete="off" placeholder="" class="layui-input"  value="2">二楼以上
@@ -94,6 +94,12 @@
         <input type="text" name="releasetime" id="releasetime" autocomplete="off" placeholder="" class="layui-input">
     </div>
 </div>-->
+<div class="layui-form-item">
+    <label class="layui-form-label">土地用途</label>
+    <div class="layui-input-inline w300">
+        <input type="text" name="canteen"  autocomplete="off" placeholder="" class="layui-input">
+    </div>
+</div>
 <div class="layui-form-item">
     <label class="layui-form-label">使用年限</label>
     <div class="layui-input-inline w300">
@@ -127,18 +133,8 @@
         <input type="text" name="distributioncapacity"  autocomplete="off" placeholder="" class="layui-input">
     </div>
 </div>
-<!--<div class="layui-form-item">
-    <label class="layui-form-label">长宽</label>
-    <div class="layui-input-inline w300">
-        <input type="text" name="lengthwidth"  autocomplete="off" placeholder="" class="layui-input">
-    </div>
-</div>-->
-<div class="layui-form-item">
-    <label class="layui-form-label">食堂</label>
-    <div class="layui-input-inline w300">
-        <input type="text" name="canteen"  autocomplete="off" placeholder="" class="layui-input">
-    </div>
-</div>
+<!---->
+
 <div class="layui-form-item">
     <label class="layui-form-label">新旧程度</label>
     <div class="layui-input-inline w300">
