@@ -11,7 +11,7 @@
     <div class="layui-card-body">
         <form class="layui-form" method="post">
         <div class="layui-form-item">
-    <label class="layui-form-label">分类</label>
+    <label class="layui-form-label">性质</label>
     <div class="layui-input-inline w300" lay-verify-msg="必选项不能为空" lay-verify="mustradio" >
         <input type="radio" name="category" autocomplete="off" placeholder="" class="layui-input"  value="1">厂房出租
         <input type="radio" name="category" autocomplete="off" placeholder="" class="layui-input"  value="2">厂房出售
@@ -21,7 +21,7 @@
         <div class="layui-form-item">
     <label class="layui-form-label">标题</label>
     <div class="layui-input-inline w300">
-        <input type="text" name="title" lay-verify="required" autocomplete="off" placeholder="" class="layui-input">
+        <input name="title" type="text" class="layui-input" placeholder="" autocomplete="off" size="60" lay-verify="required">
     </div>
 </div>
             <div class="layui-form-item">
@@ -42,7 +42,7 @@
     </div>
 </div>
 <div class="layui-form-item">
-    <label class="layui-form-label">面积</label>
+    <label class="layui-form-label">占地面积</label>
     <div class="layui-input-inline w300">
         <input type="text" name="measurearea" lay-verify="required"  autocomplete="off" placeholder="" class="layui-input">
     </div>
@@ -59,7 +59,7 @@
     </div>
 </div>
 <div class="layui-form-item">
-    <label class="layui-form-label">结构</label>
+    <label class="layui-form-label">类型</label>
     <div class="layui-input-inline w300" lay-verify-msg="必选项不能为空" lay-verify="mustradio" >
             <input type="radio" name="structure"  autocomplete="off" placeholder="" class="layui-input"  value="1">标准
         <input type="radio" name="structure"  autocomplete="off" placeholder="" class="layui-input"  value="2">钢构结构
@@ -67,14 +67,14 @@
 <input type="radio" name="structure"  autocomplete="off" placeholder="" class="layui-input"  value="4">各类型仓库(单层仓库/多层仓库)
     </div>
 </div>
-<div class="layui-form-item">
+<!--<div class="layui-form-item">
     <label class="layui-form-label">发布时间</label>
     <div class="layui-input-inline w300">
         <input type="text" name="releasetime" id="releasetime" autocomplete="off" placeholder="" class="layui-input">
     </div>
-</div>
+</div>-->
 <div class="layui-form-item">
-    <label class="layui-form-label">有效期</label>
+    <label class="layui-form-label">使用年限</label>
     <div class="layui-input-inline w300">
         <input type="text" name="expire"  autocomplete="off" placeholder="" class="layui-input">
     </div>
@@ -165,9 +165,9 @@
     </div>
 </div>
 <div class="layui-form-item">
-    <label class="layui-form-label">详情</label>
+    <label class="layui-form-label">详情信息</label>
     <div class="layui-input-inline" style="width:548px">
-        <textarea id="container" name="detail" lay-verify="required" style="width:548px"></textarea>
+        <textarea id="container" name="detail" lay-verify="required" style="width:548px;height:100px;"></textarea>
     </div>
 </div>
 <div class="layui-form-item">
