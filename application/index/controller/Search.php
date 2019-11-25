@@ -2,6 +2,7 @@
 
 namespace app\index\controller;
 
+use app\admin\model\Workshop;
 use app\common\controller\Homebase;
 use app\admin\model\Workshop as Workshop_Model;
 use app\format\WorkShopFormat;
@@ -189,24 +190,26 @@ class Search extends Homebase
         return $this->fetch('offbuilddetail');
     }
 
-    public function ajaxSearchWs()
+    public function ajaxSearchWs(Workshop $workshop)
     {
-        $data = $this->request->param();
-        $d = $this->Workshopsearch->searchDoc($data, 1, 10);
-        $ids = array();
-        if (count($d['hits']['hits'])) {
-            foreach ($d['hits']['hits'] as $value) {
-                array_push($ids, $value['_id']);
-            }
-        }
-        $id_str = implode(',', $ids);
-        $where['id'] = array('in', $id_str);
-        $data = Db::name('workshop')
-            ->where('id', 'in', $id_str)
-            ->order(array('releasetime' => 'DESC'))
-            ->paginate(1);
+//        $data = $this->request->param();
+        //category: "1"
+        //city: "6"
+        //measurearea: "0-500"
+        //page: "1"
+//        $d = $this->Workshopsearch->searchDoc($data, 1, 10);
+//        return $d;
+//        $ids = array();
+//        if (count($d['hits']['hits'])) {
+//            foreach ($d['hits']['hits'] as $value) {
+//                array_push($ids, $value['_id']);
+//            }
+//        }
+//        $id_str = implode(',', $ids);
+//        $where['id'] = array('in', $id_str);
+        $data = $workshop->getWorkShopBySearch();
         return json([
-            'data'=>WorkShopFormat::getInstance()->formatList($data),
+            'data' => WorkShopFormat::getInstance()->formatList($data),
             'page' => paginate($data)
         ]);
     }

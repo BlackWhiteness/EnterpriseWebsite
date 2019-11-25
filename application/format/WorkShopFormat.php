@@ -46,7 +46,7 @@ class WorkShopFormat
         foreach ($data as $row) {
             $area = Area::where('id', '=', $row['area'])->find();
             $rtn[] = [
-                'imgs' => $row['imgs'] ? unserialize($row['imgs'])[0] : '',
+                'imgs' => $row['imgs'] ? $row['imgs'][0] : '',
                 'applicableindustries' => $row['applicableindustries'],
                 'area' => $row['area'],
                 'canteen' => $row['canteen'],
