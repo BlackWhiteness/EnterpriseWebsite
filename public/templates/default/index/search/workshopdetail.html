@@ -8,8 +8,7 @@
 <title>
 		{$info.title}</title>
 <meta name="description" content="
-​厂房位于布吉康桥，三楼新空出400平米，带办公室装修，水电齐全，全新货梯，基本拧包入驻生产，招工方便，交通便利。
-
+​{$info.title}
 
 " />
 </head>
@@ -386,132 +385,7 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
         }
     </script>
 
-<div id=header>
-
-<table width="960" border="0" cellspacing="0" cellpadding="0" align="center">
-  <tr>
-    <td>
-<script type="text/javascript" src="/static/index/js/jquery-1.4.2.min.js"></script>
-<script type="text/javascript">
-(function(a){a.fn.hoverClass=function(b){var a=this;a.each(function(c){a.eq(c).hover(function(){$(this).addClass(b)},function(){$(this).removeClass(b)})});return a};})(jQuery);
-
-$(function(){
-
-	var site_url = window.location.href.toLowerCase();
-	switch (true) {
-		case site_url == 'http://www.dg-cfw.com' :
-			$(".nav li").attr("class","");
-			$(".nav li").eq(0).attr("class","current");
-			break;
-		case site_url == 'http://www.dg-cfw.com/' :
-			$(".nav li").attr("class","");
-			$(".nav li").eq(0).attr("class","current");
-			break;
-		case site_url.indexOf("index.php") > 0 :
-			$(".nav li").attr("class","");
-			$(".nav li").eq(0).attr("class","current");
-			break;
-		case site_url.indexOf("/index/search/workshop?city={$cityInfo[0]['id']}") > 0 ://判断当前频道属于哪个根目录模块就设置频道标签高亮
-			$(".nav li").attr("class","");
-			$(".nav li").eq(1).attr("class","current"); //设置当前频道标签高亮
-			break;
-        case site_url.indexOf("publish.php") > 0 :
-			$(".nav li").attr("class","");
-			$(".nav li").eq(4).attr("class","current");
-			break;
-		case site_url.indexOf("publish.php?id=2") > 0 :
-			$(".nav li").attr("class","");
-			$(".nav li").eq(5).attr("class","current");
-			break;
-		/*case site_url.indexOf("dg_xgz") > 0 :
-			$(".nav li").attr("class","");
-			$(".nav li").eq(6).attr("class","current");
-			break;
-		case site_url.indexOf("area=dg_hjz") > 0 :
-			$(".nav li").attr("class","");
-			$(".nav li").eq(7).attr("class","current");
-			break;
-		case site_url.indexOf("area=dg_lbz") > 0 :
-			$(".nav li").attr("class","");
-			$(".nav li").eq(8).attr("class","current");
-			break;
-		case site_url.indexOf("area=dg") > 0 :
-			$(".nav li").attr("class","");
-			$(".nav li").eq(1).attr("class","current");
-			break;*/
-/*		default :
-			$(".nav li").attr("class","");
-			$(".nav li").eq(1).attr("class","current");*/
-	}
-
-		switch (true) {
-	    case site_url.indexOf("title=%E5%9C%B0%E9%93%81".toLowerCase()) > 0 :
-			$(".othernav li a").eq(1).attr("class","current");
-			break;
-		case site_url.indexOf("title=%E8%A3%85%E4%BF%AE".toLowerCase()) > 0 :
-			$(".othernav li a").eq(2).attr("class","current");
-			break;
-		case site_url.indexOf("title=%E9%AB%98%E6%96%B0".toLowerCase()) > 0 :
-			$(".othernav li a").eq(3).attr("class","current");
-			break;
-		 case site_url.indexOf("floor=1") > 0 :
-			$(".othernav li a").eq(4).attr("class","current");
-			break;
-		case site_url.indexOf("floor=3") > 0 :
-			$(".othernav li a").eq(5).attr("class","current");
-			break;
-		case site_url.indexOf("title=%E4%BD%8E%E4%BB%B7".toLowerCase()) > 0 :
-			$(".othernav li a").eq(6).attr("class","current");
-			break;
-	      }
-
-	$(".nav li").hover(function(){
-		$(".nav li.current").attr("id","shutAhover");
-		//$(".nav li.current").removeClass("current");
-	},function(){
-		if($(this).attr("class") != "current"){
-			$(".nav li.current").attr("class","");
-		}
-		$(".nav li#shutAhover").attr("class","current");
-	});
-
-	//导航
-	$(".nav li").hoverClass("hover");
-});
-
-
-</script>
-<!--解决 IE6 背景缓存-->
-<!--[if IE 6]><script type="text/javascript">document.execCommand("BackgroundImageCache", false, true);</script><![endif]-->
-<div class="navbox">
-			<div class="container">
-<div class="nav">
-					<ul>
-						<li class=""> <a href="/" class="menubox"><span>首页</span></a> </li>
-           <li class="current"> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>厂房出租</span></a> </li>
-           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>厂房出售</span></a> </li>
-           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>仓库出租</span></a> </li>
-           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>土地</span></a> </li>
-           <li class=""> <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}" class="menubox"><span>写字楼</span></a> </li>
-           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>园区招商</span></a> </li>
-           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>民宅商铺</span></a> </li>
-           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>包租厂房</span></a> </li>
-           <li class=""> <a href="/index/publish/customer" class="menubox" target="_blank"><span>求租</span></a> </li>
-           <li class=""> <a href="/index/publish/owner" class="menubox"><span>求购</span></a> </li>
-
-					</ul>
-				</div>
-
-</div>
-</div>
-
-
-
-</td>
-  </tr>
-</table>
-
-</div>
+{include file="templates/default/index/layout/nav.html" /}
 <div class="zs_newmbx" style="display:none; width:936px;margin:auto;text-align:left;">
 		<a target="_blank" href=".">东莞厂房网</a>&nbsp;&gt;&nbsp;<a target="_blank" href="/index/search/workshop?city={$cityInfo[0]['id']}?area=dg">东莞厂房出租</a>
  </div>
@@ -519,7 +393,7 @@ $(function(){
 <table width="960" align="center">
 <tr align="center">
 <td align="center">
-<A href="/index/search/workshop?city={$cityInfo[0]['id']}" target=_blank><IMG  src="/static/index/img/img_13.jpg" width="960" height="180"></A>
+<A href="/index/search/workshop?city={$cityInfo[0]['id']}" target=_blank><IMG  src="/static/index/img/img_13.jpg" width="1000" height="267"></A>
 </td>
 </tr>
 </table>
@@ -607,7 +481,7 @@ $(function(){
 
 
 <div id="mainbody" style=" margin:0px auto; clear:both;">
-<table width="960" border="0" cellspacing="0" cellpadding="0" align="center">
+<table width="1000" border="0" cellspacing="0" cellpadding="0" align="center">
   <tr>
 
   <td valign="top">
@@ -626,7 +500,7 @@ $(function(){
 		{$info.title}
 	</h1></div>
 <div class="cf_date">发布时间: <strong>
-2019-09-21 04:20:21</strong>　该信息已发布: <strong>4小时</strong>　有效期: <strong>{$info.expire}天</strong></div>
+{$info.releasetime}</strong>　</div>
 </div>
 </td>
   </tr>
@@ -685,7 +559,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 
         <td width="320" valign="top">
 
-				  	  <table width="320" border="0" cellspacing="0" cellpadding="0" style=" padding-left:10px;" >
+				  	  <table width="343" border="0" cellspacing="0" cellpadding="0" style=" padding-left:10px;" >
                         <tr>
                           <td height="29" colspan="2" align="left"><p style="height:29px;color:#fff; font:14px; line-height:25px; width:320px;"><span style="background:#be38d6;">&nbsp;本周推荐&nbsp;</span>&nbsp;&nbsp;<span style="background:#62B362;">&nbsp;分租㎡起&nbsp;</span>&nbsp;&nbsp;<span style="background:#4093f0; ">&nbsp;提供租赁合同&nbsp;</span>&nbsp;&nbsp;<span style="background: #F60;">&nbsp;消防验收合格&nbsp;</span></p></td>
                         </tr>
@@ -699,52 +573,52 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
                           <td colspan="2" class="house_line"></td>
                         </tr>
                         <tr align="left">
-                          <td width="177" height="29"><font size="2">厂房面积：{$info.measurearea}平方米</font></td>
-                          <td width="166"><font size="2">办公面积：{$info.officespace}平方米</font></td>
+                          <td width="177" height="29"><font size="2">类型：{$info.category}</font></td>
+                          <td width="166"><font size="2">总面积：{$info.measurearea}㎡</font></td>
                         </tr>
                         <tr align="left">
                           <td colspan="2" class="house_line"></td>
                         </tr>
                         <tr align="left">
-                          <td height="29"><font size="2">厂房租金：
+                          <td height="29"><font size="2">厂房面积：
 
-						  {$info.plantrent}元/㎡/月						  </font></td>
-                          <td><font size="2">宿舍面积：{$info.dormitory}平方米</font></td>
+						  {$info.lengthwidth}㎡						  </font></td>
+                          <td><font size="2">办公室面积：{$info.officespace}平方米</font></td>
                         </tr>
                         <tr align="left">
                           <td colspan="2" class="house_line"></td>
                         </tr>
                         <tr align="left">
-                          <td height="29"><font size="2">厂房栋数：共({$info.numberbuildings})栋</font></td>
+                          <td height="29"><font size="2">宿舍面积：({$info.dormitory})平方米</font></td>
                           <td>
-                          <font size="2"></font>
+                          
 
 
 
-                          <font size="2">厂房层数：共({$info.layernumber})层</font></td>
+                          <font size="2">占地面积：({$info.zhandi})</font></td>
                         </tr>
                         <tr align="left">
                           <td colspan="2" class="house_line"></td>
                         </tr>
                         <tr align="left">
-                          <td height="29"><font size="2">结构：             {$info.structure}						   </font></td>
-                          <td><font size="2">楼层：
-						  {$info.floor}                          </font></td>
+                          <td height="29"><font size="2">所在楼层：             {$info.firecontrol}	层					   </font></td>
+                          <td><font size="2">结构：
+						  {$info.structure}                          </font></td>
                         </tr>
                         <tr align="left">
                           <td colspan="2" class="house_line"></td>
                         </tr>
                         <tr align="left">
-                          <td height="29"><font size="2">配电量：{$info.distributioncapacity} </font></td>
-                          <td><font size="2">长宽：{$info.lengthwidth}米</font></td>
+                          <td height="29"><font size="2">土地用途：{$info.canteen} </font></td>
+                          <td><font size="2">使用年限：{$info.expire}年</font></td>
                         </tr>
                         <tr align="left">
                           <td colspan="2" class="house_line"></td>
                         </tr>
                         <tr align="left">
-                          <td height="29"><font size="2">食堂：
+                          <td height="29"><font size="2">厂房价格：
 
-					{$info.canteen}
+					{$info.plantrent}
 						 </font></td>
                           <td><font size="2">新旧程度：{$info.newolddegree}成新</font></td>
                         </tr>
@@ -752,15 +626,18 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
                           <td colspan="2" class="house_line"></td>
                         </tr>
                         <tr align="left">
-                          <td height="29"><font size="2">电梯：
-                          有电梯 </font></td>
-                          <td><font size="2">消防：消防验收合格						  </font></td>
+                          <td height="29"><font size="2">厂房配电：
+                          {$info.distributioncapacity} </font></td>
+                          <td><font size="2">厂房电梯：{$info.elevator}						  </font></td>
                         </tr>
                         <tr align="left">
                           <td colspan="2" class="house_line"></td>
                         </tr>
 						                        <tr align="left">
-                          <td height="31" colspan="2"><font size="2">适用行业：{$info.applicableindustries}</font></li>    </td></tr>                  </table>
+                          <td height="31"><font size="2">消房：{$info.applicableindustries}</font>    </td>
+                          <td><font size="2">交易方式：{$info.applicableindustries} </font></td>
+                                                </tr>                  
+                          </table>
 
 					<div class="house_phone1">
 				  	<div class="house_phone2"><span class="number">
@@ -769,7 +646,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 
                      <span class="gray">
 
-注：联系我时请说明来源厂房网 </span></div>
+注：联系我时请说明来源{:config('web_site_banquan')} </span></div>
 				  </div>
 				  </td>
 
@@ -849,7 +726,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 </table>
 
 
-<table width="960" border="0" cellspacing="0" cellpadding="0" align="center">
+<table width="1000" border="0" cellspacing="0" cellpadding="0" align="center">
   <tr>
     <td>
 
@@ -865,7 +742,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 
 			  </div>
               <div class="box_listpic">
-         <table width="960" border="0" cellspacing="0" cellpadding="0">
+         <table width="1000" border="0" cellspacing="0" cellpadding="0">
   <tr>
          {volist name="recommend" id="data"}
       <?php $recommend_img = json_decode($data['imgs']); $recommend_img = $recommend_img[0]; ?>
@@ -1079,38 +956,8 @@ var iMax = the_num-4;
         <a href="mailto:{:config('web_site_email')}">{:config('web_site_email')}</a>
     </div>
 
-<script type="text/javascript">
-$(function(){
-   $.ajax({url:"/include/web_tongji.php?request_url=%2F/index/search/workshopdetail%3Fid%3D31501&id=31501",async:false});
-	});
-</script>
 
-<!-- Baidu js 自动提交网页 -->
-<!--百度自动提交-->
-<script>
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https'){
-   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-  }
-  else{
-  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-  }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
 
-<script>
-(function(){
-var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?c4e562f9e9e1060c2468439bfd514b61":"https://jspassport.ssl.qhimg.com/11.0.1.js?c4e562f9e9e1060c2468439bfd514b61";
-document.write('<script src="' + src + '" id="sozz"><\/script>');
-})();
-</script>
-<!-- Baidu Button BEGIN -->
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"7","bdPos":"right","bdTop":"250"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-<!-- Baidu Button END -->
 
 
 </div>
