@@ -199,7 +199,7 @@ class Search extends Homebase
     public function ajaxSearchWs(Workshop $workshop)
     {
         $category = request()->param('category');
-        if (!empty($category)) {
+        if (empty($category)) {
             return json(['status' => false, 'msg' => '参数错误!']);
         }
         $data = $workshop->getWorkShopBySearch();
