@@ -12,7 +12,7 @@
         <form class="layui-form" method="post">
         <div class="layui-form-item">
     <label class="layui-form-label">类型</label>
-    <div class="layui-input-inline w300" lay-verify-msg="必选项不能为空" lay-verify="mustradio" >
+    <div style="width:auto" class="layui-input-inline" lay-verify-msg="必选项不能为空" lay-verify="mustradio" >
         <input type="radio" name="category" autocomplete="off" placeholder="" class="layui-input"  value="1">厂房出租
         <input type="radio" name="category" autocomplete="off" placeholder="" class="layui-input"  value="2">厂房出售
         <input type="radio" name="category" autocomplete="off" placeholder="" class="layui-input"  value="3">仓库出租
@@ -20,13 +20,19 @@
 </div>
         <div class="layui-form-item">
     <label class="layui-form-label">标题</label>
-    <div class="layui-input-inline w300">
+    <div style="width:auto" class="layui-input-inline">
         <input name="title" type="text" class="layui-input" placeholder="" autocomplete="off" size="60" lay-verify="required">
+    </div>
+</div>
+<div class="layui-form-item">
+    <label class="layui-form-label">发布时间</label>
+    <div style="width:auto" class="layui-input-inline">
+        <input type="text" name="releasetime" id="releasetime" autocomplete="off" placeholder="" class="layui-input">
     </div>
 </div>
             <div class="layui-form-item">
     <label class="layui-form-label">市</label>
-    <div class="layui-input-inline w300">
+    <div style="width:auto" class="layui-input-inline">
 <select name="city"  lay-filter="city" lay-verify="required">
                         <option value>选择市</option>
                         {$citys|raw}
@@ -35,7 +41,7 @@
 </div>
 <div class="layui-form-item">
     <label class="layui-form-label">区</label>
-    <div class="layui-input-inline w300">
+    <div style="width:auto" class="layui-input-inline">
 <select name="area" id="area" lay-verify="required">
                         <option value>选择区</option>
                     </select>
@@ -43,42 +49,47 @@
 </div>
 <div class="layui-form-item">
     <label class="layui-form-label">结构</label>
-    <div class="layui-input-inline w300" lay-verify-msg="必选项不能为空" lay-verify="mustradio" >
+    <div style="width:auto" class="layui-input-inline" lay-verify-msg="必选项不能为空" lay-verify="mustradio" >
             <input type="radio" name="structure"  autocomplete="off" placeholder="" class="layui-input"  value="1">标准
         <input type="radio" name="structure"  autocomplete="off" placeholder="" class="layui-input"  value="2">钢构结构
 <input type="radio" name="structure"  autocomplete="off" placeholder="" class="layui-input"  value="3">简易(铁皮房)
 <input type="radio" name="structure"  autocomplete="off" placeholder="" class="layui-input"  value="4">各类型仓库(单层仓库/多层仓库)
     </div>
 </div>
-
+<div class="layui-form-item">
+    <label class="layui-form-label">占地面积</label>
+    <div style="width:auto" class="layui-input-inline">
+        <input type="text" name="numberbuildings" lay-verify="required"  autocomplete="off" placeholder="" class="layui-input">
+    </div>
+</div>
 <div class="layui-form-item">
     <label class="layui-form-label">总面积</label>
-    <div class="layui-input-inline w300">
+    <div style="width:auto" class="layui-input-inline">
         <input type="text" name="measurearea" lay-verify="required"  autocomplete="off" placeholder="" class="layui-input">
     </div>
 </div>
 <div class="layui-form-item">
     <label class="layui-form-label">厂房面积</label>
-    <div class="layui-input-inline w300">
+    <div style="width:auto" class="layui-input-inline">
         <input type="text" name="lengthwidth"  autocomplete="off" placeholder="" class="layui-input">
     </div>
 </div>
 <div class="layui-form-item">
     <label class="layui-form-label">办公面积</label>
-    <div class="layui-input-inline w300">
+    <div style="width:auto" class="layui-input-inline">
         <input type="text" name="officespace"  autocomplete="off" placeholder="" class="layui-input">
     </div>
 </div>
 <div class="layui-form-item">
     <label class="layui-form-label">宿舍面积</label>
-    <div class="layui-input-inline w300">
+    <div style="width:auto" class="layui-input-inline">
         <input type="text" name="dormitory"  autocomplete="off" placeholder="" class="layui-input">
     </div>
 </div>
 
 <div class="layui-form-item">
     <label class="layui-form-label">所在楼层</label>
-    <div class="layui-input-inline w300" lay-verify-msg="必选项不能为空" lay-verify="mustradio" >
+    <div style="width:auto" class="layui-input-inline" lay-verify-msg="必选项不能为空" lay-verify="mustradio" >
         <input type="radio" name="floor"  autocomplete="off" placeholder="" class="layui-input"  value="1">一楼
         <input type="radio" name="floor"  autocomplete="off" placeholder="" class="layui-input"  value="2">二楼以上
 
@@ -88,48 +99,43 @@
     </div>
 </div>
 
-<!--<div class="layui-form-item">
-    <label class="layui-form-label">发布时间</label>
-    <div class="layui-input-inline w300">
-        <input type="text" name="releasetime" id="releasetime" autocomplete="off" placeholder="" class="layui-input">
-    </div>
-</div>-->
+<!---->
 <div class="layui-form-item">
     <label class="layui-form-label">土地用途</label>
-    <div class="layui-input-inline w300">
+    <div style="width:auto" class="layui-input-inline">
         <input type="text" name="canteen"  autocomplete="off" placeholder="" class="layui-input">
     </div>
 </div>
 <div class="layui-form-item">
     <label class="layui-form-label">使用年限</label>
-    <div class="layui-input-inline w300">
+    <div style="width:auto" class="layui-input-inline">
         <input type="text" name="expire"  autocomplete="off" placeholder="" class="layui-input">
     </div>
 </div>
 
 <div class="layui-form-item">
     <label class="layui-form-label">厂房价格</label>
-    <div class="layui-input-inline w300">
+    <div style="width:auto" class="layui-input-inline">
         <input type="text" name="plantrent"  autocomplete="off" placeholder="" class="layui-input">
     </div>
 </div>
 
 
-<div class="layui-form-item">
+<!--<div class="layui-form-item">
     <label class="layui-form-label">所在栋数</label>
-    <div class="layui-input-inline w300">
+    <div style="width:auto" class="layui-input-inline">
         <input type="text" name="numberbuildings"  autocomplete="off" placeholder="" class="layui-input">
     </div>
-</div>
+</div>-->
 <div class="layui-form-item">
     <label class="layui-form-label">所在楼层</label>
-    <div class="layui-input-inline w300">
+    <div style="width:auto" class="layui-input-inline">
         <input type="text" name="layernumber"  autocomplete="off" placeholder="" class="layui-input">
     </div>
 </div>
 <div class="layui-form-item">
     <label class="layui-form-label">厂房配电</label>
-    <div class="layui-input-inline w300">
+    <div style="width:auto" class="layui-input-inline">
         <input type="text" name="distributioncapacity"  autocomplete="off" placeholder="" class="layui-input">
     </div>
 </div>
@@ -137,62 +143,62 @@
 
 <div class="layui-form-item">
     <label class="layui-form-label">新旧程度</label>
-    <div class="layui-input-inline w300">
+    <div style="width:auto" class="layui-input-inline">
         <input type="text" name="newolddegree"  autocomplete="off" placeholder="" class="layui-input">
     </div>
 </div>
 <div class="layui-form-item">
     <label class="layui-form-label">厂房电梯</label>
-    <div class="layui-input-inline w300">
+    <div style="width:auto" class="layui-input-inline">
         <input type="text" name="elevator"  autocomplete="off" placeholder="" class="layui-input">
     </div>
 </div>
 <div class="layui-form-item">
     <label class="layui-form-label">消防</label>
-    <div class="layui-input-inline w300">
+    <div style="width:auto" class="layui-input-inline">
         <input type="text" name="firecontrol"  autocomplete="off" placeholder="" class="layui-input">
     </div>
 </div>
 <div class="layui-form-item">
     <label class="layui-form-label">交易方式</label>
-    <div class="layui-input-inline w300">
+    <div style="width:auto" class="layui-input-inline">
         <input type="text" name="applicableindustries"  autocomplete="off" placeholder="" class="layui-input">
     </div>
 </div>
 <div class="layui-form-item">
     <label class="layui-form-label">姓名</label>
-    <div class="layui-input-inline w300">
+    <div style="width:auto" class="layui-input-inline">
         <input type="text" name="name" lay-verify="required" autocomplete="off" placeholder="" class="layui-input">
     </div>
 </div>
 <div class="layui-form-item">
     <label class="layui-form-label">电话</label>
-    <div class="layui-input-inline w300">
+    <div style="width:auto" class="layui-input-inline">
         <input type="text" name="tel" lay-verify="required" autocomplete="off" placeholder="" class="layui-input">
     </div>
 </div>
 <div class="layui-form-item">
     <label class="layui-form-label">详情信息</label>
-    <div class="layui-input-inline" style="width:548px">
-        <textarea id="container" name="detail" lay-verify="required" style="width:548px;height:100px;"></textarea>
+    <div class="layui-input-inline" style="width:auto">
+        <textarea name="detail" cols="100" rows="10" id="container" lay-verify="required" ></textarea>
     </div>
 </div>
 <div class="layui-form-item">
     <label class="layui-form-label">标签</label>
-    <div class="layui-input-inline w300">
+    <div style="width:auto" class="layui-input-inline">
         <input type="text" name="tag"  autocomplete="off" placeholder="" class="layui-input">
     </div>
 </div>
 <div class="layui-form-item">
     <label class="layui-form-label">类型</label>
-    <div class="layui-input-inline w300" lay-verify-msg="必选项不能为空" lay-verify="mustradio" >
+    <div style="width:auto" class="layui-input-inline" lay-verify-msg="必选项不能为空" lay-verify="mustradio" >
     	<input type="radio" name="type"  value="1" autocomplete="off" placeholder="" class="layui-input">推荐
         <input type="radio" name="type"  value="2" autocomplete="off" placeholder="" class="layui-input">火爆
     </div>
 </div>              
 <div class="layui-form-item">
     <label class="layui-form-label">图片</label>
-    <div class="layui-input-inline w300">
+    <div style="width:auto" class="layui-input-inline">
         <div class="layui-upload">
   <button type="button" class="layui-btn" id="test2">多图片上传</button> 
   <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
