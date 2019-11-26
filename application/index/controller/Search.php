@@ -2,15 +2,20 @@
 
 namespace app\index\controller;
 
+use app\admin\model\AdManage;
+use app\admin\model\HrefManage;
 use app\admin\model\Workshop;
 use app\common\controller\Homebase;
 use app\admin\model\Workshop as Workshop_Model;
+use app\format\OfficeBuildFormat;
 use app\format\WorkShopFormat;
 use app\search\model\Workshopsearch as Workshopsearch;
 use app\search\model\Offbuildingsearch as Offbuildingsearch;
 use app\admin\model\City;
 use app\admin\model\Area;
 use \think\Db;
+use think\facade\Validate;
+use think\Request;
 
 class Search extends Homebase
 {
@@ -30,64 +35,115 @@ class Search extends Homebase
     //会员中心首页
     public function workshop()
     {
-        $data = $this->request->param();
-
         $city = isset($_COOKIE['city']) ? $_COOKIE['city'] : 8;
         $cityList = Db::name('city')->where('id', 'not in', $city)->select();
         $cityInfo = Db::name('city')->where('id', 'in', $city)->select();
         $areaInfo = Db::name('area')->where('parentId', 'in', $city)->select();
-        $keywords = 1;
 
-        $d = $this->Workshopsearch->searchDoc($data, 1, 10);
-        $ids = array();
-        if (count($d['hits']['hits'])) {
-            foreach ($d['hits']['hits'] as $value) {
-                array_push($ids, $value['_id']);
+        $recommend = Db::name('workshop')
+            ->where(["type" => 1])->order(array('releasetime' => 'DESC'))
+            ->paginate(10);
+        $floor1 = Db::name('workshop')->where(["floor" => 1])
+            ->order(array('releasetime' => 'DESC'))->paginate(10);
+        $floor2 = Db::name('workshop')->where(["floor" => 2])
+            ->order(array('releasetime' => 'DESC'))->paginate(10);
+        $floor3 = Db::name('workshop')->where(["floor" => 3])
+            ->order(array('releasetime' => 'DESC'))->paginate(10);
+        $href = HrefManage::order('sort', 'desc')->select()->toArray();
+        $ad = AdManage::where('is_enable', '=', 1)->order(['code' => 'asc', 'sort' => 'desc'])->select();
+
+        $adList = [];
+        foreach ($ad as $row) {
+            $detail = [
+                'title' => $row->title,
+                'pic_path' => $row->pic_path,
+                'href' => $row->href
+            ];
+            if ($row->code == '001') {
+                $adList['top'] = $detail;
+            } elseif ($row->code == '002') {
+                $adList['mid_ad'][] = $detail;
+            } elseif ($row->code == '003') {
+                $adList['bottom_ad'][] = $detail;
             }
         }
+        $officeInstance = OfficeBuildFormat::getInstance();
+        $this->assign([
+            'recommend' => $officeInstance->formatList($recommend),
+            'floor1' => $floor1,
+            'floor2' => $floor2,
+            'floor3' => $floor3,
+            'cityInfo' => $cityInfo,
+            'areaInfo' => $areaInfo,
+            'cityList' => $cityList,
+            'href' => $href,
+            'ad' => $adList,
 
-        $id_str = implode(',', $ids);
-        $where['id'] = array('in', $id_str);
-        $list = Db::name('workshop')->where('id', 'in', $id_str)->order(array('releasetime' => 'DESC'))->paginate(2, false, [
-            'query' => $this->request->param(),//不丢失已存在的url参数
         ]);
-        $this->assign("cityInfo", $cityInfo);
-        $this->assign("areaInfo", $areaInfo);
-        $this->assign("cityList", $cityList);
-
-        $this->assign("list", $list);
-
-        $recommend = Db::name('workshop')->where(["type" => 1])->order(array('releasetime' => 'DESC'))->paginate(10);
-        $this->assign("recommend", $recommend);
-        $floor1 = Db::name('workshop')->where(["floor" => 1])->order(array('releasetime' => 'DESC'))->paginate(10);
-        $this->assign("floor1", $floor1);
-        $floor2 = Db::name('workshop')->where(["floor" => 2])->order(array('releasetime' => 'DESC'))->paginate(10);
-        $this->assign("floor2", $floor2);
-        $floor3 = Db::name('workshop')->where(["floor" => 3])->order(array('releasetime' => 'DESC'))->paginate(10);
-        $this->assign("floor3", $floor3);
         return $this->fetch('rentalofworkshop');
     }
 
-    public function workshopdetail()
+    public function workshopdetail(Request $request)
     {
-        $id = $this->request->param('id/d', '');
-        $info = Db::name('workshop')->where(['id' => $id])->find();//var_dump($info);exit;
-        $cityInfo = Db::name('city')->where('id', 'in', $info['city'])->select();
-        $areaInfo = Db::name('area')->where('parentId', 'in', $info['city'])->select();
-        $cityList = Db::name('city')->where('id', 'not in', $info['city'])->select();
-        $this->assign("cityList", $cityList);
+        $validate = Validate::make([
+            'id' => 'require|integer'
+        ]);
+        if (!$validate->check($request->param())) {
+            $this->error($validate->getError());
+        }
 
-        $this->assign("info", $info);
-        $this->assign("cityInfo", $cityInfo);
-        $this->assign("areaInfo", $areaInfo);
-        $recommend = Db::name('workshop')->where(["type" => 1])->order(array('releasetime' => 'DESC'))->paginate(10);
-        $this->assign("recommend", $recommend);
-        $floor1 = Db::name('workshop')->where(["floor" => 1])->order(array('releasetime' => 'DESC'))->paginate(10);
-        $this->assign("floor1", $floor1);
-        $floor2 = Db::name('workshop')->where(["floor" => 2])->order(array('releasetime' => 'DESC'))->paginate(10);
-        $this->assign("floor2", $floor2);
-        $floor3 = Db::name('workshop')->where(["floor" => 3])->order(array('releasetime' => 'DESC'))->paginate(10);
-        $this->assign("floor3", $floor3);
+        $id = $request->param('id/d', '');
+        $info = Workshop::where(['id' => $id])->find();
+
+        $cityInfo = Db::name('city')
+            ->where('id', 'in', $info['city'])->select();
+        $areaInfo = Db::name('area')
+            ->where('parentId', 'in', $info['city'])->select();
+
+        $cityList = Db::name('city')
+            ->where('id', 'not in', $info['city'])->select();
+
+        $recommend = Workshop::where(["type" => 1])
+            ->order(array('releasetime' => 'DESC'))
+            ->paginate(10);
+        $floor1 = Db::name('workshop')
+            ->where(["floor" => 1])->order(array('releasetime' => 'DESC'))
+            ->paginate(10);
+        $floor2 = Db::name('workshop')
+            ->where(["floor" => 2])->order(array('releasetime' => 'DESC'))
+            ->paginate(10);
+        $floor3 = Db::name('workshop')
+            ->where(["floor" => 3])->order(array('releasetime' => 'DESC'))
+            ->paginate(10);
+        $ad = AdManage::where('is_enable', '=', 1)->order(['code' => 'asc', 'sort' => 'desc'])->select();
+        $adList = [];
+        foreach ($ad as $row) {
+            $detail = [
+                'title' => $row->title,
+                'pic_path' => $row->pic_path,
+                'href' => $row->href
+            ];
+            if ($row->code == '001') {
+                $adList['top'] = $detail;
+            } elseif ($row->code == '002') {
+                $adList['mid_ad'][] = $detail;
+            } elseif ($row->code == '003') {
+                $adList['bottom_ad'][] = $detail;
+            }
+        }
+        $workInstance = WorkShopFormat::getInstance();
+
+        $this->assign([
+            'cityList' => $cityList,
+            'info' => $workInstance->formatDetail($info),
+            'cityInfo' => $cityInfo,
+            'areaInfo' => $areaInfo,
+            'recommend' => $workInstance->formatList($recommend),
+            'floor1' => $floor1,
+            'floor2' => $floor2,
+            'floor3' => $floor3,
+            'ad' => $adList,
+        ]);
         return $this->fetch('workshopdetail');
     }
 

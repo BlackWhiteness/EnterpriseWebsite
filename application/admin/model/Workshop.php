@@ -19,8 +19,24 @@ use app\admin\service\User;
 use \think\Db;
 use \think\Model;
 
+/**
+ * Class Workshop
+ * @package app\admin\model
+ */
 class Workshop extends Model
 {
+    const CATEGORY_CONFIG = [
+        1 => '厂房出租',
+        2 => '厂房出售',
+        3 => '仓库出租'
+    ];
+
+    const STRUCT_CONFIG = [
+        1 => '标准',
+        2 => '钢构结构',
+        3 => '简易(铁皮房)',
+        4 => '各类型仓库(单层仓库/多层仓库)'
+    ];
 
     protected $type = [
         'imgs' => 'serialize',
@@ -59,7 +75,7 @@ class Workshop extends Model
             $query = $query->where('area', '=', $area);
         }
         $measurearea = request()->param('measurearea');
-        if (empty($measurearea)) {
+        if (!empty($measurearea)) {
             $top = strpos($measurearea, '-');
             if ($top == false) {
                 $query = $query->where('measurearea', '>=', 10000);

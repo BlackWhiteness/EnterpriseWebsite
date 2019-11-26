@@ -3,6 +3,7 @@
 namespace app\format;
 
 use app\admin\model\Area;
+use app\admin\model\Workshop;
 
 /**
  * 工厂数据格式化
@@ -82,4 +83,44 @@ class WorkShopFormat
         return $rtn;
     }
 
+    /**
+     * 格式化
+     * @param $detail
+     * @return array
+     */
+    public function formatDetail($detail)
+    {
+        return [
+            'id' => $detail['id'],
+            'region' => $detail['region'],
+            'measurearea' => $detail['measurearea'],
+            'floor' => $detail['floor'],
+            'structure' => Workshop::STRUCT_CONFIG[$detail['structure']],
+            'releasetime' => $detail['releasetime'],
+            'expire' => $detail['expire'],
+            'officespace' => $detail['officespace'],
+            'plantrent' => $detail['plantrent'],
+            'dormitory_area' => $detail['dormitory_area'],
+            'numberbuildings' => $detail['numberbuildings'],
+            'layernumber' => $detail['layernumber'],
+            'distributioncapacity' => $detail['distributioncapacity'],
+            'lengthwidth' => $detail['lengthwidth'],
+            'canteen' => $detail['canteen'],
+            'newolddegree' => $detail['newolddegree'],
+            'elevator' => $detail['elevator'],
+            'firecontrol' => $detail['firecontrol'],
+            'applicableindustries' => $detail['applicableindustries'],
+            'name' => $detail['name'],
+            'tel' => $detail['tel'],
+            'detail' => $detail['detail'],
+            'tag' => $detail['tag'],
+            'imgs' => $detail['imgs'],
+            'title' => $detail['title'],
+            'city' => $detail['city'],
+            'area' => $detail['area'],
+            'dormitoryarea' => $detail['dormitoryarea'],
+            'type' => $detail['type'],
+            'category' => Workshop::CATEGORY_CONFIG[$detail['category']],
+        ];
+    }
 }

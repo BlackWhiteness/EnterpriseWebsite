@@ -39,7 +39,6 @@ class Index extends Homebase
         $cityInfo = Db::name('city')->where('id', '=', $city)->find();
         $areaInfo = Db::name('area')->where('parentId', 'in', $city)->select();
         $cityList = Db::name('city')->where('id', '<>', $city)->select();
-//        dump($cityList);die;
         $newWorkShop = [];
         $firstCity = Db::name('city')->order(array('id' => 'ASC'))->page(1, 9)->select();
         foreach ($firstCity as $k => $value) {
@@ -48,7 +47,6 @@ class Index extends Homebase
             $newWorkShop[$k]['workshop'] = $sz;
         }
         $hot = Workshop_Model::where(array('type' => 2))->order(array('releasetime' => 'DESC'))->page(1, 6)->select()->toArray();
-        $this->assign("hot", $hot);
         $recommend = Workshop_Model::where(array('type' => 1))->order(array('releasetime' => 'DESC'))->page(1, 10)->select()->toArray();
         $href = HrefManage::order('sort', 'desc')->select()->toArray();
         $officeInstance = OfficeBuildFormat::getInstance();
@@ -68,15 +66,17 @@ class Index extends Homebase
                 $adList['bottom_ad'][] = $detail;
             }
         }
+
         $this->assign([
             'recommend' => $officeInstance->formatList($recommend),
             'cityInfo' => $cityInfo,
             'cityList' => $cityList,
             'areaInfo' => $areaInfo,
             'newWorkShop' => $newWorkShop,
-            "hot" => $hot,
+            "hot" => $officeInstance->formatList($hot),
             'href' => $href,
-            'ad' => $adList
+            'ad' => $adList,
+
         ]);
         return $this->fetch();
     }
