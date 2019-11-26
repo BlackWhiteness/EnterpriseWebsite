@@ -73,7 +73,7 @@ font-style: normal;
 .mr_search {
 	width: 500px;
 	height: 32px;
-	border: 2px solid #2D348E;
+	border: 2px solid #009BE5;
 }
 .mr_search form {
 	display: block;
@@ -385,7 +385,38 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
         }
     </script>
 
-{include file="templates/default/index/layout/nav.html" /}
+<div id="header">
+    <table width="960" border="0" cellspacing="0" cellpadding="0" align="center">
+        <tbody>
+        <tr>
+            <td>
+                <script type="text/javascript">
+                    (function (a) {
+                        a.fn.hoverClass = function (b) {
+                            var a = this;
+                            a.each(function (c) {
+                                a.eq(c).hover(function () {
+                                    $(this).addClass(b)
+                                }, function () {
+                                    $(this).removeClass(b)
+                                })
+                            });
+                            return a
+                        };
+                    })(jQuery);
+
+
+                </script>
+                <!--解决 IE6 背景缓存-->
+                <!--[if IE 6]>
+                <script type="text/javascript">document.execCommand("BackgroundImageCache", false, true);</script>
+                <![endif]-->
+                {include file="templates/default/index/layout/nav.html" /}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 <div class="zs_newmbx" style="display:none; width:936px;margin:auto;text-align:left;">
 		<a target="_blank" href=".">东莞厂房网</a>&nbsp;&gt;&nbsp;<a target="_blank" href="/index/search/workshop?city={$cityInfo[0]['id']}?area=dg">东莞厂房出租</a>
  </div>
