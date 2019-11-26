@@ -190,23 +190,18 @@ class Search extends Homebase
         return $this->fetch('offbuilddetail');
     }
 
+    /**
+     * 获取数据
+     * @param Workshop_Model $workshop
+     * @return \think\response\Json
+     * @throws \think\exception\DbException
+     */
     public function ajaxSearchWs(Workshop $workshop)
     {
-//        $data = $this->request->param();
-        //category: "1"
-        //city: "6"
-        //measurearea: "0-500"
-        //page: "1"
-//        $d = $this->Workshopsearch->searchDoc($data, 1, 10);
-//        return $d;
-//        $ids = array();
-//        if (count($d['hits']['hits'])) {
-//            foreach ($d['hits']['hits'] as $value) {
-//                array_push($ids, $value['_id']);
-//            }
-//        }
-//        $id_str = implode(',', $ids);
-//        $where['id'] = array('in', $id_str);
+        $category = request()->param('category');
+        if (!empty($category)) {
+            return json(['status' => false, 'msg' => '参数错误!']);
+        }
         $data = $workshop->getWorkShopBySearch();
         return json([
             'data' => WorkShopFormat::getInstance()->formatList($data),

@@ -105,7 +105,7 @@ function pageinit(total, current, last_page) {
         pageCount: total,
         current: current,
         pageCount: last_page,
-        showData: 1,
+        showData: 20,
         jump: true,
         callback: function (api) {
             action(api.getCurrent());

@@ -99,9 +99,8 @@ class Workshop extends Model
      */
     public function getWorkShopBySearch()
     {
-
         $query = $this->filterComon();
-        $query = $query->paginate(1);
+        $query = $query->paginate(20);
         return $query;
     }
 
