@@ -14,7 +14,7 @@
 
             <div class="layui-form-item">
                 <label class="layui-form-label">分类</label>
-                <div class="layui-input-inline w300" lay-verify-msg="必选项不能为空" lay-verify="mustradio">
+                <div style="auto" class="layui-input-inline" lay-verify-msg="必选项不能为空" lay-verify="mustradio">
                     <input type="radio" name="category" autocomplete="off" placeholder="" class="layui-input" value="1"
                            {if condition="$data.category eq 1 " } checked {/if} >厂房出租
                     <input type="radio" name="category" autocomplete="off" placeholder="" class="layui-input" value="2"
@@ -58,7 +58,7 @@
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">结构</label>
-                <div class="layui-input-inline w300" lay-verify-msg="必选项不能为空" lay-verify="mustradio">
+                <div style="auto" class="layui-input-inline" lay-verify-msg="必选项不能为空" lay-verify="mustradio">
                     <input type="radio" name="structure" autocomplete="off" placeholder="" class="layui-input" value="1"
                            {if condition="$data.structure eq 1 " } checked {/if} >标准厂房
                     <input type="radio" name="structure" autocomplete="off" placeholder="" class="layui-input" value="2"
@@ -99,7 +99,7 @@
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">所在楼层</label>
-                <div class="layui-input-inline w300" lay-verify-msg="必选项不能为空" lay-verify="mustradio">
+                <div style="auto" class="layui-input-inline" lay-verify-msg="必选项不能为空" lay-verify="mustradio">
                     <input type="radio" name="floor" autocomplete="off" placeholder="" class="layui-input" value="1" {if
                            condition="$data.floor eq 1 " } checked {/if} >一楼厂房
                     <input type="radio" name="floor" autocomplete="off" placeholder="" class="layui-input" value="2" {if
