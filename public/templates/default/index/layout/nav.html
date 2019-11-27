@@ -43,6 +43,9 @@
         }else if(site_url.indexOf("index/search/workshop") > 0 && site_url.indexOf("category=3") > 0){
             $(".nav li").attr("class", "");
             $(".nav li").eq(3).attr("class", "current");
+        }else if(site_url.indexOf("/index/search/officebuilding") > 0){
+            $(".nav li").attr("class", "");
+            $(".nav li").eq(5).attr("class", "current");
         }
         // switch (site_url) {
         //     case site_url == 'http://' + current_domain + '/' :
