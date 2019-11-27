@@ -336,16 +336,16 @@ table td em{ float:left; color:#ad4907; padding-left:5px;}
 
 
 
-#main_right {width:700px; float:left; overflow:hidden;}
-#right_title {width:700px; line-height:34px; height:34px; float:left; background:url(../img/tit_bg.jpg) repeat-x;  padding:5px 0 0 22px; overflow:hidden;}
+#main_right {width:738px; float:left; overflow:hidden;}
+#right_title {width:738px; line-height:34px; height:34px; float:left; background:url(../img/tit_bg.jpg) repeat-x;  padding:5px 0 0 22px; overflow:hidden;}
 #right_title strong {color: #FFF; font-size:14px;}
 #right_title span {float:left; font-family:'宋体'; font-weight:bold; line-height: 22px; color: #595959; font-size: 12px;}
 #right_title span a {color:#333;}
-.right_cont {width:698px; float:left;  border:0px solid #d9d9d9; border-top:0;}
+.right_cont {width:736px; float:left;  border:0px solid #d9d9d9; border-top:0;}
 
 
 
-.list_one {width:698px; height:130px; float:left; padding:24px 0 21px; border-bottom:2px solid #d9d9d9;}
+.list_one {width:6736px; height:130px; float:left; padding:24px 0 21px; border-bottom:2px solid #d9d9d9;}
 .list_one:hover{ background:rgb(245,245,245);}
 .list_one_img {width:144px; height:130px; float:left; margin:1px 15px 0 0; text-align:center; overflow:hidden;}
 .list_one_img img {vertical-align:middle;}
