@@ -219,7 +219,7 @@ ul, li {margin: 0px;padding: 0px;list-style-type: none;}
 .ser_sx dd a{ color: #2F2B2B; margin-right: 18px;}
 .ser_sx dd a:hover{color: #D42A24; font-weight: bold;}
 .ser_sx dd a:hover.current{color: #FFFFFF; text-decoration:none;font-weight: bold;}
-.ser_sx dd .current{ color: #FFFFFF; background-color:#f60 ; padding:3px 8px;font-weight: bold;}
+.ser_sx dd .current{ color: #FFFFFF; background-color:#009BE5 ; padding:3px 8px;font-weight: bold;}
 .clear{clear: both;}
 .search_area-foot{background:url(/public/static/index/img/searcharea_foot.jpg) no-repeat; height:10px;background-size:100% 100%;}
 .search_area-screen{height:45px;line-height:45px;background-color:#F0F0F0;padding-left:15px; text-align:left; color:#666}
@@ -228,10 +228,10 @@ ul, li {margin: 0px;padding: 0px;list-style-type: none;}
 /*搜索框的内容*/
 #title_search{width:840px; height: 50px;margin:20px auto; position: relative;}
 .list-search{ position: absolute;left: 3px;width: 46px;height: 46px;background: url(http://sz.kongjianjia.com/Public/img/store/search.png) no-repeat center center;}
-#title_input{ background: #ffffff;border: 3px solid #ef4035;border-right: none;border-radius: 2px 0px 0px 2px;width: 600px;height: 45px;color: #929090;font-size: 14px;line-height: 44px;
+#title_input{ background: #ffffff;border: 3px solid #009BE5;border-right: none;border-radius: 2px 0px 0px 2px;width: 600px;height: 45px;color: #929090;font-size: 14px;line-height: 44px;
 padding: 0px 17px;float: left;text-indent: 29px;}
 #title_input:focus{outline:none;}
-#title_click{float: left;width: 80px; height: 50px; border-radius: 0px 2px 2px 0px;text-align: center;display: inline; transition: 0.5s;background-color: #e72416;line-height: 50px;color: #ffffff;font-size: 14px; margin-right:20px; text-decoration:none;}
+#title_click{float: left;width: 80px; height: 50px; border-radius: 0px 2px 2px 0px;text-align: center;display: inline; transition: 0.5s;background-color: #009BE5;line-height: 50px;color: #ffffff;font-size: 14px; margin-right:20px; text-decoration:none;}
 #title_click:hover{  background-color: #F60;}
 /*以上是搜索框的内容*/
 
