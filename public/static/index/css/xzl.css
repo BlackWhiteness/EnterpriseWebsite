@@ -165,14 +165,14 @@ ul, li {margin: 0px;padding: 0px;list-style-type: none;}
 .navbox{height:42px;background-position:0 -76px;background-repeat:repeat-x;position:relative;z-index:6;}
 .nav{height:39px;}
 .nav ul{height:100%;}
-.nav li{float:left;height:39px;background-position:100% -151px;padding:0 5px;position:relative;}
+.nav li{float:left;height:39px; text-align:center;padding:0 5px;position:relative;}
 .nav li{padding:0 25px;}
 .nav li a{float:left;display:block;padding:0 0 0 18px;}
 .nav li a:hover{text-decoration:none;}
 .nav li a span{display:block;float:left;padding:0 25px 0 0;height:39px;line-height:39px;font-size:14px;cursor:pointer;color:#fff;}
 .nav li a.menubox,.nav li a.menubox span{background-position:0 -76px;}
 .nav li a.menubox:hover,.nav li.hover a.menubox,.nav li.current a.menubox{background-position:0 -190px;}
-.nav li a.menubox:hover span,.nav li.hover a.menubox span,.nav li.current a.menubox span{background-position:100% -190px;color:#3366cc;}
+.nav li a.menubox:hover span,.nav li.hover a.menubox span,.nav li.current a.menubox span{color:#3366cc; background-color:#FFF;}
 .nav li.last{background:none;}
 .nav li.hover .subnav{display:block;}
 .subnav{display:none;width:773px;padding:0;position:absolute;left:0;top:39px;background:#fff;z-index:9;border-width:0px 1px 1px 1px;border-style:solid;border-color:#e6e6e6;}
