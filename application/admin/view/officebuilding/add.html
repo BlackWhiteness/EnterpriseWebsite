@@ -10,9 +10,9 @@
         <input type="text" name="title" lay-verify="required" autocomplete="off" placeholder="" class="layui-input">
     </div>
 </div>
-  <div style="width:15%"  class="layui-form-item">
+  <div class="layui-form-item">
     <label class="layui-form-label">发布时间</label>
-    <div class="layui-input-inline">
+    <div style="width:15%"   class="layui-input-inline">
         <input type="text" id="releasetime" name="releasetime"  autocomplete="off" placeholder="" class="layui-input">
     </div>
 </div>          <div class="layui-form-item">
@@ -35,9 +35,11 @@
 <div class="layui-form-item">
     <label class="layui-form-label">类型</label>
     <div style="width:50%" class="layui-input-inline" lay-verify-msg="必选项不能为空" lay-verify="mustradio" >
-        <input type="radio" name="category" autocomplete="off" placeholder="" class="layui-input"  value="1">厂房出租
-        <input type="radio" name="category" autocomplete="off" placeholder="" class="layui-input"  value="2">厂房出售
-        <input type="radio" name="category" autocomplete="off" placeholder="" class="layui-input"  value="3">仓库出租
+        <input type="radio" name="category" autocomplete="off" placeholder="" class="layui-input"  value="1">
+        写字楼出租
+        <input type="radio" name="category" autocomplete="off" placeholder="" class="layui-input"  value="2">
+        写字楼出售
+        <!--<input type="radio" name="category" autocomplete="off" placeholder="" class="layui-input"  value="3">仓库出租-->
     </div>
 </div>
 <div class="layui-form-item">
@@ -100,7 +102,7 @@
 </div>
 <div class="layui-form-item">
     <label class="layui-form-label">证件</label>
-    <div style="width:15%"  class="layui-input-inlin">
+    <div style="width:15%"  class="layui-input-inline">
         <input type="text" name="firecontrol" lay-verify="required" autocomplete="off" placeholder="" class="layui-input">
     </div>
 </div>
