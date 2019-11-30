@@ -6,11 +6,16 @@
         <form class="layui-form" method="post">
             <div class="layui-form-item">
     <label class="layui-form-label">标题</label>
-    <div style="width:80%" class="layui-input-inline">
+    <div style="width:60%" class="layui-input-inline">
         <input type="text" name="title" lay-verify="required" autocomplete="off" placeholder="" class="layui-input">
     </div>
 </div>
-            <div class="layui-form-item">
+  <div class="layui-form-item">
+    <label class="layui-form-label">发布时间</label>
+    <div class="layui-input-inline w300">
+        <input type="text" id="releasetime" name="releasetime"  autocomplete="off" placeholder="" class="layui-input">
+    </div>
+</div>          <div class="layui-form-item">
     <label class="layui-form-label">市</label>
     <div style="width:20%" class="layui-input-inline">
 <select name="city"  lay-filter="city" lay-verify="required" >
@@ -28,33 +33,29 @@
     </div>
 </div>
 <div class="layui-form-item">
-    <label class="layui-form-label">面积</label>
-    <div style="width:20%"  class="layui-input-inline">
+    <label class="layui-form-label">类型</label>
+    <div style="width:50%" class="layui-input-inline" lay-verify-msg="必选项不能为空" lay-verify="mustradio" >
+        <input type="radio" name="category" autocomplete="off" placeholder="" class="layui-input"  value="1">厂房出租
+        <input type="radio" name="category" autocomplete="off" placeholder="" class="layui-input"  value="2">厂房出售
+        <input type="radio" name="category" autocomplete="off" placeholder="" class="layui-input"  value="3">仓库出租
+    </div>
+</div>
+<div class="layui-form-item">
+    <label class="layui-form-label">总面积</label>
+    <div style="width:50%"  class="layui-input-inline">
         <input type="text" name="measurearea" lay-verify="required" autocomplete="off" placeholder="" class="layui-input">
     </div>
 </div>
 <div class="layui-form-item">
-    <label class="layui-form-label">楼盘名称</label>
-    <div style="width:20%"  class="layui-input-inline">
-        <input type="text" name="buildingname" lay-verify="required" autocomplete="off" placeholder="" class="layui-input">
-    </div>
-</div>
-<div class="layui-form-item">
-    <label class="layui-form-label">楼盘地址</label>
+    <label class="layui-form-label">写字楼价格</label>
     <div class="layui-input-inline w300">
-        <input type="text" name="address" lay-verify="required" autocomplete="off" placeholder="" class="layui-input">
-    </div>
-</div>
-<div class="layui-form-item">
-    <label class="layui-form-label">发布时间</label>
-    <div class="layui-input-inline w300">
-        <input type="text" id="releasetime" name="releasetime"  autocomplete="off" placeholder="" class="layui-input">
+        <input type="text" name="plantrent" lay-verify="required" autocomplete="off" placeholder="" class="layui-input">
     </div>
 </div>
 <div class="layui-form-item">
     <label class="layui-form-label">管理费</label>
     <div class="layui-input-inline w300">
-        <input type="text" name="managementfee"  autocomplete="off" placeholder="" class="layui-input">
+        <input type="text" name="officespace"  autocomplete="off" placeholder="" class="layui-input">
     </div>
 </div>
 <div class="layui-form-item">
@@ -64,27 +65,55 @@
     </div>
 </div>
 <div class="layui-form-item">
-    <label class="layui-form-label">厂房租金</label>
-    <div class="layui-input-inline w300">
-        <input type="text" name="plantrent" lay-verify="required" autocomplete="off" placeholder="" class="layui-input">
+    <label class="layui-form-label">楼层区</label>
+    <div style="width:20%"  class="layui-input-inline">
+        <input type="text" name="buildingname" lay-verify="required" autocomplete="off" placeholder="" class="layui-input">
     </div>
 </div>
 <div class="layui-form-item">
-    <label class="layui-form-label">姓名</label>
+    <label class="layui-form-label">是否分割</label>
+    <div class="layui-input-inline w300">
+        <input type="text" name="address" lay-verify="required" autocomplete="off" placeholder="" class="layui-input">
+    </div>
+</div>
+
+
+
+
+<div class="layui-form-item">
+    <label class="layui-form-label">付款方式</label>
     <div class="layui-input-inline w300">
         <input type="text" name="name" lay-verify="required" autocomplete="off" placeholder="" class="layui-input">
     </div>
 </div>
 <div class="layui-form-item">
-    <label class="layui-form-label">电话</label>
+    <label class="layui-form-label">使用年限</label>
     <div class="layui-input-inline w300">
         <input type="text" name="tel" lay-verify="required" autocomplete="off" placeholder="" class="layui-input">
     </div>
 </div>
 <div class="layui-form-item">
-    <label class="layui-form-label">详情</label>
+    <label class="layui-form-label">级别</label>
     <div class="layui-input-inline w300">
-        <textarea name="detail" lay-verify="required" autocomplete="off" placeholder="" class="layui-input"></textarea>
+        <input type="text" name="canteen" lay-verify="required" autocomplete="off" placeholder="" class="layui-input">
+    </div>
+</div>
+<div class="layui-form-item">
+    <label class="layui-form-label">证件</label>
+    <div class="layui-input-inline w300">
+        <input type="text" name="firecontrol" lay-verify="required" autocomplete="off" placeholder="" class="layui-input">
+    </div>
+</div>
+<div class="layui-form-item">
+    <label class="layui-form-label">其他</label>
+    <div class="layui-input-inline w300">
+        <input type="text" name="newolddegree" lay-verify="required" autocomplete="off" placeholder="" class="layui-input">
+    </div>
+</div>
+<div class="layui-form-item">
+    <label class="layui-form-label">详情</label>
+    <div style="width:60%" class="layui-input-inline">
+        <textarea name="detail" rows="10" class="layui-input" placeholder="" lay-verify="required" autocomplete="off"></textarea>
     </div>
 </div>
 <div class="layui-form-item">
