@@ -65,7 +65,7 @@ ul, li {margin: 0px;padding: 0px;list-style-type: none;}
 /* TOP页面CSS */
 .head .t-r .FL a{ color:#fd443b; margin-right: 10px;}
 .head .t-r .FL a:hover{ color:#d90700;}
-.mr_search {width: 500px;height: 32px;border: 2px solid #093;}
+.mr_search {width: 500px;height: 32px;border: 2px solid #009BE5;}
 .mr_search form {display: block;}
 .mr_search form .select {position: relative;}
 .mr_search form input {display: block;float: left;}
