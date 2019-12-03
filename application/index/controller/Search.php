@@ -231,21 +231,46 @@ class Search extends Homebase
     public function offbuilddetail()
     {
         $id = $this->request->param('id/d', '');
-        $info = Db::name('officebuilding')->where(['id' => $id])->find();
+        $info = Officebuilding::where(['id' => $id])->find();
         $cityInfo = Db::name('city')->where('id', 'in', $info['city'])->select();
         $areaInfo = Db::name('area')->where('parentId', 'in', $info['city'])->select();
         $cityList = Db::name('city')->where('id', 'not in', $info['city'])->select();
-        $this->assign("cityList", $cityList);
+        $recommend = Officebuilding::where(["type" => 1])->order(array('releasetime' => 'DESC'))
+            ->limit(0, 10)->select();
+        $new = Officebuilding::order(array('releasetime' => 'DESC'))
+            ->limit(0, 10)->select();
+        $hot = Officebuilding::where(["type" => 2])
+            ->order(array('releasetime' => 'DESC'))->limit(10)->select();
 
-        $this->assign("info", $info);
-        $this->assign("cityInfo", $cityInfo);
-        $this->assign("areaInfo", $areaInfo);
-        $recommend = Db::name('officebuilding')->where(["type" => 1])->order(array('releasetime' => 'DESC'))->paginate(10);
-        $this->assign("recommend", $recommend);
-        $new = Db::name('officebuilding')->order(array('releasetime' => 'DESC'))->paginate(10);
-        $this->assign("new", $new);
-        $hot = Db::name('officebuilding')->where(["type" => 2])->order(array('releasetime' => 'DESC'))->paginate(10);
-        $this->assign("hot", $hot);
+        $href = HrefManage::order('sort', 'desc')->select()->toArray();
+        $ad = AdManage::where('is_enable', '=', 1)->order(['code' => 'asc', 'sort' => 'desc'])->select();
+        $adList = [];
+        foreach ($ad as $row) {
+            $detail = [
+                'title' => $row->title,
+                'pic_path' => $row->pic_path,
+                'href' => $row->href
+            ];
+            if ($row->code == '001') {
+                $adList['top'] = $detail;
+            } elseif ($row->code == '002') {
+                $adList['mid_ad'][] = $detail;
+            } elseif ($row->code == '003') {
+                $adList['bottom_ad'][] = $detail;
+            }
+        }
+
+        $this->assign([
+            'recommend' => $this->formatOffice($recommend),
+            'new' => $this->formatOffice($new),
+            'hot' => $this->formatOffice($hot),
+            'cityInfo' => $cityInfo,
+            'areaInfo' => $areaInfo,
+            'cityList' => $cityList,
+            'href' => $href,
+            'ad' => $adList,
+            'info' => $info
+        ]);
         return $this->fetch('offbuilddetail');
     }
 
