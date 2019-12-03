@@ -108,7 +108,7 @@ function resultFilter(result) {
     $(".list-content").append(top);
     $.each(result.data, function (index, row) {
         var html = '';
-        html += "<a href=/index/search/offbuilddetail?id=" + row.id + " target='_blank>";
+        html += "<a href=/index/search/offbuilddetail?id=" + row.id + " target='_blank'>";
         html += "<div class='list-item' link=" + "/index/search/offbuilddetail?id=" + row.id + "> ";
         html += "<img src=" + row.imgs + " alt=" + row.title + " class=\"item-img\" width=\"150\" height=\"115\"/> ";
         html += "<dl class=\"item-info\">";
