@@ -40,11 +40,9 @@ class Officebuilding extends Model
     {
         $query = self::getModel();
         $city = request()->param('city');
-
         if (!empty($city)) {
             $query = $query->where('city', '=', $city);
         }
-
         $area = request()->param('area');
         if (!empty($area)) {
             $query = $query->where('area', '=', $area);

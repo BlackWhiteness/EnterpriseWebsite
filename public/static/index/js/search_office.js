@@ -24,7 +24,12 @@ $(".screen_area a").click(function () {
     var position = $(".screen_area a").index(this);
     $(".screen_area a").attr("class", "");
     $(".screen_area a").eq(position).attr("class", 'current');
-    area = $(".screen_area a").eq(position).attr('value');
+    if (position != 0) {
+        area = $(".screen_area a").eq(position).attr('value');
+    }else{
+        area='';
+    }
+
     action();
 });
 
@@ -101,10 +106,10 @@ function pageinit(total, current, last_page) {
 
 //渲染html
 function resultFilter(result) {
-    var top="";
-    top+="<div class='list-sort'>";
-    top+="<span class='tit'>"+"为您找到以下";
-    top+="<em style="+"float:none; font-weight:bold; font-size:15px;"+">"+"深圳</em>写字楼出租</span>";
+    var top = "";
+    top += "<div class='list-sort'>";
+    top += "<span class='tit'>" + "为您找到以下";
+    top += "<em style=" + "float:none; font-weight:bold; font-size:15px;" + ">" + "深圳</em>写字楼出租</span>";
     $(".list-content").append(top);
     $.each(result.data, function (index, row) {
         var html = '';
