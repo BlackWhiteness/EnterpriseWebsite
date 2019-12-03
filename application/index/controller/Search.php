@@ -4,6 +4,7 @@ namespace app\index\controller;
 
 use app\admin\model\AdManage;
 use app\admin\model\HrefManage;
+use app\admin\model\Officebuilding;
 use app\admin\model\Workshop;
 use app\common\controller\Homebase;
 use app\admin\model\Workshop as Workshop_Model;
@@ -261,6 +262,21 @@ class Search extends Homebase
         $data = $workshop->getWorkShopBySearch();
         return json([
             'data' => WorkShopFormat::getInstance()->formatList($data),
+            'page' => paginate($data)
+        ]);
+    }
+
+    /**
+     * 获取写字楼信息
+     * @param Officebuilding $officebuilding
+     * @return \think\response\Json
+     * @throws \think\exception\DbException
+     */
+    public function ajaxSearchOf(Officebuilding $officebuilding)
+    {
+        $data = $officebuilding->getOfficeBuild();
+        return json([
+            'data' => OfficeBuildFormat::getInstance()->formatAjaxList($data),
             'page' => paginate($data)
         ]);
     }
