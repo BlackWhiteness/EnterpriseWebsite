@@ -4,6 +4,7 @@ namespace app\index\controller;
 
 use app\admin\model\AdManage;
 use app\admin\model\HrefManage;
+use app\admin\model\Officebuilding;
 use app\admin\model\Workshop;
 use app\common\controller\Homebase;
 use app\admin\model\Workshop as Workshop_Model;
@@ -149,44 +150,46 @@ class Search extends Homebase
 
     public function officebuilding()
     {
-        $data = $this->request->param();
+
         $city = isset($_COOKIE['city']) ? $_COOKIE['city'] : 8;
-//        dump($city);die;
         $cityInfo = Db::name('city')->where('id', 'in', $city)->select();
         $areaInfo = Db::name('area')->where('parentId', 'in', $city)->select();
         $cityList = Db::name('city')->where('id', 'not in', $city)->select();
-        $keywords = 1;
-        $d = $this->Offbuildingsearch->searchDoc($data, 1, 10);
-        $ids = array();
-        if (count($d['hits']['hits'])) {
-            foreach ($d['hits']['hits'] as $value) {
-                array_push($ids, $value['_id']);
+
+        $recommend = Officebuilding::where(["type" => 1])->order(array('releasetime' => 'DESC'))
+            ->limit(0, 10)->select();
+        $new = Officebuilding::order(array('releasetime' => 'DESC'))
+            ->limit(0, 10)->select();
+        $hot = Officebuilding::where(["type" => 2])
+            ->order(array('releasetime' => 'DESC'))->limit(10)->select();
+        $href = HrefManage::order('sort', 'desc')->select()->toArray();
+        $ad = AdManage::where('is_enable', '=', 1)->order(['code' => 'asc', 'sort' => 'desc'])->select();
+        $adList = [];
+        foreach ($ad as $row) {
+            $detail = [
+                'title' => $row->title,
+                'pic_path' => $row->pic_path,
+                'href' => $row->href
+            ];
+            if ($row->code == '001') {
+                $adList['top'] = $detail;
+            } elseif ($row->code == '002') {
+                $adList['mid_ad'][] = $detail;
+            } elseif ($row->code == '003') {
+                $adList['bottom_ad'][] = $detail;
             }
         }
-        $id_str = implode(',', $ids);
-        $where['id'] = array('in', $id_str);
-        $data = Db::name('officebuilding')->where('id', 'in', $id_str)->order(array('releasetime' => 'DESC'))
-            ->paginate(10, false, ['query' => $this->request->param(),//不丢失已存在的url参数
-            ]);
-        $page = $data->render();
-        $recommend = Db::name('officebuilding')
-            ->where(["type" => 1])->order(array('releasetime' => 'DESC'))
-            ->paginate(10);
-        $new = Db::name('officebuilding')->order(array('releasetime' => 'DESC'))
-            ->limit(10)->select();
-        $hot = Db::name('officebuilding')->where(["type" => 2])
-            ->order(array('releasetime' => 'DESC'))->limit(10)->select();
 
         $this->assign([
             'recommend' => $this->formatOffice($recommend),
             'new' => $this->formatOffice($new),
             'hot' => $this->formatOffice($hot),
-            'list' => $this->formatOffice($data),
-            'page' => $page,
             'cityInfo' => $cityInfo,
             'areaInfo' => $areaInfo,
             'cityList' => $cityList,
-            'empty' => '<span class="empty">没有数据</span>'
+            'empty' => '<span class="empty">没有数据</span>',
+            'href' => $href,
+            'ad' => $adList,
         ]);
         return $this->fetch('officebuilding');
 
@@ -212,7 +215,7 @@ class Search extends Homebase
                 'tel' => $row['tel'],
                 'detail' => $row['detail'],
                 'tag' => $row['tag'],
-                'imgs' => $row['imgs'] ? explode(',', $row['imgs'])[0] : '',
+                'imgs' => $row['imgs'] ? $row['imgs'][0] : '',
                 'buildingname' => $row['buildingname'],
                 'address' => $row['address'],
                 'managementfee' => $row['managementfee'],
@@ -228,21 +231,46 @@ class Search extends Homebase
     public function offbuilddetail()
     {
         $id = $this->request->param('id/d', '');
-        $info = Db::name('officebuilding')->where(['id' => $id])->find();
+        $info = Officebuilding::where(['id' => $id])->find();
         $cityInfo = Db::name('city')->where('id', 'in', $info['city'])->select();
         $areaInfo = Db::name('area')->where('parentId', 'in', $info['city'])->select();
         $cityList = Db::name('city')->where('id', 'not in', $info['city'])->select();
-        $this->assign("cityList", $cityList);
+        $recommend = Officebuilding::where(["type" => 1])->order(array('releasetime' => 'DESC'))
+            ->limit(0, 10)->select();
+        $new = Officebuilding::order(array('releasetime' => 'DESC'))
+            ->limit(0, 10)->select();
+        $hot = Officebuilding::where(["type" => 2])
+            ->order(array('releasetime' => 'DESC'))->limit(10)->select();
 
-        $this->assign("info", $info);
-        $this->assign("cityInfo", $cityInfo);
-        $this->assign("areaInfo", $areaInfo);
-        $recommend = Db::name('officebuilding')->where(["type" => 1])->order(array('releasetime' => 'DESC'))->paginate(10);
-        $this->assign("recommend", $recommend);
-        $new = Db::name('officebuilding')->order(array('releasetime' => 'DESC'))->paginate(10);
-        $this->assign("new", $new);
-        $hot = Db::name('officebuilding')->where(["type" => 2])->order(array('releasetime' => 'DESC'))->paginate(10);
-        $this->assign("hot", $hot);
+        $href = HrefManage::order('sort', 'desc')->select()->toArray();
+        $ad = AdManage::where('is_enable', '=', 1)->order(['code' => 'asc', 'sort' => 'desc'])->select();
+        $adList = [];
+        foreach ($ad as $row) {
+            $detail = [
+                'title' => $row->title,
+                'pic_path' => $row->pic_path,
+                'href' => $row->href
+            ];
+            if ($row->code == '001') {
+                $adList['top'] = $detail;
+            } elseif ($row->code == '002') {
+                $adList['mid_ad'][] = $detail;
+            } elseif ($row->code == '003') {
+                $adList['bottom_ad'][] = $detail;
+            }
+        }
+
+        $this->assign([
+            'recommend' => $this->formatOffice($recommend),
+            'new' => $this->formatOffice($new),
+            'hot' => $this->formatOffice($hot),
+            'cityInfo' => $cityInfo,
+            'areaInfo' => $areaInfo,
+            'cityList' => $cityList,
+            'href' => $href,
+            'ad' => $adList,
+            'info' => $info
+        ]);
         return $this->fetch('offbuilddetail');
     }
 
@@ -261,6 +289,21 @@ class Search extends Homebase
         $data = $workshop->getWorkShopBySearch();
         return json([
             'data' => WorkShopFormat::getInstance()->formatList($data),
+            'page' => paginate($data)
+        ]);
+    }
+
+    /**
+     * 获取写字楼信息
+     * @param Officebuilding $officebuilding
+     * @return \think\response\Json
+     * @throws \think\exception\DbException
+     */
+    public function ajaxSearchOf(Officebuilding $officebuilding)
+    {
+        $data = $officebuilding->getOfficeBuild();
+        return json([
+            'data' => OfficeBuildFormat::getInstance()->formatAjaxList($data),
             'page' => paginate($data)
         ]);
     }

@@ -1,17 +1,5 @@
 <?php
-// +----------------------------------------------------------------------
-// | Yzncms [ 御宅男工作室 ]
-// +----------------------------------------------------------------------
-// | Copyright (c) 2018 http://yzncms.com All rights reserved.
-// +----------------------------------------------------------------------
-// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
-// +----------------------------------------------------------------------
-// | Author: 御宅男 <530765310@qq.com>
-// +----------------------------------------------------------------------
 
-// +----------------------------------------------------------------------
-// | 后台菜单模型
-// +----------------------------------------------------------------------
 namespace app\admin\model;
 
 use app\admin\model\AuthRule;
@@ -19,6 +7,10 @@ use app\admin\service\User;
 use \think\Db;
 use \think\Model;
 
+/**
+ * Class Officebuilding
+ * @package app\admin\model
+ */
 class Officebuilding extends Model
 {
     protected $type = [
@@ -38,5 +30,54 @@ class Officebuilding extends Model
             $this->error = '删除失败！';
             return false;
         }
+    }
+
+    /**
+     * 通用过滤
+     * @return \think\db\Query
+     */
+    public function filterCommon()
+    {
+        $query = self::getModel();
+        $city = request()->param('city');
+        if (!empty($city)) {
+            $query = $query->where('city', '=', $city);
+        }
+        $area = request()->param('area');
+        if (!empty($area)) {
+            $query = $query->where('area', '=', $area);
+        }
+        $measurearea = request()->param('measurearea');
+        if (!empty($measurearea)) {
+            $top = strpos($measurearea, '-');
+            if ($top == false) {
+                $query = $query->where('measurearea', '>=', 1000);
+            } else {
+                $range = explode('-', $measurearea);
+                $query = $query->where('measurearea', '>=', $range[0])
+                    ->where('measurearea', '<', $range[1]);
+            }
+        }
+
+        $title = request()->param('title');
+        if (!empty($title)) {
+            $query = $query->where('title', 'like', '%' . $title . '%');
+        }
+
+        $query = $query->order(array('releasetime' => 'DESC'));
+
+        return $query;
+    }
+
+    /**
+     * 获取写字楼列表
+     * @return \think\db\Query|\think\Paginator
+     * @throws \think\exception\DbException
+     */
+    public function getOfficeBuild()
+    {
+        $query = $this->filterCommon();
+        $query = $query->paginate(20);
+        return $query;
     }
 }
