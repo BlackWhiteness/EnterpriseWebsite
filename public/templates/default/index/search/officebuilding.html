@@ -371,18 +371,7 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
             <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&plantrent=140">140元/m&sup2;⋅月以上</a>
         </dd>
     </dl>
-    <div style="display:;">
-        <form name="form_title" method="get" action="/index/search/officebuilding">
-            <div id="title_search">
-                <div class="list-search"></div>
-                <input id="city" name="city" type="hidden" value="{$cityInfo[0]['id']}"/>
-                <input id="title_input" name="title" type="text" data-id="" data-key="keyword" value="" my_no_use="true"
-                       placeholder="请输入写字楼区域、商圈、位置或特定需求等..." autocomplete="off"/>
-                <a id="title_click" onclick="javascript:document.form_title.submit()">搜索</a>
-                <a id="title_click" onclick="search_title()">全站搜索</a>
-            </div>
-        </form>
-    </div>
+    
     <script language="javascript">
         function search_title() {
             $('#area').val('');
