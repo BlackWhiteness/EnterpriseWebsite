@@ -31,6 +31,7 @@ class Homebase extends Base
     {
         $Theme = empty(Config::get('theme')) ? 'default' : Config::get('theme');
         $this->view->config('view_path', TEMPLATE_PATH . $Theme . DIRECTORY_SEPARATOR . $this->request->module() . DIRECTORY_SEPARATOR);
+
         return $this->view->fetch($template, $vars, $config, $renderContent);
     }
 }

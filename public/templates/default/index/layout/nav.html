@@ -10,13 +10,13 @@
                                 class="menubox"><span>厂房出售</span></a></li>
                 <li class=""><a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=3"
                                 class="menubox"><span>仓库出租</span></a></li>
-                <li class=""><a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1"
+                <li class=""><a href="/index/search/landList?city={$cityInfo[0]['id']}"
                                 class="menubox"><span>土地</span></a></li>
                 <li class=""><a href="/index/search/officebuilding?city={$cityInfo[0]['id']}"
                                 class="menubox"><span>写字楼</span></a></li>
                 <li class=""><a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1"
                                 class="menubox"><span>园区招商</span></a></li>
-                <li class=""><a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1"
+                <li class=""><a href="/index/search/shopList?city={$cityInfo[0]['id']}"
                                 class="menubox"><span>私宅商铺</span></a></li>
 
                 <li class=""><a href="/index/publish/customer" class="menubox"
@@ -46,6 +46,12 @@
         }else if(site_url.indexOf("/index/search/officebuilding") > 0){
             $(".nav li").attr("class", "");
             $(".nav li").eq(5).attr("class", "current");
+        }else if(site_url.indexOf("/index/search/landList") > 0){
+            $(".nav li").attr("class", "");
+            $(".nav li").eq(4).attr("class", "current");
+        }else if(site_url.indexOf("/index/search/shopList") > 0){
+            $(".nav li").attr("class", "");
+            $(".nav li").eq(7).attr("class", "current");
         }
         // switch (site_url) {
         //     case site_url == 'http://' + current_domain + '/' :
