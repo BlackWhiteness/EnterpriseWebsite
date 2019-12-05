@@ -388,8 +388,8 @@ table td em{ float:left; color:#ad4907; padding-left:5px;}
 
 
 
-#preview{ float:none; margin:20px auto; text-align:center; width:500px;}
-.jqzoom{ width:350px; height:350px; position:relative;}
+#preview{ float:none; margin:20px auto; text-align:center; width:350px;}
+.jqzoom{ width:350px; height:265px; position:relative;}
 
 .zoomdiv{ left:859px; height:400px; width:400px;}
 .list-h li{ float:left;}
