@@ -5,6 +5,7 @@ namespace app\admin\controller;
 use app\admin\model\AdManage;
 use app\admin\model\HrefManage;
 use app\common\controller\Adminbase;
+use think\Request;
 
 
 /**
@@ -22,16 +23,15 @@ class AdMange extends Adminbase
 
     /**
      * 后台菜单首页
+     * @param Request $request
      * @return mixed|\think\response\Json
-     * @throws \think\db\exception\DataNotFoundException
-     * @throws \think\db\exception\ModelNotFoundException
      * @throws \think\exception\DbException
      */
-    public function index()
+    public function index(Request $request)
     {
         if ($this->request->isAjax()) {
             $result = AdManage::order(array('code'=>'ASC','sort' => 'DESC'))
-                ->paginate(10);
+                ->paginate($request->param('limit'));
             $total = $result->total();
             $result = array("code" => 0, "count" => $total, "data" => $result->items());
             return json($result);
