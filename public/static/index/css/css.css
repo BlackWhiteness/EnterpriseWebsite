@@ -394,8 +394,8 @@ table td em{ float:left; color:#ad4907; padding-left:5px;}
 .zoomdiv{ left:859px; height:400px; width:400px;}
 .list-h li{ float:left;}
 #spec-n5{width:350px; height:56px; padding-top:6px; overflow:hidden;}
-#spec-left{ background:url(images/left.gif) no-repeat; width:10px; height:45px; float:left; cursor:pointer; margin-top:5px;}
-#spec-right{background:url(images/right.gif) no-repeat; width:10px; height:45px; float:left;cursor:pointer; margin-top:5px;}
+#spec-left{ background:url(../img/left.gif) no-repeat; width:10px; height:45px; float:left; cursor:pointer; margin-top:5px;}
+#spec-right{background:url(../img/right.gif) no-repeat; width:10px; height:45px; float:left;cursor:pointer; margin-top:5px;}
 #spec-list{ width:325px; float:left; overflow:hidden; margin-left:2px; display:inline;}
 #spec-list ul li{ float:left; margin-right:0px; display:inline; width:62px;}
 #spec-list ul li img{ padding:2px ; border:1px solid #ccc; width:50px; height:50px;}
