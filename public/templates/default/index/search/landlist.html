@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!-- saved from url=(0040)/index/search/officebuilding?city={$cityInfo[0]['id']} -->
+<!-- saved from url=(0040)/index/search/landList?city={$cityInfo[0]['id']} -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -164,7 +164,7 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
         </div>
         <div class="clear"></div>
         <div class="mr_search FR marginT5">
-            <form method="get" action="/index/search/officebuilding" class="form" id="search111"
+            <form method="get" action="/index/search/landList" class="form" id="search111"
                   onsubmit="return clickThis(this);">
                 <div class="select fl" onmouseover="xiala('s_xlmenu',true)" onmouseout="xiala('s_xlmenu',false)">
                     <div class="s_xiala">
@@ -223,7 +223,7 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
             document.getElementById("search111").action = "/search.php";
         } else if (tna == "写字楼") {
             soty = 3;
-            document.getElementById("search111").action = "/index/search/officebuilding?city={$cityInfo[0]['id']}";
+            document.getElementById("search111").action = "/index/search/landList?city={$cityInfo[0]['id']}";
         } else if (tna == "土地") {
             soty = 5;
         } else if (tna == "商铺") {
@@ -304,11 +304,11 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
 
 <div class=" w1003 zs_newmbx" style="margin: 8px auto;text-align:left;">
     <a target="_blank" href="/xiezilou/">广东写字楼网</a>&nbsp;&gt;&nbsp;
-    <a target="_blank" href="/index/search/officebuilding?city={$cityInfo[0]['id']}?area=dg">土地信息</a>
+    <a target="_blank" href="/index/search/landList?city={$cityInfo[0]['id']}?area=dg">土地信息</a>
 </div>
 <div class="zs_newmbx" style="display:none;">
     <a target="_blank" href="/xiezilou/">深圳厂房网</a>&nbsp;&gt;&nbsp;
-    <a target="_blank" href="/index/search/officebuilding?city={$cityInfo[0]['id']}?area=">深圳厂房出租</a>
+    <a target="_blank" href="/index/search/landList?city={$cityInfo[0]['id']}?area=">深圳厂房出租</a>
 </div>
 <div class="w1003 bor1 ser_sx">
     <!--引入搜索区域城市文件-->
@@ -336,10 +336,10 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
         </dt>
         <dd class="screen_area">
             {volist name="cityInfo" id="data"}
-            <a class="current" href="/index/search/officebuilding?city={$data.id}">全{$data.name}</a>
+            <a class="current" href="/index/search/landList?city={$data.id}">全{$data.name}</a>
             {/volist}
             {volist name="areaInfo" id="data"}
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&area={$data.id}">{$data.name}</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&area={$data.id}">{$data.name}</a>
             {/volist}
         </dd>
     </dl>
@@ -348,14 +348,14 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
             面积：
         </dt>
         <dd>
-            <a class="current" href="/index/search/officebuilding?city={$cityInfo[0]['id']}">不限</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=500">500平米以下</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=500-1000">500-1000平米</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=1000-1500">1000-1500平米</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=1500-2500">1500-2500平米</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=2500-4000">2500-4000平米</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=4000-6000">4000-6000平米</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=6000-10000">6000-10000平米</a>
+            <a class="current" href="/index/search/landList?city={$cityInfo[0]['id']}">不限</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=500">500平米以下</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=500-1000">500-1000平米</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=1000-1500">1000-1500平米</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=1500-2500">1500-2500平米</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=2500-4000">2500-4000平米</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=4000-6000">4000-6000平米</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=6000-10000">6000-10000平米</a>
             
         </dd>
     </dl>
@@ -364,12 +364,12 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
             租金：
         </dt>
         <dd>
-            <a class="current" href="/index/search/officebuilding?city={$cityInfo[0]['id']}">不限</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&plantrent=10">10元/平米•月以下</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&plantrent=10-15">10-15元/m&sup2;⋅月</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&plantrent=15-20">15-20元/m&sup2;⋅月</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&plantrent=20-25">20-25元/m&sup2;⋅月</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&plantrent=25">25元/m&sup2;⋅月</a>
+            <a class="current" href="/index/search/landList?city={$cityInfo[0]['id']}">不限</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&plantrent=10">10元/平米•月以下</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&plantrent=10-15">10-15元/m&sup2;⋅月</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&plantrent=15-20">15-20元/m&sup2;⋅月</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&plantrent=20-25">20-25元/m&sup2;⋅月</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&plantrent=25">25元/m&sup2;⋅月</a>
             
         </dd>
     </dl>
@@ -378,14 +378,14 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
             标签：
         </dt>
         <dd>
-            <a class="current" href="/index/search/officebuilding?city={$cityInfo[0]['id']}">不限</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=0-100">工业用地</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=100-200">农业用地</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=200-300">商业用地</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=300-500">仓库用地</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=500-1000">临时用地</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=1000">国有用地</a>
-         <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=1000">集体用地</a>   
+            <a class="current" href="/index/search/landList?city={$cityInfo[0]['id']}">不限</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=0-100">工业用地</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=100-200">农业用地</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=200-300">商业用地</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=300-500">仓库用地</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=500-1000">临时用地</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=1000">国有用地</a>
+         <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=1000">集体用地</a>   
         </dd>
     </dl>
     <dl>
@@ -393,14 +393,14 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
             租售：
         </dt>
         <dd>
-            <a class="current" href="/index/search/officebuilding?city={$cityInfo[0]['id']}">不限</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=0-100">出租</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=100-200">出售</a>
+            <a class="current" href="/index/search/landList?city={$cityInfo[0]['id']}">不限</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=0-100">出租</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=100-200">出售</a>
             
         </dd>
     </dl>
     <div style="display:;">
-        <form name="form_title" method="get" action="/index/search/officebuilding">
+        <form name="form_title" method="get" action="/index/search/landList">
             <div id="title_search">
                 <div class="list-search"></div>
                 <input id="city" name="city" type="hidden" value="{$cityInfo[0]['id']}"/>
@@ -567,7 +567,7 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
                 </a></li>
                 {/volist}
             </ul>
-            <a class="more_build" href="/index/search/officebuilding?city={$cityInfo[0]['id']}?area=sz">更多热门土地信息</a>
+            <a class="more_build" href="/index/search/landList?city={$cityInfo[0]['id']}?area=sz">更多热门土地信息</a>
         </div>
         <div class="hotList">
             <div class="hotTitle">
@@ -587,7 +587,7 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
                 </a></li>
                 {/volist}
             </ul>
-            <a class="more_build" href="/index/search/officebuilding?city={$cityInfo[0]['id']}?area=sz">更多最新写字楼</a>
+            <a class="more_build" href="/index/search/landList?city={$cityInfo[0]['id']}?area=sz">更多最新写字楼</a>
         </div>
     </div>
 </div>
@@ -641,7 +641,7 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
 {include file="templates/default/index/layout/foot.html" /} 
 <div class="bdshare-slide-button-box bdshare-slide-style-r7" style="top: 250px; width: 0px; z-index: 99999; right: 0px;"
      data-bd-bind="1566556065349">
-    <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}#" onclick="return false;"
+    <a href="/index/search/landList?city={$cityInfo[0]['id']}#" onclick="return false;"
        class="bdshare-slide-button" style="left: -24px;"></a>
     <div class="bdshare-slide-list-box" style="width: 0px; display: none;">
         <div class="bdshare-slide-top">
@@ -651,7 +651,7 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
             <ul class="bdshare-slide-list-ul" style="width: 226px;"></ul>
         </div>
         <div class="bdshare-slide-bottom" style="width: 226px;">
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}#" onclick="return false;" class="slide-more"
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}#" onclick="return false;" class="slide-more"
                data-cmd="more">更多...</a>
         </div>
     </div>
