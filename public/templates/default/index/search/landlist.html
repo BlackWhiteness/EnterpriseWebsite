@@ -349,12 +349,14 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
         </dt>
         <dd>
             <a class="current" href="/index/search/officebuilding?city={$cityInfo[0]['id']}">不限</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=0-100">100平米以下</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=100-200">100-200平米</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=200-300">200-300平米</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=300-500">300-500平米</a>
+            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=500">500平米以下</a>
             <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=500-1000">500-1000平米</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=1000">1000平米以上</a>
+            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=1000-1500">1000-1500平米</a>
+            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=1500-2500">1500-2500平米</a>
+            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=2500-4000">2500-4000平米</a>
+            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=4000-6000">4000-6000平米</a>
+            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=6000-10000">6000-10000平米</a>
+            
         </dd>
     </dl>
     <dl>
@@ -363,12 +365,38 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
         </dt>
         <dd>
             <a class="current" href="/index/search/officebuilding?city={$cityInfo[0]['id']}">不限</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&plantrent=0-40">40元/平米•月以下</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&plantrent=40-60">40-60元/m&sup2;⋅月</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&plantrent=60-80">60-80元/m&sup2;⋅月</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&plantrent=80-120">80-120元/m&sup2;⋅月</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&plantrent=120-140">120-140元/m&sup2;⋅月</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&plantrent=140">140元/m&sup2;⋅月以上</a>
+            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&plantrent=10">10元/平米•月以下</a>
+            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&plantrent=10-15">10-15元/m&sup2;⋅月</a>
+            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&plantrent=15-20">15-20元/m&sup2;⋅月</a>
+            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&plantrent=20-25">20-25元/m&sup2;⋅月</a>
+            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&plantrent=25">25元/m&sup2;⋅月</a>
+            
+        </dd>
+    </dl>
+    <dl>
+        <dt>
+            标签：
+        </dt>
+        <dd>
+            <a class="current" href="/index/search/officebuilding?city={$cityInfo[0]['id']}">不限</a>
+            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=0-100">工业用地</a>
+            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=100-200">农业用地</a>
+            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=200-300">商业用地</a>
+            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=300-500">仓库用地</a>
+            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=500-1000">临时用地</a>
+            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=1000">国有用地</a>
+         <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=1000">集体用地</a>   
+        </dd>
+    </dl>
+    <dl>
+        <dt>
+            租售：
+        </dt>
+        <dd>
+            <a class="current" href="/index/search/officebuilding?city={$cityInfo[0]['id']}">不限</a>
+            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=0-100">出租</a>
+            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=100-200">出售</a>
+            
         </dd>
     </dl>
     <div style="display:;">
@@ -464,7 +492,7 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
     <div class="list-content" id="list-content">
         <!-- 写字楼出售列表排序 -->
         <div class="list-sort">
-            <span class="tit">为您找到以下<em style="float:none; font-weight:bold; font-size:15px;">深圳</em>写字楼出租</span>
+            <span class="tit">为您找到以下<em style="float:none; font-weight:bold; font-size:15px;">深圳</em>土地信息</span>
             <!-- 排序状态高亮显示  class="light" -->
             <!--            <div class="sort-cond">
                        <span>排序：</span>
@@ -522,7 +550,7 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
     <div class="leftList">
         <div class="hotList" style="margin-top:41px;">
             <div class="hotTitle">
-                <label class="color_eef">热门写字楼</label>
+                <label class="color_eef">热门土地信息</label>
             </div>
             <ul>
                 {volist name="hot" id="data"}
@@ -539,12 +567,11 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
                 </a></li>
                 {/volist}
             </ul>
-            <a class="more_build" href="/index/search/officebuilding?city={$cityInfo[0]['id']}?area=sz">更多热门写字楼</a>
+            <a class="more_build" href="/index/search/officebuilding?city={$cityInfo[0]['id']}?area=sz">更多热门土地信息</a>
         </div>
         <div class="hotList">
             <div class="hotTitle">
-                <label class="color_eef">最新写字楼</label>
-            </div>
+                <label class="color_eef">最新土地信息</label></div>
             <ul>
                 {volist name="new" id="data"}
                 <?php $sz_img = json_decode($list[0]['imgs']); $sz_img = $sz_img[0]; ?>
