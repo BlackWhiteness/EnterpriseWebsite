@@ -442,7 +442,7 @@ class Search extends Homebase
             'href' => $href,
             'ad' => $adList,
         ]);
-        return $this->fetch('landlist');
+        return $this->fetch('shoplist');
     }
 
     public function shopdetail()
@@ -488,6 +488,6 @@ class Search extends Homebase
             'ad' => $adList,
             'info' => $info
         ]);
-        return $this->fetch('land_detail');
+        return $this->fetch('shop_detail');
     }
 }

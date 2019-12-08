@@ -1,0 +1,705 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script>function sptips(){alert("找不到相关的厂房,或者厂房已经被删除");location.href="/";};</script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title> {$info.title}</title>
+<meta name="description" content="
+    
+         {$info.title}..." />
+</head>
+<link rel="stylesheet" href="/static/index/css/css.css"/>
+<link rel="stylesheet" href="/static/index/css/xzl.css"/>
+<link rel="stylesheet" href="/static/index/css/ft-carousel.css"/>
+<style type="text/css">
+	.nav li a span {
+    display: block;
+    float: left;
+    padding: 0 0 0 0;
+    height: 39px;
+    line-height: 39px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #fff;
+}
+.nav li {
+    padding: 0 13px;
+}
+</style>
+<body>
+<div class="nav_bar">
+  <div class="w1003 f12">
+    <div class="nav_bar_left fl">
+    当前城市：<span>{$cityInfo[0]['name']}</span>
+    <em>|</em>切换城市：
+        {volist name="cityList" id="data"}
+     <a  href="javascript:document.cookie = 'city={$data.id}';location.href("/");">{$data.name}</a>
+     <em>|</em> {/volist}
+  </div>
+<div class="nav_bar_right fr">
+<strong>24小时免费服务热线：{:config('web_site_tel')}</strong>
+	</div>
+  </div>
+</div><!--<table width="960" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr align="center">
+    <td align="center">
+
+<div id="logo">
+      <div id="logo_left"><A href="/city_dg/search.php" target=_blank><IMG  src="/gg/area/area1/bt1/logo.png" width="210" ></A></div>
+      <div id="logo_center"> </div>
+
+    </div>
+</td>
+  </tr>
+</table>-->
+
+
+
+<script type="text/javascript">
+var run=0;
+var rtime;
+	function time(){
+		ChangeCity(0);
+		clearTimeout(rtime);
+	}
+	function ChangeCity(show){
+		$("#popwindow").css("position","absolute");
+		$("#popwindow").css("top",40);
+		if($.browser.msie)
+			$("#popwindow").css("left",20);
+		else
+			$("#popwindow").css("left",20);
+		if(show==1){
+			$("#popwindow").slideDown("normal",function(){run=0});
+		}else{
+			$("#popwindow").slideUp("normal",function(){run=0});
+		}
+	}
+
+
+</script>
+<div class="marginT20 marginB20 w1003 head ">
+      <div class="FL marginT10"><a href="/"><img src="/static/index/img/logo.png"></a></div>
+      <div class="FL LH24 marginL20" style="margin-top:37px;">
+				<div class="m_city fl" style="position:relative;">
+						<div id="change_city"><font color="#D90700" style="font-
+size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font> <a class="F12 cGray" href="javascript:void(0);" onclick="javascript:alert('写字楼目前只开通深圳，其他城市正在开放中');">[切换城市]</a></div>
+					  <div class="qhcity_box" id="popwindow" style="z-index: 20; position: absolute; top: 40px; left: 20px; display: none; min-height:300px; position:relative;">
+							  <div class="qhcity_close" onclick="javascript:ChangeCity
+();"><img src="http://www.zhaoshang800.com/images/close.gif" alt="关闭" title="关闭"></div>
+							  <div class="qhcity_hot">热门城市：<a href="/search.php?area=sz">深圳市</a><a href="/search.php?area=dg">东莞市</a><a href="/search.php?area=hz">惠州市</a></div>
+							 
+
+
+<!--<div class="qhcity_area" style="line-height:20px;padding-top:5px; padding-bottom:5px;"><div style=" float:left; width:60px; overflow:hidden;text-align:center;">深圳市：</div><div style=" float:left;">
+
+</div>
+<div style="clear:both;"></div>
+</div>
+-->
+
+
+							 
+<div class="qhcity_more" style="position:absolute; bottom:5px; right:15px;"><a href="javascript:alert('其他城市正在开通中！！！')" target="_blank">其他城市正在开通中&gt;&gt;</a></div>
+						</div>
+				</div></div>
+
+
+      <div class="FR" style="width:504px; margin-top:10px;">
+    <div class="t-r F12">
+          <div class="FL">  <span style=" padding-right:5px;">热门搜索:</span><a target="_blank" href="/index/search/officebuilding?city={$cityInfo[0]['id']}&title=带装修厂房">带装修厂房</a><a target="_blank" href="/index/search/officebuilding?city={$cityInfo[0]['id']}&floor=1">一楼厂房</a><a target="_blank" href="/index/search/officebuilding?city={$cityInfo[0]['id']}&title=高新科技园厂房">高新科技园厂房</a></div>
+          <div class="FR"></div>
+        </div>
+    <div class="clear"></div>
+    <div class="mr_search FR marginT5">
+		<form method="get" action="/index/search/officebuilding" class="form" id="search111" onsubmit="return clickThis(this);">
+        <div class="select fl" onmouseover="xiala('s_xlmenu',true)" onmouseout="xiala('s_xlmenu',false)">
+              <div class="s_xiala">
+			</div>
+			<div class="s_xialamenu" id="s_xlmenu">
+				<ul>
+					<li><a onclick="SelText(this);return false;">写字楼</a></li>
+				</ul>
+          </div>
+            </div>
+        <div class="text fl">
+            <input name="city" type="hidden" value="{$cityInfo[0]['id']}" />
+			<input name="title" type="text" placeholder="请输入园区名称或工业区商圈">
+		</div>
+        <div class="searbut fr" style="height:32px; overflow:hidden;">
+			  <input type="submit" class="searanniu" value="搜索">
+            </div>
+      </form>
+        </div>
+  </div>
+      <div class="clear"></div>
+    </div>
+<script type="text/javascript">
+        function xiaoshi(obj) {
+            obj.value = "";
+        }
+        function xianshi(obj, message) {
+            if (obj.value == null || obj.value == "")
+                obj.value = message;
+        }
+
+        /*
+        导航条.显示函数
+        */
+        function block_show(id,isHome) {
+            var list = document.getElementsByClassName("n_ejmenu FR");
+            for(var i=0,j = list.length;i < j;i++ ){
+                list[i].style.display = "none";
+            }
+            if (!isHome) {
+                document.getElementById(id).style.display = "block";
+                document.getElementById("line").style.display = "none";
+            }
+            else {
+                document.getElementById("line").style.display = "block";
+            }
+        }
+
+	function SelText(obj) {
+		document.getElementById("ct_input").value = obj.innerHTML;
+		document.getElementById("s_xlmenu").style.display = "none";
+		var tna=obj.innerHTML;
+		var soty=0;
+		if(tna=="找厂房"){
+			soty = 1;
+			document.getElementById("search111").action="/search.php";
+		}else if(tna=="写字楼"){
+			soty = 3;
+			document.getElementById("search111").action="/index/search/officebuilding";
+		}else if(tna=="土地"){
+			soty = 5;
+		}else if(tna=="商铺"){
+			soty = 4;
+		}else if(tna=="产业园区"){
+			soty = 2;
+		}
+		document.getElementById("sotype").value = soty;
+	}
+
+        function xiala(id,isShow) {
+            var _disply = "none";
+            if(isShow)
+                _disply = "block";
+            document.getElementById(id).style.display = _disply;
+        }
+		function xiala1(){
+            document.getElementById("ywhz").style.background="url(http://www.zhaoshang800.com/tpl/images/zs_topnavlibg2.jpg) no-repeat center";
+            document.getElementById("jtxl").style.display="block";
+        }
+        function xiala2(){
+            document.getElementById("ywhz").style.background="url(http://www.zhaoshang800.com/tpl/images/zs_topnavlibg1.jpg) no-repeat center";
+            document.getElementById("jtxl").style.display="none";
+        }
+		function xiala3(id,isShow) {
+            var _disply = "none";
+            if(isShow)
+                _disply = "block";
+            document.getElementById(id).style.display = _disply;
+        }
+    </script>
+
+<div id=header>
+<script type="text/javascript" src="/static/index/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript">
+(function(a){a.fn.hoverClass=function(b){var a=this;a.each(function(c){a.eq(c).hover(function(){$(this).addClass(b)},function(){$(this).removeClass(b)})});return a};})(jQuery);
+
+$(function(){
+	
+	var site_url = window.location.href.toLowerCase();	
+	switch (true) {
+		case site_url == 'http://www.886cf.com' :
+			$(".nav li").attr("class","");
+			$(".nav li").eq(0).attr("class","current");
+			break;
+		case site_url == 'http://www.886cf.com/' :
+			$(".nav li").attr("class","");
+			$(".nav li").eq(0).attr("class","current");
+			break;
+		case site_url == 'http://www.886cf.cn' :
+			$(".nav li").attr("class","");
+			$(".nav li").eq(0).attr("class","current");
+			break;
+		case site_url == 'http://www.886cf.cn/' :
+			$(".nav li").attr("class","");
+			$(".nav li").eq(0).attr("class","current");
+			break;
+		case site_url.indexOf("index.php") > 0 :
+			$(".nav li").attr("class","");
+			$(".nav li").eq(0).attr("class","current");
+			break;
+		case site_url.indexOf("xiezilou/") > 0 ://判断当前频道属于哪个根目录模块就设置频道标签高亮
+			$(".nav li").attr("class","");
+			$(".nav li").eq(3).attr("class","current"); //设置当前频道标签高亮
+			break;
+		case site_url.indexOf("xzl.886cf") > 0 ://判断当前频道属于哪个根目录模块就设置频道标签高亮
+			$(".nav li").attr("class","");
+			$(".nav li").eq(3).attr("class","current"); //设置当前频道标签高亮
+			break;
+		case site_url.indexOf("search.php") > 0 ://判断当前频道属于哪个根目录模块就设置频道标签高亮
+			$(".nav li").attr("class","");
+			$(".nav li").eq(1).attr("class","current"); //设置当前频道标签高亮
+			break;
+
+        case site_url.indexOf("publish.php") > 0 :
+			$(".nav li").attr("class","");
+			$(".nav li").eq(4).attr("class","current");
+			break;	
+		case site_url.indexOf("publish.php?id=2") > 0 :
+			$(".nav li").attr("class","");
+			$(".nav li").eq(5).attr("class","current");
+			break;
+		/*case site_url.indexOf("dg_xgz") > 0 :
+			$(".nav li").attr("class","");
+			$(".nav li").eq(6).attr("class","current");
+			break;
+		case site_url.indexOf("area=dg_hjz") > 0 :
+			$(".nav li").attr("class","");
+			$(".nav li").eq(7).attr("class","current");
+			break;
+		case site_url.indexOf("area=dg_lbz") > 0 :
+			$(".nav li").attr("class","");
+			$(".nav li").eq(8).attr("class","current");
+			break;
+		case site_url.indexOf("area=dg") > 0 : 
+			$(".nav li").attr("class","");
+			$(".nav li").eq(1).attr("class","current");
+			break;*/
+/*		default :
+			$(".nav li").attr("class","");
+			$(".nav li").eq(1).attr("class","current");*/
+	}
+	
+		switch (true) {
+	    case site_url.indexOf("title=%E5%9C%B0%E9%93%81".toLowerCase()) > 0 :
+			$(".othernav li a").eq(1).attr("class","current");
+			break;
+		case site_url.indexOf("title=%E8%A3%85%E4%BF%AE".toLowerCase()) > 0 :
+			$(".othernav li a").eq(2).attr("class","current");
+			break;
+		case site_url.indexOf("title=%E9%AB%98%E6%96%B0".toLowerCase()) > 0 :
+			$(".othernav li a").eq(3).attr("class","current");
+			break;
+		 case site_url.indexOf("floor=1") > 0 :
+			$(".othernav li a").eq(4).attr("class","current");
+			break;
+		case site_url.indexOf("floor=3") > 0 :
+			$(".othernav li a").eq(5).attr("class","current");
+			break;
+		case site_url.indexOf("title=%E4%BD%8E%E4%BB%B7".toLowerCase()) > 0 :
+			$(".othernav li a").eq(6).attr("class","current");
+			break;
+	      }
+	
+	$(".nav li").hover(function(){
+		$(".nav li.current").attr("id","shutAhover");
+		//$(".nav li.current").removeClass("current");
+	},function(){
+		if($(this).attr("class") != "current"){
+			$(".nav li.current").attr("class","");
+		}
+		$(".nav li#shutAhover").attr("class","current");
+	});
+	
+	//导航
+	$(".nav li").hoverClass("hover");
+});
+
+
+</script>
+
+<!--解决 IE6 背景缓存-->
+<!--[if IE 6]><script type="text/javascript">document.execCommand("BackgroundImageCache", false, true);</script><![endif]-->   
+
+<div class="navbox w1003">
+			
+<div class="nav">
+					<ul>
+						<li class=""> <a href="/" class="menubox"><span>首页</span></a> </li> 
+           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>厂房出租</span></a> </li>        
+           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>厂房出售</span></a> </li>
+           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>仓库出租</span></a> </li>
+           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>土地</span></a> </li>
+           <li class="current"> <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}" class="menubox"><span>写字楼</span></a> </li> 
+           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>园区招商</span></a> </li>
+           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>民宅商铺</span></a> </li>
+           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>包租厂房</span></a> </li>
+           <li class=""> <a href="/index/publish/customer" class="menubox" target="_blank"><span>求租</span></a> </li> 
+           <li class=""> <a href="/index/publish/owner" class="menubox"><span>求购</span></a> </li> 
+	
+					</ul>
+				</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<style>
+
+</style>
+<div class="details-head">
+	    <!-- title -->
+	    <div class="title-wrapper clearfix">
+	      <div class="left-con clearfix fl">
+	        <h2 class="house-title fl">龙岗中心城地标级物业毫装写字楼出租</h2>
+
+	        <span class="free-commission">租客免佣</span>
+	        
+	      </div>
+	    </div>
+	    <!-- end title -->
+  	</div>
+
+
+
+
+
+
+
+
+<div class=" w1003 zs_newmbx" style="margin: 8px auto;text-align:left;">
+	<a target="_blank" href="../">886写字楼网</a>&nbsp;&gt;&nbsp;<a target='_blank' href='../search.php?area=sz'>深圳写字楼出租</a>        &nbsp;&gt;&nbsp;<a target='_blank' href='../search.php?area=sz_lg'>龙岗区写字楼出租</a>        &nbsp;&gt;&nbsp;<a target='_blank' href='../search.php?area=sz_lg_lg'>龙岗写字楼出租</a></div>
+
+
+<div id="main_body" class="w1003">
+<link href="//web-cdn.haozu.com/static/css/haozu_global_v2.css?v=a53e6eacab" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/public/static/index/js/jquery.min.js"></script>
+<script type="text/javascript" src="/public/static/index/js/ft-carousel.min.js"></script>
+
+
+<div class="detail-box  clearfix" data-role="new">
+    <div class="fl" style="width:640px; height:480px;">
+
+      <div class="ft-carousel" id="carousel_1">
+		<ul class="carousel-inner">
+        <li class="carousel-item"><img src="/xiezilou/upImagescj/20170904/201709041929466831.jpg"></li>
+         
+		</ul>
+	</div>
+
+<script type="text/javascript">
+	$("#carousel_1").FtCarousel();
+</script>
+
+
+    </div>
+    <div class="detail-info2 fl">
+
+        <div class="info-box">
+            <div class="price-box3 clearfix">
+                <span class="s1"><i class="i1" >{$info.detail}</i></span>
+                <span class="s2">元/m²•月</span>
+                </div>
+        </div>
+
+                <div class="line">-</div>
+                                <div class="info-box clearfix">
+                <dl class="dlbox fl"><dt>{$info.detail}㎡</dt><dd>建筑面积</dd></dl><dl class="dlbox fl"><dt>{$info.detail}元/月</dt><dd>预估月支出</dd></dl>            </div>
+                <div class="line">-</div>
+                
+
+                                <div class="info-box clearfix">
+                <dl class="dlbox fl"><dt>中等装修</dt><dd>装修程度</dd></dl><dl class="dlbox fl"><dt>面议</dt><dd>免租期</dd></dl>            </div>
+               
+                <div class="line">-</div>
+        <div class="info-box">
+     
+                                    <p class="p2"><span class="colorGreen note">可注册公司</span><span class="colorRed note">可分割</span><span class="colorBlue note">核心商务区</span><span class="colorRed note">大量车位</span></p>
+                                        <p class="p2">
+                <i class="il">楼盘名称：</i>
+                <a onclick="_hmt.push(['_trackEvent', 'house_building_name', 'click']);"
+                   href="/sz_xzl_1503/" target="_blank"
+                   class="a1">{$info.detail}</a>
+            </p>
+            
+            <p class="p2">
+                <i class="il">楼盘区域：</i>
+                              {$info.detail}</a>
+                            </p>
+        </div>
+        <div class="line">-</div>
+                <div class="contact-mobile"
+                 data-widget="static2/js/index/hz-building-widgets.js#semShowPhone">
+                
+                <div class="house_phone1" style="width:278px;">
+				  	<div class="house_phone2" style="width:223px;"><span class="number">
+                    
+陈生:159-1411-6601     </span><br>
+                    
+                     <span class="gray">
+
+注：联系我时请说明来源886厂房网 </span></div>
+				  </div>
+            </div>
+            </div>
+</div>
+<!--主内容-->
+<div class="w1003 clearfix">
+    <!--左侧：房源楼盘信息介绍-->
+    <div class="detail-left fl">
+        
+        <div class="detail-box2 mt-20">
+            <h1 class="h1-tilte">基本概况</h1>
+            <ul class="miaoshu-ul">
+                                    <li class="clearfix">
+                        <span class="s1"> 楼盘名称：</span>
+                        <span class="s2">{$info.detail}</span>
+                    </li>
+                     <li class="clearfix">
+                        <span class="s1"> 楼盘区域：</span>
+                        <span class="s2">{$info.detail}</span>
+                    </li>
+                     <li class="clearfix">
+                        <span class="s1"> 楼盘地址：</span>
+                        <span class="s2">{$info.detail}</span>
+                    </li>
+                                       
+                                                        <li class="clearfix"><span class="s1"> 面积信息：</span><span class="s2">{$info.detail}</span></li>
+                                                                <li class="clearfix"><span class="s1">价格优势：</span><span class="s2">{$info.detail}</span></li>
+                                                                <li class="clearfix"><span class="s1">管理费：</span><span class="s2">面议 </span></li>
+                                                                <li class="clearfix"><span class="s1">装修情况：</span><span class="s2">{$info.detail} </span></li>
+                                                        
+            </ul>
+        </div>
+        
+         
+        
+         <div class="detail-box2 mt-20">
+            <h1 class="h1-tilte">房源描述</h1>
+
+<div class="desc-con" style=" font-size:18px;">
+{$info.detail}
+	
+           
+		
+       				
+             
+                        				</div>
+
+        </div>
+        
+        
+        
+        <div class="detail-box2 mt-20" style="">
+            <h1 class="h1-tilte">该楼盘其他房源</h1>
+
+<div class="other-list" id="same_fy">
+
+					<ul class="listCon">
+                       	{volist name="recommend" id="data" offset="0" length="3" mod="3" empty="$empty" key="i"}
+                       	<?php $sz_img = json_decode($list[0]['imgs']); $sz_img = $sz_img[0]; ?>
+                            					<!-- 无房源图片显示默认图片 house_profile_sydc.png -->
+     <a href="/index/search/offbuilddetail?id={$data.id}" target="_blank"> 
+						<li link="/index/search/offbuilddetail?id={$data.id}" class="li-itemmod" _soj="biz_detail_samebuildingclick">
+	                          <img   src="{$sz_img}"  class="img" width="150" height="113" />   
+	                        <div class="li-info">
+	                            <h3>龙岗中心城商业地标中心 志联佳大厦 80平招商</h3>
+	                            <p class="info-tag">
+                                    志联佳大厦	                            	<span>深圳市 龙岗区 龙岗中心城</span>
+	                            </p>
+	                            <p class="mianji">面积<span>80平米</span></p>
+                                <p class="address">地址<span>龙城广场附近</span></p>
+	                        </div>
+	                        <div class="li-side">
+                                	                                <p class="price"><strong>65</strong> 元/m²•月</p>
+	                                <p class="month-price">1.96 万/月</p>
+                                	                        </div>
+                    	</li></a>{/volist} 
+                           					</ul>
+				</div>
+
+        </div>
+
+
+                    
+                            
+        
+        <!--写字楼楼盘简介-->
+                    
+            </div>
+    <!--右侧：用户交互相关-->
+    <div class="detail-right mt-20 fr">
+     <div class="leftList">
+        <div class="hotList" style="">
+            <div class="hotTitle"><label class="color_eef">热门写字楼</label></div>
+            <ul>
+               
+                {volist name="hot" id="data"} 
+                <?php $sz_img = json_decode($list[0]['imgs']); $sz_img = $sz_img[0]; ?>
+                    <li>
+                        <a class="clearfix" href="/index/search/offbuilddetail?id={$data.id}" target="_blank">
+                              <img class="hotImg"   src="{$sz_img}" />   
+                            <div class="hotInfo">
+                                <div class="hotName one" title="利好国际中心">利好国际中心</div>
+                                <p class="one">￥20元/m².月起</p>
+                                <span class="one"> 龙岗区 龙岗中心城</span>
+                            </div>
+                        </a>
+                    </li>
+        {/volist}
+                
+                    
+     
+                
+            </ul>
+            <a class="more_build" href="search.php?area=sz_lg_lg">更多热门写字楼</a>
+        </div>
+   
+   
+    <div class="hotList">
+            <div class="hotTitle"><label class="color_eef">最新写字楼</label></div>
+            <ul>
+               
+                {volist name="new" id="data"}
+                <?php $sz_img = json_decode($list[0]['imgs']); $sz_img = $sz_img[0]; ?>
+                    <li>
+                        <a class="clearfix" href="/index/search/offbuilddetail?id={$data.id}" target="_blank">
+                              <img  class="hotImg"  src="{$sz_img}" />   
+                            <div class="hotInfo">
+                                <div class="hotName one" title="珠江国际中心">珠江国际中心</div>
+                                <p class="one">￥75元/m².月起</p>
+                                <span class="one"> 龙岗区 龙岗中心城</span>
+                            </div>
+                        </a>
+                    </li>
+        {/volist}
+                
+                   
+     
+                
+            </ul>
+            <a class="more_build" href="search.php?area=sz_lg_lg">更多最新写字楼</a>
+        </div>
+ 
+ 
+        
+    </div>
+</div>
+
+
+
+
+</div>
+<!--主内容-->
+<table width="1003" border="0" cellspacing="0" cellpadding="0" align="center">
+<tr>
+<td>
+<div id="tuijian">
+      <div class="part_title"><strong>推荐厂房</strong></div>
+      <div id="tuijian_cont">
+        <div id="white_bg">
+          <div id="demo">
+            <div id="indemo">
+              <div id="demo1">
+              
+                  {volist name="recommend" id="data" offset="0" length="3" mod="3" empty="$empty" key="i"}
+                  <?php $sz_img = json_decode($list[0]['imgs']); $sz_img = $sz_img[0]; ?>
+              <div class="right_p_one">
+                  <div class="right_p_img"><a href="article.php?id=21725" target="_blank"><img  src="{$sz_img}"/></a><span class="imgmid"></span></div>
+                  <div class="right_p_title"><a href="article.php?id=21725" target="_blank">龙岗中心城地标级物业...</a></div>
+                </div>
+             {/volist} 
+                   </div>
+            </div>
+            <div id="demo2"></div>
+            <script type="text/javascript" src="/public/static/index/js/rolljs.js"></script>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+</td>
+</tr>
+
+
+
+  <tr>
+    <td><div class="clear"></div>
+</div>
+
+
+<table cellspacing="0" cellpadding="0" width="1003" align="center"  bgcolor="#f9eced" 
+border="0">
+  <tr>
+    <td valign="bottom" width="15" rowspan="7"></td>
+    <td align="middle" width="751"></td>
+    <td valign="bottom" width="12" rowspan="7">&nbsp;</td>
+  </tr>
+
+  <tr>
+    <td height="25" align="center" valign="middle"><DIV align=center>
+      　&nbsp;<a href="/index/about/index" target="_blank">关于我们</a>　&nbsp;|　&nbsp;<a href="//index/about/lx" target="_blank">联系方式</a>&nbsp;　|&nbsp;<a href="/index/about/map" target="_blank">网站地图</a>&nbsp;　| <a href="javascript:alert(&#39;当前IP未在管理者IP中,不允许登录,请联系管理人员&#39;)" target="_blank">后台登陆</a>&nbsp;　|&nbsp;<a href="javascript:alert(&#39;请登录后使用！！！&#39;)" target="_blank">ERP(电脑版)</a>　&nbsp;|　&nbsp;<a href="javascript:alert(&#39;请登录后使用！！！&#39;)" target="_blank">ERP(手机版)</a>
+</DIV></td>
+  </tr>
+    <tr>
+    <td height="25" align="center" valign="middle">
+    
+    备案/许可证编号为：<a href="http://www.miit.gov.cn/" target="_blank">粤ICP备16098285号-2</a>    </td>
+  </tr>
+      <tr>
+    <td height="25" align="center" valign="middle">
+    
+  地址：深圳市龙岗区龙岗中心城南联九州家园&nbsp;&nbsp;邮编:518000    </td>
+  </tr>
+  <tr>
+    <td height="25" align="center" valign="middle"> 886厂房网- 电话:15914116601&nbsp;&nbsp;QQ:21814439&nbsp;E-mail:<a href="mailto:xiaoping2j@126.com">xiaoping2j@126.com</a>  
+
+<script type="text/javascript">
+$(function(){
+   $.ajax({url:"/include/web_tongji.php?request_url=%2Fxiezilou%2Fpublic%2Farticle.php%3Fcity%3Dsz%26r%3D2%26id%3D21725&city=sz&r=2&id=21725",async:false});
+	});
+</script>
+
+<!-- Baidu Button BEGIN -->
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"7","bdPos":"right","bdTop":"250"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+<!-- Baidu Button END -->
+
+<!-- Baidu 统计代码开始 -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?dcb4832d7b3f3d328ff5b4a6b2a536ac";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- Baidu 统计代码结束 -->
+
+
+
+<!-- CNZZ统计代码 -->
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260896044'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/stat.php%3Fid%3D1260896044%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+<!-- CNZZ统计代码END -->
+
+<!-- 51.la统计代码 -->
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/19049378.js"></script>
+<noscript><a href="http://www.51.la/?19049378" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/19049378.asp" style="border:none" /></a></noscript>
+<!-- CNZZ统计代码END -->
+</td>
+  </tr>
+
+
+</table>
+    
+    </td>
+  </tr>
+</table>
+</body>
+</html>
+</body>
+</html>

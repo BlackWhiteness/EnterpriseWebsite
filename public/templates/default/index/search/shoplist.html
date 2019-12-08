@@ -1,0 +1,660 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0040)/index/search/landList?city={$cityInfo[0]['id']} -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="shortcut icon" href="/static/index/img/favicon.ico" type="image/x-icon"/>
+    <title>{:config('web_site_title')}</title>
+    <meta name="keywords" content="{:config('web_site_keywords')}"/>
+    <meta name="description" content="{:config('web_site_description')}"/>
+    <link rel="stylesheet" href="/static/index/css/css.css"/>
+    <link rel="stylesheet" href="/static/index/css/xzl.css"/>
+ 
+    <script src="/static/index/js/share.js"></script>
+    <link rel="stylesheet" href="/static/index/css/slide_share.css"/>
+</head>
+<body>
+<style>
+    #page {
+        float: right;
+        font: 12px/16px arial;
+        margin: 25px 0px 0px 0px;
+        text-align: center;
+        height: 24px;
+    }
+
+    #page span {
+        margin: 0px 3px;
+        border: 1px solid #ddd;
+        padding: 3px 7px;
+        text-decoration: none;
+        color: #666
+    }
+
+    #page a {
+        margin: 0px 3px;
+        border: 1px solid #ddd;
+        padding: 3px 7px;
+        text-decoration: none;
+        color: #666
+    }
+
+    #page a.now_page, #page a:hover {
+        color: #fff;
+        background: #2f9a1e
+    }
+
+    #page ul {
+        display: flex;
+    }
+
+    .nav li a span {
+        display: block;
+        float: left;
+        padding: 0 0 0 0;
+        height: 39px;
+        line-height: 39px;
+        font-size: 14px;
+        cursor: pointer;
+        color: #fff;
+    }
+
+    .nav li {
+        padding: 0 13px;
+    }
+</style>
+<div class="nav_bar">
+    <div class="w1003 f12">
+        <div class="nav_bar_left fl">
+            当前城市：
+            <span>{$cityInfo[0]['name']}</span>
+            <em>|</em>切换城市：
+            {volist name="cityList" id="data"}
+            <a href="javascript:document.cookie = 'city={$data.id};path=/;';location.reload();">{$data.name}</a>
+            <em>|</em> {/volist}
+        </div>
+        <div class="nav_bar_right fr">
+            <strong>24小时免费服务热线：{:config('web_site_tel')}</strong>
+        </div>
+    </div>
+</div>
+<!--<table width="960" border="0" cellspacing="0" cellpadding="0" align="center">
+<tr align="center">
+  <td align="center">
+
+<div id="logo">
+    <div id="logo_left"><A href="/city_dg/search.php" target=_blank><IMG  src="/gg/area/area1/bt1/logo.png" width="210" ></A></div>
+    <div id="logo_center"> </div>
+
+  </div>
+</td>
+</tr>
+</table>-->
+<script type="text/javascript">
+    var run = 0;
+    var rtime;
+
+    function time() {
+        ChangeCity(0);
+        clearTimeout(rtime);
+    }
+
+    function ChangeCity(show) {
+        $("#popwindow").css("position", "absolute");
+        $("#popwindow").css("top", 40);
+        if ($.browser.msie)
+            $("#popwindow").css("left", 20);
+        else
+            $("#popwindow").css("left", 20);
+        if (show == 1) {
+            $("#popwindow").slideDown("normal", function () {
+                run = 0
+            });
+        } else {
+            $("#popwindow").slideUp("normal", function () {
+                run = 0
+            });
+        }
+    }
+</script>
+<div class="marginT20 marginB20 w1003 head ">
+    <div class="FL marginT10">
+        <a href="/"><img src="/static/index/img/logo.png"/></a>
+    </div>
+    <div class="FL LH24 marginL20" style="margin-top:37px;">
+        <div class="m_city fl" style="position:relative;">
+            <div id="change_city">
+                <font color="#D90700" style="font-
+size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
+                <a class="F12 cGray" href="javascript:void(0);" onclick="javascript:alert('写字楼目前只开通深圳，其他城市正在开放中');">[切换城市]</a>
+            </div>
+            <div class="qhcity_box" id="popwindow"
+                 style="z-index: 20; position: absolute; top: 40px; left: 20px; display: none; min-height:300px; position:relative;">
+                <div class="qhcity_close" onclick="javascript:ChangeCity
+();">
+                    <img src="./close.gif" alt="关闭" title="关闭"/>
+                </div>
+                <div class="qhcity_hot">
+                    热门城市：
+                    <a href="/search.php?area=sz">深圳市</a>
+                    <a href="/search.php?area=dg">东莞市</a>
+                    <a href="/search.php?area=hz">惠州市</a>
+                </div>
+                <!--<div class="qhcity_area" style="line-height:20px;padding-top:5px; padding-bottom:5px;"><div style=" float:left; width:60px; overflow:hidden;text-align:center;">深圳市：</div><div style=" float:left;">
+
+          </div>
+          <div style="clear:both;"></div>
+          </div>
+          -->
+                <div class="qhcity_more" style="position:absolute; bottom:5px; right:15px;">
+                    <a href="javascript:alert('其他城市正在开通中！！！')" target="_blank">其他城市正在开通中&gt;&gt;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="FR" style="width:504px; margin-top:10px;">
+        <div class="t-r F12">
+            <div class="FL">
+                <span style=" padding-right:5px;">热门搜索:</span>
+                <a target="_blank" href="/search.php?area=sz&amp;title=%E5%B8%A6%E8%A3%85%E4%BF%AE%E5%8E%82%E6%88%BF">带装修厂房</a>
+                <a target="_blank" href="/search.php?area=sz&amp;floor=1">一楼厂房</a>
+                <a target="_blank" href="/search.php?area=sz&amp;title=%E9%AB%98%E6%96%B0%E7%A7%91%E6%8A%80%E5%9B%AD">高新科技园厂房</a>
+            </div>
+            <div class="FR"></div>
+        </div>
+        <div class="clear"></div>
+        <div class="mr_search FR marginT5">
+            <form method="get" action="/index/search/landList" class="form" id="search111"
+                  onsubmit="return clickThis(this);">
+                <div class="select fl" onmouseover="xiala('s_xlmenu',true)" onmouseout="xiala('s_xlmenu',false)">
+                    <div class="s_xiala">
+                    </div>
+                    <div class="s_xialamenu" id="s_xlmenu">
+                        <ul>
+                            <li><a onclick="SelText(this);return false;">写字楼</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="text fl">
+                    <input name="city" type="hidden" value="{$cityInfo[0]['id']}"/>
+                    <input name="title" type="text" value="" placeholder="请输入园区名称或工业区商圈"/>
+                </div>
+                <div class="searbut fr" style="height:32px; overflow:hidden;">
+                    <input type="submit" class="searanniu" value="搜索"/>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+<script type="text/javascript">
+    function xiaoshi(obj) {
+        obj.value = "";
+    }
+
+    function xianshi(obj, message) {
+        if (obj.value == null || obj.value == "")
+            obj.value = message;
+    }
+
+    /*
+    导航条.显示函数
+    */
+    function block_show(id, isHome) {
+        var list = document.getElementsByClassName("n_ejmenu FR");
+        for (var i = 0, j = list.length; i < j; i++) {
+            list[i].style.display = "none";
+        }
+        if (!isHome) {
+            document.getElementById(id).style.display = "block";
+            document.getElementById("line").style.display = "none";
+        } else {
+            document.getElementById("line").style.display = "block";
+        }
+    }
+
+    function SelText(obj) {
+        document.getElementById("ct_input").value = obj.innerHTML;
+        document.getElementById("s_xlmenu").style.display = "none";
+        var tna = obj.innerHTML;
+        var soty = 0;
+        if (tna == "找厂房") {
+            soty = 1;
+            document.getElementById("search111").action = "/search.php";
+        } else if (tna == "写字楼") {
+            soty = 3;
+            document.getElementById("search111").action = "/index/search/landList?city={$cityInfo[0]['id']}";
+        } else if (tna == "土地") {
+            soty = 5;
+        } else if (tna == "商铺") {
+            soty = 4;
+        } else if (tna == "产业园区") {
+            soty = 2;
+        }
+        document.getElementById("sotype").value = soty;
+    }
+
+    function xiala(id, isShow) {
+        var _disply = "none";
+        if (isShow)
+            _disply = "block";
+        document.getElementById(id).style.display = _disply;
+    }
+
+    function xiala1() {
+        document.getElementById("ywhz").style.background = "url(http://www.zhaoshang800.com/tpl/images/zs_topnavlibg2.jpg) no-repeat center";
+        document.getElementById("jtxl").style.display = "block";
+    }
+
+    function xiala2() {
+        document.getElementById("ywhz").style.background = "url(http://www.zhaoshang800.com/tpl/images/zs_topnavlibg1.jpg) no-repeat center";
+        document.getElementById("jtxl").style.display = "none";
+    }
+
+    function xiala3(id, isShow) {
+        var _disply = "none";
+        if (isShow)
+            _disply = "block";
+        document.getElementById(id).style.display = _disply;
+    }
+</script>
+<div id="header">
+
+    <div id="header">
+        <table width="1000" border="0" cellspacing="0" cellpadding="0" align="center">
+            <tbody>
+            <tr>
+                <td>
+                    <script type="text/javascript" src="/static/index/js/jquery-1.4.2.min.js"></script>
+                    <script type="text/javascript">
+                        (function (a) {
+                            a.fn.hoverClass = function (b) {
+                                var a = this;
+                                a.each(function (c) {
+                                    a.eq(c).hover(function () {
+                                        $(this).addClass(b)
+                                    }, function () {
+                                        $(this).removeClass(b)
+                                    })
+                                });
+                                return a
+                            };
+                        })(jQuery);
+                    </script>
+                    <!--解决 IE6 背景缓存-->
+                    <!--[if IE 6]>
+                    <script type="text/javascript">document.execCommand("BackgroundImageCache", false, true);</script>
+                    <![endif]-->
+                    {include file="templates/default/index/layout/nav.html" /}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<table width="960" align="center">
+    <tr align="center">
+        <td align="center">
+            <A href="/index/search/workshop?city={$cityInfo[0]['id']}" target=_blank><IMG
+                    src="/static/index/img/img_13.jpg" width="1000" height="267"></A>
+        </td>
+    </tr>
+</table>
+<div style="height:15px;"></div>
+
+<div class=" w1003 zs_newmbx" style="margin: 8px auto;text-align:left;">
+    <a target="_blank" href="/xiezilou/">广东写字楼网</a>&nbsp;&gt;&nbsp;
+    <a target="_blank" href="/index/search/landList?city={$cityInfo[0]['id']}?area=dg">土地信息</a>
+</div>
+<div class="zs_newmbx" style="display:none;">
+    <a target="_blank" href="/xiezilou/">深圳厂房网</a>&nbsp;&gt;&nbsp;
+    <a target="_blank" href="/index/search/landList?city={$cityInfo[0]['id']}?area=">深圳厂房出租</a>
+</div>
+<div class="w1003 bor1 ser_sx">
+    <!--引入搜索区域城市文件-->
+    <style>
+        dd.screen_area {
+            overflow: hidden;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        dd.screen_area a {
+            height: 28px;
+            line-height: 28px;
+            float: left;
+        }
+
+        dd.screen_area a.current {
+            padding-top: 0px;
+            padding-bottom: 0px;
+        }
+    </style>
+    <dl>
+        <dt>
+            区域：
+        </dt>
+        <dd class="screen_area">
+            {volist name="cityInfo" id="data"}
+            <a class="current" href="/index/search/landList?city={$data.id}">全{$data.name}</a>
+            {/volist}
+            {volist name="areaInfo" id="data"}
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&area={$data.id}">{$data.name}</a>
+            {/volist}
+        </dd>
+    </dl>
+    <dl>
+        <dt>
+            面积：
+        </dt>
+        <dd>
+            <a class="current" href="/index/search/landList?city={$cityInfo[0]['id']}">不限</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=500">500平米以下</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=500-1000">500-1000平米</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=1000-1500">1000-1500平米</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=1500-2500">1500-2500平米</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=2500-4000">2500-4000平米</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=4000-6000">4000-6000平米</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=6000-10000">6000-10000平米</a>
+            
+        </dd>
+    </dl>
+    <dl>
+        <dt>
+            租金：
+        </dt>
+        <dd>
+            <a class="current" href="/index/search/landList?city={$cityInfo[0]['id']}">不限</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&plantrent=10">10元/平米•月以下</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&plantrent=10-15">10-15元/m&sup2;⋅月</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&plantrent=15-20">15-20元/m&sup2;⋅月</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&plantrent=20-25">20-25元/m&sup2;⋅月</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&plantrent=25">25元/m&sup2;⋅月</a>
+            
+        </dd>
+    </dl>
+    <dl>
+        <dt>
+            标签：
+        </dt>
+        <dd>
+            <a class="current" href="/index/search/landList?city={$cityInfo[0]['id']}">不限</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=0-100">工业用地</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=100-200">农业用地</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=200-300">商业用地</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=300-500">仓库用地</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=500-1000">临时用地</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=1000">国有用地</a>
+         <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=1000">集体用地</a>   
+        </dd>
+    </dl>
+    <dl>
+        <dt>
+            租售：
+        </dt>
+        <dd>
+            <a class="current" href="/index/search/landList?city={$cityInfo[0]['id']}">不限</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=0-100">出租</a>
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=100-200">出售</a>
+            
+        </dd>
+    </dl>
+    <div style="display:;">
+        <form name="form_title" method="get" action="/index/search/landList">
+            <div id="title_search">
+                <div class="list-search"></div>
+                <input id="city" name="city" type="hidden" value="{$cityInfo[0]['id']}"/>
+                <input id="title_input" name="title" type="text" data-id="" data-key="keyword" value="" my_no_use="true"
+                       placeholder="请输入写字楼区域、商圈、位置或特定需求等..." autocomplete="off"/>
+                <a id="title_click" onclick="javascript:document.form_title.submit()">搜索</a>
+                <a id="title_click" onclick="search_title()">全站搜索</a>
+            </div>
+        </form>
+    </div>
+    <script language="javascript">
+        function search_title() {
+            $('#area').val('');
+            $("#area_village").val('');
+            $("#measurearea").val('');
+            $("#floor").val('');
+            $("#jiegou").val('');
+            document.form_title.submit();
+        }
+    </script>
+    <div class="clear"></div>
+    <div class="search_area-foot w998" style="height:45px;">
+        <div class="search_area-screen">
+            本次搜索条件:
+        </div>
+    </div>
+</div>
+<!--  <div class="tab_cf w1003">
+  <div class="tab_l">
+   <h3>我要租写字楼</h3>
+  </div>
+  <div class="tab_r">
+   <input id="c_name" name="c_name" type="text" class="t_i1" value="" placeholder="请输入你的称呼" />&nbsp;&nbsp;
+   <input id="tel" name="tel" type="text" class="t_i2" value="" placeholder="请输入你的手机号码" />&nbsp;&nbsp;
+   <span class="shoux">首选镇区:</span>
+   <select name="area" id="area1"> <option value="0" selected="selected">请选择区域</option> <option value="lg">龙岗区</option><option value="ps">坪山区</option><option value="lh">龙华区</option><option value="baoanq">宝安区</option><option value="guangmq">光明区</option><option value="yantianq">盐田区</option><option value="dapengq">大鹏新区</option></select>&nbsp;&nbsp;
+   <span class="shoux">首选面积:</span>
+   <select name="measurearea" id="measurearea1"> <option value="0" selected="selected">请选择面积</option> <option value="1">500平米以下</option> <option value="2">500-800平米</option> <option value="3">800-1300平米</option> <option value="4">1300-2000平米</option> <option value="5">2000-3000平米</option> <option value="6">3000-5000平米</option> <option value="7">5000-10000平米</option> <option value="8">1万及一万㎡以上</option> </select>
+   <input id="submitdatebutton" type="button" class="tab_but" value="" onclick="submitdata();" />
+  </div>
+  <div class="cl"></div>  -->
+</div>
+<script type="text/javascript">
+    $("#submitdatebutton").click(function () {
+        var c_name = $("#c_name").val();
+        var tel = $("#tel").val();
+        var area = $("#area1").val();
+        var measurearea = $("#measurearea1").val();
+        //判断客户提交的姓名是否为空
+        if (c_name == '') {
+            $("#c_name").focus();
+            alert("请输入您的称呼");
+            return false;
+        }
+        //判断客户提交的号码是否为空
+        if (tel == '') {
+            $("#tel").focus();
+            alert("请输入您的手机号码");
+            return false;
+        }
+        //判断客户提交的号码是否正确
+        if (!$("#tel").val().match(/^1[3|4|5|7|8][0-9]\d{8}$/)) {
+            alert('号码格式不正确');
+            $('#tel').focus();
+            return false;
+        }
+        //判断客户提交的区域是否为空
+        /*				if (area=='0'){
+                            $("#area").focus();
+                            alert("请选择首选区域");
+                            return false;}*/
+        //判断客户选择的面积需求是否为空
+        /*				if (measurearea=='0'){
+                            $("#measurearea").focus();
+                            alert("请选择面积");
+                            return false;}*/
+        //ajax提交表单
+        $.get("/save_submit.php", {c_name: c_name, tel: tel, area: area, measurearea: measurearea}, function (data) {
+                alert(data);
+                $("input").val("");
+                $("select").val("");
+            }//ajax的函数
+        );//ajax提交表单结束
+    })
+
+</script>
+<div class="clear"></div>
+<div class="main-content w1003">
+    <div class="list-content" id="list-content">
+        <!-- 写字楼出售列表排序 -->
+        <div class="list-sort">
+            <span class="tit">为您找到以下<em style="float:none; font-weight:bold; font-size:15px;">深圳</em>土地信息</span>
+            <!-- 排序状态高亮显示  class="light" -->
+            <!--            <div class="sort-cond">
+                       <span>排序：</span>
+
+                                           <a href="https://sz.xzl.anjuke.com/zu/#filtersort" title="综合排序" class="light" rel="nofollow">默认                                            </a>
+                                           <a href="https://sz.xzl.anjuke.com/zu/px4-pv2/#filtersort" title="从大到小" rel="nofollow">面积                                                    <i class="icon icon-arrdown"></i>
+                     </a>
+                                           <a href="https://sz.xzl.anjuke.com/zu/px2-pv1/#filtersort" title="月租金从低到高" rel="nofollow">月租金                                                    <i class="icon icon-arrup"></i>
+                     </a>
+                                           <a href="https://sz.xzl.anjuke.com/zu/px3-pv1/#filtersort" title="日租金从低到高" rel="nofollow">日租金                                                    <i class="icon icon-arrup"></i>
+                     </a>
+                                           <a href="https://sz.xzl.anjuke.com/zu/px1-pv2/#filtersort" title="按最新发布排序" rel="nofollow">最新                                                    <i class="icon icon-arrdown"></i>
+                     </a>
+                   </div>-->
+        </div>
+        {volist name="list" id="data"}
+
+        <a href="/index/search/offbuilddetail?id={$data.id}" target="_blank">
+            <div class="list-item" link="/index/search/offbuilddetail?id={$data.id}">
+                <img src="{$data.imgs}" alt="{$data.title}" class="item-img"
+                     width="150" height="115"/>
+                <dl class="item-info">
+                    <dt class="item-title" title="{$data.title}">
+                        {$data.title}
+                    </dt>
+                    <dd>
+                        <span>{$data.buildingname}</span>
+                        <i class="line">|</i>
+                        <span>{$data.buildingname}</span>
+                    </dd>
+                    <dd class="measurearea">
+                        <span> {$data.measurearea}</span>
+                    </dd>
+                    <dd class="address">
+                        <span>{$data.address}</span>
+                    </dd>
+                </dl>
+                <div class="item-price">
+                    <div class="price-a">
+                        <em>{$data.managementfee}</em>元/m&sup2;•月
+                    </div>
+                    <span class="price-b">{$data.plantrent}</span>
+                </div>
+            </div>
+        </a>
+
+        {/volist}
+
+        <div id="page">
+            {if !empty($page)}
+            {$page|raw}
+            {/if}
+        </div>
+    </div>
+    <div class="leftList">
+        <div class="hotList" style="margin-top:41px;">
+            <div class="hotTitle">
+                <label class="color_eef">热门土地信息</label>
+            </div>
+            <ul>
+                {volist name="hot" id="data"}
+                <?php $sz_img = json_decode($list[0]['imgs']); $sz_img = $sz_img[0]; ?>
+                <li><a class="clearfix" href="/index/search/offbuilddetail?id={$data.id}" target="_blank"> <img
+                        class="hotImg" src="{$data.imgs}"/>
+                    <div class="hotInfo">
+                        <div class="hotName one" title="{$data.title}">
+                            {$data.title}
+                        </div>
+                        <p class="one">￥{$data.managementfee}元/m&sup2;.月起</p>
+                        <span class="one"> {$data.address}</span>
+                    </div>
+                </a></li>
+                {/volist}
+            </ul>
+            <a class="more_build" href="/index/search/landList?city={$cityInfo[0]['id']}?area=sz">更多热门土地信息</a>
+        </div>
+        <div class="hotList">
+            <div class="hotTitle">
+                <label class="color_eef">最新土地信息</label></div>
+            <ul>
+                {volist name="new" id="data"}
+                <?php $sz_img = json_decode($list[0]['imgs']); $sz_img = $sz_img[0]; ?>
+                <li><a class="clearfix" href="/index/search/offbuilddetail?id={$data.id}" target="_blank"> <img
+                        class="hotImg" src="{$data.imgs}"/>
+                    <div class="hotInfo">
+                        <div class="hotName one" title="{$data.title}">
+                            {$data.title}
+                        </div>
+                        <p class="one">￥{$data.managementfee}元/m&sup2;.月起</p>
+                        <span class="one"> {$data.address}</span>
+                    </div>
+                </a></li>
+                {/volist}
+            </ul>
+            <a class="more_build" href="/index/search/landList?city={$cityInfo[0]['id']}?area=sz">更多最新写字楼</a>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<table width="1003" border="0" cellspacing="0" cellpadding="0" align="center">
+    <tbody>
+    <tr>
+        <td>
+            <div id="tuijian">
+                <div class="part_title">
+                    <strong>推荐厂房</strong>
+                </div>
+                <div id="tuijian_cont">
+                    <div id="white_bg">
+                        <div id="demo">
+                            <div id="indemo">
+                                <div id="demo1">
+                                    {volist name="recommend" id="data" offset="0" length="10" mod="3" empty="$empty" key="i"}
+                                    <?php $sz_img = json_decode($list[0]['imgs']); $sz_img = $sz_img[0]; ?>
+                                    <div class="right_p_one">
+                                        <div class="right_p_img">
+                                            <a href="/index/search/offbuilddetail?id={$data.id}" target="_blank"><img
+                                                    src="{$data.imgs}"/></a>
+                                            <span class="imgmid"></span>
+                                        </div>
+                                        <div class="right_p_title">
+                                            <a href="/index/search/offbuilddetail?id={$data.id}" target="_blank">
+                                                {$data.title}</a>
+                                        </div>
+                                    </div>
+                                    {/volist}
+                                </div>
+                            </div>
+                            <div id="demo2">
+                            </div>
+                            <script type="text/javascript" src="/static/index/js/rolljs.js"></script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="clear"></div>
+           
+        </td>
+    </tr>
+    </tbody>
+</table>
+{include file="templates/default/index/layout/foot.html" /} 
+<div class="bdshare-slide-button-box bdshare-slide-style-r7" style="top: 250px; width: 0px; z-index: 99999; right: 0px;"
+     data-bd-bind="1566556065349">
+    <a href="/index/search/landList?city={$cityInfo[0]['id']}#" onclick="return false;"
+       class="bdshare-slide-button" style="left: -24px;"></a>
+    <div class="bdshare-slide-list-box" style="width: 0px; display: none;">
+        <div class="bdshare-slide-top">
+            分享到
+        </div>
+        <div class="bdshare-slide-list">
+            <ul class="bdshare-slide-list-ul" style="width: 226px;"></ul>
+        </div>
+        <div class="bdshare-slide-bottom" style="width: 226px;">
+            <a href="/index/search/landList?city={$cityInfo[0]['id']}#" onclick="return false;" class="slide-more"
+               data-cmd="more">更多...</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
