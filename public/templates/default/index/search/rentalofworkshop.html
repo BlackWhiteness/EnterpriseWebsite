@@ -1243,169 +1243,20 @@
                     </div>
                 </div>
                 <div id="demo2">
-                    <div class="right_p_one">
-                        <div class="right_p_img">
-                            <a href="//index/search/workshopdetail?city={$cityInfo[0]['id']}&id=25792"
-                               target="_blank"><img
-                                    src="/city_sz/upImagescj/20180416/small/201804162134496073.jpg"/></a>
-                            <span class="imgmid"></span>
+                   {volist name="recommend" id="data"}
+                        <?php $recommend_img = json_decode($data['imgs']); $recommend_img = $recommend_img[0]; ?>
+                        <div class="right_p_one">
+                            <div class="right_p_img">
+                                <a href="/index/search/workshopdetail?id={$data.id}" target="_blank"><img
+                                        src="{$recommend_img}"/></a>
+                                <span class="imgmid"></span>
+                            </div>
+                            <div class="right_p_title">
+                                <a href="/index/search/workshopdetail?id={$data.id}" target="_blank">
+                                    {$data.title}"...</a>
+                            </div>
                         </div>
-                        <div class="right_p_title">
-                            <a href="//index/search/workshopdetail?city={$cityInfo[0]['id']}&id=25792" target="_blank">
-                                观澜环观南路牛湖收...</a>
-                        </div>
-                    </div>
-                    <div class="right_p_one">
-                        <div class="right_p_img">
-                            <a href="//index/search/workshopdetail?city={$cityInfo[0]['id']}&id=21744"
-                               target="_blank"><img
-                                    src="/city_sz/upImagescj/20180414/small/201804140117078216.jpg"/></a>
-                            <span class="imgmid"></span>
-                        </div>
-                        <div class="right_p_title">
-                            <a href="//index/search/workshopdetail?city={$cityInfo[0]['id']}&id=21744" target="_blank">
-                                横岗独栋商业厂房3...</a>
-                        </div>
-                    </div>
-                    <div class="right_p_one">
-                        <div class="right_p_img">
-                            <a href="//index/search/workshopdetail?city={$cityInfo[0]['id']}&id=12728"
-                               target="_blank"><img
-                                    src="/city_sz/upImagescj/20131014/small/201310142483565469.jpg"/></a>
-                            <span class="imgmid"></span>
-                        </div>
-                        <div class="right_p_title">
-                            <a href="//index/search/workshopdetail?city={$cityInfo[0]['id']}&id=12728" target="_blank">深圳龙岗1080平方...</a>
-                        </div>
-                    </div>
-                    <div class="right_p_one">
-                        <div class="right_p_img">
-                            <a href="//index/search/workshopdetail?city={$cityInfo[0]['id']}&id=21268"
-                               target="_blank"><img
-                                    src="/city_sz/upImagescj/20180413/small/201804132130073661.jpg"/></a>
-                            <span class="imgmid"></span>
-                        </div>
-                        <div class="right_p_title">
-                            <a href="//index/search/workshopdetail?city={$cityInfo[0]['id']}&id=21268" target="_blank">
-                                龙岗中心城新出单层...</a>
-                        </div>
-                    </div>
-                    <div class="right_p_one">
-                        <div class="right_p_img">
-                            <a href="//index/search/workshopdetail?city={$cityInfo[0]['id']}&id=12654"
-                               target="_blank"><img
-                                    src="/city_sz/upImagescj/20131014/small/201310142432340601.jpg"/></a>
-                            <span class="imgmid"></span>
-                        </div>
-                        <div class="right_p_title">
-                            <a href="//index/search/workshopdetail?city={$cityInfo[0]['id']}&id=12654" target="_blank">龙岗中心城600㎡一...</a>
-                        </div>
-                    </div>
-                    <div class="right_p_one">
-                        <div class="right_p_img">
-                            <a href="//index/search/workshopdetail?city={$cityInfo[0]['id']}&id=25684"
-                               target="_blank"><img
-                                    src="/city_sz/upImagescj/20180416/small/201804162117472442.jpg"/></a>
-                            <span class="imgmid"></span>
-                        </div>
-                        <div class="right_p_title">
-                            <a href="//index/search/workshopdetail?city={$cityInfo[0]['id']}&id=25684" target="_blank">
-                                精装人民路边500...</a>
-                        </div>
-                    </div>
-                    <div class="right_p_one">
-                        <div class="right_p_img">
-                            <a href="//index/search/workshopdetail?city={$cityInfo[0]['id']}&id=21016"
-                               target="_blank"><img
-                                    src="/city_sz/upImagescj/20180413/small/201804132111042890.jpg"/></a>
-                            <span class="imgmid"></span>
-                        </div>
-                        <div class="right_p_title">
-                            <a href="//index/search/workshopdetail?city={$cityInfo[0]['id']}&id=21016" target="_blank">
-                                龙岗地铁口旁新出写...</a>
-                        </div>
-                    </div>
-                    <div class="right_p_one">
-                        <div class="right_p_img">
-                            <a href="//index/search/workshopdetail?city={$cityInfo[0]['id']}&id=34507"
-                               target="_blank"><img
-                                    src="/city_sz/upImagescj/20190722/small/201907220150488484.jpg"/></a>
-                            <span class="imgmid"></span>
-                        </div>
-                        <div class="right_p_title">
-                            <a href="//index/search/workshopdetail?city={$cityInfo[0]['id']}&id=34507" target="_blank">
-                                坪山大工业区新...</a>
-                        </div>
-                    </div>
-                    <div class="right_p_one">
-                        <div class="right_p_img">
-                            <a href="//index/search/workshopdetail?city={$cityInfo[0]['id']}&id=18825"
-                               target="_blank"><img src="/city_sz/upImagescj/20150608/small/2015060800071797.jpg"/></a>
-                            <span class="imgmid"></span>
-                        </div>
-                        <div class="right_p_title">
-                            <a href="//index/search/workshopdetail?city={$cityInfo[0]['id']}&id=18825" target="_blank">华南城附近一楼130...</a>
-                        </div>
-                    </div>
-                    <div class="right_p_one">
-                        <div class="right_p_img">
-                            <a href="//index/search/workshopdetail?city={$cityInfo[0]['id']}&id=22562"
-                               target="_blank"><img
-                                    src="/city_sz/upImagescj/20180415/small/201804151103169418.jpg"/></a>
-                            <span class="imgmid"></span>
-                        </div>
-                        <div class="right_p_title">
-                            <a href="//index/search/workshopdetail?city={$cityInfo[0]['id']}&id=22562" target="_blank">
-                                坂田杨美地铁口附近...</a>
-                        </div>
-                    </div>
-                    <div class="right_p_one">
-                        <div class="right_p_img">
-                            <a href="//index/search/workshopdetail?city={$cityInfo[0]['id']}&id=19414"
-                               target="_blank"><img
-                                    src="/city_sz/upImagescj/20160607/small/201606070014222845.jpg"/></a>
-                            <span class="imgmid"></span>
-                        </div>
-                        <div class="right_p_title">
-                            <a href="//index/search/workshopdetail?city={$cityInfo[0]['id']}&id=19414" target="_blank">爱联地铁站
-                                厂房分租...</a>
-                        </div>
-                    </div>
-                    <div class="right_p_one">
-                        <div class="right_p_img">
-                            <a href="//index/search/workshopdetail?city={$cityInfo[0]['id']}&id=34040"
-                               target="_blank"><img
-                                    src="/city_sz/upImagescj/20190722/small/201907220126156151.jpg"/></a>
-                            <span class="imgmid"></span>
-                        </div>
-                        <div class="right_p_title">
-                            <a href="//index/search/workshopdetail?city={$cityInfo[0]['id']}&id=34040" target="_blank">
-                                出租坪山新区坪...</a>
-                        </div>
-                    </div>
-                    <div class="right_p_one">
-                        <div class="right_p_img">
-                            <a href="//index/search/workshopdetail?city={$cityInfo[0]['id']}&id=11955"
-                               target="_blank"><img
-                                    src="/city_sz/upImagescj/20131013/small/2013101318165374302.jpg"/></a>
-                            <span class="imgmid"></span>
-                        </div>
-                        <div class="right_p_title">
-                            <a href="//index/search/workshopdetail?city={$cityInfo[0]['id']}&id=11955" target="_blank">吉祥地铁口1080平...</a>
-                        </div>
-                    </div>
-                    <div class="right_p_one">
-                        <div class="right_p_img">
-                            <a href="//index/search/workshopdetail?city={$cityInfo[0]['id']}&id=27449"
-                               target="_blank"><img
-                                    src="/city_sz/upImagescj/20190721/small/201907210934047292.jpg"/></a>
-                            <span class="imgmid"></span>
-                        </div>
-                        <div class="right_p_title">
-                            <a href="//index/search/workshopdetail?city={$cityInfo[0]['id']}&id=27449" target="_blank">
-                                龙岗龙西工业区...</a>
-                        </div>
-                    </div>
+                        {/volist}
                 </div>
                 <script type="text/javascript" src="/static/index/js/rolljs.js"></script>
             </div>
