@@ -352,7 +352,7 @@ table td em{ float:left; color:#ad4907; padding-left:5px;}
 .list_one_text {width:425px; height:130px; float:left; text-align:left;}
 .list_one_text strong {text-align:center; width:425px; height:26px; line-height:26px; margin-bottom:1px;  overflow:hidden;}
 .list_one_text strong a {color:#d00; font-size:14px;}
-.list_one_text .cf_jianjie { display:block;width:425px; height:65px; line-height:25px; float:left; font-size:14px; padding:0px 3px 0px 0px; margin-bottom:10px;overflow:hidden;}
+.list_one_text .cf_jianjie { display:block;width:425px; height:60px; line-height:25px; float:left; font-size:14px; padding:0px 3px 0px 0px; margin-bottom:10px;overflow:hidden;}
 .text_prm1 span{display: inline-block; height:20px; border:1px solid  #F60; padding:0px 5px; margin-right:8px; margin-top:8px;}
 .text_prm span{ margin-right:10px;font-size:14px;}
 .list_one_prm {float:right;text-align:right;width:97px; height:130px; padding-top:22px; padding-right:5px;}
