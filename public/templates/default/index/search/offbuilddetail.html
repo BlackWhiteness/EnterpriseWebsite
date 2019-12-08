@@ -1286,7 +1286,7 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
                                     </tr>
                                     <tr align="left">
 
-                                        <td width="166"><font size="2">总面积：{$info.measurearea}㎡</font></td>
+                                        <td><font size="2">类型：{$info.measurearea}㎡</font></td><td><font size="2">总面积：{$info.measurearea}㎡</font></td>
                                     </tr>
                                     <tr align="left">
                                         <td colspan="2" class="house_line"></td>
@@ -1308,52 +1308,52 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
                                         <td>
 
 
-                                            <font size="2">楼盘名称：{$info.buildingname}</font></td>
-                                    </tr>
-                                    <tr align="left">
-                                        <td colspan="2" class="house_line"></td>
-                                    </tr>
-                                    <tr align="left">
-                                        <td height="29"><font size="2">楼层：
+                                            <font size="2"><!--楼盘名称：{$info.buildingname}-->楼层区：
 
                                             {$info.floor}</font></td>
-                                        <td>
-
-
-                                            <font size="2">是否分割：{if
-                                                condition="$info.is_sep eq 0 " } 否 {else if} 是{/if}{$info.is_sep}</font></td>
                                     </tr>
                                     <tr align="left">
                                         <td colspan="2" class="house_line"></td>
                                     </tr>
                                     <tr align="left">
-                                        <td height="29"><font size="2">付款方式：
+                                        <td height="29"><font size="2">是否分割：{if
+                                                condition="$info.is_sep eq 0 " } 否 {else if} 是{/if}{$info.is_sep}</font></td>
+                                        <td>
+
+
+                                            <font size="2">付款方式：
 
                                             {$info.pay_type}</font></td>
-                                        <td>
-
-
-                                            <font size="2">使用年限：{$info.use_year}</font></td>
                                     </tr>
                                     <tr align="left">
                                         <td colspan="2" class="house_line"></td>
                                     </tr>
                                     <tr align="left">
-                                        <td height="29"><font size="2">级别：
+                                        <td height="29"><font size="2">使用年限：{$info.use_year}</font></td>
+                                        <td>
+
+
+                                            <font size="2">级别：
 
                                             {$info.level}</font></td>
-                                        <td>
-
-
-                                            <font size="2">证件：{$info.card}</font></td>
                                     </tr>
                                     <tr align="left">
                                         <td colspan="2" class="house_line"></td>
                                     </tr>
                                     <tr align="left">
-                                        <td height="29"><font size="2">其他：
+                                        <td height="29"><font size="2">证件：{$info.card}</font></td>
+                                        <td>
+
+
+                                            <font size="2">其他：
 
                                             {$info.other}</font></td>
+                                    </tr>
+                                    <tr align="left">
+                                        <td colspan="2" class="house_line"></td>
+                                    </tr>
+                                    <tr align="left">
+                                        <td height="29"><font size="2"></font></td>
 
                                     </tr>
                                     <tr align="left">
