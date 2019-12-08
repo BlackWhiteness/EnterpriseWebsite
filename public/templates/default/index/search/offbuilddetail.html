@@ -1297,6 +1297,7 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
                                             {$info.plantrent}</font></td>
                                         <td><font size="2">管理费：{$info.managementfee}</font></td>
                                     </tr>
+
                                     <tr align="left">
                                         <td colspan="2" class="house_line"></td>
                                     </tr>
@@ -1312,17 +1313,53 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
                                     <tr align="left">
                                         <td colspan="2" class="house_line"></td>
                                     </tr>
+                                    <tr align="left">
+                                        <td height="29"><font size="2">楼层：
 
-                                    <tr align="left">
-                                        <td colspan="2" class="house_line"></td>
+                                            {$info.floor}</font></td>
+                                        <td>
+
+
+                                            <font size="2">是否分割：{if
+                                                condition="$info.is_sep eq 0 " } 否 {else if} 是{/if}{$info.is_sep}</font></td>
                                     </tr>
                                     <tr align="left">
                                         <td colspan="2" class="house_line"></td>
                                     </tr>
                                     <tr align="left">
-                                        <td height="31">&nbsp;</td>
-                                        <td>&nbsp;</td>
+                                        <td height="29"><font size="2">付款方式：
+
+                                            {$info.pay_type}</font></td>
+                                        <td>
+
+
+                                            <font size="2">使用年限：{$info.use_year}</font></td>
                                     </tr>
+                                    <tr align="left">
+                                        <td colspan="2" class="house_line"></td>
+                                    </tr>
+                                    <tr align="left">
+                                        <td height="29"><font size="2">级别：
+
+                                            {$info.level}</font></td>
+                                        <td>
+
+
+                                            <font size="2">证件：{$info.card}</font></td>
+                                    </tr>
+                                    <tr align="left">
+                                        <td colspan="2" class="house_line"></td>
+                                    </tr>
+                                    <tr align="left">
+                                        <td height="29"><font size="2">其他：
+
+                                            {$info.other}</font></td>
+
+                                    </tr>
+                                    <tr align="left">
+                                        <td colspan="2" class="house_line"></td>
+                                    </tr>
+
                                 </table>
 
                                 <div class="house_phone1">

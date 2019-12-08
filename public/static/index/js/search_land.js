@@ -81,6 +81,9 @@ function action(current_page = 1) {
     if (area != "" && !search_title_all) {
         data.area = area;
     }
+    if (rent != '') {
+        data.rent = rent;
+    }
 
     if (mianji != 0) {
         data.measurearea = mianji;
