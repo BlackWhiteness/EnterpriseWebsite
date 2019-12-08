@@ -60,6 +60,10 @@ class Land extends Adminbase
     {
         if ($request->isPost()) {
             $data = $request->param();
+            $tag = $request->param('tag');
+            if (!empty($tag)) {
+                $data['tag'] = str_replace(['，', ' '], ',', $tag);
+            }
             if (!$data) {
                 return $this->error($data);
             }

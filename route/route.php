@@ -15,5 +15,7 @@
 //Route::get('/', '\app\index/Index@index');
 Route::post('ajax_search_ws', 'app\index\controller\Search@ajaxSearchWs');
 Route::post('search_of', 'app\index\controller\Search@ajaxSearchOf');
+Route::post('search_land', 'app\index\controller\Search@ajaxSearchLand');
+Route::post('search_shop', 'app\index\controller\Search@ajaxSearchShop');
 //土地
 //Route::get('land_list', 'app\index\controller\Search@landList');

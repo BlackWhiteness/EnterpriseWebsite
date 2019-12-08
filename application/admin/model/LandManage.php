@@ -36,4 +36,60 @@ class LandManage extends Model
         }
     }
 
+    /**
+     * 通用过滤
+     * @return \think\db\Query
+     */
+    public function filterCommon()
+    {
+        $query = self::getModel();
+        $city = request()->param('city');
+        if (!empty($city)) {
+            $query = $query->where('city', '=', $city);
+        }
+        $area = request()->param('area');
+        if (!empty($area)) {
+            $query = $query->where('area', '=', $area);
+        }
+        $measurearea = request()->param('measurearea');
+        if (!empty($measurearea)) {
+            $top = strpos($measurearea, '-');
+            if ($top == false) {
+                $query = $query->where('measurearea', '>=', $measurearea);
+            } else {
+                $range = explode('-', $measurearea);
+                $query = $query->where('measurearea', '>=', $range[0])
+                    ->where('measurearea', '<', $range[1]);
+            }
+        }
+
+        $title = request()->param('title');
+        if (!empty($title)) {
+            $query = $query->where('title', 'like', '%' . $title . '%');
+        }
+        $type = request()->param('type');
+        if (is_numeric($type)) {
+            $query = $query->where('type', '=', $type);
+        }
+        $tag = request()->param('tag');
+        if (is_numeric($tag)) {
+            $query = $query->where('tag', 'like', '%' . $tag . '%');
+        }
+        $query = $query->order(array('releasetime' => 'DESC'));
+
+        return $query;
+    }
+
+    /**
+     * 获取写字楼列表
+     * @return \think\db\Query|\think\Paginator
+     * @throws \think\exception\DbException
+     */
+    public function getLandSearch()
+    {
+        $query = $this->filterCommon();
+        $query = $query->paginate(20);
+        return $query;
+    }
+
 }

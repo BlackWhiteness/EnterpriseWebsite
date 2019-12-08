@@ -401,6 +401,7 @@ class Search extends Homebase
         ]);
         return $this->fetch('land_detail');
     }
+
     public function shopList()
     {
         $city = isset($_COOKIE['city']) ? $_COOKIE['city'] : 8;
@@ -489,5 +490,35 @@ class Search extends Homebase
             'info' => $info
         ]);
         return $this->fetch('shop_detail');
+    }
+
+    /**
+     * 获取土地信息
+     * @param LandManage $landManage
+     * @return \think\response\Json
+     * @throws \think\exception\DbException
+     */
+    public function ajaxSearchLand(LandManage $landManage)
+    {
+        $data = $landManage->getLandSearch();
+        return json([
+            'data' => LandFormat::getInstance()->formatList($data),
+            'page' => paginate($data)
+        ]);
+    }
+
+    /**
+     * 获取商铺信息
+     * @param ShopManage $shopManage
+     * @return \think\response\Json
+     * @throws \think\exception\DbException
+     */
+    public function ajaxSearchShop(ShopManage $shopManage)
+    {
+        $data = $shopManage->getOfficeBuild();
+        return json([
+            'data' => ShopFormat::getInstance()->formatList($data),
+            'page' => paginate($data)
+        ]);
     }
 }

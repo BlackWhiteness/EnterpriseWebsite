@@ -15,15 +15,18 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">类型</label>
                 <div style="width:auto" class="layui-input-inline" lay-verify-msg="必选项不能为空" lay-verify="mustradio">
-                    <input type="radio" name="type" autocomplete="off" placeholder="" class="layui-input" value="1"  {if condition="$data.type eq 1 " } checked {/if}>土地出租
-                    <input type="radio" name="type" autocomplete="off" placeholder="" class="layui-input" value="2" {if condition="$data.type eq 2 " } checked {/if}>土地出售
+                    <input type="radio" name="type" autocomplete="off" placeholder="" class="layui-input" value="1" {if
+                           condition="$data.type eq 1 " } checked {/if}>土地出租
+                    <input type="radio" name="type" autocomplete="off" placeholder="" class="layui-input" value="2" {if
+                           condition="$data.type eq 2 " } checked {/if}>土地出售
                 </div>
             </div>
 
             <div class="layui-form-item">
                 <label class="layui-form-label">标题</label>
                 <div style="width:auto" class="layui-input-inline">
-                    <input name="title" type="text" class="layui-input" placeholder="" autocomplete="off" value="{$data.title}" size="60"
+                    <input name="title" type="text" class="layui-input" placeholder="" autocomplete="off"
+                           value="{$data.title}" size="60"
                            lay-verify="required">
                 </div>
             </div>
@@ -31,7 +34,8 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">发布时间</label>
                 <div style="width:auto" class="layui-input-inline">
-                    <input type="text" name="releasetime" id="releasetime" autocomplete="off" placeholder="" value="{$data.releasetime}"
+                    <input type="text" name="releasetime" id="releasetime" autocomplete="off" placeholder=""
+                           value="{$data.releasetime}"
                            class="layui-input">
                 </div>
             </div>
@@ -57,7 +61,8 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">面积</label>
                 <div style="width:auto" class="layui-input-inline">
-                    <input type="text" name="measurearea" lay-verify="required" autocomplete="off" placeholder="" value="{$data.measurearea}"
+                    <input type="text" name="measurearea" lay-verify="required" autocomplete="off" placeholder=""
+                           value="{$data.measurearea}"
                            class="layui-input">
                 </div>
                 <div class="layui-form-mid layui-word-aux">m²</div>
@@ -66,15 +71,18 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">使用年限</label>
                 <div style="width:auto" class="layui-input-inline">
-                    <input type="text" name="land_use" autocomplete="off" placeholder=""  value="{$data.land_use}" class="layui-input">
+                    <input type="text" name="land_use" autocomplete="off" placeholder="" value="{$data.land_use}"
+                           class="layui-input">
                 </div>
                 <div class="layui-form-mid layui-word-aux">年</div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">土地证</label>
                 <div style="width:auto" class="layui-input-inline" lay-verify-msg="必选项不能为空" lay-verify="mustradio">
-                    <input type="radio" name="land_card" autocomplete="off" placeholder="" class="layui-input" value="0" {if condition="$data.type eq 0 " } checked {/if}>有
-                    <input type="radio" name="land_card" autocomplete="off" placeholder="" class="layui-input" value="1"  {if condition="$data.type eq 1 " } checked {/if}>无
+                    <input type="radio" name="land_card" autocomplete="off" placeholder="" class="layui-input" value="0"
+                           {if condition="$data.type eq 0 " } checked {/if}>有
+                    <input type="radio" name="land_card" autocomplete="off" placeholder="" class="layui-input" value="1"
+                           {if condition="$data.type eq 1 " } checked {/if}>无
                 </div>
             </div>
 
@@ -82,7 +90,8 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">价格</label>
                 <div style="width:auto" class="layui-input-inline">
-                    <input type="text" name="price" autocomplete="off" placeholder=""  value="{$data.price}" class="layui-input">
+                    <input type="text" name="price" autocomplete="off" placeholder="" value="{$data.price}"
+                           class="layui-input">
                 </div>
                 <div class="layui-form-mid layui-word-aux">元/m²</div>
             </div>
@@ -90,21 +99,33 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">姓名</label>
                 <div style="width:auto" class="layui-input-inline">
-                    <input type="text" name="name" lay-verify="required" autocomplete="off" value="{$data.name}" placeholder=""
+                    <input type="text" name="name" lay-verify="required" autocomplete="off" value="{$data.name}"
+                           placeholder=""
                            class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">电话</label>
                 <div style="width:auto" class="layui-input-inline">
-                    <input type="text" name="tel" lay-verify="required" autocomplete="off" value="{$data.tel}" placeholder=""
+                    <input type="text" name="tel" lay-verify="required" autocomplete="off" value="{$data.tel}"
+                           placeholder=""
                            class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
+                <label class="layui-form-label">标签</label>
+                <div style="width:auto" class="layui-input-inline">
+                    <input type="text" name="tag" lay-verify="required" autocomplete="off" placeholder="请输入标签"
+                           value="{$data.tag}"
+                           class="layui-input">
+                </div>
+                <div class="layui-form-mid layui-word-aux">多个标签需使用英文逗号或空格分隔</div>
+            </div>
+            <div class="layui-form-item">
                 <label class="layui-form-label">详情信息</label>
                 <div class="layui-input-inline" style="width:auto">
-                    <textarea name="detail" cols="100" rows="10" id="container"   lay-verify="required">{$data.detail}</textarea>
+                    <textarea name="detail" cols="100" rows="10" id="container"
+                              lay-verify="required">{$data.detail}</textarea>
                 </div>
             </div>
             <div class="layui-form-item">
