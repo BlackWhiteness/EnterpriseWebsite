@@ -1,0 +1,226 @@
+/*banner*/
+.iheadBox .iBanner,.iheadBox .iBanner li img{
+    height: 4rem;
+}
+.headTansBgIndex{
+    height: 0.7rem;
+}
+.swiper-container-horizontal>.swiper-pagination-bullets{
+    bottom: 0.58rem !important;
+}
+/*搜索*/
+.iSearch{
+    bottom: -0.4rem;
+    -webkit-box-shadow: 0 0.02rem 0.12rem 0 rgba(0,0,0,0.10);
+    box-shadow:0 0.02rem 0.12rem 0 rgba(0,0,0,0.10);
+}
+/*金刚区*/
+.navBox>ul{
+    padding-top: 0.7rem;
+}
+.navBox>ul li a p{
+    font-size: 0.24rem;
+    line-height: 0.33rem;
+}
+/******************************* 需求登记入口 *******************************/
+.demanEntryBox{
+    background-color: #f8f8f8;
+    padding: 0.25rem 0.5rem;
+}
+.demanEntryBox .demanEntry{
+    background: #FFF;
+    -webkit-box-shadow: 0 0.02rem 0.08rem 0 rgba(0,0,0,0.10);
+    box-shadow: 0 0.02rem 0.08rem 0 rgba(0,0,0,0.10);
+    -webkit-border-radius: 0.1rem;
+    -moz-border-radius: 0.1rem;
+    border-radius: 0.1rem;
+    overflow: hidden;
+}
+.demanEntryBox .demanEntry .tab{
+    padding: 0 0.76rem;
+    margin-top: 0.37rem;
+}
+.demanEntryBox .demanEntry .tab p{
+    float: left;
+    font-size: 0.32rem;
+
+    color: #979797;
+    letter-spacing: 0;
+    text-align: center;
+    font-weight: bold;
+    position: relative;
+    line-height: 0.45rem;
+    padding-bottom: 0.18rem;
+    width: 50%;
+}
+.demanEntryBox .demanEntry .tab p:before{
+    content: '';
+    display: block;
+    width: 100%;
+    height: 0.06rem;
+    background-color: #F0F0F0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.demanEntryBox .demanEntry .tab p:first-of-type:before{
+    border-top-left-radius: 0.03rem;
+    border-bottom-left-radius: 0.03rem;
+}
+.demanEntryBox .demanEntry .tab p:last-of-type:before{
+    border-top-right-radius: 0.03rem;
+    border-bottom-right-radius: 0.03rem;
+}
+.demanEntryBox .demanEntry .tab p.focus{
+    color: #303030;
+}
+.demanEntryBox .demanEntry .tab p.focus:before{
+    background-color: #dd2534;
+}
+.demanEntryBox .demanEntry .con li{
+
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -ms-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+    overflow: hidden;
+    display: none;
+    opacity: 0;
+}
+.demanEntryBox .demanEntry .con li p{
+    font-size: 0.32rem;
+    color: #303030;
+    letter-spacing: 0;
+    text-align: center;
+    margin: 0.38rem 0;
+}
+.demanEntryBox .demanEntry .con li a{
+    display: block;
+    width: 5rem;
+    height: 0.8rem;
+    background-image: -webkit-linear-gradient(-130deg, #DD2534 0%, #F79632 100%);
+    background-image: linear-gradient(130deg, #DD2534 0%, #F79632 100%);
+    -webkit-border-radius: 0.4rem;
+    -moz-border-radius: 0.4rem;
+    border-radius: 0.4rem;
+    text-align: center;
+    font-size: 0.28rem;
+    line-height: 0.8rem;
+    color: #FFF;
+    margin: 0 auto 0.46rem auto;
+
+}
+.demanEntryBox .demanEntry .con li.focus{
+    display: block;
+    opacity: 1;
+}
+
+/******************************* 精选楼盘 *******************************/
+.choiceBox .choiceCon2 li{
+    float: left;
+    margin-bottom: 0.44rem;
+}
+.choiceBox .choiceCon2 li:nth-of-type(2n){
+    margin-left: 0.3rem;
+}
+.choiceBox .choiceCon2 li .pic{
+    width: 3.3rem;
+    height: 2.5rem;
+    overflow: hidden;
+    -webkit-border-radius: 0.08rem;
+    -moz-border-radius: 0.08rem;
+    border-radius: 0.08rem;
+    position: relative;
+}
+.choiceBox .choiceCon2 li .pic p{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 0.5rem;
+    line-height: 0.5rem;
+    padding: 0 0.15rem;
+    font-size: 0.28rem;
+    color: #FFF;
+    background: rgba(0,0,0,0.35);
+}
+.choiceBox .choiceCon2 li .txt{
+    overflow: hidden;
+    line-height: 0.36rem;
+    margin-top: 0.12rem;
+}
+.choiceBox .choiceCon2 li .txt p:first-of-type{
+    float: left;
+    font-size: 0.2rem;
+    color: #DD2534;
+}
+.choiceBox .choiceCon2 li .txt p:first-of-type i{
+    font-size: 0.26rem;
+    font-weight: bold;
+}
+.choiceBox .choiceCon2 li .txt p:last-of-type{
+    float: right;
+    font-size: 0.22rem;
+    color: #666;
+}
+
+/******************************* 为您推荐 *******************************/
+.listBox2{
+    margin-bottom: 0.6rem;
+}
+.listBox2 .listTit{
+    margin-top: 0;
+}
+.listBox2 .listTit p.rt a{
+    float: left;
+    font-size: 0.28rem;
+    color: #979797;
+    margin-left: 0.32rem;
+    display: block;
+    line-height: 0.56rem;
+    position: relative;
+}
+.listBox2 .listTit p.rt a.focus{
+    color: #dd2534;
+}
+.listBox2 .listTit p.rt a.focus:before{
+    content: '';
+    display: block;
+    width: 100%;
+    height: 0.04rem;
+    background-color: #dd2534;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.listBox2 .list{
+    display: none;
+    /*float: left;*/
+}
+.listBox2 .list.focus{
+    display: block;
+}
+.listBox2 .listBoxCon{
+    position: relative;
+    left: 0;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+    overflow: hidden;
+}
+.listBox2 .list>a.more{
+    display: block;
+    width: 100%;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    background: #F8F8F8;
+    -webkit-border-radius: 0.08rem;
+    -moz-border-radius: 0.08rem;
+    border-radius: 0.08rem;
+    font-size: 0.32rem;
+    color: #404B69;
+    text-align: center;
+}

@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)/NewMain/Citylist/ -->
+<html lang="en" style="font-size: 66.6667px;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>中工招商网-城市切换</title>
+    <link rel="icon" href="/static/mobile/img/favicon.ico">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="Keywords" content="">
+    <meta name="description" content="">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="applicable-device" content="mobile">
+    <link rel="stylesheet" href="/static/mobile/css/reset.css">
+    <link rel="stylesheet" href="/static/mobile/css/base.css">
+    <link rel="stylesheet" href="/static/mobile/css/citylist.css">
+    <script src="./中工招商网-城市切换_files/sdk"></script><script charset="utf-8" src="/static/index/js/lxb.js"></script><script charset="utf-8" src="./中工招商网-城市切换_files/insert_bdtj"></script><script src="/static/index/js/push.js"></script><script src="/static/index/js/hm.js"></script><script src="/static/index/js/rem.js"></script>
+
+
+    <!--埋点头部-->
+    <script>
+    //声明_czc对象
+    var _czc = _czc || [];
+    //用来指定需要哪个网站代码(siteid)来接受API发送的请求。
+    _czc.push(["_setAccount", "1275394881"]);     //正式环境
+</script>
+</head>
+<body>
+<!--GPS-->
+    <script type="text/javascript" src="./中工招商网-城市切换_files/api"></script><script type="text/javascript" src="./中工招商网-城市切换_files/getscript"></script>
+<script>
+    function getLocation(){
+        //GPS配置参数
+        var options={
+            enableHighAccuracy:true,    //高精度精度
+            maximumAge:1000,            //缓存时间
+            timeout : 3000              //响应时间
+        }
+        if(navigator.geolocation){
+            navigator.geolocation.getCurrentPosition(onSuccess,onError,options);
+        }else{
+            alert('您的浏览器不支持地理位置定位');
+        }
+    }
+
+    function getadd(){
+        $.ajax({
+            type : 'post',
+            url  : '/gps/getAdd/',
+            async:false,
+            success:function(data){
+//                alert('异常加载');
+                var arr = JSON.parse(data);
+                onSuccess(arr);
+            },
+            error:function(){
+                alert('网络错误');
+            }
+        })
+    }
+
+    //成功
+    function onSuccess(position){
+        var jl  =   JSON.parse( position.coords )
+        var longitude =jl.longitude;
+        var latitude = jl.latitude;
+        //根据经纬度获取地理位置
+//        var point = new BMap.Point(113.25, 23.1167);    //广州ip
+//        var point = new BMap.Point(118.78, 32.07);    //南京ip
+        var point = new BMap.Point(latitude, longitude);
+        var geoc = new BMap.Geocoder();
+
+        geoc.getLocation(point, function(rs){
+            var addComp = rs.addressComponents;
+            var province = addComp.province;
+            var city    = addComp.city;
+            console.log(addComp);
+            $.ajax({
+                type : 'post',
+                url  : '/gps/SetLocation/',
+                data : {province:province,city:city},
+                async:false,
+                success:function(data){
+//                    console.log(data);
+//                    console.log(addComp);
+//                    alert(data);return false;
+                    operation(data);
+                },
+                error:function(){
+                    alert('网络错误');
+                }
+            })
+//            alert(addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber);
+        });
+    }
+    //失败
+    function onError(error){
+//        console.log(error);
+//        console.log('error'+error);
+        getadd();
+//        $.ajax({
+//            type : 'post',
+//            url  : '/gps/SetLocation/',
+//            async:false,
+//            success:function(data){
+//                console.log(data);
+//                operation(data);
+//            },
+//            error:function(){
+//                alert('网络错误');
+//            }
+//        })
+//        switch(error.code){
+//            case 1:
+//                alert("位置服务被拒绝");
+//                break;
+//            case 2:
+//                alert("暂时获取不到位置信息");
+//                break;
+//            case 3:
+//
+//                alert("获取信息超时");
+//                break;
+//            case 4:
+//                alert("未知错误");
+//                break;
+//        }
+    }
+
+    //处理定位操作
+    function operation(data){
+        var arr = JSON.parse(data);
+//        console.log(arr);
+        if(arr['code'] == '201'){
+//            alert(data);
+            var ret = JSON.parse(arr['data']);
+            if(confirm("检查您所在城市在"+ret['cityName']+"，是否切换？")){
+                $.post('/gps/ChangeLocation/',ret,function(result){
+//                    alert(result);
+                    url = window.location.href;
+//                    if(url == '/'){
+                        location.reload()
+//                    }
+                });
+            }else{
+                var code = ret['cid'];
+                $.post('/gps/checkOp/',{code:code},function(result){
+                });
+            }
+        }else if(arr['code'] == '202'){
+            //不满足变更条件
+//            alert(data);
+//            console.log(arr['data']);
+        }else if(arr['code'] == '203'){
+            //所在城市未开通
+            alert(arr['msg']);
+            location.href = arr['data'];
+        }else if(arr['code'] == '200'){
+//            alert(data);
+        }
+    }
+    getLocation();
+    //    window.onload=getLocation;
+</script>
+    <!--头部-->
+    <header class="headBox">
+        <a href="javascript:void(0);" class="back"></a>
+        <h2>城市切换</h2>
+        <a href="/nav/list/" class="nav" onclick="_czc.push([&quot;_trackEvent&quot;,&quot;城市切换&quot;,&quot;点击抽屉次数&quot;]);return false;"></a>
+    </header>
+    <!--顶部导航频道-->
+<!--<nav id="nav"></nav>-->
+<style>
+    #nav .foot li{
+        width: 33.333%;
+    }
+</style>
+<nav id="nav">
+    <div class="navCon">
+        <div class="head">
+            <img src="/static/index/img/navigation_banner.png" alt="">
+            <a href="javascript:void(0);" class="navIcon"></a>
+        </div>
+        <ul class="menuNav clearFix">
+            <li>
+                <a href="/sz/cf/">
+                <img src="/static/index/img/nav_icon_0.png" alt="厂房">
+                <p>厂房</p>
+                </a>
+            </li>
+            <li>
+                <a href="/sz/warehouse/">
+                    <img src="/static/index/img/nav_icon_cangku.png" alt="仓库">
+                    <p>仓库</p>
+                </a>
+            </li>
+            <li>
+                <a href="/office/">
+                <img src="/static/index/img/nav_icon_1.png" alt="写字楼">
+                <p>写字楼</p>
+                </a>
+            </li>
+            <li>
+                <a href="/sz/td/">
+                <img src="/static/index/img/nav_icon_2.png" alt="土地">
+                <p>土地</p>
+                </a>
+            </li>
+            <li>
+                <a href="/y/">
+                    <img src="/static/index/img/nav_icon_4.png" alt="产业园区">
+                    <p>产业园区</p>
+                </a>
+            </li>
+            <li>
+                <a href="/sxzs/">
+                    <img src="/static/index/img/nav_icon_3.png" alt="市县招商">
+                    <p>市县招商</p>
+                </a>
+            </li>
+            <li>
+                <a href="/zhuanti/">
+                    <img src="/static/index/img/nav_icon_5.png" alt="热销园区">
+                    <p>热销园区</p>
+                </a>
+            </li>
+
+            <li>
+                <a href="/agents/sz/">
+                    <img src="/static/index/img/nav_icon_6.png" alt="经纪人">
+                    <p>经纪人</p>
+                </a>
+            </li>
+            <li>
+                <a href="/news/">
+                    <img src="/static/index/img//nav_icon_9.png" alt="资讯">
+                    <p>资讯</p>
+                </a>
+            </li>
+            <li>
+                <a href="/NewDemand/">
+                    <img src="/static/index/img/nav_icon_7.png" alt="求租求购">
+                    <p>求租求购</p>
+                </a>
+            </li>
+            <li>
+                <a href="/entrust.html">
+                    <img src="/static/index/img/nav_icon_8.png" alt="投放房源">
+                    <p>投放盘源</p>
+                </a>
+            </li>
+
+            <li style="border-bottom: 0">
+                <a href="/work/">
+                    <img src="/static/index/img/homepage_ic_ywhz.png" alt="业务合作">
+                    <p>业务合作</p>
+                </a>
+            </li>
+        </ul>
+        <ul class="foot clearFix">
+            <li>
+                <a href="/">
+                    <img src="/static/index/img/navigation_ic_homepage.png" alt="首页">
+                    <p>首页</p>
+                </a>
+            </li>
+            <li>
+                <a href="/help/about.html">
+                    <img src="/static/index/img/navigation_ic_us.png" alt="关于我们">
+                    <p>关于我们</p>
+                </a>
+            </li>
+            <li>
+                <a href="/">
+                    <img src="/static/index/img/navigation_ic_group.png" alt="集团官网">
+                    <p>集团官网</p>
+                </a>
+            </li>
+            <!--<li>-->
+                <!--<a href="/work/">-->
+                    <!--<img src="/NewStyles/images2/navigation_ic_collaborate.png" alt="业务合作">-->
+                    <!--<p>业务合作</p>-->
+                <!--</a>-->
+            <!--</li>-->
+        </ul>
+        <div class="close"></div>
+    </div>
+    <div class="mask"></div>
+</nav>
+    <!--城市定位-->
+    <!--<div class="cMessageBox" style="display: none">-->
+        <!--<div class="cMessageCon">-->
+            <!--<h3>当前定位的城市是石家庄</h3>-->
+            <!--<p>是否切换</p>-->
+            <!--<div class="btn clearFix">-->
+                <!--<p class="cancel"><span>取消</span></p>-->
+                <!--<p class="sure"><span>确定</span></p>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="mask"></div>-->
+    <!--</div>-->
+
+    <main class="citySearBox">
+        <!--搜索-->
+        <div class="searchForm plr30">
+            <form url="/newmain/Citylist/" method="post" class="clearfix form">
+                <input type="text" name="searInp" placeholder="请输入城市名称查询">
+                <i class="resetIco"></i>
+                <button class="iconSear"></button>
+            </form>
+            <!--模糊搜索-->
+            <div class="VagueSearch" id="VagueSearch">
+                <ul>
+                    <li class="notList">暂无信息</li>
+                    <!--<li><a href="#">安庆</a></li>-->
+                    <!--<li><a href="#">安庆</a></li>-->
+                    <!--<li><a href="#">安庆</a></li>-->
+                </ul>
+            </div>
+
+        </div>
+        <div class="mask"></div>
+        <!--当前位置-->
+        <div class="nowCity plr30">
+            <p class="tips">当前位置</p>
+            <h3>深圳</h3>
+        </div>
+
+        <!--显示点击的是哪一个字母-->
+        <div id="showLetter" class="showLetter"><span>A</span></div>
+        <!--城市索引查询-->
+        <div class="letter">
+            <ul>
+                <li class="tit"><a href="javascript:;">热</a></li>
+                                    <li><a href="javascript:;" class="cityListA" onclick="_czc.push([&quot;_trackEvent&quot;,&quot;城市选择页&quot;,&quot;点击具体城市次数&quot;]);">B</a></li>
+                                    <li><a href="javascript:;" class="cityListA" onclick="_czc.push([&quot;_trackEvent&quot;,&quot;城市选择页&quot;,&quot;点击具体城市次数&quot;]);">C</a></li>
+                                    <li><a href="javascript:;" class="cityListA" onclick="_czc.push([&quot;_trackEvent&quot;,&quot;城市选择页&quot;,&quot;点击具体城市次数&quot;]);">D</a></li>
+                                    <li><a href="javascript:;" class="cityListA" onclick="_czc.push([&quot;_trackEvent&quot;,&quot;城市选择页&quot;,&quot;点击具体城市次数&quot;]);">E</a></li>
+                                    <li><a href="javascript:;" class="cityListA" onclick="_czc.push([&quot;_trackEvent&quot;,&quot;城市选择页&quot;,&quot;点击具体城市次数&quot;]);">F</a></li>
+                                    <li><a href="javascript:;" class="cityListA" onclick="_czc.push([&quot;_trackEvent&quot;,&quot;城市选择页&quot;,&quot;点击具体城市次数&quot;]);">G</a></li>
+                                    <li><a href="javascript:;" class="cityListA" onclick="_czc.push([&quot;_trackEvent&quot;,&quot;城市选择页&quot;,&quot;点击具体城市次数&quot;]);">H</a></li>
+                                    <li><a href="javascript:;" class="cityListA" onclick="_czc.push([&quot;_trackEvent&quot;,&quot;城市选择页&quot;,&quot;点击具体城市次数&quot;]);">J</a></li>
+                                    <li><a href="javascript:;" class="cityListA" onclick="_czc.push([&quot;_trackEvent&quot;,&quot;城市选择页&quot;,&quot;点击具体城市次数&quot;]);">K</a></li>
+                                    <li><a href="javascript:;" class="cityListA" onclick="_czc.push([&quot;_trackEvent&quot;,&quot;城市选择页&quot;,&quot;点击具体城市次数&quot;]);">L</a></li>
+                                    <li><a href="javascript:;" class="cityListA" onclick="_czc.push([&quot;_trackEvent&quot;,&quot;城市选择页&quot;,&quot;点击具体城市次数&quot;]);">M</a></li>
+                                    <li><a href="javascript:;" class="cityListA" onclick="_czc.push([&quot;_trackEvent&quot;,&quot;城市选择页&quot;,&quot;点击具体城市次数&quot;]);">N</a></li>
+                                    <li><a href="javascript:;" class="cityListA" onclick="_czc.push([&quot;_trackEvent&quot;,&quot;城市选择页&quot;,&quot;点击具体城市次数&quot;]);">Q</a></li>
+                                    <li><a href="javascript:;" class="cityListA" onclick="_czc.push([&quot;_trackEvent&quot;,&quot;城市选择页&quot;,&quot;点击具体城市次数&quot;]);">S</a></li>
+                                    <li><a href="javascript:;" class="cityListA" onclick="_czc.push([&quot;_trackEvent&quot;,&quot;城市选择页&quot;,&quot;点击具体城市次数&quot;]);">T</a></li>
+                                    <li><a href="javascript:;" class="cityListA" onclick="_czc.push([&quot;_trackEvent&quot;,&quot;城市选择页&quot;,&quot;点击具体城市次数&quot;]);">W</a></li>
+                                    <li><a href="javascript:;" class="cityListA" onclick="_czc.push([&quot;_trackEvent&quot;,&quot;城市选择页&quot;,&quot;点击具体城市次数&quot;]);">X</a></li>
+                                    <li><a href="javascript:;" class="cityListA" onclick="_czc.push([&quot;_trackEvent&quot;,&quot;城市选择页&quot;,&quot;点击具体城市次数&quot;]);">Y</a></li>
+                                    <li><a href="javascript:;" class="cityListA" onclick="_czc.push([&quot;_trackEvent&quot;,&quot;城市选择页&quot;,&quot;点击具体城市次数&quot;]);">Z</a></li>
+                            </ul>
+        </div>
+        <!--城市列表-->
+        <div class="container">
+            <div class="city" id="cityList"><div class="hotCityBox"><div class="tips">热门城市</div><div class="hot hotCity"><a href="/gps/refindex/?ctyid=1" class="cityListA"><div data-id="1">深圳</div></a><a href="/gps/refindex/?ctyid=2" class="cityListA"><div data-id="2">东莞</div></a><a href="/gps/refindex/?ctyid=5" class="cityListA"><div data-id="2">广州</div></a><a href="/gps/refindex/?ctyid=7" class="cityListA"><div data-id="7">惠州</div></a><a href="/gps/refindex/?ctyid=17" class="cityListA"><div data-id="17">成都</div></a><a href="/gps/refindex/?ctyid=14" class="cityListA"><div data-id="14" style="margin-top: 0.16rem">武汉</div></a><a href="/gps/refindex/?ctyid=18" class="cityListA"><div data-id="18" style="margin-top: 0.16rem">重庆</div></a><a href="/gps/refindex/?ctyid=21" class="cityListA"><div data-id="21" style="margin-top: 0.16rem">南京</div></a></div></div><div class="city-list"><span class="city-letter" id="B1">B</span><a href="/gps/refindex/?ctyid=27" class="cityListA"><p data-id="27">北京</p></a><a href="/gps/refindex/?ctyid=121" class="cityListA"><p data-id="121">蚌埠</p></a></div><div class="city-list"><span class="city-letter" id="C1">C</span><a href="/gps/refindex/?ctyid=15" class="cityListA"><p data-id="15">长沙</p></a><a href="/gps/refindex/?ctyid=17" class="cityListA"><p data-id="17">成都</p></a><a href="/gps/refindex/?ctyid=18" class="cityListA"><p data-id="18">重庆</p></a><a href="/gps/refindex/?ctyid=24" class="cityListA"><p data-id="24">常州</p></a><a href="/gps/refindex/?ctyid=128" class="cityListA"><p data-id="128">滁州</p></a></div><div class="city-list"><span class="city-letter" id="D1">D</span><a href="/gps/refindex/?ctyid=2" class="cityListA"><p data-id="2">东莞</p></a><a href="/gps/refindex/?ctyid=246" class="cityListA"><p data-id="246">德阳</p></a></div><div class="city-list"><span class="city-letter" id="E1">E</span><a href="/gps/refindex/?ctyid=225" class="cityListA"><p data-id="225">鄂州</p></a></div><div class="city-list"><span class="city-letter" id="F1">F</span><a href="/gps/refindex/?ctyid=11" class="cityListA"><p data-id="11">佛山</p></a><a href="/gps/refindex/?ctyid=95" class="cityListA"><p data-id="95">福州</p></a></div><div class="city-list"><span class="city-letter" id="G1">G</span><a href="/gps/refindex/?ctyid=5" class="cityListA"><p data-id="5">广州</p></a><a href="/gps/refindex/?ctyid=110" class="cityListA"><p data-id="110">赣州</p></a><a href="/gps/refindex/?ctyid=123" class="cityListA"><p data-id="123">贵港</p></a></div><div class="city-list"><span class="city-letter" id="H1">H</span><a href="/gps/refindex/?ctyid=7" class="cityListA"><p data-id="7">惠州</p></a><a href="/gps/refindex/?ctyid=50" class="cityListA"><p data-id="50">淮安</p></a><a href="/gps/refindex/?ctyid=53" class="cityListA"><p data-id="53">杭州</p></a><a href="/gps/refindex/?ctyid=81" class="cityListA"><p data-id="81">合肥</p></a><a href="/gps/refindex/?ctyid=112" class="cityListA"><p data-id="112">邯郸</p></a><a href="/gps/refindex/?ctyid=140" class="cityListA"><p data-id="140">湖州</p></a><a href="/gps/refindex/?ctyid=229" class="cityListA"><p data-id="229">黄冈</p></a></div><div class="city-list"><span class="city-letter" id="J1">J</span><a href="/gps/refindex/?ctyid=41" class="cityListA"><p data-id="41">江门</p></a><a href="/gps/refindex/?ctyid=80" class="cityListA"><p data-id="80">济南</p></a><a href="/gps/refindex/?ctyid=84" class="cityListA"><p data-id="84">嘉兴</p></a><a href="/gps/refindex/?ctyid=134" class="cityListA"><p data-id="134">焦作</p></a><a href="/gps/refindex/?ctyid=226" class="cityListA"><p data-id="226">荆门</p></a></div><div class="city-list"><span class="city-letter" id="K1">K</span><a href="/gps/refindex/?ctyid=151" class="cityListA"><p data-id="151">开封</p></a></div><div class="city-list"><span class="city-letter" id="L1">L</span><a href="/gps/refindex/?ctyid=113" class="cityListA"><p data-id="113">临沂</p></a><a href="/gps/refindex/?ctyid=125" class="cityListA"><p data-id="125">廊坊</p></a><a href="/gps/refindex/?ctyid=131" class="cityListA"><p data-id="131">六安</p></a></div><div class="city-list"><span class="city-letter" id="M1">M</span><a href="/gps/refindex/?ctyid=130" class="cityListA"><p data-id="130">马鞍山</p></a><a href="/gps/refindex/?ctyid=139" class="cityListA"><p data-id="139">眉山</p></a><a href="/gps/refindex/?ctyid=245" class="cityListA"><p data-id="245">绵阳</p></a></div><div class="city-list"><span class="city-letter" id="N1">N</span><a href="/gps/refindex/?ctyid=12" class="cityListA"><p data-id="12">南宁</p></a><a href="/gps/refindex/?ctyid=13" class="cityListA"><p data-id="13">南昌</p></a><a href="/gps/refindex/?ctyid=21" class="cityListA"><p data-id="21">南京</p></a><a href="/gps/refindex/?ctyid=26" class="cityListA"><p data-id="26">宁波</p></a></div><div class="city-list"><span class="city-letter" id="Q1">Q</span><a href="/gps/refindex/?ctyid=32" class="cityListA"><p data-id="32">青岛</p></a></div><div class="city-list"><span class="city-letter" id="S1">S</span><a href="/gps/refindex/?ctyid=1" class="cityListA"><p data-id="1">深圳</p></a><a href="/gps/refindex/?ctyid=22" class="cityListA"><p data-id="22">苏州</p></a><a href="/gps/refindex/?ctyid=33" class="cityListA"><p data-id="33">石家庄</p></a><a href="/gps/refindex/?ctyid=36" class="cityListA"><p data-id="36">上海</p></a><a href="/gps/refindex/?ctyid=83" class="cityListA"><p data-id="83">韶关</p></a><a href="/gps/refindex/?ctyid=115" class="cityListA"><p data-id="115">宿迁</p></a><a href="/gps/refindex/?ctyid=118" class="cityListA"><p data-id="118">宿州</p></a><a href="/gps/refindex/?ctyid=248" class="cityListA"><p data-id="248">遂宁</p></a></div><div class="city-list"><span class="city-letter" id="T1">T</span><a href="/gps/refindex/?ctyid=28" class="cityListA"><p data-id="28">天津</p></a></div><div class="city-list"><span class="city-letter" id="W1">W</span><a href="/gps/refindex/?ctyid=14" class="cityListA"><p data-id="14">武汉</p></a><a href="/gps/refindex/?ctyid=23" class="cityListA"><p data-id="23">无锡</p></a><a href="/gps/refindex/?ctyid=25" class="cityListA"><p data-id="25">温州</p></a><a href="/gps/refindex/?ctyid=120" class="cityListA"><p data-id="120">芜湖</p></a></div><div class="city-list"><span class="city-letter" id="X1">X</span><a href="/gps/refindex/?ctyid=96" class="cityListA"><p data-id="96">西安</p></a><a href="/gps/refindex/?ctyid=111" class="cityListA"><p data-id="111">襄阳</p></a><a href="/gps/refindex/?ctyid=114" class="cityListA"><p data-id="114">仙桃</p></a><a href="/gps/refindex/?ctyid=135" class="cityListA"><p data-id="135">邢台</p></a><a href="/gps/refindex/?ctyid=148" class="cityListA"><p data-id="148">许昌</p></a><a href="/gps/refindex/?ctyid=213" class="cityListA"><p data-id="213">新乡</p></a><a href="/gps/refindex/?ctyid=228" class="cityListA"><p data-id="228">孝感</p></a></div><div class="city-list"><span class="city-letter" id="Y1">Y</span><a href="/gps/refindex/?ctyid=117" class="cityListA"><p data-id="117">云浮</p></a><a href="/gps/refindex/?ctyid=122" class="cityListA"><p data-id="122">玉林</p></a><a href="/gps/refindex/?ctyid=254" class="cityListA"><p data-id="254">雅安</p></a></div><div class="city-list"><span class="city-letter" id="Z1">Z</span><a href="/gps/refindex/?ctyid=10" class="cityListA"><p data-id="10">中山</p></a><a href="/gps/refindex/?ctyid=35" class="cityListA"><p data-id="35">郑州</p></a><a href="/gps/refindex/?ctyid=40" class="cityListA"><p data-id="40">肇庆</p></a><a href="/gps/refindex/?ctyid=82" class="cityListA"><p data-id="82">镇江</p></a><a href="/gps/refindex/?ctyid=109" class="cityListA"><p data-id="109">株洲</p></a></div></div>
+        </div>
+    </main>
+    <script src="/static/index/js/zepto.js"></script>
+    <script src="/static/index/js/touch.js"></script>
+    <script>
+        var factory =   "/sz/cf/";
+        var office  =   "/sz-office/rent/";
+        var land    =   "/sz/td/";
+        var sxzs    =   "/sxzs/zfzs/";
+        var park    =   "/y/";
+        var agent   =   "/agents/sz/";
+        var demand  =   "/NewDemand/";
+        var newlist =   "/infor/index/";
+        var route = [factory,office,land,sxzs,park,'picked',agent,demand,'delivery',newlist];
+    </script>
+    <script src="/static/index/js/base.js"></script>
+    <script>
+        //城市列表
+        var cityList = '{"B":{"data":["27|\u5317\u4eac|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=27","121|\u868c\u57e0|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=121"]},"C":{"data":["15|\u957f\u6c99|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=15","17|\u6210\u90fd|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=17","18|\u91cd\u5e86|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=18","24|\u5e38\u5dde|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=24","128|\u6ec1\u5dde|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=128"]},"D":{"data":["2|\u4e1c\u839e|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=2","246|\u5fb7\u9633|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=246"]},"E":{"data":["225|\u9102\u5dde|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=225"]},"F":{"data":["11|\u4f5b\u5c71|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=11","95|\u798f\u5dde|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=95"]},"G":{"data":["5|\u5e7f\u5dde|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=5","110|\u8d63\u5dde|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=110","123|\u8d35\u6e2f|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=123"]},"H":{"data":["7|\u60e0\u5dde|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=7","50|\u6dee\u5b89|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=50","53|\u676d\u5dde|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=53","81|\u5408\u80a5|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=81","112|\u90af\u90f8|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=112","140|\u6e56\u5dde|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=140","229|\u9ec4\u5188|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=229"]},"J":{"data":["41|\u6c5f\u95e8|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=41","80|\u6d4e\u5357|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=80","84|\u5609\u5174|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=84","134|\u7126\u4f5c|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=134","226|\u8346\u95e8|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=226"]},"K":{"data":["151|\u5f00\u5c01|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=151"]},"L":{"data":["113|\u4e34\u6c82|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=113","125|\u5eca\u574a|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=125","131|\u516d\u5b89|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=131"]},"M":{"data":["130|\u9a6c\u978d\u5c71|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=130","139|\u7709\u5c71|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=139","245|\u7ef5\u9633|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=245"]},"N":{"data":["12|\u5357\u5b81|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=12","13|\u5357\u660c|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=13","21|\u5357\u4eac|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=21","26|\u5b81\u6ce2|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=26"]},"Q":{"data":["32|\u9752\u5c9b|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=32"]},"S":{"data":["1|\u6df1\u5733|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=1","22|\u82cf\u5dde|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=22","33|\u77f3\u5bb6\u5e84|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=33","36|\u4e0a\u6d77|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=36","83|\u97f6\u5173|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=83","115|\u5bbf\u8fc1|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=115","118|\u5bbf\u5dde|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=118","248|\u9042\u5b81|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=248"]},"T":{"data":["28|\u5929\u6d25|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=28"]},"W":{"data":["14|\u6b66\u6c49|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=14","23|\u65e0\u9521|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=23","25|\u6e29\u5dde|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=25","120|\u829c\u6e56|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=120"]},"X":{"data":["96|\u897f\u5b89|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=96","111|\u8944\u9633|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=111","114|\u4ed9\u6843|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=114","135|\u90a2\u53f0|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=135","148|\u8bb8\u660c|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=148","213|\u65b0\u4e61|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=213","228|\u5b5d\u611f|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=228"]},"Y":{"data":["117|\u4e91\u6d6e|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=117","122|\u7389\u6797|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=122","254|\u96c5\u5b89|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=254"]},"Z":{"data":["10|\u4e2d\u5c71|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=10","35|\u90d1\u5dde|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=35","40|\u8087\u5e86|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=40","82|\u9547\u6c5f|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=82","109|\u682a\u6d32|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=109"]}}';
+        var cityList = JSON.parse(cityList);
+        //热门城市
+        var hotCity = '["1|\u6df1\u5733|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=1","2|\u4e1c\u839e|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=2","2|\u5e7f\u5dde|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=5","7|\u60e0\u5dde|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=7","17|\u6210\u90fd|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=17","14|\u6b66\u6c49|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=14","18|\u91cd\u5e86|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=18","21|\u5357\u4eac|https:\/\/m.zhaoshang800.com\/gps\/refindex\/?ctyid=21"]';
+        var hotCity = JSON.parse(hotCity);
+    </script>
+    <script src="/static/index/js/citylist.js"></script>
+    <script>
+        window.onload = function () {
+//            nav();//顶部抽屉导航
+            switchNav();// 打开、关闭nav
+        }
+
+
+        //模糊搜索
+        var VagueSearch = function(){
+            var val = $(".searchForm input").val();
+            //获得焦点
+//            $(".searchForm input").on('focus',function(){
+//
+//                if(val=="请输入城市名称查询" || val==""){
+//                    $(this).val("");
+//                }
+//            });
+            //实时监听input
+            $('.searchForm').on('input', function(e) {
+                var val = $(this).find('input').val();
+                if(val=="" || val=="请输入城市名称查询"){
+                    $(" .resetIco").hide();
+                    $(".VagueSearch").hide();
+                    $(".searchForm").removeClass("searchFormFix");
+                    $("body").removeClass("searFix");
+                }else if(val!=""||val!=null){
+                    $(".VagueSearch").show();
+                    $(".searchForm").addClass("searchFormFix");
+                    $("body").addClass("searFix");
+                    $(" .resetIco").show();
+                }
+
+
+                var ajaxTimeoutTest = $.ajax({
+                    type:"post",
+                    url:"/newmain/Citylist/",
+                    data:{keyword:val,ajax:'ajax'},
+                    timeout:3000,//超时时间设置，单位毫秒
+                    success:function(res){
+                        var res = res;
+                        var VagueSearchLi = $("#VagueSearch ul");
+                        var VagueSearchCon = "";
+                        VagueSearchLi.html("");
+                        if(res.length!=0){
+                            VagueSearchLi.html("");
+                            for (var i=0;i<res.length;i++){
+                                VagueSearchCon+='<li><a href="/gps/refindex/?ctyid='+res[i].id+'">'+res[i].name_cn+'</a></li>'
+                            }
+                            VagueSearchLi.html(VagueSearchCon);
+                        }else{
+                            VagueSearchLi.html("");
+                            VagueSearchCon='<li class="notList">您输入的关键查找不到相关的内容，请更换关键词</li>';
+                            VagueSearchLi.html(VagueSearchCon);
+                        }
+                    },
+                    error:function(error){
+                        alert("服务器出错"+error)
+                    },
+                    complete : function(XMLHttpRequest,status){ //请求完成后最终执行参数
+                        var VagueSearchLi = $("#VagueSearch ul");
+                        var VagueSearchCon = "";
+                        if(status=='timeout'){//超时,status还有success,error等值的情况
+
+                            VagueSearchLi.html("");
+                            VagueSearchCon='<li class="notSearchList">网络延迟，响应超时！</li>';
+                            VagueSearchLi.html(VagueSearchCon);
+                            ajaxTimeoutTest.abort();
+                            // alert("响应超时！");
+
+                        }
+                    }
+                })
+
+
+            });
+            //清除搜索内容
+            $(".resetIco").tap(function(){
+                // $(".searchForm input").val("");
+                $(this).siblings('input').trigger('focus');
+                $(this).siblings('input').val('');
+                $(".VagueSearch").hide();
+                $(".searchForm").removeClass("searchFormFix");
+                $("body").removeClass("searFix");
+            });
+
+
+            //点击遮罩层取消
+            $(".citySearBox .mask").tap(function(){
+                $(".VagueSearch").hide();
+                $(".searchForm").removeClass("searchFormFix");
+                $("body").removeClass("searFix");
+                $(".searchForm form .resetIco").hide();
+//                if(val=="请输入城市名称查询" || val==""){
+//                    $(".searchForm input").val("请输入城市名称查询")
+//                }
+            });
+            //失去焦点
+            // $(".searchForm input").on('blur',function(){
+            //     if(val=="请输入城市名称查询" || val==""){
+            //         $(this).val("请输入城市名称查询")
+            //     }
+            // });
+
+        }
+        VagueSearch();
+//        $('.iconSear').tap(function () {
+//            var formF = $(".searchForm  form.form");
+//            var url =   formF.attr('url');
+//            var keyword =   $("input[name='searInp']").val();
+//            var key =   url+'?keyword='+keyword;
+//            location.href = key;
+//        })
+    </script>
+
+    <!--埋点尾部-->
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_1275394881'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s96.cnzz.com/z_stat.php%3Fid%3D1275394881' type='text/javascript'%3E%3C/script%3E"));</script><span style="display:none;" id="cnzz_stat_icon_1275394881"><a href="https://www.cnzz.com/stat/website.php?web_id=1275394881" target="_blank" title="站长统计">站长统计</a></span><script src="./中工招商网-城市切换_files/z_stat.php" type="text/javascript"></script><script src="./中工招商网-城市切换_files/core.php" charset="utf-8" type="text/javascript"></script>    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?e17d3f70d7bea4d156e94c7307c15016";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<!--百度自动推送-->
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https'){
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else{
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+</body></html>

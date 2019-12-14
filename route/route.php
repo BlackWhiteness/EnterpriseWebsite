@@ -1,17 +1,12 @@
 <?php
-// +----------------------------------------------------------------------
-// | Yzncms [ 御宅男工作室 ]
-// +----------------------------------------------------------------------
-// | Copyright (c) 2018 http://yzncms.com All rights reserved.
-// +----------------------------------------------------------------------
-// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
-// +----------------------------------------------------------------------
-// | Author: 御宅男 <530765310@qq.com>
-// +----------------------------------------------------------------------
 
-// +----------------------------------------------------------------------
-// | 全局路由
-// +----------------------------------------------------------------------
+use think\facade\Route;
+
+
+
+/**
+ * 全局
+ */
 //Route::get('/', '\app\index/Index@index');
 Route::post('ajax_search_ws', 'app\index\controller\Search@ajaxSearchWs');
 Route::post('search_of', 'app\index\controller\Search@ajaxSearchOf');
@@ -19,3 +14,11 @@ Route::post('search_land', 'app\index\controller\Search@ajaxSearchLand');
 Route::post('search_shop', 'app\index\controller\Search@ajaxSearchShop');
 //土地
 //Route::get('land_list', 'app\index\controller\Search@landList');
+
+
+
+//移动端
+Route::domain('m', 'mobile');
+Route::domain('m', function () {
+    Route::get('ajax_search_ws', 'app\index\controller\Search@ajaxSearchWs');
+});
