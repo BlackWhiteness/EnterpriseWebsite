@@ -61,7 +61,10 @@ class OfficeBuildFormat
                 'city' => $row['city'],
                 'area' => $row['area'],
                 'type' => $row['type'],
-                'title' => $row['title']];
+                'title' => $row['title'],
+                'detail' => $row['detail']
+            ];
+
         }
         return $rtn;
     }
