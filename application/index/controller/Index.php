@@ -4,6 +4,8 @@ namespace app\index\controller;
 
 use app\admin\model\AdManage;
 use app\admin\model\HrefManage;
+use app\admin\model\LandManage;
+use app\admin\model\Officebuilding;
 use app\common\controller\Homebase;
 use app\admin\model\Workshop as Workshop_Model;
 use app\admin\model\City as City_Model;
@@ -39,12 +41,27 @@ class Index extends Homebase
         $cityInfo = Db::name('city')->where('id', '=', $city)->find();
         $areaInfo = Db::name('area')->where('parentId', 'in', $city)->select();
         $cityList = Db::name('city')->where('id', '<>', $city)->select();
-        $newWorkShop = [];
         $firstCity = Db::name('city')->order(array('id' => 'ASC'))->page(1, 9)->select();
+        $newWorkShop = $newOffice =$newLand= [];
         foreach ($firstCity as $k => $value) {
+            //厂房
             $sz = Workshop_Model::where(array('city' => $value['id']))->order(array('releasetime' => 'DESC'))->page(1, 5)->select()->toArray();
-            $newWorkShop[$k]['city'] = $value;
-            $newWorkShop[$k]['workshop'] = $sz;
+            if (count($sz) > 0) {
+                $newWorkShop[$k]['city'] = $value;
+                $newWorkShop[$k]['workshop'] = $sz;
+            }
+            //写字楼
+            $ob = Officebuilding::where(array('city' => $value['id']))->order(array('releasetime' => 'DESC'))->page(1, 5)->select()->toArray();
+            if (count($ob) > 0) {
+                $newOffice[$k]['city'] = $value;
+                $newOffice[$k]['workshop'] = $ob;
+            }
+            //土地
+            $land = LandManage::where(array('city' => $value['id']))->order(array('releasetime' => 'DESC'))->page(1, 5)->select()->toArray();
+            if (count($land) > 0) {
+                $newLand[$k]['city'] = $value;
+                $newLand[$k]['workshop'] = $land;
+            }
         }
         $hot = Workshop_Model::where(array('type' => 2))->order(array('releasetime' => 'DESC'))->page(1, 6)->select()->toArray();
         $recommend = Workshop_Model::where(array('type' => 1))->order(array('releasetime' => 'DESC'))->page(1, 10)->select()->toArray();
@@ -76,6 +93,8 @@ class Index extends Homebase
             "hot" => $officeInstance->formatList($hot),
             'href' => $href,
             'ad' => $adList,
+            'newOffice'=>$newOffice,
+            'newLand'=>$newLand
 
         ]);
         return $this->fetch();

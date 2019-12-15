@@ -737,8 +737,9 @@
                         }
                     </script>
 
-                    <div id="zuixin_cont">
+                    <div class="zuixin_cont">
                         {volist name="newWorkShop" id="data"}
+
                         <div class="zx_one">
                             <div class="zx_one_title">
                                 <a class="more" href="javascript:"
@@ -756,7 +757,8 @@
                                     </div>
                                     <div class="zx_one_top_text">
                                         <strong>
-                                            <a href="/index/search/workshopdetail?id={$data['workshop'][0]['id']}" target="_blank"> {$data['workshop'][0]['title']}</a></strong>
+                                            <a href="/index/search/workshopdetail?id={$data['workshop'][0]['id']}"
+                                               target="_blank"> {$data['workshop'][0]['title']}</a></strong>
                                         <span> {$data['workshop'][0]['detail']}...</span>
                                     </div>
                                 </div>
@@ -776,14 +778,21 @@
                         </div>
                         {/volist}
                         <div style="clear:both"></div>
-                        <div><img src="/static/index/img/bannergao.jpg" width="980" height="159" alt="" /></div>
-                        {volist name="newWorkShop" id="data"}
+                        <div><img src="/static/index/img/bannergao.jpg" width="980" height="159" alt=""/></div>
+                    </div>
+                    <!--最新写字楼-->
+                    <div class="part_title">
+                        <strong>最新写字楼</strong>
+                    </div>
+                    <div class="zuixin_cont">
+                        {volist name="newOffice" id="data"}
+
                         <div class="zx_one">
                             <div class="zx_one_title">
                                 <a class="more" href="javascript:"
-                                   onclick="workurl('/index/search/workshop',{$data['city']['id']})" target="_blank">更多&gt;&gt;</a>
-                                <a href="javascript:" onclick="workurl('/index/search/workshop',{$data['city']['id']})"
-                                   target="_blank">{$data['city']['name']}厂房出租</a>
+                                   onclick="workurl('/index/search/officebuilding',{$data['city']['id']})" target="_blank">更多&gt;&gt;</a>
+                                <a href="javascript:" onclick="workurl('/index/search/officebuilding',{$data['city']['id']})"
+                                   target="_blank">{$data['city']['name']}写字楼</a>
                             </div>
                             <div class="zx_one_cont">
                                 <div class="zx_one_top">
@@ -794,19 +803,20 @@
                                         <span class="imgmid"></span>
                                     </div>
                                     <div class="zx_one_top_text">
-                                        <strong><a href="/index/search/workshopdetail?id={$data['workshop'][0]['id']}"
-                                                   target="_blank"> {$data[0]['title']}</a></strong>
+                                        <strong>
+                                            <a href="/index/search/workshopdetail?id={$data['workshop'][0]['id']}"
+                                               target="_blank"> {$data['workshop'][0]['title']}</a></strong>
                                         <span> {$data['workshop'][0]['detail']}...</span>
                                     </div>
                                 </div>
                                 <div class="zx_one_list">
                                     <ul>
-                                        {volist name="data.workshop" id="v" offset="2" length="3" mod="3" empty="$empty"
+                                        {volist name="data.workshop" id="v" offset="1" length="3" mod="3" empty="$empty"
                                         key="i"}
                                         <li><a href="javascript:"
                                                onclick="workurl('/index/search/workshop',{$data['city']['id']})"
-                                               target="_blank">[{$data['city']['name']}厂房]</a> <a
-                                                href="/index/search/workshopdetail?id={$v.id}" target="_blank">{$v.title}</a>
+                                               target="_blank">[{$data['city']['name']}写字楼]</a> <a
+                                                href="/index/search/offbuilddetail?id={$v.id}" target="_blank">{$v.title}</a>
                                         </li>
                                         {/volist}
                                     </ul>
@@ -814,9 +824,59 @@
                             </div>
                         </div>
                         {/volist}
-                  </div>
+                        <div style="clear:both"></div>
+                        <div><img src="/static/index/img/bannergao.jpg" width="980" height="159" alt=""/></div>
+                    </div>
+
+                    <!--最新土地-->
+                    <div class="part_title">
+                        <strong>最新土地</strong>
+                    </div>
+                    <div class="zuixin_cont">
+                        {volist name="newLand" id="data"}
+
+                        <div class="zx_one">
+                            <div class="zx_one_title">
+                                <a class="more" href="javascript:"
+                                   onclick="workurl('/index/search/landList',{$data['city']['id']})" target="_blank">更多&gt;&gt;</a>
+                                <a href="javascript:" onclick="workurl('index/search/landList',{$data['city']['id']})"
+                                   target="_blank">{$data['city']['name']}土地</a>
+                            </div>
+                            <div class="zx_one_cont">
+                                <div class="zx_one_top">
+                                    <div class="zx_one_top_img">
+                                        <?php $sz_img = $data['workshop'][0]['imgs']; $sz_img = $sz_img[0]; ?>
+                                        <a href="/index/search/workshopdetail?id={$data['workshop'][0]['id']}"
+                                           target="_blank"><img src="{$sz_img}" width="130" height="103"/></a>
+                                        <span class="imgmid"></span>
+                                    </div>
+                                    <div class="zx_one_top_text">
+                                        <strong>
+                                            <a href="/index/search/workshopdetail?id={$data['workshop'][0]['id']}"
+                                               target="_blank"> {$data['workshop'][0]['title']}</a></strong>
+                                        <span> {$data['workshop'][0]['detail']}...</span>
+                                    </div>
+                                </div>
+                                <div class="zx_one_list">
+                                    <ul>
+                                        {volist name="data.workshop" id="v" offset="1" length="3" mod="3" empty="$empty"
+                                        key="i"}
+                                        <li><a href="javascript:"
+                                               onclick="workurl('/index/search/workshop',{$data['city']['id']})"
+                                               target="_blank">[{$data['city']['name']}土地]</a> <a
+                                                href="/index/search/landdetail?id={$v.id}" target="_blank">{$v.title}</a>
+                                        </li>
+                                        {/volist}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        {/volist}
+                        <div style="clear:both"></div>
+                        <div><img src="/static/index/img/bannergao.jpg" width="980" height="159" alt=""/></div>
+                    </div>
                 </div>
-                
+
                 <div id="huobao">
                     <div class="part_title">
                         <strong>火爆厂房</strong>
@@ -910,7 +970,7 @@
                 border="0"/></a></span>
     </div>
     {volist name="href" id="data"}
-        <span style="float:left;"><a href="{$data.href}" target="_blank">{$data.title}</a></span>
+    <span style="float:left;"><a href="{$data.href}" target="_blank">{$data.title}</a></span>
     {/volist}
 </div>
 <div id="footer1">
@@ -939,8 +999,7 @@
         <br/> {:config('web_site_banquan')}- 电话:{:config('web_site_phone')}&nbsp;&nbsp;QQ:{:config('web_site_qq')}&nbsp;E-mail:
         <a href="mailto:{:config('web_site_email')}">{:config('web_site_email')}</a>
     </div>
-    
-    
+
 
 </div>
 <div class="bdshare-slide-button-box bdshare-slide-style-r7" style="top: 250px; width: 0px; z-index: 99999; right: 0px;"
