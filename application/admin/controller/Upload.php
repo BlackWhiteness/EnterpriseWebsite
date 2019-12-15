@@ -17,6 +17,8 @@ namespace app\admin\controller;
 use app\admin\model\Workshop as Workshop_Model;
 use app\common\controller\Adminbase;
 use think\Db;
+use think\Request;
+use think\response\Json;
 
 class Upload extends Adminbase
 {
@@ -30,9 +32,9 @@ class Upload extends Adminbase
         if (!empty($file)) {
             // 移动到框架应用根目录/public/uploads/ 目录下
 
-            $s =   'uploads/'  . date('Y-m-d');
+            $s = 'uploads/' . date('Y-m-d');
 //,'ext'=>'jpg,png,gif'
-            $info = $file->validate(['size' => 1048576])->rule('uniqid')->move(ROOT_PATH .'public' . DIRECTORY_SEPARATOR. $s);
+            $info = $file->validate(['size' => 1048576])->rule('uniqid')->move(ROOT_PATH . 'public' . DIRECTORY_SEPARATOR . $s);
             $error = $file->getError();
             //验证文件后缀后大小
             if (!empty($error)) {
@@ -61,6 +63,35 @@ class Upload extends Adminbase
             return ['code' => 404, 'msg' => '失败'];
         }
 
+    }
+
+    /**
+     *
+     * 编辑器上传图片
+     * @param Request $request
+     * @return array
+     */
+    public function editUploads(Request $request)
+    {
+        $files = $request->file('image');
+        $data = [];
+        foreach ($files as $file) {
+            $s = 'uploads/' . date('Y-m-d');
+            $info = $file->validate(['size' => 1048576])->rule('uniqid')
+                ->move(ROOT_PATH . 'public' . DIRECTORY_SEPARATOR . $s);
+            if ($info) {
+                $photo = $info->getFilename();
+//                $data[] = 'http://'.$request->host().'/'.$s. '/' . $photo;
+//                $data[] = url($s. '/' . $photo);
+                $data[] = url($s. '/' . $photo, '', '', true);;
+            }
+        }
+        if (empty($data)) {
+            $res = ['errno' => 1, 'data' => []];
+        }else{
+            $res = ['errno' => 0, 'data' => $data];
+        }
+        return json($res);
     }
 
     //添加后台菜单

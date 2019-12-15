@@ -144,10 +144,19 @@
                            placeholder="" class="layui-input">
                 </div>
             </div>
-            <div class="layui-form-item">
+             <div class="layui-form-item">
                 <label class="layui-form-label">详情</label>
-                <div class="layui-input-inline w300">
-                    <textarea name="detail" lay-verify="required" autocomplete="off" placeholder="" class="layui-input">{$data.detail}</textarea>
+                <div style="width:80%" class="layui-input-inline">
+                    <div id="editor">
+                       <p>{$data.detail|raw}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item" hidden>
+                <label class="layui-form-label">详情</label>
+                <div style="width:80%" class="layui-input-inline">
+                                    <textarea id="detail-detail" name="detail" rows="10" class="layui-input" placeholder="" lay-verify="required"
+                                              autocomplete="off"></textarea>
                 </div>
             </div>
             <div class="layui-form-item">
@@ -201,6 +210,8 @@
 </div>
 {/block}
 {block name="script"}
+<script src="__STATIC__/admin/edit/wangEditor.js"></script>
+<script src="__STATIC__//admin/js/editor.js"></script>
 <script type="text/javascript">
     layui.use(['iconPicker', 'form', 'layer'], function () {
         var iconPicker = layui.iconPicker,

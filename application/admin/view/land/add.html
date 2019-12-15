@@ -104,9 +104,17 @@
                 <div class="layui-form-mid layui-word-aux">多个标签需使用英文逗号或空格分隔</div>
             </div>
             <div class="layui-form-item">
-                <label class="layui-form-label">详情信息</label>
-                <div class="layui-input-inline" style="width:auto">
-                    <textarea name="detail" cols="100" rows="10" id="container" lay-verify="required"></textarea>
+                <label class="layui-form-label">详情</label>
+                <div style="width:80%" class="layui-input-inline">
+                    <div id="editor">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item" hidden>
+                <label class="layui-form-label">详情</label>
+                <div style="width:80%" class="layui-input-inline">
+                                    <textarea id="detail-detail" name="detail" rows="10" class="layui-input" placeholder="" lay-verify="required"
+                                              autocomplete="off"></textarea>
                 </div>
             </div>
 
@@ -135,6 +143,8 @@
 </div>
 {/block}
 {block name="script"}
+<script src="__STATIC__/admin/edit/wangEditor.js"></script>
+<script src="__STATIC__//admin/js/editor.js"></script>
 <script type="text/javascript">
     layui.use(['iconPicker', 'form', 'layer'], function () {
         var iconPicker = layui.iconPicker,

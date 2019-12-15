@@ -68,7 +68,7 @@ class Officebuilding extends Adminbase
 
             if (intval($result->id)) {
                 $data['id'] = $result->id;
-                $this->Indexoffbuilding->index($data);
+//                $this->Indexoffbuilding->index($data);
                 $this->success("添加成功！", url("index"));
             } else {
                 $this->error('添加失败！');
@@ -103,7 +103,7 @@ class Officebuilding extends Adminbase
                 return $this->error($result);
             }
             if (Officebuilding_Model::update($data)) {
-                $this->Indexoffbuilding->index($data);
+//                $this->Indexoffbuilding->index($data);
                 $this->success("编辑成功！", url("index"));
             } else {
                 $this->error('编辑失败！');

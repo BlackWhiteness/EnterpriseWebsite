@@ -71,8 +71,6 @@ class Workshop extends Adminbase
             $result = Workshop_Model::create($data);
 
             if (intval($result->id)) {
-                $data['id'] = $result->id;
-                $this->indexworkshop->index($data);
                 $this->success("添加成功！", url("index"));
             } else {
                 $this->error('添加失败！');
@@ -106,7 +104,6 @@ class Workshop extends Adminbase
                 return $this->error($result);
             }
             if (Workshop_Model::update($data)) {
-                $this->indexworkshop->index($data);
                 $this->success("编辑成功！", url("index"));
             } else {
                 $this->error('编辑失败！');
@@ -144,7 +141,6 @@ class Workshop extends Adminbase
         }
         $workshop = new Workshop_Model();
         if ($workshop->del($id) !== false) {
-            $this->indexworkshop->delete($id);
             $this->success("删除成功！");
         } else {
             $this->error("删除失败！");
