@@ -759,7 +759,7 @@
                                         <strong>
                                             <a href="/index/search/workshopdetail?id={$rentWs[0]['id']}"
                                                target="_blank"> {$rentWs[0]['title']}</a></strong>
-                                        <span> {$rentWs[0]['detail']|raw}</span>
+                                        <span> {$rentWs[0]['detail']|raw|mb_substr=0,100}</span>
                                     </div>
                                 </div>
                                 <div class="zx_one_list">
@@ -798,7 +798,7 @@
                                         <strong>
                                             <a href="/index/search/workshopdetail?id={$saleWs[0]['id']}"
                                                target="_blank"> {$saleWs[0]['title']}</a></strong>
-                                        <span> {$saleWs[0]['detail']|raw}</span>
+                                        <span> {$saleWs[0]['detail']|raw|mb_substr=0,100}</span>
                                     </div>
                                 </div>
                                 <div class="zx_one_list">
@@ -839,7 +839,7 @@
                                         <strong>
                                             <a href="/index/search/workshopdetail?id={$whWs[0]['id']}"
                                                target="_blank"> {$whWs[0]['title']}</a></strong>
-                                        <span> {$whWs[0]['detail']|raw}</span>
+                                        <span> {$whWs[0]['detail']|raw|mb_substr=0,100}</span>
                                     </div>
                                 </div>
                                 <div class="zx_one_list">
@@ -848,7 +848,7 @@
                                         <li>
                                             <a href="javascript:void(0)"
                                                onclick="workurl('/index/search/workshop?category=3',{$data['city']['id']})"
-                                               target="_blank">[{$cityInfo['name']}厂房]</a>
+                                               target="_blank">[{$cityInfo['name']}仓库]</a>
                                             <a href="/index/search/workshopdetail?id={$v.id}"
                                                target="_blank">{$v.title}</a>
                                         </li>
@@ -880,7 +880,7 @@
                                         <strong>
                                             <a href="/index/search/landdetail?id={$landList[0]['id']}"
                                                target="_blank"> {$landList[0]['title']}</a></strong>
-                                        <span> {$landList[0]['detail']|raw}</span>
+                                        <span> {$landList[0]['detail']|raw|mb_substr=0,100}</span>
                                     </div>
                                 </div>
                                 <div class="zx_one_list">
@@ -889,7 +889,7 @@
                                         <li>
                                             <a href="javascript:void(0)"
                                                onclick="workurl('/index/search/landList',{$data['city']['id']})"
-                                               target="_blank">[{$cityInfo['name']}厂房]</a>
+                                               target="_blank">[{$cityInfo['name']}土地]</a>
                                             <a href="/index/search/landdetail?id={$v.id}"
                                                target="_blank">{$v.title}</a>
                                         </li>
@@ -920,7 +920,7 @@
                                         <strong>
                                             <a href="/index/search/offbuilddetail?id={$obList[0]['id']}"
                                                target="_blank"> {$obList[0]['title']}</a></strong>
-                                        <span> {$obList[0]['detail']|raw}</span>
+                                        <span> {$obList[0]['detail']|raw|mb_substr=0,100}</span>
                                     </div>
                                 </div>
                                 <div class="zx_one_list">
@@ -929,7 +929,7 @@
                                         <li>
                                             <a href="javascript:void(0)"
                                                onclick="workurl('index/search/officebuilding',{$data['city']['id']})"
-                                               target="_blank">[{$cityInfo['name']}厂房]</a>
+                                               target="_blank">[{$cityInfo['name']}写字楼]</a>
                                             <a href="/index/search/offbuilddetail?id={$v.id}"
                                                target="_blank">{$v.title}</a>
                                         </li>
@@ -938,48 +938,47 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!--商铺-->
-                        <div class="zx_one">
-                            <div class="zx_one_title">
-                                <a class="more" href="javascript:"
-                                   onclick="workurl('/index/search/shopList',{$cityInfo['id']})"
-                                   target="_blank">更多&gt;&gt;</a>
-                                <a href="javascript:"
-                                   onclick="workurl('/index/search/shopList',{$shop['city']['id']})"
-                                   target="_blank">商铺</a>
+                    </div>
+                    <!--商铺-->
+                    <div class="zx_one">
+                        <div class="zx_one_title">
+                            <a class="more" href="javascript:"
+                               onclick="workurl('/index/search/shopList',{$cityInfo['id']})"
+                               target="_blank">更多&gt;&gt;</a>
+                            <a href="javascript:"
+                               onclick="workurl('/index/search/shopList',{$shop['city']['id']})"
+                               target="_blank">商铺</a>
+                        </div>
+                        <div class="zx_one_cont">
+                            <div class="zx_one_top">
+                                <div class="zx_one_top_img">
+                                    <a href="/index/search/shopdetail?id={$obList[0]['id']}"
+                                       target="_blank"><img src="{$shop[0]['imgs'][0]}" width="130"
+                                                            height="103"/></a>
+                                    <span class="imgmid"></span>
+                                </div>
+                                <div class="zx_one_top_text">
+                                    <strong>
+                                        <a href="/index/search/shopdetail?id={$shop[0]['id']}"
+                                           target="_blank"> {$shop[0]['title']}</a></strong>
+                                    <span> {$shop[0]['detail']|raw|mb_substr=0,100}</span>
+                                </div>
                             </div>
-                            <div class="zx_one_cont">
-                                <div class="zx_one_top">
-                                    <div class="zx_one_top_img">
-                                        <a href="/index/search/shopdetail?id={$obList[0]['id']}"
-                                           target="_blank"><img src="{$shop[0]['imgs'][0]}" width="130"
-                                                                height="103"/></a>
-                                        <span class="imgmid"></span>
-                                    </div>
-                                    <div class="zx_one_top_text">
-                                        <strong>
-                                            <a href="/index/search/shopdetail?id={$shop[0]['id']}"
-                                               target="_blank"> {$shop[0]['title']}</a></strong>
-                                        <span> {$shop[0]['detail']|raw}</span>
-                                    </div>
-                                </div>
-                                <div class="zx_one_list">
-                                    <ul>
-                                        {volist name="shop" id="v" offset="1" length="4" }
-                                        <li>
-                                            <a href="javascript:void(0)"
-                                               onclick="workurl('index/search/shopList',{$data['city']['id']})"
-                                               target="_blank">[{$cityInfo['name']}厂房]</a>
-                                            <a href="/index/search/shopdetail?id={$v.id}"
-                                               target="_blank">{$v.title}</a>
-                                        </li>
-                                        {/volist}
-                                    </ul>
-                                </div>
+                            <div class="zx_one_list">
+                                <ul>
+                                    {volist name="shop" id="v" offset="1" length="4" }
+                                    <li>
+                                        <a href="javascript:void(0)"
+                                           onclick="workurl('index/search/shopList',{$data['city']['id']})"
+                                           target="_blank">[{$cityInfo['name']}商铺]</a>
+                                        <a href="/index/search/shopdetail?id={$v.id}"
+                                           target="_blank">{$v.title}</a>
+                                    </li>
+                                    {/volist}
+                                </ul>
                             </div>
                         </div>
-
+                    </div>
 
                         <div style="clear:both"></div>
                         <div><img src="/static/index/img/bannergao.jpg" width="980" height="159" alt=""/></div>
