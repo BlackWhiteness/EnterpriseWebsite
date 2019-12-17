@@ -759,7 +759,7 @@
                                         <strong>
                                             <a href="/index/search/workshopdetail?id={$rentWs[0]['id']}"
                                                target="_blank"> {$rentWs[0]['title']}</a></strong>
-                                        <span> {$rentWs[0]['detail']|raw|mb_substr=0,100}</span>
+                                        <span> {$rentWs[0]['detail']|strip_tags|mb_substr=0,50}...</span>
                                     </div>
                                 </div>
                                 <div class="zx_one_list">
@@ -798,7 +798,7 @@
                                         <strong>
                                             <a href="/index/search/workshopdetail?id={$saleWs[0]['id']}"
                                                target="_blank"> {$saleWs[0]['title']}</a></strong>
-                                        <span> {$saleWs[0]['detail']|raw|mb_substr=0,100}</span>
+                                        <span> {$saleWs[0]['detail']|strip_tags|mb_substr=0,50}...</span>
                                     </div>
                                 </div>
                                 <div class="zx_one_list">
@@ -839,7 +839,7 @@
                                         <strong>
                                             <a href="/index/search/workshopdetail?id={$whWs[0]['id']}"
                                                target="_blank"> {$whWs[0]['title']}</a></strong>
-                                        <span> {$whWs[0]['detail']|raw|mb_substr=0,100}</span>
+                                        <span> {$whWs[0]['detail']|strip_tags|mb_substr=0,50}...</span>
                                     </div>
                                 </div>
                                 <div class="zx_one_list">
@@ -880,7 +880,7 @@
                                         <strong>
                                             <a href="/index/search/landdetail?id={$landList[0]['id']}"
                                                target="_blank"> {$landList[0]['title']}</a></strong>
-                                        <span> {$landList[0]['detail']|raw|mb_substr=0,100}</span>
+                                        <span> {$landList[0]['detail']|strip_tags|mb_substr=0,50}...</span>
                                     </div>
                                 </div>
                                 <div class="zx_one_list">
@@ -920,7 +920,7 @@
                                         <strong>
                                             <a href="/index/search/offbuilddetail?id={$obList[0]['id']}"
                                                target="_blank"> {$obList[0]['title']}</a></strong>
-                                        <span> {$obList[0]['detail']|raw|mb_substr=0,100}</span>
+                                        <span> {$obList[0]['detail']|strip_tags|mb_substr=0,50}...</span>
                                     </div>
                                 </div>
                                 <div class="zx_one_list">
@@ -961,7 +961,7 @@
                                     <strong>
                                         <a href="/index/search/shopdetail?id={$shop[0]['id']}"
                                            target="_blank"> {$shop[0]['title']}</a></strong>
-                                    <span> {$shop[0]['detail']|raw|mb_substr=0,100}</span>
+                                    <span> {$shop[0]['detail']|strip_tags|mb_substr=0,50}...</span>
                                 </div>
                             </div>
                             <div class="zx_one_list">
@@ -1028,7 +1028,7 @@
                             </div>
                             <div class="right_p_title">
                                 <a href="/index/search/workshopdetail?city={$cityInfo.id}&id={$data.id}"
-                                   target="_blank">{$data.title}...</a>
+                                   target="_blank">{$data.title|mb_substr=0,10}...</a>
                             </div>
                         </div>
                         {/volist}
