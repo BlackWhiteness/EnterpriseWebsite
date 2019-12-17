@@ -6,6 +6,8 @@ use app\admin\model\AdManage;
 use app\admin\model\HrefManage;
 use app\admin\model\LandManage;
 use app\admin\model\Officebuilding;
+use app\admin\model\ShopManage;
+use app\admin\model\Workshop;
 use app\common\controller\Homebase;
 use app\admin\model\Workshop as Workshop_Model;
 use app\admin\model\City as City_Model;
@@ -30,44 +32,36 @@ class Index extends Homebase
 
     /**
      * 网站首页
+     * @param Workshop_Model $workshop
+     * @param LandManage $landManage
+     * @param Officebuilding $officeBuilding
+     * @param ShopManage $shopManage
      * @return mixed|string
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\ModelNotFoundException
      * @throws \think\exception\DbException
      */
-    public function index()
+    public function index(Workshop $workshop, LandManage $landManage, Officebuilding $officeBuilding, ShopManage $shopManage)
     {
         $city = isset($_COOKIE['city']) ? $_COOKIE['city'] : 8;
         $cityInfo = Db::name('city')->where('id', '=', $city)->find();
         $areaInfo = Db::name('area')->where('parentId', 'in', $city)->select();
         $cityList = Db::name('city')->where('id', '<>', $city)->select();
         $firstCity = Db::name('city')->order(array('id' => 'ASC'))->page(1, 9)->select();
-        $newWorkShop = $newOffice =$newLand= [];
-        foreach ($firstCity as $k => $value) {
-            //厂房
-            $sz = Workshop_Model::where(array('city' => $value['id']))->order(array('releasetime' => 'DESC'))->page(1, 5)->select()->toArray();
-            if (count($sz) > 0) {
-                $newWorkShop[$k]['city'] = $value;
-                $newWorkShop[$k]['workshop'] = $sz;
-            }
-            //写字楼
-            $ob = Officebuilding::where(array('city' => $value['id']))->order(array('releasetime' => 'DESC'))->page(1, 5)->select()->toArray();
-            if (count($ob) > 0) {
-                $newOffice[$k]['city'] = $value;
-                $newOffice[$k]['workshop'] = $ob;
-            }
-            //土地
-            $land = LandManage::where(array('city' => $value['id']))->order(array('releasetime' => 'DESC'))->page(1, 5)->select()->toArray();
-            if (count($land) > 0) {
-                $newLand[$k]['city'] = $value;
-                $newLand[$k]['workshop'] = $land;
-            }
-        }
+        $newWorkShop = $newOffice = $newLand = [];
+        $rentWs = $workshop->getFirstPage($city, 1)->toArray();
+        $saleWs = $workshop->getFirstPage($city, 2)->toArray();
+        $whWs = $workshop->getFirstPage($city, 3)->toArray();
+        $landList = $landManage->getFirstPage($city)->toArray();
+        $obList = $officeBuilding->getFirstPage($city)->toArray();
+        $shop = $shopManage->getFirstPage($city)->toArray();
         $hot = Workshop_Model::where(array('type' => 2))->order(array('releasetime' => 'DESC'))->page(1, 6)->select()->toArray();
         $recommend = Workshop_Model::where(array('type' => 1))->order(array('releasetime' => 'DESC'))->page(1, 10)->select()->toArray();
         $href = HrefManage::order('sort', 'desc')->select()->toArray();
         $officeInstance = OfficeBuildFormat::getInstance();
-        $ad = AdManage::where('is_enable', '=', 1)->order(['code' => 'asc', 'sort' => 'desc'])->select();
+        $ad = AdManage::where('is_enable', '=', 1)
+            ->order(['code' => 'asc', 'sort' => 'desc'])
+            ->select();
         $adList = [];
         foreach ($ad as $row) {
             $detail = [
@@ -83,19 +77,22 @@ class Index extends Homebase
                 $adList['bottom_ad'][] = $detail;
             }
         }
-
+//        echo '<pre>';print_r($rentWs);die;
         $this->assign([
             'recommend' => $officeInstance->formatList($recommend),
             'cityInfo' => $cityInfo,
             'cityList' => $cityList,
             'areaInfo' => $areaInfo,
-            'newWorkShop' => $newWorkShop,
             "hot" => $officeInstance->formatList($hot),
             'href' => $href,
             'ad' => $adList,
-            'newOffice'=>$newOffice,
-            'newLand'=>$newLand
-
+            'rentWs' => $rentWs,
+            'saleWs' => $saleWs,
+            'whWs' => $whWs,
+            'landList' => $landList,
+            'obList' => $obList,
+            'shop' => $shop,
+            'empty' => '<span class="empty">没有数据</span>'
         ]);
         return $this->fetch();
     }

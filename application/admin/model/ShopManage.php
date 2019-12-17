@@ -85,4 +85,21 @@ class ShopManage extends Model
         return $query;
     }
 
+    /**
+     * 第一页
+     * @param $city
+     * @return array|\PDOStatement|string|\think\Collection
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     */
+    public function getFirstPage($city)
+    {
+        $list = ShopManage::where('city', '=', $city)
+            ->order('releasetime', 'desc')
+            ->page(1, 5)
+            ->select();
+        return $list;
+    }
+
 }

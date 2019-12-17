@@ -120,34 +120,52 @@ class Workshop extends Model
         return $query;
     }
 
+    /**
+     * 第一页
+     * @param $city
+     * @param $type
+     * @return array|\PDOStatement|string|\think\Collection
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     */
+    public function getFirstPage($city, $type)
+    {
+        $list = Workshop::where('city', '=', $city)
+            ->order('releasetime', 'desc')
+            ->where('category', '=', $type)
+            ->page(1, 5)
+            ->select();
+        return $list;
+    }
 
     //--------------------------以下为mobile合并过来的
     public function getFloorAttr($value)
     {
-        $floor= [1 => '一楼厂房',2 => '二楼以上',3=>'独院厂房',4=>'独栋厂房'];
+        $floor = [1 => '一楼厂房', 2 => '二楼以上', 3 => '独院厂房', 4 => '独栋厂房'];
         return $floor[$value];
     }
 
     public function getStructureAttr($value)
     {
-        $structure= [1 => '标准厂房 ',2 => '钢构结构厂房',3=>'简易厂房(铁皮房) ',4=>'各类型仓库(单层仓库/多层仓库)'];
+        $structure = [1 => '标准厂房 ', 2 => '钢构结构厂房', 3 => '简易厂房(铁皮房) ', 4 => '各类型仓库(单层仓库/多层仓库)'];
         return $structure[$value];
     }
 
-    public function getAddAttr($value,$data)
+    public function getAddAttr($value, $data)
     {
-        return getCityName($data['city'],$data['area']);
+        return getCityName($data['city'], $data['area']);
     }
 
 
-    public function getCityNameAttr($value,$data)
+    public function getCityNameAttr($value, $data)
     {
         return getCityName($data['city']);
     }
 
-    public function getUrlAttr($value,$data)
+    public function getUrlAttr($value, $data)
     {
-        return url('index/search/workshopdetail','id='.$data['id']);
+        return url('index/search/workshopdetail', 'id=' . $data['id']);
     }
 
 }

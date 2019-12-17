@@ -92,4 +92,21 @@ class LandManage extends Model
         return $query;
     }
 
+    /**
+     * 获取第一页
+     * @param $city
+     * @return array|\PDOStatement|string|\think\Collection
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     */
+    public function getFirstPage($city)
+    {
+        $list = LandManage::where('city', '=', $city)
+            ->order('releasetime', 'desc')
+            ->page(1, 5)
+            ->select();
+        return $list;
+    }
+
 }
