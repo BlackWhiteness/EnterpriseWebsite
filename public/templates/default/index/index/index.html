@@ -999,7 +999,7 @@
                             </div>
                             <div class="hb_one_text">
                                 <strong><a href="/index/search/workshopdetail?id={$data.id}" target="_blank">{$data.title}</a></strong>
-                                <span> {$data.detail}</span>
+                                <span> {$data.detail|raw|mb_substr=0,300}</span>
                             </div>
                         </div>
                         {/volist}
