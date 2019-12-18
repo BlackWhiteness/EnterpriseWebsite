@@ -93,51 +93,54 @@
     <div class="navBox">
                 <ul class="clearFix">
             <li>
-                <a id="factory" href="/sz/cf/" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击厂房次数&#39;]);">
+                <a id="factory" href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击厂房次数&#39;]);">
                     <img src="/static/mobile/img/homepage_ic_navigation_plant.png" alt="">
                     <p>厂房出租</p>
                 </a>
             </li>
             <li>
-                <a id="cangku" href="/sz/warehouse/" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击仓库次数&#39;]);">
+                <a id="cangku" href="/index/search/workshop?city={$cityInfo[0]['id']}&category=2" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击仓库次数&#39;]);">
                     <img src="/static/mobile/img/homepage_ic_office_building.png" alt="">
                     <p>厂房出售</p>
                 </a>
             </li>
+           
             <li>
-                <a id="office" href="/office/" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击写字楼次数&#39;]);">
-                    <img src="/static/mobile/img/homepage_ic_investment.png" alt="">
-                    <p>包租厂房</p>
-                </a>
-            </li>
-            <li>
-                <a id="land" href="/sz/td/" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击土地次数&#39;]);">
+                <a id="land" href="/index/search/workshop?city={$cityInfo[0]['id']}&category=3" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击土地次数&#39;]);">
                     <img src="/static/mobile/img/homepage_ic_cangku.png" alt="">
                     <p>仓库出租</p>
                 </a>
             </li>
-            <li>
-                <a id="park" href="/y/" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击产业园区次数&#39;]);">
-                    <img src="/static/mobile/img/homepage_ic_land.png" alt="">
-                    <p>土地租售</p>
-                </a>
-            </li>
-            <li>
-                <a id="investment" href="/sxzs/" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击市县招商次数&#39;]);">
-                    <img src="/static/mobile/img/homepage_ic_special.png" alt="">
-                    <p>园区招商</p>
-                </a>
-            </li>
-            <li>
-                <a href="/zhuanti/" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击热销园区次数&#39;]);">
+             <li>
+                <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击热销园区次数&#39;]);">
                     <img src="/static/mobile/img/homepage_ic_garden.png" alt="">
                     <p>写字楼</p>
                 </a>
             </li>
             <li>
-                <a id="agent" href="/agents/sz/" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击经纪人次数&#39;]);">
+                <a id="park" href="/index/search/landList?city={$cityInfo[0]['id']}" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击产业园区次数&#39;]);">
+                    <img src="/static/mobile/img/homepage_ic_land.png" alt="">
+                    <p>土地租售</p>
+                </a>
+            </li>
+            
+           
+            <li>
+                <a id="investment" href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击市县招商次数&#39;]);">
+                    <img src="/static/mobile/img/homepage_ic_special.png" alt="">
+                    <p>园区招商</p>
+                </a>
+            </li>
+            <li>
+                <a id="agent" href="/index/search/shopList?city={$cityInfo[0]['id']}" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击经纪人次数&#39;]);">
                     <img src="/static/mobile/img/homepage_ic_broker.png" alt="">
-                    <p>民宅商铺</p>
+                    <p>商铺租售</p>
+                </a>
+            </li>
+             <li>
+                <a id="office" href="/office/" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击写字楼次数&#39;]);">
+                    <img src="/static/mobile/img/homepage_ic_investment.png" alt="">
+                    <p>民宅租售</p>
                 </a>
             </li>
             <!--<li>
@@ -168,7 +171,7 @@
         </div>
         <ul class="con clearFix">
             <li class="focus">
-                <p>16年行业服务经验,盘源多,免中介费</p>
+                <p>8年行业服务经验,盘源多,免中介费</p>
                 <a href="/NewDemand/">提交需求</a>
             </li>
             <li>
@@ -195,313 +198,91 @@
         <div class="listBoxCon clearFix">
             <!--热门厂房-->
             <div class="list focus">
-                                <ul class="listCon ">
-                                        <li>
-                    <a href="/sz/cf_A14017257.html" class="clearFix" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击优质厂房信息总次数&#39;]);">
-                        <div class="pic">
-                            <i>宝安</i>
-                            <img src="/static/mobile/img/cfdff08406b7a26ebbfd1d1a88bcd6d7.jpg" alt="福永大型园区楼上1200平精装">
-                            <!--<p>出租</p>-->
-                        </div>
-                        <div class="txt">
-                            <h2>福永大型园区楼上1200平精装</h2>
-                            <p class="baseInfo"> <span>宝安-福永</span></p>
-                                                            <p class="label">
-                                                                            <span class="lab_1">
-                                            标准                                        </span>
-                                                                                                                <span class="lab_2">
-                                            二楼以上                                        </span>
-                                                                    </p>
-                                                        <p class="price cfPrice">
-                                <span></span>
-                                <span>2<span>万</span><span>㎡</span></span>
-                            </p>
-                        </div>
-                    </a>
-                    </li>
-                                        <li>
-                    <a href="/sz/cf_A14006715.html" class="clearFix" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击优质厂房信息总次数&#39;]);">
-                        <div class="pic">
-                            <i>宝安</i>
-                            <img src="/static/mobile/img/d585114c1fdb2335722747356a3afbca.jpeg" alt="松岗公园附近刚刚出来原房东独院，楼上两层无尘车间，无需转让费">
-                            <!--<p>出租</p>-->
-                        </div>
-                        <div class="txt">
-                            <h2>松岗公园附近刚刚出来原房东独院，楼上两层无尘车间，无需转让费</h2>
-                            <p class="baseInfo"> <span>宝安-松岗</span></p>
-                                                            <p class="label">
-                                                                            <span class="lab_1">
-                                            标准                                        </span>
-                                                                                                                <span class="lab_2">
-                                            独院                                        </span>
-                                                                    </p>
-                                                        <p class="price cfPrice">
-                                <span>23<span>元/㎡</span></span>
-                                <span>6000<span>㎡</span></span>
-                            </p>
-                        </div>
-                    </a>
-                    </li>
-                                        <li>
-                    <a href="/sz/cf_A13993298.html" class="clearFix" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击优质厂房信息总次数&#39;]);">
-                        <div class="pic">
-                            <i>宝安</i>
-                            <img src="/static/mobile/img/ab51533a44fc600ea7798a70d8bfb926.jpg" alt="宝安福永107国道旁1楼600平，现成装修水电到位。">
-                            <!--<p>出租</p>-->
-                        </div>
-                        <div class="txt">
-                            <h2>宝安福永107国道旁1楼600平，现成装修水电到位。</h2>
-                            <p class="baseInfo"> <span>宝安-福永</span></p>
-                                                            <p class="label">
-                                                                            <span class="lab_1">
-                                            标准                                        </span>
-                                                                                                                <span class="lab_2">
-                                            一楼                                        </span>
-                                                                    </p>
-                                                        <p class="price cfPrice">
-                                <span></span>
-                                <span>600<span>㎡</span></span>
-                            </p>
-                        </div>
-                    </a>
-                    </li>
-                                        <li>
-                    <a href="/sz/cf_A13988351.html" class="clearFix" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击优质厂房信息总次数&#39;]);">
-                        <div class="pic">
-                            <i>宝安</i>
-                            <img src="/static/mobile/img/bc67b97ccc543d35ca6696837f2442ab.jpg" alt="宝安福永地铁口宝安大道旁1楼1000平，现成装修">
-                            <!--<p>出租</p>-->
-                        </div>
-                        <div class="txt">
-                            <h2>宝安福永地铁口宝安大道旁1楼1000平，现成装修</h2>
-                            <p class="baseInfo"> <span>宝安-福永</span></p>
-                                                            <p class="label">
-                                                                            <span class="lab_1">
-                                            标准                                        </span>
-                                                                                                                <span class="lab_2">
-                                            一楼                                        </span>
-                                                                    </p>
-                                                        <p class="price cfPrice">
-                                <span></span>
-                                <span>1000<span>㎡</span></span>
-                            </p>
-                        </div>
-                    </a>
-                    </li>
-                                        <li class="noBoder">
-                    <a href="/sz/cf_A14010422.html" class="clearFix" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击优质厂房信息总次数&#39;]);">
-                        <div class="pic">
-                            <i>龙华</i>
-                            <img src="/static/mobile/img/5efe09f1a3ce9874bebd3f6dbdd589f7.jpeg" alt="龙华绝世标准物流仓无公摊">
-                            <!--<p>出租</p>-->
-                        </div>
-                        <div class="txt">
-                            <h2>龙华绝世标准物流仓无公摊</h2>
-                            <p class="baseInfo"> <span>龙华-龙华</span></p>
-                                                            <p class="label">
-                                                                            <span class="lab_1">
-                                            钢结构                                        </span>
-                                                                                                                <span class="lab_2">
-                                            一楼                                        </span>
-                                                                    </p>
-                                                        <p class="price cfPrice">
-                                <span></span>
-                                <span>5<span>万</span><span>㎡</span></span>
-                            </p>
-                        </div>
-                    </a>
-                    </li>
-                                    </ul>
-                <a id="quality" href="/sz/cf/" class="more" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击优质厂房更多按钮次数&#39;]);">更多</a>
+                <ul class="listCon ">
+                    {volist name="recommend" id="data"}
+                    <li>
+                        <a href="/search/workshopdetail?id={$data.id}" class="clearFix"
+                           onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击优质厂房信息总次数&#39;]);">
+                            <div class="pic">
+                                <i>龙岗111</i>
+                                <img src="{$data['imgs'][0]}" alt="龙岗同乐大型原房东红本工业园2050平豪华装修厂房出租大">
+                                <!--<p>出租</p>-->
                             </div>
+                            <div class="txt">
+                                <h2>{$data.title}</h2>
+                                <p class="baseInfo"><span>{$data.city|getCityName=###,$data.area,'-'}</span></p>
+                                <p class="label">
+                                                                <span class="lab_1">
+                                            {$data.structure}                                        </span>
+                                    <span class="lab_2">
+                                            {$data.floor}                                        </span>
+                                </p>
+                                <p class="price cfPrice">
+                                    <span></span>
+                                    <span>{$data.measurearea}<span>㎡</span></span>
+                                </p>
+                            </div>
+                        </a>
+                    </li>
+                    {/volist}
+                </ul>
+                <a id="quality" href="/search/workshop" class="more"
+                   onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击优质厂房更多按钮次数&#39;]);">更多</a>
+            </div>
             <!--热门写字楼-->
             <div class="list">
-                                <ul class="listCon">
-                                        <li>
-                    <a href="/sz/xzl_A13724247.html" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击热门写字楼信息总次数&#39;]);">
-                        <div class="pic">
-                            <img src="/static/mobile/img/cfec31b7cc31507a3a93943466c393a0.jpg" alt="福永地铁口同泰写字楼150平带家私出租">
-                            <i>免佣</i>
-                        </div>
-                        <div class="txt">
-                            <h2>福永地铁口同泰写字楼150平带家私出租</h2>
-                            <p class="baseInfo"><span>150㎡</span>/<span>同泰</span></p>
-                            <!--<p class="traffic">6号线高青路(距离969米)</p>-->
-                                                        <p class="price">
-                                55<span>元/平方·月</span>                            </p>
-                        </div>
-                    </a>
-                    </li>
-                                        <li>
-                    <a href="/sz/xzl_A13475701.html" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击热门写字楼信息总次数&#39;]);">
-                        <div class="pic">
-                            <img src="/static/mobile/img/8792b4400d4802818f71ab3620d3ab6d.jpg" alt="福永凤凰全新写字楼拎包入住170平起租">
-                            <i>免佣</i>
-                        </div>
-                        <div class="txt">
-                            <h2>福永凤凰全新写字楼拎包入住170平起租</h2>
-                            <p class="baseInfo"><span>1406㎡</span>/<span>凤凰</span></p>
-                            <!--<p class="traffic">6号线高青路(距离969米)</p>-->
-                                                        <p class="price">
-                                27<span>元/月</span>                            </p>
-                        </div>
-                    </a>
-                    </li>
-                                        <li>
-                    <a href="/sz/xzl_A13688746.html" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击热门写字楼信息总次数&#39;]);">
-                        <div class="pic">
-                            <img src="/static/mobile/img/e9a0da3b65fcc83b3f447fd23ff5f3e3.jpg" alt="福永地铁口新出办公写字楼800平方精装修">
-                            <i>免佣</i>
-                        </div>
-                        <div class="txt">
-                            <h2>福永地铁口新出办公写字楼800平方精装修</h2>
-                            <p class="baseInfo"><span>800㎡</span>/<span>同泰时代</span></p>
-                            <!--<p class="traffic">6号线高青路(距离969米)</p>-->
-                                                        <p class="price">
-                                50<span>元/平方·月</span>                            </p>
-                        </div>
-                    </a>
-                    </li>
-                                        <li>
-                    <a href="/sz/xzl_A12101537.html" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击热门写字楼信息总次数&#39;]);">
-                        <div class="pic">
-                            <img src="/static/mobile/img/b21eef692205874da8c639475654337a.jpg" alt="福永 怀德大厦新出楼上180平精装办公室">
-                            <i>免佣</i>
-                        </div>
-                        <div class="txt">
-                            <h2>福永 怀德大厦新出楼上180平精装办公室</h2>
-                            <p class="baseInfo"><span>180㎡</span>/<span>怀德大厦</span>/<span>宝安区-福永</span></p>
-                            <!--<p class="traffic">6号线高青路(距离969米)</p>-->
-                                                        <p class="price">
-                                75<span>元/平方·月</span>                            </p>
-                        </div>
-                    </a>
-                    </li>
-                                        <li class="noBoder">
-                    <a href="/sz/xzl_A10862222.html" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击热门写字楼信息总次数&#39;]);">
-                        <div class="pic">
-                            <img src="/static/mobile/img/19ae9da6c653f851867216dcd9dafd30.png" alt="福永福州大道旁精装小面积写字楼出租，户型方正">
-                            <i>免佣</i>
-                        </div>
-                        <div class="txt">
-                            <h2>福永福州大道旁精装小面积写字楼出租，户型方正</h2>
-                            <p class="baseInfo"><span>98㎡</span>/<span>瑞华盈大厦</span>/<span>福永商圈</span></p>
-                            <!--<p class="traffic">6号线高青路(距离969米)</p>-->
-                                                        <p class="label">
-                                                                                                <span class="lab_1">地铁口</span>
-                                                                                                                                <span class="lab_2">带装修</span>
-                                                                                                                                <span class="lab_3">免中介费</span>
-                                                                                            </p>
-                                                        <p class="price">
-                                60<span>元/平方·月</span>                            </p>
-                        </div>
-                    </a>
-                    </li>
-                                    </ul>
-                <a id="hot" href="/sz-office/rent/" class="more" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击热门写字楼更多按钮次数&#39;]);">更多</a>
+                <ul class="listCon">
+                    {volist name="recommend" id="data"}
+                    <li>
+                        <a href="/search/workshopdetail?id={$data.id}"
+                           onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击热门写字楼信息总次数&#39;]);">
+                            <div class="pic">
+                                <img src="{$data['imgs'][0]}" alt="{$data.title}">
+                                <i>免佣2222</i>
                             </div>
+                            <div class="txt">
+                                <h2>{$data.title}</h2>
+                                <p class="baseInfo"><span>{$data.measurearea}㎡</span>/<span>{$data.address}</span></p>
+                                <!--<p class="traffic">6号线高青路(距离969米)</p>-->
+                                <p class="price">{$data.plantrent}</p>
+                            </div>
+                        </a>
+                    </li>
+                    {/volist}
+                </ul>
+                <a id="hot" href="/search/workshop" class="more"
+                   onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击热门写字楼更多按钮次数&#39;]);">更多</a>
+            </div>
             <!--最新土地-->
             <div class="list">
-                
+
                 <ul class="listCon">
-                                        <li>
-                    <a href="/sz/td_A13316964.html" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击最新土地信息总次数&#39;]);">
-                        <div class="pic">
-                            <img src="/static/mobile/img/201905271046377825.jpg" alt="遂宁建立电路产业园，深圳PCB相关行业可来买地">
-                            <!--<p>出租</p>-->
-                        </div>
-                        <div class="txt">
-                            <h2>遂宁建立电路产业园，深圳PCB相关行业可来买地</h2>
-                            <p class="baseInfo">
-                                <span>50年</span>/<span>-广东-宝安区</span></p>
-                            <p class="label">
-                                <span class="lab_1">电子信息</span>                            </p>
-                            <p class="price cfPrice">
-                                <span>50<span>亩</span></span>
-                                <span>6<span>万元</span></span>
-                            </p>
-                        </div>
-                    </a>
-                    </li>
-                                        <li>
-                    <a href="/sz/td_A13036631.html" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击最新土地信息总次数&#39;]);">
-                        <div class="pic">
-                            <img src="/static/mobile/img/201904090803028345.jpg" alt="中国只有一个松山湖之高端厂房+办公+研发产业园出">
-                            <!--<p>出租</p>-->
-                        </div>
-                        <div class="txt">
-                            <h2>中国只有一个松山湖之高端厂房+办公+研发产业园出</h2>
-                            <p class="baseInfo">
-                                <span>50年</span>/<span>广东-深圳-宝安</span></p>
-                            <p class="label">
-                                <span class="lab_1">装备制造</span>                            </p>
-                            <p class="price cfPrice">
-                                <span>1<span>亩</span></span>
-                                <span>1<span>万元</span></span>
-                            </p>
-                        </div>
-                    </a>
-                    </li>
-                                        <li>
-                    <a href="/sz/td_A12973595.html" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击最新土地信息总次数&#39;]);">
-                        <div class="pic">
-                            <img src="/static/mobile/img/201903241955465667.jpg" alt="深圳市国有50年红本3到5成首付">
-                            <!--<p>出租</p>-->
-                        </div>
-                        <div class="txt">
-                            <h2>深圳市国有50年红本3到5成首付</h2>
-                            <p class="baseInfo">
-                                <span>50年</span>/<span>广东-深圳-南山</span></p>
-                            <p class="label">
-                                <span class="lab_1">电子信息</span>                            </p>
-                            <p class="price cfPrice">
-                                <span>1000<span>亩</span></span>
-                                <span>面议</span>
-                            </p>
-                        </div>
-                    </a>
-                    </li>
-                                        <li>
-                    <a href="/sz/td_A12894436.html" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击最新土地信息总次数&#39;]);">
-                        <div class="pic">
-                            <img src="/static/mobile/img/201903061511403247.jpg" alt="深圳红旗大街科林产业园独栋独院厂房研发楼">
-                            <!--<p>出租</p>-->
-                        </div>
-                        <div class="txt">
-                            <h2>深圳红旗大街科林产业园独栋独院厂房研发楼</h2>
-                            <p class="baseInfo">
-                                <span>50年</span>/<span>广东-深圳-宝安</span></p>
-                            <p class="label">
-                                <span class="lab_1">装备制造</span>                            </p>
-                            <p class="price cfPrice">
-                                <span>9<span>亩</span></span>
-                                <span>面议</span>
-                            </p>
-                        </div>
-                    </a>
-                    </li>
-                                        <li class="noBoder">
-                    <a href="/sz/td_A13200117.html" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击最新土地信息总次数&#39;]);">
-                        <div class="pic">
-                            <img src="/static/mobile/img/201905070818169005.jpg" alt="广东-阳江-江城-江门土地出售，工业性质">
-                            <!--<p>出租</p>-->
-                        </div>
-                        <div class="txt">
-                            <h2>广东-阳江-江城-江门土地出售，工业性质</h2>
-                            <p class="baseInfo">
-                                <span>50年</span>/<span>广东-深圳-宝安</span></p>
-                            <p class="label">
-                                <span class="lab_1">电子信息</span>                            </p>
-                            <p class="price cfPrice">
-                                <span>20<span>亩</span></span>
-                                <span>35<span>万元</span></span>
-                            </p>
-                        </div>
-                    </a>
-                    </li>
-                                    </ul>
-                <a id="new" href="/sz/td/" class="more" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击最新土地更多按钮次数&#39;]);">更多</a>
+                    {volist name="recommend" id="data"}
+                    <li class="noBoder">
+                        <a href="/search/workshopdetail?id={$data.id}"
+                           onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击最新土地信息总次数&#39;]);">
+                            <div class="pic">
+                                <img src="/static/mobile/img/201908262326206805.jpg" alt="大宗土地使用权转让【湖南长沙】">
+                                <!--<p>出租</p>-->
                             </div>
+                            <div class="txt">
+                                <h2>大宗土地使用权转让【湖南3333长沙】</h2>
+                                <p class="baseInfo">
+                                    <span>35年</span>/<span>广东-深圳-龙岗</span></p>
+                                <p class="label">
+                                    <span class="lab_1">汽车部件</span></p>
+                                <p class="price cfPrice">
+                                    <span>165<span>亩</span></span>
+                                    <span>面议</span>
+                                </p>
+                            </div>
+                        </a>
+                    </li>
+                    {/volist}
+                </ul>
+                <a id="new" href="/search/workshop" class="more"
+                   onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击最新土地更多按钮次数&#39;]);">更多</a>
+            </div>
         </div>
     </div>
 </section>
