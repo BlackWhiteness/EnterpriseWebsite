@@ -98,7 +98,9 @@ class Search extends Homebase
         }
 
         $id = $request->param('id/d', '');
-        $info = Workshop::where(['id' => $id])->find();
+        $info = Workshop::where(['id' => $id])
+            ->with(['belongsToOneCity', 'belongsToOneArea'])
+            ->find();
 
         $cityInfo = Db::name('city')
             ->where('id', 'in', $info['city'])->select();
@@ -137,7 +139,6 @@ class Search extends Homebase
             }
         }
         $workInstance = WorkShopFormat::getInstance();
-
         $this->assign([
             'cityList' => $cityList,
             'info' => $workInstance->formatDetail($info),
@@ -273,7 +274,7 @@ class Search extends Homebase
             'cityList' => $cityList,
             'href' => $href,
             'ad' => $adList,
-            'info' => $info
+            'info' => OfficeBuildFormat::getInstance()->formatDetail($info)
         ]);
         return $this->fetch('offbuilddetail');
     }

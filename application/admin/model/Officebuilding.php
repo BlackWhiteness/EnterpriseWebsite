@@ -13,9 +13,29 @@ use \think\Model;
  */
 class Officebuilding extends Model
 {
+    protected $pk = 'id';
+    protected $table = 'search_officebuilding';
     protected $type = [
         'imgs' => 'serialize',
     ];
+
+    /**
+     * 对应一个城市
+     * @return \think\model\relation\BelongsTo
+     */
+    public function belongsToOneCity()
+    {
+        return $this->belongsTo('City', 'city', 'id');
+    }
+
+    /**
+     * 对应一个地区
+     * @return \think\model\relation\BelongsTo
+     */
+    public function belongsToOneArea()
+    {
+        return $this->belongsTo('Area', 'area', 'id');
+    }
 
     public function del($id)
     {

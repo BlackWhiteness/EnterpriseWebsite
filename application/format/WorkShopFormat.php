@@ -90,6 +90,8 @@ class WorkShopFormat
      */
     public function formatDetail($detail)
     {
+        $city = $detail->belongsToOneCity;
+        $area = $detail->belongsToOneArea;
         return [
             'id' => $detail['id'],
             'region' => $detail['region'],
@@ -121,6 +123,8 @@ class WorkShopFormat
             'dormitoryarea' => $detail['dormitoryarea'],
             'type' => $detail['type'],
             'category' => Workshop::CATEGORY_CONFIG[$detail['category']],
+            'city_name' => $city ? $city->name : '',
+            'area_name' => $area ? $area->name : '',
         ];
     }
 }

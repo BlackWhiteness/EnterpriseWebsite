@@ -1141,9 +1141,6 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
                                     <div class="cf_title"><h1>
                                         {$info.title}
                                     </h1></div>
-                                    <div class="cf_date">发布时间: <strong>
-                                        {$info.releasetime}</strong>　
-                                    </div>
                                 </div>
                         </td>
                     </tr>
@@ -1266,19 +1263,12 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
 
                                 <table width="343" border="0" cellspacing="0" cellpadding="0"
                                        style=" padding-left:10px;">
-                                    <tr>
-                                        <td height="29" colspan="2" align="left"><p
-                                                style="height:29px;color:#fff; font:14px; line-height:25px; width:320px;">
-                                            <span style="background:#be38d6;">&nbsp;本周推荐&nbsp;</span>&nbsp;&nbsp;<span
-                                                style="background:#62B362;">&nbsp;分租㎡起&nbsp;</span>&nbsp;&nbsp;<span
-                                                style="background:#4093f0; ">&nbsp;提供租赁合同&nbsp;</span>&nbsp;&nbsp;<span
-                                                style="background: #F60;">&nbsp;消防验收合格&nbsp;</span></p></td>
-                                    </tr>
+
                                     <tr align="left">
                                         <td colspan="2" class="house_line"></td>
                                     </tr>
                                     <tr align="left">
-                                        <td height="29" colspan="2"><font size="2">所在区域： {$cityInfo[0]['name']}</font>
+                                        <td height="29" colspan="2"><font size="2">所在区域： {$info.city_name} {$info.area_name}</font>
                                         </td>
                                     </tr>
                                     <tr align="left">
@@ -1382,7 +1372,7 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
                             <div class="tit_icon2">写字楼概况</div>
                         </div>
                         <div class="box_list2">
-                            {$info.detail}
+                            {$info.detail|raw}
                         </div>
 
                     </div>
