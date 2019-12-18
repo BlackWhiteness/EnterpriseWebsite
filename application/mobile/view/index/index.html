@@ -292,7 +292,7 @@
 <footer>
     <!--电话-->
     <div class="tel clearFix">
-        <a id="semCall" href="tel:400-8800-002" class="semCall" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击底部电话拨打按钮次数&#39;]);"><img src="/static/mobile/img/homepage_bottom_phone.png" alt=""></a>
+        <a id="semCall" href="tel:{:config('web_site_tel')}" class="semCall" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击底部电话拨打按钮次数&#39;]);"><img src="/static/mobile/img/homepage_bottom_phone.png" alt=""></a>
     </div>
     <p class="link clearFix">
         <a id="about" href="/help/about.html" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击关于我们次数&#39;]);">关于我们</a>
@@ -301,14 +301,14 @@
         <a id="work" href="/work/" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击业务合作次数&#39;]);">业务合作</a>
     </p>
     <p class="copy clearFix" style="margin-bottom: 6px">
-        <span>ICP经营许可证:&nbsp;&nbsp;粤B2-20130119</span>
-        <span style="margin: 0 0.2rem;"><a style="color: #979797;" href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备15009343号-1</a></span>
+        <span>ICP经营许可证:</span>
+        <span style="margin: 0 0.2rem;"><a style="color: #979797;" href="http://www.beian.miit.gov.cn" target="_blank">{:config('web_site_icp')}</a></span>
     </p>
     <p class="copy clearFix" style="margin-bottom: 3px">
-        <span style="margin: 0 0.2rem;">中工招商网&nbsp;版权所有</span>
-        <img src="/static/mobile/img/footer_brand.png" alt="">
+        <span style="margin: 0 0.2rem;">{:config('web_site_banquan')}</span>
+        
     </p>
-        <p>深圳市伙伴行网络科技有限公司 版权所属</p>
+        <p>{:config('web_site_name')} 版权所属</p>
     </footer>
 <!--搜索页-->
 <section class="searchWrapBox">
