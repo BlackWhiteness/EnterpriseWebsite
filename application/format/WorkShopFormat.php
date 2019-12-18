@@ -53,7 +53,6 @@ class WorkShopFormat
                 'canteen' => $row['canteen'],
                 'category' => $row['category'],
                 'city' => $row['city'],
-                'detail' => $row['detail'],
                 'distributioncapacity' => $row['distributioncapacity'],
                 'dormitory_area' => $row['dormitory_area'],
                 'dormitoryarea' => $row['dormitoryarea'],
@@ -77,7 +76,8 @@ class WorkShopFormat
                 'tel' => $row['tel'],
                 'title' => $row['title'],
                 'type' => $row['type'],
-                'area_name' => $area->name . '区'
+                'area_name' => $area->name . '区',
+                'detail' => mb_substr(strip_tags($row['detail']), 0, 300)
             ];
         }
         return $rtn;

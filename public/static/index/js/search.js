@@ -125,7 +125,7 @@ function resultFilter(result) {
         html += "<span class='imgmid'></span></div><div class='list_one_text'> <strong>";
         html += "<a href=/index/search/workshopdetail?id=" + row.id + " target='_blank'>";
         html += row.title + "</a></strong>";
-        html += "<div class='cf_jianjie'>" + row.title + "</div>";
+        html += "<div class='cf_jianjie'>" + row.detail + "</div>";
         html += "<div class='text_prm'><span>联系人:<font style='color: #C60;font-weight:bold;'>" + row.name + "</font><img src='/static/index/img/jjr_rz.jpg'/></span>";
         html += "<span>联系方式:<font " + "style='color: #933;font-weight:bold;background: url(img/list2_icopho.jpg) no-repeat left center; padding-left:11px;'>";
         html += row.tel + "</font></span>";
