@@ -106,7 +106,7 @@ function pageinit(total, current, last_page) {
         current: current,
         pageCount: last_page,
         showData: 20,
-        jump: true,
+        jump: false,
         callback: function (api) {
             action(api.getCurrent());
         }
@@ -128,11 +128,9 @@ function resultFilter(result) {
         html += "<div class='cf_jianjie'>" + row.title + "</div>";
         html += "<div class='text_prm'><span>联系人:<font style='color: #C60;font-weight:bold;'>" + row.name + "</font><img src='/static/index/img/jjr_rz.jpg'/></span>";
         html += "<span>联系方式:<font " + "style='color: #933;font-weight:bold;background: url(img/list2_icopho.jpg) no-repeat left center; padding-left:11px;'>";
-        html += row.tel + "</font></span>" + "<span>发布时间:<font style='color: #639;font-weight:bold;'>";
-        html += row.releasetime + "</font></span>" + "</div> <div class='text_prm1' style='display:none'>";
-        html += "<span style='border-color: #330;'>" + row.tag + "</span>";
-        // "<span style='border-color: #C30;'>提供租赁合同</span>" +
-        // "<span style='border-color: #660;'>消防验收合格</span>" +
+        html += row.tel + "</font></span>";
+        html += "</div> <div class='text_prm1' style='display:none'>";
+        // html += "<span style='border-color: #330;'>" + row.tag + "</span>";
         html += "</div></div>" + "<div class='list_one_prm'>" +
             "<p style='font-size:15px; font-weight:600;'>" + row.area_name + "</p>" +
             "<p><span class='f16' style='color:#53160F;'>" + row.plantrent + "</span>元/㎡</p>" +
