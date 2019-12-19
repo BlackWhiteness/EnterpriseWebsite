@@ -726,10 +726,10 @@
         </tbody>
     </table>
 </div>
-<div class="zs_newmbx" style="display:none; width:936px;margin:auto;text-align:left;">
-    <a target="_blank" href="/">东莞厂房网</a>&nbsp;&gt;&nbsp;
-    <a target="_blank" href="/index/search/workshop?area=dg">东莞厂房出租</a>
-</div>
+<!--<div class="zs_newmbx" style="display:none; width:936px;margin:auto;text-align:left;">-->
+<!--    <a target="_blank" href="/">东莞厂房网</a>&nbsp;&gt;&nbsp;-->
+<!--    <a target="_blank" href="/index/search/workshop?area=dg">东莞厂房出租</a>-->
+<!--</div>-->
 <table width="960" align="center">
     <tbody>
     <tr align="center">
@@ -853,7 +853,7 @@
 </style>
 <div class="zs_newmbx">
     <a target="_blank" href="/" title="广东厂房网">广东厂房网</a>&nbsp;&gt;&nbsp;
-    <a target="_blank" href="/index/search/workshop?area=sz" title="深圳厂房出租">深圳厂房出租</a>
+    <a target="_blank" href="{:url('/index/search/workshop')}?city={$cityInfo[0]['id']}&category={$category}" title="{$tag}">{$tag}</a>
 </div>
 <div class="w998 bor1 ser_sx">
     <!--引入搜索区域城市文件-->
@@ -1005,7 +1005,6 @@
     <div class="clear"></div>
     <div class="search_area-foot w998" style="height:45px;">
         <div class="search_area-screen">
-            本次搜索条件:
         </div>
     </div>
 </div>
@@ -1157,7 +1156,7 @@
             <div id="mainbody">
                 <div id="main_right">
                     <div id="right_title">
-                        <span>你搜索的结果是: 深圳厂房出租</span>
+                        <span>你搜索的结果是: {$tag}</span>
                     </div>
                     <div class="right_cont">
                         <div class="clear"></div>
@@ -1227,16 +1226,16 @@
                 <div id="indemo">
                     <div id="demo1">
                         {volist name="recommend" id="data"}
-                        <?php $recommend_img = json_decode($data['imgs']); $recommend_img = $recommend_img[0]; ?>
+
                         <div class="right_p_one">
                             <div class="right_p_img">
                                 <a href="/index/search/workshopdetail?id={$data.id}" target="_blank"><img
-                                        src="{$recommend_img}"/></a>
+                                        src="{$data.imgs}"/></a>
                                 <span class="imgmid"></span>
                             </div>
                             <div class="right_p_title">
                                 <a href="/index/search/workshopdetail?id={$data.id}" target="_blank">
-                                    {$data.title}"...</a>
+                                    {$data.title|mb_substr=0,10}...</a>
                             </div>
                         </div>
                         {/volist}
@@ -1244,16 +1243,15 @@
                 </div>
                 <div id="demo2">
                    {volist name="recommend" id="data"}
-                        <?php $recommend_img = json_decode($data['imgs']); $recommend_img = $recommend_img[0]; ?>
                         <div class="right_p_one">
                             <div class="right_p_img">
                                 <a href="/index/search/workshopdetail?id={$data.id}" target="_blank"><img
-                                        src="{$recommend_img}"/></a>
+                                        src="{$data.imgs}"/></a>
                                 <span class="imgmid"></span>
                             </div>
                             <div class="right_p_title">
                                 <a href="/index/search/workshopdetail?id={$data.id}" target="_blank">
-                                    {$data.title}"...</a>
+                                    {$data.title|mb_substr=0,10}...</a>
                             </div>
                         </div>
                         {/volist}

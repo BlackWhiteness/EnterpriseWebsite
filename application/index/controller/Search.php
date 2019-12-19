@@ -41,21 +41,32 @@ class Search extends Homebase
     public function workshop()
     {
         $city = isset($_COOKIE['city']) ? $_COOKIE['city'] : 8;
-        $cityList = Db::name('city')->where('id', 'not in', $city)->select();
-        $cityInfo = Db::name('city')->where('id', 'in', $city)->select();
+        $cityList = Db::name('city')->where('id', '<>', $city)->select();
+        $cityInfo = Db::name('city')->where('id', '=', $city)->select();
         $areaInfo = Db::name('area')->where('parentId', 'in', $city)->select();
-
-        $recommend = Db::name('workshop')
-            ->where(["type" => 1])->order(array('releasetime' => 'DESC'))
+        $category = request()->param('category');
+//        dump(in_array($category, Workshop::CATEGORY_CONFIG));die;
+        $tagName = in_array($category, [1, 2, 3]) ? Workshop::CATEGORY_CONFIG[$category] : '';
+        $recommend = Workshop::name('workshop')
+            ->where(["type" => 1])
+            ->order(array('releasetime' => 'DESC'))
+            ->page(1,10)->select();
+//        dump($recommend);die;
+        $floor1 = Db::name('workshop')
+            ->where(["floor" => 1])
+            ->order(array('releasetime' => 'DESC'))
             ->paginate(10);
-        $floor1 = Db::name('workshop')->where(["floor" => 1])
-            ->order(array('releasetime' => 'DESC'))->paginate(10);
         $floor2 = Db::name('workshop')->where(["floor" => 2])
             ->order(array('releasetime' => 'DESC'))->paginate(10);
-        $floor3 = Db::name('workshop')->where(["floor" => 3])
-            ->order(array('releasetime' => 'DESC'))->paginate(10);
-        $href = HrefManage::order('sort', 'desc')->select()->toArray();
-        $ad = AdManage::where('is_enable', '=', 1)->order(['code' => 'asc', 'sort' => 'desc'])->select();
+        $floor3 = Db::name('workshop')
+            ->where(["floor" => 3])
+            ->order(array('releasetime' => 'DESC'))
+            ->paginate(10);
+        $href = HrefManage::order('sort', 'desc')
+            ->select()->toArray();
+        $ad = AdManage::where('is_enable', '=', 1)
+            ->order(['code' => 'asc', 'sort' => 'desc'])
+            ->select();
 
         $adList = [];
         foreach ($ad as $row) {
@@ -72,9 +83,9 @@ class Search extends Homebase
                 $adList['bottom_ad'][] = $detail;
             }
         }
-        $officeInstance = OfficeBuildFormat::getInstance();
+        $workFormat = WorkShopFormat::getInstance();
         $this->assign([
-            'recommend' => $officeInstance->formatList($recommend),
+            'recommend' => $workFormat->formatList($recommend),
             'floor1' => $floor1,
             'floor2' => $floor2,
             'floor3' => $floor3,
@@ -83,8 +94,11 @@ class Search extends Homebase
             'cityList' => $cityList,
             'href' => $href,
             'ad' => $adList,
+            'category' => $category,
+            'tag' => $cityInfo[0]['name'] . $tagName
 
         ]);
+
         return $this->fetch('rentalofworkshop');
     }
 

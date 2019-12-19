@@ -14,8 +14,8 @@
 ​{$info.title}
 
 "/>
-<SCRIPT src="/static/index/js/jquery-1.2.6.pack.js" type=text/javascript></SCRIPT>
-<SCRIPT src="/static/index/js/base.js" type=text/javascript></SCRIPT>
+    <SCRIPT src="/static/index/js/jquery-1.2.6.pack.js" type=text/javascript></SCRIPT>
+    <SCRIPT src="/static/index/js/base.js" type=text/javascript></SCRIPT>
 </head>
 <link rel="stylesheet" href="/static/index/css/css.css"/>
 <body style="text-align:center">
@@ -1040,9 +1040,10 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
 
     .box_list2 {
         padding: 10px;
-        width: 670px; text-align:left;
+        width: 670px;
+        text-align: left;
         overflow: hidden;
-        
+
         font-size: 18px;
     }
 
@@ -1131,10 +1132,9 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
                             <div id="main_right">
                                 <div id="right_title"><span>您当前的位置：<a
                                         href="/index/search/workshop?city={$cityInfo[0]['id']}"
-                                        target="_blank"/>深圳厂房出租</a> ><a
-                                        href="/index/search/workshop?city={$cityInfo[0]['id']}" target="_blank"/> 龙岗区厂房出租</a>
-                                    ><a href="/index/search/workshop?city={$cityInfo[0]['id']}"
-                                        target="_blank"/> 布吉厂房出租</a></span></div>
+                                        target="_blank"/>{$info.city_name}{$info.category}</a> ><a
+                                        href="/index/search/workshop?city={$cityInfo[0]['id']}" target="_blank"/>{$info.area_name}{$info.category}</a>
+                                    ></span></div>
                                 <div class="right_cont">
 
                                     <div class="clear"></div>
@@ -1170,67 +1170,69 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
                                     </div>
                                 </div>-->
                                 <div id=preview>
-	<div class=jqzoom id=spec-n1 onClick="window.open('{$info.imgs[0]}')"><IMG height=265
-	src="{$info.imgs[0]}" jqimg="{$info.imgs[0]}" width=350>
-	</div>
-	<div id=spec-n5>
-		<div class=control id=spec-left>
-			<img src="/static/index/img/left.gif" />
-		</div>
-		<div id=spec-list>
-			<ul class=list-h>{volist name="info['imgs']" id="data"}
-				<li><img src="{$data}" name="{$data}"> </li>{/volist}
-				
-			</ul>
-		</div>
-		<div class=control id=spec-right>
-			<img src="/static/index/img/right.gif" />
-		</div>
-		
-    </div>
-</div>
-<SCRIPT type=text/javascript>
-	$(function(){			
-	   $(".jqzoom").jqueryzoom({
-			xzoom:400,
-			yzoom:400,
-			offset:10,
-			position:"right",
-			preload:1,
-			lens:1
-		});
-		$("#spec-list").jdMarquee({
-			deriction:"left",
-			width:350,
-			height:56,
-			step:2,
-			speed:4,
-			delay:10,
-			control:true,
-			_front:"#spec-right",
-			_back:"#spec-left"
-		});
-		$("#spec-list img").bind("mouseover",function(){
-			var src=$(this).attr("src");
-			$("#spec-n1 img").eq(0).attr({
-				src:src.replace("\/n5\/","\/n1\/"),
-				jqimg:src.replace("\/n5\/","\/n0\/")
-			});
-			$(this).css({
-				"border":"2px solid #ff6600",
-				"padding":"1px"
-			});
-		}).bind("mouseout",function(){
-			$(this).css({
-				"border":"1px solid #ccc",
-				"padding":"2px"
-			});
-		});				
-	})
-	</SCRIPT>
+                                    <div class=jqzoom id=spec-n1 onClick="window.open('{$info.imgs[0]}')"><IMG
+                                            height=265
+                                            src="{$info.imgs[0]}" jqimg="{$info.imgs[0]}" width=350>
+                                    </div>
+                                    <div id=spec-n5>
+                                        <div class=control id=spec-left>
+                                            <img src="/static/index/img/left.gif"/>
+                                        </div>
+                                        <div id=spec-list>
+                                            <ul class=list-h>{volist name="info['imgs']" id="data"}
+                                                <li><img src="{$data}" name="{$data}"></li>
+                                                {/volist}
 
-<SCRIPT src="/static/index/js/lib.js" type=text/javascript></SCRIPT>
-<SCRIPT src="/static/index/js/zzsc.js" type=text/javascript></SCRIPT>
+                                            </ul>
+                                        </div>
+                                        <div class=control id=spec-right>
+                                            <img src="/static/index/img/right.gif"/>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <SCRIPT type=text/javascript>
+                                    $(function () {
+                                        $(".jqzoom").jqueryzoom({
+                                            xzoom: 400,
+                                            yzoom: 400,
+                                            offset: 10,
+                                            position: "right",
+                                            preload: 1,
+                                            lens: 1
+                                        });
+                                        $("#spec-list").jdMarquee({
+                                            deriction: "left",
+                                            width: 350,
+                                            height: 56,
+                                            step: 2,
+                                            speed: 4,
+                                            delay: 10,
+                                            control: true,
+                                            _front: "#spec-right",
+                                            _back: "#spec-left"
+                                        });
+                                        $("#spec-list img").bind("mouseover", function () {
+                                            var src = $(this).attr("src");
+                                            $("#spec-n1 img").eq(0).attr({
+                                                src: src.replace("\/n5\/", "\/n1\/"),
+                                                jqimg: src.replace("\/n5\/", "\/n0\/")
+                                            });
+                                            $(this).css({
+                                                "border": "2px solid #ff6600",
+                                                "padding": "1px"
+                                            });
+                                        }).bind("mouseout", function () {
+                                            $(this).css({
+                                                "border": "1px solid #ccc",
+                                                "padding": "2px"
+                                            });
+                                        });
+                                    })
+                                </SCRIPT>
+
+                                <SCRIPT src="/static/index/js/lib.js" type=text/javascript></SCRIPT>
+                                <SCRIPT src="/static/index/js/zzsc.js" type=text/javascript></SCRIPT>
                                 <div class="other" style="margin-top:8px; margin-left:0px; width:350px;">
                                     <!--<div class="other_box2"><a href="/cf-shouchang-id-308224.html">收藏</a></div>-->
                                     <div class="other_box3">
@@ -1263,19 +1265,20 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
 
                                 <table width="343" border="0" cellspacing="0" cellpadding="0"
                                        style=" padding-left:10px;">
-<!--                                    <tr>-->
-<!--                                        <td height="29" colspan="2" align="left"><p-->
-<!--                                                style="height:29px;color:#fff; font:14px; line-height:25px; width:320px;">-->
-<!--                                            <span style="background:#be38d6;">&nbsp;本周推荐&nbsp;</span>&nbsp;&nbsp;<span-->
-<!--                                                style="background:#62B362;">&nbsp;分租㎡起&nbsp;</span>&nbsp;&nbsp;<span-->
-<!--                                                style="background:#4093f0; ">&nbsp;提供租赁合同&nbsp;</span>&nbsp;&nbsp;<span-->
-<!--                                                style="background: #F60;">&nbsp;消防验收合格&nbsp;</span></p></td>-->
-<!--                                    </tr>-->
+                                    <!--                                    <tr>-->
+                                    <!--                                        <td height="29" colspan="2" align="left"><p-->
+                                    <!--                                                style="height:29px;color:#fff; font:14px; line-height:25px; width:320px;">-->
+                                    <!--                                            <span style="background:#be38d6;">&nbsp;本周推荐&nbsp;</span>&nbsp;&nbsp;<span-->
+                                    <!--                                                style="background:#62B362;">&nbsp;分租㎡起&nbsp;</span>&nbsp;&nbsp;<span-->
+                                    <!--                                                style="background:#4093f0; ">&nbsp;提供租赁合同&nbsp;</span>&nbsp;&nbsp;<span-->
+                                    <!--                                                style="background: #F60;">&nbsp;消防验收合格&nbsp;</span></p></td>-->
+                                    <!--                                    </tr>-->
                                     <tr align="left">
                                         <td colspan="2" class="house_line"></td>
                                     </tr>
                                     <tr align="left">
-                                        <td height="29" colspan="2"><font size="2">所在区域： {$info.city_name} {$info.area_name}</font>
+                                        <td height="29" colspan="2"><font size="2">所在区域： {$info.city_name}
+                                            {$info.area_name}</font>
                                         </td>
                                     </tr>
                                     <tr align="left">
@@ -1650,7 +1653,7 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
     {/volist}
 </div>
 
-{include file="templates/default/index/layout/foot.html" /} 
+{include file="templates/default/index/layout/foot.html" /}
 </body>
 </html>
 </body>
