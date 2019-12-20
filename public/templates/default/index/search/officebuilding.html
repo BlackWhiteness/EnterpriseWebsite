@@ -304,7 +304,7 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
 
 <div class=" w1003 zs_newmbx" style="margin: 8px auto;text-align:left;">
     <a target="_blank" href="/xiezilou/">广东写字楼网</a>&nbsp;&gt;&nbsp;
-    <a target="_blank" href="/index/search/officebuilding?city={$cityInfo[0]['id']}?area=dg">深圳写字楼出租</a>
+    <a target="_blank" href="/index/search/officebuilding?city={$cityInfo[0]['id']}">{$cityInfo[0]['name']}写字楼</a>
 </div>
 <div class="zs_newmbx" style="display:none;">
     <a target="_blank" href="/xiezilou/">深圳厂房网</a>&nbsp;&gt;&nbsp;
@@ -347,13 +347,13 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
         <dt>
             类型：
         </dt>
-        <dd id="mianji">
+        <dd id="type">
             <a class="current" href="javascript:void(0)" value="0">不限</a>
-            <a href="javascript:void(0)" value="0-100">纯写字楼</a>
-            <a href="javascript:void(0)" value="0-100">商业综合体</a>
-            <a href="javascript:void(0)" value="200-300">商务公寓</a>
-            <a href="javascript:void(0)" value="300-500">商务酒店</a>
-            <a href="javascript:void(0)" value="500-1000">厂房办公</a>
+            <a href="javascript:void(0)" value="1">纯写字楼</a>
+            <a href="javascript:void(0)" value="2">商业综合体</a>
+            <a href="javascript:void(0)" value="3">商务公寓</a>
+            <a href="javascript:void(0)" value="4">商务酒店</a>
+            <a href="javascript:void(0)" value="5">厂房办公</a>
             
         </dd>
     </dl>
@@ -376,12 +376,12 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
         <dt>
             标签：
         </dt>
-        <dd id="rent">
+        <dd id="tag">
             <a class="current" href="javascript:void(0)" value="0">不限</a>
-            <a href="javascript:void(0)" value="0-40">可注册</a>
-            <a href="javascript:void(0)" value="40-60">整栋</a>
-            <a href="javascript:void(0)" value="60-80">可分割</a>
-            <a href="javascript:void(0)" value="80-120">带装修</a>
+            <a href="javascript:void(0)" value="1">可注册</a>
+            <a href="javascript:void(0)" value="2">整栋</a>
+            <a href="javascript:void(0)" value="3">可分割</a>
+            <a href="javascript:void(0)" value="4">带装修</a>
             
         </dd>
     </dl>
@@ -389,12 +389,12 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
         <dt>
             楼层：
         </dt>
-        <dd id="rent">
+        <dd id="floor">
             <a class="current" href="javascript:void(0)" value="0">不限</a>
-            <a href="javascript:void(0)" value="0-40">一楼</a>
-            <a href="javascript:void(0)" value="40-60">楼上</a>
-            <a href="javascript:void(0)" value="60-80">独栋</a>
-            <a href="javascript:void(0)" value="80-120">独院</a>
+            <a href="javascript:void(0)" value="1">一楼</a>
+            <a href="javascript:void(0)" value="2">楼上</a>
+            <a href="javascript:void(0)" value="3">独栋</a>
+            <a href="javascript:void(0)" value="4">独院</a>
             
         </dd>
     </dl>
@@ -445,15 +445,6 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
             return false;
         }
         //判断客户提交的区域是否为空
-        /*				if (area=='0'){
-                            $("#area").focus();
-                            alert("请选择首选区域");
-                            return false;}*/
-        //判断客户选择的面积需求是否为空
-        /*				if (measurearea=='0'){
-                            $("#measurearea").focus();
-                            alert("请选择面积");
-                            return false;}*/
         //ajax提交表单
         $.get("/save_submit.php", {c_name: c_name, tel: tel, area: area, measurearea: measurearea}, function (data) {
                 alert(data);

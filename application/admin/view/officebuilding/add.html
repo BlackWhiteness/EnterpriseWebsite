@@ -65,7 +65,8 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">管理费</label>
                 <div style="width:15%" class="layui-input-inline">
-                    <input type="text" name="managementfee" autocomplete="off" placeholder="" class="layui-input" oninput="value=value.replace(/[^\d.]/g,'')">
+                    <input type="text" name="managementfee" autocomplete="off" placeholder="" class="layui-input"
+                           oninput="value=value.replace(/[^\d.]/g,'')">
                 </div>
                 <div class="layui-form-mid layui-word-aux">只能输入数字</div>
             </div>
@@ -83,9 +84,49 @@
                 </div>
             </div>
             <div class="layui-form-item">
+                <label class="layui-form-label">楼层类型</label>
+                <div class="layui-input-block" style="width:15%">
+                    <select name="floor_type" lay-verify="required">
+                        <option value="0">未知</option>
+                        <option value="1">一楼</option>
+                        <option value="2">楼上</option>
+                        <option value="3">独栋</option>
+                        <option value="4">独院</option>
+                    </select>
+                </div>
+            </div>
+            <!--标签  1 可注册 2整栋 3可分割 4 带装修-->
+            <div class="layui-form-item">
+                <label class="layui-form-label">标签</label>
+                <div class="layui-input-block" style="width:15%">
+                    <select name="tag" lay-verify="required">
+                        <option value="0">无</option>
+                        <option value="1">可注册</option>
+                        <option value="2">整栋</option>
+                        <option value="3">可分割</option>
+                        <option value="4">带装修</option>
+                    </select>
+                </div>
+            </div>
+            <!--行业类型 1 纯写字楼 2 商业综合体 3 商务公寓 4 商务酒店 5厂房办公-->
+            <div class="layui-form-item">
+                <label class="layui-form-label">行业类型</label>
+                <div class="layui-input-block" style="width:15%">
+                    <select name="indus_type" lay-verify="required">
+                        <option value="0">未知</option>
+                        <option value="1">纯写字楼</option>
+                        <option value="2">商业综合体</option>
+                        <option value="3">商务公寓</option>
+                        <option value="4">商务酒店</option>
+                        <option value="5">厂房办公</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
                 <label class="layui-form-label">是否分割</label>
                 <div style="width:50%" class="layui-input-inline" lay-verify-msg="必选项不能为空" lay-verify="mustradio">
-                    <input type="radio" name="is_sep" autocomplete="off" placeholder="" class="layui-input" value="0" checked>
+                    <input type="radio" name="is_sep" autocomplete="off" placeholder="" class="layui-input" value="0"
+                           checked>
                     否
                     <input type="radio" name="is_sep" autocomplete="off" placeholder="" class="layui-input" value="1">
                     是
@@ -104,7 +145,7 @@
                 <label class="layui-form-label">使用年限</label>
                 <div style="width:15%" class="layui-input-inline">
                     <input type="text" name="use_year" lay-verify="required" autocomplete="off" placeholder=""
-                           class="layui-input" >
+                           class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
@@ -153,7 +194,8 @@
             <div class="layui-form-item" hidden>
                 <label class="layui-form-label">写字楼详情说明</label>
                 <div style="width:80%" class="layui-input-inline">
-                                    <textarea id="detail-detail" name="detail" rows="10" class="layui-input" placeholder="" lay-verify="required"
+                                    <textarea id="detail-detail" name="detail" rows="10" class="layui-input"
+                                              placeholder="" lay-verify="required"
                                               autocomplete="off"></textarea>
                 </div>
             </div>
@@ -164,12 +206,13 @@
                     <input type="radio" name="type" value="2" autocomplete="off" placeholder="" class="layui-input">火爆
                 </div>
             </div>
-<!--            <div class="layui-form-item">-->
-<!--                <label class="layui-form-label">标签</label>-->
-<!--                <div style="width:15%" class="layui-input-inline">-->
-<!--                    <input type="text" name="tag" autocomplete="off" placeholder="" class="layui-input">-->
-<!--                </div>-->
-<!--            </div>-->
+            <!--            <div class="layui-form-item">-->
+            <!--                <label class="layui-form-label">标签</label>-->
+            <!--                <div style="width:15%" class="layui-input-inline">-->
+            <!--                    <input type="text" name="tag" autocomplete="off" placeholder="" class="layui-input">-->
+            <!--                </div>-->
+            <!--            </div>-->
+
             <div class="layui-form-item">
                 <label class="layui-form-label">图片</label>
                 <div class="layui-input-inline w300">

@@ -1,6 +1,9 @@
 var search_title = false;
 var search_title_all = false;
 var area = '', city = '', measurearea = '', rent = '', mianji = '', title = '';
+var indus_type = '';
+var of_tag = '';
+var floor = '';
 
 function initOnclickTitle() {
     search_title = false;
@@ -57,6 +60,28 @@ $(function () {
     });
 });
 
+$("#type a").click(function () {
+    let position = $("#type a").index(this);
+    $("#type a").attr("class", "");
+    $("#type a").eq(position).attr("class", 'current');
+    indus_type = $("#type a").eq(position).attr('value');
+    action();
+});
+$("#tag a").click(function () {
+    let position = $("#tag a").index(this);
+    $("#tag a").attr("class", "");
+    $("#tag a").eq(position).attr("class", 'current');
+    of_tag = $("#tag a").eq(position).attr('value');
+    action();
+});
+$("#floor a").click(function () {
+    let position = $("#floor a").index(this);
+    $("#floor a").attr("class", "");
+    $("#floor a").eq(position).attr("class", 'current');
+    floor = $("#floor a").eq(position).attr('value');
+    action();
+});
+
 function action(current_page = 1) {
     var data = {}, city = $("#city_id").attr('value');
 
@@ -73,6 +98,16 @@ function action(current_page = 1) {
 
     if ((search_title_all || search_title) && title != '') {
         data.title = title;
+    }
+
+    if (indus_type != 0) {
+        data.indus_type = indus_type;
+    }
+    if (of_tag != 0) {
+        data.tag = of_tag;
+    }
+    if (floor != 0) {
+        data.floor_type = floor;
     }
     data.page = current_page;
     $.ajax({

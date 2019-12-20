@@ -67,6 +67,19 @@ class Officebuilding extends Model
         if (!empty($area)) {
             $query = $query->where('area', '=', $area);
         }
+
+        $indusType = request()->param('indus_type');
+        if (!empty($indusType)) {
+            $query = $query->where('indus_type', '=', $indusType);
+        }
+        $tag = request()->param('tag');
+        if (!empty($tag)) {
+            $query = $query->where('tag', '=', $tag);
+        }
+        $floorType = request()->param('floor_type');
+        if (!empty($floorType)) {
+            $query = $query->where('floor_type', '=', $floorType);
+        }
         $measurearea = request()->param('measurearea');
         if (!empty($measurearea)) {
             $top = strpos($measurearea, '-');
