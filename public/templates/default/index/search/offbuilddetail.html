@@ -1278,7 +1278,7 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
                                     </tr>
                                     <tr align="left">
 
-                                        <td><font size="2">类型：{$info.measurearea}㎡</font></td>
+                                        <td><font size="2">类型：{if $info.category==1}出租{elseif $info.category==1 /}出售{else /} 未知 {/if}</font></td>
                                         <td><font size="2">总面积：{$info.measurearea}㎡</font></td>
                                     </tr>
                                     <tr align="left">
