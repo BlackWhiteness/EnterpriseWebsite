@@ -53,7 +53,7 @@ class LandFormat
                 'name' => $row['name'],
                 'tel' => $row['tel'],
                 'tag' => $row['tag'],
-//                'imgs' => $row['imgs'],
+                'imgs' => $row['imgs'] ? $row['imgs'][0] : '',
                 'land_type' => $row['land_type'],
                 'land_card' => $row['land_card'] == 0 ? '有' : '无',
             ];

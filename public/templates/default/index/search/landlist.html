@@ -303,12 +303,12 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
 <div style="height:15px;"></div>
 
 <div class=" w1003 zs_newmbx" style="margin: 8px auto;text-align:left;">
-    <a target="_blank" href="/xiezilou/">广东写字楼网</a>&nbsp;&gt;&nbsp;
-    <a target="_blank" href="/index/search/landList?city={$cityInfo[0]['id']}?area=dg">土地信息</a>
+    <a target="_blank" href="/xiezilou/">广东厂房网</a>&nbsp;&gt;&nbsp;
+    <a target="_blank" href="/index/search/landList?city={$cityInfo[0]['id']}">{$cityInfo[0]['name']}土地</a>
 </div>
 <div class="zs_newmbx" style="display:none;">
-    <a target="_blank" href="/xiezilou/">深圳厂房网</a>&nbsp;&gt;&nbsp;
-    <a target="_blank" href="/index/search/landList?city={$cityInfo[0]['id']}?area=">深圳厂房出租</a>
+    <a target="_blank" href="/xiezilou/">广东厂房网</a>&nbsp;&gt;&nbsp;
+    <a target="_blank" href="/index/search/landList?city={$cityInfo[0]['id']}">{$cityInfo[0]['name']}土地</a>
 </div>
 <div class="w1003 bor1 ser_sx">
     <!--引入搜索区域城市文件-->
@@ -480,7 +480,7 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
     <div class="list-content" id="list-content">
         <!-- 写字楼出售列表排序 -->
         <div class="list-sort">
-            <span class="tit">为您找到以下<em style="float:none; font-weight:bold; font-size:15px;">深圳</em>土地信息</span>
+            <span class="tit">为您找到以下<em style="float:none; font-weight:bold; font-size:15px;">{$cityInfo[0]['name']}</em>土地信息</span>
         </div>
         {volist name="list" id="data"}
 
