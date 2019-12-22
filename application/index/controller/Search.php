@@ -530,7 +530,7 @@ class Search extends Homebase
      */
     public function ajaxSearchShop(ShopManage $shopManage)
     {
-        $data = $shopManage->getOfficeBuild();
+        $data = $shopManage->getShopBuild();
         return json([
             'data' => ShopFormat::getInstance()->formatList($data),
             'page' => paginate($data)

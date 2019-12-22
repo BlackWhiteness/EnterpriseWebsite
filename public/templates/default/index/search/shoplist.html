@@ -302,13 +302,10 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
 </table>
 <div style="height:15px;"></div>
 
-<div class=" w1003 zs_newmbx" style="margin: 8px auto;text-align:left;">
-    <a target="_blank" href="/xiezilou/">广东写字楼网</a>&nbsp;&gt;&nbsp;
-    <a target="_blank" href="/index/search/landList?city={$cityInfo[0]['id']}?area=dg">土地信息</a>
-</div>
+
 <div class="zs_newmbx" style="display:none;">
-    <a target="_blank" href="/xiezilou/">深圳厂房网</a>&nbsp;&gt;&nbsp;
-    <a target="_blank" href="/index/search/landList?city={$cityInfo[0]['id']}?area=">深圳厂房出租</a>
+    <a target="_blank" href="/">广东厂房网</a>&nbsp;&gt;&nbsp;
+    <a target="_blank" href="/index/search/officebuilding?city={$cityInfo[0]['id']}">{$cityInfo[0]['name']}商铺</a>
 </div>
 <div class="w1003 bor1 ser_sx">
     <!--引入搜索区域城市文件-->
@@ -336,10 +333,10 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
         </dt>
         <dd class="screen_area">
             {volist name="cityInfo" id="data"}
-            <a class="current" href="/index/search/landList?city={$data.id}">全{$data.name}</a>
+            <a id="city_id" class="current" href="javascript:void(0)" value="{$data.id}">全{$data.name}</a>
             {/volist}
             {volist name="areaInfo" id="data"}
-            <a href="/index/search/landList?city={$cityInfo[0]['id']}&area={$data.id}">{$data.name}</a>
+            <a href="javascript:void(0)" value="{$data.id}">{$data.name}</a>
             {/volist}
         </dd>
     </dl>
@@ -347,55 +344,39 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
         <dt>
             面积：
         </dt>
-        <dd>
-            <a class="current" href="/index/search/landList?city={$cityInfo[0]['id']}">不限</a>
-            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=20">20平米以下</a>
-            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=20-50">20-50平米</a>
-            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=50-100">50-100平米</a>
-            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=100-200">100-200平米</a>
-            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=200-500">200-500平米</a>
-            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=500-1000">500-1000平米</a>
-            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=6000-10000">1000平米以上</a>
-            
+        <dd id="mianji">
+            <a class="current" href="javascript:void(0)" value="0">不限</a>
+            <a href="javascript:void(0)" value="0-20">20平米以下</a>
+            <a href="javascript:void(0)" value="20-50">20-50平米</a>
+            <a href="javascript:void(0)" value="50-100">50-100平米</a>
+            <a href="javascript:void(0)" value="100-200">100-200平米</a>
+            <a href="javascript:void(0)" value="200-500">200-500平米</a>
+            <a href="javascript:void(0)" value="500-1000">500-1000平米</a>
+            <a href="javascript:void(0)" value="1000">1000平米以上</a>
         </dd>
     </dl>
     <dl>
         <dt>
             楼层：
         </dt>
-        <dd>
-            <a class="current" href="/index/search/landList?city={$cityInfo[0]['id']}">不限</a>
-            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=0-100">一楼商铺</a>
-            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=100-200">楼上</a>
-            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=200-300">独栋</a>
-            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=300-500">独院</a>
-               
+        <dd id="floor">
+            <a class="current" href="javascript:void(0)" value="0">不限</a>
+            <a href="javascript:void(0)" value="1">一楼</a>
+            <a href="javascript:void(0)" value="2">楼上</a>
+            <a href="javascript:void(0)" value="3">独栋</a>
+            <a href="javascript:void(0)" value="4">独院</a>
+
         </dd>
     </dl>
-    <!--<dl>
-        <dt>
-            租金：
-        </dt>
-        <dd>
-            <a class="current" href="/index/search/landList?city={$cityInfo[0]['id']}">不限</a>
-            <a href="/index/search/landList?city={$cityInfo[0]['id']}&plantrent=10">10元/平米•月以下</a>
-            <a href="/index/search/landList?city={$cityInfo[0]['id']}&plantrent=10-15">10-15元/m&sup2;⋅月</a>
-            <a href="/index/search/landList?city={$cityInfo[0]['id']}&plantrent=15-20">15-20元/m&sup2;⋅月</a>
-            <a href="/index/search/landList?city={$cityInfo[0]['id']}&plantrent=20-25">20-25元/m&sup2;⋅月</a>
-            <a href="/index/search/landList?city={$cityInfo[0]['id']}&plantrent=25">25元/m&sup2;⋅月</a>
-            
-        </dd>
-    </dl>-->
-    
     <dl>
         <dt>
             结构：
         </dt>
-        <dd>
-            <a class="current" href="/index/search/landList?city={$cityInfo[0]['id']}">不限</a>
-            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=0-100">钢混结构</a>
-            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=100-200">钢结构</a>
-            <a href="/index/search/landList?city={$cityInfo[0]['id']}&measurearea=100-200">简易结构</a>
+        <dd id="struck">
+            <a class="current" href="javascript:void(0)" value="0">不限</a>
+            <a href="javascript:void(0)" value="1">钢混结构</a>
+            <a href="javascript:void(0)" value="2">钢结构</a>
+            <a href="javascript:void(0)" value="3">简易结构</a>
         </dd>
     </dl>
     <div style="display:;">
@@ -410,6 +391,8 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
             </div>
         </form>
     </div>
+    <script type="text/javascript" src="/static/index/js/jquery.pagination.js"></script>
+    <script type="text/javascript" src="/static/index/js/search_shop.js"></script>
     <script language="javascript">
         function search_title() {
             $('#area').val('');
@@ -427,20 +410,6 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
         </div>
     </div>
 </div>
-<!--  <div class="tab_cf w1003">
-  <div class="tab_l">
-   <h3>我要租写字楼</h3>
-  </div>
-  <div class="tab_r">
-   <input id="c_name" name="c_name" type="text" class="t_i1" value="" placeholder="请输入你的称呼" />&nbsp;&nbsp;
-   <input id="tel" name="tel" type="text" class="t_i2" value="" placeholder="请输入你的手机号码" />&nbsp;&nbsp;
-   <span class="shoux">首选镇区:</span>
-   <select name="area" id="area1"> <option value="0" selected="selected">请选择区域</option> <option value="lg">龙岗区</option><option value="ps">坪山区</option><option value="lh">龙华区</option><option value="baoanq">宝安区</option><option value="guangmq">光明区</option><option value="yantianq">盐田区</option><option value="dapengq">大鹏新区</option></select>&nbsp;&nbsp;
-   <span class="shoux">首选面积:</span>
-   <select name="measurearea" id="measurearea1"> <option value="0" selected="selected">请选择面积</option> <option value="1">500平米以下</option> <option value="2">500-800平米</option> <option value="3">800-1300平米</option> <option value="4">1300-2000平米</option> <option value="5">2000-3000平米</option> <option value="6">3000-5000平米</option> <option value="7">5000-10000平米</option> <option value="8">1万及一万㎡以上</option> </select>
-   <input id="submitdatebutton" type="button" class="tab_but" value="" onclick="submitdata();" />
-  </div>
-  <div class="cl"></div>  -->
 </div>
 <script type="text/javascript">
     $("#submitdatebutton").click(function () {
@@ -491,60 +460,13 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
     <div class="list-content" id="list-content">
         <!-- 写字楼出售列表排序 -->
         <div class="list-sort">
-            <span class="tit">为您找到以下<em style="float:none; font-weight:bold; font-size:15px;">深圳</em>土地信息</span>
-            <!-- 排序状态高亮显示  class="light" -->
-            <!--            <div class="sort-cond">
-                       <span>排序：</span>
+            <span class="tit">为您找到以下<em style="float:none; font-weight:bold; font-size:15px;">{$cityInfo[0]['name']}</em>商铺信息</span>
 
-                                           <a href="https://sz.xzl.anjuke.com/zu/#filtersort" title="综合排序" class="light" rel="nofollow">默认                                            </a>
-                                           <a href="https://sz.xzl.anjuke.com/zu/px4-pv2/#filtersort" title="从大到小" rel="nofollow">面积                                                    <i class="icon icon-arrdown"></i>
-                     </a>
-                                           <a href="https://sz.xzl.anjuke.com/zu/px2-pv1/#filtersort" title="月租金从低到高" rel="nofollow">月租金                                                    <i class="icon icon-arrup"></i>
-                     </a>
-                                           <a href="https://sz.xzl.anjuke.com/zu/px3-pv1/#filtersort" title="日租金从低到高" rel="nofollow">日租金                                                    <i class="icon icon-arrup"></i>
-                     </a>
-                                           <a href="https://sz.xzl.anjuke.com/zu/px1-pv2/#filtersort" title="按最新发布排序" rel="nofollow">最新                                                    <i class="icon icon-arrdown"></i>
-                     </a>
-                   </div>-->
         </div>
-        {volist name="list" id="data"}
+        <div id="list">
 
-        <a href="/index/search/offbuilddetail?id={$data.id}" target="_blank">
-            <div class="list-item" link="/index/search/offbuilddetail?id={$data.id}">
-                <img src="{$data.imgs}" alt="{$data.title}" class="item-img"
-                     width="150" height="115"/>
-                <dl class="item-info">
-                    <dt class="item-title" title="{$data.title}">
-                        {$data.title}
-                    </dt>
-                    <dd>
-                        <span>{$data.buildingname}</span>
-                        <i class="line">|</i>
-                        <span>{$data.buildingname}</span>
-                    </dd>
-                    <dd class="measurearea">
-                        <span> {$data.measurearea}</span>
-                    </dd>
-                    <dd class="address">
-                        <span>{$data.address}</span>
-                    </dd>
-                </dl>
-                <div class="item-price">
-                    <div class="price-a">
-                        <em>{$data.managementfee}</em>元/m&sup2;•月
-                    </div>
-                    <span class="price-b">{$data.plantrent}</span>
-                </div>
-            </div>
-        </a>
-
-        {/volist}
-
+        </div>
         <div id="page">
-            {if !empty($page)}
-            {$page|raw}
-            {/if}
-        </div>
     </div>
     <div class="leftList">
         <div class="hotList" style="margin-top:41px;">

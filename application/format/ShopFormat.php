@@ -41,6 +41,8 @@ class ShopFormat
             $rtn[] = [
                 'id'=>$row['id'],
                 'type'=>$row['type'],
+                'title' => $row['title'],
+                'imgs' => $row['imgs'] ? $row['imgs'][0] : '',
                 'shop_nature'=>$row['shop_nature'],
                 'price'=>$row['price'].'元',
                 'manage_status'=>$row['manage_status'],
@@ -50,6 +52,7 @@ class ShopFormat
                 'pay_type'=>$row['pay_type'],
                 'address'=>$row['address'],
                 'measurearea'=>$row['measurearea'],
+                'buildingname'=>$row['buildingname'],
                 'releasetime'=>$row['releasetime'],
                 'name'=>$row['name'],
                 'tel'=>$row['tel'],

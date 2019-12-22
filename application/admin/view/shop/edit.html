@@ -99,6 +99,36 @@
                     <input type="text" name="floor" autocomplete="off" placeholder="请输入楼层" class="layui-input" value="{$data.floor}">
                 </div>
             </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">楼盘名称</label>
+                <div style="width:auto" class="layui-input-inline">
+                    <input type="text" name="buildingname" autocomplete="off" placeholder="" class="layui-input"  value="{$data.buildingname}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">楼层类型</label>
+                <div class="layui-input-block" style="width:15%">
+                    <select name="floor_type" lay-verify="required">
+                        <option value="0">未知</option>
+                        <option value="1" {if $data.floor_type==1}selected="selected"{/if}>一楼</option>
+                        <option value="2" {if $data.floor_type==2}selected="selected"{/if}>楼上</option>
+                        <option value="3" {if $data.floor_type==3}selected="selected"{/if}>独栋</option>
+                        <option value="4" {if $data.floor_type==4}selected="selected"{/if}>独院</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">结构</label>
+                <div class="layui-input-block" style="width:15%">
+                    <select name="floor_type" lay-verify="required">
+                        <option value="0" >未知</option>
+                        <option value="1"   {if $data.floor_type==1}selected="selected"{/if}>钢混结构</option>
+                        <option value="2" {if $data.floor_type==2}selected="selected"{/if}>钢结构</option>
+                        <option value="3" {if $data.floor_type==3}selected="selected"{/if}>简易结构</option>
+                    </select>
+                </div>
+            </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">规格</label>
                 <div style="width:auto" class="layui-input-inline">

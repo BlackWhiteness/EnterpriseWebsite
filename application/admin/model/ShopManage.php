@@ -63,6 +63,16 @@ class ShopManage extends Model
             }
         }
 
+        $struck = request()->param('struck');
+        if (!empty($struck)) {
+            $query = $query->where('struck', '=', $struck);
+        }
+        $floorType = request()->param('floor_type');
+        if (!empty($floorType)) {
+            $query = $query->where('floor_type', '=', $floorType);
+        }
+
+
         $title = request()->param('title');
         if (!empty($title)) {
             $query = $query->where('title', 'like', '%' . $title . '%');
@@ -78,7 +88,7 @@ class ShopManage extends Model
      * @return \think\db\Query|\think\Paginator
      * @throws \think\exception\DbException
      */
-    public function getOfficeBuild()
+    public function getShopBuild()
     {
         $query = $this->filterCommon();
         $query = $query->paginate(20);

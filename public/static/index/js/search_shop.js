@@ -1,6 +1,8 @@
 var search_title = false;
 var search_title_all = false;
-var area = '', city = '', measurearea = '', rent = '', mianji = '', title = '';
+var area = '', city = '', mianji = '', title = '';
+var floor = '';
+var struck = '';
 
 function initOnclickTitle() {
     search_title = false;
@@ -26,18 +28,25 @@ $(".screen_area a").click(function () {
     $(".screen_area a").eq(position).attr("class", 'current');
     if (position != 0) {
         area = $(".screen_area a").eq(position).attr('value');
-    }else{
-        area='';
+    } else {
+        area = '';
     }
 
     action();
 });
 
-$("#rent a").click(function () {
-    var position = $("#rent a").index(this);
-    $("#rent a").attr("class", "");
-    $("#rent a").eq(position).attr("class", 'current');
-    rent = $("#floor a").eq(position).attr('value');
+$("#floor a").click(function () {
+    var position = $("#floor a").index(this);
+    $("#floor a").attr("class", "");
+    $("#floor a").eq(position).attr("class", 'current');
+    floor = $("#floor a").eq(position).attr('value');
+    action();
+});
+$("#struck a").click(function () {
+    var position = $("#struck a").index(this);
+    $("#struck a").attr("class", "");
+    $("#struck a").eq(position).attr("class", 'current');
+    struck = $("#struck a").eq(position).attr('value');
     action();
 });
 
@@ -74,13 +83,19 @@ function action(current_page = 1) {
     if ((search_title_all || search_title) && title != '') {
         data.title = title;
     }
+    if(floor!=''){
+        data.floor = floor;
+    }
+    if(struck!=''){
+        data.struck = struck;
+    }
     data.page = current_page;
     $.ajax({
         type: "POST",
-        url: "/search_of",
+        url: "/search_shop",
         data: data,
         success: function (result) {
-            $(".list-content").empty();
+            $("#list").empty();
             resultFilter(result);
             pageinit(result.page.total, result.page.current_page, result.page.last_page)
         },
@@ -92,7 +107,6 @@ function action(current_page = 1) {
 
 function pageinit(total, current, last_page) {
     $('#page').pagination({
-        pageCount: total,
         current: current,
         pageCount: last_page,
         showData: 20,
@@ -106,15 +120,15 @@ function pageinit(total, current, last_page) {
 
 //渲染html
 function resultFilter(result) {
-    var top = "";
-    top += "<div class='list-sort'>";
-    top += "<span class='tit'>" + "为您找到以下";
-    top += "<em style=" + "float:none; font-weight:bold; font-size:15px;" + ">" + "深圳</em>写字楼出租</span>";
-    $(".list-content").append(top);
+    // var top = "";
+    // top += "<div class='list-sort'>";
+    // top += "<span class='tit'>" + "为您找到以下";
+    // top += "<em style=" + "float:none; font-weight:bold; font-size:15px;" + ">" + "深圳</em>写字楼出租</span>";
+    // $(".list-content").append(top);
     $.each(result.data, function (index, row) {
         var html = '';
-        html += "<a href=/index/search/offbuilddetail?id=" + row.id + " target='_blank'>";
-        html += "<div class='list-item' link=" + "/index/search/offbuilddetail?id=" + row.id + "> ";
+        html += "<a href=/index/search/shopdetail?id=" + row.id + " target='_blank'>";
+        html += "<div class='list-item' link=" + "/index/search/shopdetail?id=" + row.id + "> ";
         html += "<img src=" + row.imgs + " alt=" + row.title + " class=\"item-img\" width=\"150\" height=\"115\"/> ";
         html += "<dl class=\"item-info\">";
 
@@ -125,10 +139,10 @@ function resultFilter(result) {
         html += "<dd class='measurearea'><span>" + row.measurearea + "</span></dd>";
         html += "<dd class='address'><span>" + row.address + "</span></dd></dl>"
         html += "<div class='item-price'><div class='price-a'>";
-        html += "<em>" + row.managementfee + "</em>元/m&sup2;•月</div>";
-        html += "<span class='price-b'>" + row.plantrent + "</span></div></div></a>";
+        html += "<em>" + row.price + "</em>元/m&sup2;•月</div>";
+        html += "<span class='price-b'>" + row.price + "</span></div></div></a>";
 
-        $(".list-content").append(html);
+        $("#list").append(html);
     });
 }
 
