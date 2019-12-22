@@ -425,7 +425,7 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
     <div class="clear"></div>
     <div class="search_area-foot w998" style="height:45px;">
         <div class="search_area-screen">
-            本次搜索条件:
+
         </div>
     </div>
 </div>
@@ -480,41 +480,12 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
     <div class="list-content" id="list-content">
         <!-- 写字楼出售列表排序 -->
         <div class="list-sort">
-            <span class="tit">为您找到以下<em style="float:none; font-weight:bold; font-size:15px;">{$cityInfo[0]['name']}</em>土地信息</span>
+            <span class="tit">为您找到以下<em
+                    style="float:none; font-weight:bold; font-size:15px;">{$cityInfo[0]['name']}</em>土地信息</span>
         </div>
-        {volist name="list" id="data"}
+        <div id="list">
 
-        <a href="/index/search/offbuilddetail?id={$data.id}" target="_blank">
-            <div class="list-item" link="/index/search/offbuilddetail?id={$data.id}">
-                <img src="{$data.imgs}" alt="{$data.title}" class="item-img"
-                     width="150" height="115"/>
-                <dl class="item-info">
-                    <dt class="item-title" title="{$data.title}">
-                        {$data.title}
-                    </dt>
-                    <dd>
-                        <span>{$data.buildingname}</span>
-                        <i class="line">|</i>
-                        <span>{$data.buildingname}</span>
-                    </dd>
-                    <dd class="measurearea">
-                        <span> {$data.measurearea}</span>
-                    </dd>
-                    <dd class="address">
-                        <span>{$data.address}</span>
-                    </dd>
-                </dl>
-                <div class="item-price">
-                    <div class="price-a">
-                        <em>{$data.managementfee}</em>元/m&sup2;•月
-                    </div>
-                    <span class="price-b">{$data.plantrent}</span>
-                </div>
-            </div>
-        </a>
-
-        {/volist}
-
+        </div>
         <div id="page">
 
         </div>

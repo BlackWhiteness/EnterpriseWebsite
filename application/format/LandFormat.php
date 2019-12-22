@@ -46,7 +46,7 @@ class LandFormat
                 'region' => $row['region'],
                 'type' => $row['type'] == 1 ? '出租' : '出售',
 //                'detail' => $row['detail'],
-//                'address' => $row['address'],
+                'address' => $row['address'],
                 'measurearea' => $row['measurearea'] . 'm²',
                 'releasetime' => $row['releasetime'],
                 'price' => $row['price'] . '元',

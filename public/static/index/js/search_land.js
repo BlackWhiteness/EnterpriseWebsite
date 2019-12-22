@@ -103,7 +103,7 @@ function action(current_page = 1) {
         url: "/search_land",
         data: data,
         success: function (result) {
-            $(".list-content").empty();
+            $("#list").empty();
             resultFilter(result);
             pageinit(result.page.total, result.page.current_page, result.page.last_page)
         },
@@ -129,11 +129,11 @@ function pageinit(total, current, last_page) {
 
 //渲染html
 function resultFilter(result) {
-    var top = "";
-    top += "<div class='list-sort'>";
-    top += "<span class='tit'>" + "为您找到以下";
-    top += "<em style=" + "float:none; font-weight:bold; font-size:15px;" + ">" + "深圳</em>写字楼出租</span>";
-    $(".list-content").append(top);
+    // var top = "";
+    // top += "<div class='list-sort'>";
+    // top += "<span class='tit'>" + "为您找到以下";
+    // top += "<em style=" + "float:none; font-weight:bold; font-size:15px;" + ">" + "深圳</em>写字楼出租</span>";
+    // $(".list-content").append(top);
     $.each(result.data, function (index, row) {
         var html = '';
         html += "<a href=/index/search/landdetail?id=" + row.id + " target='_blank'>";
@@ -148,10 +148,10 @@ function resultFilter(result) {
         html += "<dd class='measurearea'><span>" + row.measurearea + "</span></dd>";
         html += "<dd class='address'><span>" + row.address + "</span></dd></dl>"
         html += "<div class='item-price'><div class='price-a'>";
-        html += "<em>" + row.managementfee + "</em>元/m&sup2;•月</div>";
+        html += "<em>" + row.price + "</em>元/m&sup2;•月</div>";
         html += "<span class='price-b'>" + row.price + "</span></div></div></a>";
 
-        $(".list-content").append(html);
+        $("#list").append(html);
     });
 }
 
