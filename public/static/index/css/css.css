@@ -1513,7 +1513,7 @@ table td em {
 }
 
 .list_one_text strong a {
-    color: #d00;
+    color: #009be5;
     font-size: 14px;
 }
 
@@ -1577,7 +1577,7 @@ table td em {
     width: 92px;
     height: 28px;
     color: white;
-    background: #2D358F;
+    background: #009be5;
     font-size: 13px;
     line-height: 28px;
     text-align: center;
@@ -1586,7 +1586,7 @@ table td em {
 }
 
 .list_one_prm .cf_ckxq:hover {
-    background: #017227;
+    background: #2B3D95;
     color: #F60;
 }
 
