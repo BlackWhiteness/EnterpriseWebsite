@@ -981,7 +981,265 @@
                     </div>
 
                         <div style="clear:both"></div>
-                        <div><img src="/static/index/img/bannergao.jpg" width="980" height="159" alt=""/></div>
+                        
+                    </div>
+                    <div><img src="/static/index/img/bannergao.jpg" width="980" height="159" alt=""/></div>
+                    <div id="zuixin">
+                    <div class="part_title">
+                        <strong>最新厂房</strong>
+                    </div>
+                    <script type="text/javascript">
+                        function workurl(url, id) {
+                            document.cookie = 'city=' + id + ';path=/;';
+                            location.href = url;
+                        }
+                    </script>
+
+                    <div class="zuixin_cont">
+                        <!--厂房出租-->
+                        <div class="zx_one">
+                            <div class="zx_one_title">
+                                <a class="more" href="javascript:"
+                                   onclick="workurl('/index/search/workshop?category=1',{$cityInfo['id']})"
+                                   target="_blank">更多&gt;&gt;</a>
+                                <a href="javascript:"
+                                   onclick="workurl('/index/search/workshop?category=1',{$rentWs['city']['id']})"
+                                   target="_blank">厂房出租</a>
+                            </div>
+                            <div class="zx_one_cont">
+                                <div class="zx_one_top">
+                                    <div class="zx_one_top_img">
+                                        <a href="/index/search/workshopdetail?id={$rentWs[0]['id']}"
+                                           target="_blank"><img src="{$rentWs[0]['imgs'][0]}" width="130" height="103"/></a>
+                                        <span class="imgmid"></span>
+                                    </div>
+                                    <div class="zx_one_top_text">
+                                        <strong>
+                                            <a href="/index/search/workshopdetail?id={$rentWs[0]['id']}"
+                                               target="_blank"> {$rentWs[0]['title']}</a></strong>
+                                        <span> {$rentWs[0]['detail']|strip_tags|mb_substr=0,50}...</span>
+                                    </div>
+                                </div>
+                                <div class="zx_one_list">
+                                    <ul>
+                                        {volist name="rentWs" id="v" offset="1" length="4" }
+                                        <li>
+                                            <a href="javascript:void(0)"
+                                               onclick="workurl('/index/search/workshop?category=1',{$data['city']['id']})"
+                                               target="_blank">[{$cityInfo['name']}厂房]</a>
+                                            <a href="/index/search/workshopdetail?id={$v.id}"
+                                               target="_blank">{$v.title}</a>
+                                        </li>
+                                        {/volist}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!--厂房出售-->
+                        <div class="zx_one">
+                            <div class="zx_one_title">
+                                <a class="more" href="javascript:"
+                                   onclick="workurl('/index/search/workshop?category=2',{$cityInfo['id']})"
+                                   target="_blank">更多&gt;&gt;</a>
+                                <a href="javascript:"
+                                   onclick="workurl('/index/search/workshop?category=2',{$rentWs['city']['id']})"
+                                   target="_blank">厂房出售</a>
+                            </div>
+                            <div class="zx_one_cont">
+                                <div class="zx_one_top">
+                                    <div class="zx_one_top_img">
+                                        <a href="/index/search/workshopdetail?id={$saleWs[0]['id']}"
+                                           target="_blank"><img src="{$saleWs[0]['imgs'][0]}" width="130" height="103"/></a>
+                                        <span class="imgmid"></span>
+                                    </div>
+                                    <div class="zx_one_top_text">
+                                        <strong>
+                                            <a href="/index/search/workshopdetail?id={$saleWs[0]['id']}"
+                                               target="_blank"> {$saleWs[0]['title']}</a></strong>
+                                        <span> {$saleWs[0]['detail']|strip_tags|mb_substr=0,50}...</span>
+                                    </div>
+                                </div>
+                                <div class="zx_one_list">
+                                    <ul>
+                                        {volist name="saleWs" id="v" offset="1" length="4" }
+                                        <li>
+                                            <a href="javascript:void(0)"
+                                               onclick="workurl('/index/search/workshop?category=2',{$data['city']['id']})"
+                                               target="_blank">[{$cityInfo['name']}厂房]</a>
+                                            <a href="/index/search/workshopdetail?id={$v.id}"
+                                               target="_blank">{$v.title}</a>
+                                        </li>
+                                        {/volist}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--仓库出租-->
+                        <div class="zx_one">
+                            <div class="zx_one_title">
+                                <a class="more" href="javascript:"
+                                   onclick="workurl('/index/search/workshop?category=3',{$cityInfo['id']})"
+                                   target="_blank">更多&gt;&gt;</a>
+                                <a href="javascript:"
+                                   onclick="workurl('/index/search/workshop?category=3',{$whWs['city']['id']})"
+                                   target="_blank">仓库出租</a>
+                            </div>
+                            <div class="zx_one_cont">
+                                <div class="zx_one_top">
+                                    <div class="zx_one_top_img">
+                                        <a href="/index/search/workshopdetail?id={$saleWs[0]['id']}"
+                                           target="_blank"><img src="{$whWs[0]['imgs'][0]}" width="130"
+                                                                height="103"/></a>
+                                        <span class="imgmid"></span>
+                                    </div>
+                                    <div class="zx_one_top_text">
+                                        <strong>
+                                            <a href="/index/search/workshopdetail?id={$whWs[0]['id']}"
+                                               target="_blank"> {$whWs[0]['title']}</a></strong>
+                                        <span> {$whWs[0]['detail']|strip_tags|mb_substr=0,50}...</span>
+                                    </div>
+                                </div>
+                                <div class="zx_one_list">
+                                    <ul>
+                                        {volist name="whWs" id="v" offset="1" length="4" }
+                                        <li>
+                                            <a href="javascript:void(0)"
+                                               onclick="workurl('/index/search/workshop?category=3',{$data['city']['id']})"
+                                               target="_blank">[{$cityInfo['name']}仓库]</a>
+                                            <a href="/index/search/workshopdetail?id={$v.id}"
+                                               target="_blank">{$v.title}</a>
+                                        </li>
+                                        {/volist}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--土地-->
+                        <div class="zx_one">
+                            <div class="zx_one_title">
+                                <a class="more" href="javascript:"
+                                   onclick="workurl('/index/search/landList',{$cityInfo['id']})"
+                                   target="_blank">更多&gt;&gt;</a>
+                                <a href="javascript:"
+                                   onclick="workurl('/index/search/landList',{$landList['city']['id']})"
+                                   target="_blank">土地</a>
+                            </div>
+                            <div class="zx_one_cont">
+                                <div class="zx_one_top">
+                                    <div class="zx_one_top_img">
+                                        <a href="/index/search/landdetail?id={$saleWs[0]['id']}"
+                                           target="_blank"><img src="{$landList[0]['imgs'][0]}" width="130"
+                                                                height="103"/></a>
+                                        <span class="imgmid"></span>
+                                    </div>
+                                    <div class="zx_one_top_text">
+                                        <strong>
+                                            <a href="/index/search/landdetail?id={$landList[0]['id']}"
+                                               target="_blank"> {$landList[0]['title']}</a></strong>
+                                        <span> {$landList[0]['detail']|strip_tags|mb_substr=0,50}...</span>
+                                    </div>
+                                </div>
+                                <div class="zx_one_list">
+                                    <ul>
+                                        {volist name="landList" id="v" offset="1" length="4" }
+                                        <li>
+                                            <a href="javascript:void(0)"
+                                               onclick="workurl('/index/search/landList',{$data['city']['id']})"
+                                               target="_blank">[{$cityInfo['name']}土地]</a>
+                                            <a href="/index/search/landdetail?id={$v.id}"
+                                               target="_blank">{$v.title}</a>
+                                        </li>
+                                        {/volist}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--写字楼-->
+                        <div class="zx_one">
+                            <div class="zx_one_title">
+                                <a class="more" href="javascript:"
+                                   onclick="workurl('/index/search/officebuilding',{$cityInfo['id']})"
+                                   target="_blank">更多&gt;&gt;</a>
+                                <a href="javascript:"
+                                   onclick="workurl('/index/search/officebuilding',{$obList['city']['id']})"
+                                   target="_blank">写字楼</a>
+                            </div>
+                            <div class="zx_one_cont">
+                                <div class="zx_one_top">
+                                    <div class="zx_one_top_img">
+                                        <a href="/index/search/offbuilddetail?id={$obList[0]['id']}"
+                                           target="_blank"><img src="{$obList[0]['imgs'][0]}" width="130" height="103"/></a>
+                                        <span class="imgmid"></span>
+                                    </div>
+                                    <div class="zx_one_top_text">
+                                        <strong>
+                                            <a href="/index/search/offbuilddetail?id={$obList[0]['id']}"
+                                               target="_blank"> {$obList[0]['title']}</a></strong>
+                                        <span> {$obList[0]['detail']|strip_tags|mb_substr=0,50}...</span>
+                                    </div>
+                                </div>
+                                <div class="zx_one_list">
+                                    <ul>
+                                        {volist name="obList" id="v" offset="1" length="4" }
+                                        <li>
+                                            <a href="javascript:void(0)"
+                                               onclick="workurl('index/search/officebuilding',{$data['city']['id']})"
+                                               target="_blank">[{$cityInfo['name']}写字楼]</a>
+                                            <a href="/index/search/offbuilddetail?id={$v.id}"
+                                               target="_blank">{$v.title}</a>
+                                        </li>
+                                        {/volist}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--商铺-->
+                    <div class="zx_one">
+                        <div class="zx_one_title">
+                            <a class="more" href="javascript:"
+                               onclick="workurl('/index/search/shopList',{$cityInfo['id']})"
+                               target="_blank">更多&gt;&gt;</a>
+                            <a href="javascript:"
+                               onclick="workurl('/index/search/shopList',{$shop['city']['id']})"
+                               target="_blank">商铺</a>
+                        </div>
+                        <div class="zx_one_cont">
+                            <div class="zx_one_top">
+                                <div class="zx_one_top_img">
+                                    <a href="/index/search/shopdetail?id={$obList[0]['id']}"
+                                       target="_blank"><img src="{$shop[0]['imgs'][0]}" width="130"
+                                                            height="103"/></a>
+                                    <span class="imgmid"></span>
+                                </div>
+                                <div class="zx_one_top_text">
+                                    <strong>
+                                        <a href="/index/search/shopdetail?id={$shop[0]['id']}"
+                                           target="_blank"> {$shop[0]['title']}</a></strong>
+                                    <span> {$shop[0]['detail']|strip_tags|mb_substr=0,50}...</span>
+                                </div>
+                            </div>
+                            <div class="zx_one_list">
+                                <ul>
+                                    {volist name="shop" id="v" offset="1" length="4" }
+                                    <li>
+                                        <a href="javascript:void(0)"
+                                           onclick="workurl('index/search/shopList',{$data['city']['id']})"
+                                           target="_blank">[{$cityInfo['name']}商铺]</a>
+                                        <a href="/index/search/shopdetail?id={$v.id}"
+                                           target="_blank">{$v.title}</a>
+                                    </li>
+                                    {/volist}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                        <div style="clear:both"></div>
+                        
                     </div>
                 </div>
 
