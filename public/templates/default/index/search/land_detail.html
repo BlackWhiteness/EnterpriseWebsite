@@ -189,11 +189,11 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font> <
             document.getElementById(id).style.display = _disply;
         }
 		function xiala1(){
-            document.getElementById("ywhz").style.background="url(/tpl/images/zs_topnavlibg2.jpg) no-repeat center";
+            document.getElementById("ywhz").style.background="url(http://www.zhaoshang800.com/tpl/images/zs_topnavlibg2.jpg) no-repeat center";
             document.getElementById("jtxl").style.display="block";
         }
         function xiala2(){
-            document.getElementById("ywhz").style.background="url(/tpl/images/zs_topnavlibg1.jpg) no-repeat center";
+            document.getElementById("ywhz").style.background="url(http://www.zhaoshang800.com/tpl/images/zs_topnavlibg1.jpg) no-repeat center";
             document.getElementById("jtxl").style.display="none";
         }
 		function xiala3(id,isShow) {
@@ -206,12 +206,137 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font> <
 
 <div id=header>
 <script type="text/javascript" src="/static/index/js/jquery-1.4.2.min.js"></script>
-<
+<script type="text/javascript">
+(function(a){a.fn.hoverClass=function(b){var a=this;a.each(function(c){a.eq(c).hover(function(){$(this).addClass(b)},function(){$(this).removeClass(b)})});return a};})(jQuery);
+
+$(function(){
+
+	var site_url = window.location.href.toLowerCase();
+	switch (true) {
+		case site_url == 'http://www.886cf.com' :
+			$(".nav li").attr("class","");
+			$(".nav li").eq(0).attr("class","current");
+			break;
+		case site_url == 'http://www.886cf.com/' :
+			$(".nav li").attr("class","");
+			$(".nav li").eq(0).attr("class","current");
+			break;
+		case site_url == 'http://www.886cf.cn' :
+			$(".nav li").attr("class","");
+			$(".nav li").eq(0).attr("class","current");
+			break;
+		case site_url == 'http://www.886cf.cn/' :
+			$(".nav li").attr("class","");
+			$(".nav li").eq(0).attr("class","current");
+			break;
+		case site_url.indexOf("index.php") > 0 :
+			$(".nav li").attr("class","");
+			$(".nav li").eq(0).attr("class","current");
+			break;
+		case site_url.indexOf("xiezilou/") > 0 ://判断当前频道属于哪个根目录模块就设置频道标签高亮
+			$(".nav li").attr("class","");
+			$(".nav li").eq(3).attr("class","current"); //设置当前频道标签高亮
+			break;
+		case site_url.indexOf("xzl.886cf") > 0 ://判断当前频道属于哪个根目录模块就设置频道标签高亮
+			$(".nav li").attr("class","");
+			$(".nav li").eq(3).attr("class","current"); //设置当前频道标签高亮
+			break;
+		case site_url.indexOf("search.php") > 0 ://判断当前频道属于哪个根目录模块就设置频道标签高亮
+			$(".nav li").attr("class","");
+			$(".nav li").eq(1).attr("class","current"); //设置当前频道标签高亮
+			break;
+
+        case site_url.indexOf("publish.php") > 0 :
+			$(".nav li").attr("class","");
+			$(".nav li").eq(4).attr("class","current");
+			break;
+		case site_url.indexOf("publish.php?id=2") > 0 :
+			$(".nav li").attr("class","");
+			$(".nav li").eq(5).attr("class","current");
+			break;
+		/*case site_url.indexOf("dg_xgz") > 0 :
+			$(".nav li").attr("class","");
+			$(".nav li").eq(6).attr("class","current");
+			break;
+		case site_url.indexOf("area=dg_hjz") > 0 :
+			$(".nav li").attr("class","");
+			$(".nav li").eq(7).attr("class","current");
+			break;
+		case site_url.indexOf("area=dg_lbz") > 0 :
+			$(".nav li").attr("class","");
+			$(".nav li").eq(8).attr("class","current");
+			break;
+		case site_url.indexOf("area=dg") > 0 :
+			$(".nav li").attr("class","");
+			$(".nav li").eq(1).attr("class","current");
+			break;*/
+/*		default :
+			$(".nav li").attr("class","");
+			$(".nav li").eq(1).attr("class","current");*/
+	}
+
+		switch (true) {
+	    case site_url.indexOf("title=%E5%9C%B0%E9%93%81".toLowerCase()) > 0 :
+			$(".othernav li a").eq(1).attr("class","current");
+			break;
+		case site_url.indexOf("title=%E8%A3%85%E4%BF%AE".toLowerCase()) > 0 :
+			$(".othernav li a").eq(2).attr("class","current");
+			break;
+		case site_url.indexOf("title=%E9%AB%98%E6%96%B0".toLowerCase()) > 0 :
+			$(".othernav li a").eq(3).attr("class","current");
+			break;
+		 case site_url.indexOf("floor=1") > 0 :
+			$(".othernav li a").eq(4).attr("class","current");
+			break;
+		case site_url.indexOf("floor=3") > 0 :
+			$(".othernav li a").eq(5).attr("class","current");
+			break;
+		case site_url.indexOf("title=%E4%BD%8E%E4%BB%B7".toLowerCase()) > 0 :
+			$(".othernav li a").eq(6).attr("class","current");
+			break;
+	      }
+
+	$(".nav li").hover(function(){
+		$(".nav li.current").attr("id","shutAhover");
+		//$(".nav li.current").removeClass("current");
+	},function(){
+		if($(this).attr("class") != "current"){
+			$(".nav li.current").attr("class","");
+		}
+		$(".nav li#shutAhover").attr("class","current");
+	});
+
+	//导航
+	$(".nav li").hoverClass("hover");
+});
+
+
+</script>
 
 <!--解决 IE6 背景缓存-->
 <!--[if IE 6]><script type="text/javascript">document.execCommand("BackgroundImageCache", false, true);</script><![endif]-->
 
- {include file="templates/default/index/layout/nav.html" /}
+<div class="navbox w1003">
+
+<div class="nav">
+					<ul>
+						<li class=""> <a href="/" class="menubox"><span>首页</span></a> </li>
+           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>厂房出租</span></a> </li>
+           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>厂房出售</span></a> </li>
+           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>仓库出租</span></a> </li>
+           <li class="current"> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>土地</span></a> </li>
+           <li class=""> <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}" class="menubox"><span>写字楼</span></a> </li>
+           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>园区招商</span></a> </li>
+           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>商铺出租</span></a> </li>
+           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>民宅出租</span></a> </li>
+           <li class=""> <a href="/index/publish/customer" class="menubox" target="_blank"><span>求租求购</span></a> </li>
+           
+
+					</ul>
+				</div>
+
+
+</div>
 
 
 </div>
