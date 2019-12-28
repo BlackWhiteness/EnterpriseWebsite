@@ -1,6 +1,6 @@
 var search_title = false;
 var search_title_all = false;
-var area = '', city = '', measurearea = '', floor = '', structure = '', mianji = '', title = '',category=1;
+var area = '', city = '', measurearea = '', floor = '', structure = '', mianji = '', title = '', category = 1;
 
 function initOnclickTitle() {
     search_title = false;
@@ -9,7 +9,21 @@ function initOnclickTitle() {
 
 $(function () {
     category = getQueryString('category');
+    let urlTitle = getQueryString('title');
+    if (title == '' && urlTitle) {
+        title = urlTitle;
+        $("input[name='title']").val(urlTitle);
+    }
     action(1);
+});
+$(".searanniu").click(function () {
+    let topTitle = $("#top_search").val();
+    if(topTitle){
+        title = topTitle;
+        action();
+    }else{
+        action();
+    }
 });
 
 //处理点击事件
@@ -83,7 +97,7 @@ function action(current_page = 1) {
     if ((search_title_all || search_title) && title != '') {
         data.title = title;
     }
-    data.category=category;
+    data.category = category;
     data.page = current_page;
     $.ajax({
         type: "POST",
@@ -140,9 +154,10 @@ function resultFilter(result) {
     });
 }
 
-function getQueryString(name){
-    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+function getQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
     var r = window.location.search.substr(1).match(reg);
     console.log(r);
-    if(r!=null)return  unescape(r[2]); return null;
+    if (r != null) return decodeURI(r[2]);
+    return null;
 }

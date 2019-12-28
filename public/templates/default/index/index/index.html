@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/static/index/css/css.css"/>
 
     <script src="/static/index/js/share.js"></script>
+    <script type="text/javascript" src="/static/index/js/jquery-1.4.2.min.js"></script>
     <link rel="stylesheet" href="/static/index/css/slide_share.css"/>
 </head>
 <body style="text-align:center;">
@@ -568,31 +569,31 @@
             <div class="FL">
                 <span style=" padding-right:5px;">热门搜索:</span>
                 <a target="_blank"
-                   href="/index/search/workshop?city={$cityInfo[0]['id']}&title=%E5%B8%A6%E8%A3%85%E4%BF%AE%E5%8E%82%E6%88%BF">带装修厂房</a><a
-                    target="_blank" href="/index/search/workshop?city={$cityInfo[0]['id']}&floor=1">一楼厂房</a><a
-                    target="_blank"
-                    href="/index/search/workshop?city={$cityInfo[0]['id']}&title=%E9%AB%98%E6%96%B0%E7%A7%91%E6%8A%80%E5%9B%AD">高新科技园厂房</a>
+                   href="/index/search/workshop?category=1&title=带装修">带装修厂房</a>
+                <a target="_blank" href="/index/search/workshop?category=1&title=一楼">一楼厂房</a>
+                <a target="_blank" href="/index/search/workshop?category=1&title=高新科技园">高新科技园厂房</a>
             </div>
             <div class="FR"></div>
         </div>
         <div class="clear"></div>
         <div class="mr_search FR marginT5">
-            <form method="get" action="/index/search/workshop" class="form" id="search111"
-                  onsubmit="return clickThis(this);">
+            <form method="get" class="form" id="search111" onclick="return false">
                 <div class="select fl" onmouseover="xiala('s_xlmenu',true)" onmouseout="xiala('s_xlmenu',false)">
                     <div class="s_xiala">
                         <input id="ct_input" type="button" class="selectbox" value="找厂房"/>
-                        <input id="ct_act" type="hidden" class="selectbox" value="/searchs.html"/>
+                        <!--                        <input id="ct_act" type="hidden" class="selectbox" value="/searchs.html"/>-->
+                        <input id="sotype" type="hidden" class="selectbox" value="1"/>
                     </div>
                     <div class="s_xialamenu" id="s_xlmenu">
                         <ul>
                             <li><a onclick="SelText(this);return false;">找厂房</a></li>
                             <li><a onclick="SelText(this);return false;">写字楼</a></li>
+                            <li><a onclick="SelText(this);return false;">找土地</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="text fl">
-                    <input name="area" type="hidden" value="sz"/>
+                    <!--                    <input name="area" type="hidden" value="sz"/>-->
                     <input name="title" type="text" value="" placeholder="请输入园区名称或工业区商圈"/>
                 </div>
                 <div class="searbut fr" style="height:32px; overflow:hidden;">
@@ -634,16 +635,12 @@
         document.getElementById("s_xlmenu").style.display = "none";
         var tna = obj.innerHTML;
         var soty = 0;
-        if (tna == "厂房") {
+        if (tna == "找厂房") {
             soty = 1;
         } else if (tna == "写字楼") {
-            soty = 3;
-        } else if (tna == "土地") {
-            soty = 5;
-        } else if (tna == "商铺") {
-            soty = 4;
-        } else if (tna == "产业园区") {
             soty = 2;
+        } else if (tna == "找土地") {
+            soty = 3;
         }
         document.getElementById("sotype").value = soty;
     }
@@ -654,6 +651,30 @@
             _disply = "block";
         document.getElementById(id).style.display = _disply;
     }
+
+    $("#search111 .searanniu").click(function () {
+        let type = parseInt($("#sotype").val());
+        let title = $(" input[ name='title' ] ").val();
+        let origin = window.location.origin;
+        let pathname = '';
+        switch (type) {
+            case 1:
+                pathname = '/index/search/workshop?category=1&';
+                break;
+            case 2:
+                pathname = '/index/search/officebuilding?';
+                break;
+            case 3:
+                pathname = '/index/search/landList?';
+                break;
+            default:
+                return false;
+        }
+        if (title == undefined || title == null) {
+            title = '';
+        }
+        window.open(origin + pathname + "title=" + title);
+    });
 
     function xiala1() {
         document.getElementById("ywhz").style.background = "url(/static/index/img/zs_topnavlibg2.jpg) no-repeat center";
@@ -677,7 +698,6 @@
         <tbody>
         <tr>
             <td>
-                <script type="text/javascript" src="/static/index/js/jquery-1.4.2.min.js"></script>
                 <script type="text/javascript">
                     (function (a) {
                         a.fn.hoverClass = function (b) {
@@ -980,11 +1000,12 @@
                         </div>
                     </div>
 
-                        <div style="clear:both"></div>
-                        
-                    </div>
-                    <div style="margin-bottom:10px;"><img src="/static/index/img/bannergao.jpg" width="980" height="159" alt=""/></div>
-                    <div id="zuixin">
+                    <div style="clear:both"></div>
+
+                </div>
+                <div style="margin-bottom:10px;"><img src="/static/index/img/bannergao.jpg" width="980" height="159"
+                                                      alt=""/></div>
+                <div id="zuixin">
                     <div class="part_title">
                         <strong>地区找房</strong>
                     </div>
@@ -1238,31 +1259,32 @@
                         </div>
                     </div>
 
-                        <div style="clear:both"></div>
-                        
-                    </div>
-                </div>
+                    <div style="clear:both"></div>
 
-                <div id="huobao">
-                    <div class="part_title">
-                        <strong>火爆厂房</strong>
-                    </div>
-                    <div id="huobao_cont">
-                        {volist name="hot" id="data"}
-                        <div class="hb_one">
-                            <div class="hb_one_img">
-                                <a href="/index/search/workshopdetail?id={$data.id}" target="_blank"><img
-                                        src="{$data.imgs}" width="134px" height="114px"/></a>
-                                <span class="imgmid"></span>
-                            </div>
-                            <div class="hb_one_text">
-                                <strong><a href="/index/search/workshopdetail?id={$data.id}" target="_blank">{$data.title}</a></strong>
-                                <span> {$data.detail|strip_tags|mb_substr=0,300}</span>
-                            </div>
-                        </div>
-                        {/volist}
-                    </div>
                 </div>
+            </div>
+
+            <div id="huobao">
+                <div class="part_title">
+                    <strong>火爆厂房</strong>
+                </div>
+                <div id="huobao_cont">
+                    {volist name="hot" id="data"}
+                    <div class="hb_one">
+                        <div class="hb_one_img">
+                            <a href="/index/search/workshopdetail?id={$data.id}" target="_blank"><img
+                                    src="{$data.imgs}" width="134px" height="114px"/></a>
+                            <span class="imgmid"></span>
+                        </div>
+                        <div class="hb_one_text">
+                            <strong><a href="/index/search/workshopdetail?id={$data.id}"
+                                       target="_blank">{$data.title}</a></strong>
+                            <span> {$data.detail|strip_tags|mb_substr=0,300}</span>
+                        </div>
+                    </div>
+                    {/volist}
+                </div>
+            </div>
             </div>
         </td>
     </tr>

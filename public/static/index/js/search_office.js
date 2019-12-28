@@ -11,7 +11,24 @@ function initOnclickTitle() {
 }
 
 $(function () {
+    let urlTitle = getQueryString('title');
+    if (title == '' && urlTitle) {
+        title = urlTitle;
+        $("input[name='title']").val(urlTitle);
+    }
     action(1);
+});
+
+$(".searanniu").click(function () {
+    let topTitle = $("#top_search").val();
+    search_title = true;
+    if(topTitle){
+        title = topTitle;
+        action();
+    }else{
+        title = '';
+        action();
+    }
 });
 
 //处理点击事件
@@ -171,6 +188,6 @@ function getQueryString(name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
     var r = window.location.search.substr(1).match(reg);
     console.log(r);
-    if (r != null) return unescape(r[2]);
+    if (r != null) return decodeURI(r[2]);
     return null;
 }

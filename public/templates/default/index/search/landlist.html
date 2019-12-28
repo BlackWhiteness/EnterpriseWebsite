@@ -156,28 +156,19 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
         <div class="t-r F12">
             <div class="FL">
                 <span style=" padding-right:5px;">热门搜索:</span>
-                <a target="_blank" href="/search.php?area=sz&amp;title=%E5%B8%A6%E8%A3%85%E4%BF%AE%E5%8E%82%E6%88%BF">带装修厂房</a>
-                <a target="_blank" href="/search.php?area=sz&amp;floor=1">一楼厂房</a>
-                <a target="_blank" href="/search.php?area=sz&amp;title=%E9%AB%98%E6%96%B0%E7%A7%91%E6%8A%80%E5%9B%AD">高新科技园厂房</a>
+                <a target="_blank"
+                   href="/index/search/workshop?category=1&title=带装修">带装修厂房</a>
+                <a target="_blank" href="/index/search/workshop?category=1&title=一楼">一楼厂房</a>
+                <a target="_blank" href="/index/search/workshop?category=1&title=高新科技园">高新科技园厂房</a>
             </div>
             <div class="FR"></div>
         </div>
         <div class="clear"></div>
         <div class="mr_search FR marginT5">
-            <form method="get" action="/index/search/landList" class="form" id="search111"
-                  onsubmit="return clickThis(this);">
-                <div class="select fl" onmouseover="xiala('s_xlmenu',true)" onmouseout="xiala('s_xlmenu',false)">
-                    <div class="s_xiala">
-                    </div>
-                    <div class="s_xialamenu" id="s_xlmenu">
-                        <ul>
-                            <li><a onclick="SelText(this);return false;">写字楼</a></li>
-                        </ul>
-                    </div>
-                </div>
+            <form method="get"  class="form" id="search111" onsubmit="return false;">
+
                 <div class="text fl">
-                    <input name="city" type="hidden" value="{$cityInfo[0]['id']}"/>
-                    <input name="title" type="text" value="" placeholder="请输入园区名称或工业区商圈"/>
+                    <input id="top_search" name="title" type="text" placeholder="请输入园区名称或工业区商圈"/>
                 </div>
                 <div class="searbut fr" style="height:32px; overflow:hidden;">
                     <input type="submit" class="searanniu" value="搜索"/>
