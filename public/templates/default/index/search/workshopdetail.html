@@ -1459,13 +1459,13 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
                                 <td>
                                     <div class="box_listpic_box1">
                                         <div class="box_listpic_box2">
-                                            <a href="/index/search/workshopdetail?id={$data.id}"" target="_blank"
-                                            title="{$data.title}"> <img src="{$data.imgs}" width="100" 
+                                            <a href="/index/search/workshopdetail?id={$data.id}" target="_blank"
+                                            title="{:subText($data.title,10)}"> <img src="{$data.imgs}" width="100"
                                                                         border="0" alt="{$data.title}"
                                             "/>   </a></div>
                                         <div class="box_listpic_name">
                                             <a href="/index/search/workshopdetail?id={$data.id}"" target="_blank" >
-                                            {$data.title|mb_substr=0,8}...</a></div>
+                                            {:subText($data.title,10)}</a></div>
                                     </div>
                                 </td>
                                 {/volist}
@@ -1588,7 +1588,7 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
                             </div>
                             <div class="right_p_title">
                                 <a href="/index/search/workshopdetail?id={$data.id}" target="_blank">
-                                    {$data.title|mb_substr=0,10}...</a>
+                                    {:subText($data.title,10)}</a>
                             </div>
                         </div>
                         {/volist}
@@ -1604,7 +1604,7 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
                             </div>
                             <div class="right_p_title">
                                 <a href="/index/search/workshopdetail?id={$data.id}" target="_blank">
-                                    {$data.title|mb_substr=0,10}...</a>
+                                    {:subText($data.title,10)}</a>
                             </div>
                         </div>
                         {/volist}

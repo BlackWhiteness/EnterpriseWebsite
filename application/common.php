@@ -739,16 +739,18 @@ function pf($only, $overWrite = false)
     else
         file_put_contents($path, print_r($only, true));
 }
-function getCityName($city_id, $area = false , $str = '-'){
+
+function getCityName($city_id, $area = false, $str = '-')
+{
     $cityInfo = \think\Db::name('city')->find($city_id);
     $cityName = $cityInfo['name'];
-    if($area)
-    {
-        $areaInfo =  \think\Db::name('area')->find($area);
-        $cityName .= $areaInfo ? $str.$areaInfo['name'] : '';
+    if ($area) {
+        $areaInfo = \think\Db::name('area')->find($area);
+        $cityName .= $areaInfo ? $str . $areaInfo['name'] : '';
     }
     return $cityName;
 }
+
 /**
  * @param $data
  * @return array
@@ -762,3 +764,20 @@ function paginate($data)
         'last_page' => $data->lastPage(),
     ];
 }
+
+/**
+ * 截取字符串
+ * @param $text
+ * @param $length
+ * @return string
+ */
+function subText($text, $length)
+{
+    if (mb_strlen($text, 'utf8') > $length) {
+        return mb_substr($text, 0, $length, 'utf8') . '…';
+    }
+    return $text;
+}
+
+
+
