@@ -1569,43 +1569,50 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
 
     </script>
     <div id="tuijian">
-        <div class="part_title"><strong>推荐厂房</strong></div>
-        <div id="tuijian_cont">
-            <div id="white_bg">
-                <div id="demo">
-                    <div id="indemo">
-                        <div id="demo1">
+    <div class="part_title">
+        <strong>推荐厂房</strong>
+    </div>
+    <div id="tuijian_cont">
+        <div id="white_bg">
+            <div id="demo">
+                <div id="indemo">
+                    <div id="demo1">
+                        {volist name="recommend" id="data"}
 
-
-                            <div class="right_p_one">
-                                <div class="right_p_img"><a
-                                        href="/index/search/workshopdetail?city={$cityInfo[0]['id']}&id=13361"
-                                        target="_blank"><img
-                                        src="/city_sz/upImagescj/20131014/small/201310143264412320.jpg"/></a><span
-                                        class="imgmid"></span></div>
-                                <div class="right_p_title"><a
-                                        href="/index/search/workshopdetail?city={$cityInfo[0]['id']}&id=13361"
-                                        target="_blank">横岗安良600平米豪...</a></div>
+                        <div class="right_p_one">
+                            <div class="right_p_img">
+                                <a href="/index/search/workshopdetail?id={$data.id}" target="_blank"><img
+                                        src="{$data.imgs}"/></a>
+                                <span class="imgmid"></span>
                             </div>
-                            {volist name="recommend" id="data"}
-
-                            <div class="right_p_one">
-                                <div class="right_p_img"><a href="/index/search/workshopdetail?city=id={$data.id}"
-                                                            target="_blank"><img src="{$data.imgs}"/></a><span
-                                        class="imgmid"></span></div>
-                                <div class="right_p_title"><a href="/index/search/workshopdetail?city=id={$data.id}"
-                                                              target=}...</a></div>
+                            <div class="right_p_title">
+                                <a href="/index/search/workshopdetail?id={$data.id}" target="_blank">
+                                    {$data.title|mb_substr=0,10}...</a>
                             </div>
-                            {/volist}
                         </div>
-
+                        {/volist}
                     </div>
-                    <div id="demo2"></div>
-                    <script type="text/javascript" src="/static/index/js/rolljs.js"></script>
                 </div>
+                <div id="demo2">
+                   {volist name="recommend" id="data"}
+                        <div class="right_p_one">
+                            <div class="right_p_img">
+                                <a href="/index/search/workshopdetail?id={$data.id}" target="_blank"><img
+                                        src="{$data.imgs}"/></a>
+                                <span class="imgmid"></span>
+                            </div>
+                            <div class="right_p_title">
+                                <a href="/index/search/workshopdetail?id={$data.id}" target="_blank">
+                                    {$data.title|mb_substr=0,10}...</a>
+                            </div>
+                        </div>
+                        {/volist}
+                </div>
+                <script type="text/javascript" src="/static/index/js/rolljs.js"></script>
             </div>
         </div>
     </div>
+</div>
 
     <div class="clear"></div>
 </div>
