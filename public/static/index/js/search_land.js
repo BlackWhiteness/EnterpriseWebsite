@@ -9,7 +9,23 @@ function initOnclickTitle() {
 }
 
 $(function () {
+    let urlTitle = getQueryString('title');
+    if (title == '' && urlTitle) {
+        title = urlTitle;
+        $("input[name='title']").val(urlTitle);
+    }
     action(1);
+});
+$(".searanniu").click(function () {
+    let topTitle = $("#top_search").val();
+    search_title = true;
+    if(topTitle){
+        title = topTitle;
+        action();
+    }else{
+        title = '';
+        action();
+    }
 });
 
 //处理点击事件
