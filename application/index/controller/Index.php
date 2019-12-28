@@ -49,6 +49,15 @@ class Index extends Homebase
         $cityList = Db::name('city')->where('id', '<>', $city)->select();
         $firstCity = Db::name('city')->order(array('id' => 'ASC'))->page(1, 9)->select();
         $newWorkShop = $newOffice = $newLand = [];
+        foreach ($firstCity as $k => $value) {
+            $sz = Workshop_Model::where(array('city' => $value['id']))
+                ->order(array('releasetime' => 'DESC'))
+                ->page(1, 5)
+                ->select()
+                ->toArray();
+            $newWorkShop[$k]['city'] = $value;
+            $newWorkShop[$k]['workshop'] = $sz;
+        }
         $rentWs = $workshop->getFirstPage($city, 1)->toArray();
         $saleWs = $workshop->getFirstPage($city, 2)->toArray();
         $whWs = $workshop->getFirstPage($city, 3)->toArray();
@@ -92,6 +101,7 @@ class Index extends Homebase
             'landList' => $landList,
             'obList' => $obList,
             'shop' => $shop,
+            'newWorkShop' => $newWorkShop,
             'empty' => '<span class="empty">没有数据</span>'
         ]);
         return $this->fetch();
