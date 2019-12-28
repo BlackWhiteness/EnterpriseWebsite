@@ -40,9 +40,9 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">类型</label>
                 <div style="width:50%" class="layui-input-inline" lay-verify-msg="必选项不能为空" lay-verify="mustradio">
-                    <input type="radio" name="category" autocomplete="off" placeholder="" class="layui-input" value="1">
+                    <input type="radio" name="category" autocomplete="off" placeholder="" class="layui-input" value="1"  {if condition="$data.category eq 1 " } checked {/if}>
                     写字楼出租
-                    <input type="radio" name="category" autocomplete="off" placeholder="" class="layui-input" value="2">
+                    <input type="radio" name="category" autocomplete="off" placeholder="" class="layui-input" value="2" {if condition="$data.category eq 2 " } checked {/if}>
                     写字楼出售
                     <!--<input type="radio" name="category" autocomplete="off" placeholder="" class="layui-input"  value="3">仓库出租-->
                 </div>

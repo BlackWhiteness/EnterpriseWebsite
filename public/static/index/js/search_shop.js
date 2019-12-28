@@ -3,7 +3,7 @@ var search_title_all = false;
 var area = '', city = '', mianji = '', title = '';
 var floor = '';
 var struck = '';
-
+var is_sale = '';
 function initOnclickTitle() {
     search_title = false;
     search_title_all = false;
@@ -81,6 +81,13 @@ $(function () {
         action()
     });
 });
+$("#is_sale a").click(function () {
+    let position = $("#is_sale a").index(this);
+    $("#is_sale a").attr("class", "");
+    $("#is_sale a").eq(position).attr("class", 'current');
+    is_sale = $("#is_sale a").eq(position).attr('value');
+    action();
+});
 
 function action(current_page = 1) {
     var data = {}, city = $("#city_id").attr('value');
@@ -104,6 +111,9 @@ function action(current_page = 1) {
     }
     if(struck!=''){
         data.struck = struck;
+    }
+    if (is_sale != '') {
+        data.is_sale = is_sale;
     }
     data.page = current_page;
     $.ajax({

@@ -71,7 +71,11 @@ class ShopManage extends Model
         if (!empty($floorType)) {
             $query = $query->where('floor_type', '=', $floorType);
         }
+        $isSale = request()->param('is_sale');
 
+        if(!empty($isSale)){
+            $query = $query->where('is_sale', '=' . $isSale);
+        }
 
         $title = request()->param('title');
         if (!empty($title)) {

@@ -4,6 +4,7 @@ var area = '', city = '', measurearea = '', rent = '', mianji = '', title = '';
 var indus_type = '';
 var of_tag = '';
 var floor = '';
+var is_sale = '';
 
 function initOnclickTitle() {
     search_title = false;
@@ -91,11 +92,20 @@ $("#tag a").click(function () {
     of_tag = $("#tag a").eq(position).attr('value');
     action();
 });
+
 $("#floor a").click(function () {
     let position = $("#floor a").index(this);
     $("#floor a").attr("class", "");
     $("#floor a").eq(position).attr("class", 'current');
     floor = $("#floor a").eq(position).attr('value');
+    action();
+});
+
+$("#is_sale a").click(function () {
+    let position = $("#is_sale a").index(this);
+    $("#is_sale a").attr("class", "");
+    $("#is_sale a").eq(position).attr("class", 'current');
+    is_sale = $("#is_sale a").eq(position).attr('value');
     action();
 });
 
@@ -126,6 +136,10 @@ function action(current_page = 1) {
     if (floor != 0) {
         data.floor_type = floor;
     }
+    if (is_sale != '') {
+        data.category = is_sale;
+    }
+
     data.page = current_page;
     $.ajax({
         type: "POST",

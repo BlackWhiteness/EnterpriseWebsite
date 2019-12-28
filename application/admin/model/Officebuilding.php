@@ -91,6 +91,11 @@ class Officebuilding extends Model
                     ->where('measurearea', '<', $range[1]);
             }
         }
+        $category = request()->param('category');
+
+        if(!empty($category)){
+            $query = $query->where('category', '=' ,$category);
+        }
 
         $title = request()->param('title');
         if (!empty($title)) {
