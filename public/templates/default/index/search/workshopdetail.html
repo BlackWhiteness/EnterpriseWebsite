@@ -1087,10 +1087,11 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
     .box_listpic_box1 {
         overflow: hidden;
         height: 100%;
-        width: 160px;
+        width: 100px;
         float: left;
         margin-left: 10px;
         margin-right: 10px;
+		margin-top: 10px;
         display: inline
     }
 
@@ -1459,12 +1460,12 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
                                     <div class="box_listpic_box1">
                                         <div class="box_listpic_box2">
                                             <a href="/index/search/workshopdetail?id={$data.id}"" target="_blank"
-                                            title="{$data.title}"> <img src="{$data.imgs}" width="160" height="110"
+                                            title="{$data.title}"> <img src="{$data.imgs}" width="100" 
                                                                         border="0" alt="{$data.title}"
                                             "/>   </a></div>
                                         <div class="box_listpic_name">
                                             <a href="/index/search/workshopdetail?id={$data.id}"" target="_blank" >
-                                            {$data.title|mb_substr=0,10}...</a></div>
+                                            {$data.title|mb_substr=0,8}...</a></div>
                                     </div>
                                 </td>
                                 {/volist}
