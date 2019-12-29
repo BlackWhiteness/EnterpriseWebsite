@@ -134,10 +134,10 @@ function resultFilter(result) {
         var html = '';
         html += "<div class='list_one'>";
         html += "<div class='list_one_img'>";
-        html += "<a href=/index/search/workshopdetail?id=" + row.id + " target='_blank' title=" + row.title + ">";
+        html += "<a href=/index/search/workshopdetail?id=" + row.id +'&category='+category+ " target='_blank' title=" + row.title + ">";
         html += "<img src=" + row.imgs + " alt=" + row.title + " border='0' width='146' height='130'/></a> ";
         html += "<span class='imgmid'></span></div><div class='list_one_text'> <strong>";
-        html += "<a href=/index/search/workshopdetail?id=" + row.id + " target='_blank'>";
+        html += "<a href=/index/search/workshopdetail?id=" + row.id + +'&category='+category+" target='_blank'>";
         html += row.title + "</a></strong>";
         html += "<div class='cf_jianjie'>" + row.detail + "</div>";
         html += "<div class='text_prm'><span>联系人:<font style='color: #C60;font-weight:bold;'>" + row.name + "</font><img src='/static/index/img/jjr_rz.jpg'/></span>";
@@ -149,7 +149,7 @@ function resultFilter(result) {
             "<p style='font-size:15px; font-weight:600;'>" + row.area_name + "</p>" +
             "<p><span class='f16' style='color:#53160F;'>" + row.plantrent + "</span>元/㎡</p>" +
             "<p>面积:<span class='f16'>" + row.measurearea + "</span>㎡</p>";
-        html += "<a class='cf_ckxq' href=/index/search/workshopdetail?id=" + row.id + " target='_blank'>查看详情</a>" + "</div></div>"
+        html += "<a class='cf_ckxq' href=/index/search/workshopdetail?id=" + row.id +'&category='+category+ " target='_blank'>查看详情</a>" + "</div></div>"
         $(".right_cont").append(html);
     });
 }
