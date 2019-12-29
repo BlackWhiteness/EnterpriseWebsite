@@ -38,9 +38,9 @@ class Search extends Homebase
     }
 
     //会员中心首页
-    public function workshop()
+    public function workshop(Request $request)
     {
-        $city = isset($_COOKIE['city']) ? $_COOKIE['city'] : 8;
+        $city = getCity($request);
         $cityList = Db::name('city')->where('id', '<>', $city)->select();
         $cityInfo = Db::name('city')->where('id', '=', $city)->select();
         $areaInfo = Db::name('area')->where('parentId', 'in', $city)->select();
@@ -50,16 +50,16 @@ class Search extends Homebase
         $recommend = Workshop::name('workshop')
             ->where(["type" => 1])
             ->order(array('releasetime' => 'DESC'))
-            ->page(1,10)->select();
+            ->page(1, 10)->select();
 //        dump($recommend);die;
         $floor1 = Db::name('workshop')
-            ->where(["floor" => 1])
-            ->order(array('releasetime' => 'DESC'))
+            ->where(["floor" => 3,'city'=>$city,'category'=>$category])
+            ->order(['releasetime' => 'DESC'])
             ->paginate(10);
-        $floor2 = Db::name('workshop')->where(["floor" => 2])
+        $floor2 = Db::name('workshop')->where(["floor" => 1,'city'=>$city,'category'=>$category])
             ->order(array('releasetime' => 'DESC'))->paginate(10);
         $floor3 = Db::name('workshop')
-            ->where(["floor" => 3])
+            ->where(["is_decorate" => 1,'city'=>$city,'category'=>$category])
             ->order(array('releasetime' => 'DESC'))
             ->paginate(10);
         $href = HrefManage::order('sort', 'desc')
@@ -67,7 +67,6 @@ class Search extends Homebase
         $ad = AdManage::where('is_enable', '=', 1)
             ->order(['code' => 'asc', 'sort' => 'desc'])
             ->select();
-
         $adList = [];
         foreach ($ad as $row) {
             $detail = [
@@ -95,7 +94,8 @@ class Search extends Homebase
             'href' => $href,
             'ad' => $adList,
             'category' => $category,
-            'tag' => $cityInfo[0]['name'] . $tagName
+            'tag' => $cityInfo[0]['name'] . $tagName,
+            'category_type_name' => $tagName ? mb_substr($tagName, 0, 2, 'utf8') : '厂房',
 
         ]);
 
@@ -112,12 +112,14 @@ class Search extends Homebase
         }
 
         $id = $request->param('id/d', '');
+        $category = request()->param('category');
         $info = Workshop::where(['id' => $id])
             ->with(['belongsToOneCity', 'belongsToOneArea'])
             ->find();
 
         $cityInfo = Db::name('city')
             ->where('id', 'in', $info['city'])->select();
+        $city = $cityInfo[0]['id'];
         $areaInfo = Db::name('area')
             ->where('parentId', 'in', $info['city'])->select();
 
@@ -128,13 +130,14 @@ class Search extends Homebase
             ->order(array('releasetime' => 'DESC'))
             ->paginate(10);
         $floor1 = Db::name('workshop')
-            ->where(["floor" => 1])->order(array('releasetime' => 'DESC'))
+            ->where(["floor" => 3,'city'=>$city,'category'=>$category])
+            ->order(['releasetime' => 'DESC'])
             ->paginate(10);
-        $floor2 = Db::name('workshop')
-            ->where(["floor" => 2])->order(array('releasetime' => 'DESC'))
-            ->paginate(10);
+        $floor2 = Db::name('workshop')->where(["floor" => 1,'city'=>$city,'category'=>$category])
+            ->order(array('releasetime' => 'DESC'))->paginate(10);
         $floor3 = Db::name('workshop')
-            ->where(["floor" => 3])->order(array('releasetime' => 'DESC'))
+            ->where(["is_decorate" => 1,'city'=>$city,'category'=>$category])
+            ->order(array('releasetime' => 'DESC'))
             ->paginate(10);
         $ad = AdManage::where('is_enable', '=', 1)->order(['code' => 'asc', 'sort' => 'desc'])->select();
         $adList = [];
@@ -152,6 +155,7 @@ class Search extends Homebase
                 $adList['bottom_ad'][] = $detail;
             }
         }
+        $tagName = in_array($category, [1, 2, 3]) ? Workshop::CATEGORY_CONFIG[$category] : '';
         $workInstance = WorkShopFormat::getInstance();
         $this->assign([
             'cityList' => $cityList,
@@ -163,6 +167,9 @@ class Search extends Homebase
             'floor2' => $floor2,
             'floor3' => $floor3,
             'ad' => $adList,
+            'category' => $category,
+            'tag' => $cityInfo[0]['name'] . $tagName,
+            'category_type_name' => $tagName ? mb_substr($tagName, 0, 2, 'utf8') : '厂房',
         ]);
         return $this->fetch('workshopdetail');
     }

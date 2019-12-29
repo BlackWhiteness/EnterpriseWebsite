@@ -63,6 +63,13 @@
                 </div>
             </div>
             <div class="layui-form-item">
+                <label class="layui-form-label">装修</label>
+                <div style="width:auto" class="layui-input-inline" lay-verify-msg="必选项不能为空" lay-verify="mustradio">
+                    <input type="radio" name="is_decorate" autocomplete="off" placeholder="" class="layui-input" value="0">无
+                    <input type="radio" name="is_decorate" autocomplete="off" placeholder="" class="layui-input" value="1">有
+                </div>
+            </div>
+            <div class="layui-form-item">
                 <label class="layui-form-label">占地面积</label>
                 <div style="width:auto" class="layui-input-inline">
                     <input type="text" name="numberbuildings" lay-verify="required" autocomplete="off" placeholder=""

@@ -1165,44 +1165,44 @@
                 <div id="main_left">
                     <div class="left_one">
                         <div class="left_one_title">
-                            <a href="/index/search/workshop?city={$cityInfo[0]['id']}&floor=3" target="_blank">{$cityInfo[0]['name']}独院厂房</a>
+                            <a href="/index/search/workshop?city={$cityInfo[0]['id']}&floor=3&category={$category}" target="_blank">{$cityInfo[0]['name']}独院{$category_type_name}</a>
                         </div>
                         <div class="left_one_cont">
                             <ul>
                                 {volist name="floor1" id="data"}
 
-                                <li>[<a href="/index/search/workshop?city={$cityInfo[0]['id']}" target="_blank">{$cityInfo[0]['name']}厂房</a>]
-                                    <a href="/index/search/workshopdetail?id={$data.id}" target="_blank">
-                                        {$data.title}...</a></li>
+                                <li>[<a href="/index/search/workshop?city={$cityInfo[0]['id']}&category={$category}" target="_blank">{$cityInfo[0]['name']}{$category_type_name}</a>]
+                                    <a href="/index/search/workshopdetail?id={$data.id}&city={$cityInfo[0]['id']}&category={$category}" target="_blank">
+                                        {:subText($data.title,13)}</a></li>
                                 {/volist}
                             </ul>
                         </div>
                     </div>
                     <div class="left_one">
                         <div class="left_one_title">
-                            <a href="/index/search/workshop?city={$cityInfo[0]['id']}&floor=1" target="_blank">{$cityInfo[0]['name']}一楼厂房</a>
+                            <a href="/index/search/workshop?city={$cityInfo[0]['id']}&floor=1&category={$category}" target="_blank">{$cityInfo[0]['name']}一楼{$category_type_name}</a>
                         </div>
                         <div class="left_one_cont" id="left_nav_cont">
                             <ul>
                                 {volist name="floor2" id="data"}
-                                <li>[<a href="/index/search/workshop?city={$cityInfo[0]['id']}" target="_blank">{$cityInfo[0]['name']}厂房</a>]
-                                    <a href="//index/search/workshopdetail?id={$data.id}" target="_blank">
-                                        {$data.title}...</a></li>
+                                <li>[<a href="/index/search/workshop?city={$cityInfo[0]['id']}&category={$category}" target="_blank">{$cityInfo[0]['name']}{$category_type_name}</a>]
+                                    <a href="/index/search/workshopdetail?id={$data.id}&city={$cityInfo[0]['id']}&category={$category}" target="_blank">
+                                        {:subText($data.title,13)}</a></li>
                                 {/volist}
                             </ul>
                         </div>
                     </div>
                     <div class="left_one">
                         <div class="left_one_title">
-                            <a href="/index/search/workshop?city={$cityInfo[0]['id']}&title=%E8%A3%85%E4%BF%AE"
-                               target="_blank">{$cityInfo[0]['name']}带装修厂房</a>
+                            <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category={$category}"
+                               target="_blank">{$cityInfo[0]['name']}带装修{$category_type_name}</a>
                         </div>
                         <div class="left_one_cont">
                             <ul>
                                 {volist name="floor3" id="data"}
-                                <li>[<a href="/index/search/workshop?city={$cityInfo[0]['id']}" target="_blank">{$cityInfo[0]['name']}厂房</a>]
-                                    <a href="//index/search/workshopdetail?id={$data.id}" target="_blank">
-                                        {$data.title}...</a></li>
+                                <li>[<a href="/index/search/workshop?city={$cityInfo[0]['id']}&category={$category}" target="_blank">{$cityInfo[0]['name']}{$category_type_name}</a>]
+                                    <a href="/index/search/workshopdetail?id={$data.id}&city={$cityInfo[0]['id']}&category={$category}" target="_blank">
+                                        {:subText($data.title,13)}</a></li>
                                 {/volist}
                             </ul>
                         </div>

@@ -12,6 +12,7 @@
 // +----------------------------------------------------------------------
 // | 全局函数文件
 // +----------------------------------------------------------------------
+use think\Request;
 
 /**
  * 系统缓存缓存管理
@@ -774,10 +775,24 @@ function paginate($data)
 function subText($text, $length)
 {
     if (mb_strlen($text, 'utf8') > $length) {
-        return mb_substr($text, 0, $length, 'utf8') . '…';
+        return mb_substr($text, 0, $length - 1, 'utf8') . '…';
     }
     return $text;
 }
+
+/**
+ * 获取城市id
+ * @param Request $request
+ * @return int|mixed
+ */
+function getCity(Request $request)
+{
+    if (!empty($city = $request->param('city'))) {
+        return $city;
+    }
+    return isset($_COOKIE['city']) ? $_COOKIE['city'] : 8;
+}
+
 
 
 

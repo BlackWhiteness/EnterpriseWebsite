@@ -70,6 +70,16 @@
                 </div>
             </div>
             <div class="layui-form-item">
+                <label class="layui-form-label">装修</label>
+                <div style="width:auto" class="layui-input-inline" lay-verify-msg="必选项不能为空" lay-verify="mustradio">
+                    <input type="radio" name="is_decorate" autocomplete="off" placeholder="" class="layui-input" value="0"
+                           {if condition="$data.is_decorate eq 0 " } checked {/if} >无
+                    <input type="radio" name="is_decorate" autocomplete="off" placeholder="" class="layui-input" value="2"
+                           {if condition="$data.is_decorate eq 1 " } checked {/if} >有
+
+                </div>
+            </div>
+            <div class="layui-form-item">
                 <label class="layui-form-label">占地面积</label>
                 <div style="width:auto" class="layui-input-inline">
                     <input type="text" name="numberbuildings" value="{$data.numberbuildings}" lay-verify="required"
