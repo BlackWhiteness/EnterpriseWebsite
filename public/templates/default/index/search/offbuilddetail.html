@@ -1278,7 +1278,7 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
                                     </tr>
                                     <tr align="left">
 
-                                        <td><font size="2">类型：{if $info.category==1}出租{elseif $info.category==1 /}出售{else /} 未知 {/if}</font></td>
+                                        <td><font size="2">类型：{if $info.category eq 1}出租{elseif $info.category eq 2 /}出售{else /} 未知 {/if}</font></td>
                                         <td><font size="2">总面积：{$info.measurearea}㎡</font></td>
                                     </tr>
                                     <tr align="left">
@@ -1310,7 +1310,7 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
                                     </tr>
                                     <tr align="left">
                                         <td height="29"><font size="2">是否分割：{if
-                                            condition="$info.is_sep eq 0 " } 否 {else if} 是{/if}{$info.is_sep}</font>
+                                            condition="$info.is_sep eq 0 " } 否 {else if} 是{/if}</font>
                                         </td>
                                         <td>
 

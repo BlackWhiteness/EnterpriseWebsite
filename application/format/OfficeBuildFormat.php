@@ -140,6 +140,7 @@ class OfficeBuildFormat
             'other' => $data['other'],
             'city_name' => $city ? $city->name : '',
             'area_name' => $area ? $area->name : '',
+            'category' => $data['category']
         ];
     }
 
