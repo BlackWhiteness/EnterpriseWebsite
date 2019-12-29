@@ -2,6 +2,8 @@
 
 namespace app\format;
 
+use app\admin\model\Area;
+
 /**
  * 写字楼格式化
  * Class OfficeBuildFormat
@@ -79,6 +81,7 @@ class OfficeBuildFormat
         $rtn = [];
 
         foreach ($data as $row) {
+            $area = Area::where('id', '=', $row['area'])->find();
             $rtn[] = [
                 'id' => $row['id'],
                 'region' => $row['region'],
@@ -97,7 +100,10 @@ class OfficeBuildFormat
                 'city' => $row['city'],
                 'area' => $row['area'],
                 'type' => $row['type'],
-                'title' => $row['title']];
+                'title' => $row['title'],
+                'area_name' => $area->name . '区',
+                'detail' => mb_substr(strip_tags($row['detail']), 0, 300)
+            ];
         }
         return $rtn;
     }

@@ -119,7 +119,7 @@ function action(current_page = 1) {
         url: "/search_land",
         data: data,
         success: function (result) {
-            $("#list").empty();
+            $(".right_cont").empty();
             resultFilter(result);
             pageinit(result.page.total, result.page.current_page, result.page.last_page)
         },
@@ -135,7 +135,7 @@ function pageinit(total, current, last_page) {
         current: current,
         pageCount: last_page,
         showData: 20,
-        jump: true,
+        jump: false,
         callback: function (api) {
             action(api.getCurrent());
         }
@@ -145,29 +145,46 @@ function pageinit(total, current, last_page) {
 
 //渲染html
 function resultFilter(result) {
-    // var top = "";
-    // top += "<div class='list-sort'>";
-    // top += "<span class='tit'>" + "为您找到以下";
-    // top += "<em style=" + "float:none; font-weight:bold; font-size:15px;" + ">" + "深圳</em>写字楼出租</span>";
-    // $(".list-content").append(top);
+    // $.each(result.data, function (index, row) {
+    //     var html = '';
+    //     html += "<a href=/index/search/landdetail?id=" + row.id + " target='_blank'>";
+    //     html += "<div class='list-item' link=" + "/index/search/landdetail?id=" + row.id + "> ";
+    //     html += "<img src=" + row.imgs + " alt=" + row.title + " class=\"item-img\" width=\"150\" height=\"115\"/> ";
+    //     html += "<dl class=\"item-info\">";
+    //
+    //     html += "<dt class=\"item-title\" title=" + row.title + ">" + row.title;
+    //     html += "<dd>" + "<span>" + row.title + "</span>";
+    //     html += "<i class='line'>|</i>";
+    //     html += "<span>" + row.title + "</span>" + "</dd>";
+    //     html += "<dd class='measurearea'><span>" + row.measurearea + "</span></dd>";
+    //     html += "<dd class='address'><span>" + row.address + "</span></dd></dl>"
+    //     html += "<div class='item-price'><div class='price-a'>";
+    //     html += "<em>" + row.price + "</em>元/m&sup2;•月</div>";
+    //     html += "<span class='price-b'>" + row.price + "</span></div></div></a>";
+    //
+    //     $("#list").append(html);
+    // });
     $.each(result.data, function (index, row) {
         var html = '';
-        html += "<a href=/index/search/landdetail?id=" + row.id + " target='_blank'>";
-        html += "<div class='list-item' link=" + "/index/search/landdetail?id=" + row.id + "> ";
-        html += "<img src=" + row.imgs + " alt=" + row.title + " class=\"item-img\" width=\"150\" height=\"115\"/> ";
-        html += "<dl class=\"item-info\">";
-
-        html += "<dt class=\"item-title\" title=" + row.title + ">" + row.title;
-        html += "<dd>" + "<span>" + row.title + "</span>";
-        html += "<i class='line'>|</i>";
-        html += "<span>" + row.title + "</span>" + "</dd>";
-        html += "<dd class='measurearea'><span>" + row.measurearea + "</span></dd>";
-        html += "<dd class='address'><span>" + row.address + "</span></dd></dl>"
-        html += "<div class='item-price'><div class='price-a'>";
-        html += "<em>" + row.price + "</em>元/m&sup2;•月</div>";
-        html += "<span class='price-b'>" + row.price + "</span></div></div></a>";
-
-        $("#list").append(html);
+        html += "<div class='list_one'>";
+        html += "<div class='list_one_img'>";
+        html += "<a href=/index/search/landdetail?id=" + row.id + " target='_blank' title=" + row.title + ">";
+        html += "<img src=" + row.imgs + " alt=" + row.title + " border='0' width='146' height='130'/></a> ";
+        html += "<span class='imgmid'></span></div><div class='list_one_text'> <strong>";
+        html += "<a href=/index/search/landdetail?id=" + row.id +  "target='_blank'>";
+        html += row.title + "</a></strong>";
+        html += "<div class='cf_jianjie'>" + row.detail + "</div>";
+        html += "<div class='text_prm'><span>联系人:<font style='color: #C60;font-weight:bold;'>" + row.name + "</font><img src='/static/index/img/jjr_rz.jpg'/></span>";
+        html += "<span>联系方式:<font " + "style='color: #933;font-weight:bold;background: url(img/list2_icopho.jpg) no-repeat left center; padding-left:11px;'>";
+        html += row.tel + "</font></span>";
+        html += "</div> <div class='text_prm1' style='display:none'>";
+        // html += "<span style='border-color: #330;'>" + row.tag + "</span>";
+        html += "</div></div>" + "<div class='list_one_prm'>" +
+            "<p style='font-size:15px; font-weight:600;'>" + row.area_name + "</p>" +
+            "<p><span class='f16' style='color:#53160F;'>" + row.price + "</span>元/㎡</p>" +
+            "<p>面积:<span class='f16'>" + row.measurearea + "</span>㎡</p>";
+        html += "<a class='cf_ckxq' href=/index/search/landdetail?id=" + row.id + " target='_blank'>查看详情</a>" + "</div></div>"
+        $(".right_cont").append(html);
     });
 }
 

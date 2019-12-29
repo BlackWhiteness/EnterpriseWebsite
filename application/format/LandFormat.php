@@ -3,6 +3,8 @@
 namespace app\format;
 
 
+use app\admin\model\Area;
+
 /**
  * Class LandFormat
  * @package app\format
@@ -37,6 +39,7 @@ class LandFormat
     {
         $rtn = [];
         foreach ($data as $row) {
+            $area = Area::where('id', '=', $row['area'])->find();
             $rtn[] = [
                 'id' => $row['id'],
                 'title' => $row['title'],
@@ -56,6 +59,8 @@ class LandFormat
                 'imgs' => $row['imgs'] ? $row['imgs'][0] : '',
                 'land_type' => $row['land_type'],
                 'land_card' => $row['land_card'] == 0 ? '有' : '无',
+                'area_name' => $area->name . '区',
+                'detail' => mb_substr(strip_tags($row['detail']), 0, 300)
             ];
         }
         return $rtn;

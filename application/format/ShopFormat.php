@@ -3,6 +3,8 @@
 namespace app\format;
 
 
+use app\admin\model\Area;
+
 /**
  * shop
  * Class ShopFormat
@@ -38,6 +40,7 @@ class ShopFormat
     {
         $rtn = [];
         foreach ($data as $row) {
+            $area = Area::where('id', '=', $row['area'])->find();
             $rtn[] = [
                 'id'=>$row['id'],
                 'type'=>$row['type'],
@@ -58,6 +61,8 @@ class ShopFormat
                 'tel'=>$row['tel'],
                 'category'=>$row['category']==0?'正常':($row['category']==1?'推荐':'热门'),
                 'is_sale'=>$row['is_sale']==0?'出租':'出售',
+                'area_name' => $area->name . '区',
+                'detail' => mb_substr(strip_tags($row['detail']), 0, 300)
             ];
         }
         return $rtn;

@@ -453,54 +453,75 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
 </script>
 <div class="clear"></div>
 <div class="main-content w1003">
-    <div class="list-content" id="list-content">
-
-    </div>
+    <table width="960" border="0" cellspacing="0" cellpadding="0" align="center">
+        <tbody>
+        <tr>
+            <td>
+                <div id="mainbody">
+                    <div id="main_right">
+                        <div id="right_title">
+                            <span>你搜索的结果是: {$cityInfo[0]['name']}写字楼</span>
+                        </div>
+                        <div class="right_cont">
+                            <div class="clear"></div>
+                            <div class="clear"></div>
+                        </div>
+                        <div id="page"></div>
+                    </div>
+                    <div id="main_left">
+                        <div class="hotList" style="margin-top:41px;">
+                            <div class="hotTitle">
+                                <label class="color_eef">热门写字楼</label>
+                            </div>
+                            <ul>
+                                {volist name="hot" id="data"}
+                                <?php $sz_img = json_decode($list[0]['imgs']); $sz_img = $sz_img[0]; ?>
+                                <li><a class="clearfix" href="/index/search/offbuilddetail?id={$data.id}"
+                                       target="_blank"> <img
+                                        class="hotImg" src="{$data.imgs}"/>
+                                    <div class="hotInfo">
+                                        <div class="hotName one" title="{$data.title}">
+                                            {$data.title}
+                                        </div>
+                                        <p class="one">￥{$data.managementfee}元/m&sup2;.月起</p>
+                                        <span class="one"> {$data.address}</span>
+                                    </div>
+                                </a></li>
+                                {/volist}
+                            </ul>
+                            <a class="more_build" href="/index/search/officebuilding?city={$cityInfo[0]['id']}?area=sz">更多热门写字楼</a>
+                        </div>
+                        <div class="hotList">
+                            <div class="hotTitle">
+                                <label class="color_eef">最新写字楼</label>
+                            </div>
+                            <ul>
+                                {volist name="new" id="data"}
+                                <?php $sz_img = json_decode($list[0]['imgs']); $sz_img = $sz_img[0]; ?>
+                                <li><a class="clearfix" href="/index/search/offbuilddetail?id={$data.id}"
+                                       target="_blank"> <img
+                                        class="hotImg" src="{$data.imgs}"/>
+                                    <div class="hotInfo">
+                                        <div class="hotName one" title="{$data.title}">
+                                            {$data.title}
+                                        </div>
+                                        <p class="one">￥{$data.managementfee}元/m&sup2;.月起</p>
+                                        <span class="one"> {$data.address}</span>
+                                    </div>
+                                </a></li>
+                                {/volist}
+                            </ul>
+                            <a class="more_build" href="/index/search/officebuilding?city={$cityInfo[0]['id']}?area=sz">更多最新写字楼</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
    
-    <div class="leftList">
-        <div class="hotList" style="margin-top:41px;">
-            <div class="hotTitle">
-                <label class="color_eef">热门写字楼</label>
-            </div>
-            <ul>
-                {volist name="hot" id="data"}
-                <?php $sz_img = json_decode($list[0]['imgs']); $sz_img = $sz_img[0]; ?>
-                <li><a class="clearfix" href="/index/search/offbuilddetail?id={$data.id}" target="_blank"> <img
-                        class="hotImg" src="{$data.imgs}"/>
-                    <div class="hotInfo">
-                        <div class="hotName one" title="{$data.title}">
-                            {$data.title}
-                        </div>
-                        <p class="one">￥{$data.managementfee}元/m&sup2;.月起</p>
-                        <span class="one"> {$data.address}</span>
-                    </div>
-                </a></li>
-                {/volist}
-            </ul>
-            <a class="more_build" href="/index/search/officebuilding?city={$cityInfo[0]['id']}?area=sz">更多热门写字楼</a>
-        </div>
-        <div class="hotList">
-            <div class="hotTitle">
-                <label class="color_eef">最新写字楼</label>
-            </div>
-            <ul>
-                {volist name="new" id="data"}
-                <?php $sz_img = json_decode($list[0]['imgs']); $sz_img = $sz_img[0]; ?>
-                <li><a class="clearfix" href="/index/search/offbuilddetail?id={$data.id}" target="_blank"> <img
-                        class="hotImg" src="{$data.imgs}"/>
-                    <div class="hotInfo">
-                        <div class="hotName one" title="{$data.title}">
-                            {$data.title}
-                        </div>
-                        <p class="one">￥{$data.managementfee}元/m&sup2;.月起</p>
-                        <span class="one"> {$data.address}</span>
-                    </div>
-                </a></li>
-                {/volist}
-            </ul>
-            <a class="more_build" href="/index/search/officebuilding?city={$cityInfo[0]['id']}?area=sz">更多最新写字楼</a>
-        </div>
-    </div>
+
 </div>
 <div class="clear"></div>
 <table width="1003" border="0" cellspacing="0" cellpadding="0" align="center">
@@ -509,7 +530,7 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
         <td>
             <div id="tuijian">
                 <div class="part_title">
-                    <strong>推荐厂房</strong>
+                    <strong>推荐</strong>
                 </div>
                 <div id="tuijian_cont">
                     <div id="white_bg">
@@ -527,7 +548,7 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
                                         </div>
                                         <div class="right_p_title">
                                             <a href="/index/search/offbuilddetail?id={$data.id}" target="_blank">
-                                                {$data.title}</a>
+                                                {:subText($data.title,10)}</a>
                                         </div>
                                     </div>
                                     {/volist}
