@@ -159,17 +159,17 @@ class Workshop extends Model
     }
 
     //--------------------------以下为mobile合并过来的
-    public function getFloorAttr($value)
-    {
-        $floor = [1 => '一楼厂房', 2 => '二楼以上', 3 => '独院厂房', 4 => '独栋厂房'];
-        return $floor[$value];
-    }
+//    public function getFloorAttr($value)
+//    {
+//        $floor = [1 => '一楼厂房', 2 => '二楼以上', 3 => '独院厂房', 4 => '独栋厂房'];
+//        return $floor[$value];
+//    }
 
-    public function getStructureAttr($value)
-    {
-        $structure = [1 => '标准厂房 ', 2 => '钢构结构厂房', 3 => '简易厂房(铁皮房) ', 4 => '各类型仓库(单层仓库/多层仓库)'];
-        return $structure[$value];
-    }
+//    public function getStructureAttr($value)
+//    {
+//        $structure = [1 => '标准厂房 ', 2 => '钢构结构厂房', 3 => '简易厂房(铁皮房) ', 4 => '各类型仓库(单层仓库/多层仓库)'];
+//        return $structure[$value];
+//    }
 
     public function getAddAttr($value, $data)
     {

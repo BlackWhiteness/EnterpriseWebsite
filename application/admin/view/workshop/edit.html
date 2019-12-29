@@ -19,14 +19,14 @@
                            {if condition="$data.category eq 1 " } checked {/if} >厂房出租
                     <input type="radio" name="category" autocomplete="off" placeholder="" class="layui-input" value="2"
                            {if condition="$data.category eq 2 " } checked {/if} >厂房出售
-                           
-                           <input type="radio" name="category" autocomplete="off" placeholder="" class="layui-input" value="3"
+
+                    <input type="radio" name="category" autocomplete="off" placeholder="" class="layui-input" value="3"
                            {if condition="$data.category eq 3 " } checked {/if} >仓库出租
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">标题</label>
-               <div style="width:auto" class="layui-input-inline">
+                <div style="width:auto" class="layui-input-inline">
                     <input name="title" type="text" class="layui-input"
                            placeholder="" autocomplete="off" value="{$data.title}" size="60" lay-verify="required">
                 </div>
@@ -72,9 +72,11 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">装修</label>
                 <div style="width:auto" class="layui-input-inline" lay-verify-msg="必选项不能为空" lay-verify="mustradio">
-                    <input type="radio" name="is_decorate" autocomplete="off" placeholder="" class="layui-input" value="0"
+                    <input type="radio" name="is_decorate" autocomplete="off" placeholder="" class="layui-input"
+                           value="0"
                            {if condition="$data.is_decorate eq 0 " } checked {/if} >无
-                    <input type="radio" name="is_decorate" autocomplete="off" placeholder="" class="layui-input" value="2"
+                    <input type="radio" name="is_decorate" autocomplete="off" placeholder="" class="layui-input"
+                           value="2"
                            {if condition="$data.is_decorate eq 1 " } checked {/if} >有
 
                 </div>
@@ -141,7 +143,7 @@
                            class="layui-input">
                 </div>
             </div>
-            
+
             <div class="layui-form-item">
                 <label class="layui-form-label">使用年限</label>
                 <div style="width:auto" class="layui-input-inline">
@@ -149,7 +151,7 @@
                            class="layui-input">
                 </div>
             </div>
-            
+
             <div class="layui-form-item">
                 <label class="layui-form-label">厂房价格</label>
                 <div style="width:auto" class="layui-input-inline">
@@ -158,7 +160,7 @@
                 </div>
             </div>
 
-            
+
             <div class="layui-form-item">
                 <label class="layui-form-label">所在栋数</label>
                 <div style="width:auto" class="layui-input-inline">
@@ -180,8 +182,8 @@
                            autocomplete="off" placeholder="" class="layui-input">
                 </div>
             </div>
-            
-            
+
+
             <div class="layui-form-item">
                 <label class="layui-form-label">新旧程度</label>
                 <div style="width:auto" class="layui-input-inline">
@@ -235,17 +237,18 @@
             <div class="layui-form-item" hidden>
                 <label class="layui-form-label">详情</label>
                 <div style="width:80%" class="layui-input-inline">
-                                    <textarea id="detail-detail" name="detail" rows="10" class="layui-input" placeholder="" lay-verify="required"
+                                    <textarea id="detail-detail" name="detail" rows="10" class="layui-input"
+                                              placeholder="" lay-verify="required"
                                               autocomplete="off"></textarea>
                 </div>
             </div>
-<!--            <div class="layui-form-item">-->
-<!--                <label class="layui-form-label">标签</label>-->
-<!--                <div style="width:auto" class="layui-input-inline">-->
-<!--                    <input type="text" name="tag" autocomplete="off" value="{$data.tag}" placeholder=""-->
-<!--                           class="layui-input">-->
-<!--                </div>-->
-<!--            </div>-->
+            <!--            <div class="layui-form-item">-->
+            <!--                <label class="layui-form-label">标签</label>-->
+            <!--                <div style="width:auto" class="layui-input-inline">-->
+            <!--                    <input type="text" name="tag" autocomplete="off" value="{$data.tag}" placeholder=""-->
+            <!--                           class="layui-input">-->
+            <!--                </div>-->
+            <!--            </div>-->
             <div class="layui-form-item">
                 <label class="layui-form-label">厂房类型</label>
                 <div class="layui-input-inline w300" lay-verify-msg="必选项不能为空" lay-verify="mustradio">
@@ -265,11 +268,16 @@
                             {if condition="$data.imgs"}
                             <div class="layui-upload-list" id="demo3">
                                 {volist name="$data.imgs" id="vo"}
-                                <img src="{$vo}" class="layui-upload-img"/>
+                                <!--                                <img src="{$vo}" class="layui-upload-img"/>-->
+                                <div class="img-pre">
+                                    <span class="close" onclick="delImage(this)">&times;</span>
+                                    <img src="{$vo}" class="layui-upload-img">
+                                    <input type="hidden" name="imgs[]" value="{$vo}" autocomplete="off" placeholder=""
+                                           class="layui-input">
+                                </div>
                                 {/volist}
                             </div>
                             {/if}
-                            <div class="layui-upload-list" id="demo2"></div>
                         </blockquote>
                     </div>
                 </div>
@@ -364,9 +372,10 @@
     });
 </script>
 <!-- <script src="__STATIC__/admin/js/layui.js" charset="utf-8"></script>-->
-
+<script src="__STATIC__/admin/js/preview_image.js"></script>
 <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 <script>
+
     layui.use(['upload', 'laydate'], function () {
         var $ = layui.jquery
         laydate = layui.laydate
@@ -405,17 +414,10 @@
             , url: '/admin/upload/imgs'
             , multiple: true
             , accept: 'file'
-            , before: function (obj) {
-                //预读本地文件示例，不支持ie8
-                $('#demo3').remove();
-                obj.preview(function (index, file, result) {
-                    $('#demo2').append('<img src="' + result + '" alt="' + file.name + '" class="layui-upload-img">')
-                });
-            }
             , done: function (res) {
-                console.log(res);
                 if (res.code == 1) {
-                    $('form').append('<input type="hidden" name="imgs[]" value="' + res.photo + '"  autocomplete="off" placeholder="" class="layui-input">');
+                    let html = splitImagePre(res.photo)
+                    $('#demo3').append(html);
                 }
 
                 //上传完毕

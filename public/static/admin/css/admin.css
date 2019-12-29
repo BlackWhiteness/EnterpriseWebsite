@@ -193,3 +193,37 @@ code {
 .uploader-list .thumbnail>img {
     cursor: zoom-in;
 }
+.img-pre {
+    position: relative;
+    display: inline-block;
+    border: 1px gray solid;
+    font-size: 0;
+    margin-left: 5px;
+    margin-bottom: 2px;
+}
+
+.img-pre .close {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    z-index: 100;
+    background-color: #FFF;
+    /*padding: 5px 2px 2px;*/
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: .2;
+    text-align: center;
+    font-size: 22px;
+    line-height: 10px;
+    border-radius: 50%;
+}
+
+.img-pre:hover .close {
+    opacity: 1;
+}
+.layui-upload-img {
+    width: 92px;
+    height: 92px;
+    margin: 0 10px 10px 0;
+}

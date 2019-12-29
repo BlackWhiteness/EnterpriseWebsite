@@ -146,11 +146,16 @@
                             {if condition="$data.imgs"}
                             <div class="layui-upload-list" id="demo3">
                                 {volist name="$data.imgs" id="vo"}
-                                <img src="{$vo}" class="layui-upload-img"/>
+                                <!--                                <img src="{$vo}" class="layui-upload-img"/>-->
+                                <div class="img-pre">
+                                    <span class="close" onclick="delImage(this)">&times;</span>
+                                    <img src="{$vo}" class="layui-upload-img">
+                                    <input type="hidden" name="imgs[]" value="{$vo}" autocomplete="off" placeholder=""
+                                           class="layui-input">
+                                </div>
                                 {/volist}
                             </div>
                             {/if}
-                            <div class="layui-upload-list" id="demo2"></div>
                         </blockquote>
                     </div>
                 </div>
@@ -245,7 +250,7 @@
     });
 </script>
 <!-- <script src="__STATIC__/admin/js/layui.js" charset="utf-8"></script>-->
-
+<script src="__STATIC__/admin/js/preview_image.js"></script>
 <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 <script>
     layui.use(['upload', 'laydate'], function () {
@@ -286,17 +291,10 @@
             , url: '/admin/upload/imgs'
             , multiple: true
             , accept: 'file'
-            , before: function (obj) {
-                //预读本地文件示例，不支持ie8
-                $('#demo3').remove();
-                obj.preview(function (index, file, result) {
-                    $('#demo2').append('<img src="' + result + '" alt="' + file.name + '" class="layui-upload-img">')
-                });
-            }
             , done: function (res) {
-                console.log(res);
                 if (res.code == 1) {
-                    $('form').append('<input type="hidden" name="imgs[]" value="' + res.photo + '"  autocomplete="off" placeholder="" class="layui-input">');
+                    let html = splitImagePre(res.photo)
+                    $('#demo3').append(html);
                 }
 
                 //上传完毕
