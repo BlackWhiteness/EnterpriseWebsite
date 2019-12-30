@@ -3,11 +3,10 @@
 <html lang="en" style="font-size: 100px;"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
-    <title>厂房出租_厂房出售_产业园区招商_工业地产 - 中工招商网</title>
-    <link rel="icon" href="../images/favicon.ico">
-    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <meta name="Keywords" content="厂房出租,厂房出售,产业园区,写字楼出租,土地出售">
-    <meta name="description" content="专业的厂房、土地、写字楼、产业园区招商的综合性信息服务平台，提供海量的厂房出租、厂房出售、写字楼出租、土地出售、产业园区招商信息，免费帮您找厂房/土地/写字楼，提供一站式产业园区招商策划推广服务。">
+     <title>{:config('web_site_title')}</title>
+    <meta name="keywords" content="{:config('web_site_keywords')}"/>
+    <meta name="description" content="{:config('web_site_description')}"/>
+    <link rel="icon" href="/static/mobile/img/favicon.ico">
     <meta name="format-detection" content="telephone=no">
     <meta http-equiv="Cache-Control" content="no-transform">
     <meta http-equiv="Cache-Control" content="no-siteapp">
@@ -52,25 +51,25 @@
             <img src="/static/mobile/img/logo.png" alt="">
         </div>
         <div class="tel">
-            <a href="tel:400-8800-002" class="semCall" style="color: #fff;" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击顶部电话拨打按钮次数&#39;]);"><i class="icon_tel"></i>400-8800-002</a>
+            <a href="tel:400-8800-002" class="semCall" style="color: #fff;" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击顶部电话拨打按钮次数&#39;]);"><i class="icon_tel"></i>{:config('web_site_tel')}</a>
         </div>
     </header>
     <div class="headTansBgIndex"></div>
     <!--banner-->
     <div id="iBanner" class="swiper-container iBanner swiper-container-horizontal" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击Banner图次数&#39;]);">
         <ul class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(-3000px, 0px, 0px);">
-        <li class="swiper-slide swiper-slide-duplicate swiper-slide-next swiper-slide-duplicate-prev" data-swiper-slide-index="2" style="width: 750px;"><a href="#"><img src="/static/mobile/img/iBanner1.jpg" alt="企业服务"></a></li>
-            <li class="swiper-slide swiper-slide-duplicate-active" data-swiper-slide-index="0" style="width: 750px;"><a href="#"><img src="/static/mobile/img/iBanner2.jpg" alt="中工招商网"></a></li>
-            <li class="swiper-slide" data-swiper-slide-index="1" style="width: 750px;"><a href="#"><img src="/static/mobile/img/iBanner3.jpg" alt="中工招商网"></a></li>
-            <li class="swiper-slide swiper-slide-prev swiper-slide-duplicate-next" data-swiper-slide-index="2" style="width: 750px;"><a href="#"><img src="/static/mobile/img/iBanner4.jpg" alt="企业服务"></a></li>
-        <li class="swiper-slide swiper-slide-duplicate swiper-slide-active" data-swiper-slide-index="0" style="width: 750px;"><a href="#"><img src="/static/mobile/img/iBanner1.jpg" alt="中工招商网"></a></li></ul>
+        <li class="swiper-slide swiper-slide-duplicate swiper-slide-next swiper-slide-duplicate-prev" data-swiper-slide-index="2" style="width: 750px;"><a href="#"><img src="/static/mobile/img/iBanner1.jpg" alt="广东厂房网"></a></li>
+            <li class="swiper-slide swiper-slide-duplicate-active" data-swiper-slide-index="0" style="width: 750px;"><a href="#"><img src="/static/mobile/img/iBanner2.jpg" alt="广东厂房网"></a></li>
+            <li class="swiper-slide" data-swiper-slide-index="1" style="width: 750px;"><a href="#"><img src="/static/mobile/img/iBanner3.jpg" alt="广东厂房网"></a></li>
+            <li class="swiper-slide swiper-slide-prev swiper-slide-duplicate-next" data-swiper-slide-index="2" style="width: 750px;"><a href="#"><img src="/static/mobile/img/iBanner4.jpg" alt="广东厂房网"></a></li>
+        <li class="swiper-slide swiper-slide-duplicate swiper-slide-active" data-swiper-slide-index="0" style="width: 750px;"><a href="#"><img src="/static/mobile/img/iBanner1.jpg" alt="广东厂房网"></a></li></ul>
         <div class="swiper-pagination swiper-pagination-bullets"><span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span></div>
     <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
 
     <!--搜索框-->
     <!--<div class="search"></div>-->
-    <form action="https://m.zhaoshang800.com/" class="iSearch">
-        <a id="city" href="https://m.zhaoshang800.com/NewMain/Citylist/" class="city" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击城市选择次数&#39;]);">
+    <form action="http://m.cfcs1688.com/" class="iSearch">
+        <a id="city" href="/search/list/" class="city" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击城市选择次数&#39;]);">
             <span>深圳<i></i></span>
         </a>
         <a id="iSearchLink" class="iSearchLink" href="https://m.zhaoshang800.com/search/list/" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击搜索次数&#39;]);return false;"></a>
@@ -86,51 +85,52 @@
     <div class="navBox">
                 <ul class="clearFix">
             <li>
-                <a id="factory" href="https://m.zhaoshang800.com/sz/cf/" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击厂房次数&#39;]);">
+                <a id="factory" href="#" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击厂房次数&#39;]);">
                     <img src="/static/mobile/img/homepage_ic_navigation_plant.png" alt="">
                     <p>厂房出租</p>
                 </a>
             </li>
             <li>
-                <a id="cangku" href="https://m.zhaoshang800.com/sz/warehouse/" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击仓库次数&#39;]);">
+                <a id="cangku" href="#" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击仓库次数&#39;]);">
                     <img src="/static/mobile/img/homepage_ic_office_building.png" alt="">
                     <p>厂房出售</p>
                 </a>
             </li>
+           
             <li>
-                <a id="office" href="https://m.zhaoshang800.com/office/" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击写字楼次数&#39;]);">
-                    <img src="/static/mobile/img/homepage_ic_investment.png" alt="">
-                    <p>包租厂房</p>
-                </a>
-            </li>
-            <li>
-                <a id="land" href="https://m.zhaoshang800.com/sz/td/" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击土地次数&#39;]);">
+                <a id="land" href="#" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击土地次数&#39;]);">
                     <img src="/static/mobile/img/homepage_ic_cangku.png" alt="">
                     <p>仓库出租</p>
                 </a>
             </li>
             <li>
-                <a id="park" href="https://m.zhaoshang800.com/y/" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击产业园区次数&#39;]);">
+                <a id="park" href="#" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击产业园区次数&#39;]);">
                     <img src="/static/mobile/img/homepage_ic_land.png" alt="">
                     <p>土地租售</p>
                 </a>
             </li>
             <li>
-                <a id="investment" href="https://m.zhaoshang800.com/sxzs/" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击市县招商次数&#39;]);">
+                <a id="investment" href="#" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击市县招商次数&#39;]);">
                     <img src="/static/mobile/img/homepage_ic_special.png" alt="">
                     <p>园区招商</p>
                 </a>
             </li>
             <li>
-                <a href="https://m.zhaoshang800.com/zhuanti/" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击热销园区次数&#39;]);">
+                <a href="#" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击热销园区次数&#39;]);">
                     <img src="/static/mobile/img/homepage_ic_garden.png" alt="">
                     <p>写字楼</p>
                 </a>
             </li>
             <li>
-                <a id="agent" href="https://m.zhaoshang800.com/agents/sz/" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击经纪人次数&#39;]);">
+                <a id="agent" href="#" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击经纪人次数&#39;]);">
                     <img src="/static/mobile/img/homepage_ic_broker.png" alt="">
-                    <p>民宅商铺</p>
+                    <p>商铺租售</p>
+                </a>
+            </li>
+             <li>
+                <a id="office" href="#" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击写字楼次数&#39;]);">
+                    <img src="/static/mobile/img/homepage_ic_investment.png" alt="">
+                    <p>民宅租售</p>
                 </a>
             </li>
             <!--<li>
