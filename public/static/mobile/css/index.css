@@ -248,7 +248,7 @@
     display: inline-block;
     width: 0.14rem;
     height: 0.09rem;
-    background:url("/NewStyles/images/search_down_icon.png") no-repeat;
+    background:url("/static/mobile/img/search_down_icon.png") no-repeat;
     background-size: 100%;
     position: absolute;
     top: 50%;
