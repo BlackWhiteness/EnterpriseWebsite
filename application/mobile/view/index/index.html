@@ -162,7 +162,7 @@
         <ul class="con clearFix">
             <li class="focus">
                 <p>16年行业服务经验,盘源多,免中介费</p>
-                <a href="/NewDemand/">提交需求</a>
+                <a href="index/NewDemand">提交需求</a>
             </li>
             <li>
                 <p>快速帮你匹配优质客户资源，高效成交</p>
@@ -189,123 +189,33 @@
             <!--热门厂房-->
             <div class="list focus">
                                 <ul class="listCon ">
+                                {volist name="recommend" id="data"}
                                         <li>
-                    <a href="/sz/cf_A14017257.html" class="clearFix" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击优质厂房信息总次数&#39;]);">
+                    <a href="/search/workshopdetail?id={$data.id}" class="clearFix" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击优质厂房信息总次数&#39;]);">
                         <div class="pic">
                             <i>宝安</i>
-                            <img src="/static/mobile/img/cfdff08406b7a26ebbfd1d1a88bcd6d7.jpg" alt="福永大型园区楼上1200平精装">
+                            <img src="{$data['imgs'][0]}" alt="{$data.title}">
                             <!--<p>出租</p>-->
                         </div>
                         <div class="txt">
-                            <h2>福永大型园区楼上1200平精装</h2>
-                            <p class="baseInfo"> <span>宝安-福永</span></p>
+                            <h2>{$data.title}</h2>
+                            <p class="baseInfo"> <span>{$data.city_name}</span></p>
                                                             <p class="label">
                                                                             <span class="lab_1">
-                                            标准                                        </span>
+                                            标准{$data.structure}                                        </span>
                                                                                                                 <span class="lab_2">
-                                            二楼以上                                        </span>
+                                            二楼以上{$data.floor}                                        </span>
                                                                     </p>
                                                         <p class="price cfPrice">
                                 <span></span>
-                                <span>2<span>万</span><span>㎡</span></span>
+                                <span><span>{$data.measurearea} ㎡</span></span>
                             </p>
                         </div>
                     </a>
-                    </li>
-                                        <li>
-                    <a href="/sz/cf_A14006715.html" class="clearFix" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击优质厂房信息总次数&#39;]);">
-                        <div class="pic">
-                            <i>宝安</i>
-                            <img src="/static/mobile/img/d585114c1fdb2335722747356a3afbca.jpeg" alt="松岗公园附近刚刚出来原房东独院，楼上两层无尘车间，无需转让费">
-                            <!--<p>出租</p>-->
-                        </div>
-                        <div class="txt">
-                            <h2>松岗公园附近刚刚出来原房东独院，楼上两层无尘车间，无需转让费</h2>
-                            <p class="baseInfo"> <span>宝安-松岗</span></p>
-                                                            <p class="label">
-                                                                            <span class="lab_1">
-                                            标准                                        </span>
-                                                                                                                <span class="lab_2">
-                                            独院                                        </span>
-                                                                    </p>
-                                                        <p class="price cfPrice">
-                                <span>23<span>元/㎡</span></span>
-                                <span>6000<span>㎡</span></span>
-                            </p>
-                        </div>
-                    </a>
-                    </li>
-                                        <li>
-                    <a href="/sz/cf_A13993298.html" class="clearFix" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击优质厂房信息总次数&#39;]);">
-                        <div class="pic">
-                            <i>宝安</i>
-                            <img src="/static/mobile/img/ab51533a44fc600ea7798a70d8bfb926.jpg" alt="宝安福永107国道旁1楼600平，现成装修水电到位。">
-                            <!--<p>出租</p>-->
-                        </div>
-                        <div class="txt">
-                            <h2>宝安福永107国道旁1楼600平，现成装修水电到位。</h2>
-                            <p class="baseInfo"> <span>宝安-福永</span></p>
-                                                            <p class="label">
-                                                                            <span class="lab_1">
-                                            标准                                        </span>
-                                                                                                                <span class="lab_2">
-                                            一楼                                        </span>
-                                                                    </p>
-                                                        <p class="price cfPrice">
-                                <span></span>
-                                <span>600<span>㎡</span></span>
-                            </p>
-                        </div>
-                    </a>
-                    </li>
-                                        <li>
-                    <a href="/sz/cf_A13988351.html" class="clearFix" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击优质厂房信息总次数&#39;]);">
-                        <div class="pic">
-                            <i>宝安</i>
-                            <img src="/static/mobile/img/bc67b97ccc543d35ca6696837f2442ab.jpg" alt="宝安福永地铁口宝安大道旁1楼1000平，现成装修">
-                            <!--<p>出租</p>-->
-                        </div>
-                        <div class="txt">
-                            <h2>宝安福永地铁口宝安大道旁1楼1000平，现成装修</h2>
-                            <p class="baseInfo"> <span>宝安-福永</span></p>
-                                                            <p class="label">
-                                                                            <span class="lab_1">
-                                            标准                                        </span>
-                                                                                                                <span class="lab_2">
-                                            一楼                                        </span>
-                                                                    </p>
-                                                        <p class="price cfPrice">
-                                <span></span>
-                                <span>1000<span>㎡</span></span>
-                            </p>
-                        </div>
-                    </a>
-                    </li>
-                                        <li class="noBoder">
-                    <a href="/sz/cf_A14010422.html" class="clearFix" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击优质厂房信息总次数&#39;]);">
-                        <div class="pic">
-                            <i>龙华</i>
-                            <img src="/static/mobile/img/5efe09f1a3ce9874bebd3f6dbdd589f7.jpeg" alt="龙华绝世标准物流仓无公摊">
-                            <!--<p>出租</p>-->
-                        </div>
-                        <div class="txt">
-                            <h2>龙华绝世标准物流仓无公摊</h2>
-                            <p class="baseInfo"> <span>龙华-龙华</span></p>
-                                                            <p class="label">
-                                                                            <span class="lab_1">
-                                            钢结构                                        </span>
-                                                                                                                <span class="lab_2">
-                                            一楼                                        </span>
-                                                                    </p>
-                                                        <p class="price cfPrice">
-                                <span></span>
-                                <span>5<span>万</span><span>㎡</span></span>
-                            </p>
-                        </div>
-                    </a>
-                    </li>
+                    </li> {/volist}
+                                       
                                     </ul>
-                <a id="quality" href="/sz/cf/" class="more" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击优质厂房更多按钮次数&#39;]);">更多</a>
+                <a id="quality" href="/search/workshop" class="more" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击优质厂房更多按钮次数&#39;]);">更多</a>
                             </div>
             <!--热门写字楼-->
             <div class="list">
