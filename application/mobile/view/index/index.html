@@ -193,7 +193,7 @@
                                         <li>
                     <a href="/search/workshopdetail?id={$data.id}" class="clearFix" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击优质厂房信息总次数&#39;]);">
                         <div class="pic">
-                            <i>{$data.city}</i>
+                            <i>{$data.city|getCityName=###}</i>
                             <img src="{$data['imgs'][0]}" alt="{$data.title}">
                             <!--<p>出租</p>-->
                         </div>
