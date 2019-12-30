@@ -193,7 +193,7 @@
                                         <li>
                     <a href="/search/workshopdetail?id={$data.id}" class="clearFix" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击优质厂房信息总次数&#39;]);">
                         <div class="pic">
-                            <i>宝安</i>
+                            <i>{$data.city}</i>
                             <img src="{$data['imgs'][0]}" alt="{$data.title}">
                             <!--<p>出租</p>-->
                         </div>
@@ -202,12 +202,12 @@
                             <p class="baseInfo"> <span>{$data.city_name}</span></p>
                                                             <p class="label">
                                                                             <span class="lab_1">
-                                            标准{$data.structure}                                        </span>
+                                            {$data.structure}                                        </span>
                                                                                                                 <span class="lab_2">
-                                            二楼以上{$data.floor}                                        </span>
+                                            {$data.floor}楼                                        </span>
                                                                     </p>
                                                         <p class="price cfPrice">
-                                <span></span>
+                                <span>{$data.plantrent}元/㎡</span>
                                 <span><span>{$data.measurearea} ㎡</span></span>
                             </p>
                         </div>
