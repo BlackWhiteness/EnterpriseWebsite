@@ -199,14 +199,13 @@
                         </div>
                         <div class="txt">
                             <h2>{$data.title}</h2>
-                            <p class="baseInfo"> <span>{$data.city_name}</span></p>
-                                                            <p class="label">
-                                                                            <span class="lab_1">
-                                            {$data.structure}                                        </span>
-                                                                                                                <span class="lab_2">
-                                            {$data.floor}楼                                        </span>
-                                                                    </p>
-                                                        <p class="price cfPrice">
+                            <p class="baseInfo"> 
+                            <span>{$data.city_name}</span></p>
+                            <p class="label">
+                            <span class="lab_1">{$data.structure}</span>
+                           <span class="lab_2">{$data.floor}楼</span>
+                            </p>
+                            <p class="price cfPrice">
                                 <span>{$data.plantrent}元/㎡</span>
                                 <span><span>{$data.measurearea} ㎡</span></span>
                             </p>
@@ -220,86 +219,31 @@
             <!--热门写字楼-->
             <div class="list">
                                 <ul class="listCon">
-                                        <li>
-                    <a href="/sz/xzl_A13724247.html" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击热门写字楼信息总次数&#39;]);">
-                        <div class="pic">
-                            <img src="/static/mobile/img/cfec31b7cc31507a3a93943466c393a0.jpg" alt="福永地铁口同泰写字楼150平带家私出租">
-                            <i>免佣</i>
+                                       {volist name="recommend" id="data"}
+                    <li>
+                        <a href="/search/workshopdetail?id={$data.id}"
+                           onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击热门写字楼信息总次数&#39;]);">
+                            <div class="pic">
+                                <img src="{$data['imgs'][0]}" alt="{$data.title}">
+                                <i>{$data.city|getCityName=###}</i>
+                            </div>
+                            <div class="txt">
+                            <h2>{$data.title}</h2>
+                            <p class="baseInfo"> 
+                            <span>{$data.city_name}</span></p>
+                            <p class="label">
+                            <span class="lab_1">{$data.structure}</span>
+                           <span class="lab_2">{$data.floor}楼</span>
+                            </p>
+                            <p class="price cfPrice">
+                                <span>{$data.plantrent}元/㎡</span>
+                                <span><span>{$data.measurearea} ㎡</span></span>
+                            </p>
                         </div>
-                        <div class="txt">
-                            <h2>福永地铁口同泰写字楼150平带家私出租</h2>
-                            <p class="baseInfo"><span>150㎡</span>/<span>同泰</span></p>
-                            <!--<p class="traffic">6号线高青路(距离969米)</p>-->
-                                                        <p class="price">
-                                55<span>元/平方·月</span>                            </p>
-                        </div>
-                    </a>
+                        </a>
                     </li>
-                                        <li>
-                    <a href="/sz/xzl_A13475701.html" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击热门写字楼信息总次数&#39;]);">
-                        <div class="pic">
-                            <img src="/static/mobile/img/8792b4400d4802818f71ab3620d3ab6d.jpg" alt="福永凤凰全新写字楼拎包入住170平起租">
-                            <i>免佣</i>
-                        </div>
-                        <div class="txt">
-                            <h2>福永凤凰全新写字楼拎包入住170平起租</h2>
-                            <p class="baseInfo"><span>1406㎡</span>/<span>凤凰</span></p>
-                            <!--<p class="traffic">6号线高青路(距离969米)</p>-->
-                                                        <p class="price">
-                                27<span>元/月</span>                            </p>
-                        </div>
-                    </a>
-                    </li>
-                                        <li>
-                    <a href="/sz/xzl_A13688746.html" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击热门写字楼信息总次数&#39;]);">
-                        <div class="pic">
-                            <img src="/static/mobile/img/e9a0da3b65fcc83b3f447fd23ff5f3e3.jpg" alt="福永地铁口新出办公写字楼800平方精装修">
-                            <i>免佣</i>
-                        </div>
-                        <div class="txt">
-                            <h2>福永地铁口新出办公写字楼800平方精装修</h2>
-                            <p class="baseInfo"><span>800㎡</span>/<span>同泰时代</span></p>
-                            <!--<p class="traffic">6号线高青路(距离969米)</p>-->
-                                                        <p class="price">
-                                50<span>元/平方·月</span>                            </p>
-                        </div>
-                    </a>
-                    </li>
-                                        <li>
-                    <a href="/sz/xzl_A12101537.html" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击热门写字楼信息总次数&#39;]);">
-                        <div class="pic">
-                            <img src="/static/mobile/img/b21eef692205874da8c639475654337a.jpg" alt="福永 怀德大厦新出楼上180平精装办公室">
-                            <i>免佣</i>
-                        </div>
-                        <div class="txt">
-                            <h2>福永 怀德大厦新出楼上180平精装办公室</h2>
-                            <p class="baseInfo"><span>180㎡</span>/<span>怀德大厦</span>/<span>宝安区-福永</span></p>
-                            <!--<p class="traffic">6号线高青路(距离969米)</p>-->
-                                                        <p class="price">
-                                75<span>元/平方·月</span>                            </p>
-                        </div>
-                    </a>
-                    </li>
-                                        <li class="noBoder">
-                    <a href="/sz/xzl_A10862222.html" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击热门写字楼信息总次数&#39;]);">
-                        <div class="pic">
-                            <img src="/static/mobile/img/19ae9da6c653f851867216dcd9dafd30.png" alt="福永福州大道旁精装小面积写字楼出租，户型方正">
-                            <i>免佣</i>
-                        </div>
-                        <div class="txt">
-                            <h2>福永福州大道旁精装小面积写字楼出租，户型方正</h2>
-                            <p class="baseInfo"><span>98㎡</span>/<span>瑞华盈大厦</span>/<span>福永商圈</span></p>
-                            <!--<p class="traffic">6号线高青路(距离969米)</p>-->
-                                                        <p class="label">
-                                                                                                <span class="lab_1">地铁口</span>
-                                                                                                                                <span class="lab_2">带装修</span>
-                                                                                                                                <span class="lab_3">免中介费</span>
-                                                                                            </p>
-                                                        <p class="price">
-                                60<span>元/平方·月</span>                            </p>
-                        </div>
-                    </a>
-                    </li>
+                    {/volist}
+                                        
                                     </ul>
                 <a id="hot" href="/sz-office/rent/" class="more" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击热门写字楼更多按钮次数&#39;]);">更多</a>
                             </div>
