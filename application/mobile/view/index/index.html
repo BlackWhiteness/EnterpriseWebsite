@@ -228,7 +228,7 @@
                                 <i>{$data.city|getCityName=###}</i>
                             </div>
                             <div class="txt">
-                            <h2>{$data.title}</h2>
+                            <h2>写字楼{$data.title}</h2>
                             <p class="baseInfo"> 
                             <span>{$data.city_name}</span></p>
                             <p class="label">
@@ -251,102 +251,31 @@
             <div class="list">
                 
                 <ul class="listCon">
-                                        <li>
-                    <a href="/sz/td_A13316964.html" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击最新土地信息总次数&#39;]);">
-                        <div class="pic">
-                            <img src="/static/mobile/img/201905271046377825.jpg" alt="遂宁建立电路产业园，深圳PCB相关行业可来买地">
-                            <!--<p>出租</p>-->
-                        </div>
-                        <div class="txt">
-                            <h2>遂宁建立电路产业园，深圳PCB相关行业可来买地</h2>
-                            <p class="baseInfo">
-                                <span>50年</span>/<span>-广东-宝安区</span></p>
+                    {volist name="recommend" id="data"}
+                    <li class="noBoder">
+                        <a href="/search/workshopdetail?id={$data.id}"
+                           onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击最新土地信息总次数&#39;]);">
+                            <div class="pic">
+                                <img src="{$data['imgs'][0]}" alt="{$data.title}">
+                                <i>{$data.city|getCityName=###}</i>
+                            </div>
+                            <div class="txt">
+                            <h2>土地{$data.title}</h2>
+                            <p class="baseInfo"> 
+                            <span>{$data.city_name}</span></p>
                             <p class="label">
-                                <span class="lab_1">电子信息</span>                            </p>
+                            <span class="lab_1">{$data.structure}</span>
+                           <span class="lab_2">{$data.floor}楼</span>
+                            </p>
                             <p class="price cfPrice">
-                                <span>50<span>亩</span></span>
-                                <span>6<span>万元</span></span>
+                                <span>{$data.plantrent}元/㎡</span>
+                                <span><span>{$data.measurearea} ㎡</span></span>
                             </p>
                         </div>
-                    </a>
+                        </a>
                     </li>
-                                        <li>
-                    <a href="/sz/td_A13036631.html" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击最新土地信息总次数&#39;]);">
-                        <div class="pic">
-                            <img src="/static/mobile/img/201904090803028345.jpg" alt="中国只有一个松山湖之高端厂房+办公+研发产业园出">
-                            <!--<p>出租</p>-->
-                        </div>
-                        <div class="txt">
-                            <h2>中国只有一个松山湖之高端厂房+办公+研发产业园出</h2>
-                            <p class="baseInfo">
-                                <span>50年</span>/<span>广东-深圳-宝安</span></p>
-                            <p class="label">
-                                <span class="lab_1">装备制造</span>                            </p>
-                            <p class="price cfPrice">
-                                <span>1<span>亩</span></span>
-                                <span>1<span>万元</span></span>
-                            </p>
-                        </div>
-                    </a>
-                    </li>
-                                        <li>
-                    <a href="/sz/td_A12973595.html" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击最新土地信息总次数&#39;]);">
-                        <div class="pic">
-                            <img src="/static/mobile/img/201903241955465667.jpg" alt="深圳市国有50年红本3到5成首付">
-                            <!--<p>出租</p>-->
-                        </div>
-                        <div class="txt">
-                            <h2>深圳市国有50年红本3到5成首付</h2>
-                            <p class="baseInfo">
-                                <span>50年</span>/<span>广东-深圳-南山</span></p>
-                            <p class="label">
-                                <span class="lab_1">电子信息</span>                            </p>
-                            <p class="price cfPrice">
-                                <span>1000<span>亩</span></span>
-                                <span>面议</span>
-                            </p>
-                        </div>
-                    </a>
-                    </li>
-                                        <li>
-                    <a href="/sz/td_A12894436.html" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击最新土地信息总次数&#39;]);">
-                        <div class="pic">
-                            <img src="/static/mobile/img/201903061511403247.jpg" alt="深圳红旗大街科林产业园独栋独院厂房研发楼">
-                            <!--<p>出租</p>-->
-                        </div>
-                        <div class="txt">
-                            <h2>深圳红旗大街科林产业园独栋独院厂房研发楼</h2>
-                            <p class="baseInfo">
-                                <span>50年</span>/<span>广东-深圳-宝安</span></p>
-                            <p class="label">
-                                <span class="lab_1">装备制造</span>                            </p>
-                            <p class="price cfPrice">
-                                <span>9<span>亩</span></span>
-                                <span>面议</span>
-                            </p>
-                        </div>
-                    </a>
-                    </li>
-                                        <li class="noBoder">
-                    <a href="/sz/td_A13200117.html" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击最新土地信息总次数&#39;]);">
-                        <div class="pic">
-                            <img src="/static/mobile/img/201905070818169005.jpg" alt="广东-阳江-江城-江门土地出售，工业性质">
-                            <!--<p>出租</p>-->
-                        </div>
-                        <div class="txt">
-                            <h2>广东-阳江-江城-江门土地出售，工业性质</h2>
-                            <p class="baseInfo">
-                                <span>50年</span>/<span>广东-深圳-宝安</span></p>
-                            <p class="label">
-                                <span class="lab_1">电子信息</span>                            </p>
-                            <p class="price cfPrice">
-                                <span>20<span>亩</span></span>
-                                <span>35<span>万元</span></span>
-                            </p>
-                        </div>
-                    </a>
-                    </li>
-                                    </ul>
+                    {/volist}
+                </ul>
                 <a id="new" href="/sz/td/" class="more" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击最新土地更多按钮次数&#39;]);">更多</a>
                             </div>
         </div>
