@@ -25,12 +25,7 @@
 	<script src="/static/mobile/js/rem.js"></script>
     <script src="/static/mobile/js/index.php"></script>
     <!--埋点头部-->
-    <script>
-    //声明_czc对象
-    var _czc = _czc || [];
-    //用来指定需要哪个网站代码(siteid)来接受API发送的请求。
-    _czc.push(["_setAccount", "1275394881"]);     //正式环境
-</script>    <!--newYaer主题-->
+   <!--newYaer主题-->
     <style>
         iframe{
             border: 1px solid red;
@@ -48,8 +43,7 @@
 
 
 <!--城市定位-->
-<div>
-</div>
+
 <!--头部banner-->
 <div class="iheadBox">
     <header class="ihead">
@@ -62,17 +56,28 @@
     </header>
     <div class="headTansBgIndex"></div>
     <!--banner-->
-    <div id="iBanner" class="swiper-container iBanner swiper-container-horizontal" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击Banner图次数&#39;]);">
-        <ul class="swiper-wrapper" style="transform: translate3d(-2250px, 0px, 0px); transition-duration: 0ms;">
-        <li class="swiper-slide swiper-slide-duplicate swiper-slide-next swiper-slide-duplicate-prev" data-swiper-slide-index="1" style="width: 750px;"><a href="#"><img src="/static/mobile/img/iBanner2.jpg" alt="广东厂房网"></a></li>
-                        
-                        <li class="swiper-slide swiper-slide-duplicate-active" data-swiper-slide-index="0" style="width: 750px;"><a href="#"><img src="/static/mobile/img/iBanner1.jpg" alt="广东厂房网"></a></li>
-            <li class="swiper-slide swiper-slide-prev swiper-slide-duplicate-next" data-swiper-slide-index="2" style="width: 750px;"><a href="#"><img src="/static/mobile/img/iBanner4.jpg" alt="广东厂房网"></a></li>
-        <li class="swiper-slide swiper-slide-duplicate swiper-slide-active" data-swiper-slide-index="3" style="width: 750px;"><a href="#"><img src="/static/mobile/img/iBanner4.jpg" alt="广东厂房网"></a></li></ul>
-        <div class="swiper-pagination swiper-pagination-bullets">
-        <span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
-        <span class="swiper-pagination-bullet"></span></div>
-    <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+    <div class="slide_container">
+      <ul class="rslides" id="slider">
+      
+        <li>
+          <img src="/static/mobile/img/iBanner1.jpg" alt="">
+        </li>
+       <li>
+          <img src="/static/mobile/img/iBanner2.jpg" alt="">
+        </li>
+        <li>
+          <img src="/static/mobile/img/iBanner3.jpg" alt="">
+        </li>
+        <li>
+          <img src="/static/mobile/img/iBanner4.jpg" alt="">
+        </li>
+        
+      </ul>
+    </div>
+    <script src="/static/mobile/js/responsiveslides.min.js"></script>
+<script src="/static/mobile/js/slide.js"></script>
+<script src="/static/mobile/js/jquery.min.js"></script>
+<link rel="stylesheet" href="/static/mobile/css/lrtk.css">
 
     <!--搜索框-->
     <!--<div class="search"></div>-->
