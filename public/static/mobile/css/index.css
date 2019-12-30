@@ -171,7 +171,7 @@
     display: inline-block;
     width: 0.34rem;
     height: 0.34rem;
-    background: url("/NewStyles/images/homepage_top_icon_phone.png") no-repeat;
+    background: url("/static/mobile/img/homepage_top_icon_phone.png") no-repeat;
     background-size: 100%;
     position: absolute;
     left: 0;
@@ -276,7 +276,7 @@
     width: 0.26rem;
     height: 0.26rem;
     display: block;
-    background: url("/NewStyles/images/iserchIcon.png") no-repeat;
+    background: url("/static/mobile/img/iserchIcon.png") no-repeat;
     background-size: 100%;
     position: absolute;
     top: 50%;
