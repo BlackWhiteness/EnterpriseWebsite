@@ -241,37 +241,37 @@
         </div>
         <ul class="baseInfo clearFix">
             <li>
-                <span>类型</span>{$info.category}            </li>
+                <span>类型：</span>{$info.category}            </li>
                             <li>
-                    <span>总面积</span>{$info.measurearea}m²                </li>
+                    <span>总面积：</span>{$info.measurearea}m²                </li>
                                         <li>
-                    <span>厂房面积</span>{$info.lengthwidth}m²                </li>
+                    <span>厂房面积：</span>{$info.lengthwidth}m²                </li>
                                         <li>
-                    <span>办公室</span>{$info.officespace}m²                </li>
+                    <span>办公室：</span>{$info.officespace}m²                </li>
                     <li>
-                <span>宿舍面积</span>{$info.dormitoryarea} m²           </li>
+                <span>宿舍面积：</span>{$info.dormitoryarea} m²           </li>
                             <li>
-                    <span>厂房价格</span>{$info.plantrent}元/m²                </li>
+                    <span>厂房价格：</span>{$info.plantrent}元/m²                </li>
                                         <li>
-                    <span>所在楼层</span>{$info.layernumber}层                </li>
+                    <span>所在楼层：</span>{$info.layernumber}层                </li>
                                         <li>
-                    <span>结构</span>{$info.structure}                </li>
+                    <span>结构：</span>{$info.structure}                </li>
                      <li>
-                <span>土地用途</span>{$info.canteen}            </li>
+                <span>土地用途：</span>{$info.canteen}            </li>
                             <li>
-                    <span>使用年限</span>{$info.expire}  年              </li>
+                    <span>使用年限：</span>{$info.expire}  年              </li>
                                         <li>
-                    <span>占地面积</span>{$info.numberbuildings} m²               </li>
+                    <span>占地面积：</span>{$info.numberbuildings} m²               </li>
                                         <li>
-                    <span>新旧程度</span>{$info.newolddegree}                </li>
+                    <span>新旧程度：</span>{$info.newolddegree}                </li>
                     <li>
-                <span>厂房配电</span>{$info.distributioncapacity}            </li>
+                <span>厂房配电：</span>{$info.distributioncapacity}            </li>
                             <li>
-                    <span>厂房电梯</span>{$info.elevator}                </li>
+                    <span>厂房电梯：</span>{$info.elevator}                </li>
                                         <li>
-                    <span>消房</span>{$info.firecontrol}                </li>
+                    <span>消房：</span>{$info.firecontrol}                </li>
                                         <li>
-                    <span>交易方式</span>{$info.applicableindustries}                </li>
+                    <span>交易方式：</span>{$info.applicableindustries}                </li>
                                                                                 </ul>
     </section>
     <!--概括-->
@@ -285,7 +285,7 @@
         </div>
     </section>
     <!--选址预约-->
-    <section class="orderedBox plr30 bt20">
+    <!--<section class="orderedBox plr30 bt20">
         <div class="detaSectTit clearFix">
             <h2>选址预约</h2>
         </div>
@@ -310,38 +310,39 @@
             </div>
             <div class="maskBox"></div>
         </div>
-    </section>
+    </section>-->
     <!--猜你喜欢-->
     <section class="likeBox plr30 bt20">
         <div class="detaSectTit clearFix">
             <h2>猜你喜欢</h2>
             <a id="like" href="/sz/cf/" onclick="_czc.push(["_trackEvent","厂房详情页","点击猜你喜欢更多按钮进入列表页次数"]);">更多<i></i></a>
         </div>
-        <ul class="listCon">
-    {volist name="recommend" id="data"}
-
-                            <li>
-                    <a href="/sz/cf_A10718427.html" class="clearFix">
+        <ul class="listCon ">
+                                {volist name="recommend" id="data"}
+                                        <li>
+                    <a href="/search/workshopdetail?id={$data.id}" class="clearFix" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击优质厂房信息总次数&#39;]);">
                         <div class="pic">
-                            <i>宝安</i>
-                            <img src="/static/index/img/598f8dab1a923e174a4fcc7132012c73.jpg" alt="石岩水田高薪园楼上2500平千级无尘车间">
+                            <i>{$data.city|getCityName=###}</i>
+                            <img src="{$data['imgs'][0]}" alt="{$data.title}">
                             <!--<p>出租</p>-->
                         </div>
                         <div class="txt">
-                            <h2>石岩水田高薪园楼上2500平千级无尘车间</h2>
-                            <p class="baseInfo"><span>宝安-石岩</span></p>
+                            <h2>{$data.title}</h2>
+                            <p class="baseInfo"> 
+                            <span>{$data.city_name}</span></p>
                             <p class="label">
-                                <span class="lab_1">二楼以上</span>
-                                <span class="lab_2">标准厂房</span>
+                            <span class="lab_1">{$data.structure}</span>
+                           <span class="lab_2">{$data.floor}楼</span>
                             </p>
                             <p class="price cfPrice">
-                                <span>23<span>元/m²</span></span>
-                                <span>2500㎡</span>
+                                <span>{$data.plantrent}元/㎡</span>
+                                <span><span>{$data.measurearea} ㎡</span></span>
                             </p>
                         </div>
                     </a>
-                </li>{/volist}
-                    </ul>
+                    </li> {/volist}
+                                       
+                                    </ul>
     </section>
         <!--所在区域的镇/街道信息-->
     <section class="sameRegion plr30">
@@ -405,17 +406,17 @@
             <a href="/shop/15975/" class="agentPic" onclick="_czc.push(["_trackEvent","厂房详情页","点击经纪人网店次数"]);">
                 <div>
                     <img src="/static/index/img/20268d75-aa8a-488d-9117-2b3fab93de3c.jpg" alt="">
-                    <p>杜敬君的网店</p>
+                    <p>{$info.name}</p>
                 </div>
             </a>
             <a href="/NewMessage/?uid=15975&amp;code=1569291548" class="leave" onclick="_czc.push(["_trackEvent","厂房详情页","点击留言次数"]);">
                 <i class="icon_leave"></i>
                 <p>留言</p>
             </a>
-            <a href="tel:4008800002,,6467" class="tel semCall" id="showtest" onclick="_czc.push(["_trackEvent","厂房详情页","点击浮动框电话拨打按钮次数"]);">
+            <a href="tel:{:config('web_site_tel')},,{$info.tel}" class="tel semCall" id="showtest" onclick="_czc.push(["_trackEvent","厂房详情页","点击浮动框电话拨打按钮次数"]);">
                 <div>
                     <p>点击免费拨打</p>
-                    <p>4008800002转6467</p>
+                    <p>{:config('web_site_tel')}转{$info.tel} </p>
                 </div>
             </a>
         </div>
@@ -589,30 +590,8 @@
         })
     </script>
     <!--埋点尾部-->
-    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_1275394881'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s96.cnzz.com/z_stat.php%3Fid%3D1275394881' type='text/javascript'%3E%3C/script%3E"));</script><span style="display:none;" id="cnzz_stat_icon_1275394881"><a href="https://www.cnzz.com/stat/website.php?web_id=1275394881" target="_blank" title="站长统计">站长统计</a></span><script src="./workshopdetail_files/z_stat.php" type="text/javascript"></script><script src="./workshopdetail_files/core.php" charset="utf-8" type="text/javascript"></script>    <script>
-    var _hmt = _hmt || [];
-    (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?e17d3f70d7bea4d156e94c7307c15016";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-<!--百度自动推送-->
-<script>
-    (function(){
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https'){
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        }
-        else{
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>        <script>
+    
+     <script>
         $("#orderedForm").append('<div class="verifyTipsBox center"><p class="verifyTips "></p></div> ');
         var verifyTipsBox = $(".verifyTipsBox");
         var verifyTips = $(".verifyTipsBox .verifyTips");
