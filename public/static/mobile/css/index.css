@@ -213,10 +213,10 @@
     z-index: 100;
     background-color: #fff;
     display: block;
-    width: 6.7rem;
+    width:902%;
     height: 0.8rem;
     line-height: 0.8rem;
-    margin: 0 0.4rem;
+    margin:auto;
     -webkit-border-radius: 0.06rem;
     -moz-border-radius: 0.06rem;
     border-radius: 0.06rem;
