@@ -3,10 +3,11 @@
 <html lang="en" style="font-size: 100px;"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
-     <title>{:config('web_site_title')}</title>
+   <title>{:config('web_site_title')}</title>
     <meta name="keywords" content="{:config('web_site_keywords')}"/>
     <meta name="description" content="{:config('web_site_description')}"/>
     <link rel="icon" href="/static/mobile/img/favicon.ico">
+   
     <meta name="format-detection" content="telephone=no">
     <meta http-equiv="Cache-Control" content="no-transform">
     <meta http-equiv="Cache-Control" content="no-siteapp">
@@ -16,15 +17,20 @@
     <link rel="stylesheet" href="/static/mobile/css/base.css">
     <link rel="stylesheet" href="/static/mobile/css/index.css">
     <link rel="stylesheet" href="/static/mobile/css/index(1).css">
-    
+    <script src="/static/mobile/js/sdk"></script>
 	<script charset="utf-8" src="/static/mobile/js/lxb.js"></script>
 	<script charset="utf-8" src="/static/mobile/js/insert_bdtj"></script>
 	<script src="/static/mobile/js/push.js"></script>
 	
 	<script src="/static/mobile/js/rem.js"></script>
-   
+    <script src="/static/mobile/js/index.php"></script>
     <!--埋点头部-->
-     <!--newYaer主题-->
+    <script>
+    //声明_czc对象
+    var _czc = _czc || [];
+    //用来指定需要哪个网站代码(siteid)来接受API发送的请求。
+    _czc.push(["_setAccount", "1275394881"]);     //正式环境
+</script>    <!--newYaer主题-->
     <style>
         iframe{
             border: 1px solid red;
@@ -57,18 +63,20 @@
     <div class="headTansBgIndex"></div>
     <!--banner-->
     <div id="iBanner" class="swiper-container iBanner swiper-container-horizontal" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击Banner图次数&#39;]);">
-        <ul class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(-3000px, 0px, 0px);">
-        <li class="swiper-slide swiper-slide-duplicate swiper-slide-next swiper-slide-duplicate-prev" data-swiper-slide-index="2" style="width: 750px;"><a href="#"><img src="/static/mobile/img/iBanner1.jpg" alt="广东厂房网"></a></li>
-            <li class="swiper-slide swiper-slide-duplicate-active" data-swiper-slide-index="0" style="width: 750px;"><a href="#"><img src="/static/mobile/img/iBanner2.jpg" alt="广东厂房网"></a></li>
-            <li class="swiper-slide" data-swiper-slide-index="1" style="width: 750px;"><a href="#"><img src="/static/mobile/img/iBanner3.jpg" alt="广东厂房网"></a></li>
+        <ul class="swiper-wrapper" style="transform: translate3d(-2250px, 0px, 0px); transition-duration: 0ms;">
+        <li class="swiper-slide swiper-slide-duplicate swiper-slide-next swiper-slide-duplicate-prev" data-swiper-slide-index="1" style="width: 750px;"><a href="#"><img src="/static/mobile/img/iBanner2.jpg" alt="广东厂房网"></a></li>
+                        
+                        <li class="swiper-slide swiper-slide-duplicate-active" data-swiper-slide-index="0" style="width: 750px;"><a href="#"><img src="/static/mobile/img/iBanner1.jpg" alt="广东厂房网"></a></li>
             <li class="swiper-slide swiper-slide-prev swiper-slide-duplicate-next" data-swiper-slide-index="2" style="width: 750px;"><a href="#"><img src="/static/mobile/img/iBanner4.jpg" alt="广东厂房网"></a></li>
-        <li class="swiper-slide swiper-slide-duplicate swiper-slide-active" data-swiper-slide-index="0" style="width: 750px;"><a href="#"><img src="/static/mobile/img/iBanner1.jpg" alt="广东厂房网"></a></li></ul>
-        <div class="swiper-pagination swiper-pagination-bullets"><span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span></div>
+        <li class="swiper-slide swiper-slide-duplicate swiper-slide-active" data-swiper-slide-index="3" style="width: 750px;"><a href="#"><img src="/static/mobile/img/iBanner4.jpg" alt="广东厂房网"></a></li></ul>
+        <div class="swiper-pagination swiper-pagination-bullets">
+        <span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
+        <span class="swiper-pagination-bullet"></span></div>
     <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
 
     <!--搜索框-->
     <!--<div class="search"></div>-->
-    <form action="http://m.cfcs1688.com/" class="iSearch">
+    <form action="/" class="iSearch">
         <a id="city" href="/index/city_shift" class="city" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击城市选择次数&#39;]);">
             <span>深圳<i></i></span>
         </a>
@@ -85,50 +93,52 @@
     <div class="navBox">
                 <ul class="clearFix">
             <li>
-                <a id="factory" href="#" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击厂房次数&#39;]);">
+                <a id="factory" href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击厂房次数&#39;]);">
                     <img src="/static/mobile/img/homepage_ic_navigation_plant.png" alt="">
                     <p>厂房出租</p>
                 </a>
             </li>
             <li>
-                <a id="cangku" href="#" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击仓库次数&#39;]);">
+                <a id="cangku" href="/index/search/workshop?city={$cityInfo[0]['id']}&category=2" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击仓库次数&#39;]);">
                     <img src="/static/mobile/img/homepage_ic_office_building.png" alt="">
                     <p>厂房出售</p>
                 </a>
             </li>
            
             <li>
-                <a id="land" href="#" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击土地次数&#39;]);">
+                <a id="land" href="/index/search/workshop?city={$cityInfo[0]['id']}&category=3" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击土地次数&#39;]);">
                     <img src="/static/mobile/img/homepage_ic_cangku.png" alt="">
                     <p>仓库出租</p>
                 </a>
             </li>
-            <li>
-                <a id="park" href="#" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击产业园区次数&#39;]);">
-                    <img src="/static/mobile/img/homepage_ic_land.png" alt="">
-                    <p>土地租售</p>
-                </a>
-            </li>
-            <li>
-                <a id="investment" href="#" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击市县招商次数&#39;]);">
-                    <img src="/static/mobile/img/homepage_ic_special.png" alt="">
-                    <p>园区招商</p>
-                </a>
-            </li>
-            <li>
-                <a href="#" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击热销园区次数&#39;]);">
+             <li>
+                <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击热销园区次数&#39;]);">
                     <img src="/static/mobile/img/homepage_ic_garden.png" alt="">
                     <p>写字楼</p>
                 </a>
             </li>
             <li>
-                <a id="agent" href="#" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击经纪人次数&#39;]);">
+                <a id="park" href="/index/search/landList?city={$cityInfo[0]['id']}" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击产业园区次数&#39;]);">
+                    <img src="/static/mobile/img/homepage_ic_land.png" alt="">
+                    <p>土地租售</p>
+                </a>
+            </li>
+            
+           
+            <li>
+                <a id="investment" href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击市县招商次数&#39;]);">
+                    <img src="/static/mobile/img/homepage_ic_special.png" alt="">
+                    <p>园区招商</p>
+                </a>
+            </li>
+            <li>
+                <a id="agent" href="/index/search/shopList?city={$cityInfo[0]['id']}" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击经纪人次数&#39;]);">
                     <img src="/static/mobile/img/homepage_ic_broker.png" alt="">
                     <p>商铺租售</p>
                 </a>
             </li>
              <li>
-                <a id="office" href="#" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击写字楼次数&#39;]);">
+                <a id="office" href="/office/" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击写字楼次数&#39;]);">
                     <img src="/static/mobile/img/homepage_ic_investment.png" alt="">
                     <p>民宅租售</p>
                 </a>
@@ -161,8 +171,8 @@
         </div>
         <ul class="con clearFix">
             <li class="focus">
-                <p>16年行业服务经验,盘源多,免中介费</p>
-                <a href="index/NewDemand">提交需求</a>
+                <p>8年行业服务经验,盘源多,免中介费</p>
+                <a href="/NewDemand/">提交需求</a>
             </li>
             <li>
                 <p>快速帮你匹配优质客户资源，高效成交</p>
@@ -188,96 +198,91 @@
         <div class="listBoxCon clearFix">
             <!--热门厂房-->
             <div class="list focus">
-                                <ul class="listCon ">
-                                {volist name="recommend" id="data"}
-                                        <li>
-                    <a href="/search/workshopdetail?id={$data.id}" class="clearFix" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击优质厂房信息总次数&#39;]);">
-                        <div class="pic">
-                            <i>{$data.city|getCityName=###}</i>
-                            <img src="{$data['imgs'][0]}" alt="{$data.title}">
-                            <!--<p>出租</p>-->
-                        </div>
-                        <div class="txt">
-                            <h2>{$data.title}</h2>
-                            <p class="baseInfo"> 
-                            <span>{$data.city_name}</span></p>
-                            <p class="label">
-                            <span class="lab_1">{$data.structure}</span>
-                           <span class="lab_2">{$data.floor}楼</span>
-                            </p>
-                            <p class="price cfPrice">
-                                <span>{$data.plantrent}元/㎡</span>
-                                <span><span>{$data.measurearea} ㎡</span></span>
-                            </p>
-                        </div>
-                    </a>
-                    </li> {/volist}
-                                       
-                                    </ul>
-                <a id="quality" href="/search/workshop" class="more" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击优质厂房更多按钮次数&#39;]);">更多</a>
+                <ul class="listCon ">
+                    {volist name="recommend" id="data"}
+                    <li>
+                        <a href="/search/workshopdetail?id={$data.id}" class="clearFix"
+                           onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击优质厂房信息总次数&#39;]);">
+                            <div class="pic">
+                                <i>龙岗111</i>
+                                <img src="{$data['imgs'][0]}" alt="龙岗同乐大型原房东红本工业园2050平豪华装修厂房出租大">
+                                <!--<p>出租</p>-->
                             </div>
+                            <div class="txt">
+                                <h2>{$data.title}</h2>
+                                <p class="baseInfo"><span>{$data.city|getCityName=###,$data.area,'-'}</span></p>
+                                <p class="label">
+                                                                <span class="lab_1">
+                                            {$data.structure}                                        </span>
+                                    <span class="lab_2">
+                                            {$data.floor}                                        </span>
+                                </p>
+                                <p class="price cfPrice">
+                                    <span></span>
+                                    <span>{$data.measurearea}<span>㎡</span></span>
+                                </p>
+                            </div>
+                        </a>
+                    </li>
+                    {/volist}
+                </ul>
+                <a id="quality" href="/search/workshop" class="more"
+                   onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击优质厂房更多按钮次数&#39;]);">更多</a>
+            </div>
             <!--热门写字楼-->
             <div class="list">
-                                <ul class="listCon">
-                                       {volist name="recommend" id="data"}
+                <ul class="listCon">
+                    {volist name="recommend" id="data"}
                     <li>
                         <a href="/search/workshopdetail?id={$data.id}"
                            onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击热门写字楼信息总次数&#39;]);">
                             <div class="pic">
                                 <img src="{$data['imgs'][0]}" alt="{$data.title}">
-                                <i>{$data.city|getCityName=###}</i>
+                                <i>免佣2222</i>
                             </div>
                             <div class="txt">
-                            <h2>写字楼{$data.title}</h2>
-                            <p class="baseInfo"> 
-                            <span>{$data.city_name}</span></p>
-                            <p class="label">
-                            <span class="lab_1">{$data.structure}</span>
-                           <span class="lab_2">{$data.floor}楼</span>
-                            </p>
-                            <p class="price cfPrice">
-                                <span>{$data.plantrent}元/㎡</span>
-                                <span><span>{$data.measurearea} ㎡</span></span>
-                            </p>
-                        </div>
+                                <h2>{$data.title}</h2>
+                                <p class="baseInfo"><span>{$data.measurearea}㎡</span>/<span>{$data.address}</span></p>
+                                <!--<p class="traffic">6号线高青路(距离969米)</p>-->
+                                <p class="price">{$data.plantrent}</p>
+                            </div>
                         </a>
                     </li>
                     {/volist}
-                                        
-                                    </ul>
-                <a id="hot" href="/sz-office/rent/" class="more" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击热门写字楼更多按钮次数&#39;]);">更多</a>
-                            </div>
+                </ul>
+                <a id="hot" href="/search/workshop" class="more"
+                   onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击热门写字楼更多按钮次数&#39;]);">更多</a>
+            </div>
             <!--最新土地-->
             <div class="list">
-                
+
                 <ul class="listCon">
                     {volist name="recommend" id="data"}
                     <li class="noBoder">
                         <a href="/search/workshopdetail?id={$data.id}"
                            onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击最新土地信息总次数&#39;]);">
                             <div class="pic">
-                                <img src="{$data['imgs'][0]}" alt="{$data.title}">
-                                <i>{$data.city|getCityName=###}</i>
+                                <img src="/static/mobile/img/201908262326206805.jpg" alt="大宗土地使用权转让【湖南长沙】">
+                                <!--<p>出租</p>-->
                             </div>
                             <div class="txt">
-                            <h2>土地{$data.title}</h2>
-                            <p class="baseInfo"> 
-                            <span>{$data.city_name}</span></p>
-                            <p class="label">
-                            <span class="lab_1">{$data.structure}</span>
-                           <span class="lab_2">{$data.floor}楼</span>
-                            </p>
-                            <p class="price cfPrice">
-                                <span>{$data.plantrent}元/㎡</span>
-                                <span><span>{$data.measurearea} ㎡</span></span>
-                            </p>
-                        </div>
+                                <h2>大宗土地使用权转让【湖南3333长沙】</h2>
+                                <p class="baseInfo">
+                                    <span>35年</span>/<span>广东-深圳-龙岗</span></p>
+                                <p class="label">
+                                    <span class="lab_1">汽车部件</span></p>
+                                <p class="price cfPrice">
+                                    <span>165<span>亩</span></span>
+                                    <span>面议</span>
+                                </p>
+                            </div>
                         </a>
                     </li>
                     {/volist}
                 </ul>
-                <a id="new" href="/sz/td/" class="more" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击最新土地更多按钮次数&#39;]);">更多</a>
-                            </div>
+                <a id="new" href="/search/workshop" class="more"
+                   onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击最新土地更多按钮次数&#39;]);">更多</a>
+            </div>
         </div>
     </div>
 </section>
@@ -286,19 +291,23 @@
 <!--底部栏-->
 <footer>
     <!--电话-->
-    
+    <div class="tel clearFix">
+        <a id="semCall" href="tel:{:config('web_site_tel')}" class="semCall" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击底部电话拨打按钮次数&#39;]);"><img src="/static/mobile/img/homepage_bottom_phone.png" alt=""></a>
+    </div>
     <p class="link clearFix">
-        <a id="about" href="/index/about.html" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击关于我们次数&#39;]);">关于我们</a>
-        
-    </p><div style="clear:both"></div>
+        <a id="about" href="/help/about.html" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击关于我们次数&#39;]);">关于我们</a>
+        <a id="company" href="http://m.zhaoshang800.cn/" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击集团官网次数&#39;]);">集团官网</a>
+        <a id="intcompany" href="http://m.zhaoshang800.cn/en/" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击国际官网次数&#39;]);">国际官网</a>
+        <a id="work" href="/work/" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击业务合作次数&#39;]);">业务合作</a>
+    </p>
     <p class="copy clearFix" style="margin-bottom: 6px">
-        
+        <span>ICP经营许可证:</span>
         <span style="margin: 0 0.2rem;"><a style="color: #979797;" href="http://www.beian.miit.gov.cn" target="_blank">{:config('web_site_icp')}</a></span>
-    </p>   </p><div style="clear:both"></div>
+    </p>
     <p class="copy clearFix" style="margin-bottom: 3px">
-        <span style="margin: 0 0.2rem;">广东厂房网&nbsp;版权所有</span>
+        <span style="margin: 0 0.2rem;">{:config('web_site_banquan')}</span>
         
-    </p>   </p><div style="clear:both"></div>
+    </p>
         <p>{:config('web_site_name')} 版权所属</p>
     </footer>
 <!--搜索页-->
