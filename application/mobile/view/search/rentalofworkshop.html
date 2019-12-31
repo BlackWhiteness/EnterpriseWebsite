@@ -57,7 +57,7 @@
         width: 33.333%;
     }
 </style>
-<nav id="nav">
+<nav id="nav" style="display: none;">
     <div class="navCon">
         <div class="head">
             <img src="/static/index/img/navigation_banner.png" alt="">
@@ -479,41 +479,21 @@
 <!--底部栏-->
 <footer>
     <!--电话-->
-    <div class="tel clearFix">
-        <a id="semCall" href="tel:400-8800-002" class="semCall" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击底部电话拨打按钮次数&#39;]);"><img src="/static/index/img/homepage_bottom_phone.png" alt=""></a>
-    </div>
+    
     <p class="link clearFix">
-        <a id="about" href="/help/about.html" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击关于我们次数&#39;]);">关于我们</a>
-        <a id="company" href="/" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击集团官网次数&#39;]);">集团官网</a>
-        <a id="intcompany" href="/en/" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击国际官网次数&#39;]);">国际官网</a>
-        <a id="work" href="/work/" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击业务合作次数&#39;]);">业务合作</a>
-    </p>
+        <a id="about" href="/index/about.html" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击关于我们次数&#39;]);">关于我们</a>
+        
+    </p><div style="clear:both"></div>
     <p class="copy clearFix" style="margin-bottom: 6px">
-        <span>ICP经营许可证:&nbsp;&nbsp;粤B2-20130119</span>
-        <span style="margin: 0 0.2rem;"><a style="color: #979797;" href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备15009343号-1</a></span>
-    </p>
+        
+        <span style="margin: 0 0.2rem;"><a style="color: #979797;" href="http://www.beian.miit.gov.cn" target="_blank">{:config('web_site_icp')}</a></span>
+    </p>   </p><div style="clear:both"></div>
     <p class="copy clearFix" style="margin-bottom: 3px">
-        <span style="margin: 0 0.2rem;">中工招商网&nbsp;版权所有</span>
-        <img src="/static/index/img/footer_brand.png" alt="">
-    </p>
-        <p>深圳市伙伴行网络科技有限公司 版权所属</p>
-    </footer><!--<footer style="display: none">-->
-    <!--&lt;!&ndash;电话&ndash;&gt;-->
-    <!--<div class="tel clearFix">-->
-        <!--<a href="tel:400-8800-002" class="semCall" onclick='_czc.push(["_trackEvent","厂房列表页","点击底部电话拨打按钮次数"]);'><img src="/NewStyles/images/homepage_bottom_phone.png" alt=""></a>-->
-    <!--</div>-->
-    <!--<p class="link clearFix">-->
-        <!--<a href="/newmain/AboutUs/">关于我们</a>-->
-        <!--<a href="/">集团官网</a>-->
-        <!--<a href="/newmain/Work/">业务合作</a>-->
-    <!--</p>-->
-    <!--<p class="copy clearFix">-->
-        <!--<span>ICP经营许可证:&nbsp;&nbsp;粤B2-20130119</span>-->
-        <!--<span style="margin: 0 0.2rem;">中工招商网&nbsp;版权所有</span>-->
-        <!--<img src="/NewStyles/images/footer_brand.png" alt="">-->
-    <!--</p>-->
-
-<!--</footer>-->
+        <span style="margin: 0 0.2rem;">广东厂房网&nbsp;版权所有</span>
+        
+    </p>   </p><div style="clear:both"></div>
+        <p>{:config('web_site_name')} 版权所属</p>
+    </footer>
 <!--搜索页-->
 <section class="searchWrapBox">
 
@@ -578,7 +558,7 @@
         <a href="/NewDemand/" onclick="_czc.push(["_trackEvent","厂房列表页","点击浮动框委托需求按钮次数"]);"><span>需求登记</span></a>
     </div>
     <div class="tel lf">
-        <a href="tel:400-8800-002" class="semCall" id="semCalltest" onclick="_czc.push(["_trackEvent","厂房列表页","点击浮动框电话拨打按钮次数"]);"><span>点击免费拨打</span><span class="telTxt">400-8800-002</span></a>
+        <a href="tel:400-8800-002" class="semCall" id="semCalltest" onclick="_czc.push(["_trackEvent","厂房列表页","点击浮动框电话拨打按钮次数"]);"><span>点击免费拨打</span><span class="telTxt">{:config('web_site_tel')}</span></a>
     </div>
 </section>
 <script src="/static/index/js/zepto.min.js"></script>
@@ -715,29 +695,6 @@
     }
 </script>
 <!--埋点尾部-->
-<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_1275394881'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s96.cnzz.com/z_stat.php%3Fid%3D1275394881' type='text/javascript'%3E%3C/script%3E"));</script><span style="display:none;" id="cnzz_stat_icon_1275394881"><a href="https://www.cnzz.com/stat/website.php?web_id=1275394881" target="_blank" title="站长统计">站长统计</a></span><script src="./changfang_files/z_stat.php" type="text/javascript"></script><script src="./changfang_files/core.php" charset="utf-8" type="text/javascript"></script><script>
-    var _hmt = _hmt || [];
-    (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?e17d3f70d7bea4d156e94c7307c15016";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-<!--百度自动推送-->
-<script>
-    (function(){
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https'){
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        }
-        else{
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>
+
 
 </body></html>
