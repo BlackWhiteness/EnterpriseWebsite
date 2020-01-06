@@ -49,7 +49,6 @@ class Index extends MobileBase
 
     public function city_shift()
     {
-
         $sz = Workshop_Model::order(array('releasetime' => 'DESC'))->page(1, 5)->select()->toArray();
         $this->assign("sz", $sz);
         $hot = Workshop_Model::where(array('type' => 2))->order(array('releasetime' => 'DESC'))->page(1, 6)->select()->toArray();
