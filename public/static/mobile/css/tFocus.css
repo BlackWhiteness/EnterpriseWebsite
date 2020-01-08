@@ -19,10 +19,10 @@ a, area {blr:expression(this.onFocus=this.blur())}
 .fr{float:right;}
 .clearfix:after{clear:both;content:".";height:0;display:block;visibility:hidden;}
 
-.keChgImg { height: 272px; width: 420px; border: 5px solid #CCCCCC; background: #FFF; position: relative; overflow: hidden; margin: 0px auto; }
-.keImgs li { float: left; height: 272px; width: 420px; }
-.keImgs { height: 272px; overflow: hidden; position: absolute; left: 0px; top: 0px; }
-.keImgTitleBg { line-height: 28px; background: #FFF; height: 28px; width: 420px; position: absolute; left: 0px; bottom: 0px; opacity:0.9; filter:alpha(opacity=90) }
+.keChgImg { height: 400px; width: 750px;  background: #FFF; position: relative; overflow: hidden; margin: 0px auto; }
+.keImgs li { float: left; height: 400px; width: 750px; }
+.keImgs { height: 400px; overflow: hidden; position: absolute; left: 0px; top: 0px; }
+.keImgTitleBg { line-height: 28px; background: #FFF; height: 28px; width: 750px; position: absolute; left: 0px; bottom: 0px; opacity:0.9; filter:alpha(opacity=90) }
 .keImgBtn { float: right; position: absolute; bottom: 0px; right: 0px; }
 .keImgBtn ul li { float: right; height: 22px; width: 26px; text-align: center; padding-top: 6px; position: relative; color: #FFF; cursor: pointer; font: 14px "微软雅黑"; }
 .keCor1 { background: #f72e07; }
