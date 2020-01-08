@@ -11,95 +11,21 @@
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <meta name="applicable-device" content="mobile">
        <link rel="stylesheet" type="text/css" href="/static/mobile/css/css.css">
-<!--下面为焦点图JS CSS-->
-<script language="javascript" src="/static/mobile/js/jquery.js"></script>
-<link rel="stylesheet" type="text/css" href="/static/mobile/css/tFocus.css">
-<script language="javascript">
-$(function(){
-//图片滚动宽度
-var wVal=750;
-var Timer=null;
-$(".keImgs").width($(".keImgs").find("li").size()*wVal)
-var keCutNum=0;
-var relNum=$(".keImgBtn li").size();
-//滚动动画
-function srcMove(){
-    $(".keImgs").animate({"left":-keCutNum*wVal},100);
-	$(".keImgBtn li").removeClass("keImgCutLi");$(".keImgBtn li").eq(keCutNum).addClass("keImgCutLi");
-	$(".keImgTxt li").hide();$(".keImgTxt li").eq(keCutNum).show();	
-}
-function keChgImg(){
- 	keCutNum++;
-	if(keCutNum==relNum){
-		keCutNum=0;
-	}
-	srcMove();
-}
-var Timer=setInterval(keChgImg,3000)
-$(".keChgImg").hover(function(){clearInterval(Timer)},function(){Timer=setInterval(keChgImg,3000)});
-$(".keChgBtnR").click(function(){
-	keCutNum++;
-	if(keCutNum==relNum){
-		keCutNum=0;
-	}
-	srcMove();
-});
-$(".keChgBtnL").click(function(){
-	keCutNum--;
-	if(keCutNum<0){
-		keCutNum=relNum-1;
-	}
-	srcMove();
-});
-$(".keImgBtn li").hover(function(){
-	keCutNum=$(".keImgBtn li").index(this);
-	srcMove();
-});
-//End
-})
-</script>
-<!--下面为焦点图JS Css结束-->
-<!--[if IE 6]>
-<script src="js/ie6PNG.js" type="text/javascript"></script>
-<script type="text/javascript">DD_belatedPNG.fix('*');</script>
-<![endif]-->
+
 </head>
 
 <body>
-<div class="width100">
-<!--焦点图开始-->
-<div class="keChgImg">
-<ul class="keImgs">
-<li><a href="#"><img src="/static/mobile/img/iBanner1.jpg" width="750" height="400" alt="站长素材网页特效" /></a></li>
-<li><a href="#"><img src="/static/mobile/img/iBanner2.jpg" width="750" height="400" alt="站长素材网页特效" /></a></li>
-<li><a href="#"><img src="/static/mobile/img/iBanner3.jpg" width="750" height="400" alt="站长素材网页特效" /></a></li>
-<li><a href="#"><img src="/static/mobile/img/iBanner4.jpg" width="750" height="400" alt="站长素材网页特效" /></a></li>
-<li><a href="#"><img src="/static/mobile/img/iBanner1.jpg" width="750" height="400" alt="站长素材网页特效" /></a></li>
-</ul>
-<div class="keImgTitleBg"></div>
-<div class="keImgBtn">
- <ul>
-  <li class="keCor1 keImgCutLi">1<img src="/static/mobile/img/.gif" width="11" height="6" /></li>
-  <li class="keCor2">2<img src="/static/mobile/img/chgSq.gif" width="11" height="6" /></li>
-  <li class="keCor3">3<img src="/static/mobile/img/chgSq.gif" width="11" height="6" /></li>
-  <li class="keCor4">4<img src="/static/mobile/img/chgSq.gif" width="11" height="6" /></li>
-  <li class="keCor5">5<img src="/static/mobile/img/chgSq.gif" width="11" height="6" /></li>
- </ul>
+<!-- 代码 开始 -->
+<div id="focus">
+	<ul>
+		<li><a href="#"><img src="/static/mobile/img/iBanner1.jpg" /></a></li>
+		<li><a href="#"><img src="/static/mobile/img/iBanner2.jpg" /></a></li>
+		<li><a href="#"><img src="/static/mobile/img/iBanner3.jpg" /></a></li>
+        <li><a href="#"><img src="/static/mobile/img/iBanner4.jpg" /></a></li>
+	</ul>
 </div>
-<div class="keImgTxt">
- <ul>
-  <li><a class="cor_blue" href="#" title="">广东厂房网1</a></li>
-  <li class="hidden"><a class="cor_blue" href="#">广东厂房网1</a></li>
-  <li class="hidden"><a class="cor_blue" href="#">纯22广东厂房网</a></li>
-  <li class="hidden"><a class="cor_blue" href="#">广东厂房网33</a></li>
-  <li class="hidden"><a class="cor_blue" href="#">广东厂房网44</a></li>
- </ul>
-</div>
-<img class="keChgBtnL" src="/static/mobile/img/chgBtnL.png" width="40" height="40" />
-<img class="keChgBtnR" src="/static/mobile/img/chgBtnR.png" width="40" height="40" />
-</div>
-<!--End-->
-<div class="clear"></div>
-</div>
+<script type="text/javascript" src="js/zepto.min.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+<!-- 代码 结束 -->
 </body>
 </html>

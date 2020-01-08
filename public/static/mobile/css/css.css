@@ -40,6 +40,13 @@ a:active{color:#0093ff;text-decoration:none;}
 /* include begin */
 html{background-color:#fff;}
 body{margin:0px auto;min-width:320px;max-width:640px;background-color:#fff;min-height:100%;}
+/*焦点图*/
+#focus{ overflow:hidden;}
+#focus ul{ float:left;}
+#focus li{ width:100%; float:left;}
+#focus li img{ width:100%}
+
+
 header{0;}
 header h1{width:63.4375%;}
 header .title{line-height:2.35;width:56%; text-align:center;}
