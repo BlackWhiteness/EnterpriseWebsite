@@ -46,13 +46,13 @@ body{margin:0px auto;min-width:320px;max-width:640px;background-color:#fff;min-h
 #focus li{ width:100%; float:left;}
 #focus li img{ width:100%}
 
-.head_logo_tel{width:620px; height:60px;  padding-left:20px; padding-top:20px; position:absolute; z-index:1000;}
-.logo{width:273px; height:55px; float:left;}
-.tel{ width:250px; height:30px; float:right; margin-top:10px;}
+.head_logo_tel{width:80%; height:3em;  padding-left:5%; padding-top:5%; position:absolute; z-index:1000;}
+.logo{width:65%; height:2em; float:left;}
+.tel{ width:30%; height:2em; float:right; margin-top:5%;}
 .icon_tel{
-    display:block; float:left; margin-top:15px;
-    width:34px;
-    height:34px;
+    display:block; float:left; margin-top:2em;
+    width:100%;
+    height:100%;
     background: url("/static/mobile/img/homepage_top_icon_phone.png") no-repeat;
    
     -webkit-transform: translateY(-50%);
@@ -61,7 +61,7 @@ body{margin:0px auto;min-width:320px;max-width:640px;background-color:#fff;min-h
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
 }
-.tel_number{ display:block; float:right;width:206px; font-size:1.5em; }
+.tel_number{ display:block; float:right;width:20%; font-size:1.5em; }
 
 /*搜索*/
 .iSearch{
