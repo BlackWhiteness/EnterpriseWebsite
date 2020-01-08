@@ -46,9 +46,24 @@ body{margin:0px auto;min-width:320px;max-width:640px;background-color:#fff;min-h
 #focus li{ width:100%; float:left;}
 #focus li img{ width:100%}
 
-.head_logo_tel{width:620px; height:60px;  padding-left:20px; padding-top:10px; position:absolute; z-index:1000;}
+.head_logo_tel{width:620px; height:60px;  padding-left:20px; padding-top:20px; position:absolute; z-index:1000;}
 .logo{width:273px; height:55px; float:left;}
 .tel{ width:width:250px; height:30px; float:right;}
+.icon_tel{
+    display: inline-block;
+    width: 0.34rem;
+    height: 0.34rem;
+    background: url("/static/mobile/img/homepage_top_icon_phone.png") no-repeat;
+    background-size: 100%;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
 header{0;}
 header h1{width:63.4375%;}
 header .title{line-height:2.35;width:56%; text-align:center;}
