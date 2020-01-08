@@ -48,9 +48,9 @@ body{margin:0px auto;min-width:320px;max-width:640px;background-color:#fff;min-h
 
 .head_logo_tel{width:620px; height:60px;  padding-left:20px; padding-top:20px; position:absolute; z-index:1000;}
 .logo{width:273px; height:55px; float:left;}
-.tel{ width:width:250px; height:30px; float:right;}
+.tel{ width:250px; height:30px; float:right;}
 .icon_tel{
-    display:block;
+    display:block; float:left;
     width:34px;
     height:34px;
     background: url("/static/mobile/img/homepage_top_icon_phone.png") no-repeat;
@@ -61,6 +61,7 @@ body{margin:0px auto;min-width:320px;max-width:640px;background-color:#fff;min-h
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
 }
+.tel_number{ display:block; float:right;width:246px; }
 header{0;}
 header h1{width:63.4375%;}
 header .title{line-height:2.35;width:56%; text-align:center;}
