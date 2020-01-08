@@ -32,7 +32,7 @@ a, area {blr:expression(this.onFocus=this.blur())}
 .keCor5 { background: #f7e907; }
 .keImgBtn ul li img { display: none; position: absolute; left: 7px; top: 0px; }
 .keImgBtn ul li.keImgCutLi img{display:block}
-.keChgBtnL { position: absolute; left: 0px; top: 97px; cursor: pointer; z-index:10 }
-.keChgBtnR { position: absolute; right: 0px; top: 97px; cursor: pointer; z-index:10 }
-.keImgTxt { line-height: 28px; height: 28px; width: 290px; position: absolute; left: 0px; bottom: 0px; font-size: 12px; color: #3797BD; text-align: center; overflow: hidden }
+.keChgBtnL { position: absolute; left: 0px; top: 150px; cursor: pointer; z-index:10 }
+.keChgBtnR { position: absolute; right: 0px; top: 150px; cursor: pointer; z-index:10 }
+.keImgTxt { line-height: 28px; height: 28px; width: 590px; position: absolute; left: 0px; bottom: 0px; font-size:1.3em; color: #3797BD; text-align: center; overflow: hidden }
 .keImgTxt a{ color: #000; font-family: Arial; }
