@@ -62,48 +62,101 @@ body{margin:0px auto;min-width:320px;max-width:640px;background-color:#fff;min-h
     transform: translateY(-50%);
 }
 .tel_number{ display:block; float:right;width:206px; font-size:1.5em; }
-header{0;}
-header h1{width:63.4375%;}
-header .title{line-height:2.35;width:56%; text-align:center;}
-header .nav{width:12.0313%;}
-header .back{width:20.9375%;}
-.bak-header2{border-bottom:2px solid #43bcc7;}
 
-footer{background-color:#F92C27;color:#fff;}
-.foot_service{width:86%;margin:0px auto;padding-top:3%;padding-bottom:0%;}
-.foot_contact{width:86%;margin:0px auto;padding-top:3%;padding-bottom:5%;}
-.foot_service li{float:left;width:31%;margin-right:2.8%;margin-bottom:3%;}
-.foot_service li.last{margin-right:0;}
-.foot_service li a{display:block;border:1px solid #cccccc;color:#eee;line-height:2.2;padding:0px 4%; text-align:center;}
-.foot_service_t, .foot_contact_t{line-height:2.4;}
-.foot_service_t a, .foot_contact_t a{color:#fff;}
-.foot_contact_list li{line-height:1;color:#dddddd;padding:2% 0px;}
-.foot_contact_list li a{color:#dddddd;}
-.foot_contact_list li div{width:3.8%;max-width:17px;display:inline-block;padding-right:2%;margin-top:0.5%;}
-
-
-.top_nav{display:none;}
-.top_nav ul{border-top:1px solid #ec0938;}
-.top_nav li{text-align:left;padding:4%;border-bottom:1px solid #dddddd;}
-.top_nav li.last{border-bottom:0px none;padding-bottom:2%;}
-.top_nav li a{color:#333;display:block;}
-.top_nav li div{display:block;width:2.3438%;float:right;padding-top:1%;}
-.copyright{background-color:#ffffff;line-height:1.5;color:#999999; text-align:center; padding:5%;padding-bottom:20%;}
-
-nav{position:fixed;bottom:0px;width:100%;}
-nav li{width:25%;float:left;max-width:160px;}
-
-.btn_more{width:28%;border:1px solid #cedadb;margin:10% auto;text-align:center;}
-.btn_morea{width:70%;margin:10% auto;text-align:center;}
-.btn_more a{color:#0389D1;line-height:2.2; }
-
-.page_t{color:#333333; text-align:center; line-height:3;font-weight:bold;}
-.page_t span{color:#43bcc7;display:inline-block;padding-right:1%;}
-
-@-webkit-keyframes rotate {
-  from {-webkit-transform:rotate(0deg);}
-  to {-webkit-transform:rotate(360deg);}
+/*搜索*/
+.iSearch{
+    position: absolute;
+    bottom: 0.43rem;
+    left: 0;
+    z-index: 100;
+    background-color: #fff;
+    display: block;
+    width:90%;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    margin:0 0.5rem;
+    -webkit-border-radius: 0.06rem;
+    -moz-border-radius: 0.06rem;
+    border-radius: 0.06rem;
+    /*position: relative;*/
 }
+.iSearch a.city{
+    display: block;
+    float: left;
+    color: #303030;
+    font-size: 0.24rem;
+    line-height: 0.32rem;
+    border-right: 1px solid #d8d8d8;
+    width: 1.34rem;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    text-align: center;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.iSearch a.city span{
+    position: relative;
+    padding-right: 0.19rem;
+}
+.iSearch a.city span i{
+    display: inline-block;
+    width: 0.14rem;
+    height: 0.09rem;
+    background:url("/static/mobile/img/search_down_icon.png") no-repeat;
+    background-size: 100%;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.iSearch>input{
+    font-size: 0.26rem;
+    color: #ccc;
+    display: block;
+    margin-left: 1.34rem;
+    padding-left: 0.34rem;
+    line-height: 0.8rem;
+    position: absolute;
+    top: 0;
+    display: block;
+    padding-right: 0.2rem;
+    width: 5rem;
+}
+.iSearch .icon_sear{
+    width: 0.26rem;
+    height: 0.26rem;
+    display: block;
+    background: url("/static/mobile/img/iserchIcon.png") no-repeat;
+    background-size: 100%;
+    position: absolute;
+    top: 50%;
+    right: 0.3rem;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.iSearch .iSearchLink{
+    margin-left: 1.58rem;
+    display: block !important;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    z-index: 2;
+}
+/*搜索end*/
+
 /* include end */
 
 /* index begin */
