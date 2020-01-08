@@ -46,7 +46,7 @@ body{margin:0px auto;min-width:320px;max-width:640px;background-color:#fff;min-h
 #focus li{ width:100%; float:left;}
 #focus li img{ width:100%}
 
-.head_logo_tel{ height:0.7rem; background-color:#03C;padding: 0 0.3rem;margin-top: 0.26rem; position:absolute; z-index:1000;}
+.head_logo_tel{ height:60px; background-color:#03C; padding-left:20px; padding-top:10px; position:absolute; z-index:1000;}
 
 header{0;}
 header h1{width:63.4375%;}
