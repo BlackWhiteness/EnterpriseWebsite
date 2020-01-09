@@ -50,10 +50,10 @@ body{margin:0px auto;min-width:320px;max-width:640px;background-color:#fff;min-h
 
 .head_logo_tel{height:3em;  padding-top:1.5%; position:absolute; z-index:1000;}
 .logo{width:50%; height:2em; float:left;}
-.tel{ width:40%; height:2em; float:right; margin-top:5%;}
+.tel{ width:40%; height:2em; float:right; }
 .icon_tel{
     display:block; float:left; margin-top:2em;
-    width:100%;
+    width:25%;
     height:100%;
     background: url("/static/mobile/img/homepage_top_icon_phone.png") no-repeat;
    
@@ -63,7 +63,7 @@ body{margin:0px auto;min-width:320px;max-width:640px;background-color:#fff;min-h
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
 }
-.tel_number{ display:block; float:right;width:20%; font-size:1.5em; }
+.tel_number{ display:block; float:right;width:70%; font-size:1.5em; }
 
 
 /*搜索*/
