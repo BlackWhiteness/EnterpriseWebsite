@@ -41,6 +41,7 @@ a:active{color:#0093ff;text-decoration:none;}
 html{background-color:#fff;}
 body{margin:0px auto;min-width:320px;max-width:640px;background-color:#fff;min-height:100%;}
 .body_div{width:640px; height:auto;}
+.logo img{width:100%;}
 /*焦点图*/
 #focus{ overflow:hidden;}
 #focus ul{ float:left;}
@@ -48,7 +49,7 @@ body{margin:0px auto;min-width:320px;max-width:640px;background-color:#fff;min-h
 #focus li img{ width:100%}
 
 .head_logo_tel{width:90%; height:3em;  padding-left:1.5%; padding-top:1.5%; position:absolute; z-index:1000;}
-.logo{width:65%; height:2em; float:left;}
+.logo{width:60%; height:2em; float:left;}
 .tel{ width:30%; height:2em; float:right; margin-top:5%;}
 .icon_tel{
     display:block; float:left; margin-top:2em;
