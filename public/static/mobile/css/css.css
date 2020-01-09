@@ -48,9 +48,9 @@ body{margin:0px auto;min-width:320px;max-width:640px;background-color:#fff;min-h
 #focus li{ width:100%; float:left;}
 #focus li img{ width:100%}
 
-.head_logo_tel{width:90%; height:3em;  padding-left:1.5%; padding-top:1.5%; position:absolute; z-index:1000;}
-.logo{width:60%; height:2em; float:left;}
-.tel{ width:30%; height:2em; float:right; margin-top:5%;}
+.head_logo_tel{height:3em;  padding-top:1.5%; position:absolute; z-index:1000;}
+.logo{width:50%; height:2em; float:left;}
+.tel{ width:40%; height:2em; float:right; margin-top:5%;}
 .icon_tel{
     display:block; float:left; margin-top:2em;
     width:100%;
