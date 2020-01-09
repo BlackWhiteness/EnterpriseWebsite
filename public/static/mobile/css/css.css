@@ -49,8 +49,8 @@ body{margin:0px auto;min-width:320px;max-width:640px;background-color:#fff;min-h
 #focus li img{ width:100%}
 
 .head_logo_tel{height:3em;  padding-top:1.5%; position:absolute; z-index:1000;}
-.logo{width:50%; height:2em; float:left;}
-.tel{ width:40%; height:2em; float:right; }
+.logo{width:40%; height:2em; float:left;}
+.tel{height:2em; float:right; }
 .icon_tel{
     display:block; float:left; margin-top:2em;
     width:25%;
