@@ -1,0 +1,310 @@
+
+/*选择地区*/
+.express-area {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    background-color: #fff;
+}
+
+.express-area a {
+    display: block;
+}
+
+.express-area dl {
+    position: relative;
+    color: #4d525d;
+}
+.express-area dl dt {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.express-area dl dd {
+    text-align: justify;
+}
+
+/*@media (min-width: 721px) and (max-width: 1300px) {*/
+/*.express-area a {*/
+/*}*/
+/*.express-area dl dt {*/
+/*}*/
+/*.express-area dl dd {*/
+/*}*/
+/*}*/
+
+/*选择地区弹层*/
+.express-area-box {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    z-index: 1005;
+    width: 320px;
+    margin-left: -160px;
+    background-color: #fff;
+    border-radius: 0.2rem 0.2rem 0 0;
+    color: #4d525d;
+    position: fixed;
+    left: 0px;
+    width: 100%;
+    margin-left: 0px;
+    visibility:hidden;
+}
+
+.express-area-box .header {
+    position: relative;
+    border-radius: 0.2rem 0.2rem 0 0;
+    /*border-bottom: 1px solid #e2e2e2;*/
+    /*box-shadow: 0 0 0.6rem 0 rgba(0,0,0,0.10);*/
+}
+
+.express-area-box .header h3{
+    text-align: center;
+    font-size: 0.32rem;
+    color: #303030;
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+    font-weight: normal;
+    line-height: 0.45rem;
+    width: 100%;
+    position: relative;
+}
+.express-area-box .header h3 i{
+    display: block;
+    width: 0.34rem;
+    height: 0.34rem;
+    position: absolute;
+    right: 0.5rem;
+    top: 0;
+    background: url("/NewStyles/images/entrust_city_cancel.png") no-repeat;
+    background-size: 100%;
+}
+.hotCity{
+    font-size: 0.26rem;
+    color: #979797;
+    line-height: 0.37rem;
+    padding: 0 0.5rem;
+}
+.express-area-box .header .back,
+.express-area-box .header .close {
+    position: absolute;
+    top: 0;
+}
+.express-area-box .header .back {
+    display: none;
+    left: 0;
+}
+.express-area-box .header .close {
+    right: 0;
+}
+.express-area-box article {
+    height: 4.28rem;
+    overflow-y: scroll;
+    padding-top: 0.1rem;
+    padding-left: 0.52rem;
+}
+.area-list li,.area-listBus li {
+    text-align: justify;
+    font-size: 0.32rem;
+    color: #303030;
+    line-height: 0.45rem;
+    padding: 0.2rem 0;
+}
+.area-list li>span,.area-listBus li>span{
+    font-size: 0.26rem;
+    color: #979797;
+    margin-right: 0.2rem;
+}
+.area-list li,.area-listBus li {
+    text-align: justify;
+    font-size: 0.32rem;
+    color: #303030;
+    line-height: 0.45rem;
+    padding: 0.2rem 0;
+}
+.area-list li>span,.area-listBus li>span{
+    font-size: 0.26rem;
+    color: #979797;
+    margin-right: 0.2rem;
+}
+/*@media (min-width: 721px) and (max-width: 1300px) {*/
+/*.express-area-box {*/
+
+/*}*/
+/*.express-area-box .header h3 {*/
+/*}*/
+/*.express-area-box .header .back,*/
+/*.express-area-box .header .close {*/
+/*}*/
+/*.express-area-box article {*/
+/*height: 120px;*/
+/*}*/
+/*.area-list li {*/
+/*}*/
+/*}*/
+
+/*@media (max-width: 720px) {*/
+/*.express-area-box {*/
+/*position: fixed;*/
+/*left: 0;*/
+/*width: 100%;*/
+/*margin-left: 0;*/
+/*}*/
+/*}*/
+
+/*遮罩层*/
+.areaMask {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1004;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/*@media (max-width: 720px) {*/
+/*.areaMask {*/
+/*}*/
+/*}*/
+
+
+input, input:focus, input:active {
+    user-select: text;
+}
+input, button, textarea, select, optgroup, option {
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    outline: 0;
+}
+/*改变placeholder的色值*/
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: #979797;
+}
+
+.selet-area-wrap{
+    display: -webkit-box;
+    width:100%;
+    height: 0.9rem;
+    padding: 0 0.3rem;
+    background: #f8f8f8;
+    margin-top: 0.2rem;
+    margin-bottom: 0.23rem;
+}
+.selet-area-wrap p{
+    -webkit-box-flex: 1;
+    text-align: center;
+    width:100%;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.selet-area-wrap span{
+    display: block;
+    text-align: center;
+    padding-left: 0;
+    position: relative;
+    width: auto;
+    line-height: 0.9rem;
+    font-size: 0.32rem;
+    width:100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.selet-area-wrap span.current{
+    color: #dd2534;
+}
+.selet-area-wrap span.current:before{
+    content: "";
+    position: absolute;
+    width: 0.6rem;
+    height: 0.04rem;
+    background: #dd2534;
+    left: 50%;
+    bottom: 0;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+/*.hot-city{*/
+/*padding: 0 15px;*/
+/*}*/
+/*.hot-city p{*/
+/*color: #bbb;*/
+/*}*/
+/*.hot-city ul{*/
+/*padding: 0 15px*/
+/*}*/
+/*.hot-city li{*/
+/*display: inline-block;*/
+/*width: 17.7%;*/
+/*text-align: center;*/
+/*margin: 0% 3%;*/
+/*!*line-height: 20px;*/
+/*height: 20px;*!*/
+/*}*/
+
+
+
+#areaBox ul{
+    float: left;
+    padding-left: 0.52rem;
+    width: 100%;
+    overflow-y: scroll;
+}
+#areaBox ul:not(:first-of-type){
+    margin-left: 100%;
+    /*display: none;*/
+}
+.area-list li.focus{
+    color: #DD2534;
+    background: url("/NewStyles/images/icon_city_sel.png") no-repeat right center;
+    background-size: 0.78rem;
+}
+
+
+.sxArea .area-list li{
+    padding: 0;
+}
+.sxArea .area-list li a{
+    display: block;
+    padding: 0.2rem 0;
+    color: #303030;
+}
+
+.sxArea .area-list li.focus a{
+    color: #DD2534;
+}
+
+.hotCity2{
+    margin-bottom: 0.4rem;
+}
+.hotCity2 li{
+    float: left;
+}
+.hotCity2 li:not(:last-of-type){
+    margin-right: 0.28rem;
+}
+.hotCity2 li a{
+    display: block;
+    background: #F8F8F8;
+    border-radius: 0.04rem;
+    font-size: 0.28rem;
+    color: #303030;
+    width: 1.46rem;
+    height: 0.64rem;
+    line-height: 0.64rem;
+    text-align: center;
+}
+.smallTit{
+    font-size: 0.26rem;
+    color: #979797;
+    line-height: 0.37rem;
+}

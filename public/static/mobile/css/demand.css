@@ -1,0 +1,363 @@
+/***********留言***********/
+.leaveBox>h2{
+    text-align: center;
+    font-size: 0.36rem;
+    color: #303030;
+    font-weight: normal;
+    letter-spacing: 0.0263rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.3rem;
+}
+.leaveBox .myLeave>p{
+    margin-bottom: 0.3rem;
+    position: relative;
+}
+.leaveBox .myLeave p input,.leaveBox .myLeave p.textarea{
+    width: 100%;
+    padding: 0.3rem;
+    font-size: 0.28rem;
+    line-height: 0.4rem;
+    color: #c2c2c2;
+    border: 1px solid #F0F0F0;
+    -webkit-border-radius: 0.04rem;
+    -moz-border-radius: 0.04rem;
+    border-radius: 0.04rem;
+}
+input::-webkit-input-placeholder{
+    color: #c2c2c2 !important;
+}
+.leaveBox .myLeave p input{
+    line-height: 1rem;
+    height: 1rem;
+}
+.leaveBox .myLeave p.textarea{
+    height: 2.6rem;
+    width: 100%;
+    padding-bottom: 0.84rem
+}
+.leaveBox .myLeave p textarea::-webkit-input-placeholder{
+    color: #c2c2c2;
+}
+.leaveBox .myLeave p textarea{
+    width: 100%;
+    height: 100%;
+    text-align: justify;
+    color: #303030;
+    font-size: 0.28rem;
+}
+.leaveBox .myLeave p input.active,.leaveBox .myLeave p textarea.active{
+    color: #303030 ;
+}
+/*清除按钮*/
+.leaveBox .myLeave p i.resetIco{
+    display: block;
+    width: 0.3rem;
+    height: 0.3rem;
+    background: url("/NewStyles/images/entrust_form_delete.png") no-repeat;
+    background-size: 100%;
+    position: absolute;
+    right: 0.3rem;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    display: none;
+
+}
+.leaveBox .myLeave p.textarea i.resetIco{
+    bottom: 0.3rem;
+    top: initial;
+    -webkit-transform: initial;
+    -moz-transform: initial;
+    -ms-transform: initial;
+    -o-transform: initial;
+    transform: initial;
+}
+
+
+/*登记流程*/
+ul#justify{
+    display: flex;
+    display: -webkit-flex;
+    margin-top: 0.5rem;
+}
+ul#justify li{
+    position: relative;
+}
+ul#justify li:not(:last-child)::after{
+    content: '';
+    display: block;
+    width: 0.11rem;
+    height: 0.21rem;
+    background-image: url("/NewStyles/images/icon_right.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    position: absolute;
+    top: 0.2rem;
+    left:50%;
+    margin-left: 0.5rem;
+}
+ul#justify li img{
+    width: 0.65rem;
+    height: 0.65rem;
+}
+ul#justify li p{
+    font-size: 0.26rem;
+    line-height: 0.37rem;
+    color: #979797;
+    margin-top: 0.18rem;
+}
+.leaveBox .myLeave .sub{
+    width: 100%;
+    height: 0.9rem;
+    background-color: #DD2534;
+    font-size: 0.36rem;
+    margin-top:0.5rem;
+    margin-bottom: 1rem;
+    color: #fff;
+    border: 1px solid #F0F0F0;
+    -webkit-border-radius: 0.1rem;
+    -moz-border-radius: 0.1rem;
+    border-radius: 0.1rem;
+}
+
+/**********需求登记**********/
+.demandBox{
+    position: relative;
+    margin-top: -1.08rem;
+    z-index: 1;
+}
+.demandBox .regNum{
+    background-color: rgba(255,255,255,0.3);
+    -webkit-border-radius: 0.2rem 0.2rem 0 0;
+    -moz-border-radius:  0.2rem 0.2rem 0 0;
+    border-radius:  0.2rem 0.2rem 0 0;
+    padding: 0 0.54rem;
+}
+.demandBox .regNum p{
+    font-size: 0.22rem;
+    color: #303030;
+    line-height: 1.08rem;
+}
+.demandBox .regNum #Tnow{
+
+    margin-right: 0.16rem;
+    margin-left: 0.2rem;
+}
+.demandBox .regNum #Tnow span{
+    background: #FFFFFF;
+    box-shadow: 0 0 0.04rem 0 rgba(0,0,0,0.40);
+    -webkit-border-radius: 0.04rem;
+    border-radius: 0.04rem;
+    display: block;
+    float: left;
+    width: 0.3rem;
+    height: 0.5rem;
+    font-size: 0.22rem;
+    color: #303030;
+    margin-right: 0.12rem;
+    line-height: 0.5rem;
+    text-align: center;
+    margin-top: 0.29rem;
+}
+.demandBox .regNum #Tnow span:last-of-type{
+    margin-right: 0;
+}
+
+.demandCon{
+    background-color: #fff;
+    padding: 0.34rem 0.4rem;
+}
+
+.demandCon .entrustType h4,.demandCon .sellType h4,.demandCon  h4.titForm{
+    font-size: 0.32rem;
+    color: #303030;
+    line-height: 0.45rem;
+    font-weight: normal;
+    margin-bottom: 0.3rem;
+    margin-top: 0.5rem;
+}
+.demandCon .entrustType h4{margin-top: 0}
+.demandCon .entrustType ul li,.demandCon .sellType ul li{
+    float: left;
+    background: rgba(151,151,151,0.10);
+    border-radius: 0.08rem;
+    line-height: 0.68rem;
+    font-size: 0.28rem;
+    width: 1.8rem;
+    text-align: center;
+    margin-right: 0.3rem;
+    color: #979797;
+}
+.demandCon .sellType{
+    margin-top: 0.5rem;
+    margin-bottom: 0.4rem;
+}
+.demandCon .entrustType ul li:last-of-type,.demandCon .sellType ul li:last-of-type{
+    margin-right: 0;
+}
+.demandCon .entrustType ul li.focus,.demandCon .sellType ul li.focus{
+    background: rgba(221,37,52,0.10);
+    color: #DD2534;
+}
+.demandCon .inp{
+    line-height: 1rem;
+    height: 1rem;
+    margin-bottom: 0.3rem;
+    position: relative;
+}
+.demandCon .textarea{
+    position: relative;
+}
+.demandCon .textarea i.resetIco{
+    bottom: 0.3rem;
+    top: initial;
+    -webkit-transform: initial;
+    -moz-transform: initial;
+    -ms-transform: initial;
+    -o-transform: initial;
+    transform: initial;
+}
+.demandCon  i.resetIco{
+    display: none;
+}
+
+
+.demandCon .inp input{
+    width: 100%;
+    display: block;
+    background: #FFFFFF;
+    border: 1px solid #F0F0F0;
+    -webkit-border-radius: 0.04rem;
+    border-radius: 0.04rem;
+    font-size: 0.28rem;
+    color: #303030;
+    height: 1rem;
+    line-height: 1rem;
+    width: 100%;
+    padding-left: 0.3rem;
+    padding-right: 0.6rem;
+}
+.demandCon .inp input::-webkit-input-placeholder,.demandCon .textarea textarea::-webkit-input-placeholder{
+    color: #C2C2C2;
+}
+.demandCon .textarea{
+    border: 1px solid #F0F0F0;
+    height: 2.78rem;
+    padding: 0.25rem 0.3rem 0.84rem 0.3rem;
+    -webkit-border-radius: 0.04rem;
+    border-radius: 0.04rem;
+}
+.demandCon .textarea textarea::-webkit-input-placeholder{
+    color: #C2C2C2;
+}
+.demandCon .textarea textarea{
+    width: 100%;
+    display: block;
+    background: #FFFFFF;
+    height: 100%;
+    -webkit-border-radius: 0.04rem;
+    border-radius: 0.04rem;
+    font-size: 0.28rem;
+    color: #303030;
+    line-height: 0.48rem;
+    text-align: justify;
+}
+.demandCon .inp input.active,.demandCon .textarea textarea.active{
+    color: #303030;
+}
+.demandCon .sub button{
+    border-radius: 0.1rem;
+    -webkit-border-radius: 0.1rem;
+    background-color: #2D348E;
+    width: 100%;
+    color: #fff;
+    font-size: 0.36rem;
+    font-weight: normal;
+    height: 0.9rem;
+    margin-top: 0.4rem;
+
+}
+
+
+/*****************投放房源*****************/
+.deliveryBox{
+    margin-top: 0;
+}
+.headDemand{
+    display: block;
+    position: absolute;
+    right: 0.3rem;
+    top: 0;
+    font-size: 0.28rem;
+    color: #FFFFFF;
+    padding-left: 0.42rem;
+}
+.headDemand::before{
+    content: '';
+    display: block;
+    width: 0.32rem;
+    height: 0.35rem;
+    background: url("/NewStyles/images2/sale_ic_seek.png") no-repeat;
+    background-size: 100%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.headDemandT::before{
+    width: 0.3rem;
+    height: 0.3rem;
+    background: url("/NewStyles/images2/entrust_ic_source.png") no-repeat;
+    background-size: 100%;
+}
+.demandCon .wtr ul li{
+    width: 1.5rem;
+}
+.deliveryBox .demandCon{
+    padding: 0.34rem 0.3rem;
+}
+.demandCon .sub{
+    margin-bottom: 1.1rem;
+    padding: 0 0.4rem;
+}
+
+/*面积单位*/
+.demandCon .inp .areaUnit{
+    position: absolute;right: 0.18rem;top: 0;line-height: 1rem;font-size: 0.28rem;color: #333;
+}
+
+
+
+/******************************* 2.3.1 *******************************/
+.demandBanner{
+    position: relative;
+}
+.demandBanner .txt{
+    position: absolute;
+    top: 1.38rem;
+    left: 0.3rem;
+    color: #fff;
+}
+.demandBanner .txt h2{
+    font-size: 0.58rem;
+    line-height: 0.76rem;
+}
+.demandBanner .txt p{
+    font-size: 0.26rem;
+    line-height: 0.35rem;
+    margin-top: 0.2rem;
+}
+
+.botFixNavBox .fixBotDemand span.delivery::before{
+    background: url('../images/2.3.1/p_icon.png') no-repeat;
+    background-size: 100%;
+    width: 0.44rem;
+    height: 0.39rem;
+}
