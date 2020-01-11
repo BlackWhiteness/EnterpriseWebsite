@@ -279,7 +279,7 @@ form i.icon_arrow{
     height: 1.28rem;
 
     width: 100%;
-    position: absolute;
+    position: fixed;
     left: 0;
     bottom: 0;
 }
