@@ -176,7 +176,7 @@ form i.icon_arrow{
 }
 /*顶部导航菜单*/
 #nav{
-    position: fixed;
+    position: absolute;
     left: 0;
     top: 0;
     /*-webkit-transform: translateX(-50%);*/
