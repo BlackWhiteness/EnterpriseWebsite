@@ -188,7 +188,7 @@ form i.icon_arrow{
     /*max-width: 750px;*/
     height: 100%;
     z-index: 1200;
-    display: none;
+    display: none; background-color:#FFF;
 
 }
 #nav .head{
