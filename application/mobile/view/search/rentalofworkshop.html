@@ -34,10 +34,10 @@
 <!--头部-->
 <header class="headBox">
     <!--<a href="" class="back"></a>-->
-    <a href="/" class="logo" onclick="_czc.push(["_trackEvent","厂房列表页","点击logo次数"]);"><img src="/static/mobile/img/list_logo.png" alt=""></a>
-    <h2><a id="city" href="/city_shift" onclick="_czc.push(["_trackEvent","厂房列表页","点击城市选择次数"]);">深圳厂房<i class="icon_arrow"></i></a></h2>
+    <a href="/" class="logo"><img src="/static/mobile/img/list_logo.png" alt=""></a>
+    <h2><a id="city" href="/city_shift">深圳厂房<i class="icon_arrow"></i></a></h2>
     <a href="/list" class="serchIcon" onclick="_czc.push(["_trackEvent","厂房列表页","点击搜索框次数"]);return false;"></a>
-    <a href="/nav" class="nav" id="clickNav" onclick="_czc.push(["_trackEvent","厂房列表页","点击抽屉导航次数"]);return false;"></a>
+    <a href="javascript:void(0)" class="nav" id="clickNav"  onclick="document.getElementById('nav').style.display='block';"></a>
 </header>
 <!--顶部导航频道-->
 <!--<nav id="nav"></nav>-->
