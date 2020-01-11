@@ -25,142 +25,7 @@
 
 </head>
 <body>
-<!--GPS-->
-    <script type="text/javascript" src="/static/mobile/js/api"></script><script type="text/javascript" src="/static/mobile/js/getscript"></script>
-<script>
-    function getLocation(){
-        //GPS配置参数
-        var options={
-            enableHighAccuracy:true,    //高精度精度
-            maximumAge:1000,            //缓存时间
-            timeout : 3000              //响应时间
-        }
-        if(navigator.geolocation){
-            navigator.geolocation.getCurrentPosition(onSuccess,onError,options);
-        }else{
-            alert('您的浏览器不支持地理位置定位');
-        }
-    }
 
-    function getadd(){
-        $.ajax({
-            type : 'post',
-            url  : '/gps/getAdd/',
-            async:false,
-            success:function(data){
-//                alert('异常加载');
-                var arr = JSON.parse(data);
-                onSuccess(arr);
-            },
-            error:function(){
-                alert('网络错误');
-            }
-        })
-    }
-
-    //成功
-    function onSuccess(position){
-        var jl  =   JSON.parse( position.coords )
-        var longitude =jl.longitude;
-        var latitude = jl.latitude;
-        //根据经纬度获取地理位置
-//        var point = new BMap.Point(113.25, 23.1167);    //广州ip
-//        var point = new BMap.Point(118.78, 32.07);    //南京ip
-        var point = new BMap.Point(latitude, longitude);
-        var geoc = new BMap.Geocoder();
-
-        geoc.getLocation(point, function(rs){
-            var addComp = rs.addressComponents;
-            var province = addComp.province;
-            var city    = addComp.city;
-            console.log(addComp);
-            $.ajax({
-                type : 'post',
-                url  : '/gps/SetLocation/',
-                data : {province:province,city:city},
-                async:false,
-                success:function(data){
-//                    console.log(data);
-//                    console.log(addComp);
-//                    alert(data);return false;
-                    operation(data);
-                },
-                error:function(){
-                    alert('网络错误');
-                }
-            })
-//            alert(addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber);
-        });
-    }
-    //失败
-    function onError(error){
-//        console.log(error);
-//        console.log('error'+error);
-        getadd();
-//        $.ajax({
-//            type : 'post',
-//            url  : '/gps/SetLocation/',
-//            async:false,
-//            success:function(data){
-//                console.log(data);
-//                operation(data);
-//            },
-//            error:function(){
-//                alert('网络错误');
-//            }
-//        })
-//        switch(error.code){
-//            case 1:
-//                alert("位置服务被拒绝");
-//                break;
-//            case 2:
-//                alert("暂时获取不到位置信息");
-//                break;
-//            case 3:
-//
-//                alert("获取信息超时");
-//                break;
-//            case 4:
-//                alert("未知错误");
-//                break;
-//        }
-    }
-
-    //处理定位操作
-    function operation(data){
-        var arr = JSON.parse(data);
-//        console.log(arr);
-        if(arr['code'] == '201'){
-//            alert(data);
-            var ret = JSON.parse(arr['data']);
-            if(confirm("检查您所在城市在"+ret['cityName']+"，是否切换？")){
-                $.post('/gps/ChangeLocation/',ret,function(result){
-//                    alert(result);
-                    url = window.location.href;
-//                    if(url == '/'){
-                        location.reload()
-//                    }
-                });
-            }else{
-                var code = ret['cid'];
-                $.post('/gps/checkOp/',{code:code},function(result){
-                });
-            }
-        }else if(arr['code'] == '202'){
-            //不满足变更条件
-//            alert(data);
-//            console.log(arr['data']);
-        }else if(arr['code'] == '203'){
-            //所在城市未开通
-            alert(arr['msg']);
-            location.href = arr['data'];
-        }else if(arr['code'] == '200'){
-//            alert(data);
-        }
-    }
-    getLocation();
-    //    window.onload=getLocation;
-</script>
     <!--头部-->
     <header class="headBox">
         <a href="javascript:history.go(-1);" class="back"></a>
@@ -255,6 +120,7 @@
                     <p>业务合作</p>
                 </a>
             </li>
+            <div style="clear:both"></div>
         </ul>
         <ul class="foot clearFix">
             <li>
