@@ -145,8 +145,8 @@
                 <li class="regSelect" onclick="_czc.push(["_trackEvent","厂房列表页","点击区域次数"]);"><span class="focus">深圳<i></i></span></li>
                 <li class="sortSelect" onclick="_czc.push(["_trackEvent","厂房列表页","点击租售次数"]);"><span class="focus">出租<i></i></span></li>
                 <li class="areaSelect" onclick="_czc.push(["_trackEvent","厂房列表页","点击面积次数"]);"><span>面积<i></i></span></li>
-                <li class="priceSelect" onclick="_czc.push(["_trackEvent","厂房列表页","点击价格次数"]);"><span>价格<i></i></span></li>
-                <li class="moreSelect" onclick="_czc.push(["_trackEvent","厂房列表页","点击更多次数"]);"><span>更多<i></i></span></li>
+                <li class="priceSelect" onclick="_czc.push(["_trackEvent","厂房列表页","点击价格次数"]);"><span>楼层<i></i></span></li>
+                <li class="moreSelect" onclick="_czc.push(["_trackEvent","厂房列表页","点击更多次数"]);"><span>结构<i></i></span></li>
             </ul>
         </div>
         <!--筛选内容-->
@@ -306,84 +306,39 @@
                 <ul class="top12">
                     <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击面积[不限]选项次数"]);" href="{:url('index/search/workshop',['city' =>$city,'measurearea' => $Request.param.plantrent])}" class="focus">不限</a></li>
                     <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击面积[500㎡以下]选项次数"]);" href="{:url('index/search/workshop',['measurearea' =>'0-499'])}">500㎡以下</a></li>
-                    <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击面积[500-1000㎡]选项次数"]);" href="{:url('index/search/workshop',['measurearea' =>'500-1000','plantrent' => $Request.param.plantrent])}">500-1000㎡</a></li>
-                    <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击面积[1000-1500㎡]选项次数"]);" href="{:url('index/search/workshop',['measurearea' =>'1000-1500','plantrent' => $Request.param.plantrent])}">1000-1500㎡</a></li>
-                    <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击面积[1500-2500㎡]选项次数"]);" href="{:url('index/search/workshop',['measurearea' =>'1500-2500','plantrent' => $Request.param.plantrent])}">1500-2500㎡</a></li>
-                    <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击面积[2500-4000㎡]选项次数"]);" href="{:url('index/search/workshop',['measurearea' =>'2500-4000','plantrent' => $Request.param.plantrent])}">2500-4000㎡</a></li>
-                    <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击面积[4000-6000㎡]选项次数"]);" href="{:url('index/search/workshop',['measurearea' =>'4000-6000','plantrent' => $Request.param.plantrent])}">4000-6000㎡</a></li>
-                    <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击面积[6000-10000㎡]选项次数"]);" href="{:url('index/search/workshop',['measurearea' =>'6000-10000','plantrent' => $Request.param.plantrent])}">6000-10000㎡</a></li>
+                    <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击面积[500-1000㎡]选项次数"]);" href="{:url('index/search/workshop',['measurearea' =>'500-800','plantrent' => $Request.param.plantrent])}">500-800㎡</a></li>
+                    <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击面积[800-1300㎡]选项次数"]);" href="{:url('index/search/workshop',['measurearea' =>'800-1300','plantrent' => $Request.param.plantrent])}">800-1300㎡</a></li>
+                    <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击面积[1300-2000㎡]选项次数"]);" href="{:url('index/search/workshop',['measurearea' =>'1300-2000','plantrent' => $Request.param.plantrent])}">1300-2000㎡</a></li>
+                    <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击面积[2000-3000㎡]选项次数"]);" href="{:url('index/search/workshop',['measurearea' =>'2000-3000','plantrent' => $Request.param.plantrent])}">2000-3000㎡</a></li>
+                    <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击面积[3000-5000㎡]选项次数"]);" href="{:url('index/search/workshop',['measurearea' =>'3000-5000','plantrent' => $Request.param.plantrent])}">3000-5000㎡</a></li>
+                    <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击面积[5000-10000㎡]选项次数"]);" href="{:url('index/search/workshop',['measurearea' =>'5000-10000','plantrent' => $Request.param.plantrent])}">5000-10000㎡</a></li>
                     <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击面积[10000㎡以上]选项次数"]);" href="{:url('index/search/workshop',['measurearea' =>'10000','plantrent' => $Request.param.plantrent])}">10000㎡以上</a></li>
                 </ul>
                 <div class="mask_fix"></div>
             </div>
             <!--价格-->
             <div class="brand-eject two-eject centerEject">
-                <form class="brand_select_form">
-                    <span>自定义</span>
-                    <input id="minPrice" class="minBtn" value="" type="number" placeholder="最小价格" oninput="if(value.length&gt;6)value=value.slice(0,6)" onkeyup="value=value.replace(/^(0+)|[^\d]+/g,&#39;&#39;)">
-                    <p class="link"></p>
-                    <input id="maxPrice" class="maxBtn" value="" type="number" oninput="if(value.length&gt;6)value=value.slice(0,6)" placeholder="最大价格" onkeyup="value=value.replace(/^(0+)|[^\d]+/g,&#39;&#39;)">
-                    <input class="brand_select_sub fac_price" onclick="_czc.push(["_trackEvent","厂房列表页","点击价格自定义按钮次数"]);" type="button" table="newfactory" value="确定">
-                </form>
+                
                 <ul class="top12">
-                    <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击价格[不限]选项次数"]);" href="{:url('index/search/workshop',['city' =>$city,'measurearea' => $Request.param.measurearea])}" class="focus">不限</a></li>
-                                        <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击价格[10元/平米以下]选项次数"]);" href="{:url('index/search/workshop',['plantrent' =>'0-14','measurearea' => $Request.param.measurearea])}">10元/平米以下</a></li>
-                                        <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击价格[10-15元/平米]选项次数"]);" href="{:url('index/search/workshop',['plantrent' =>'10-15','measurearea' => $Request.param.measurearea])}">10-15元/平米</a></li>
-                                        <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击价格[15-20元/平米]选项次数"]);" href="{:url('index/search/workshop',['plantrent' =>'15-20','measurearea' => $Request.param.measurearea])}">15-20元/平米</a></li>
-                                        <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击价格[20-25元/平米]选项次数"]);" href="{:url('index/search/workshop',['plantrent' =>'20-25','measurearea' => $Request.param.measurearea])}">20-25元/平米</a></li>
-                                        <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击价格[25元/平米以上]选项次数"]);" href="{:url('index/search/workshop',['plantrent' =>'25','measurearea' => $Request.param.measurearea])}">25元/平米以上</a></li>
+                    <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击价格[不限]选项次数"]);" href="{:url('index/search/workshop',['city' =>$city,'measurearea' => $Request.param.measurearea])}" class="focus">一楼</a></li>
+                                        <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击价格[10元/平米以下]选项次数"]);" href="{:url('index/search/workshop',['plantrent' =>'0-14','measurearea' => $Request.param.measurearea])}">二楼以上</a></li>
+                                        <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击价格[10-15元/平米]选项次数"]);" href="{:url('index/search/workshop',['plantrent' =>'10-15','measurearea' => $Request.param.measurearea])}">独栋</a></li>
+                                        <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击价格[15-20元/平米]选项次数"]);" href="{:url('index/search/workshop',['plantrent' =>'15-20','measurearea' => $Request.param.measurearea])}">独院</a></li>
+                                        <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击价格[20-25元/平米]选项次数"]);" href="{:url('index/search/workshop',['plantrent' =>'20-25','measurearea' => $Request.param.measurearea])}">其他</a></li>
+                                       
                                     </ul>
                 <div class="mask_fix"></div>
             </div>
             <!--更多-->
             <div class="more-eject">
-                <dl>
-                                        <dd>
-                        <h4>楼层</h4>
-                        <div>
-                                                        <span class="more " key="floor" val="1">一楼</span>
-                                                        <span class="more " key="floor" val="2">二楼以上</span>
-                                                        <span class="more " key="floor" val="3">独栋</span>
-                                                        <span class="more " key="floor" val="4">独院</span>
-                                                        <span class="more " key="floor" val="5">其他</span>
-                                                    </div>
-                    </dd>
-                                        <dd>
-                        <h4>结构</h4>
-                        <div>
-                                                        <span class="more " key="structure" val="1">标准厂房</span>
-                                                        <span class="more " key="structure" val="2">铁皮房</span>
-                                                        <span class="more " key="structure" val="3">钢结构</span>
-                                                        <span class="more " key="structure" val="4">其他</span>
-                                                    </div>
-                    </dd>
-                                        <dd>
-                        <h4>新旧程度</h4>
-                        <div>
-                                                        <span class="more " key="conditions" val="1">新厂</span>
-                                                        <span class="more " key="conditions" val="2">九成新</span>
-                                                        <span class="more " key="conditions" val="3">八成新</span>
-                                                        <span class="more " key="conditions" val="4">旧厂</span>
-                                                    </div>
-                    </dd>
-                                        <dd>
-                        <h4>食堂</h4>
-                        <div>
-                                                        <span class="more " key="dinner" val="1">公共</span>
-                                                        <span class="more " key="dinner" val="2">独有</span>
-                                                        <span class="more " key="dinner" val="3">无</span>
-                                                    </div>
-                    </dd>
-                                        <dd>
-                        <h4>电梯</h4>
-                        <div>
-                                                        <span class="more " key="elevator" val="0">无</span>
-                                                        <span class="more " key="elevator" val="1">有</span>
-                                                    </div>
-                    </dd>
-                                        <!--提交重置按钮-->
-                    <dd style="height: 1.2rem"></dd>
-                </dl>
+                <ul class="top12">
+                    <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击价格[不限]选项次数"]);" href="{:url('index/search/workshop',['city' =>$city,'measurearea' => $Request.param.measurearea])}" class="focus">标准厂房</a></li>
+                                        <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击价格[10元/平米以下]选项次数"]);" href="{:url('index/search/workshop',['plantrent' =>'0-14','measurearea' => $Request.param.measurearea])}">钢构结构厂房</a></li>
+                                        <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击价格[10-15元/平米]选项次数"]);" href="{:url('index/search/workshop',['plantrent' =>'10-15','measurearea' => $Request.param.measurearea])}">简易厂房(铁皮房)</a></li>
+                                        <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击价格[15-20元/平米]选项次数"]);" href="{:url('index/search/workshop',['plantrent' =>'15-20','measurearea' => $Request.param.measurearea])}">各类型仓库(单层仓库/多层仓库)</a></li>
+                                        
+                                       
+                                    </ul>
                 <div class="more_sub_con clearfix">
                     <input class="more_sub" type="button" table="newfactory" value="确定">
                     <a class="more_reset" href="javascript:void(0);">重置</a>
