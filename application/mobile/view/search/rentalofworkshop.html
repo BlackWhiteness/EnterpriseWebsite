@@ -565,128 +565,13 @@
 </section>
 <script src="/static/index/js/zepto.min.js"></script>
 <script src="/static/index/js/touch.js"></script>
-<script src="/static/index/js/hui.js"></script>
-<script src="/static/index/js/hui-refresh-load-more.js"></script>
 
-<script>
-    var factory =   "/sz/cf/";
-    var office  =   "/sz-office/rent/";
-    var land    =   "/sz/td/";
-    var sxzs    =   "/sxzs/zfzs/";
-    var park    =   "/y/";
-    var agent   =   "/agents/sz/";
-    var demand  =   "/NewDemand/";
-    var newlist =   "/infor/index/";
-    var route = [factory,office,land,sxzs,park,'picked',agent,demand,'delivery',newlist];
-    var city = "sz";
-    wTem = {"citySeo":"sz","type":1};
-</script>
+
 <script src="/static/index/js/base.js"></script>
 <script src="/static/index/js/list.js"></script>
-<script src="/static/index/js/list_factory.js?v=3"></script>
-<script type="text/javascript">
-    /**
-     * sem获取拨打电话记录
-     */
-    $('.semCall').on('click', function () {
-        var url = window.location.href;
-        $.ajax({
-            type : 'post',
-            url : '/index.php?c=newmain&a=semtelsub',
-            data : {url:url},
-            success: function (ret) {
-                console.log(ret);
-            }
-        });
-        console.log(url);
-    });
-
-    //搜索页埋点
-    $('.searchContent').on('click',function () {
-        _czc.push(['_trackEvent','厂房列表页','搜索结果页点击模糊匹配进入列表页次数']);
-    });
-    $('.searchHistory').on('click',function () {
-        _czc.push(['_trackEvent','厂房列表页','搜索页内点击历史关键字次数']);
-    });
-    $('.empty').on('click',function () {
-        _czc.push(['_trackEvent','厂房列表页','搜索页内点击清空历史关键字次数']);
-    });
 
 
-</script>
-<script>
-    $('.fac_area').on('click',function(){
-        var minArea = $('#minArea').val();
-        var maxArea   = $('#maxArea').val();
-        if (minArea == '' && maxArea == '') {
-            json = {};
-            json.min = minArea;
-            json.max = maxArea;
-            json.wTem = {"citySeo":"sz","type":1};
-            json.type = $(this).attr('table');
-            var url = "/index/search/createUrl";
-            ajaxListCondition(url,json);return false;
-        }else if(minArea == '' || maxArea == ''){
-            alert('请输入面积范围');
-            return false;
-        };
-        json = {};
-        json.min = minArea;
-        json.max = maxArea;
-        json.wTem = {"citySeo":"sz","type":1};
-        json.type = $(this).attr('table');
-        var url = "/index/search/createUrl";
-        ajaxListCondition(url,json);
-    })
 
-    $('.fac_price').on('click',function(){
-        var minPrice = $('#minPrice').val();
-        var maxPrice   = $('#maxPrice').val();
-        if (minPrice == '' && maxPrice == '') {
-            json = {};
-            json.min = minPrice;
-            json.max = maxPrice;
-            json.wTem = {"citySeo":"sz","type":1};
-            json.type = $(this).attr('table');
-            var url = "/index/search/createUrl";
-            ajaxListCondition(url,json);return false;
-        }else if(minPrice == '' || maxPrice == ''){
-            alert('请输入价格范围');
-            return false;
-        };
-        json = {};
-        json.min = minPrice;
-        json.max = maxPrice;
-        json.wTem = {"citySeo":"sz","type":1};
-        json.type = $(this).attr('table');
-        var url = "/index/search/createUrl";
-        ajaxListCondition(url,json);
-    })
-
-    $('.more_sub').on('click',function(){
-        personInfo = [];
-        $(".more.focus").each(function(){
-            key = $(this).attr('key');
-            val = $(this).attr('val');
-            var person = {key:key, val:val};
-            personInfo.push(person);
-        });
-        if(personInfo.length == 0){
-            var url = "/index/search/workshop";
-            location.href = url;
-            return false;
-        }
-        json = {};
-        json.more = personInfo;
-        json.type = $(this).attr('table');
-        json.wTem = {"citySeo":"sz","type":1};
-        var url = "/index/search/createUrl";
-        ajaxListCondition(url,json);
-    })
-</script>
-<script>
-    var focusIndex = 5;
-</script>
 <script>
     window.onload = function () {
         switchNav();// 打开、关闭nav
