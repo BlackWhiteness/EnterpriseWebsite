@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)/sz/cf/ -->
+<html lang="en" style="font-size: 50px;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>{:config('web_site_title')}</title>
+    <meta name="keywords" content="{:config('web_site_keywords')}"/>
+    <meta name="description" content="{:config('web_site_description')}"/>
+    <link rel="icon" href="/static/mobile/img/favicon.ico">
+    <meta name="format-detection" content="telephone=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta name="applicable-device" content="mobile">
+<link rel="stylesheet" href="/static/mobile/css/reset.css">
+<link rel="stylesheet" href="/static/mobile/css/hui.css">
+<link rel="stylesheet" href="/static/mobile/css/base.css">
+<link rel="stylesheet" href="/static/mobile/css/list.css">
+<script charset="utf-8" src="/static/index/js/lxb.js"></script>
+
+<script src="/static/index/js/push.js"></script>
+
+<script src="/static/index/js/rem.js"></script>
+    <script src="/static/index/js/hui-refresh-load-more.js"></script>
+<style>
+    .listCon li >a{
+        overflow: initial;
+    }
+</style>
+<!--埋点头部-->
+</head>
+<body>
+<div id="goToUp"></div>
+
+<!--头部-->
+<header class="headBox">
+    <!--<a href="" class="back"></a>-->
+    <a href="/" class="logo"><img src="/static/mobile/img/list_logo.png" alt=""></a>
+    <h2><a id="city" href="/city_shift">深圳厂房<i class="icon_arrow"></i></a></h2>
+   
+    <a href="javascript:void(0)" class="serchIcon" onclick="document.getElementById('search_a').style.display='block';"></a>
+    
+    <a href="javascript:void(0)" class="nav" id="clickNav"  onclick="document.getElementById('nav').style.display='block';"></a>
+</header>
+<!--顶部导航频道-->
+<!--<nav id="nav"></nav>-->
+<style>
+    #nav .foot li{
+        width: 33.333%;
+    }
+</style>
+<nav id="nav">
+    <div class="navCon">
+        <div class="head">
+            <img src="/static/mobile/img/navigation_banner.png" alt="">
+            <a href="javascript:void(0);" class="navIcon" onclick="document.getElementById('nav').style.display='none';"></a>
+        </div>
+        <ul class="menuNav clearFix">
+            <li>
+                <a href="{:url('ws',['category'=>1])}">
+                <img src="/static/mobile/img/homepage_ic_navigation_plant.png" alt="厂房出租">
+                <p>厂房出租</p>
+                </a>
+            </li>
+            <li>
+                <a href="{:url('ws',['category'=>2])}">
+                    <img src="/static/mobile/img/homepage_ic_office_building.png" alt="厂房出售">
+                    <p>厂房出售</p>
+                </a>
+            </li>
+            <li>
+                <a href="{:url('ws',['category'=>3])}">
+                <img src="/static/mobile/img/homepage_ic_cangku.png" alt="写字楼">
+                <p>仓库出租</p>
+                </a>
+            </li>
+            <li>
+                <a href="{:url('land')}">
+                <img src="/static/mobile/img/homepage_ic_land.png" alt="土地">
+                <p>土地租售</p>
+                </a>
+            </li>
+            <li>
+                <a href="/y/">
+                    <img src="/static/mobile/img/homepage_ic_special.png" alt="产业园区">
+                    <p>园区招商</p>
+                </a>
+            </li>
+            <li>
+                <a href="{:url('of_build')}">
+                    <img src="/static/mobile/img/homepage_ic_garden.png" alt="写字楼">
+                    <p>写字楼</p>
+                </a>
+            </li>
+            <li>
+                <a href="/zhuanti/">
+                    <img src="/static/mobile/img/homepage_ic_broker.png" alt="商铺租售">
+                    <p>商铺租售</p>
+                </a>
+            </li>
+
+            <li>
+                <a href="/agents/sz/">
+                    <img src="/static/mobile/img/homepage_ic_investment.png" alt="民宅租售">
+                    <p>民宅租售</p>
+                </a>
+            </li>
+            
+           
+            <div style="clear:both"></div>
+        </ul>
+        <ul class="foot clearFix">
+            <li>
+                <a href="/">
+                    <img src="/static/mobile/img/navigation_ic_homepage.png" alt="首页">
+                    <p>首页</p>
+                </a>
+            </li>
+            <li>
+                <a href="/help/about.html">
+                    <img src="/static/mobile/img/navigation_ic_us.png" alt="关于我们">
+                    <p>关于我们</p>
+                </a>
+            </li>
+            <li>
+                <a href="/">
+                    <img src="/static/mobile/img/navigation_ic_group.png" alt="集团官网">
+                    <p>联系我们</p>
+                </a>
+            </li>
+          
+        </ul>
+        <div class="close"></div>
+    </div>
+    <div class="mask"></div>
+</nav>
+<!--banner-->
+<div>
+    <a href="/NewDemand/"><img src="/static/mobile/img/list_banner.png" alt=""></a>
+</div>
+<!--筛选-->
+<div class="screenBox">
+    <section class="screenTabBox ">
+        <div class="selectWrap ">
+            <ul class="W20 clearFix">
+                <li class="regSelect" onclick="_czc.push(["_trackEvent","厂房列表页","点击区域次数"]);"><span class="focus">深圳<i></i></span></li>
+                <li class="sortSelect" onclick="_czc.push(["_trackEvent","厂房列表页","点击租售次数"]);"><span class="focus">出租<i></i></span></li>
+                <li class="areaSelect" onclick="_czc.push(["_trackEvent","厂房列表页","点击面积次数"]);"><span>面积<i></i></span></li>
+                <li class="priceSelect" onclick="_czc.push(["_trackEvent","厂房列表页","点击价格次数"]);"><span>价格<i></i></span></li>
+                <li class="moreSelect" onclick="_czc.push(["_trackEvent","厂房列表页","点击更多次数"]);"><span>更多<i></i></span></li>
+            </ul>
+        </div>
+        <!--筛选内容-->
+        <div class="eject">
+            <!--地区筛选-->
+            <div class="grade-eject">
+                <ul class="grade-w" id="gradew">
+                    <li><a href="javascript:void(0);" class="focus">区域</a></li>
+                    
+                </ul>
+                <ul class="grade-t" id="gradet">
+                    <li>
+                        <a href="/sz/cf/C1/" class="focus">不限</a>
+                                                                        <a href="/sz/cf/A03-C1/">罗湖</a>
+                                                                                                <a href="/sz/cf/A04-C1/">福田</a>
+                                                                                                <a href="/sz/cf/A05-C1/">南山</a>
+                                                                                                <a href="/sz/cf/A06-C1/">宝安</a>
+                                                                                                <a href="/sz/cf/A07-C1/">龙岗</a>
+                                                                                                <a href="/sz/cf/A08-C1/">盐田</a>
+                                                                                                <a href="/sz/cf/A09-C1/">龙华</a>
+                                                                                                <a href="/sz/cf/A10-C1/">坪山</a>
+                                                                    </li>
+                    <!--<li></li>-->
+                    <!--<li></li>-->
+                </ul>
+                <ul class="grade-a" id="gradea">
+                    <li>
+                        <ul class="qu">
+                            <li></li>
+                                                        <li style="display:none">
+                                                        <a href="/sz/cf/A03-C1/">不限</a>
+                                                        <a href="/sz/cf/A03-B001-C1/" label="桂园">桂园</a>
+                                                        <a href="/sz/cf/A03-B002-C1/" label="黄贝">黄贝</a>
+                                                        <a href="/sz/cf/A03-B003-C1/" label="东门">东门</a>
+                                                        <a href="/sz/cf/A03-B004-C1/" label="翠竹">翠竹</a>
+                                                        <a href="/sz/cf/A03-B005-C1/" label="南湖">南湖</a>
+                                                        <a href="/sz/cf/A03-B006-C1/" label="笋岗">笋岗</a>
+                                                        <a href="/sz/cf/A03-B007-C1/" label="东湖">东湖</a>
+                                                        <a href="/sz/cf/A03-B008-C1/" label="莲塘">莲塘</a>
+                                                        <a href="/sz/cf/A03-B009-C1/" label="东晓">东晓</a>
+                                                        <a href="/sz/cf/A03-B010-C1/" label="清水河">清水河</a>
+                                                                                    </li>
+                                                        <li style="display:none">
+                                                        <a href="/sz/cf/A04-C1/">不限</a>
+                                                        <a href="/sz/cf/A04-B001-C1/" label="南园">南园</a>
+                                                        <a href="/sz/cf/A04-B002-C1/" label="园岭">园岭</a>
+                                                        <a href="/sz/cf/A04-B004-C1/" label="福田">福田</a>
+                                                        <a href="/sz/cf/A04-B005-C1/" label="沙头">沙头</a>
+                                                        <a href="/sz/cf/A04-B006-C1/" label="香蜜湖">香蜜湖</a>
+                                                        <a href="/sz/cf/A04-B007-C1/" label="梅林">梅林</a>
+                                                        <a href="/sz/cf/A04-B008-C1/" label="莲花">莲花</a>
+                                                        <a href="/sz/cf/A04-B009-C1/" label="华富">华富</a>
+                                                        <a href="/sz/cf/A04-B010-C1/" label="福保">福保</a>
+                                                        <a href="/sz/cf/A04-B011-C1/" label="华强">华强</a>
+                                                        <a href="/sz/cf/A04-B400-C1/" label="保税区">保税区</a>
+                                                                                    </li>
+                                                        <li style="display:none">
+                                                        <a href="/sz/cf/A05-C1/">不限</a>
+                                                        <a href="/sz/cf/A05-B001-C1/" label="南头">南头</a>
+                                                        <a href="/sz/cf/A05-B002-C1/" label="南山">南山</a>
+                                                        <a href="/sz/cf/A05-B003-C1/" label="沙河">沙河</a>
+                                                        <a href="/sz/cf/A05-B005-C1/" label="蛇口">蛇口</a>
+                                                        <a href="/sz/cf/A05-B006-C1/" label="招商">招商</a>
+                                                        <a href="/sz/cf/A05-B007-C1/" label="粤海">粤海</a>
+                                                        <a href="/sz/cf/A05-B008-C1/" label="桃源">桃源</a>
+                                                        <a href="/sz/cf/A05-B009-C1/" label="西丽">西丽</a>
+                                                        <a href="/sz/cf/A05-B400-C1/" label="前海">前海</a>
+                                                                                    </li>
+                                                        <li style="display:none">
+                                                        <a href="/sz/cf/A06-C1/">不限</a>
+                                                        <a href="/sz/cf/A06-B017-C1/" label="新安">新安</a>
+                                                        <a href="/sz/cf/A06-B018-C1/" label="西乡">西乡</a>
+                                                        <a href="/sz/cf/A06-B019-C1/" label="航城">航城</a>
+                                                        <a href="/sz/cf/A06-B020-C1/" label="福永">福永</a>
+                                                        <a href="/sz/cf/A06-B021-C1/" label="福海">福海</a>
+                                                        <a href="/sz/cf/A06-B022-C1/" label="沙井">沙井</a>
+                                                        <a href="/sz/cf/A06-B023-C1/" label="新桥">新桥</a>
+                                                        <a href="/sz/cf/A06-B024-C1/" label="松岗">松岗</a>
+                                                        <a href="/sz/cf/A06-B025-C1/" label="燕罗">燕罗</a>
+                                                        <a href="/sz/cf/A06-B026-C1/" label="石岩">石岩</a>
+                                                        <a href="/sz/cf/A06-B027-C1/" label="光明">光明</a>
+                                                        <a href="/sz/cf/A06-B028-C1/" label="公明">公明</a>
+                                                        <a href="/sz/cf/A06-B029-C1/" label="新湖">新湖</a>
+                                                        <a href="/sz/cf/A06-B030-C1/" label="凤凰">凤凰</a>
+                                                        <a href="/sz/cf/A06-B031-C1/" label="玉塘">玉塘</a>
+                                                        <a href="/sz/cf/A06-B032-C1/" label="马田">马田</a>
+                                                        <a href="/sz/cf/A06-B901-C1/" label="桃源居">桃源居</a>
+                                                        <a href="/sz/cf/A06-B902-C1/" label="固戍">固戍</a>
+                                                        <a href="/sz/cf/A06-B903-C1/" label="宝安中心">宝安中心</a>
+                                                                                    </li>
+                                                        <li style="display:none">
+                                                        <a href="/sz/cf/A07-C1/">不限</a>
+                                                        <a href="/sz/cf/A07-B003-C1/" label="平湖">平湖</a>
+                                                        <a href="/sz/cf/A07-B006-C1/" label="坪地">坪地</a>
+                                                        <a href="/sz/cf/A07-B009-C1/" label="葵涌">葵涌</a>
+                                                        <a href="/sz/cf/A07-B010-C1/" label="大鹏">大鹏</a>
+                                                        <a href="/sz/cf/A07-B011-C1/" label="南澳">南澳</a>
+                                                        <a href="/sz/cf/A07-B012-C1/" label="南湾">南湾</a>
+                                                        <a href="/sz/cf/A07-B013-C1/" label="坂田">坂田</a>
+                                                        <a href="/sz/cf/A07-B014-C1/" label="布吉">布吉</a>
+                                                        <a href="/sz/cf/A07-B015-C1/" label="龙城">龙城</a>
+                                                        <a href="/sz/cf/A07-B016-C1/" label="龙岗">龙岗</a>
+                                                        <a href="/sz/cf/A07-B017-C1/" label="横岗">横岗</a>
+                                                        <a href="/sz/cf/A07-B018-C1/" label="吉华">吉华</a>
+                                                        <a href="/sz/cf/A07-B019-C1/" label="宝龙">宝龙</a>
+                                                        <a href="/sz/cf/A07-B020-C1/" label="园山">园山</a>
+                                                                                    </li>
+                                                        <li style="display:none">
+                                                        <a href="/sz/cf/A08-C1/">不限</a>
+                                                        <a href="/sz/cf/A08-B001-C1/" label="梅沙">梅沙</a>
+                                                        <a href="/sz/cf/A08-B002-C1/" label="盐田">盐田</a>
+                                                        <a href="/sz/cf/A08-B003-C1/" label="沙头角">沙头角</a>
+                                                        <a href="/sz/cf/A08-B004-C1/" label="海山">海山</a>
+                                                        <a href="/sz/cf/A08-B400-C1/" label="保税区（沙头角）">保税区（沙头角）</a>
+                                                        <a href="/sz/cf/A08-B401-C1/" label="保税区（盐田港）">保税区（盐田港）</a>
+                                                                                    </li>
+                                                        <li style="display:none">
+                                                        <a href="/sz/cf/A09-C1/">不限</a>
+                                                        <a href="/sz/cf/A09-B001-C1/" label="观湖">观湖</a>
+                                                        <a href="/sz/cf/A09-B003-C1/" label="龙华">龙华</a>
+                                                        <a href="/sz/cf/A09-B005-C1/" label="福城">福城</a>
+                                                        <a href="/sz/cf/A09-B006-C1/" label="观澜">观澜</a>
+                                                                                    </li>
+                                                        <li style="display:none">
+                                                        <a href="/sz/cf/A10-C1/">不限</a>
+                                                        <a href="/sz/cf/A10-B001-C1/" label="坪山">坪山</a>
+                                                        <a href="/sz/cf/A10-B002-C1/" label="马峦">马峦</a>
+                                                        <a href="/sz/cf/A10-B003-C1/" label="碧岭">碧岭</a>
+                                                        <a href="/sz/cf/A10-B004-C1/" label="石井">石井</a>
+                                                        <a href="/sz/cf/A10-B005-C1/" label="坑梓">坑梓</a>
+                                                        <a href="/sz/cf/A10-B006-C1/" label="龙田">龙田</a>
+                                                        <a href="/sz/cf/A10-B401-C1/" label="深圳大工业区">深圳大工业区</a>
+                                                                                    </li>
+                                                    </ul>
+                    </li>
+                </ul>
+                <div class="mask_fix"></div>
+            </div>
+            <!--租售-->
+            <div class="sort-eject one-eject centerEject">
+                <ul>
+                    <li><a href="/sz/cf/C1/" class="focus">出租</a></li>
+                    <li><a href="/sz/cf/C2/">出售</a></li>
+                </ul>
+                <div class="mask_fix"></div>
+            </div>
+            <!--面积-->
+            <div class="brand-eject two-eject centerEject">
+                <form class="brand_select_form">
+                    <span>自定义</span>
+                    <input id="minArea" class="minBtn" value="" type="number" placeholder="最小面积" oninput="if(value.length&gt;6)value=value.slice(0,6)" onkeyup="value=value.replace(/^(0+)|[^\d]+/g,&#39;&#39;)">
+                    <p class="link"></p>
+                    <input id="maxArea" class="maxBtn" value="" type="number" placeholder="最大面积" oninput="if(value.length&gt;6)value=value.slice(0,6)" onkeyup="value=value.replace(/^(0+)|[^\d]+/g,&#39;&#39;)">
+                    <input class="brand_select_sub fac_area" onclick="_czc.push(["_trackEvent","厂房列表页","点击面积自定义按钮次数"]);" type="button" table="newfactory" value="确定">
+                </form>
+                <ul class="top12">
+                    <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击面积[不限]选项次数"]);" href="{:url('index/search/workshop',['city' =>$city,'measurearea' => $Request.param.plantrent])}" class="focus">不限</a></li>
+                    <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击面积[500㎡以下]选项次数"]);" href="{:url('index/search/workshop',['measurearea' =>'0-499'])}">500㎡以下</a></li>
+                    <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击面积[500-1000㎡]选项次数"]);" href="{:url('index/search/workshop',['measurearea' =>'500-1000','plantrent' => $Request.param.plantrent])}">500-1000㎡</a></li>
+                    <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击面积[1000-1500㎡]选项次数"]);" href="{:url('index/search/workshop',['measurearea' =>'1000-1500','plantrent' => $Request.param.plantrent])}">1000-1500㎡</a></li>
+                    <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击面积[1500-2500㎡]选项次数"]);" href="{:url('index/search/workshop',['measurearea' =>'1500-2500','plantrent' => $Request.param.plantrent])}">1500-2500㎡</a></li>
+                    <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击面积[2500-4000㎡]选项次数"]);" href="{:url('index/search/workshop',['measurearea' =>'2500-4000','plantrent' => $Request.param.plantrent])}">2500-4000㎡</a></li>
+                    <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击面积[4000-6000㎡]选项次数"]);" href="{:url('index/search/workshop',['measurearea' =>'4000-6000','plantrent' => $Request.param.plantrent])}">4000-6000㎡</a></li>
+                    <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击面积[6000-10000㎡]选项次数"]);" href="{:url('index/search/workshop',['measurearea' =>'6000-10000','plantrent' => $Request.param.plantrent])}">6000-10000㎡</a></li>
+                    <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击面积[10000㎡以上]选项次数"]);" href="{:url('index/search/workshop',['measurearea' =>'10000','plantrent' => $Request.param.plantrent])}">10000㎡以上</a></li>
+                </ul>
+                <div class="mask_fix"></div>
+            </div>
+            <!--价格-->
+            <div class="brand-eject two-eject centerEject">
+                <form class="brand_select_form">
+                    <span>自定义</span>
+                    <input id="minPrice" class="minBtn" value="" type="number" placeholder="最小价格" oninput="if(value.length&gt;6)value=value.slice(0,6)" onkeyup="value=value.replace(/^(0+)|[^\d]+/g,&#39;&#39;)">
+                    <p class="link"></p>
+                    <input id="maxPrice" class="maxBtn" value="" type="number" oninput="if(value.length&gt;6)value=value.slice(0,6)" placeholder="最大价格" onkeyup="value=value.replace(/^(0+)|[^\d]+/g,&#39;&#39;)">
+                    <input class="brand_select_sub fac_price" onclick="_czc.push(["_trackEvent","厂房列表页","点击价格自定义按钮次数"]);" type="button" table="newfactory" value="确定">
+                </form>
+                <ul class="top12">
+                    <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击价格[不限]选项次数"]);" href="{:url('index/search/workshop',['city' =>$city,'measurearea' => $Request.param.measurearea])}" class="focus">不限</a></li>
+                                        <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击价格[10元/平米以下]选项次数"]);" href="{:url('index/search/workshop',['plantrent' =>'0-14','measurearea' => $Request.param.measurearea])}">10元/平米以下</a></li>
+                                        <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击价格[10-15元/平米]选项次数"]);" href="{:url('index/search/workshop',['plantrent' =>'10-15','measurearea' => $Request.param.measurearea])}">10-15元/平米</a></li>
+                                        <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击价格[15-20元/平米]选项次数"]);" href="{:url('index/search/workshop',['plantrent' =>'15-20','measurearea' => $Request.param.measurearea])}">15-20元/平米</a></li>
+                                        <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击价格[20-25元/平米]选项次数"]);" href="{:url('index/search/workshop',['plantrent' =>'20-25','measurearea' => $Request.param.measurearea])}">20-25元/平米</a></li>
+                                        <li><a onclick="_czc.push(["_trackEvent","厂房列表页","点击价格[25元/平米以上]选项次数"]);" href="{:url('index/search/workshop',['plantrent' =>'25','measurearea' => $Request.param.measurearea])}">25元/平米以上</a></li>
+                                    </ul>
+                <div class="mask_fix"></div>
+            </div>
+            <!--更多-->
+            <div class="more-eject">
+                <dl>
+                                        <dd>
+                        <h4>楼层</h4>
+                        <div>
+                                                        <span class="more " key="floor" val="1">一楼</span>
+                                                        <span class="more " key="floor" val="2">二楼以上</span>
+                                                        <span class="more " key="floor" val="3">独栋</span>
+                                                        <span class="more " key="floor" val="4">独院</span>
+                                                        <span class="more " key="floor" val="5">其他</span>
+                                                    </div>
+                    </dd>
+                                        <dd>
+                        <h4>结构</h4>
+                        <div>
+                                                        <span class="more " key="structure" val="1">标准厂房</span>
+                                                        <span class="more " key="structure" val="2">铁皮房</span>
+                                                        <span class="more " key="structure" val="3">钢结构</span>
+                                                        <span class="more " key="structure" val="4">其他</span>
+                                                    </div>
+                    </dd>
+                                        <dd>
+                        <h4>新旧程度</h4>
+                        <div>
+                                                        <span class="more " key="conditions" val="1">新厂</span>
+                                                        <span class="more " key="conditions" val="2">九成新</span>
+                                                        <span class="more " key="conditions" val="3">八成新</span>
+                                                        <span class="more " key="conditions" val="4">旧厂</span>
+                                                    </div>
+                    </dd>
+                                        <dd>
+                        <h4>食堂</h4>
+                        <div>
+                                                        <span class="more " key="dinner" val="1">公共</span>
+                                                        <span class="more " key="dinner" val="2">独有</span>
+                                                        <span class="more " key="dinner" val="3">无</span>
+                                                    </div>
+                    </dd>
+                                        <dd>
+                        <h4>电梯</h4>
+                        <div>
+                                                        <span class="more " key="elevator" val="0">无</span>
+                                                        <span class="more " key="elevator" val="1">有</span>
+                                                    </div>
+                    </dd>
+                                        <!--提交重置按钮-->
+                    <dd style="height: 1.2rem"></dd>
+                </dl>
+                <div class="more_sub_con clearfix">
+                    <input class="more_sub" type="button" table="newfactory" value="确定">
+                    <a class="more_reset" href="javascript:void(0);">重置</a>
+                </div>
+                <div class="mask_fix"></div>
+            </div>
+
+        </div>
+    </section>
+            <section class="screenTag">
+            <div class="clearFix screenTagCon" style="width: 682px;">
+                                <span><a href="/sz/cf/C1-I1/">标准厂房</a></span>
+                                                <span><a href="/sz/cf/C1-H1/">一楼</a></span>
+                                                <span><a href="/sz/cf/C1-H2/">二楼以上</a></span>
+                                                <span><a href="/sz/cf/C1-H4/">独院</a></span>
+                                                <span><a href="/sz/cf/C1-I3/">钢结构</a></span>
+                            </div>
+        </section>
+    </div>
+{notempty name="list.data"}
+<!--内容-->
+<div class="hui-wrap" id="listBox">
+    <p id="prompt_info" count="1299926" style="height: 0.2rem; line-height: 0.2rem;"></p>
+    <div id="refreshContainer" class="hui-refresh">
+        <div class="hui-refresh-icon" style="margin-top: -60px;display: none"><span class="hui-icons hui-icons-down"></span>继续下拉刷新</div>
+        <div class="hui-refresh-content hui-list">
+            <ul id="list" class="listCon plr30" count="1299926">
+                                 {volist name="list.data" id="data"}
+                                                <li>
+                    <a href="/search/workshopdetail?id={$data.id}" class="clearFix">
+                        <div class="pic">
+                            <i>{$data.city|getCityName=###}</i>
+
+                            <img lazysrc="{$data['imgs'][0]}" src="{$data['imgs'][0]}" class=" ">            </div>
+                        <div class="txt">
+                            <h2>{$data.title}</h2>
+                            <p class="baseInfo"><span>{$data.city|getCityName=###,$data.area,'-'}</span></p>
+                            <p class="label">
+                                <span class="lab_1">{$data.floor}</span>
+                                <span class="lab_2">{$data.structure}</span>
+                                <span class="lab_3">{$data.newolddegree}</span>
+                            </p>
+                            <p class="price cfPrice">
+                                <span>{$data.plantrent}<span>/m²</span></span>
+                                <span>{$data.measurearea}<span>m²</span></span>
+                            </p>
+                        </div>
+                    </a>
+                </li>
+                        {/volist}
+            </ul>
+        </div>
+    <div id="hui-load-more"><span class="hui-icons hui-icons-up"></span>上拉加载更多</div></div>
+</div>
+{/notempty}
+<!--没有内容-->
+<div class="notListCon " id="notListCon" style="{empty name="list.data"}display: block{else /}display: none{/empty}">
+<div class="notCon">
+    <img src="/static/mobile/img/ic_empty_small.png" alt="">
+    <p>暂无相关信息</p>
+</div>
+</div>
+<!--底部栏-->
+<!--底部栏-->
+<footer>
+    <!--电话-->
+    
+    <p class="link clearFix">
+        <a id="about" href="/index/about.html" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击关于我们次数&#39;]);">关于我们</a>
+        
+    </p><div style="clear:both"></div>
+    <p class="copy clearFix" style="margin-bottom: 6px">
+        
+        <span style="margin: 0 0.2rem;"><a style="color: #979797;" href="http://www.beian.miit.gov.cn" target="_blank">{:config('web_site_icp')}</a></span>
+    </p>   </p><div style="clear:both"></div>
+    <p class="copy clearFix" style="margin-bottom: 3px">
+        <span style="margin: 0 0.2rem;">广东厂房网&nbsp;版权所有</span>
+        
+    </p>   </p><div style="clear:both"></div>
+        <p>{:config('web_site_name')} 版权所属</p>
+    </footer>
+<!--搜索页-->
+<!--搜索页-->
+<section class="searchWrapBox" id="search_a">
+
+    <!--搜索搜索-->
+    <div class="formBox clearFix">
+        <form url="/sz/cf/" method="post" class="clearfix form lf">
+            <input type="text" name="searInp" value="" placeholder="请输入关键词进行搜索" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击关键字输入框次数&#39;])">
+            <i class="resetIco"></i>
+            <button class="iconSear" type="submit" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内正常请求搜索次数&#39;])"></button>
+        </form>
+        <a href="javascript:;" class="rt cancel" onclick="document.getElementById('search_a').style.display='none';">取消</a>
+    </div>
+    <div class="searchList">
+        <ul>
+
+        </ul>
+    </div>
+    <div class="searchWrapCon">
+        <!--tab-->
+        <ul class="tab clearFix">
+            <li class="foucs" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页厂房类型切换选择次数&#39;])"><a href="javascript:void(0);">厂房</a></li>
+            <li onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页土地类型切换选择次数&#39;])"><a href="javascript:void(0);">写字楼</a></li>
+            <li onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页写字楼类型切换选择次数&#39;])"><a href="javascript:void(0);">土地</a></li>
+            <li onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页产业园区类型切换选择次数&#39;])"><a href="javascript:void(0);">产业园区</a></li>
+            <li><a href="javascript:void(0);">仓库</a></li>
+        </ul>
+        <!--厂房最近热搜-->
+        <div class="hotSearch plr30 cfSearch">
+            <p class="tit">最近热搜</p>
+            <div class="hotSearCon clearFix">
+                <ul>
+                    <li class="focus">
+                                                <a href="/sz/cf/?factorykeyword=%E6%A0%87%E5%87%86%E5%8E%82%E6%88%BF" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击厂房最近热搜关键字次数&#39;,标准厂房 ])">标准厂房</a>
+                                                <a href="/sz/cf/?factorykeyword=%E9%BE%99%E5%B2%97%E5%B0%8F%E9%9D%A2%E7%A7%AF%E5%8E%82%E6%88%BF%E5%87%BA%E7%A7%9F" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击厂房最近热搜关键字次数&#39;,龙岗小面积厂房出租 ])">龙岗小面积厂房出租</a>
+                                                <a href="/sz/cf/?factorykeyword=%E7%8B%AC%E9%99%A2%E5%8E%82%E6%88%BF" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击厂房最近热搜关键字次数&#39;,独院厂房 ])">独院厂房</a>
+                                                <a href="/sz/cf/?factorykeyword=%E4%BA%8C%E6%A5%BC%E4%BB%A5%E4%B8%8A" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击厂房最近热搜关键字次数&#39;,二楼以上 ])">二楼以上</a>
+                                                <a href="/sz/cf/?factorykeyword=%E9%92%A2%E7%BB%93%E6%9E%84" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击厂房最近热搜关键字次数&#39;,钢结构 ])">钢结构</a>
+                                                <a href="/sz/cf/?factorykeyword=%E5%9D%AA%E5%B1%B1%E5%8E%82%E6%88%BF" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击厂房最近热搜关键字次数&#39;,坪山厂房 ])">坪山厂房</a>
+                                                <a href="/sz/cf/?factorykeyword=%E7%9F%B3%E5%B2%A9%E5%8E%82%E6%88%BF" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击厂房最近热搜关键字次数&#39;,石岩厂房 ])">石岩厂房</a>
+                                                <a href="/sz/cf/?factorykeyword=%E5%9D%AA%E5%9C%B0%E5%8E%82%E6%88%BF" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击厂房最近热搜关键字次数&#39;,坪地厂房 ])">坪地厂房</a>
+                                                <a href="/sz/cf/?factorykeyword=%E6%A8%AA%E5%B2%97%E5%8E%82%E6%88%BF" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击厂房最近热搜关键字次数&#39;,横岗厂房 ])">横岗厂房</a>
+                                                <a href="/sz/cf/?factorykeyword=%E8%A7%82%E6%BE%9C%E5%8E%82%E6%88%BF" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击厂房最近热搜关键字次数&#39;,观澜厂房 ])">观澜厂房</a>
+                                                <a href="/sz/cf/?factorykeyword=%E7%A6%8F%E6%B0%B8%E5%8E%82%E6%88%BF" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击厂房最近热搜关键字次数&#39;,福永厂房 ])">福永厂房</a>
+                                            </li>
+                    <li>
+                                                <a href="/office/rent/?xiezilou_keyword=%E5%AE%9D%E5%AE%89%E5%86%99%E5%AD%97%E6%A5%BC" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击写字楼最近热搜关键字次数&#39;,宝安写字楼 ])">宝安写字楼</a>
+                                                <a href="/office/rent/?xiezilou_keyword=%E4%BA%A4%E9%80%9A%E4%BE%BF%E5%88%A9" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击写字楼最近热搜关键字次数&#39;,交通便利 ])">交通便利</a>
+                                                <a href="/office/rent/?xiezilou_keyword=%E5%B8%A6%E8%A3%85%E4%BF%AE" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击写字楼最近热搜关键字次数&#39;,带装修 ])">带装修</a>
+                                                <a href="/office/rent/?xiezilou_keyword=%E8%BF%91%E5%9C%B0%E9%93%81%E5%8F%A3" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击写字楼最近热搜关键字次数&#39;,近地铁口 ])">近地铁口</a>
+                                                <a href="/office/rent/?xiezilou_keyword=%E9%BE%99%E5%8D%8E%E5%86%99%E5%AD%97%E6%A5%BC%E5%87%BA%E7%A7%9F" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击写字楼最近热搜关键字次数&#39;,龙华写字楼出租 ])">龙华写字楼出租</a>
+                                            </li>
+                    <li>
+                                                <a href="/sz/td/?landkeyword=%E5%B7%A5%E4%B8%9A%E5%9C%9F%E5%9C%B0%E5%87%BA%E5%94%AE" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击土地最近热搜关键字次数&#39;,工业土地出售])">工业土地出售</a>
+                                                <a href="/sz/td/?landkeyword=%E5%9C%B0%E7%9A%AE%E5%87%BA%E5%94%AE" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击土地最近热搜关键字次数&#39;,地皮出售])">地皮出售</a>
+                                                <a href="/sz/td/?landkeyword=%E5%9C%9F%E5%9C%B0%E4%B9%B0%E5%8D%96" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击土地最近热搜关键字次数&#39;,土地买卖])">土地买卖</a>
+                                                <a href="/nj/td/?landkeyword=%E5%8D%97%E4%BA%AC%E5%9C%9F%E5%9C%B0" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击土地最近热搜关键字次数&#39;,南京土地])">南京土地</a>
+                                                <a href="/cd/td/?landkeyword=%E6%88%90%E9%83%BD%E5%9C%9F%E5%9C%B0" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击土地最近热搜关键字次数&#39;,成都土地])">成都土地</a>
+                                            </li>
+                    <li>
+                                                <a href="/qg/y?keyword=%E7%B2%A4%E6%B5%B7%E8%A3%85%E5%A4%87%E6%8A%80%E6%9C%AF%E4%BA%A7%E4%B8%9A%E5%9B%AD" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击产业园区最近热搜关键字次数&#39;,粤海装备技术产业园])">粤海装备技术产业园</a>
+                                                <a href="/qg/y?keyword=%E5%B8%9D%E8%B1%AA%E6%99%BA%E9%80%A0%E7%A7%91%E6%8A%80%E5%9B%AD" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击产业园区最近热搜关键字次数&#39;,帝豪智造科技园])">帝豪智造科技园</a>
+                                                <a href="/qg/y?keyword=%E6%B1%9F%E9%97%A8%E6%99%BA%E8%83%BD%E5%88%B6%E9%80%A0%E4%BA%A7%E4%B8%9A%E5%9B%AD" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击产业园区最近热搜关键字次数&#39;,江门智能制造产业园])">江门智能制造产业园</a>
+                                                <a href="/qg/y?keyword=%E9%9C%B8%E5%B7%9E%E6%99%BA%E8%83%BD%E6%B5%8B%E6%8E%A7%E8%A3%85%E5%A4%87%E4%BA%A7%E4%B8%9A%E5%9B%AD" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击产业园区最近热搜关键字次数&#39;,霸州智能测控装备产业园])">霸州智能测控装备产业园</a>
+                                            </li>
+                </ul>
+
+            </div>
+        </div>
+        <!--搜索历史-->
+<div class="history plr30">
+    <p class="tit">搜索历史 </p>
+    <ul class="historyUl"><li class="notHistoty">
+                        暂无搜索历史记录
+                    </li></ul>
+</div>        <div class="MessageBox">
+            <div class="MessageCon">
+                <h3>提示</h3>
+                <p>是否清空</p>
+                <div class="btn clearFix">
+                    <p class="cancel"><span>否</span></p>
+                    <p class="sure"><span>是</span></p>
+                </div>
+            </div>
+            <div class="mask"></div>
+        </div>
+    </div>
+</section>
+<!--底部浮动模块-->
+<div style="height: 0.88rem;visibility: hidden">s</div>
+<section class="listFixBot">
+    <div class="demand lf">
+        <a href="/NewDemand/" onclick="_czc.push(["_trackEvent","厂房列表页","点击浮动框委托需求按钮次数"]);"><span>需求登记</span></a>
+    </div>
+    <div class="tel lf">
+        <a href="tel:400-8800-002" class="semCall" id="semCalltest" onclick="_czc.push(["_trackEvent","厂房列表页","点击浮动框电话拨打按钮次数"]);"><span>点击免费拨打</span><span class="telTxt">{:config('web_site_tel')}</span></a>
+    </div>
+</section>
+<script src="/static/index/js/zepto.min.js"></script>
+<script src="/static/index/js/touch.js"></script>
+<script src="/static/index/js/hui.js"></script>
+<script src="/static/index/js/hui-refresh-load-more.js"></script>
+
+<script>
+    var factory =   "/sz/cf/";
+    var office  =   "/sz-office/rent/";
+    var land    =   "/sz/td/";
+    var sxzs    =   "/sxzs/zfzs/";
+    var park    =   "/y/";
+    var agent   =   "/agents/sz/";
+    var demand  =   "/NewDemand/";
+    var newlist =   "/infor/index/";
+    var route = [factory,office,land,sxzs,park,'picked',agent,demand,'delivery',newlist];
+    var city = "sz";
+    wTem = {"citySeo":"sz","type":1};
+</script>
+<script src="/static/index/js/base.js"></script>
+<script src="/static/index/js/list.js"></script>
+<script src="/static/index/js/list_factory.js?v=3"></script>
+<script type="text/javascript">
+    /**
+     * sem获取拨打电话记录
+     */
+    $('.semCall').on('click', function () {
+        var url = window.location.href;
+        $.ajax({
+            type : 'post',
+            url : '/index.php?c=newmain&a=semtelsub',
+            data : {url:url},
+            success: function (ret) {
+                console.log(ret);
+            }
+        });
+        console.log(url);
+    });
+
+    //搜索页埋点
+    $('.searchContent').on('click',function () {
+        _czc.push(['_trackEvent','厂房列表页','搜索结果页点击模糊匹配进入列表页次数']);
+    });
+    $('.searchHistory').on('click',function () {
+        _czc.push(['_trackEvent','厂房列表页','搜索页内点击历史关键字次数']);
+    });
+    $('.empty').on('click',function () {
+        _czc.push(['_trackEvent','厂房列表页','搜索页内点击清空历史关键字次数']);
+    });
+
+
+</script>
+<script>
+    $('.fac_area').on('click',function(){
+        var minArea = $('#minArea').val();
+        var maxArea   = $('#maxArea').val();
+        if (minArea == '' && maxArea == '') {
+            json = {};
+            json.min = minArea;
+            json.max = maxArea;
+            json.wTem = {"citySeo":"sz","type":1};
+            json.type = $(this).attr('table');
+            var url = "/index/search/createUrl";
+            ajaxListCondition(url,json);return false;
+        }else if(minArea == '' || maxArea == ''){
+            alert('请输入面积范围');
+            return false;
+        };
+        json = {};
+        json.min = minArea;
+        json.max = maxArea;
+        json.wTem = {"citySeo":"sz","type":1};
+        json.type = $(this).attr('table');
+        var url = "/index/search/createUrl";
+        ajaxListCondition(url,json);
+    })
+
+    $('.fac_price').on('click',function(){
+        var minPrice = $('#minPrice').val();
+        var maxPrice   = $('#maxPrice').val();
+        if (minPrice == '' && maxPrice == '') {
+            json = {};
+            json.min = minPrice;
+            json.max = maxPrice;
+            json.wTem = {"citySeo":"sz","type":1};
+            json.type = $(this).attr('table');
+            var url = "/index/search/createUrl";
+            ajaxListCondition(url,json);return false;
+        }else if(minPrice == '' || maxPrice == ''){
+            alert('请输入价格范围');
+            return false;
+        };
+        json = {};
+        json.min = minPrice;
+        json.max = maxPrice;
+        json.wTem = {"citySeo":"sz","type":1};
+        json.type = $(this).attr('table');
+        var url = "/index/search/createUrl";
+        ajaxListCondition(url,json);
+    })
+
+    $('.more_sub').on('click',function(){
+        personInfo = [];
+        $(".more.focus").each(function(){
+            key = $(this).attr('key');
+            val = $(this).attr('val');
+            var person = {key:key, val:val};
+            personInfo.push(person);
+        });
+        if(personInfo.length == 0){
+            var url = "/index/search/workshop";
+            location.href = url;
+            return false;
+        }
+        json = {};
+        json.more = personInfo;
+        json.type = $(this).attr('table');
+        json.wTem = {"citySeo":"sz","type":1};
+        var url = "/index/search/createUrl";
+        ajaxListCondition(url,json);
+    })
+</script>
+<script>
+    var focusIndex = 5;
+</script>
+<script>
+    window.onload = function () {
+        switchNav();// 打开、关闭nav
+        searchWrap();//搜索页面
+        select_wrapper();//筛选
+        screenTag();//筛选标签栏总宽度
+        screenFix();//筛选区域滑上固定
+    }
+</script>
+<!--埋点尾部-->
+
+
+</body></html>
