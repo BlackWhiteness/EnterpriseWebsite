@@ -1,99 +1,53 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <script>function sptips() {
-        alert("找不到相关的厂房,或者厂房已经被删除");
-        location.href = "/";
-    };</script>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link rel="shortcut icon" href="/static/index/img/favicon.ico" type="image/x-icon"/>
-    <title>
-        {$info.title}</title>
-    <meta name="description" content="
-​{$info.title}
-
-"/>
-    <SCRIPT src="/static/index/js/jquery-1.2.6.pack.js" type=text/javascript></SCRIPT>
-    <SCRIPT src="/static/index/js/base.js" type=text/javascript></SCRIPT>
+<script>function sptips(){alert("找不到相关的厂房,或者厂房已经被删除");location.href="/";};</script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <link rel="shortcut icon" href="/static/index/img/favicon.ico" type="image/x-icon"/>
+<title> {$info.title}</title>
+<meta name="description" content="
+    
+         {$info.title}..." />
 </head>
 <link rel="stylesheet" href="/static/index/css/css.css"/>
-<body style="text-align:center">
-<style>
-    .nav_bar {
-        background: url(/static/index/img/home4_02.jpg) repeat-x left top;
-        height: 39px;
-        line-height: 39px;
-        overflow: hidden;
-        color: #666;
-    }
-
-    .w960 {
-        width: 960px;
-        margin: 0 auto;
-    }
-
-    .fl {
-        float: left;
-    }
-
-    .fr {
-        float: right;
-    }
-
-    .f12 {
-        font-size: 12px;
-    }
-
-    .c303 {
-        color: #AF5303
-    }
-
-    .nav_bar_left em {
-        margin-left: 8px;
-        margin-right: 8px;
-    }
-
-    .nav_bar_left a {
-        color: #AF5303;
-    }
-
-    .nav_bar_left span {
-        font-weight: bold;
-        color: #fff;
-        padding: 3px 8px;
-        background-color: brown
-    }
-
-    .nav_bar_right {
-        font-style: normal;
-        color: #666;
-        padding: 0 0 0 25px;
-        background: url(/static/index/img/tel.png) no-repeat 10px center;
-        padding: 0 0 0 30px;
-        display: inline-block;
-    }
-
+<link rel="stylesheet" href="/static/index/css/xzl.css"/>
+<link rel="stylesheet" href="/static/index/css/ft-carousel.css"/>
+<style type="text/css">
+	.nav li a span {
+    display: block;
+    float: left;
+    padding: 0 0 0 0;
+    height: 39px;
+    line-height: 39px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #fff;
+}
+.nav li {
+    padding: 0 13px;
+}
 </style>
+<body>
 <div class="nav_bar">
-    <div class="w960 f12">
-        <div class="nav_bar_left fl">
-            当前城市：<span>{$cityInfo[0]['name']}</span>
-            <em>|</em>切换城市：
-            {volist name="cityList" id="data"}
-            <a href="javascript:document.cookie = 'city={$data.id}';location.href("/");">{$data.name}</a>
-            <em>|</em> {/volist}
-        </div>
-        <div class="nav_bar_right fr">
-            <strong>24小时免费服务热线：{:config('web_site_tel')}</strong>
-        </div>
-    </div>
+  <div class="w1003 f12">
+    <div class="nav_bar_left fl">
+    当前城市：<span>{$cityInfo[0]['name']}</span>
+    <em>|</em>切换城市：
+        {volist name="cityList" id="data"}
+     <a  href="javascript:document.cookie = 'city={$data.id}';location.href("/");">{$data.name}</a>
+     <em>|</em> {/volist}
+  </div>
+<div class="nav_bar_right fr">
+<strong>24小时免费服务热线：{:config('web_site_tel')}</strong>
+	</div>
+  </div>
 </div><!--<table width="960" border="0" cellspacing="0" cellpadding="0" align="center">
   <tr align="center">
     <td align="center">
 
 <div id="logo">
-      <div id="logo_left"><A href="/city_dg/index/search/workshop?city={$cityInfo[0]['id']}" target=_blank><IMG  src="/gg/area/area1/bt1/logo.png" width="210" ></A></div>
+      <div id="logo_left"><A href="/city_dg/search.php" target=_blank><IMG  src="/gg/area/area1/bt1/logo.png" width="210" ></A></div>
       <div id="logo_center"> </div>
 
     </div>
@@ -101,1569 +55,458 @@
   </tr>
 </table>-->
 
+
+
+<script type="text/javascript">
+var run=0;
+var rtime;
+	function time(){
+		ChangeCity(0);
+		clearTimeout(rtime);
+	}
+	function ChangeCity(show){
+		$("#popwindow").css("position","absolute");
+		$("#popwindow").css("top",40);
+		if($.browser.msie)
+			$("#popwindow").css("left",20);
+		else
+			$("#popwindow").css("left",20);
+		if(show==1){
+			$("#popwindow").slideDown("normal",function(){run=0});
+		}else{
+			$("#popwindow").slideUp("normal",function(){run=0});
+		}
+	}
+
+
+</script>
+<div class="marginT20 marginB20 w1003 head ">
+      <div class="FL marginT10"><a href="/"><img src="/static/index/img/logo.png"></a></div>
+      <div class="FL LH24 marginL20" style="margin-top:37px;">
+				<div class="m_city fl" style="position:relative;">
+						<div id="change_city"><font color="#D90700" style="font-
+size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font> <a class="F12 cGray" href="javascript:void(0);" onclick="javascript:alert('写字楼目前只开通深圳，其他城市正在开放中');">[切换城市]</a></div>
+					  <div class="qhcity_box" id="popwindow" style="z-index: 20; position: absolute; top: 40px; left: 20px; display: none; min-height:300px; position:relative;">
+							  <div class="qhcity_close" onclick="javascript:ChangeCity
+();"><img src="http://www.zhaoshang800.com/images/close.gif" alt="关闭" title="关闭"></div>
+							  <div class="qhcity_hot">热门城市：<a href="/search.php?area=sz">深圳市</a><a href="/search.php?area=dg">东莞市</a><a href="/search.php?area=hz">惠州市</a></div>
+
+
+
+<!--<div class="qhcity_area" style="line-height:20px;padding-top:5px; padding-bottom:5px;"><div style=" float:left; width:60px; overflow:hidden;text-align:center;">深圳市：</div><div style=" float:left;">
+
+</div>
+<div style="clear:both;"></div>
+</div>
+-->
+
+
+
+<div class="qhcity_more" style="position:absolute; bottom:5px; right:15px;"><a href="javascript:alert('其他城市正在开通中！！！')" target="_blank">其他城市正在开通中&gt;&gt;</a></div>
+						</div>
+				</div></div>
+
+
+      <div class="FR" style="width:504px; margin-top:10px;">
+    <div class="t-r F12">
+          <div class="FL">  <span style=" padding-right:5px;">热门搜索:</span><a target="_blank" href="/index/search/officebuilding?city={$cityInfo[0]['id']}&title=带装修厂房">带装修厂房</a><a target="_blank" href="/index/search/officebuilding?city={$cityInfo[0]['id']}&floor=1">一楼厂房</a><a target="_blank" href="/index/search/officebuilding?city={$cityInfo[0]['id']}&title=高新科技园厂房">高新科技园厂房</a></div>
+          <div class="FR"></div>
+        </div>
+    <div class="clear"></div>
+    <div class="mr_search FR marginT5">
+		<form method="get" action="/index/search/officebuilding" class="form" id="search111" onsubmit="return clickThis(this);">
+        <div class="select fl" onmouseover="xiala('s_xlmenu',true)" onmouseout="xiala('s_xlmenu',false)">
+              <div class="s_xiala">
+			</div>
+			<div class="s_xialamenu" id="s_xlmenu">
+				<ul>
+					<li><a onclick="SelText(this);return false;">写字楼</a></li>
+				</ul>
+          </div>
+            </div>
+        <div class="text fl">
+            <input name="city" type="hidden" value="{$cityInfo[0]['id']}" />
+			<input name="title" type="text" placeholder="请输入园区名称或工业区商圈">
+		</div>
+        <div class="searbut fr" style="height:32px; overflow:hidden;">
+			  <input type="submit" class="searanniu" value="搜索">
+            </div>
+      </form>
+        </div>
+  </div>
+      <div class="clear"></div>
+    </div>
+
+<div id=header>
+<script type="text/javascript" src="/static/index/js/jquery-1.4.2.min.js"></script>
+
+
+<!--解决 IE6 背景缓存-->
+<!--[if IE 6]><script type="text/javascript">document.execCommand("BackgroundImageCache", false, true);</script><![endif]-->
+
+ {include file="templates/default/index/layout/nav.html" /}
+
+
+</div>
+
+
+
+
+
 <style>
 
-    .W1000 {
-        width: 960px;
-        margin: 0 auto;
-    }
-
-    .LH24 {
-        line-height: 24px;
-    }
-
-    .F12 {
-        font-size: 12px;
-    }
-
-    .head .t-r .FL a {
-        color: #fd443b;
-        margin-right: 10px;
-    }
-
-    .head .t-r .FL a:hover {
-        color: #d90700;
-    }
-
-    .cGray {
-        color: #999;
-    }
-
-    .clear {
-        clear: both;
-    }
-
-    .mr_search {
-        width: 500px;
-        height: 32px;
-        border: 2px solid #009BE5;
-    }
-
-    .mr_search form {
-        display: block;
-    }
-
-    .mr_search form .select {
-        position: relative;
-    }
-
-    .mr_search form input {
-        display: block;
-        float: left;
-    }
-
-    .mr_search form .select input {
-        padding-left: 0px;
-        width: 77px;
-        cursor: pointer;
-        height: 32px;
-        overflow: hidden;
-        font: 12px/34px "宋体";
-        color: #676767;
-        border: none;
-        background: url(/static/index/img/zx_icons.jpg) no-repeat 0 -70px;
-        padding-right: 12px;
-    }
-
-    .mr_search form .select .s_xialamenu {
-        width: 69px;
-        border: 1px solid #D4D4D4;
-        border-top: none;
-        background-color: #F5F5F5;
-        position: absolute;
-        top: 32px;
-        left: 0;
-        z-index: 100;
-        display: none;
-    }
-
-    .mr_search form .select .s_xialamenu ul {
-        list-style: none;
-    }
-
-    .mr_search form .select .s_xialamenu ul li {
-        float: left;
-        font: 12px/26px "宋体";
-        text-align: center;
-        background-color: #F5F5F5;
-    }
-
-    .mr_search form .select .s_xialamenu ul li a {
-        display: block;
-        width: 69px;
-        height: 26px;
-        color: #676767;
-        text-decoration: none;
-    }
-
-    .mr_search form .select .s_xialamenu ul li a:hover {
-        background: #00499a;
-        color: white;
-    }
-
-    .mr_search form .text input {
-        width: 300px;
-        height: 30px;
-        vertical-align: middle;
-        border: none;
-        padding-left: 2px;
-        padding-top: 2px;
-        font: 12px/22px "宋体";
-        color: #c4c4c4;
-        outline: none;
-    }
-
-    .mr_search form .searbut input {
-        width: 87px;
-        height: 32px;
-        padding-left: 17px;
-        text-align: center;
-        font: bold 16px/32px "宋体";
-        color: white;
-        border: none;
-        cursor: pointer;
-        background: url(/static/index/img/zx_icons.jpg) no-repeat 0 -107px;
-    }
-
-    .fl {
-        float: left;
-    }
-
-    .fr {
-        float: right;
-    }
-
-    .cl {
-        clear: both;
-    }
-
-    textarea, input {
-        word-wrap: break-word;
-        word-break: break-all;
-        padding: 0px;
-    }
-
-    ul, li {
-        margin: 0px;
-        padding: 0px;
-        list-style-type: none;
-    }
-
-    .marginT5 {
-        margin-top: 5px;
-    }
-
-    .marginT8 {
-        margin-top: 8px;
-    }
-
-    .marginT10 {
-        margin-top: 10px;
-    }
-
-    .marginB20 {
-        margin-bottom: 20px;
-    }
-
-    .marginT14 {
-        margin-top: 14px;
-    }
-
-    .marginT15 {
-        margin-top: 15px;
-    }
-
-    .marginT17 {
-        margin-top: 17px;
-    }
-
-    .marginT20 {
-        margin-top: 20px;
-    }
-
-    .marginT40 {
-        margin-top: 40px;
-    }
-
-    .marginB10 {
-        margin-bottom: 10px;
-    }
-
-    .marginL9 {
-        margin-left: 9px;
-    }
-
-    .marginL13 {
-        margin-left: 13px;
-    }
-
-    .marginL15 {
-        margin-left: 13px;
-    }
-
-    .marginL20 {
-        margin-left: 20px;
-    }
-
-    .marginL25 {
-        margin-left: 25px;
-    }
-
-    .marginL35 {
-        margin-left: 35px;
-    }
-
-    .marginL40 {
-        margin-left: 40px;
-    }
-
-    .marginL45 {
-        margin-left: 47px;
-    }
-
-    .marginL65 {
-        margin-left: 65px;
-    }
-
-    .marginL85 {
-        margin-left: 85px;
-    }
-
-    .marginR10 {
-        margin-right: 10px;
-    }
-
-    .marginR15 {
-        margin-right: 15px;
-    }
-
-    .marginR20 {
-        margin-right: 20px;
-    }
-
-    .marginR30 {
-        margin-right: 30px;
-    }
-
-    .margin13 {
-        margin: 0 13px;
-    }
-
-    .t-l {
-        text-align: left;
-    }
-
-    .t-c {
-        text-align: center;
-    }
-
-    .t-r {
-        text-align: right;
-    }
-
-    .FL {
-        float: left;
-    }
-
-    .FR {
-        float: right;
-    }
-
-    .qhcity_box {
-        border: 1px solid #dbb876;
-        padding: 10px 15px 0px 15px;
-        width: 510px;
-        font-size: 12px;
-        background-color: #FFFFFF;
-        text-align: left;
-    }
-
-    .qhcity_hot {
-        color: #f24400;
-        border-bottom: 1px dashed #ccc;
-        line-height: 34px;
-        padding-left: 3px;
-    }
-
-    .qhcity_hot a {
-        color: #f24400;
-        text-decoration: none;
-        padding-right: 10px;
-    }
-
-    .qhcity_hot a:link {
-        color: #f24400;
-        text-decoration: none;
-    }
-
-    .qhcity_hot a:visited {
-        color: #f24400;
-        text-decoration: none;
-    }
-
-    .qhcity_hot a:hover {
-        color: #f24400;
-        text-decoration: underline;
-    }
-
-    .qhcity_hot a:active {
-        color: #f24400;
-        text-decoration: underline;
-    }
-
-    .qhcity_area {
-        color: #888888;
-        border-bottom: 1px dashed #ccc;
-        line-height: 34px;
-        padding-left: 3px;
-    }
-
-    .qhcity_area a {
-        color: #444444;
-        text-decoration: none;
-        padding-right: 10px;
-    }
-
-    .qhcity_area a:link {
-        color: #444444;
-        text-decoration: none;
-    }
-
-    .qhcity_area a:visited {
-        color: #444444;
-        text-decoration: none;
-    }
-
-    .qhcity_area a:hover {
-        color: #f24400;
-        text-decoration: underline;
-    }
-
-    .qhcity_area a:active {
-        color: #f24400;
-        text-decoration: underline;
-    }
-
-    .qhcity_more {
-        color: #f24400;
-        text-align: right;
-        line-height: 34px;
-    }
-
-    .qhcity_more a {
-        color: #f24400;
-    }
-
-    .qhcity_more a:link {
-        color: #f24400;
-        text-decoration: none;
-    }
-
-    .qhcity_more a:visited {
-        color: #f24400;
-        text-decoration: none;
-    }
-
-    .qhcity_more a:hover {
-        color: #f24400;
-        text-decoration: underline;
-    }
-
-    .qhcity_more a:active {
-        color: #f24400;
-        text-decoration: underline;
-    }
-
-    .qhcity_close {
-        float: right;
-    }
-
-    .nav li a span {
-        display: block;
-        float: left;
-        padding: 0 0 0 0;
-        height: 39px;
-        line-height: 39px;
-        font-size: 14px;
-        cursor: pointer;
-        color: #fff;
-    }
-
-    .nav li {
-        padding: 0 13px;
-    }
 </style>
+<div class="details-head">
+	    <!-- title -->
+	    <div class="title-wrapper clearfix">
+	      <div class="left-con clearfix fl">
+	        <h2 class="house-title fl">龙岗中心城地标级物业毫装写字楼出租</h2>
+
+	        <span class="free-commission">租客免佣</span>
+
+	      </div>
+	    </div>
+	    <!-- end title -->
+  	</div>
+
+
+
+
+
+
+
+
+<div class=" w1003 zs_newmbx" style="margin: 8px auto;text-align:left;">
+	<a target="_blank" href="../">886写字楼网</a>&nbsp;&gt;&nbsp;<a target='_blank' href='../search.php?area=sz'>深圳写字楼出租</a>        &nbsp;&gt;&nbsp;<a target='_blank' href='../search.php?area=sz_lg'>龙岗区写字楼出租</a>        &nbsp;&gt;&nbsp;<a target='_blank' href='../search.php?area=sz_lg_lg'>龙岗写字楼出租</a></div>
+
+
+<div id="main_body" class="w1003">
+<link href="//web-cdn.haozu.com/static/css/haozu_global_v2.css?v=a53e6eacab" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/public/static/index/js/jquery.min.js"></script>
+<script type="text/javascript" src="/public/static/index/js/ft-carousel.min.js"></script>
+
+
+<div class="detail-box  clearfix" data-role="new">
+    <div class="fl" style="width:640px; height:480px;">
+
+      <div class="ft-carousel" id="carousel_1">
+		<ul class="carousel-inner">
+        <li class="carousel-item"><img src="/xiezilou/upImagescj/20170904/201709041929466831.jpg"></li>
+
+		</ul>
+	</div>
 
 <script type="text/javascript">
-    var run = 0;
-    var rtime;
-
-    function time() {
-        ChangeCity(0);
-        clearTimeout(rtime);
-    }
-
-    function ChangeCity(show) {
-        $("#popwindow").css("position", "absolute");
-        $("#popwindow").css("top", 40);
-        if ($.browser.msie)
-            $("#popwindow").css("left", 20);
-        else
-            $("#popwindow").css("left", 20);
-        if (show == 1) {
-            $("#popwindow").slideDown(300, function () {
-                run = 0
-            });
-        } else {
-            $("#popwindow").slideUp(100, function () {
-                run = 0
-            });
-        }
-    }
-
-
-</script>
-<div class="marginT20 marginB20 W1000 head ">
-    <div class="FL marginT10"><a href="/"><img src="/static/index/img/logo.png"></a></div>
-    <div class="FL LH24 marginL20" style="margin-top:37px;">
-        <div class="m_city fl" style="position:relative;">
-            <div id="change_city"><font color="#D90700" style="font-
-size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityInfo[0]['name']}</strong></font> <a
-                    class="F12 cGray" href="javascript:void(0);" onclick="javascript:ChangeCity(1);">[切换城市]</a></div>
-            <div class="qhcity_box" id="popwindow"
-                 style="z-index: 20; position: absolute; top: 40px; left: 20px; display: none; min-height:300px; position:relative;">
-                <div class="qhcity_close" onclick="javascript:ChangeCity
-();"><img src="/images/close.gif" alt="关闭" title="关闭"></div>
-                <div class="qhcity_hot">热门城市：<a href="/index/search/workshop?city={$cityInfo[0]['id']}">深圳市</a><a
-                        href="/index/search/workshop?city={$cityInfo[0]['id']}">东莞市</a><a
-                        href="/index/search/workshop?city={$cityInfo[0]['id']}">惠州市</a></div>
-                <div class="qhcity_area" style="line-height:20px; padding-top:5px; padding-bottom:5px;">
-                    大湾区：
-                    <a href="/index/search/workshop?city={$cityInfo[0]['id']}">深圳</a>
-                    <a href="/index/search/workshop?city={$cityInfo[0]['id']}">东莞</a>
-                    <a href="/index/search/workshop?city={$cityInfo[0]['id']}">惠州</a>
-                    <a href="/index/search/workshop?city={$cityInfo[0]['id']}">中山</a>
-                    <a href="/index/search/workshop?city={$cityInfo[0]['id']}">佛山</a>
-                    <a href="/index/search/workshop?city={$cityInfo[0]['id']}">广州</a>
-                    <a href="/index/search/workshop?city={$cityInfo[0]['id']}">江门</a>
-                </div>
-
-
-                <!--<div class="qhcity_area" style="line-height:20px;padding-top:5px; padding-bottom:5px;"><div style=" float:left; width:60px; overflow:hidden;text-align:center;">深圳市：</div><div style=" float:left;">
-
-                </div>
-                <div style="clear:both;"></div>
-                </div>
-                -->
-
-
-                <div class="qhcity_more" style="position:absolute; bottom:5px; right:15px;"><a
-                        href="javascript:alert('其他城市正在开通中！！！')" target="_blank">其他城市正在开通中&gt;&gt;</a></div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="FR" style="width:504px;">
-        <div class="t-r F12">
-            <div class="FL"><span style=" padding-right:5px;">热门搜索:</span><a target="_blank"
-                                                                             href="/index/search/workshop?city={$cityInfo[0]['id']}&title=%E5%B8%A6%E8%A3%85%E4%BF%AE%E5%8E%82%E6%88%BF">带装修厂房</a><a
-                    target="_blank" href="/index/search/workshop?city={$cityInfo[0]['id']}&floor=1">一楼厂房</a><a
-                    target="_blank"
-                    href="/index/search/workshop?city={$cityInfo[0]['id']}&title=%E9%AB%98%E6%96%B0%E7%A7%91%E6%8A%80%E5%9B%AD">高新科技园厂房</a>
-            </div>
-            <div class="FR"></div>
-        </div>
-        <div class="clear"></div>
-        <div class="mr_search FR marginT5">
-            <form method="get" action="/index/search/workshop?city={$cityInfo[0]['id']}" class="form" id="search111"
-                  onsubmit="return clickThis(this);">
-                <div class="select fl" onmouseover="xiala('s_xlmenu',true)" onmouseout="xiala('s_xlmenu',false)">
-                    <div class="s_xiala">
-                    </div>
-                    <div class="s_xialamenu" id="s_xlmenu">
-                        <ul>
-                            <li><a onclick="SelText(this);return false;">找厂房</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="text fl">
-                    <input name="city" type="hidden" value="{$cityInfo[0]['id']}"/>
-                    <input name="title" type="text" placeholder="请输入园区名称或工业区商圈">
-                </div>
-                <div class="searbut fr" style="height:32px; overflow:hidden;">
-                    <input type="submit" class="searanniu" value="搜索">
-                </div>
-            </form>
-        </div>
-    </div>
-    <div class="clear"></div>
-</div>
-<script type="text/javascript">
-    function xiaoshi(obj) {
-        obj.value = "";
-    }
-
-    function xianshi(obj, message) {
-        if (obj.value == null || obj.value == "")
-            obj.value = message;
-    }
-
-    /*
-    导航条.显示函数
-    */
-    function block_show(id, isHome) {
-        var list = document.getElementsByClassName("n_ejmenu FR");
-        for (var i = 0, j = list.length; i < j; i++) {
-            list[i].style.display = "none";
-        }
-        if (!isHome) {
-            document.getElementById(id).style.display = "block";
-            document.getElementById("line").style.display = "none";
-        } else {
-            document.getElementById("line").style.display = "block";
-        }
-    }
-
-    function SelText(obj) {
-        document.getElementById("ct_input").value = obj.innerHTML;
-        document.getElementById("s_xlmenu").style.display = "none";
-        var tna = obj.innerHTML;
-        var soty = 0;
-        if (tna == "厂房") {
-            soty = 1;
-        } else if (tna == "写字楼") {
-            soty = 3;
-        } else if (tna == "土地") {
-            soty = 5;
-        } else if (tna == "商铺") {
-            soty = 4;
-        } else if (tna == "产业园区") {
-            soty = 2;
-        }
-        document.getElementById("sotype").value = soty;
-    }
-
-    function xiala(id, isShow) {
-        var _disply = "none";
-        if (isShow)
-            _disply = "block";
-        document.getElementById(id).style.display = _disply;
-    }
-
-    function xiala1() {
-        document.getElementById("ywhz").style.background = "url(/static/index/img/zs_topnavlibg2.jpg) no-repeat center";
-        document.getElementById("jtxl").style.display = "block";
-    }
-
-    function xiala2() {
-        document.getElementById("ywhz").style.background = "url(/static/index/img/zs_topnavlibg1.jpg) no-repeat center";
-        document.getElementById("jtxl").style.display = "none";
-    }
-
-    function xiala3(id, isShow) {
-        var _disply = "none";
-        if (isShow)
-            _disply = "block";
-        document.getElementById(id).style.display = _disply;
-    }
+	$("#carousel_1").FtCarousel();
 </script>
 
-<div id="header">
-    <table width="960" border="0" cellspacing="0" cellpadding="0" align="center">
-        <tbody>
-        <tr>
-            <td>
-                <script type="text/javascript">
-                    (function (a) {
-                        a.fn.hoverClass = function (b) {
-                            var a = this;
-                            a.each(function (c) {
-                                a.eq(c).hover(function () {
-                                    $(this).addClass(b)
-                                }, function () {
-                                    $(this).removeClass(b)
-                                })
-                            });
-                            return a
-                        };
-                    })(jQuery);
 
-
-                </script>
-                <!--解决 IE6 背景缓存-->
-                <!--[if IE 6]>
-                <script type="text/javascript">document.execCommand("BackgroundImageCache", false, true);</script>
-                <![endif]-->
-                {include file="templates/default/index/layout/nav.html" /}
-            </td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-<div class="zs_newmbx" style="display:none; width:936px;margin:auto;text-align:left;">
-    <a target="_blank" href=".">东莞厂房网</a>&nbsp;&gt;&nbsp;<a target="_blank"
-                                                            href="/index/search/workshop?city={$cityInfo[0]['id']}?area=dg">东莞厂房出租</a>
-</div>
-
-<table width="960" align="center">
-    <tr align="center">
-        <td align="center">
-            <A href="/index/search/workshop?city={$cityInfo[0]['id']}" target=_blank><IMG
-                    src="/static/index/img/img_13.jpg" width="1000" height="267"></A>
-        </td>
-    </tr>
-</table>
-<div style="height:15px;"></div>
-<style type="text/css">
-    <!--
-    .table-xia1 {
-        text-decoration: none;
-        font-size: 13px;
-    }
-
-    .dingfh162 {
-        font-size: 12px;
-        line-height: 19px;
-        font-weight: normal;
-        color: #FF0000;
-        text-decoration: none;
-    }
-
-    .house_box {
-        border: 1px solid #cecece;
-        background: url(/static/index/img/house_boxbg.gif) repeat-x;
-        overflow: hidden;
-        height: 100%
-    }
-
-    .house_boxleft {
-        width: 167px;
-        height: 408px;
-        border-right: 1px solid #cecece;
-        background: #fbfbfb;
-        float: left;
-        padding: 19px;
-    }
-
-    .house_boxright {
-        float: left;
-        padding: 10px 10px 10px 10px;
-        width: 710px;
-        border: 1px solid #cecece;
-    }
-
-    .house_agentphoto {
-        width: 111px;
-        height: 124px;
-        padding: 1px;
-        border: 4px solid #e7e7e7;
-        margin: 0 auto
-    }
-
-    .house_agentname {
-        font-size: 16px;
-        font-weight: bold;
-        color: #3a3a3a;
-        line-height: 24px;
-        text-align: center;
-        padding-top: 5px;
-        padding-bottom: 5px;
-    }
-
-    .house_agentname a {
-        color: #3a3a3a;
-    }
-
-    .house_agentname a:hover {
-        color: #ec8e00;
-    }
-
-    .house_agentname2 {
-        font-size: 12px;
-        font-weight: bold;
-        color: #3e3e3e;
-    }
-
-    .house_icon1 {
-        background: url(/static/index/img/house_icon1.gif) no-repeat;
-        width: 142px;
-        height: 22px;
-        margin-left: 12px;
-        padding-top: 3px;
-        color: #898989;
-        font-family: "宋体";
-        margin-bottom: 10px;
-        text-align: center
-    }
-
-    .house_icon1 a {
-        color: #898989;
-    }
-
-    .house_icon1 a:hover {
-        color: #898989;
-    }
-
-    .house_intro {
-        border-top: 1px dashed #cccccc;
-        color: #8b8b8b;
-        padding-top: 8px;
-        padding-bottom: 10px;
-        overflow: hidden;
-        word-break: break-all;
-        clear: both;
-    }
-
-    .house_title {
-        font-size: 16px;
-        font-weight: bold;
-        color: #5d5d5d;
-    }
-
-    .gray {
-        color: #9c9c9c;
-        font-size: 12px;
-    }
-
-
-    .house_phone1 {
-        width: 335px;
-        height: 58px;
-        margin-right: 10px;
-        margin-top;
-        2px;
-        border: 2px solid #009BE5;
-    }
-
-    .house_phone2 {
-        width: 303px;
-        height: 52px;
-        padding-left: 30px;
-        padding-top: 4px;
-        border: 1px solid #fff;
-        background: url(/static/index/img/phone.gif) no-repeat 8px 5px #f2f1f1;
-        color: #df3a00;
-        line-height: 24px;
-    }
-
-    .house_line {
-        background: url(/static/index/img/line.gif) repeat-x;
-        height: 1px;
-    }
-
-    .house_basic {
-        margin-right: 3px;
-        margin-top: 0px;
-        color: #F00;
-        margin-bottom: 2px;
-        height: 301px;
-    }
-
-    .number {
-        font-size: 22px;
-        font-weight: bold;
-    }
-
-    .other {
-        margin-left: 23px;
-        border: 1px solid #d8d8d8;
-        background: url(/static/index/img/other.gif) repeat-x;
-        height: 21px;
-        padding-top: 6px;
-    }
-
-    .other_box1 {
-        margin-left: 10px;
-        float: left;
-        background: url(/static/index/img/icon1.gif) no-repeat;
-        padding-left: 20px;
-        color: #0e74cb;
-        text-decoration: underline;
-        display: inline;
-        line-height: 16px;
-    }
-
-    .other_box1 a {
-        color: #0e74cb;
-        text-decoration: underline
-    }
-
-    .other_box1 a:hover {
-        color: #d2761d;
-        text-decoration: underline
-    }
-
-    .other_box2 {
-        margin-left: 10px;
-        float: left;
-        background: url(/static/index/images/icon2.gif) no-repeat;
-        padding-left: 20px;
-        color: #0e74cb;
-        text-decoration: underline;
-        line-height: 16px;
-    }
-
-    .other_box2 a {
-        color: #0e74cb;
-        text-decoration: underline
-    }
-
-    .other_box2 a:hover {
-        color: #d2761d;
-        text-decoration: underline
-    }
-
-    .other_box3 {
-        margin-right: 10px;
-        float: right;
-        display: inline;
-        margin-top: -5px;
-    }
-
-    .thumb {
-        background: url(/static/index/images/thumb.png) no-repeat;
-        width: 100px;
-        height: 100px;
-        float: left;
-    }
-
-
-    <!--
-    图片-- >
-    .p_show {
-        width: 320px;
-        float: none;
-        text-align: center;
-    }
-
-    .p_show .p_img_bar {
-        width: 350px;
-        height: 265px;
-        border: solid 1px #e4e4e4;
-        text-align: center;
-    }
-
-    .p_show .p_img_bar img {
-        border: none;
-    }
-
-    .p_show .p_small_bar {
-        height: 52px;
-        padding: 3px 3px;
-        display: block;
-        background: #f5f5f5;
-        border: 1px solid #e4e4e4;
-        margin-top: 8px
-    }
-
-    .p_show .p_small_bar .p_small_in {
-        width: 300px;
-        overflow: hidden;
-        height: 56px;
-        float: left;
-        padding: 0px 0px;
-        margin: 0 10px;
-        display: inline;
-        position: relative;
-    }
-
-    .p_show .p_small_bar .list_in {
-        padding: 0px;
-        margin: 0px;
-        height: 56px;
-        left: 0px;
-        top: 0px;
-        position: absolute;
-    }
-
-    .p_show .p_small_bar .list_in li {
-        float: left;
-        text-align: center;
-        width: 72px;
-        margin: 0px 1.5px;
-        list-style-type: none;
-    }
-
-    .p_show .p_small_bar .list_in li img {
-        border: 1px solid #DEDCDD;
-        height: 50px;
-        width: 66px
-    }
-
-    .p_show .p_small_bar .list_in li img:hover {
-        border: #ff6600 solid 2px;
-        padding: 1px;
-    }
-
-    .p_show .p_small_bar .list_in li .imgcurt {
-        border: #ff6600 solid 2px;
-        padding: 1px;
-    }
-
-    .p_show .p_small_bar .p_control_l {
-        margin-top: 4px;
-        float: left;
-        background: url(/static/index/img/left.jpg) no-repeat;
-        width: 12px;
-        height: 44px;
-        cursor: pointer
-    }
-
-    .p_show .p_small_bar .p_control_r {
-        margin-top: 4px;
-        float: right;
-        background: url(/static/index/img/right.jpg) no-repeat;
-        width: 12px;
-        height: 44px;
-        cursor: pointer
-    }
-
-    /*<!---列表--->*/
-    .box_gray1 {
-        border: 1px solid #cecece;
-        margin-bottom: 0px;
-    }
-
-    .tit_bg {
-        background: url(/static/index/img/tit_bg.jpg) repeat-x;
-        padding-left: 10px;;
-        height: 29px;
-        margin-top: 0px;
-    }
-
-    .tit_bg1 {
-        background: url(/static/index/img/tit_bg.jpg) repeat-x;
-        height: 29px;
-        margin-top: 0px;
-    }
-
-    .box_list2 {
-        padding: 10px;
-        width: 670px;
-        text-align: left;
-        overflow: hidden;
-
-        font-size: 18px;
-    }
-
-    .box_list2 a {
-        color: #248bff;
-    }
-
-    .tit_icon1 {
-        background: url(/static/index/img/tit_bg.jpg) repeat-x;
-        color: #515050;
-        font-size: 14px;
-        font-weight: bold;
-        padding-left: 18px;
-        margin-left: 10px;
-        padding-top: 6px;
-        float: left;
-        display: inline
-    }
-
-    .tit_icon2 {
-        background: url(/static/index/img/tit_bg.jpg) repeat-x;
-        color: #515050;
-        font-size: 14px;
-        font-weight: bold;
-        padding-left: 18px;
-        margin-left: 10px;
-        padding-top: 6px;
-        float: left;
-        display: inline
-    }
-
-    <!--
-    推荐信息-- >
-    .box_listpic {
-        overflow: hidden;
-        height: 100%;
-        padding: 22px 0px 0px 9px;
-        border: 1px solid #cecece;
-    }
-
-    .box_listpic_box1 {
-        overflow: hidden;
-        height: 100%;
-        width: 100px;
-        float: left;
-        margin-left: 10px;
-        margin-right: 10px;
-		margin-top: 10px;
-        display: inline
-    }
-
-    .box_listpic_box2 {
-        background: #eee;
-        padding: 4px;
-        width: 145px;
-        height: 100px;
-    }
-
-    .box_listpic_name {
-        color: #00F;
-        padding-top: 6px;
-        padding-bottom: 8px;
-        text-align: center
-    }
-
-    .box_listpic_name a {
-        color: #C00;
-    }
-
-    .box_listpic_name a:hover {
-        color: #30C;
-    }
-</style>
-
-
-<div id="mainbody" style=" margin:0px auto; clear:both;">
-    <table width="1000" border="0" cellspacing="0" cellpadding="0" align="center">
-        <tr>
-
-            <td valign="top">
-
-
-                <table width="730" border="0" cellspacing="0" cellpadding="0">
-                    <tr>
-                        <td>
-
-                            <div id="main_right">
-                                <div id="right_title"><span>您当前的位置：<a
-                                        href="/index/search/workshop?city={$cityInfo[0]['id']}"
-                                        target="_blank"/>{$info.city_name}{$info.category}</a> ><a
-                                        href="/index/search/workshop?city={$cityInfo[0]['id']}" target="_blank"/>{$info.area_name}{$info.category}</a>
-                                    </span>
-                                </div>
-                                <div class="right_cont">
-
-                                    <div class="clear"></div>
-                                    <div class="cf_title"><h1>
-                                        {$info.title}
-                                    </h1></div>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-                <div class="right_cont">
-                    <table width="730" border="0" cellspacing="0" cellpadding="0">
-                        <tr>
-                            <td valign="top" width="370" align="left">
-                                <!--<div class="p_show" style="margin-right:10px;">
-                                    <div class="p_img_bar">
-                                        <img src="{$info.imgs[0]}" width="350" height="265" class="m8"
-                                             onerror="this.src='/gg/img/text.jpg'"/></div>
-                                    <div class="p_small_bar">
-                                        <div class="p_control_l" id="the_control_l"></div>
-                                        <div class="p_small_in">
-                                            <ul class="list_in" id="list_in">
-
-
-                                                {volist name="info['imgs']" id="data"}
-                                                <li><img src="{$data}" name="{$data}"
-                                                         onerror="this.src='/gg/img/text.jpg'"/></li>
-                                                {/volist}
-                                            </ul>
-
-                                        </div>
-                                        <div class="p_control_r" id="the_control_r"></div>
-                                    </div>
-                                </div>-->
-                                <div id=preview>
-                                    <div class=jqzoom id=spec-n1 onClick="window.open('{$info.imgs[0]}')"><IMG
-                                            height=265
-                                            src="{$info.imgs[0]}" jqimg="{$info.imgs[0]}" width=350>
-                                    </div>
-                                    <div id=spec-n5>
-                                        <div class=control id=spec-left>
-                                            <img src="/static/index/img/left.gif"/>
-                                        </div>
-                                        <div id=spec-list>
-                                            <ul class=list-h>{volist name="info['imgs']" id="data"}
-                                                <li><img src="{$data}" name="{$data}"></li>
-                                                {/volist}
-
-                                            </ul>
-                                        </div>
-                                        <div class=control id=spec-right>
-                                            <img src="/static/index/img/right.gif"/>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <SCRIPT type=text/javascript>
-                                    $(function () {
-                                        $(".jqzoom").jqueryzoom({
-                                            xzoom: 400,
-                                            yzoom: 400,
-                                            offset: 10,
-                                            position: "right",
-                                            preload: 1,
-                                            lens: 1
-                                        });
-                                        $("#spec-list").jdMarquee({
-                                            deriction: "left",
-                                            width: 350,
-                                            height: 56,
-                                            step: 2,
-                                            speed: 4,
-                                            delay: 10,
-                                            control: true,
-                                            _front: "#spec-right",
-                                            _back: "#spec-left"
-                                        });
-                                        $("#spec-list img").bind("mouseover", function () {
-                                            var src = $(this).attr("src");
-                                            $("#spec-n1 img").eq(0).attr({
-                                                src: src.replace("\/n5\/", "\/n1\/"),
-                                                jqimg: src.replace("\/n5\/", "\/n0\/")
-                                            });
-                                            $(this).css({
-                                                "border": "2px solid #ff6600",
-                                                "padding": "1px"
-                                            });
-                                        }).bind("mouseout", function () {
-                                            $(this).css({
-                                                "border": "1px solid #ccc",
-                                                "padding": "2px"
-                                            });
-                                        });
-                                    })
-                                </SCRIPT>
-
-                                <SCRIPT src="/static/index/js/lib.js" type=text/javascript></SCRIPT>
-                                <SCRIPT src="/static/index/js/zzsc.js" type=text/javascript></SCRIPT>
-                                <div class="other" style="margin-top:8px; margin-left:0px; width:350px;">
-                                    <!--<div class="other_box2"><a href="/cf-shouchang-id-308224.html">收藏</a></div>-->
-                                    <div class="other_box3">
-                                        <div style="float:left; padding-right:20px; ">
-
-
-                                            此信息已被访问：<?php echo rand(0, 1000);?>次
-                                        </div>
-                                        <!-- Baidu Button BEGIN -->
-                                        <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
-                                            <a class="bds_tsina"></a>
-                                            <a class="bds_qzone"></a>
-                                            <a class="bds_tqq"></a>
-                                            <a class="bds_renren"></a>
-                                            <span class="bds_more">更多</span>
-                                            <a class="shareCount"></a>
-                                        </div>
-                                        <script type="text/javascript" id="bdshare_js"
-                                                data="type=tools&amp;uid=599692"></script>
-                                        <script type="text/javascript" id="bdshell_js"></script>
-                                        <script type="text/javascript">
-                                            document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date() / 3600000)
-                                        </script>
-                                        <!-- Baidu Button END --></div>
-                                </div>
-                            </td>
-
-
-                            <td width="320" valign="top">
-
-                                <table width="343" border="0" cellspacing="0" cellpadding="0"
-                                       style=" padding-left:10px;">
-                                    <!--                                    <tr>-->
-                                    <!--                                        <td height="29" colspan="2" align="left"><p-->
-                                    <!--                                                style="height:29px;color:#fff; font:14px; line-height:25px; width:320px;">-->
-                                    <!--                                            <span style="background:#be38d6;">&nbsp;本周推荐&nbsp;</span>&nbsp;&nbsp;<span-->
-                                    <!--                                                style="background:#62B362;">&nbsp;分租㎡起&nbsp;</span>&nbsp;&nbsp;<span-->
-                                    <!--                                                style="background:#4093f0; ">&nbsp;提供租赁合同&nbsp;</span>&nbsp;&nbsp;<span-->
-                                    <!--                                                style="background: #F60;">&nbsp;消防验收合格&nbsp;</span></p></td>-->
-                                    <!--                                    </tr>-->
-                                    <tr align="left">
-                                        <td colspan="2" class="house_line"></td>
-                                    </tr>
-                                    <tr align="left">
-                                        <td height="29" colspan="2"><font size="2">所在区域： {$info.city_name}
-                                            {$info.area_name}</font>
-                                        </td>
-                                    </tr>
-                                    <tr align="left">
-                                        <td colspan="2" class="house_line"></td>
-                                    </tr>
-                                    <tr align="left">
-                                        <td width="177" height="29"><font size="2">类型：{$info.category}</font></td>
-                                        <td width="166"><font size="2">总面积：{$info.measurearea}㎡</font></td>
-                                    </tr>
-                                    <tr align="left">
-                                        <td colspan="2" class="house_line"></td>
-                                    </tr>
-                                    <tr align="left">
-                                        <td height="29"><font size="2">厂房面积：
-
-                                            {$info.lengthwidth}㎡ </font></td>
-                                        <td><font size="2">办公室面积：{$info.officespace}㎡</font></td>
-                                    </tr>
-                                    <tr align="left">
-                                        <td colspan="2" class="house_line"></td>
-                                    </tr>
-                                    <tr align="left">
-                                        <td height="29"><font size="2">宿舍面积：{$info.dormitoryarea}㎡</font></td>
-                                        <td>
-
-
-                                            <font size="2">占地面积：{$info.numberbuildings}亩</font></td>
-                                    </tr>
-                                    <tr align="left">
-                                        <td colspan="2" class="house_line"></td>
-                                    </tr>
-                                    <tr align="left">
-                                        <td height="29"><font size="2">所在楼层： {$info.layernumber} 层 </font></td>
-                                        <td><font size="2">结构：
-                                            {$info.structure} </font></td>
-                                    </tr>
-                                    <tr align="left">
-                                        <td colspan="2" class="house_line"></td>
-                                    </tr>
-                                    <tr align="left">
-                                        <td height="29"><font size="2">土地用途：{$info.canteen} </font></td>
-                                        <td><font size="2">使用年限：{$info.expire}年</font></td>
-                                    </tr>
-                                    <tr align="left">
-                                        <td colspan="2" class="house_line"></td>
-                                    </tr>
-                                    <tr align="left">
-                                        <td height="29"><font size="2">厂房价格：
-
-                                            {$info.plantrent}
-                                        </font></td>
-                                        <td><font size="2">新旧程度：{$info.newolddegree}成新</font></td>
-                                    </tr>
-                                    <tr align="left">
-                                        <td colspan="2" class="house_line"></td>
-                                    </tr>
-                                    <tr align="left">
-                                        <td height="29"><font size="2">厂房配电：
-                                            {$info.distributioncapacity} </font></td>
-                                        <td><font size="2">厂房电梯：{$info.elevator} </font></td>
-                                    </tr>
-                                    <tr align="left">
-                                        <td colspan="2" class="house_line"></td>
-                                    </tr>
-                                    <tr align="left">
-                                        <td height="31"><font size="2">消防：{$info.firecontrol}</font></td>
-                                        <td><font size="2">交易方式：{$info.applicableindustries} </font></td>
-                                    </tr>
-                                </table>
-
-                                <div class="house_phone1">
-                                    <div class="house_phone2"><span class="number">
+    </div>
+    <div class="detail-info2 fl">
+
+        <div class="info-box">
+            <div class="price-box3 clearfix">
+                <span class="s1"><i class="i1" >{$info.detail}</i></span>
+                <span class="s2">元/m²•月</span>
+                </div>
+        </div>
+
+                <div class="line">-</div>
+                                <div class="info-box clearfix">
+                <dl class="dlbox fl"><dt>{$info.detail}㎡</dt><dd>建筑面积</dd></dl><dl class="dlbox fl"><dt>{$info.detail}元/月</dt><dd>预估月支出</dd></dl>            </div>
+                <div class="line">-</div>
+
+
+                                <div class="info-box clearfix">
+                <dl class="dlbox fl"><dt>中等装修</dt><dd>装修程度</dd></dl><dl class="dlbox fl"><dt>面议</dt><dd>免租期</dd></dl>            </div>
+
+                <div class="line">-</div>
+        <div class="info-box">
+
+                                    <p class="p2"><span class="colorGreen note">可注册公司</span><span class="colorRed note">可分割</span><span class="colorBlue note">核心商务区</span><span class="colorRed note">大量车位</span></p>
+                                        <p class="p2">
+                <i class="il">楼盘名称：</i>
+                <a onclick="_hmt.push(['_trackEvent', 'house_building_name', 'click']);"
+                   href="/sz_xzl_1503/" target="_blank"
+                   class="a1">{$info.detail}</a>
+            </p>
+
+            <p class="p2">
+                <i class="il">楼盘区域：</i>
+                              {$info.detail}</a>
+                            </p>
+        </div>
+        <div class="line">-</div>
+                <div class="contact-mobile"
+                 data-widget="static2/js/index/hz-building-widgets.js#semShowPhone">
+
+                <div class="house_phone1" style="width:278px;">
+				  	<div class="house_phone2" style="width:223px;"><span class="number">
                     
-{$info.name}:{$info.tel}     </span><br/>
+陈生:159-1411-6601     </span><br>
 
-                                        <span class="gray">
+                     <span class="gray">
 
-注：联系我时请说明来源广东厂房网</span></div>
-                                </div>
-                            </td>
-
-                        </tr>
-                    </table>
-
-                    <!---厂房概况和照片--->
-                    <div class="box_gray1" style="width:730px; margin-top:15px; margin-bottom:15px;">
-                        <div class="tit_bg1">
-                            <div class="tit_icon2">厂房概况</div>
-                        </div>
-                        <div class="box_list2">
-                            {$info.detail|raw}
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </td>
-
-
-            <td valign="top">
-
-
-                <div id="main_left">
-                    <div class="left_one">
-                        <div class="left_one_title">
-                            <a href="/index/search/workshop?city={$cityInfo[0]['id']}&floor=3&category={$category}" target="_blank">{$cityInfo[0]['name']}独院{$category_type_name}</a>
-                        </div>
-                        <div class="left_one_cont">
-                            <ul>
-                                {volist name="floor1" id="data"}
-
-                                <li>[<a href="/index/search/workshop?city={$cityInfo[0]['id']}&category={$category}" target="_blank">{$cityInfo[0]['name']}{$category_type_name}</a>]
-                                    <a href="/index/search/workshopdetail?id={$data.id}&city={$cityInfo[0]['id']}&category={$category}" target="_blank">
-                                        {:subText($data.title,13)}</a></li>
-                                {/volist}
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="left_one">
-                        <div class="left_one_title">
-                            <a href="/index/search/workshop?city={$cityInfo[0]['id']}&floor=1&category={$category}" target="_blank">{$cityInfo[0]['name']}一楼{$category_type_name}</a>
-                        </div>
-                        <div class="left_one_cont" id="left_nav_cont">
-                            <ul>
-                                {volist name="floor2" id="data"}
-                                <li>[<a href="/index/search/workshop?city={$cityInfo[0]['id']}&category={$category}" target="_blank">{$cityInfo[0]['name']}{$category_type_name}</a>]
-                                    <a href="/index/search/workshopdetail?id={$data.id}&city={$cityInfo[0]['id']}&category={$category}" target="_blank">
-                                        {:subText($data.title,13)}</a></li>
-                                {/volist}
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="left_one">
-                        <div class="left_one_title">
-                            <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category={$category}"
-                               target="_blank">{$cityInfo[0]['name']}带装修{$category_type_name}</a>
-                        </div>
-                        <div class="left_one_cont">
-                            <ul>
-                                {volist name="floor3" id="data"}
-                                <li>[<a href="/index/search/workshop?city={$cityInfo[0]['id']}&category={$category}" target="_blank">{$cityInfo[0]['name']}{$category_type_name}</a>]
-                                    <a href="/index/search/workshopdetail?id={$data.id}&city={$cityInfo[0]['id']}&category={$category}" target="_blank">
-                                        {:subText($data.title,13)}</a></li>
-                                {/volist}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-
-            </td>
-
-
-        </tr>
-    </table>
-
-
-    <table width="1000" border="0" cellspacing="0" cellpadding="0" align="center">
-        <tr>
-            <td>
-
-
-                <!---推荐的厂房信息--->
-
-                <div class="box_gray1">
-                    <div class="tit_bg">
-                        <div class="tit_icon1">以下厂房信息可能会符合你的需求</div>
-
-                    </div>
-                    <div class="box_listpic">
-                        <table width="1000" border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                                {volist name="recommend" id="data"}
-                                <td>
-                                    <div class="box_listpic_box1">
-                                        <div class="box_listpic_box2">
-                                            <a href="/index/search/workshopdetail?id={$data.id}" target="_blank"
-                                            title="{:subText($data.title,6)}"> <img src="{$data.imgs}" width="100"
-                                                                        border="0" alt="{$data.title}"
-                                            "/>   </a></div>
-                                        <div class="box_listpic_name">
-                                            <a href="/index/search/workshopdetail?id={$data.id}"" target="_blank" >
-                                            {:subText($data.title,6)}</a></div>
-                                    </div>
-                                </td>
-                                {/volist}
-
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </td>
-        </tr>
-    </table>
-    <script type="text/javascript" src="js/mz-packed.js"></script>
-    <!--功能商品小图片滚动js-->
-    <script type="text/javascript" language="javascript">
-        var opt_qu = "<option value='' selected>选择地区</option>";
-        var opt_town = "<option value='' selected>选择镇区</option>";
-        $(document).ready(function () {
-            $("#city").change(function () {
-                var pid = $(this).val();
-                $.get('/cf-ajax-type-2.html', 'city=' + pid, function (result) {
-                    $('#qu').html(opt_qu + result);
-                    $.get('/cf-ajax-type-3.html', 'qu=' + $("#qu").val(), function (result) {
-                        $('#town').html(opt_town + result);
-                        $('#town').css('visibility', 'hidden');
-                        $('#town').css('visibility', 'visible');
-                    });
-                    $('#qu').css('visibility', 'hidden');
-                    $('#qu').css('visibility', 'visible');
-                });
-            });
-            $("#qu").change(function () {
-                var pid = $(this).val();
-                $.get('/cf-ajax-type-3.html', 'qu=' + pid, function (result) {
-                    $('#town').html(opt_town + result);
-                    $('#town').css('visibility', 'hidden');
-                    $('#town').css('visibility', 'visible');
-                });
-            });
-            $('#demand_t').click(
-                function () {
-                    $("#demand_c").show();
-                    $("#wt_c").hide();
-                    $("#demand_t").attr("class", "tit_icon2a");
-                    $("#wt_t").attr("class", "tit_icon2b");
-                }
-            );
-
-            $('#wt_t').click(
-                function () {
-                    $("#demand_c").hide();
-                    $("#wt_c").show();
-                    $("#demand_t").attr("class", "tit_icon2b");
-                    $("#wt_t").attr("class", "tit_icon2a");
-                }
-            );
-//左右控制图片滚动
-            var the_item_li = $("#list_in li");
-            var the_num = the_item_li.length;
-            $("#list_in").width(the_num * 75);
-            var count = 0;
-            var iMax = the_num - 4;
-
-            $('#the_control_l').click(
-                function () {
-                    if (count <= 0) {
-                        $(this).attr({title: "已至最前"});
-                    } else {
-                        count--;
-                        $("#list_in").animate({left: count * (-75)}, 100);
-                    }
-                }
-            );
-
-            $('#the_control_r').click(
-                function () {
-                    if (count >= iMax) {
-                        $(this).attr({title: "已至最后"});
-                    } else {
-                        count++;
-                        $('#list_in').animate({left: count * (-75)}, 100);
-                    }
-                }
-            );
-
-//定义小图片鼠标点击后大图切换效果 调用ajax 切换大图
-            $('#list_in li').mouseover(
-                function () {
-
-                    $(this).find('img').addClass('imgcurt');
-                    $(this).siblings().find('img').removeClass('imgcurt');
-                    var bigimg = $(this).find('img').attr('name');
-
-                    //显示大图src
-                    $('.p_img_bar img').attr("src", bigimg);
-                    //替换大图预览图large
-                    var largeImg = $(this).find('img').attr('big')
-                    $('.p_img_bar .MagicZoom').attr("href", largeImg);
-                }
-            );
-
-        });
-
-    </script>
-    <div id="tuijian">
-    <div class="part_title">
-        <strong>推荐厂房</strong>
-    </div>
-    <div id="tuijian_cont">
-        <div id="white_bg">
-            <div id="demo">
-                <div id="indemo">
-                    <div id="demo1">
-                        {volist name="recommend" id="data"}
-
-                        <div class="right_p_one">
-                            <div class="right_p_img">
-                                <a href="/index/search/workshopdetail?id={$data.id}" target="_blank"><img
-                                        src="{$data.imgs}"/></a>
-                                <span class="imgmid"></span>
-                            </div>
-                            <div class="right_p_title">
-                                <a href="/index/search/workshopdetail?id={$data.id}" target="_blank">
-                                    {:subText($data.title,6)}</a>
-                            </div>
-                        </div>
-                        {/volist}
-                    </div>
-                </div>
-                <div id="demo2">
-                   {volist name="recommend" id="data"}
-                        <div class="right_p_one">
-                            <div class="right_p_img">
-                                <a href="/index/search/workshopdetail?id={$data.id}" target="_blank"><img
-                                        src="{$data.imgs}"/></a>
-                                <span class="imgmid"></span>
-                            </div>
-                            <div class="right_p_title">
-                                <a href="/index/search/workshopdetail?id={$data.id}" target="_blank">
-                                    {:subText($data.title,6)}</a>
-                            </div>
-                        </div>
-                        {/volist}
-                </div>
-                <script type="text/javascript" src="/static/index/js/rolljs.js"></script>
+注：联系我时请说明来源886厂房网 </span></div>
+				  </div>
             </div>
+            </div>
+</div>
+<!--主内容-->
+<div class="w1003 clearfix">
+    <!--左侧：房源楼盘信息介绍-->
+    <div class="detail-left fl">
+
+        <div class="detail-box2 mt-20">
+            <h1 class="h1-tilte">基本概况</h1>
+            <ul class="miaoshu-ul">
+                                    <li class="clearfix">
+                        <span class="s1"> 楼盘名称：</span>
+                        <span class="s2">{$info.detail}</span>
+                    </li>
+                     <li class="clearfix">
+                        <span class="s1"> 楼盘区域：</span>
+                        <span class="s2">{$info.detail}</span>
+                    </li>
+                     <li class="clearfix">
+                        <span class="s1"> 楼盘地址：</span>
+                        <span class="s2">{$info.detail}</span>
+                    </li>
+
+                                                        <li class="clearfix"><span class="s1"> 面积信息：</span><span class="s2">{$info.detail}</span></li>
+                                                                <li class="clearfix"><span class="s1">价格优势：</span><span class="s2">{$info.detail}</span></li>
+                                                                <li class="clearfix"><span class="s1">管理费：</span><span class="s2">面议 </span></li>
+                                                                <li class="clearfix"><span class="s1">装修情况：</span><span class="s2">{$info.detail} </span></li>
+
+            </ul>
         </div>
-    </div>
-</div>
 
-    <div class="clear"></div>
-</div>
 
-<div class="W960 link slideTxtBox1" id="demoContent">
-    <div class="top hd">
-        <div class="FL">
-            <a href="javascript:;" id="cc0" class="hov">深圳分站</a>
-            {volist name="cityInfo" id="data"}
-            <a href="javascript:;" id="cc1">{$data.name}分站</a>
-            {/volist}
+
+         <div class="detail-box2 mt-20">
+            <h1 class="h1-tilte">房源描述</h1>
+
+<div class="desc-con" style=" font-size:18px;">
+{$info.detail}
+
+
+
+
+
+                        				</div>
+
         </div>
+
+
+
+        <div class="detail-box2 mt-20" style="">
+            <h1 class="h1-tilte">该楼盘其他房源</h1>
+
+<div class="other-list" id="same_fy">
+
+					<ul class="listCon">
+                       	{volist name="recommend" id="data" offset="0" length="3" mod="3" empty="$empty" key="i"}
+                       	<?php $sz_img = json_decode($list[0]['imgs']); $sz_img = $sz_img[0]; ?>
+                            					<!-- 无房源图片显示默认图片 house_profile_sydc.png -->
+     <a href="/index/search/offbuilddetail?id={$data.id}" target="_blank">
+						<li link="/index/search/offbuilddetail?id={$data.id}" class="li-itemmod" _soj="biz_detail_samebuildingclick">
+	                          <img   src="{$sz_img}"  class="img" width="150" height="113" />
+	                        <div class="li-info">
+	                            <h3>龙岗中心城商业地标中心 志联佳大厦 80平招商</h3>
+	                            <p class="info-tag">
+                                    志联佳大厦	                            	<span>深圳市 龙岗区 龙岗中心城</span>
+	                            </p>
+	                            <p class="mianji">面积<span>80平米</span></p>
+                                <p class="address">地址<span>龙城广场附近</span></p>
+	                        </div>
+	                        <div class="li-side">
+                                	                                <p class="price"><strong>65</strong> 元/m²•月</p>
+	                                <p class="month-price">1.96 万/月</p>
+                                	                        </div>
+                    	</li></a>{/volist}
+                           					</ul>
+				</div>
+
+        </div>
+
+
+
+
+
+        <!--写字楼楼盘简介-->
+
+            </div>
+    <!--右侧：用户交互相关-->
+    <div class="detail-right mt-20 fr">
+     <div class="leftList">
+        <div class="hotList" style="">
+            <div class="hotTitle"><label class="color_eef">热门写字楼</label></div>
+            <ul>
+
+                {volist name="hot" id="data"}
+                <?php $sz_img = json_decode($list[0]['imgs']); $sz_img = $sz_img[0]; ?>
+                    <li>
+                        <a class="clearfix" href="/index/search/offbuilddetail?id={$data.id}" target="_blank">
+                              <img class="hotImg"   src="{$sz_img}" />
+                            <div class="hotInfo">
+                                <div class="hotName one" title="利好国际中心">利好国际中心</div>
+                                <p class="one">￥20元/m².月起</p>
+                                <span class="one"> 龙岗区 龙岗中心城</span>
+                            </div>
+                        </a>
+                    </li>
+        {/volist}
+
+
+
+
+            </ul>
+            <a class="more_build" href="search.php?area=sz_lg_lg">更多热门写字楼</a>
+        </div>
+
+
+    <div class="hotList">
+            <div class="hotTitle"><label class="color_eef">最新写字楼</label></div>
+            <ul>
+
+                {volist name="new" id="data"}
+                <?php $sz_img = json_decode($list[0]['imgs']); $sz_img = $sz_img[0]; ?>
+                    <li>
+                        <a class="clearfix" href="/index/search/offbuilddetail?id={$data.id}" target="_blank">
+                              <img  class="hotImg"  src="{$sz_img}" />
+                            <div class="hotInfo">
+                                <div class="hotName one" title="珠江国际中心">珠江国际中心</div>
+                                <p class="one">￥75元/m².月起</p>
+                                <span class="one"> 龙岗区 龙岗中心城</span>
+                            </div>
+                        </a>
+                    </li>
+        {/volist}
+
+
+
+
+            </ul>
+            <a class="more_build" href="search.php?area=sz_lg_lg">更多最新写字楼</a>
+        </div>
+
+
+
     </div>
-    <p class="infoList0" id="qlist0" style="display: block;">
-        {volist name="areaInfo" id="data"}<a href="/index/search/workshop?city={$cityInfo[0]['id']}&area={$data.id}"
-                                             target="_blank" title="{$data.name}">{$data.name}厂房出租</a>{/volist}
-    </p>
-    <p class="infoList2" id="qlist2" style="display: none;">
-        {volist name="areaInfo" id="data"}<a href="/index/search/workshop?city={$cityInfo[0]['id']}&area={$data.id}"
-                                             target="_blank" title="{$data.name}">{$data.name}厂房出租</a>{/volist}
-    </p>
-
-
-    <div class="cl"></div>
-    <script type="text/javascript">
-        $(document).ready(function (e) {
-            $(".link .top a").click(function () {
-                $(".link .top a").eq($(this).index()).addClass("hov").siblings().removeClass("hov");
-                $(".link  p").hide().eq($(this).index()).show();
-            })
-        });
-    </script>
-
 </div>
 
 
-<div class="link_list">
-    <div style="overflow:hidden">
-        <span style="float:left;">友情链接：</span>
-        <span style="float:left; height:28px;"><a
-                href="http://wpa.qq.com/msgrd?v=3&amp;uin=21814439&amp;site=qq&amp;menu=yes" target="_blank"><img
-                title="点击这里给我发消息" style="VERTICAL-ALIGN: middle" alt="点击这里给我发消息" src="/static/index/img/pa"
-                border="0"/></a></span>
+
+
+</div>
+<!--主内容-->
+<table width="1003" border="0" cellspacing="0" cellpadding="0" align="center">
+<tr>
+<td>
+<div id="tuijian">
+      <div class="part_title"><strong>推荐厂房</strong></div>
+      <div id="tuijian_cont">
+        <div id="white_bg">
+          <div id="demo">
+            <div id="indemo">
+              <div id="demo1">
+
+                  {volist name="recommend" id="data" offset="0" length="3" mod="3" empty="$empty" key="i"}
+                  <?php $sz_img = json_decode($list[0]['imgs']); $sz_img = $sz_img[0]; ?>
+              <div class="right_p_one">
+                  <div class="right_p_img"><a href="article.php?id=21725" target="_blank"><img  src="{$sz_img}"/></a><span class="imgmid"></span></div>
+                  <div class="right_p_title"><a href="article.php?id=21725" target="_blank">龙岗中心城地标级物业...</a></div>
+                </div>
+             {/volist}
+                   </div>
+            </div>
+            <div id="demo2"></div>
+            <script type="text/javascript" src="/public/static/index/js/rolljs.js"></script>
+          </div>
+        </div>
+      </div>
     </div>
-    {volist name="href" id="data"}
-    <span style="float:left;"><a href="{$data.href}" target="_blank">{$data.title}</a></span>
-    {/volist}
+
+
+
+
+</td>
+</tr>
+
+
+
+  <tr>
+    <td><div class="clear"></div>
 </div>
 
-{include file="templates/default/index/layout/foot.html" /}
+
+<table cellspacing="0" cellpadding="0" width="1003" align="center"  bgcolor="#f9eced"
+border="0">
+  <tr>
+    <td valign="bottom" width="15" rowspan="7"></td>
+    <td align="middle" width="751"></td>
+    <td valign="bottom" width="12" rowspan="7">&nbsp;</td>
+  </tr>
+
+  <tr>
+    <td height="25" align="center" valign="middle"><DIV align=center>
+      　&nbsp;<a href="/index/about/index" target="_blank">关于我们</a>　&nbsp;|　&nbsp;<a href="//index/about/lx" target="_blank">联系方式</a>&nbsp;　|&nbsp;<a href="/index/about/map" target="_blank">网站地图</a>&nbsp;　| <a href="javascript:alert(&#39;当前IP未在管理者IP中,不允许登录,请联系管理人员&#39;)" target="_blank">后台登陆</a>&nbsp;　|&nbsp;<a href="javascript:alert(&#39;请登录后使用！！！&#39;)" target="_blank">ERP(电脑版)</a>　&nbsp;|　&nbsp;<a href="javascript:alert(&#39;请登录后使用！！！&#39;)" target="_blank">ERP(手机版)</a>
+</DIV></td>
+  </tr>
+    <tr>
+    <td height="25" align="center" valign="middle">
+
+    备案/许可证编号为：<a href="http://www.miit.gov.cn/" target="_blank">粤ICP备16098285号-2</a>    </td>
+  </tr>
+      <tr>
+    <td height="25" align="center" valign="middle">
+
+  地址：深圳市龙岗区龙岗中心城南联九州家园&nbsp;&nbsp;邮编:518000    </td>
+  </tr>
+  <tr>
+    <td height="25" align="center" valign="middle"> 886厂房网- 电话:15914116601&nbsp;&nbsp;QQ:21814439&nbsp;E-mail:<a href="mailto:xiaoping2j@126.com">xiaoping2j@126.com</a>
+
+<script type="text/javascript">
+$(function(){
+   $.ajax({url:"/include/web_tongji.php?request_url=%2Fxiezilou%2Fpublic%2Farticle.php%3Fcity%3Dsz%26r%3D2%26id%3D21725&city=sz&r=2&id=21725",async:false});
+	});
+</script>
+
+<!-- Baidu Button BEGIN -->
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"7","bdPos":"right","bdTop":"250"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+<!-- Baidu Button END -->
+
+<!-- Baidu 统计代码开始 -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?dcb4832d7b3f3d328ff5b4a6b2a536ac";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- Baidu 统计代码结束 -->
+
+
+
+<!-- CNZZ统计代码 -->
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260896044'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/stat.php%3Fid%3D1260896044%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+<!-- CNZZ统计代码END -->
+
+<!-- 51.la统计代码 -->
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/19049378.js"></script>
+<noscript><a href="http://www.51.la/?19049378" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/19049378.asp" style="border:none" /></a></noscript>
+<!-- CNZZ统计代码END -->
+</td>
+  </tr>
+
+
+</table>
+
+    </td>
+  </tr>
+</table>
 </body>
 </html>
 </body>
