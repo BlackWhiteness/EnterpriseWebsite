@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html lang="en" style="font-size: 66.6667px;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>{:config('web_site_title')}-搜索</title>
+    <link rel="icon" href="/static/mobile/img/favicon.ico">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="Keywords" content="">
+    <meta name="description" content="">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="applicable-device" content="mobile">
+    <link rel="stylesheet" href="/static/mobile/css/reset.css">
+    <link rel="stylesheet" href="/static/mobile/css/base.css">
+    <link rel="stylesheet" href="/static/mobile/css/citylist.css">
+ 
+
+</head>
+<body>
+<!--GPS-->
+  <section class="searchWrapBox">
+
+    <!--搜索搜索-->
+    <div class="formBox clearFix">
+        <form url="/sz/cf/" method="post" class="clearfix form lf">
+            <input type="text" name="searInp" value="" placeholder="请输入关键词进行搜索" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击关键字输入框次数&#39;])">
+            <i class="resetIco"></i>
+            <button class="iconSear" type="submit" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内正常请求搜索次数&#39;])"></button>
+        </form>
+        <a href="javascript:;" class="rt cancel" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击取消次数&#39;])">取消</a>
+    </div>
+    <div class="searchList">
+        <ul>
+
+        </ul>
+    </div>
+    <div class="searchWrapCon">
+        <!--tab-->
+        <ul class="tab clearFix">
+            <li class="foucs" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页厂房类型切换选择次数&#39;])"><a href="javascript:void(0);">厂房</a></li>
+            <li onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页土地类型切换选择次数&#39;])"><a href="javascript:void(0);">写字楼</a></li>
+            <li onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页写字楼类型切换选择次数&#39;])"><a href="javascript:void(0);">土地</a></li>
+            <li onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页产业园区类型切换选择次数&#39;])"><a href="javascript:void(0);">产业园区</a></li>
+            <li><a href="javascript:void(0);">仓库</a></li>
+        </ul>
+        <!--厂房最近热搜-->
+        <div class="hotSearch plr30 cfSearch">
+            <p class="tit">最近热搜</p>
+            <div class="hotSearCon clearFix">
+                <ul>
+                    <li class="focus">
+                                                <a href="/sz/cf/?factorykeyword=%E6%A0%87%E5%87%86%E5%8E%82%E6%88%BF" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击厂房最近热搜关键字次数&#39;,标准厂房 ])">标准厂房</a>
+                                                <a href="/sz/cf/?factorykeyword=%E9%BE%99%E5%B2%97%E5%B0%8F%E9%9D%A2%E7%A7%AF%E5%8E%82%E6%88%BF%E5%87%BA%E7%A7%9F" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击厂房最近热搜关键字次数&#39;,龙岗小面积厂房出租 ])">龙岗小面积厂房出租</a>
+                                                <a href="/sz/cf/?factorykeyword=%E7%8B%AC%E9%99%A2%E5%8E%82%E6%88%BF" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击厂房最近热搜关键字次数&#39;,独院厂房 ])">独院厂房</a>
+                                                <a href="/sz/cf/?factorykeyword=%E4%BA%8C%E6%A5%BC%E4%BB%A5%E4%B8%8A" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击厂房最近热搜关键字次数&#39;,二楼以上 ])">二楼以上</a>
+                                                <a href="/sz/cf/?factorykeyword=%E9%92%A2%E7%BB%93%E6%9E%84" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击厂房最近热搜关键字次数&#39;,钢结构 ])">钢结构</a>
+                                                <a href="/sz/cf/?factorykeyword=%E5%9D%AA%E5%B1%B1%E5%8E%82%E6%88%BF" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击厂房最近热搜关键字次数&#39;,坪山厂房 ])">坪山厂房</a>
+                                                <a href="/sz/cf/?factorykeyword=%E7%9F%B3%E5%B2%A9%E5%8E%82%E6%88%BF" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击厂房最近热搜关键字次数&#39;,石岩厂房 ])">石岩厂房</a>
+                                                <a href="/sz/cf/?factorykeyword=%E5%9D%AA%E5%9C%B0%E5%8E%82%E6%88%BF" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击厂房最近热搜关键字次数&#39;,坪地厂房 ])">坪地厂房</a>
+                                                <a href="/sz/cf/?factorykeyword=%E6%A8%AA%E5%B2%97%E5%8E%82%E6%88%BF" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击厂房最近热搜关键字次数&#39;,横岗厂房 ])">横岗厂房</a>
+                                                <a href="/sz/cf/?factorykeyword=%E8%A7%82%E6%BE%9C%E5%8E%82%E6%88%BF" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击厂房最近热搜关键字次数&#39;,观澜厂房 ])">观澜厂房</a>
+                                                <a href="/sz/cf/?factorykeyword=%E7%A6%8F%E6%B0%B8%E5%8E%82%E6%88%BF" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击厂房最近热搜关键字次数&#39;,福永厂房 ])">福永厂房</a>
+                                            </li>
+                    <li>
+                                                <a href="/office/rent/?xiezilou_keyword=%E5%AE%9D%E5%AE%89%E5%86%99%E5%AD%97%E6%A5%BC" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击写字楼最近热搜关键字次数&#39;,宝安写字楼 ])">宝安写字楼</a>
+                                                <a href="/office/rent/?xiezilou_keyword=%E4%BA%A4%E9%80%9A%E4%BE%BF%E5%88%A9" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击写字楼最近热搜关键字次数&#39;,交通便利 ])">交通便利</a>
+                                                <a href="/office/rent/?xiezilou_keyword=%E5%B8%A6%E8%A3%85%E4%BF%AE" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击写字楼最近热搜关键字次数&#39;,带装修 ])">带装修</a>
+                                                <a href="/office/rent/?xiezilou_keyword=%E8%BF%91%E5%9C%B0%E9%93%81%E5%8F%A3" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击写字楼最近热搜关键字次数&#39;,近地铁口 ])">近地铁口</a>
+                                                <a href="/office/rent/?xiezilou_keyword=%E9%BE%99%E5%8D%8E%E5%86%99%E5%AD%97%E6%A5%BC%E5%87%BA%E7%A7%9F" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击写字楼最近热搜关键字次数&#39;,龙华写字楼出租 ])">龙华写字楼出租</a>
+                                            </li>
+                    <li>
+                                                <a href="/sz/td/?landkeyword=%E5%B7%A5%E4%B8%9A%E5%9C%9F%E5%9C%B0%E5%87%BA%E5%94%AE" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击土地最近热搜关键字次数&#39;,工业土地出售])">工业土地出售</a>
+                                                <a href="/sz/td/?landkeyword=%E5%9C%B0%E7%9A%AE%E5%87%BA%E5%94%AE" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击土地最近热搜关键字次数&#39;,地皮出售])">地皮出售</a>
+                                                <a href="/sz/td/?landkeyword=%E5%9C%9F%E5%9C%B0%E4%B9%B0%E5%8D%96" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击土地最近热搜关键字次数&#39;,土地买卖])">土地买卖</a>
+                                                <a href="/nj/td/?landkeyword=%E5%8D%97%E4%BA%AC%E5%9C%9F%E5%9C%B0" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击土地最近热搜关键字次数&#39;,南京土地])">南京土地</a>
+                                                <a href="/cd/td/?landkeyword=%E6%88%90%E9%83%BD%E5%9C%9F%E5%9C%B0" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击土地最近热搜关键字次数&#39;,成都土地])">成都土地</a>
+                                            </li>
+                    <li>
+                                                <a href="/qg/y?keyword=%E7%B2%A4%E6%B5%B7%E8%A3%85%E5%A4%87%E6%8A%80%E6%9C%AF%E4%BA%A7%E4%B8%9A%E5%9B%AD" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击产业园区最近热搜关键字次数&#39;,粤海装备技术产业园])">粤海装备技术产业园</a>
+                                                <a href="/qg/y?keyword=%E5%B8%9D%E8%B1%AA%E6%99%BA%E9%80%A0%E7%A7%91%E6%8A%80%E5%9B%AD" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击产业园区最近热搜关键字次数&#39;,帝豪智造科技园])">帝豪智造科技园</a>
+                                                <a href="/qg/y?keyword=%E6%B1%9F%E9%97%A8%E6%99%BA%E8%83%BD%E5%88%B6%E9%80%A0%E4%BA%A7%E4%B8%9A%E5%9B%AD" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击产业园区最近热搜关键字次数&#39;,江门智能制造产业园])">江门智能制造产业园</a>
+                                                <a href="/qg/y?keyword=%E9%9C%B8%E5%B7%9E%E6%99%BA%E8%83%BD%E6%B5%8B%E6%8E%A7%E8%A3%85%E5%A4%87%E4%BA%A7%E4%B8%9A%E5%9B%AD" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击产业园区最近热搜关键字次数&#39;,霸州智能测控装备产业园])">霸州智能测控装备产业园</a>
+                                            </li>
+                </ul>
+
+            </div>
+        </div>
+        <!--搜索历史-->
+<div class="history plr30">
+    <p class="tit">搜索历史 </p>
+    <ul class="historyUl"><li class="notHistoty">
+                        暂无搜索历史记录
+                    </li></ul>
+</div>        <div class="MessageBox">
+            <div class="MessageCon">
+                <h3>提示</h3>
+                <p>是否清空</p>
+                <div class="btn clearFix">
+                    <p class="cancel"><span>否</span></p>
+                    <p class="sure"><span>是</span></p>
+                </div>
+            </div>
+            <div class="mask"></div>
+        </div>
+    </div>
+</section>
+
+</body></html>

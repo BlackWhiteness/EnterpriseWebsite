@@ -417,3 +417,8 @@
     position: relative;
     padding-left: 0.58rem;
 }
+/*焦点图*/
+#focus{ overflow:hidden;}
+#focus ul{ float:left;}
+#focus li{ width:100%; float:left;}
+#focus li img{ width:100%}

@@ -55,19 +55,24 @@
     </header>
     <div class="headTansBgIndex"></div>
     <!--banner-->
-    <!-- 代码 开始 -->
-<div id="focus">
-	<ul>
-		<li><a href="#"><img src="/static/mobile/img/iBanner1.jpg" /></a></li>
-		<li><a href="#"><img src="/static/mobile/img/iBanner2.jpg" /></a></li>
-		<li><a href="#"><img src="/static/mobile/img/iBanner3.jpg" /></a></li>
-        <li><a href="#"><img src="/static/mobile/img/iBanner4.jpg" /></a></li>
-	</ul>
-</div>
-<script type="text/javascript" src="/static/mobile/js/zepto.min.js"></script>
-<script type="text/javascript" src="/static/mobile/js/script.js"></script>
-<!-- 代码 结束 -->
-
+    <div id="iBanner" class="swiper-container iBanner swiper-container-horizontal"
+         onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击Banner图次数&#39;]);">
+        <ul class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(-3000px, 0px, 0px);">
+            <li class="swiper-slide swiper-slide-duplicate swiper-slide-next swiper-slide-duplicate-prev"
+                data-swiper-slide-index="2"><a href="#"><img src="/static/mobile/img/iBanner1.jpg" alt="广东厂房网"></a></li>
+            <li class="swiper-slide swiper-slide-duplicate-active" data-swiper-slide-index="0"><a href="#"><img
+                    src="/static/mobile/img/iBanner2.jpg" alt="广东厂房网"></a></li>
+            <li class="swiper-slide" data-swiper-slide-index="1"
+            "><a href="#"><img src="/static/mobile/img/iBanner3.jpg" alt="广东厂房网"></a></li>
+            <li class="swiper-slide swiper-slide-prev swiper-slide-duplicate-next" data-swiper-slide-index="2"><a
+                    href="#"><img src="/static/mobile/img/iBanner4.jpg" alt="广东厂房网"></a></li>
+            <li class="swiper-slide swiper-slide-duplicate swiper-slide-active" data-swiper-slide-index="0"><a href="#"><img
+                    src="/static/mobile/img/iBanner1.jpg" alt="广东厂房网"></a></li>
+        </ul>
+        <div class="swiper-pagination swiper-pagination-bullets"><span
+                class="swiper-pagination-bullet swiper-pagination-bullet-active"></span><span
+                class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span></div>
+        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
 
     <!--搜索框-->
     <!--<div class="search"></div>-->
@@ -76,7 +81,8 @@
            onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击城市选择次数&#39;]);">
             <span>深圳<i></i></span>
         </a>
-        <a id="iSearchLink" class="iSearchLink" href="{:url('list')}"></a>
+        <a id="iSearchLink" class="iSearchLink" href="/index/list"
+           onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击搜索次数&#39;]);return false;"></a>
         <input type="text" placeholder="请输入关键词进行搜索" value="请输入关键词进行搜索">
         <span class="close"></span>
         <span class="icon_sear"></span>
@@ -138,7 +144,19 @@
                     <p>民宅租售</p>
                 </a>
             </li>
-           
+            <!--<li>
+                <a id="info" href="/news/" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击资讯次数&#39;]);">
+                    <img src="/static/mobile/img/homepage_ic_information.png" alt="">
+                    <p>资讯</p>
+                </a>
+            </li>
+         
+            <li>
+                <a href="/work/" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击业务合作次数&#39;]);">
+                    <img src="/static/mobile/img/homepage_ic_ywhz.png" alt="">
+                    <p>业务合作</p>
+                </a>
+            </li>-->
         </ul>
     </div>
 
@@ -306,11 +324,23 @@
 
 <div style="margin-top:-1px;height:1.1rem;padding: 0.24rem 0;background: #2B2F33"><span
         style="visibility: hidden">ssss</span></div>
-
+<!--浮动的委托需求按钮-->
+<!--<a id="botFixForm" class="botFixForm" href="/NewDemand/" onclick="_czc.push(['_trackEvent','首页','点击浮动框委托需求次数']);"><img src="/NewStyles/images/register.png?V=1.1" alt="需求登记"></a>-->
 <script src="/static/mobile/js/zepto.min.js"></script>
 <script src="/static/mobile/js/touch.js"></script>
 <script src="/static/mobile/js/swiper-4.3.5.min.js"></script>
-
+<script>
+    var factory = "/sz/cf/";
+    var office = "/sz-office/rent/";
+    var land = "/sz/td/";
+    var sxzs = "/sxzs/zfzs/";
+    var park = "/y/";
+    var agent = "/agents/sz/";
+    var demand = "/NewDemand/";
+    var newlist = "/infor/index/";
+    var route = [factory, office, land, sxzs, park, 'picked', agent, demand, 'delivery', newlist];
+    var city = "sz";
+</script>
 <script src="/static/mobile/js/base.js"></script>
 <script src="/static/mobile/js/base(1).js"></script>
 <script>
@@ -319,85 +349,128 @@
         searchWrap();
     }
 </script>
+<script>
+    /**
+     * sem获取拨打电话记录
+     */
+    $('.semCall').on('click', function () {
+        var url = window.location.href;
+        $.ajax({
+            type: 'post',
+            url: '/index.php?c=newmain&a=semtelsub',
+            data: {url: url},
+            success: function (ret) {
+                console.log(ret);
+            }
+        })
+
+    })
+    $(".searchWrapCon .tab li a").tap(function () {
+        var now = $(this).parents("li").index();
+        var formF = $(".formBox form.form");
+        switch (now) {
+            case 0:
+                formF.attr("url", "/sz/cf/")
+                break;
+            case 1:
+                if (city == 'sz') {
+                    formF.attr("url", "/office/rent/")
+                } else {
+                    formF.attr("url", "/sz-office/rent/")
+                }
+                break;
+            case 2:
+                formF.attr("url", "/sz/td/")
+                break;
+            case 3:
+                formF.attr("url", "/sz/y")
+                break;
+            case 4:
+                formF.attr("url", "/sz/warehouse/")
+                break;
+        }
+    });
+    //清空记录
+    $('.searchWrapBox .MessageBox .btn .sure').tap(function () {
+        $.ajax({
+            type: 'post',
+            url: "/Newmain/del/",
+            data: {all: '1'},
+            success: function (msg) {
+                var historyUl = $(".searchWrapCon .history .historyUl ");
+                var hisLi = '<li class="notHistoty">\n' +
+                    '                        暂无搜索历史记录\n' +
+                    '                    </li>';
+                historyUl.html(hisLi)
+            }
+        })
+    });
+
+    //搜索页埋点
+    $('.searchContent').on('click', function () {
+        _czc.push(['_trackEvent', '首页', '搜索结果页点击模糊匹配进入列表页次数']);
+    });
+    $('.searchHistory').on('click', function () {
+        _czc.push(['_trackEvent', '首页', '搜索页内点击历史关键字次数']);
+    });
+    $('.empty').on('click', function () {
+        _czc.push(['_trackEvent', '首页', '搜索页内点击清空历史关键字次数']);
+    });
+    /*************banner*************/
+    var banner = new Swiper('.iBanner', {
+        autoplay: {
+            delay: 3000,//3秒切换一次
+            disableOnInteraction: false,//触碰后自动切换也不会停止
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            // bulletClass : 'my-bullet',
+        },
+        loop: true,
+    });
+    var iBannerLen = $(".iBanner .swiper-pagination span").length;
+    if (iBannerLen < 2) {
+        banner.autoplay.stop();
+        banner.destroy();
+    }
+
+    /*************滚动通告*************/
+    // var announcementSwiper = new Swiper('#notice', {
+    //     direction: 'vertical',
+    //     loop: true,
+    //     autoplay: {
+    //         delay: 3000,
+    //         disableOnInteraction: false,
+    //     },
+    //     allowTouchMove: false,
+    // })
+
+    /*************精选楼盘*************/
+    var choiceList = new Swiper('#choiceList', {
+        slidesPerView: 2.06,
+        spaceBetween: 10,
+        //spaceBetween : '10%',按container的百分比
+    });
+    var focusIndex = 5;
 
 
-<section class="searchWrapBox">
+    $(window).scroll(function () {
+        var top = $(window).scrollTop() || document.documentElement.scrollTop || document.body.scrollTop;
+        var appDownload = $(".appDownload").height();
+        if (top > appDownload) {
+            $(".appDownloadFix").addClass("appDownloadFixShow")
+        } else {
+            $(".appDownloadFix").removeClass("appDownloadFixShow");
+        }
+    })
+    $(".appDownloadFix .close").click(function () {
+        $(".appDownloadFix").removeClass("appDownloadFixShow");
+        $(".appDownloadFix").addClass('closeHide');
+    })
 
-    <!--搜索搜索-->
-    <div class="formBox clearFix">
-        <form url="/sz/cf/" method="post" class="clearfix form lf">
-            <input type="text" name="searInp" value="" placeholder="请输入关键词进行搜索" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击关键字输入框次数&#39;])">
-            <i class="resetIco"></i>
-            <button class="iconSear" type="submit" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内正常请求搜索次数&#39;])"></button>
-        </form>
-        <a href="javascript:;" class="rt cancel" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页内点击取消次数&#39;])">取消</a>
-    </div>
-    <div class="searchList">
-        <ul>
+</script>
 
-        </ul>
-    </div>
-    <div class="searchWrapCon">
-        <!--tab-->
-        <ul class="tab clearFix">
-            <li class="foucs" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页厂房类型切换选择次数&#39;])"><a href="javascript:void(0);">厂房</a></li>
-            <li onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页土地类型切换选择次数&#39;])"><a href="javascript:void(0);">写字楼</a></li>
-            <li onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页写字楼类型切换选择次数&#39;])"><a href="javascript:void(0);">土地</a></li>
-            <li onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;搜索页产业园区类型切换选择次数&#39;])"><a href="javascript:void(0);">产业园区</a></li>
-            <li><a href="javascript:void(0);">仓库</a></li>
-        </ul>
-        <!--厂房最近热搜-->
-        <div class="hotSearch plr30 cfSearch">
-            <p class="tit">最近热搜</p>
-            <div class="hotSearCon clearFix">
-                <ul>
-                    <li class="focus">
-                                                <a href="#" >标准厂房</a>
-                                                <a href="#">龙岗小面积厂房出租</a>
-                                                <a href="#">独院厂房</a>
-                                                <a href="#">二楼以上</a>
-                                                <a href="#">钢结构</a>
-                                                
-                                            </li>
-                    <li>
-                                                <a href="#">宝安写字楼</a>
-                                                <a href="#">交通便利</a>
-                                                <a href="#">带装修</a>
-                                                
-                                            </li>
-                    <li>
-                                                <a href="#">工业土地出售</a>
-                                                <a href="#">地皮出售</a>
-                                                <a href="#">土地买卖</a>
-                                                
-                                            </li>
-                    <li>
-                                                <a href="#" >粤海装备技术产业园</a>
-                                                
-                                            </li>
-                </ul>
 
-            </div>
-        </div>
-        <!--搜索历史-->
-<div class="history plr30">
-    <p class="tit">搜索历史 </p>
-    <ul class="historyUl"><li class="notHistoty">
-                        暂无搜索历史记录
-                    </li></ul>
-</div>        <div class="MessageBox">
-            <div class="MessageCon">
-                <h3>提示</h3>
-                <p>是否清空</p>
-                <div class="btn clearFix">
-                    <p class="cancel"><span>否</span></p>
-                    <p class="sure"><span>是</span></p>
-                </div>
-            </div>
-            <div class="mask"></div>
-        </div>
-    </div>
-</section>
 <!--埋点尾部-->
 
 

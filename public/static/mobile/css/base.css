@@ -176,7 +176,7 @@ form i.icon_arrow{
 }
 /*顶部导航菜单*/
 #nav{
-    position: fixed;
+    position: absolute;
     left: 0;
     top: 0;
     /*-webkit-transform: translateX(-50%);*/
@@ -188,7 +188,7 @@ form i.icon_arrow{
     /*max-width: 750px;*/
     height: 100%;
     z-index: 1200;
-    display: none;
+    display: none; background-color:#FFF;
 
 }
 #nav .head{
@@ -230,7 +230,7 @@ form i.icon_arrow{
     -moz-transform: translate3d(0,-100%,0);
     -ms-transform: translate3d(0,-100%,0);
     -o-transform: translate3d(0,-100%,0);
-    transform: translate3d(0,-100%,0);
+    /*transform: translate3d(0,-100%,0);*/
 
     height: 100%;
 }
@@ -279,7 +279,7 @@ form i.icon_arrow{
     height: 1.28rem;
 
     width: 100%;
-    position: absolute;
+    position: fixed;
     left: 0;
     bottom: 0;
 }
@@ -345,7 +345,7 @@ form i.icon_arrow{
     position: fixed;
     left: 0;
     top: 0;
-    background: rgba(0,0,0,0.5);
+    /*background: rgba(0,0,0,0.5);*/
     height: 100%;
     width: 100%;
     z-index: 999;
