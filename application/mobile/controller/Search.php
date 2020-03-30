@@ -169,4 +169,96 @@ class Search extends MobileBase
         $this->assign("hot", $hot);
         return $this->fetch('offbuilddetail');
     }
+
+    public function landdetail()
+    {
+        $id = $this->request->param('id/d', '');
+        $info = LandManage::where(['id' => $id])->find();
+        $cityInfo = Db::name('city')->where('id', 'in', $info['city'])->select();
+        $areaInfo = Db::name('area')->where('parentId', 'in', $info['city'])->select();
+        $cityList = Db::name('city')->where('id', 'not in', $info['city'])->select();
+        $recommend = LandManage::where(["type" => 1])->order(array('releasetime' => 'DESC'))
+            ->limit(0, 10)->select();
+        $new = LandManage::order(array('releasetime' => 'DESC'))
+            ->limit(0, 10)->select();
+        $hot = LandManage::where(["type" => 2])
+            ->order(array('releasetime' => 'DESC'))->limit(10)->select();
+
+        $href = HrefManage::order('sort', 'desc')->select()->toArray();
+        $ad = AdManage::where('is_enable', '=', 1)->order(['code' => 'asc', 'sort' => 'desc'])->select();
+        $adList = [];
+        foreach ($ad as $row) {
+            $detail = [
+                'title' => $row->title,
+                'pic_path' => $row->pic_path,
+                'href' => $row->href
+            ];
+            if ($row->code == '001') {
+                $adList['top'] = $detail;
+            } elseif ($row->code == '002') {
+                $adList['mid_ad'][] = $detail;
+            } elseif ($row->code == '003') {
+                $adList['bottom_ad'][] = $detail;
+            }
+        }
+
+        $this->assign([
+            'recommend' => LandFormat::getInstance()->formatList($recommend),
+            'new' => LandFormat::getInstance()->formatList($new),
+            'hot' => LandFormat::getInstance()->formatList($hot),
+            'cityInfo' => $cityInfo,
+            'areaInfo' => $areaInfo,
+            'cityList' => $cityList,
+            'href' => $href,
+            'ad' => $adList,
+            'info' => $info
+        ]);
+        return $this->fetch('land_detail');
+    }
+
+    public function shopdetail()
+    {
+        $id = $this->request->param('id/d', '');
+        $info = ShopManage::where(['id' => $id])->find();
+        $cityInfo = Db::name('city')->where('id', 'in', $info['city'])->select();
+        $areaInfo = Db::name('area')->where('parentId', 'in', $info['city'])->select();
+        $cityList = Db::name('city')->where('id', 'not in', $info['city'])->select();
+        $recommend = ShopManage::where(["category" => 1])->order(array('releasetime' => 'DESC'))
+            ->limit(0, 10)->select();
+        $new = ShopManage::order(array('releasetime' => 'DESC'))
+            ->limit(0, 10)->select();
+        $hot = ShopManage::where(["category" => 2])
+            ->order(array('releasetime' => 'DESC'))->limit(10)->select();
+
+        $href = HrefManage::order('sort', 'desc')->select()->toArray();
+        $ad = AdManage::where('is_enable', '=', 1)->order(['code' => 'asc', 'sort' => 'desc'])->select();
+        $adList = [];
+        foreach ($ad as $row) {
+            $detail = [
+                'title' => $row->title,
+                'pic_path' => $row->pic_path,
+                'href' => $row->href
+            ];
+            if ($row->code == '001') {
+                $adList['top'] = $detail;
+            } elseif ($row->code == '002') {
+                $adList['mid_ad'][] = $detail;
+            } elseif ($row->code == '003') {
+                $adList['bottom_ad'][] = $detail;
+            }
+        }
+
+        $this->assign([
+            'recommend' => ShopFormat::getInstance()->formatList($recommend),
+            'new' => ShopFormat::getInstance()->formatList($new),
+            'hot' => ShopFormat::getInstance()->formatList($hot),
+            'cityInfo' => $cityInfo,
+            'areaInfo' => $areaInfo,
+            'cityList' => $cityList,
+            'href' => $href,
+            'ad' => $adList,
+            'info' => $info
+        ]);
+        return $this->fetch('shop_detail');
+    }
 }

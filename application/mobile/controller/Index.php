@@ -43,7 +43,6 @@ class Index extends MobileBase
         $this->assign("hot", $hot);
         $recommend = Workshop_Model::where(array('type' => 2))->order(array('releasetime' => 'DESC'))->page(1, 6)->select()->toArray();
         $this->assign("recommend", $recommend);
-
         return $this->fetch();
     }
 

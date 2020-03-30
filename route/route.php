@@ -26,5 +26,10 @@ Route::domain('m', function () {
     Route::get('of_build', 'mobile/Search/officebuilding')->name('of_build');
     Route::get('shop', 'mobile/Search/shopList')->name('shop');
 
+    //详情
+    Route::get('workshop/detail', 'mobile/Search/workshopdetail');
+    Route::get('of_build/detail', 'mobile/Search/offbuilddetail');
+    Route::get('land/detail', 'mobile/Search/landdetail');
+    Route::get('shop/detail', 'mobile/Search/shopdetail');
 
 });
