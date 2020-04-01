@@ -33,6 +33,7 @@ class Search extends MobileBase
     }
 
     /**
+     * 厂房或仓库
      * @param Request $request
      * @return mixed
      * @throws \think\db\exception\DataNotFoundException
@@ -213,7 +214,7 @@ class Search extends MobileBase
             'ad' => $adList,
             'info' => $info
         ]);
-        return $this->fetch('land_detail');
+        return $this->fetch('landdetail');
     }
 
     public function shopdetail()
@@ -259,6 +260,6 @@ class Search extends MobileBase
             'ad' => $adList,
             'info' => $info
         ]);
-        return $this->fetch('shop_detail');
+        return $this->fetch('shopdetail');
     }
 }
