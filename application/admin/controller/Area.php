@@ -24,8 +24,8 @@ class Area extends Adminbase
     protected function initialize()
     {
         parent::initialize();
-        $this->Area_Model = new Area_Model;
-	$this->City_Model = new City_Model;
+        $this->Area_Model = new Area_Model();
+	    $this->City_Model = new City_Model();
     }
 
     //权限管理首页
