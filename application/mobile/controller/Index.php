@@ -37,10 +37,10 @@ class Index extends MobileBase
                 return 2;
             }
         }
-        $sz = Workshop_Model::order(array('releasetime' => 'DESC'))->page(1, 5)->select()->toArray();
-        $this->assign("sz", $sz);
-        $hot = Officebuilding::where(array('type' => 2))->order(array('releasetime' => 'DESC'))->page(1, 4)->select()->toArray();
-        $this->assign("hot", $hot);
+        $workshop = Workshop_Model::order(array('releasetime' => 'DESC'))->page(1, 5)->select()->toArray();
+        $this->assign("workshop", $workshop);
+        $office = Officebuilding::where(array('type' => 2))->order(array('releasetime' => 'DESC'))->page(1, 4)->select()->toArray();
+        $this->assign("office", $office);
         $recommend = Workshop_Model::where(array('type' => 2))->order(array('releasetime' => 'DESC'))->page(1, 6)->select()->toArray();
         $this->assign("recommend", $recommend);
         return $this->fetch();
