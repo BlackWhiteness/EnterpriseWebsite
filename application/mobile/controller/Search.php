@@ -49,6 +49,7 @@ class Search extends MobileBase
         $category = request()->param('category');
         $tagName = in_array($category, [1, 2, 3]) ? Workshop::CATEGORY_CONFIG[$category] : '';
         $data = $workshop->getWorkShopBySearch();
+
         $this->assign([
             'cityInfo' => $cityInfo,
             'areaInfo' => $areaInfo,
@@ -261,5 +262,69 @@ class Search extends MobileBase
             'info' => $info
         ]);
         return $this->fetch('shopdetail');
+    }
+
+
+    /**
+     * 获取土地信息
+     * @param LandManage $landManage
+     * @return \think\response\Json
+     * @throws \think\exception\DbException
+     */
+    public function ajaxSearchLand(LandManage $landManage)
+    {
+        $data = $landManage->getLandSearch();
+        return json([
+            'data' => LandFormat::getInstance()->formatList($data),
+            'page' => paginate($data)
+        ]);
+    }
+
+    /**
+     * 获取商铺信息
+     * @param ShopManage $shopManage
+     * @return \think\response\Json
+     * @throws \think\exception\DbException
+     */
+    public function ajaxSearchShop(ShopManage $shopManage)
+    {
+        $data = $shopManage->getShopBuild();
+        return json([
+            'data' => ShopFormat::getInstance()->formatList($data),
+            'page' => paginate($data)
+        ]);
+    }
+
+    /**
+     * 获取数据
+     * @param Workshop_Model $workshop
+     * @return \think\response\Json
+     * @throws \think\exception\DbException
+     */
+    public function ajaxSearchWs(Workshop $workshop)
+    {
+        $category = request()->param('category');
+        if (empty($category)) {
+            return json(['status' => false, 'msg' => '参数错误!']);
+        }
+        $data = $workshop->getWorkShopBySearch();
+        return json([
+            'data' => WorkShopFormat::getInstance()->formatList($data),
+            'page' => paginate($data)
+        ]);
+    }
+    /**
+     * 获取写字楼信息
+     * @param Officebuilding $officebuilding
+     * @return \think\response\Json
+     * @throws \think\exception\DbException
+     */
+    public function ajaxSearchOf(Officebuilding $officebuilding)
+    {
+        $data = $officebuilding->getOfficeBuild();
+        return json([
+            'data' => OfficeBuildFormat::getInstance()->formatAjaxList($data),
+            'page' => paginate($data)
+        ]);
     }
 }

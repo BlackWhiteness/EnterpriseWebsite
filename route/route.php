@@ -32,4 +32,11 @@ Route::domain('m', function () {
     Route::get('land/detail', 'mobile/Search/landdetail');
     Route::get('shop/detail', 'mobile/Search/shopdetail');
 
+    // 异步获取
+
+    Route::get('ajax_search_ws', 'mobile/Search/ajaxSearchWs');
+    Route::get('search_of', 'mobile/Search/ajaxSearchOf');
+    Route::get('search_land', 'mobile/Search/ajaxSearchLand');
+    Route::get('search_shop', 'mobile/Search/ajaxSearchShop');
+
 });
