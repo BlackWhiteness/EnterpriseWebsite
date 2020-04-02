@@ -1,0 +1,115 @@
+@charset "utf-8";
+$font:Arial, "微软雅黑";
+$color:#009BE5;
+$white:#fff;
+$blue:#009BE5;
+
+@mixin radius($r:5rem){
+  -moz-border-radius:$r;
+  -webkit-border-radius: $r;
+  border-radius:$r;
+}
+@mixin height($h:.1rem){
+  height:$h; overflow:hidden; clear:both;
+}
+@mixin absolute($p:absolute, $z:10, $l:auto, $t:auto, $r:auto, $b:auto){
+  position: $p;
+  z-index: $z;
+  left: $l;
+  right: $r;
+  top: $t;
+  bottom: $b;
+}
+@mixin before(){
+  content: ""; display: block;
+  position: absolute;
+}
+@mixin after(){
+  content: ""; display: block;
+  clear: both;
+}
+@mixin scale($s:1.2){
+  transform: scale($s);
+  -webkit-transform: scale($s);
+  -moz-transform: scale($s);
+  -o-transform: scale($s);
+}
+@mixin radiusLT($r:.1rem){
+  border-top-left-radius: $r;
+  -webkit-border-top-left-radius: $r;
+}
+@mixin radiusLB($r:.1rem){
+  border-bottom-left-radius: $r;
+  -webkit-border-bottom-left-radius: $r;
+}
+@mixin radiusRT($r:.1rem){
+  border-top-right-radius: $r;
+  -webkit-border-top-right-radius: $r;
+}
+@mixin radiusRB($r:.1rem){
+  border-bottom-right-radius: $r;
+  -webkit-border-bottom-right-radius: $r;
+}
+@mixin shadow($s){
+  box-shadow: $s;
+  -webkit-box-shadow: $s;
+  -moz-box-shadow: $s;
+}
+@mixin rotate($r){
+  transform: rotate($r);
+  -webkit-transform: rotate($r);
+  -moz-transform: rotate($r);
+}
+@mixin gray($g){
+  -webkit-filter: grayscale($g);
+  -moz-filter: grayscale($g);
+  -ms-filter: grayscale($g);
+  -o-filter: grayscale($g);
+  filter: grayscale($g);
+}
+
+.transition{
+  $time:0.5s;
+  transition:All $time ease;
+  -webkit-transition:All $time ease;
+  -moz-transition:All $time ease;
+  -o-transition:All $time ease;
+}
+.ellipsis{overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+
+.flex{
+  display: flex;
+  display: -webkit-flex;
+  display: -ms-flex;
+}
+.flexColumn{
+  display: flex;
+  display: -webkit-flex;
+  display: -ms-flex;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+}
+.itemsCenter{
+  align-items: center;
+  -webkit-align-items: center;
+}
+.justifyCenter{
+  justify-content: center;
+  -webkit-justify-content: center;
+}
+.flexAround{
+  justify-content: space-around;
+  -webkit-justify-content: space-around;
+}
+.flexBetween{
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+}
+.flexWrap{
+  display: flex;
+  display: -webkit-flex;
+  display: -ms-flex;
+  flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+}

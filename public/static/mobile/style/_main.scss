@@ -1,0 +1,40 @@
+*{
+  margin: 0; padding: 0;
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+}
+html{font-size: 50px}
+body{font-size:.24rem; font-family:$font; color:#333; -webkit-text-size-adjust:none; opacity: 0;
+  &.noScroll{overflow: hidden}
+  &.show{opacity: 1;
+    $time:0.5s;
+    transition:opacity $time ease;
+    -webkit-transition:opacity $time ease;
+    -moz-transition:opacity $time ease;
+    -o-transition:opacity $time ease;
+  }
+}
+a{color:#333; text-decoration:none; outline:none;
+  &:active{star:expression(this.onFocus=this.blur())}
+  &:link {text-decoration: none; outline:none}
+  &:visited{text-decoration: none; outline:none}
+  &:hover{text-decoration:none; color:$color; outline:none}
+}
+li{list-style:outside none}
+h1{font-size:16px}
+h2, h3, h4, h5{font-size:14px}
+h5{font-size:12px}
+textarea, input{background:transparent; font-size:.24rem; font-family:$font; color:#888; outline:none; border:0}
+em{font-style:normal}
+img{vertical-align:middle; max-width:100%; border:0}
+
+.fl{float:left}
+.fr{float:right}
+.clear{clear:both; height:0; display:block; _display:inherit}
+.before{content: ""; display: block; position: absolute; left: 50%; top: 0}
+.h10{@include height(.1rem)}
+.h50{@include height(.5rem)}
+
+.wal{max-width: 750px; margin:0 auto}
+

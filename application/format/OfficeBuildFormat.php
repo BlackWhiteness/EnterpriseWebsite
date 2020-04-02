@@ -37,14 +37,21 @@ class OfficeBuildFormat
 
     /**
      * 格式化用于列表
+     *
      * @param $data
      * @return array
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     * @since  2020/4/2
+     * @author WangShuai
      */
     public function formatList($data)
     {
         $rtn = [];
 
         foreach ($data as $row) {
+            $area = Area::where('id', '=', $row['area'])->find();
             $rtn[] = [
                 'id' => $row['id'],
                 'region' => $row['region'],
@@ -64,7 +71,8 @@ class OfficeBuildFormat
                 'area' => $row['area'],
                 'type' => $row['type'],
                 'title' => $row['title'],
-                'detail' => $row['detail']
+                'detail' => $row['detail'],
+                'area_name' => $area->name . '区',
             ];
 
         }
