@@ -273,6 +273,9 @@ class Search extends MobileBase
      */
     public function ajaxSearchLand(LandManage $landManage)
     {
+        header('Access-Control-Allow-Origin: *');
+        header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+        header('Access-Control-Allow-Methods: GET, POST, PUT');
         $data = $landManage->getLandSearch();
         return json([
             'data' => LandFormat::getInstance()->formatList($data),
@@ -288,6 +291,9 @@ class Search extends MobileBase
      */
     public function ajaxSearchShop(ShopManage $shopManage)
     {
+        header('Access-Control-Allow-Origin: *');
+        header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+        header('Access-Control-Allow-Methods: GET, POST, PUT');
         $data = $shopManage->getShopBuild();
         return json([
             'data' => ShopFormat::getInstance()->formatList($data),
@@ -303,6 +309,9 @@ class Search extends MobileBase
      */
     public function ajaxSearchWs(Workshop $workshop)
     {
+        header('Access-Control-Allow-Origin: *');
+        header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+        header('Access-Control-Allow-Methods: GET, POST, PUT');
         $category = request()->param('category');
         if (empty($category)) {
             return json(['status' => false, 'msg' => '参数错误!']);
@@ -321,6 +330,9 @@ class Search extends MobileBase
      */
     public function ajaxSearchOf(Officebuilding $officebuilding)
     {
+        header('Access-Control-Allow-Origin: *');
+        header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+        header('Access-Control-Allow-Methods: GET, POST, PUT');
         $data = $officebuilding->getOfficeBuild();
         return json([
             'data' => OfficeBuildFormat::getInstance()->formatAjaxList($data),
