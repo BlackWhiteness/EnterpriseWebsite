@@ -95,7 +95,7 @@ class ShopManage extends Model
     public function getShopBuild()
     {
         $query = $this->filterCommon();
-        $query = $query->paginate(20);
+        $query = $query->paginate(request()->param('per_page',20));
         return $query;
     }
 

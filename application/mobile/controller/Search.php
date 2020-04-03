@@ -48,7 +48,7 @@ class Search extends MobileBase
         $areaInfo = Db::name('area')->where('parentId', 'in', $city)->select();
         $category = request()->param('category');
         $tagName = in_array($category, [1, 2, 3]) ? Workshop::CATEGORY_CONFIG[$category] : '';
-        $data = $workshop->getWorkShopBySearch();
+
 
         $this->assign([
             'cityInfo' => $cityInfo,
@@ -57,8 +57,8 @@ class Search extends MobileBase
             'category' => $category,
             'tag' => $cityInfo[0]['name'] . $tagName,
             'category_type_name' => $tagName ? mb_substr($tagName, 0, 2, 'utf8') : '厂房',
-            'data' => WorkShopFormat::getInstance()->formatList($data),
-            'page' => paginate($data)
+//            'data' => WorkShopFormat::getInstance()->formatList($data),
+//            'page' => paginate($data)
         ]);
         return $this->fetch('rentalofworkshop');
     }
