@@ -66,4 +66,38 @@ class LandFormat
         return $rtn;
     }
 
+    /**
+     * 格式化
+     * @param $detail
+     * @return array
+     */
+    public function formatDetail($row)
+    {
+        $city = $row->belongsToOneCity;
+        $area = $row->belongsToOneArea;
+
+        return [
+            'id' => $row['id'],
+            'title' => $row['title'],
+            'land_use' => $row['land_use'] . '年',
+            'city' => $row['city'],
+            'area' => $row['area'],
+            'region' => $row['region'],
+            'type' => $row['type'] == 1 ? '出租' : '出售',
+            'address' => $row['address'],
+            'measurearea' => $row['measurearea'] . 'm²',
+            'releasetime' => $row['releasetime'],
+            'price' => $row['price'] . '元',
+            'name' => $row['name'],
+            'tel' => $row['tel'],
+            'tag' => $row['tag']?:'',
+            'imgs' => $row['imgs'] ?: [],
+            'land_type' => $row['land_type'],
+            'land_card' => $row['land_card'] == 0 ? '有' : '无',
+            'detail' => $row['detail'],
+            'city_name' => $city ? $city->name : '',
+            'area_name' => $area ? $area->name : '',
+        ];
+    }
+
 }

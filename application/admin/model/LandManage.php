@@ -37,6 +37,23 @@ class LandManage extends Model
     }
 
     /**
+     * 对应一个城市
+     * @return \think\model\relation\BelongsTo
+     */
+    public function belongsToOneCity()
+    {
+        return $this->belongsTo('City', 'city', 'id');
+    }
+
+    /**
+     * 对应一个地区
+     * @return \think\model\relation\BelongsTo
+     */
+    public function belongsToOneArea()
+    {
+        return $this->belongsTo('Area', 'area', 'id');
+    }
+    /**
      * 通用过滤
      * @return \think\db\Query
      */
@@ -63,16 +80,28 @@ class LandManage extends Model
             }
         }
 
+        $rent = request()->param('rent',0);
+        if(!empty($rent)){
+            $top = strpos($rent, '-');
+            if ($top == false) {
+                $query = $query->where('rent', '>=', $rent);
+            } else {
+                $range = explode('-', $rent);
+                $query = $query->where('price', '>=', $range[0])
+                    ->where('price', '<', $range[1]);
+            }
+        }
+
         $title = request()->param('title');
         if (!empty($title)) {
             $query = $query->where('title', 'like', '%' . $title . '%');
         }
         $type = request()->param('type');
-        if (is_numeric($type)) {
+        if (is_numeric($type)&&$type) {
             $query = $query->where('type', '=', $type);
         }
         $tag = request()->param('tag');
-        if (is_numeric($tag)) {
+        if (!empty($tag)) {
             $query = $query->where('tag', 'like', '%' . $tag . '%');
         }
         $query = $query->order(array('releasetime' => 'DESC'));

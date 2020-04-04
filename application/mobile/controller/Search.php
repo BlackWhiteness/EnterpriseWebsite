@@ -95,9 +95,9 @@ class Search extends MobileBase
             ->paginate(10);
 
         $this->assign([
-            'info'=>$workInstance->formatDetail($info),
-            'cityInfo'=>$cityInfo,
-            'areaInfo'=>$areaInfo,
+            'info' => $workInstance->formatDetail($info),
+            'cityInfo' => $cityInfo,
+            'areaInfo' => $areaInfo,
             'recommend' => $workInstance->formatList($recommend),
         ]);
         return $this->fetch('workshopdetail');
@@ -117,13 +117,52 @@ class Search extends MobileBase
         $cityInfo = Db::name('city')->where('id', 'in', $city)->select();
         $areaInfo = Db::name('area')->where('parentId', 'in', $city)->select();
         $cityList = Db::name('city')->where('id', 'not in', $city)->select();
-        $data = $landManage->getLandSearch();
+//        $data = $landManage->getLandSearch();
+        $measureList = [
+            '0' => '不限',
+            '500' => '500平米以下',
+            '500-1000' => '500-1000平米',
+            '1000-1500' => '1000-1500平米',
+            '1500-2500' => '1500-2500平米',
+            '2500-4000' => '2500-4000平米',
+            '4000-6000' => '4000-6000平米',
+            '6000-10000' => '6000-10000平米',
+            '10000' => '10000平米以上'
+        ];
+
+        $renList = [
+            '0' => '不限',
+            '10' => '10元/平米以下',
+            '10-15' => '10-15元/平米',
+            '15-20' => '15-20元/平米',
+            '20-25' => '20-25元/平米',
+            '25' => '25元/平米'
+        ];
+        $tagList = [
+            '0' => '不限',
+            '工业用地' => '工业用地',
+            '农业用地' => '农业用地',
+            '商业用地' => '商业用地',
+            '仓库用地' => '仓库用地',
+            '临时用地' => '临时用地',
+            '国有用地' => '国有用地',
+            '集体用地' => '集体用地',
+        ];
+
+        $typeList = [
+            0 => '不限',
+            1 => '出租',
+            2 => '出售'
+        ];
+
         $this->assign([
             'cityInfo' => $cityInfo,
             'areaInfo' => $areaInfo,
             'cityList' => $cityList,
-            'data' => LandFormat::getInstance()->formatList($data),
-            'page' => paginate($data)
+            'measureList' => $measureList,
+            'renList' => $renList,
+            'tagList' => $tagList,
+            'typeList' => $typeList
         ]);
         return $this->fetch('landlist');
     }
@@ -194,7 +233,9 @@ class Search extends MobileBase
     public function landdetail()
     {
         $id = $this->request->param('id/d', '');
-        $info = LandManage::where(['id' => $id])->find();
+        $info = LandManage::where(['id' => $id])
+            ->with(['belongsToOneCity', 'belongsToOneArea'])
+            ->find();
         $cityInfo = Db::name('city')->where('id', 'in', $info['city'])->select();
         $areaInfo = Db::name('area')->where('parentId', 'in', $info['city'])->select();
         $cityList = Db::name('city')->where('id', 'not in', $info['city'])->select();
@@ -222,7 +263,6 @@ class Search extends MobileBase
                 $adList['bottom_ad'][] = $detail;
             }
         }
-
         $this->assign([
             'recommend' => LandFormat::getInstance()->formatList($recommend),
             'new' => LandFormat::getInstance()->formatList($new),
@@ -232,7 +272,7 @@ class Search extends MobileBase
             'cityList' => $cityList,
             'href' => $href,
             'ad' => $adList,
-            'info' => $info
+            'info' => LandFormat::getInstance()->formatDetail($info)
         ]);
         return $this->fetch('landdetail');
     }
