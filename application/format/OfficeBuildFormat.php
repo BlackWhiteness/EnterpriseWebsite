@@ -3,6 +3,7 @@
 namespace app\format;
 
 use app\admin\model\Area;
+use app\admin\model\Officebuilding;
 
 /**
  * 写字楼格式化
@@ -136,6 +137,7 @@ class OfficeBuildFormat
             'tel' => $data['tel'],
             'detail' => $data['detail'],
             'tag' => $data['tag'],
+            'tag_name' => $data['tag']?Officebuilding::TAG_CONFIG[$data['tag']]:'',
             'imgs' => $data['imgs'],
             'buildingname' => $data['buildingname'],
             'address' => $data['address'],
@@ -146,7 +148,8 @@ class OfficeBuildFormat
             'type' => $data['type'],
             'title' => $data['title'],
             'floor' => $data['floor'],
-            'is_sep' => $data['is_sep'],
+            'floor_type' => empty($data['floor_type'])?'':Officebuilding::FLOOR_CONFIG[$data['floor_type']],
+            'is_sep' => $data['is_sep']==1?'是':'否',
             'pay_type' => $data['pay_type'],
             'use_year' => $data['use_year'],
             'level' => $data['level'],
@@ -154,7 +157,9 @@ class OfficeBuildFormat
             'other' => $data['other'],
             'city_name' => $city ? $city->name : '',
             'area_name' => $area ? $area->name : '',
-            'category' => $data['category']
+            'category' => $data['category'],
+            'category_name' => !empty($data['category'])?Officebuilding::SALE_LIST[$data['category']]:'',
+            'indus_type' => empty($data['indus_type'])?'':Officebuilding::INDUS_TYPE[$data['indus_type']]
         ];
     }
 

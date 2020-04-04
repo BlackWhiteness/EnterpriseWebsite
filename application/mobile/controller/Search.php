@@ -173,17 +173,28 @@ class Search extends MobileBase
         $cityInfo = Db::name('city')->where('id', 'in', $city)->select();
         $areaInfo = Db::name('area')->where('parentId', 'in', $city)->select();
         $cityList = Db::name('city')->where('id', 'not in', $city)->select();
-        $data = $officebuilding->getOfficeBuild();
 
+        $measureList = [
+            '0' => '不限',
+            '100' => '100平米以下',
+            '100-200' => '100-200平米',
+            '200-300' => '200-300平米',
+            '300-500' => '300-500平米',
+            '500-800' => '500-800平米',
+            '800-1000' => '800-1000平米',
+            '1000' => '1000平米以上',
+        ];
         $this->assign([
             'cityInfo' => $cityInfo,
             'areaInfo' => $areaInfo,
             'cityList' => $cityList,
-            'data' => OfficeBuildFormat::getInstance()->formatAjaxList($data),
-            'page' => paginate($data)
+            'typeList' => Officebuilding::INDUS_TYPE,
+            'measureList' => $measureList,
+            'tagList' => Officebuilding::TAG_CONFIG,
+            'floorList' => Officebuilding::FLOOR_CONFIG,
+            'saleList' => Officebuilding::SALE_LIST,
         ]);
         return $this->fetch('officebuilding');
-
     }
 
     public function shopList(ShopManage $shopManage)
@@ -213,20 +224,18 @@ class Search extends MobileBase
     public function offbuilddetail()
     {
         $id = $this->request->param('id/d', '');
-        $info = Db::name('officebuilding')->where(['id' => $id])->find();
+        $info = Officebuilding::where(['id' => $id])->find();
         $cityInfo = Db::name('city')->where('id', 'in', $info['city'])->select();
         $areaInfo = Db::name('area')
             ->where('parentId', 'in', $info['city'])->select();
 
-        $this->assign("info", $info);
-        $this->assign("cityInfo", $cityInfo);
-        $this->assign("areaInfo", $areaInfo);
-        $recommend = Db::name('officebuilding')->where(["type" => 1])->order(array('releasetime' => 'DESC'))->paginate(10);
-        $this->assign("recommend", $recommend);
-        $new = Db::name('officebuilding')->order(array('releasetime' => 'DESC'))->paginate(10);
-        $this->assign("new", $new);
-        $hot = Db::name('officebuilding')->where(["type" => 2])->order(array('releasetime' => 'DESC'))->paginate(10);
-        $this->assign("hot", $hot);
+        $recommend = Officebuilding::where(["type" => 1])->order(array('releasetime' => 'DESC'))->paginate(10);
+        $this->assign([
+            'info' => OfficeBuildFormat::getInstance()->formatDetail($info),
+            'cityInfo'=>$cityInfo,
+            'areaInfo'=>$areaInfo,
+            'recommend'=>OfficeBuildFormat::getInstance()->formatAjaxList($recommend),
+        ]);
         return $this->fetch('offbuilddetail');
     }
 

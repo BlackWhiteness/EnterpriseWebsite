@@ -2,10 +2,7 @@
 
 namespace app\admin\model;
 
-use app\admin\model\AuthRule;
-use app\admin\service\User;
-use \think\Db;
-use \think\Model;
+use think\Model;
 
 /**
  * Class Officebuilding
@@ -17,6 +14,34 @@ class Officebuilding extends Model
     protected $table = 'search_officebuilding';
     protected $type = [
         'imgs' => 'serialize',
+    ];
+
+    const TAG_CONFIG = [
+        0 => '不限',
+        1 => '可注册',
+        2 => '整栋',
+        3 => '可分割',
+        4 => '带装修',
+    ];
+    const FLOOR_CONFIG = [
+        0 => '不限',
+        1 => '一楼',
+        2 => '楼上',
+        3 => '独栋',
+        4 => '独院',
+    ];
+    const SALE_LIST = [
+        0 => '不限',
+        1 => '出租',
+        2 => '出售',
+    ];
+    const INDUS_TYPE = [
+        0 => '不限',
+        1 => '纯写字楼',
+        2 => '商业综合体',
+        3 => '商务公寓',
+        4 => '商务酒店',
+        5 => '厂房办公'
     ];
 
     /**
