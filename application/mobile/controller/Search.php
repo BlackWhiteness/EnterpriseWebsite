@@ -203,14 +203,44 @@ class Search extends MobileBase
         $cityInfo = Db::name('city')->where('id', 'in', $city)->select();
         $areaInfo = Db::name('area')->where('parentId', 'in', $city)->select();
         $cityList = Db::name('city')->where('id', 'not in', $city)->select();
-        $data = $shopManage->getShopBuild();
+//        $data = $shopManage->getShopBuild();
+
+        $measureList = [
+            '0' => '不限',
+            '20' => '20平米以下',
+            '20-50' => '20-50平米',
+            '50-100' => '50-100平米',
+            '100-200' => '100-200平米',
+            '200-500' => '200-500平米',
+            '500-1000' => '500-1000平米',
+            '1000' => '1000平米以上',
+        ];
+        $floorList = [
+            0=>'不限',
+            1=>'一楼',
+            2=>'独栋',
+            3=>'独院',
+        ];
+        $struckList = [
+            0=>'不限',
+            1=>'钢混结构',
+            2=>'钢结构',
+            3=>'简易结构',
+        ];
+        $saleList = [
+            -1 => '不限',
+            0 => '出租',
+            1 => '出售',
+        ];
 
         $this->assign([
             'cityInfo' => $cityInfo,
             'areaInfo' => $areaInfo,
             'cityList' => $cityList,
-            'data' => ShopFormat::getInstance()->formatList($data),
-            'page' => paginate($data)
+            'measureList'=>$measureList,
+            'floorList'=>ShopManage::FLOOR_CONFIG,
+            'struckList'=>ShopManage::STRUCK_CONFIG,
+            'saleList'=>ShopManage::SALE_CONFIG,
         ]);
         return $this->fetch('shoplist');
     }
@@ -295,10 +325,6 @@ class Search extends MobileBase
         $cityList = Db::name('city')->where('id', 'not in', $info['city'])->select();
         $recommend = ShopManage::where(["category" => 1])->order(array('releasetime' => 'DESC'))
             ->limit(0, 10)->select();
-        $new = ShopManage::order(array('releasetime' => 'DESC'))
-            ->limit(0, 10)->select();
-        $hot = ShopManage::where(["category" => 2])
-            ->order(array('releasetime' => 'DESC'))->limit(10)->select();
 
         $href = HrefManage::order('sort', 'desc')->select()->toArray();
         $ad = AdManage::where('is_enable', '=', 1)->order(['code' => 'asc', 'sort' => 'desc'])->select();
@@ -320,14 +346,12 @@ class Search extends MobileBase
 
         $this->assign([
             'recommend' => ShopFormat::getInstance()->formatList($recommend),
-            'new' => ShopFormat::getInstance()->formatList($new),
-            'hot' => ShopFormat::getInstance()->formatList($hot),
             'cityInfo' => $cityInfo,
             'areaInfo' => $areaInfo,
             'cityList' => $cityList,
             'href' => $href,
             'ad' => $adList,
-            'info' => $info
+            'info' => ShopFormat::getInstance()->formatDetail($info)
         ]);
         return $this->fetch('shopdetail');
     }
