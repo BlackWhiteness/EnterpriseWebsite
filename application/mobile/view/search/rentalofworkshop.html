@@ -14,6 +14,7 @@
 </head>
 
 <body>
+
 <div class="wal" id="app">
     <!--wal-->
     <div class="g-headD"></div>
@@ -196,7 +197,6 @@
         <div class="p-class">
             <ul>
                 <li class="on"><span>区域</span></li>
-                <li class="on"><span>租售</span></li>
                 <li><span>面积</span></li>
                 <li><span>楼层</span></li>
                 <li><span>结构</span></li>
@@ -205,53 +205,16 @@
         <div class="drop-down drop-area">
             <div class="title">区域</div>
             <div class="list-1">
-                <ul>
-                    <li class="on"><a href="">不限</a></li>
-                    <li>罗湖</li>
-                    <li>福田</li>
-                    <li>南山</li>
-                    <li>宝安</li>
-                    <li>龙岗</li>
-                    <li>盐田</li>
-                    <li>龙华</li>
-                    <li>坪山</li>
-                </ul>
-            </div>
-            <div class="list-2">
-                <ul>
-                    <li><a href="">不限</a></li>
-                    <li><a href="">桂园</a></li>
-                    <li><a href="">黄贝</a></li>
-                    <li><a href="">东门</a></li>
-                    <li><a href="">翠竹</a></li>
-                    <li><a href="">南湖</a></li>
-                </ul>
-                <ul>
-                    <li><a href="">不限</a></li>
-                    <li><a href="">东门</a></li>
-                    <li><a href="">翠竹</a></li>
-                    <li><a href="">南湖</a></li>
-                    <li><a href="">桂园</a></li>
-                    <li><a href="">黄贝</a></li>
-                    <li><a href="">东门</a></li>
-                    <li><a href="">翠竹</a></li>
-                    <li><a href="">南湖</a></li>
-                </ul>
-                <ul>
-                    <li><a href="">不限</a></li>
-                    <li><a href="">东门</a></li>
-                    <li><a href="">翠竹</a></li>
-                    <li><a href="">南湖</a></li>
+                <ul id="search_area">
+                    <li data-value="0" class="on">不限</li>
+                    {foreach $areaInfo as $area}
+                        <li data-value="{$area.id}">{$area.name}</li>
+                    {/foreach}
                 </ul>
             </div>
         </div>
-        <div class="drop-down drop-list">
-            <ul>
-                <li><a href="" class="on">出租</a></li>
-                <li><a href="">出售</a></li>
-            </ul>
-        </div>
-        <div class="drop-down">
+
+        <div class="drop-down" id="search_mianji">
             <div class="drop-form">
                 <div class="name">自定义</div>
                 <div class="input"><input type="text" placeholder="最小面积"></div>
@@ -261,34 +224,26 @@
             </div>
             <div class="drop-list">
                 <ul>
-                    <li><a href="">500㎡以下</a></li>
-                    <li><a href="">500-800㎡</a></li>
-                    <li><a href="">800-1300㎡</a></li>
-                    <li><a href="">1300-2000㎡</a></li>
-                    <li><a href="">2000-3000㎡</a></li>
-                    <li><a href="">3000-5000㎡</a></li>
-                    <li><a href="">5000-10000㎡</a></li>
-                    <li><a href="">10000㎡以上</a></li>
+                    {foreach $measureList as $key=>$measure}
+                        <li data-value="{$key}"><a href="javascript:;">{$measure}</a></li>
+                    {/foreach}
                 </ul>
             </div>
         </div>
         <div class="drop-down drop-list">
-            <ul>
-                <li><a href="" class="on">一楼</a></li>
-                <li><a href="" class="on">二楼以上</a></li>
-                <li><a href="">独栋</a></li>
-                <li><a href="">独院</a></li>
-                <li><a href="">其他</a></li>
+            <ul id="search_floor">
+                {foreach $floorList as $key =>$floor}
+                    <li data-value="{$key}"><a href="javascript:;">{$floor}</a></li>
+                {/foreach}
             </ul>
         </div>
-        <div class="drop-down drop-jg">
+        <div class="drop-down drop-jg" id="search_jiegou">
             <div class="title">结构</div>
             <div class="list">
                 <ul>
-                    <li><span>标准厂房</span></li>
-                    <li><span>钢构结构厂房</span></li>
-                    <li><span>简易厂房(铁皮房)</span></li>
-                    <li><span>各类型仓库(单层仓库/多层仓库)</span></li>
+                    {foreach $struckList as $key=> $struck}
+                        <li data-value="{$key}"><span>{$struck}</span></li>
+                    {/foreach}
                 </ul>
             </div>
             <div class="btn">
@@ -299,7 +254,7 @@
     </div>
     <div class="p-class-selected">
         <ul>
-            <li><a href="">标准厂房</a></li>
+            <li><a href="" class="on">标准厂房</a></li>
             <li><a href="">一楼</a></li>
             <li><a href="">二楼以上</a></li>
             <li><a href="">独院</a></li>
@@ -312,67 +267,157 @@
         <p>暂无相关信息</p>
     </div>-->
     <div class="product-list">
-        <ul>
-            <li>
+        <ul id="product-list">
+            <!--<li>
                 <a href="page-show.html">
-                    <div class="img"><img src="/static/mobile/http://m.cfcs1688.com//uploads/2020-03-29/5e80972e36eca.jpg" alt=""><em>塘厦区</em></div>
+                    <div class="img"><img src="/static/mobile/uploads/2020-03-29/5e80972e36eca.jpg" alt=""><em>塘厦区</em></div>
                     <div class="name">超值推荐！独院10米高标准厂房1000平只要18元，空地2000平方免费使用</div>
                     <div class="label"><span>1</span><span>3楼</span></div>
                     <div class="price"><span>18元/㎡</span><em>0 ㎡</em></div>
                 </a>
-            </li>
-            <li>
-                <a href="page-show.html">
-                    <div class="img"><img src="/static/mobile/http://m.cfcs1688.com//uploads/2020-03-26/5e7c99a2c3ec8.jpg" alt=""><em>塘厦区</em></div>
-                    <div class="name">超级笋盘！塘厦科苑城大坪高速出口1公里，精致园林式独门独院出租，带红本。</div>
-                    <div class="label"><span>1</span><span>3楼</span></div>
-                    <div class="price"><span>18元/㎡</span><em>0 ㎡</em></div>
-                </a>
-            </li>
-            <li>
-                <a href="page-show.html">
-                    <div class="img"><img src="/static/mobile/http://m.cfcs1688.com//uploads/2020-03-20/5e741c3b61dd6.jpg" alt=""><em>塘厦区</em></div>
-                    <div class="name">直接对接原房东厂房出租！清溪镇区全新独门独院综合厂房可整租分租</div>
-                    <div class="label"><span>1</span><span>3楼</span></div>
-                    <div class="price"><span>18元/㎡</span><em>0 ㎡</em></div>
-                </a>
-            </li>
-            <li>
-                <a href="page-show.html">
-                    <div class="img"><img src="/static/mobile/http://m.cfcs1688.com//uploads/2020-03-29/5e80972e36eca.jpg" alt=""><em>塘厦区</em></div>
-                    <div class="name">超值推荐！独院10米高标准厂房1000平只要18元，空地2000平方免费使用</div>
-                    <div class="label"><span>1</span><span>3楼</span></div>
-                    <div class="price"><span>18元/㎡</span><em>0 ㎡</em></div>
-                </a>
-            </li>
-            <li>
-                <a href="page-show.html">
-                    <div class="img"><img src="/static/mobile/http://m.cfcs1688.com//uploads/2020-03-26/5e7c99a2c3ec8.jpg" alt=""><em>塘厦区</em></div>
-                    <div class="name">超级笋盘！塘厦科苑城大坪高速出口1公里，精致园林式独门独院出租，带红本。</div>
-                    <div class="label"><span>1</span><span>3楼</span></div>
-                    <div class="price"><span>18元/㎡</span><em>0 ㎡</em></div>
-                </a>
-            </li>
-            <li>
-                <a href="page-show.html">
-                    <div class="img"><img src="/static/mobile/http://m.cfcs1688.com//uploads/2020-03-20/5e741c3b61dd6.jpg" alt=""><em>塘厦区</em></div>
-                    <div class="name">直接对接原房东厂房出租！清溪镇区全新独门独院综合厂房可整租分租</div>
-                    <div class="label"><span>1</span><span>3楼</span></div>
-                    <div class="price"><span>18元/㎡</span><em>0 ㎡</em></div>
-                </a>
-            </li>
+            </li>-->
         </ul>
     </div>
     <script>
         $(function () {
-            //--滚动到底加载更多
-            var dom = $('.product-list ul'),
-                html = dom.html();
-            $(window).scroll(function () {
-                if($(window).scrollTop() > $('.g-foot').offset().top - $(window).height()){
-                    dom.append(html)
+            var list_dom = $('#product-list');
+            //区域
+            var search_area = {element: $('#search_area li'), value: 0};
+            search_area.element.click(function () {
+                search_area.value = $(this).attr('data-value');
+                getData()
+            });
+
+            //面积
+            var search_mianji = {element: $('#search_mianji'), value: null, min:null, max:null};
+            search_mianji.element.find('li').click(function () {
+                search_mianji.value = $(this).attr('data-value');
+                getData()
+            });
+            search_mianji.element.find('.submit input').click(function () {
+                var min = parseFloat(search_mianji.element.find('.input').eq(0).find('input').val()),
+                    max = parseFloat(search_mianji.element.find('.input').eq(1).find('input').val());
+                if(isNaN(min) || isNaN(max)) return;
+                search_mianji.min = min;
+                search_mianji.max = max;
+                drop_hide();
+                getData()
+            });
+            //楼层
+            var search_floor = {element: $('#search_floor li'), value: null};
+            search_floor.element.click(function () {
+                search_floor.value = $(this).attr('data-value');
+                getData()
+            });
+            //结构
+            var search_jiegou = {element: $('#search_jiegou'), list:[]};
+            search_jiegou.element.find('li').click(function () {
+                if($(this).hasClass('on')){
+                    $(this).removeClass('on')
+                }else{
+                    $(this).addClass('on')
                 }
-            })
+                search_jiegou.list.length = 0;
+                search_jiegou.element.find('li').each(function () {
+                    if($(this).hasClass('on')){
+                        search_jiegou.list.push($(this).attr('data-value'))
+                    }
+                })
+            });
+            search_jiegou.element.find('.btn-1 input').click(function () {
+                search_jiegou.element.find('li').removeClass('on');
+                search_jiegou.list.length = 0
+            });
+            search_jiegou.element.find('.btn-2 input').click(function () {
+                drop_hide();
+                if(search_jiegou.list.length > 0){
+                    getData()
+                }
+            });
+
+            function drop_hide() {
+                $('.p-class-d').removeClass('on');
+                $('.p-class-d').find('.p-class').find('li').removeClass('open');
+                $('.p-class-d').find('.drop-down').removeClass('show');
+                $('body').removeClass('noScroll');
+            }
+
+            //处理参数
+            function get_parameter() {
+                var parameter = {};
+                if(search_area.value !== null){
+                    parameter.area = search_area.value
+                }
+                // if(search_zushou.value !== null){
+                //     parameter.zushou = search_zushou.value
+                // }
+                if(search_mianji.value !== null){
+                    parameter.mianji = search_mianji.value
+                }
+                if(search_mianji.min !== null){
+                    parameter.mianji_min = search_mianji.min
+                }
+                if(search_mianji.max !== null){
+                    parameter.mianji_max = search_mianji.max
+                }
+                if(search_floor.value !== null){
+                    parameter.floor = search_floor.value
+                }
+                if(search_jiegou.list.length > 0){
+                    parameter.jiegou = search_jiegou.list
+                }
+                return parameter
+            }
+
+            var url = "/ajax_search_ws/{$category}",
+                page = {total:1, curr:1};
+            getData();
+            function getData() {
+                var parameter = get_parameter();
+                $.get(url, parameter, function (data) {
+                    list_dom.html("");
+                    // page.total = Math.ceil(data.page.total / data.page.per_page);
+                    page.total = data.page.last_page;//为了测试，在这里写死总共5页，实际开发请将些行删掉，将上面一行注释取消
+                    page.curr = data.page.current_page;
+                    //因为测试数据只有两条，这样没法测试滚动加载，所以下面调了二次domCreate，实际只要调用一次
+                    domCreate(data.data);
+                })
+            }
+
+            //--滚动到底加载更多
+            var is_scroll = true;
+            $(window).scroll(function () {
+                if(!is_scroll) return;
+                if($(window).scrollTop() > $('.g-foot').offset().top - $(window).height()){
+                    is_scroll = false;
+                    if(page.total === page.curr){
+                        console.log("我是有底线的");
+                        return;
+                    }
+                    var parameter = get_parameter();
+                    parameter.page = page.curr;
+                    $.get(url, parameter, function (data) {
+                        //page.curr = data.page.current_page;
+                        page.curr ++;//为了测试，在这里每滚动一次自加1，实际开发请将些行删掉，将上面一行注释取消
+                        domCreate(data.data);
+                        is_scroll = true
+                    })
+                }
+            });
+
+            //--生成列表
+            function domCreate(data) {
+                data.forEach(function (item) {
+                    list_dom.append('<li>\n' +
+                        '                <a href="/work_shop/detail?id='+item.id+'">\n' +
+                        '                    <div class="img"><img src="'+item.imgs+'" alt=""><em>'+item.area_name+'</em></div>\n' +
+                        '                    <div class="name">'+item.title+'</div>\n' +
+                        '                    <div class="label"></div>\n' +
+                        '                    <div class="price"><span>'+item.plantrent+'/㎡</span><em>'+item.measurearea +'㎡</em></div>\n' +
+                        '                </a>\n' +
+                        '            </li>')
+                })
+            }
         })
     </script>
 
@@ -395,6 +440,6 @@
 </body>
 </html>
 
-<link rel="stylesheet" href="script/swiper/swiper-3.4.2.min.css">
+<link rel="stylesheet" href="/static/mobile/script/swiper/swiper-3.4.2.min.css">
 <script type="text/javascript" src="/static/mobile/script/swiper/swiper-3.4.2.jquery.min.js"></script>
 <script type="text/javascript" src="/static/mobile/script/js.js"></script>

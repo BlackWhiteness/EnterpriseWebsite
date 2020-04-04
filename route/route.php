@@ -27,14 +27,14 @@ Route::domain('m', function () {
     Route::get('shop', 'mobile/Search/shopList')->name('shop');
 
     //详情
-    Route::get('workshop/detail', 'mobile/Search/workshopdetail');
+    Route::get('work_shop/detail', 'mobile/Search/workshopdetail');
     Route::get('of_build/detail', 'mobile/Search/offbuilddetail');
     Route::get('land/detail', 'mobile/Search/landdetail');
     Route::get('shop/detail', 'mobile/Search/shopdetail');
 
     // 异步获取
 
-    Route::get('ajax_search_ws', 'mobile/Search/ajaxSearchWs');
+    Route::get('ajax_search_ws/:category', 'mobile/Search/ajaxSearchWs');
     Route::get('search_of', 'mobile/Search/ajaxSearchOf');
     Route::get('search_land', 'mobile/Search/ajaxSearchLand');
     Route::get('search_shop', 'mobile/Search/ajaxSearchShop');

@@ -143,6 +143,14 @@ function p_class_fun() {
         })
     });
 
+    dom.find('.drop-list').each(function () {
+        var li = $(this).find('li');
+        li.click(function () {
+            li.find('a').removeClass('on');
+            $(this).find('a').addClass('on')
+        })
+    });
+
     var dom_selected = $('.p-class-selected');
     dom_selected.find('ul').addClass('swiper-wrapper');
     dom_selected.find('li').addClass('swiper-slide');

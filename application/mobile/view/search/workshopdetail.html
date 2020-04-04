@@ -1,721 +1,390 @@
-<!--厂房或仓库详情页-->
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="renderer" content="webkit" />
+    <title>{:config('web_site_title')}</title>
+    <meta name="keywords" content="{:config('web_site_keywords')}"/>
+    <meta name="description" content="{:config('web_site_description')}"/>
+    <link rel="icon" href="/static/mobile/image/favicon.ico">
+    <link href="/static/mobile/style/index.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="/static/mobile/script/jquery-1.7.1.min.js"></script>
+</head>
 
-<html lang="en" style="font-size: 50px;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>{$info.title}</title>
-    <link rel="icon" href="/NewStyles/images/favicon.ico">
-    <meta name="keywords" content="深圳厂房出租">
-    <meta name="description" content="{$info.title}">    <meta name="format-detection" content="telephone=no">
-    <meta http-equiv="Cache-Control" content="no-transform">
-    <meta http-equiv="Cache-Control" content="no-siteapp">
-    <meta name="applicable-device" content="mobile">
-    <link rel="stylesheet" type="text/css" href="/static/mobile/css/swiper-4.3.5.min.css">
-    <link rel="stylesheet" href="/static/mobile/css/reset.css">
-    <link rel="stylesheet" href="/static/mobile/css/base.css">
-    <link rel="stylesheet" href="/static/mobile/css/details.css">
-    <script src="./workshopdetail_files/sdk"></script><script charset="utf-8" src="/static/index/js/lxb.js"></script><script charset="utf-8" src="./workshopdetail_files/insert_bdtj"></script><script src="/static/index/js/push.js"></script><script src="/static/index/js/hm.js"></script><script src="/static/index/js/rem.js"></script>
-    <script src="./workshopdetail_files/index.php"></script>
-    <style>
-        .listCon li >a{
-            overflow: initial;
-        }
-    </style>
-<!--埋点头部-->
-<script>
-    //声明_czc对象
-    var _czc = _czc || [];
-    //用来指定需要哪个网站代码(siteid)来接受API发送的请求。
-    _czc.push(["_setAccount", "1275394881"]);     //正式环境
-</script></head>
-<body class="bodyBgWhite">
-        <div id="goToUp" style="display: block;"></div>
-    <a href="/foot/footprint/" id="historyPageBtn" onclick="_czc.push(["_trackEvent","厂房详情页","点击足迹按钮次数"]);"></a>
-            <!--打开app-->
-    <!--头部-->
-    <header class="headBox dheadFixBox headFixBox" style="background-color: rgb(248, 248, 248);">
-        <a href="javascript:void(0);" class="back"></a>
-        <h2 style="text-align: left;padding-left: 1.12rem">{$info.title|mb_substr=0,15,'utf-8'}</h2>
-        <a href="javascript:void(0)" id="factoryShare" class="share" onclick="_czc.push(["_trackEvent","厂房详情页","点击分享次数"]);"></a>
-        <div id="factoryNav" class="nav" onclick="_czc.push(["_trackEvent","厂房详情页","点击抽屉次数"]);"></div>
-    </header>
-    <!--顶部导航频道-->
-<!--<nav id="nav"></nav>-->
-<style>
-    #nav .foot li{
-        width: 33.333%;
-    }
-</style>
-<nav id="nav">
-    <div class="navCon">
-        <div class="head">
-            <img src="/static/index/img/navigation_banner.png" alt="">
-            <a href="javascript:void(0);" class="navIcon"></a>
+<body>
+<div class="wal" id="app">
+    <!--wal-->
+    <div class="g-head g-head-2">
+        <div class="wal">
+            <h2>{$info.title}</h2>
+            <div class="btn btn-left"><a href="javascript:window.history.go(-1);" class="back"></a></div>
+            <div class="btn btn-right">
+                <a href="javascript:;" class="search"></a>
+                <a href="javascript:;" class="nav"></a>
+            </div>
         </div>
-        <ul class="menuNav clearFix">
-            <li>
-                <a href="/sz/cf/">
-                <img src="/static/index/img/nav_icon_0.png" alt="厂房">
-                <p>厂房出租</p>
-                </a>
-            </li>
-            <li>
-                <a href="/sz/warehouse/">
-                    <img src="/static/index/img/nav_icon_cangku.png" alt="仓库">
-                    <p>仓库</p>
-                </a>
-            </li>
-            <li>
-                <a href="/office/">
-                <img src="/static/index/img/nav_icon_1.png" alt="写字楼">
-                <p>写字楼</p>
-                </a>
-            </li>
-            <li>
-                <a href="/sz/td/">
-                <img src="/static/index/img/nav_icon_2.png" alt="土地">
-                <p>土地</p>
-                </a>
-            </li>
-            <li>
-                <a href="/y/">
-                    <img src="/static/index/img/nav_icon_4.png" alt="产业园区">
-                    <p>产业园区</p>
-                </a>
-            </li>
-            <li>
-                <a href="/sxzs/">
-                    <img src="/static/index/img/nav_icon_3.png" alt="市县招商">
-                    <p>市县招商</p>
-                </a>
-            </li>
-            <li>
-                <a href="/zhuanti/">
-                    <img src="/static/index/img/nav_icon_5.png" alt="热销园区">
-                    <p>热销园区</p>
-                </a>
-            </li>
-
-            <li>
-                <a href="/agents/sz/">
-                    <img src="/static/index/img/nav_icon_6.png" alt="经纪人">
-                    <p>经纪人</p>
-                </a>
-            </li>
-            <li>
-                <a href="/news/">
-                    <img src="/static/index/img/nav_icon_9.png" alt="资讯">
-                    <p>资讯</p>
-                </a>
-            </li>
-            <li>
-                <a href="/NewDemand/">
-                    <img src="/static/index/img/nav_icon_7.png" alt="求租求购">
-                    <p>求租求购</p>
-                </a>
-            </li>
-            <li>
-                <a href="/entrust.html">
-                    <img src="/static/index/img/nav_icon_8.png" alt="投放房源">
-                    <p>投放盘源</p>
-                </a>
-            </li>
-
-            <li style="border-bottom: 0">
-                <a href="/work/">
-                    <img src="/static/index/img/homepage_ic_ywhz.png" alt="业务合作">
-                    <p>业务合作</p>
-                </a>
-            </li>
-        </ul>
-        <ul class="foot clearFix">
-            <li>
-                <a href="/">
-                    <img src="/static/index/img/navigation_ic_homepage.png" alt="首页">
-                    <p>首页</p>
-                </a>
-            </li>
-            <li>
-                <a href="/help/about.html">
-                    <img src="/static/index/img/navigation_ic_us.png" alt="关于我们">
-                    <p>关于我们</p>
-                </a>
-            </li>
-            <li>
-                <a href="/">
-                    <img src="/static/index/img/navigation_ic_group.png" alt="集团官网">
-                    <p>集团官网</p>
-                </a>
-            </li>
-            <!--<li>-->
-                <!--<a href="/work/">-->
-                    <!--<img src="/NewStyles/images2/navigation_ic_collaborate.png" alt="业务合作">-->
-                    <!--<p>业务合作</p>-->
-                <!--</a>-->
-            <!--</li>-->
-        </ul>
-        <div class="close"></div>
     </div>
-    <div class="mask"></div>
-</nav>    <!--banner-->
-    <section class="deBanner" style="z-index: 1">
-        <div class="headTansBg"></div>
-        <div class="swiper-container pic deBannerSwiper swiper-container-horizontal">
-            <ul class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
-                {php} $imgs = unserialize($info['imgs']);{/php}
-                {volist name='imgs' id="url"}
-                                                            <li class="swiper-slide swiper-slide-active" onclick="_czc.push(["_trackEvent","厂房详情页","点击图片进入大图次数"]);" style="width: 750px;">
-                            <img src="{$url}" alt="{$info.title}">
-                        </li>
-                                            
-                {/volist}
+    <div class="g-nav">
+        <div class="wal">
+            <div class="head">
+                <div><img src="/static/mobile/image/navigation_banner.png" alt=""></div>
+                <a href="javascript:;" class="close"></a>
+            </div>
+            <div class="index-nav">
+                <ul>
+                    <li>
+                        <a href="page-list.html">
+                            <img src="/static/mobile/image/homepage_ic_navigation_plant.png" alt="">
+                            <p>厂房出租</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="page-list.html">
+                            <img src="/static/mobile/image/homepage_ic_office_building.png" alt="">
+                            <p>厂房出售</p>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="page-list.html">
+                            <img src="/static/mobile/image/homepage_ic_cangku.png" alt="">
+                            <p>仓库出租</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="page-list.html">
+                            <img src="/static/mobile/image/homepage_ic_land.png" alt="">
+                            <p>土地租售</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="page-list.html">
+                            <img src="/static/mobile/image/homepage_ic_special.png" alt="">
+                            <p>园区招商</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="page-list.html">
+                            <img src="/static/mobile/image/homepage_ic_garden.png" alt="">
+                            <p>写字楼</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="page-list.html">
+                            <img src="/static/mobile/image/homepage_ic_broker.png" alt="">
+                            <p>商铺租售</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="page-list.html">
+                            <img src="/static/mobile/image/homepage_ic_investment.png" alt="">
+                            <p>民宅租售</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="nav">
+                <ul>
+                    <li><a href="index.html"><img src="/static/mobile/image/navigation_ic_homepage.png" alt=""><span>首页</span></a></li>
+                    <li><a href="about.html"><img src="/static/mobile/image/navigation_ic_us.png" alt=""><span>关于我们</span></a></li>
+                    <li><a href=""><img src="/static/mobile/image/navigation_ic_group.png" alt=""><span>联系我们</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="g-search">
+        <div class="wal">
+            <div class="form">
+                <div class="input"><input type="text" placeholder="请输入关键词进行搜索"></div>
+                <a href="javascript:;" class="close">取消</a>
+            </div>
+            <div class="tab-btn">
+                <ul>
+                    <li><span>厂房</span></li>
+                    <li><span>写字楼</span></li>
+                    <li><span>土地</span></li>
+                    <li><span>产业园区</span></li>
+                    <li><span>仓库</span></li>
+                </ul>
+            </div>
+            <!--厂房-->
+            <div class="tab-box">
+                <div class="title">最近热搜</div>
+                <div class="list">
+                    <ul>
+                        <li><a href="">标准厂房</a></li>
+                        <li><a href="">龙岗小面积厂房出租</a></li>
+                        <li><a href="">独院厂房</a></li>
+                        <li><a href="">二楼以上</a></li>
+                        <li><a href="">钢结构</a></li>
+                    </ul>
+                </div>
+                <div class="title">搜索历史</div>
+                <div class="msg">暂无搜索历史记录</div>
+            </div>
+            <!--写字楼-->
+            <div class="tab-box">
+                <div class="title">最近热搜</div>
+                <div class="list">
+                    <ul>
+                        <li><a href="">宝安写字楼</a></li>
+                        <li><a href="">交通便利</a></li>
+                        <li><a href="">带装修</a></li>
+                        <li><a href="">近地铁口</a></li>
+                        <li><a href="">龙华写字楼出租</a></li>
+                    </ul>
+                </div>
+                <div class="title">搜索历史</div>
+                <div class="msg">暂无搜索历史记录</div>
+            </div>
+            <!--土地-->
+            <div class="tab-box">
+                <div class="title">最近热搜</div>
+                <div class="list">
+                    <ul>
+                        <li><a href="">工业土地出售</a></li>
+                        <li><a href="">地皮出售</a></li>
+                        <li><a href="">土地买卖</a></li>
+                        <li><a href="">南京土地</a></li>
+                        <li><a href="">成都土地</a></li>
+                    </ul>
+                </div>
+                <div class="title">搜索历史</div>
+                <div class="msg">暂无搜索历史记录</div>
+            </div>
+            <!--产业园区-->
+            <div class="tab-box">
+                <div class="title">最近热搜</div>
+                <div class="list">
+                    <ul>
+                        <li><a href="">粤海装备技术产业园</a></li>
+                        <li><a href="">帝豪智造科技园</a></li>
+                        <li><a href="">江门智能制造产业园</a></li>
+                        <li><a href="">霸州智能测控装备产业园</a></li>
+                    </ul>
+                </div>
+                <div class="title">搜索历史</div>
+                <div class="msg">暂无搜索历史记录</div>
+            </div>
+            <!--仓库-->
+            <div class="tab-box">
+                <div class="title">搜索历史</div>
+                <div class="msg">暂无搜索历史记录</div>
+            </div>
+            <!---->
+            <div class="search-list">
+                <div class="list">
+                    <!--<ul>
+                        <li><a href="">粤海装备技术产业园</a></li>
+                        <li><a href="">帝豪智造科技园</a></li>
+                        <li><a href="">江门智能制造产业园</a></li>
+                        <li><a href="">霸州智能测控装备产业园</a></li>
+                    </ul>-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-img">
+        <ul class="swiper-wrapper">
+            {foreach $info['imgs'] as $image}
+                <li class="swiper-slide"><img src="{$image}" alt=""></li>
+            {/foreach}
+        </ul>
+<!--        <div class="num">-->
+<!--            <div>编号:A14167701</div>-->
+<!--            <div><span class="num-curr"></span>/<span class="num-total"></span></div>-->
+<!--        </div>-->
+    </div>
+    <script type="text/javascript">
+        $(function(){
+            swiperFun({
+                dom: $('.product-img')
+            })
+        })
+    </script>
+    <div class="product-show">
+        <div class="info">
+            <div class="label"><span>{$info.category}</span></div>
+            <div class="time">{$info.releasetime}</div>
+        </div>
+        <h2 class="title">{$info.title}</h2>
+        <div class="msg">
+            <ul>
+                <li>
+                    <h3>{$info.plantrent}<span>m²</span></h3>
+                    <p>总面积</p>
+                </li>
+                <li>
+                    <h3>4000 <span>元</span></h3>
+                    <p>售价</p>
+                </li>
+                <li>
+                    <h3>{$info.area_name}</h3>
+                    <p>区域</p>
+                </li>
             </ul>
-        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
-        <div class="numTips">
-            <p>编号:A10718427</p>            <div class="swiper-pagination swiper-pagination-fraction" style="position: initial;"><span class="swiper-pagination-current">1</span> / <span class="swiper-pagination-total">2</span></div>
-        </div>
-    </section>
-    <!--相册-->
-    <div class="atlasesBox">
-        <header class="headBox headFixBox" style="background-color: rgb(248, 248, 248);">
-            <div class="backUp"></div>
-        </header>
-        <div class="view">
-            <div class="swiper-container swiper-container-horizontal swiper-container-wp8-horizontal">
-                <ul class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
-                    {php} $imgs = unserialize($info['imgs']);{/php}
-                    {volist name='imgs' id="url"}
-                                                                        <li class="swiper-slide swiper-slide-active" style="width: 1366px;">
-                                <img src="/static/index/img/7912c0c3eb552a8a0e75abd07210fea5.jpg" alt="石岩水田高薪园楼上2500平千级无尘车间">
-                            </li>
-
-                    {/volist}                                       </ul>
-            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
-        </div>
-        <div class="ab-swiper-pagination swiper-pagination swiper-pagination-fraction"><span class="swiper-pagination-current">1</span> / <span class="swiper-pagination-total">2</span></div>
-        <div class="preview">
-            <!--<a class="arrow-left" href="#"></a>-->
-            <!--<a class="arrow-right" href="#"></a>-->
-            <div class="swiper-container swiper-container-horizontal swiper-container-wp8-horizontal">
-                <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
-                    {php} $imgs = unserialize($info['imgs']);{/php}
-                    {volist name='imgs' id="url"}
-                                                                    <li class="swiper-slide active-nav swiper-slide-active">
-                            <img src="/static/index/img/7912c0c3eb552a8a0e75abd07210fea5.jpg" alt="石岩水田高薪园楼上2500平千级无尘车间">
-                        </li>
-                    {/volist}                                         </div>
-            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
         </div>
     </div>
-    <!--abstract信息-->
-    <section class="abstractBox bt20">
-        <div class="absLabBox plr30 clearFix">
-            <p class="absLab clearFix">
-                <span class="lab_1">出租</span>
-                <span class="lab_2">置顶</span>                <span class="lab_3">优质</span>                <span class="lab_4">推荐</span>            </p>
-            <p class="ReleTime">1分钟前</p>        </div>
-        <h2 class="tit plr30" id="title" title="石岩水田高薪园楼上2500平千级无尘车间">{$info.title}</h2>
-        <div class="plr30"><p style="width: 100%;height: 1px;background-color:#EFEFEF"></p></div>
-        <ul class="absList clearFix" style="border: 0;">
-            <li>
-                <h4>{$info.measurearea}<span>m²</span></h4>
-                <p>总面积</p>
-            </li>
-            <li>
-                <h4>{$info.plantrent}<span>元/m²</span></h4>
-                <p>租金</p>
-            </li>
-            <li>
-                <h4>{$info.city|getCityName=###,$info.area,'-'}</h4>
-                <p>区域</p>
-            </li>
-        </ul>
-                <div class="plr30"><p style="width: 100%;height: 1px;background-color:#EFEFEF"></p></div>
-        
-            </section>
+    <div class="p-line"></div>
 
-    <!--基本信息-->
-    <section class="baseInfoBox plr30 bt20 singleRow">
-        <div class="detaSectTit clearFix">
+    <div class="product-show-2">
+        <div class="p-title">
             <h2>基本信息</h2>
         </div>
-        <ul class="baseInfo clearFix">
-            <li>
-                <span>类型：</span>{$info.category}            </li>
-                            <li>
-                    <span>总面积：</span>{$info.measurearea}m²                </li>
-                                        <li>
-                    <span>厂房面积：</span>{$info.lengthwidth}m²                </li>
-                                        <li>
-                    <span>办公室：</span>{$info.officespace}m²                </li>
-                    <li>
-                <span>宿舍面积：</span>{$info.dormitoryarea} m²           </li>
-                            <li>
-                    <span>厂房价格：</span>{$info.plantrent}元/m²                </li>
-                                        <li>
-                    <span>所在楼层：</span>{$info.layernumber}层                </li>
-                                        <li>
-                    <span>结构：</span>{$info.structure}                </li>
-                     <li>
-                <span>土地用途：</span>{$info.canteen}            </li>
-                            <li>
-                    <span>使用年限：</span>{$info.expire}  年              </li>
-                                        <li>
-                    <span>占地面积：</span>{$info.numberbuildings} m²               </li>
-                                        <li>
-                    <span>新旧程度：</span>{$info.newolddegree}                </li>
-                    <li>
-                <span>厂房配电：</span>{$info.distributioncapacity}            </li>
-                            <li>
-                    <span>厂房电梯：</span>{$info.elevator}                </li>
-                                        <li>
-                    <span>消房：</span>{$info.firecontrol}                </li>
-                                        <li>
-                    <span>交易方式：</span>{$info.applicableindustries}                </li>
-                                                                                </ul>
-    </section>
-    <!--概括-->
-    <section class="sumBox plr30 bt20">
-        <div class="detaSectTit clearFix">
+        <div class="list">
+            <ul>
+                <li>
+                    <div class="name">类型</div>
+                    <p>{$info.category}</p>
+                </li>
+                <li>
+                    <div class="name">总面积</div>
+                    <p>{$info.measurearea}㎡</p>
+                </li>
+                <li>
+                    <div class="name">厂房面积</div>
+                    <p>{$info.lengthwidth}㎡</p>
+                </li>
+                <li>
+                    <div class="name">办公室面积</div>
+                    <p>{$info.officespace}㎡</p>
+                </li>
+                <li>
+                    <div class="name">宿舍面积</div>
+                    <p>{$info.dormitoryarea}㎡</p>
+                </li>
+                <li>
+                    <div class="name">占地面积</div>
+                    <p>{$info.numberbuildings}㎡</p>
+                </li>
+                <li>
+                    <div class="name">所在楼层</div>
+                    <p>{$info.layernumber} 层</p>
+                </li>
+
+                <li>
+                    <div class="name">结构</div>
+                    <p>{$info.structure}</p>
+                </li>
+                <li>
+                    <div class="name">土地用途</div>
+                    <p>{$info.canteen}</p>
+                </li>
+                <li>
+                    <div class="name">使用年限</div>
+                    <p>{$info.expire}年</p>
+                </li>
+                <li>
+                    <div class="name">厂房价格</div>
+                    <p>{$info.plantrent}</p>
+                </li>
+                <li>
+                    <div class="name">新旧程度</div>
+                    <p>{$info.newolddegree}成新</p>
+                </li>
+                <li>
+                    <div class="name">厂房配电</div>
+                    <p>{$info.distributioncapacity}</p>
+                </li>
+                <li>
+                    <div class="name">厂房电梯</div>
+                    <p>{$info.elevator}</p>
+                </li>
+                <li>
+                    <div class="name">消防</div>
+                    <p>{$info.firecontrol}</p>
+                </li>
+                <li>
+                    <div class="name">交易方式</div>
+                    <p>{$info.applicableindustries}</p>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="p-line"></div>
+
+    <div class="product-show-2">
+        <div class="p-title">
             <h2>概况</h2>
         </div>
-        <div class="sumCon" style="margin-bottom: 0.3rem; height: 96px;">
-            <div class="txt">{$info.detail}</div>
-            <div class="unfold" style="display: none;"><span class="hui-icons hui-icons-down2"></span></div>
+        <div class="content">
+            {$info.detail|raw}
         </div>
-    </section>
-    <!--选址预约-->
-    <!--<section class="orderedBox plr30 bt20">
-        <div class="detaSectTit clearFix">
+    </div>
+    <div class="p-line"></div>
+
+    <div class="product-show-3">
+        <div class="p-title">
             <h2>选址预约</h2>
         </div>
-        <div>
-            <form action="/sz/cf_A10718427.html" id="orderedForm">
-                <div class="inp">
-                    <input type="text" placeholder="请输入联系方式" onkeyup="value=value.replace(/[^\d]/g,&#39;&#39;)" onblur="value=value.replace(/[^\d]/g,&#39;&#39;)" maxlength="11">
-                </div>
-                <div class="textarea">
-                    <textarea placeholder="请描述您的具体需求，如：找一个靠近高速，大小1200到1500平，带装修的厂房等。" maxlength="500"></textarea>
-                </div>
-                <div class="sub">
-                    <button onclick="_czc.push([&#39;_trackEvent&#39;,&#39;厂房详情页&#39;,&#39;点击选址预约按钮次数&#39;]);">马上预约</button>
-                </div>
-
-            <div class="verifyTipsBox center"><p class="verifyTips "></p></div> </form>
-            <div class="megDialog megSuusen">
-                <p class="icon_dialog"></p>
-                <h4>信息提交失败</h4>
-                <p class="fail">请重新提交</p>
-                <p class="btn">关闭</p>
+        <div class="form">
+            <ul>
+                <li>
+                    <div class="input"><input type="text" placeholder="请输入联系方式"></div>
+                </li>
+                <li>
+                    <div class="input"><textarea placeholder="请描述您的具体需求，如：找一个靠近高速，大小1200到1500平，带装修的厂房等。"></textarea></div>
+                </li>
+            </ul>
+            <div class="submit">
+                <div><input type="button" value="马上预约"></div>
             </div>
-            <div class="maskBox"></div>
         </div>
-    </section>-->
-    <!--猜你喜欢-->
-    <section class="likeBox plr30 bt20">
-        <div class="detaSectTit clearFix">
+    </div>
+    <div class="p-line"></div>
+
+    <div class="product-list">
+        <div class="p-title">
             <h2>猜你喜欢</h2>
-            <a id="like" href="/sz/cf/" onclick="_czc.push(["_trackEvent","厂房详情页","点击猜你喜欢更多按钮进入列表页次数"]);">更多<i></i></a>
+            <a href="/workshop/{$info.category_id}" class="more">更多</a>
         </div>
-        <ul class="listCon ">
-                                {volist name="recommend" id="data"}
-                                        <li>
-                    <a href="/search/workshopdetail?id={$data.id}" class="clearFix" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击优质厂房信息总次数&#39;]);">
-                        <div class="pic">
-                            <i>{$data.city|getCityName=###}</i>
-                            <img src="{$data['imgs'][0]}" alt="{$data.title}">
-                            <!--<p>出租</p>-->
-                        </div>
-                        <div class="txt">
-                            <h2>{$data.title}</h2>
-                            <p class="baseInfo"> 
-                            <span>{$data.city_name}</span></p>
-                            <p class="label">
-                            <span class="lab_1">{$data.structure}</span>
-                           <span class="lab_2">{$data.floor}楼</span>
-                            </p>
-                            <p class="price cfPrice">
-                                <span>{$data.plantrent}元/㎡</span>
-                                <span><span>{$data.measurearea} ㎡</span></span>
-                            </p>
-                        </div>
+        <ul>
+            {foreach $recommend as $row}
+                <li>
+                    <a href="/work_shop/detail?id={$row.id}">
+                        <div class="img"><img src="{$row.imgs}" alt=""><em>塘厦区</em></div>
+                        <div class="name">{$row.title}</div>
+                        <div class="label"></div>
+                        <div class="price"><span>{$row.plantrent}/㎡</span><em>{$row.measurearea}㎡</em></div>
                     </a>
-                    </li> {/volist}
-                                       
-                                    </ul>
-    </section>
-        <!--所在区域的镇/街道信息-->
-    <section class="sameRegion plr30">
-        <div class="detaSectTit clearFix">
-            <h2>宝安厂房</h2>
-        </div>
-        <div class="swiper-container Swipertips swiper-container-horizontal">
-            <ul class="swiper-wrapper">
-    {volist name="recommend" id="data"}
-            
-                                    <li class="swiper-slide labels swiper-slide-active" onclick="_czc.push(["_trackEvent","厂房详情页","点击区域厂房标签次数"]);" style="width: 690px;">
-                                                                                    <a href="/sz/cf/A06-B017/">新安厂房</a>
-                                                                                                                                        <a href="/sz/cf/A06-B018/">西乡厂房</a>
-                                                                                                                                        <a href="/sz/cf/A06-B019/">航城厂房</a>
-                                                                                                                                        <a href="/sz/cf/A06-B020/">福永厂房</a>
-                                                                                                                                        <a href="/sz/cf/A06-B021/">福海厂房</a>
-                                                                                                                                        <a href="/sz/cf/A06-B022/">沙井厂房</a>
-                                                                                                                                        <a href="/sz/cf/A06-B023/">新桥厂房</a>
-                                                                                                                                        <a href="/sz/cf/A06-B024/">松岗厂房</a>
-                                                                                                                                        <a href="/sz/cf/A06-B025/">燕罗厂房</a>
-                                                                                                                                        <a href="/sz/cf/A06-B026/">石岩厂房</a>
-                                                                                                                                        <a href="/sz/cf/A06-B027/">光明厂房</a>
-                                                                                                                                        <a href="/sz/cf/A06-B028/">公明厂房</a>
-                                                                        </li>{/volist}
-                            </ul>
-            <div class="swiper-pagination swiper-pagination-bullets"><span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span><span class="swiper-pagination-bullet"></span></div>
-        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
-    </section>
-        <!--没找到房源-->
-    <section class="CanNotForm plr30 " style="margin-top: 0rem;padding-bottom: 0.6rem;">
-        <a id="help" href="/NewDemand/" onclick="_czc.push(["_trackEvent","厂房详情页","点击委托需求按钮次数"]);">
-            <img src="/static/index/img/detailed_entrust2.png" alt="需求登记">
-        </a>
-    </section>
+                </li>
+            {/foreach}
+        </ul>
+    </div>
 
-
-    
-    
-    <!--底部栏-->
-    <!--底部栏-->
-<footer>
-    <!--电话-->
-    
-    <p class="link clearFix">
-        <a id="about" href="/index/about.html" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;首页&#39;,&#39;点击关于我们次数&#39;]);">关于我们</a>
-        
-    </p><div style="clear:both"></div>
-    <p class="copy clearFix" style="margin-bottom: 6px">
-        
-        <span style="margin: 0 0.2rem;"><a style="color: #979797;" href="http://www.beian.miit.gov.cn" target="_blank">{:config('web_site_icp')}</a></span>
-    </p>   </p><div style="clear:both"></div>
-    <p class="copy clearFix" style="margin-bottom: 3px">
-        <span style="margin: 0 0.2rem;">广东厂房网&nbsp;版权所有</span>
-        
-    </p>   </p><div style="clear:both"></div>
-        <p>{:config('web_site_name')} 版权所属</p>
-    </footer>        <div style="height: 1.2rem;"></div>
-    <!--底部导航模块-->
-    <section class="botFixNavBox">
-        <div>
-            <a href="/shop/15975/" class="agentPic" onclick="_czc.push(["_trackEvent","厂房详情页","点击经纪人网店次数"]);">
+    <a href="javascript:;" class="topA"><img src="/static/mobile/image/homepage_icon_return_top.png" alt=""></a>
+    <div class="g-foot">
+        <div class="tel">
+            <a href="">
+                <img src="/static/mobile/image/bottom_phone_icon.png" alt="">
                 <div>
-                    <img src="/static/index/img/20268d75-aa8a-488d-9117-2b3fab93de3c.jpg" alt="">
-                    <p>{$info.name}</p>
-                </div>
-            </a>
-            <a href="/NewMessage/?uid=15975&amp;code=1569291548" class="leave" onclick="_czc.push(["_trackEvent","厂房详情页","点击留言次数"]);">
-                <i class="icon_leave"></i>
-                <p>留言</p>
-            </a>
-            <a href="tel:{:config('web_site_tel')},,{$info.tel}" class="tel semCall" id="showtest" onclick="_czc.push(["_trackEvent","厂房详情页","点击浮动框电话拨打按钮次数"]);">
-                <div>
-                    <p>点击免费拨打</p>
-                    <p>{:config('web_site_tel')}转{$info.tel} </p>
+                    <span>4008863806</span>
+                    <p>点击拨打免费咨询</p>
                 </div>
             </a>
         </div>
-    </section>
-        <!--分享-->
-    <section class="sharePageBpx">
-        <!--点击右上角分享-->
-        <div class="share share-1">
-            <img src="/static/index/img/share_pic1.png" alt="" class="pic1">
-            <a href="javascript:void(0);" class="share-btn"><img src="/static/index/img/share_know.png" alt=""></a>
+        <div class="link"><a href="about.html">关于我们</a></div>
+        <p>粤ICP备19115088号</p>
+        <p>广东厂房网 版权所有</p>
+        <p>东莞市众鑫房地产投资有限公司 版权所属</p>
+    </div>
+    <div class="foot-btn-d"></div>
+    <div class="foot-btn">
+        <div class="wal">
+            <a href="" class="btn"><img src="/static/mobile/image/ic_message.png" alt=""><span>需求登记</span></a>
+            <a href="" class="tel">点击免费拨打 <em>0769-87819917</em></a>
         </div>
+    </div>
+    <!--wal-END-->
+</div>
+</body>
+</html>
 
-        <div class="share share-2">
-            <div class="shareCon">
-                <h3>分享链接给好友</h3>
-                <p class="text">https://realsee.com/lianjia/vdrj5DRkvP3q8OeK/Ydq4ApmvLVbgEf7TghKTeZNrL9jRPDln/</p>
-                <input type="text" class="copyVal" id="copyVal">
-                <p class="btn copyKey">一键复制</p>
-                <p class="btn">取消</p>
-            </div>
-        </div>
-        <div class="share share-3">
-            <div class="shareCon">
-                <a href="javascript:void(0);" class="share-btn"><img src="/static/index/img/share_know.png" alt=""></a>
-                <img src="/static/index/img/share_pic2.png" alt="" class="pic2">
-            </div>
-        </div>
-    </section>
-    <script src="/static/index/js/swiper-4.3.5.min.js"></script>
-    <script src="/static/index/js/zepto.js"></script>
-    <script src="/static/index/js/touch.js"></script>
-    <script>
-        var factory =   "/sz/cf/";
-        var office  =   "/sz-office/rent/";
-        var land    =   "/sz/td/";
-        var sxzs    =   "/sxzs/zfzs/";
-        var park    =   "/y/";
-        var agent   =   "/agents/sz/";
-        var demand  =   "/NewDemand/";
-        var newlist =   "/infor/index/";
-        var route = [factory,office,land,sxzs,park,'picked',agent,demand,'delivery',newlist];
-        var xzyName =   "factorydetail";
-        var xzyID   =   "1804182026124146414";
-    </script>
-    <script src="/static/index/js/base.js"></script>
-    <script src="/static/index/js/details.js"></script>
-    <script type="text/javascript" src="/static/index/js/NativeShare.js"></script><!--分享组件-->
-    <script src="./workshopdetail_files/index(1).php"></script>
-    <script>
-        $.ajax({
-            type : 'post',
-            url  : "/sz/cf_A10718427.html",
-            data : {browse:1},
-            success:function(result){
-                if (typeof(Storage) !== "undefined") {
-                    // localStorage.setItem("locaRes", JSON.stringify(result));
-                    // s= JSON.parse(localStorage.getItem("locaRes"));
-                    // localStorage.clear();//清空数据函数
-                    var hisArray=[];
-                    var ls = window.localStorage;
-                    // var hisRes=ls.getItem("locaRes");
-                    var hisVal = JSON.parse(ls.getItem("hisTotal"))
-                    if(hisVal){
-                        hisArray=hisVal;
-                    }
-                    ls.setItem("locaRes", JSON.stringify(result));
-                    var obj = JSON.parse(ls.getItem("locaRes"));
-                    hisArray.push(obj);
-                    // hisArray.forEach(function(item,index,arr){
-                    //     // console.log(item);
-                    //     if(item.id==obj.id && index!= (hisArray.length-1)){
-                    //         console.log('number',hisArray.length-1)
-                    //         hisArray.splice(index)
-                    //     }
-                    // });
-                    for(var i=0;i<hisArray.length;i++){
-                        if(hisArray[i].id==obj.id && i!= (hisArray.length-1)){
-                            hisArray.splice(i,1);
-                        }
-                    }
-                    ls.setItem("hisTotal", JSON.stringify(hisArray));
-                    hisArray = JSON.parse(ls.getItem("hisTotal"));
-                } else {
-                    alert("抱歉！您的浏览器不支持 Web Storage ...")
-                }
-            }
-        });
-        $('.tel').click(function () {
-            $.ajax({
-                type : 'post',
-                url  : "/sz/cf_A10718427.html",
-                data : {call:1},
-                success:function(result){
-                    if (typeof(Storage) !== "undefined") {
-                        // Store
-                        // localStorage.setItem("lastname", "Gates");
-                        // Retrieve
-                        // document.getElementById("result").innerHTML = localStorage.getItem("lastname");
-
-                        var hisArray2=[];
-                        var ls = window.localStorage;
-                        var hisVal = JSON.parse(ls.getItem("hisTotal2"))
-                        if(hisVal){
-                            hisArray2=hisVal;
-                        }
-                        ls.setItem("locaRes2", JSON.stringify(result));
-                        var obj = JSON.parse(ls.getItem("locaRes2"));
-                        hisArray2.push(obj);
-                        for(var i=0;i<hisArray2.length;i++){
-                            if(hisArray2[i].id==obj.id && i!= (hisArray2.length-1)){
-                                hisArray2.splice(i,1);
-                            }
-                        }
-                        ls.setItem("hisTotal2", JSON.stringify(hisArray2));
-                        hisArray2 = JSON.parse(ls.getItem("hisTotal2"));
-                    } else {
-                        alert("抱歉！您的浏览器不支持 Web Storage ...")
-                    }
-                }
-            })
-        });
-
-        //记录点击进入经纪人个人网店次数
-        $('.agentPic').on('click', function () {
-            var id = "15975";
-            var businessId = "1804182026124146414";
-            $.ajax({
-                type : 'post',
-                url : "/countAgentShop/",
-                data : {id:id,businessId:businessId,type:1},
-                success: function (ret) {
-                    console.log(ret);
-                }
-            })
-        });
-
-        /**
-         * sem获取拨打电话记录
-         */
-        $('.semCall').on('click', function () {
-            var url = window.location.href;
-            $.ajax({
-                type : 'post',
-                url : "/newmain/semtelsub/",
-                data : {url:url},
-                success: function (ret) {
-                    console.log(ret);
-                }
-            })
-            console.log(url);
-        })
-        window.onload=function(){
-//            nav();//顶部抽屉导航
-            switchNav();// 打开、关闭nav
-            baseInforWid();//基本信息
-            share();//分享组件
-            abstractSwiper();//相册
-            headFixBox();//头部滑动固定
-            fullText();//查看全文
-            dheadFixApp();//固定app
-        }
-
-        var Swipertips = new Swiper('.Swipertips', {
-            // autoplay: true,//可选选项，自动滑动
-            pagination: {
-                el: '.Swipertips .swiper-pagination',
-                type: 'bullets',
-                // type: 'fraction',
-                // type: 'fraction',
-            },
-        })
-    </script>
-    <!--埋点尾部-->
-    
-     <script>
-        $("#orderedForm").append('<div class="verifyTipsBox center"><p class="verifyTips "></p></div> ');
-        var verifyTipsBox = $(".verifyTipsBox");
-        var verifyTips = $(".verifyTipsBox .verifyTips");
-        /************ 设置自动消失事件 *************/
-        function dieAway(){
-            verifyTipsBox.show();
-
-            setTimeout(function(){
-                $(".verifyTipsBox").animate({
-                    opacity:'0',
-                    // display:'none',
-                }, 300, 'ease-out');
-            },1000);
-            $(".verifyTipsBox").css({"opacity":"1"})
-            setTimeout(function () {
-                verifyTipsBox.hide();
-            },4000)
-        };
-        /************ 提交状态 *************/
-        function dialog(type) {
-            //type=1:成功 type=2:提交失败 type=3:服务器出错
-            var type = arguments[0]?arguments[0]:1;
-            var _this = $('.megDialog')
-            _this.show();
-            if(type==1){
-                _this.addClass('megSuusen').removeClass('megFail')
-                _this.find('h4').text('已预约成功');
-                _this.find('.fail').text('请保持电话通畅，客服将会联系您');
-            }else if(type==2){
-                _this.removeClass('megSuusen').addClass('megFail')
-                _this.find('h4').text('信息提交失败');
-                _this.find('.fail').text('请重新提交');
-            }else if(type==3){
-                _this.removeClass('megSuusen').addClass('megFail')
-                _this.find('h4').text('服务器出错');
-                _this.find('.fail').text('请重新提交');
-            }else if(type==4){
-                _this.removeClass('megSuusen megFail')
-                _this.find('h4').text('请勿频繁提交');
-                _this.find('.fail').text('您已成功提交，请勿频繁提交');
-            }
-
-            $(".megDialog").next('.maskBox').show();
-            return false;
-        }
-        /************ 表单提交 *************/
-        $("#orderedForm .sub button").click(function(){
-            var inp = $("#orderedForm .inp input");
-            var textarea = $("#orderedForm .textarea textarea")
-            var telReg = /^((0\d{2,3}-\d{7,8})|(1[3456789]\d{9}))$/;//手机正则
-
-            if(!inp[0].value.trim()){
-                verifyTips.text('请输入手机号码')
-                dieAway();
-                return false;
-            }
-            if(!telReg.test(inp[0].value)){
-                verifyTips.text('您输入的手机格式有误，请重新输入');
-                dieAway();
-                return false;
-            }
-            if(!textarea[0].value.trim()){
-                verifyTips.text('请输入您的具体需求');
-                dieAway();
-                return false;
-            }
-            var tel = inp[0].value;
-            var content = textarea[0].value;
-            var uid = "15975";
-            var CfId = "1804182026124146414";
-            var type = "1";
-            var sheng = "440000000";
-            var city = "440300000";
-            var area = "";
-            $.ajax({
-                type : 'post',
-                url  : "/cfShow/Leave/",
-                data : {tel:tel,content:content,uid:uid,CfId:CfId,type:type,sheng:sheng,city:city,area:area},
-                success:function(msg){
-                    if(msg == 1){
-                        $('.sub button').attr("disabled","disabled");
-                        $('.sub button').css({"background-color":"#ccc"});
-                        $('.sub button').html('已预约');
-                        dialog(msg)
-                    }else if(msg == 2){
-                        return  dialog(msg)
-                    }else if(msg == 4){
-                        return  dialog(msg)
-                    }
-                },
-                error:function(error){
-                    return  dialog(3);
-                },
-            });
-            return false;
-        });
-        $('#orderedForm .inp input').keyup(function(){
-            var mobile = $(this).val();
-            var tel  = "";
-            if(mobile != '' && tel !=''){
-                var dq  =   tel.split(',');
-                var count   =   dq.length;
-                for(var i=0;i<count;i++){
-                    if(mobile == dq[i]){
-                        $('.sub button').attr("disabled","disabled");
-                        $('.sub button').css({"background-color":"#ccc"});
-                        $('.sub button').html('已预约');
-                        return false
-                    }else{
-                        $('.sub button').removeAttr('disabled');
-                        $('.sub button').css({"background-color":"#dd2534"});
-                        $('.sub button').html('马上预约');
-                    }
-                }
-            }
-        })
-        //关闭留言提交状态
-        $(".megDialog p.btn").tap(function(){
-            var _this = $('.megDialog')
-            _this.hide();
-            $(".megDialog").next('.maskBox').hide();
-            window.location.reload();
-        })
-    </script>
-
-</body></html>
+<link rel="stylesheet" href="script/swiper/swiper-3.4.2.min.css">
+<script type="text/javascript" src="/static/mobile/script/swiper/swiper-3.4.2.jquery.min.js"></script>
+<script type="text/javascript" src="/static/mobile/script/js.js"></script>

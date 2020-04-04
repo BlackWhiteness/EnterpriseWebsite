@@ -3,35 +3,26 @@
 namespace app\mobile\controller;
 
 use app\admin\model\AdManage;
+use app\admin\model\City;
 use app\admin\model\HrefManage;
 use app\admin\model\LandManage;
 use app\admin\model\Officebuilding;
 use app\admin\model\ShopManage;
+use app\admin\model\Workshop;
 use app\admin\model\Workshop as Workshop_Model;
 use app\common\controller\MobileBase;
-use app\admin\model\Workshop;
 use app\format\LandFormat;
 use app\format\OfficeBuildFormat;
 use app\format\ShopFormat;
 use app\format\WorkShopFormat;
-use app\search\model\Workshopsearch as Workshopsearch;
 use app\search\model\Offbuildingsearch as Offbuildingsearch;
-use app\admin\model\City;
-use app\admin\model\Area;
-use \think\Db;
+use app\search\model\Workshopsearch as Workshopsearch;
+use think\Db;
 use think\Request;
 
 class Search extends MobileBase
 {
     //初始化
-    protected function initialize()
-    {
-        parent::initialize();
-        $this->Workshopsearch = new Workshopsearch();
-        $this->Offbuildingsearch = new Offbuildingsearch();
-        $this->City = new City();
-    }
-
     /**
      * 厂房或仓库
      * @param Request $request
@@ -49,7 +40,31 @@ class Search extends MobileBase
         $category = request()->param('category');
         $tagName = in_array($category, [1, 2, 3]) ? Workshop::CATEGORY_CONFIG[$category] : '';
 
-
+        $measureList = [
+            '0' => '不限',
+            '500' => '500平米以下',
+            '500-800' => '500-800平米',
+            '800-1300' => '800-1300平米',
+            '1300-2000' => '1300-2000平米',
+            '2000-3000' => '2000-3000平米',
+            '3000-5000' => '3000-5000平米',
+            '5000-10000' => '5000-10000平米',
+            '10000' => '10000平米以上'
+        ];
+        $floorList = [
+            0 => '不限',
+            1 => '一楼厂房',
+            2 => '二楼以上',
+            3 => '独院厂房',
+            4 => '独栋厂房'
+        ];
+        $struckList = [
+            0 => '不限',
+            1 => '标准厂房',
+            2 => '钢构结构厂房',
+            3 => '简易厂房(铁皮房)',
+            4 => '各类型仓库(单层仓库/多层仓库)'
+        ];
         $this->assign([
             'cityInfo' => $cityInfo,
             'areaInfo' => $areaInfo,
@@ -57,8 +72,9 @@ class Search extends MobileBase
             'category' => $category,
             'tag' => $cityInfo[0]['name'] . $tagName,
             'category_type_name' => $tagName ? mb_substr($tagName, 0, 2, 'utf8') : '厂房',
-//            'data' => WorkShopFormat::getInstance()->formatList($data),
-//            'page' => paginate($data)
+            'measureList' => $measureList,
+            'floorList' => $floorList,
+            'struckList' => $struckList
         ]);
         return $this->fetch('rentalofworkshop');
     }
@@ -66,21 +82,24 @@ class Search extends MobileBase
     public function workshopdetail()
     {
         $id = $this->request->param('id/d', '');
-        $info = Db::name('workshop')->where(['id' => $id])->find();
+        $info = Workshop::where(['id' => $id])
+            ->with(['belongsToOneCity', 'belongsToOneArea'])
+            ->find();
         $cityInfo = Db::name('city')->where('id', 'in', $info['city'])->select();
         $areaInfo = Db::name('area')->where('parentId', 'in', $info['city'])->select();
+        $workInstance = WorkShopFormat::getInstance();
 
-        $this->assign("info", $info);
-        $this->assign("cityInfo", $cityInfo);
-        $this->assign("areaInfo", $areaInfo);
-        $recommend = Db::name('workshop')->where(["type" => 1])->order(array('releasetime' => 'DESC'))->paginate(10);
-        $this->assign("recommend", $recommend);
-        $floor1 = Db::name('workshop')->where(["floor" => 1])->order(array('releasetime' => 'DESC'))->paginate(10);
-        $this->assign("floor1", $floor1);
-        $floor2 = Db::name('workshop')->where(["floor" => 2])->order(array('releasetime' => 'DESC'))->paginate(10);
-        $this->assign("floor2", $floor2);
-        $floor3 = Db::name('workshop')->where(["floor" => 3])->order(array('releasetime' => 'DESC'))->paginate(10);
-        $this->assign("floor3", $floor3);
+
+        $recommend = Workshop::where(["category" => $info['category']])
+            ->order(array('releasetime' => 'DESC'))
+            ->paginate(10);
+
+        $this->assign([
+            'info'=>$workInstance->formatDetail($info),
+            'cityInfo'=>$cityInfo,
+            'areaInfo'=>$areaInfo,
+            'recommend' => $workInstance->formatList($recommend),
+        ]);
         return $this->fetch('workshopdetail');
     }
 
@@ -264,7 +283,6 @@ class Search extends MobileBase
         return $this->fetch('shopdetail');
     }
 
-
     /**
      * 获取土地信息
      * @param LandManage $landManage
@@ -322,6 +340,7 @@ class Search extends MobileBase
             'page' => paginate($data)
         ]);
     }
+
     /**
      * 获取写字楼信息
      * @param Officebuilding $officebuilding
@@ -338,5 +357,13 @@ class Search extends MobileBase
             'data' => OfficeBuildFormat::getInstance()->formatAjaxList($data),
             'page' => paginate($data)
         ]);
+    }
+
+    protected function initialize()
+    {
+        parent::initialize();
+        $this->Workshopsearch = new Workshopsearch();
+        $this->Offbuildingsearch = new Offbuildingsearch();
+        $this->City = new City();
     }
 }
