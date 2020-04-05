@@ -79,6 +79,7 @@ class Park extends Adminbase
                 $citys .= "<option value='" . $r["id"] . "'>  " . $r["name"] . "</option>";
             }
             $this->assign("citys", $citys);
+            $this->assign("typeConfig", ParkManage::TYPE_CONFIG);
             return $this->fetch();
         }
     }
@@ -125,6 +126,7 @@ class Park extends Adminbase
             $this->assign("id", $id);
             $this->assign("citys", $citys);
             $this->assign("areas", $areas);
+            $this->assign("typeConfig", ParkManage::TYPE_CONFIG);
             return $this->fetch();
         }
 

@@ -71,6 +71,15 @@
                            class="layui-input">
                 </div>
             </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">推荐/热门</label>
+                <div style="width:auto" class="layui-input-inline">
+                    {foreach $typeConfig as $key=>$type}
+                    <input type="radio" name="type" autocomplete="off" placeholder="" class="layui-input"
+                           value="{$key}">{$type}
+                    {/foreach}
+                </div>
+            </div>
 
             <div class="layui-form-item">
                 <label class="layui-form-label">详情</label>

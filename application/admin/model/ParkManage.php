@@ -19,6 +19,11 @@ class ParkManage extends Model
         'imgs' => 'serialize',
     ];
 
+    const TYPE_CONFIG = [
+        1=> '推荐',
+        2=> '热门'
+    ];
+
     /**
      * 对应一个城市
      * @return \think\model\relation\BelongsTo

@@ -51,7 +51,7 @@ class ParkFormat
                 'address' => $row['address'],
                 'name' => $row['name'],
                 'tel' => $row['tel'],
-                'imgs' => $row['imgs'],
+                'imgs' => $row['imgs'] ? $row['imgs'][0] : '',
                 'detail' => $row['detail'],
                 'title' => $row['title'],
                 'park_name' => $row['park_name'],

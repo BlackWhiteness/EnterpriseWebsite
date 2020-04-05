@@ -73,6 +73,16 @@
                            class="layui-input" value="{$data.address}">
                 </div>
             </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">推荐/热门</label>
+                <div style="width:auto" class="layui-input-inline">
+                    {foreach $typeConfig as $key=>$type}
+                    <input type="radio" name="type" autocomplete="off" placeholder="" class="layui-input"
+                           value="{$key}"  {if condition="$data.type eq $key " } checked {/if}>{$type}
+                    {/foreach}
+                </div>
+            </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">详情</label>
                 <div style="width:80%" class="layui-input-inline">
