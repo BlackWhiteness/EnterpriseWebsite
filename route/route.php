@@ -28,6 +28,12 @@ Route::domain('m', function () {
     Route::get('of_build', 'mobile/Search/officebuilding')->name('of_build');
     Route::get('shop', 'mobile/Search/shopList')->name('shop');
 
+    Route::get('park', 'mobile/Park/index')->name('park');
+    Route::get('park_detail', 'mobile/Park/detail');
+
+    Route::get('home_list', 'mobile/PrivateHome/index')->name('home_list');
+    Route::get('home_detail', 'mobile/PrivateHome/detail');
+
     //详情
     Route::get('work_shop/detail', 'mobile/Search/workshopdetail');
     Route::get('of_build/detail', 'mobile/Search/offbuilddetail');
@@ -40,5 +46,7 @@ Route::domain('m', function () {
     Route::get('search_of', 'mobile/Search/ajaxSearchOf');
     Route::get('search_land', 'mobile/Search/ajaxSearchLand');
     Route::get('search_shop', 'mobile/Search/ajaxSearchShop');
+    Route::get('search_park', 'mobile/Park/ajaxSearchPark');
+    Route::get('search_home', 'mobile/PrivateHome/ajaxSearchHome');
 
 });

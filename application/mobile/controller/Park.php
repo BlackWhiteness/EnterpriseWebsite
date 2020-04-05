@@ -1,18 +1,18 @@
 <?php
 
-namespace app\index\controller;
+namespace app\mobile\controller;
 
 use app\admin\model\AdManage;
 use app\admin\model\HrefManage;
 use app\admin\model\ParkManage;
-use app\common\controller\Homebase;
+use app\common\controller\MobileBase;
 use app\format\ParkFormat;
 use app\admin\model\City;
 use \think\Db;
 use think\facade\Validate;
 use think\Request;
 
-class Park extends Homebase
+class Park extends MobileBase
 {
     public $City;
 

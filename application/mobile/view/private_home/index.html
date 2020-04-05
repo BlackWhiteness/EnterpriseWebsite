@@ -1,0 +1,438 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="renderer" content="webkit" />
+    <title>{:config('web_site_title')}</title>
+    <meta name="keywords" content="{:config('web_site_keywords')}"/>
+    <meta name="description" content="{:config('web_site_description')}"/>
+    <link rel="icon" href="/static/mobile/image/favicon.ico">
+    <link href="/static/mobile/style/index.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="/static/mobile/script/jquery-1.7.1.min.js"></script>
+</head>
+
+<body>
+
+<div class="wal" id="app">
+    <!--wal-->
+    <div class="g-headD"></div>
+    <div class="g-head">
+        <div class="wal">
+            <a href="index.html" class="logo"></a>
+            <h2><a href="city_shift.html">深圳厂房</a></h2>
+            <div class="btn btn-right">
+                <a href="javascript:;" class="search"></a>
+                <a href="javascript:;" class="nav"></a>
+            </div>
+        </div>
+    </div>
+    <div class="g-nav">
+        <div class="wal">
+            <div class="head">
+                <div><img src="/static/mobile/image/navigation_banner.png" alt=""></div>
+                <a href="javascript:;" class="close"></a>
+            </div>
+            <div class="index-nav">
+                <ul>
+                    <li>
+                        <a href="page-list.html">
+                            <img src="/static/mobile/image/homepage_ic_navigation_plant.png" alt="">
+                            <p>厂房出租</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="page-list.html">
+                            <img src="/static/mobile/image/homepage_ic_office_building.png" alt="">
+                            <p>厂房出售</p>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="page-list.html">
+                            <img src="/static/mobile/image/homepage_ic_cangku.png" alt="">
+                            <p>仓库出租</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="page-list.html">
+                            <img src="/static/mobile/image/homepage_ic_land.png" alt="">
+                            <p>土地租售</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="page-list.html">
+                            <img src="/static/mobile/image/homepage_ic_special.png" alt="">
+                            <p>园区招商</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="page-list.html">
+                            <img src="/static/mobile/image/homepage_ic_garden.png" alt="">
+                            <p>写字楼</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="page-list.html">
+                            <img src="/static/mobile/image/homepage_ic_broker.png" alt="">
+                            <p>商铺租售</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="page-list.html">
+                            <img src="/static/mobile/image/homepage_ic_investment.png" alt="">
+                            <p>民宅租售</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="nav">
+                <ul>
+                    <li><a href="index.html"><img src="/static/mobile/image/navigation_ic_homepage.png" alt=""><span>首页</span></a></li>
+                    <li><a href="about.html"><img src="/static/mobile/image/navigation_ic_us.png" alt=""><span>关于我们</span></a></li>
+                    <li><a href=""><img src="/static/mobile/image/navigation_ic_group.png" alt=""><span>联系我们</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="g-search">
+        <div class="wal">
+            <div class="form">
+                <div class="input"><input type="text" placeholder="请输入关键词进行搜索"></div>
+                <a href="javascript:;" class="close">取消</a>
+            </div>
+            <div class="tab-btn">
+                <ul>
+                    <li><span>厂房</span></li>
+                    <li><span>写字楼</span></li>
+                    <li><span>土地</span></li>
+                    <li><span>产业园区</span></li>
+                    <li><span>仓库</span></li>
+                </ul>
+            </div>
+            <!--厂房-->
+            <div class="tab-box">
+                <div class="title">最近热搜</div>
+                <div class="list">
+                    <ul>
+                        <li><a href="">标准厂房</a></li>
+                        <li><a href="">龙岗小面积厂房出租</a></li>
+                        <li><a href="">独院厂房</a></li>
+                        <li><a href="">二楼以上</a></li>
+                        <li><a href="">钢结构</a></li>
+                    </ul>
+                </div>
+                <div class="title">搜索历史</div>
+                <div class="msg">暂无搜索历史记录</div>
+            </div>
+            <!--写字楼-->
+            <div class="tab-box">
+                <div class="title">最近热搜</div>
+                <div class="list">
+                    <ul>
+                        <li><a href="">宝安写字楼</a></li>
+                        <li><a href="">交通便利</a></li>
+                        <li><a href="">带装修</a></li>
+                        <li><a href="">近地铁口</a></li>
+                        <li><a href="">龙华写字楼出租</a></li>
+                    </ul>
+                </div>
+                <div class="title">搜索历史</div>
+                <div class="msg">暂无搜索历史记录</div>
+            </div>
+            <!--土地-->
+            <div class="tab-box">
+                <div class="title">最近热搜</div>
+                <div class="list">
+                    <ul>
+                        <li><a href="">工业土地出售</a></li>
+                        <li><a href="">地皮出售</a></li>
+                        <li><a href="">土地买卖</a></li>
+                        <li><a href="">南京土地</a></li>
+                        <li><a href="">成都土地</a></li>
+                    </ul>
+                </div>
+                <div class="title">搜索历史</div>
+                <div class="msg">暂无搜索历史记录</div>
+            </div>
+            <!--产业园区-->
+            <div class="tab-box">
+                <div class="title">最近热搜</div>
+                <div class="list">
+                    <ul>
+                        <li><a href="">粤海装备技术产业园</a></li>
+                        <li><a href="">帝豪智造科技园</a></li>
+                        <li><a href="">江门智能制造产业园</a></li>
+                        <li><a href="">霸州智能测控装备产业园</a></li>
+                    </ul>
+                </div>
+                <div class="title">搜索历史</div>
+                <div class="msg">暂无搜索历史记录</div>
+            </div>
+            <!--仓库-->
+            <div class="tab-box">
+                <div class="title">搜索历史</div>
+                <div class="msg">暂无搜索历史记录</div>
+            </div>
+            <!---->
+            <div class="search-list">
+                <div class="list">
+                    <!--<ul>
+                        <li><a href="">粤海装备技术产业园</a></li>
+                        <li><a href="">帝豪智造科技园</a></li>
+                        <li><a href="">江门智能制造产业园</a></li>
+                        <li><a href="">霸州智能测控装备产业园</a></li>
+                    </ul>-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div><img src="/static/mobile/image/list_banner.png" alt=""></div>
+
+    <div class="p-class-d">
+        <div class="mask_fix"></div>
+        <div class="p-class">
+            <ul>
+                <li class="on"><span>区域</span></li>
+                <li><span>租售</span></li>
+                <li><span>楼层</span></li>
+                <li><span>面积</span></li>
+                <li><span>结构</span></li>
+            </ul>
+        </div>
+        <div class="drop-down drop-area">
+            <div class="title">区域</div>
+            <div class="list-1">
+                <ul id="search_area">
+                    <li data-value="0" class="on">不限</li>
+                    {foreach $areaInfo as $area}
+                    <li data-value="{$area.id}">{$area.name}</li>
+                    {/foreach}
+                </ul>
+            </div>
+        </div>
+        <div class="drop-down drop-list">
+            <ul id="search_type">
+                <li data-value="0" class="on"><a href="javascript:;">不限</a></li>
+                {foreach $categoryList as $key=>$category}
+                    <li data-value="{$key}"><a href="javascript:;" >{$category}</a></li>
+                {/foreach}
+            </ul>
+        </div>
+        <div class="drop-down drop-list">
+            <ul id="floor_type">
+                <li data-value="0" class="on"><a href="javascript:;">不限</a></li>
+                {foreach $floorType as $key=>$floor}
+                <li data-value="{$key}"><a href="javascript:;" >{$floor}</a></li>
+                {/foreach}
+            </ul>
+        </div>
+
+        <div class="drop-down" id="search_mianji">
+            <div class="drop-form">
+                <div class="name">自定义</div>
+                <div class="input"><input type="text" placeholder="最小面积"></div>
+                <div class="line"></div>
+                <div class="input"><input type="text" placeholder="最大面积"></div>
+                <div class="submit"><input type="button" value="确定"></div>
+            </div>
+            <div class="drop-list">
+                <ul>
+                    {foreach $measureList as $key=>$measure}
+                    <li data-value="{$key}"><a href="javascript:;">{$measure}</a></li>
+                    {/foreach}
+                </ul>
+            </div>
+        </div>
+        <div class="drop-down drop-list">
+            <ul id="search_struck">
+                {foreach $struckList as $key=>$struck}
+                <li data-value="{$key}"><a href="javascript:;" >{$struck}</a></li>
+                {/foreach}
+            </ul>
+        </div>
+
+    </div>
+    <div class="p-class-selected">
+        <ul>
+            <li><a href="" class="on">标准厂房</a></li>
+            <li><a href="">一楼</a></li>
+            <li><a href="">二楼以上</a></li>
+            <li><a href="">独院</a></li>
+            <li><a href="">钢结构</a></li>
+        </ul>
+    </div>
+
+    <!--<div class="no-data">
+        <div class="ico"><img src="/static/mobile/image/ic_empty_small.png" alt=""></div>
+        <p>暂无相关信息</p>
+    </div>-->
+    <div class="product-list">
+        <ul id="product-list">
+            <!--<li>
+                <a href="page-show.html">
+                    <div class="img"><img src="/static/mobile/uploads/2020-03-29/5e80972e36eca.jpg" alt=""><em>塘厦区</em></div>
+                    <div class="name">超值推荐！独院10米高标准厂房1000平只要18元，空地2000平方免费使用</div>
+                    <div class="label"><span>1</span><span>3楼</span></div>
+                    <div class="price"><span>18元/㎡</span><em>0 ㎡</em></div>
+                </a>
+            </li>-->
+        </ul>
+    </div>
+    <script>
+        $(function () {
+            var list_dom = $('#product-list');
+            //区域
+            var search_area = {element: $('#search_area li'), value: 0};
+            search_area.element.click(function () {
+                search_area.value = $(this).attr('data-value');
+                getData()
+            });
+
+            //面积
+            var search_mianji = {element: $('#search_mianji'), value: null, min:null, max:null};
+            search_mianji.element.find('li').click(function () {
+                search_mianji.value = $(this).attr('data-value');
+                getData()
+            });
+            search_mianji.element.find('.submit input').click(function () {
+                var min = parseFloat(search_mianji.element.find('.input').eq(0).find('input').val()),
+                    max = parseFloat(search_mianji.element.find('.input').eq(1).find('input').val());
+                if(isNaN(min) || isNaN(max)) return;
+                search_mianji.min = min;
+                search_mianji.max = max;
+                drop_hide();
+                getData()
+            });
+
+            // 楼层
+            var floor_type = {element: $('#floor_type li'), value: null};
+            floor_type.element.click(function () {
+                floor_type.value = $(this).attr('data-value');
+                getData()
+            });
+
+            //结构
+            var search_struck = {element: $('#search_struck li'), value: null};
+            search_struck.element.click(function () {
+                search_struck.value = $(this).attr('data-value');
+                getData()
+            });
+            // 租售
+            var search_type = {element: $('#search_type li'), value: null};
+            search_type.element.click(function () {
+                search_type.value = $(this).attr('data-value');
+                getData()
+            });
+            function drop_hide() {
+                $('.p-class-d').removeClass('on');
+                $('.p-class-d').find('.p-class').find('li').removeClass('open');
+                $('.p-class-d').find('.drop-down').removeClass('show');
+                $('body').removeClass('noScroll');
+            }
+            //处理参数
+            function get_parameter() {
+                var parameter = {};
+                if(search_area.value !== null){
+                    parameter.area = search_area.value
+                }
+                if(search_mianji.value !== null){
+                    parameter.measurearea = search_mianji.value
+                }
+                if(search_mianji.min !== null){
+                    parameter.measurearea = search_mianji.min
+                }
+                if(search_mianji.max !== null){
+                    parameter.measurearea = search_mianji.max
+                }
+
+                if(floor_type.value !== null){
+                    parameter.floor_type = search_rent.value
+                }
+                if(search_struck.value !== null){
+                    parameter.struck = search_struck.value
+                }
+                if(search_type.value !== null){
+                    parameter.category = search_type.value
+                }
+
+                return parameter
+            }
+
+            var url = "/search_home",
+                page = {total:1, curr:1};
+            getData();
+            function getData() {
+                var parameter = get_parameter();
+                $.get(url, parameter, function (data) {
+                    list_dom.html("");
+                    // page.total = Math.ceil(data.page.total / data.page.per_page);
+                    page.total = data.page.last_page;//为了测试，在这里写死总共5页，实际开发请将些行删掉，将上面一行注释取消
+                    page.curr = data.page.current_page;
+                    //因为测试数据只有两条，这样没法测试滚动加载，所以下面调了二次domCreate，实际只要调用一次
+                    domCreate(data.data);
+                })
+            }
+
+            //--滚动到底加载更多
+            var is_scroll = true;
+            $(window).scroll(function () {
+                if(!is_scroll) return;
+                if($(window).scrollTop() > $('.g-foot').offset().top - $(window).height()){
+                    is_scroll = false;
+                    if(page.total === page.curr){
+                        console.log("我是有底线的");
+                        return;
+                    }
+                    var parameter = get_parameter();
+                    parameter.page = page.curr;
+                    $.get(url, parameter, function (data) {
+                        //page.curr = data.page.current_page;
+                        page.curr ++;//为了测试，在这里每滚动一次自加1，实际开发请将些行删掉，将上面一行注释取消
+                        domCreate(data.data);
+                        is_scroll = true
+                    })
+                }
+            });
+
+            //--生成列表
+            function domCreate(data) {
+                data.forEach(function (item) {
+                    list_dom.append('<li>\n' +
+                        '                <a href="/home_detail?id='+item.id+'">\n' +
+                        '                    <div class="img"><img src="'+item.imgs+'" alt=""><em>'+item.area_name+'</em></div>\n' +
+                        '                    <div class="name">'+item.title+'</div>\n' +
+                        '                    <div class="label"></div>\n' +
+                        '                    <div class="price"><span>'+item.price+'/㎡</span><em>'+item.measurearea +'㎡</em></div>\n' +
+                        '                </a>\n' +
+                        '            </li>')
+                })
+            }
+        })
+    </script>
+
+    <a href="javascript:;" class="topA"><img src="/static/mobile/image/homepage_icon_return_top.png" alt=""></a>
+    <div class="g-foot">
+        <div class="link"><a href="about.html">关于我们</a></div>
+        <p>粤ICP备19115088号</p>
+        <p>广东厂房网 版权所有</p>
+        <p>东莞市众鑫房地产投资有限公司 版权所属</p>
+    </div>
+    <div class="foot-btn-d"></div>
+    <div class="foot-btn">
+        <div class="wal">
+            <a href="" class="btn"><img src="/static/mobile/image/ic_message.png" alt=""><span>需求登记</span></a>
+            <a href="" class="tel">点击免费拨打 <em>0769-87819917</em></a>
+        </div>
+    </div>
+    <!--wal-END-->
+</div>
+</body>
+</html>
+
+<link rel="stylesheet" href="/static/mobile/script/swiper/swiper-3.4.2.min.css">
+<script type="text/javascript" src="/static/mobile/script/swiper/swiper-3.4.2.jquery.min.js"></script>
+<script type="text/javascript" src="/static/mobile/script/js.js"></script>
