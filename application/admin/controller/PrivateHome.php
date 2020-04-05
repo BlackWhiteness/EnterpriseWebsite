@@ -90,6 +90,7 @@ class PrivateHome extends Adminbase
                 'categoryList' =>PrivateHomeManage::CATEGORY_CONFIG,
                 'floorTypeList' => PrivateHomeManage::FLOOR_TYPE,
                 'struckList' => PrivateHomeManage::STRUCT_CONFIG,
+                'typeConfig' => PrivateHomeManage::TYPE_CONFIG,
             ]);
             return $this->fetch();
         }
@@ -136,7 +137,8 @@ class PrivateHome extends Adminbase
                 'categoryList' =>PrivateHomeManage::CATEGORY_CONFIG,
                 'floorTypeList' => PrivateHomeManage::FLOOR_TYPE,
                 'struckList' => PrivateHomeManage::STRUCT_CONFIG,
-                'data'=>$rs
+                'data'=>$rs,
+                'typeConfig' => PrivateHomeManage::TYPE_CONFIG,
             ]);
             return $this->fetch();
         }

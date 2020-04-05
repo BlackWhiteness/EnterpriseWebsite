@@ -41,6 +41,11 @@ class PrivateHomeManage extends Model
         4 => '四层',
         5 => '五层以上',
     ];
+
+    const TYPE_CONFIG = [
+        1=> '推荐',
+        2=> '热门'
+    ];
     protected $pk = 'id';
     protected $table = 'search_private_home';
     protected $type = [

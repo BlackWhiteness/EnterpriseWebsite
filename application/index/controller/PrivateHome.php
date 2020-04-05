@@ -4,69 +4,41 @@ namespace app\index\controller;
 
 use app\admin\model\AdManage;
 use app\admin\model\HrefManage;
-use app\admin\model\LandManage;
-use app\admin\model\Officebuilding;
-use app\admin\model\ShopManage;
 use app\admin\model\Workshop;
 use app\common\controller\Homebase;
-use app\admin\model\Workshop as Workshop_Model;
-use app\format\OfficeBuildFormat;
-use app\format\ShopFormat;
 use app\format\WorkShopFormat;
-use app\search\model\Workshopsearch as Workshopsearch;
-use app\search\model\Offbuildingsearch as Offbuildingsearch;
 use app\admin\model\City;
-use app\admin\model\Area;
 use \think\Db;
 use think\facade\Validate;
 use think\Request;
-use app\format\LandFormat;
 
 class PrivateHome extends Homebase
 {
-    public $Workshopsearch;
-    public $Offbuildingsearch;
     public $City;
 
     //初始化
     protected function initialize()
     {
         parent::initialize();
-        $this->Workshopsearch = new Workshopsearch();
-        $this->Offbuildingsearch = new Offbuildingsearch();
         $this->City = new City();
     }
 
     //会员中心首页
-    public function workshop(Request $request)
+    public function index(Request $request)
     {
         $city = getCity($request);
-        $cityList = Db::name('city')->where('id', '<>', $city)->select();
-        $cityInfo = Db::name('city')->where('id', '=', $city)->select();
+        $cityInfo = Db::name('city')->where('id', 'in', $city)->select();
         $areaInfo = Db::name('area')->where('parentId', 'in', $city)->select();
-        $category = request()->param('category');
-//        dump(in_array($category, Workshop::CATEGORY_CONFIG));die;
-        $tagName = in_array($category, [1, 2, 3]) ? Workshop::CATEGORY_CONFIG[$category] : '';
-        $recommend = Workshop::name('workshop')
-            ->where(["type" => 1])
-            ->order(array('releasetime' => 'DESC'))
-            ->page(1, 10)->select();
-//        dump($recommend);die;
-        $floor1 = Db::name('workshop')
-            ->where(["floor" => 3,'city'=>$city,'category'=>$category])
-            ->order(['releasetime' => 'DESC'])
-            ->paginate(10);
-        $floor2 = Db::name('workshop')->where(["floor" => 1,'city'=>$city,'category'=>$category])
-            ->order(array('releasetime' => 'DESC'))->paginate(10);
-        $floor3 = Db::name('workshop')
-            ->where(["is_decorate" => 1,'city'=>$city,'category'=>$category])
-            ->order(array('releasetime' => 'DESC'))
-            ->paginate(10);
-        $href = HrefManage::order('sort', 'desc')
-            ->select()->toArray();
-        $ad = AdManage::where('is_enable', '=', 1)
-            ->order(['code' => 'asc', 'sort' => 'desc'])
-            ->select();
+        $cityList = Db::name('city')->where('id', 'not in', $city)->select();
+
+        $recommend = Officebuilding::where(["type" => 1])->order(array('releasetime' => 'DESC'))
+            ->limit(0, 10)->select();
+        $new = Officebuilding::order(array('releasetime' => 'DESC'))
+            ->limit(0, 10)->select();
+        $hot = Officebuilding::where(["type" => 2])
+            ->order(array('releasetime' => 'DESC'))->limit(10)->select();
+        $href = HrefManage::order('sort', 'desc')->select()->toArray();
+        $ad = AdManage::where('is_enable', '=', 1)->order(['code' => 'asc', 'sort' => 'desc'])->select();
         $adList = [];
         foreach ($ad as $row) {
             $detail = [
@@ -82,27 +54,23 @@ class PrivateHome extends Homebase
                 $adList['bottom_ad'][] = $detail;
             }
         }
-        $workFormat = WorkShopFormat::getInstance();
+
         $this->assign([
-            'recommend' => $workFormat->formatList($recommend),
-            'floor1' => $floor1,
-            'floor2' => $floor2,
-            'floor3' => $floor3,
+            'recommend' => $this->formatOffice($recommend),
+            'new' => $this->formatOffice($new),
+            'hot' => $this->formatOffice($hot),
             'cityInfo' => $cityInfo,
             'areaInfo' => $areaInfo,
             'cityList' => $cityList,
+            'empty' => '<span class="empty">没有数据</span>',
             'href' => $href,
             'ad' => $adList,
-            'category' => $category,
-            'tag' => $cityInfo[0]['name'] . $tagName,
-            'category_type_name' => $tagName ? mb_substr($tagName, 0, 2, 'utf8') : '厂房',
-
         ]);
 
         return $this->fetch('rentalofworkshop');
     }
 
-    public function workshopdetail(Request $request)
+    public function detail(Request $request)
     {
         $validate = Validate::make([
             'id' => 'require|integer'
