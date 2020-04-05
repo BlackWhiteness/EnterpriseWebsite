@@ -46,6 +46,16 @@ class PrivateHomeManage extends Model
         1=> '推荐',
         2=> '热门'
     ];
+
+    const MEASURE_LIST = [
+        '0-50' => '50平米以下',
+        '50-100' => '50-100平米',
+        '100-200' => '100-200平米',
+        '200-300' => '200-300平米',
+        '300-400' => '300-400平米',
+        '400-500' => '400-500平米',
+        '600' => '600平米以上',
+    ];
     protected $pk = 'id';
     protected $table = 'search_private_home';
     protected $type = [

@@ -50,7 +50,7 @@ class PrivateHomeFormat
                 'tel' => $row['tel'],
                 'title' => $row['title'],
                 'address' => $row['address'],
-                'imgs' => $row['imgs'],
+                'imgs' => $row['imgs'] ? $row['imgs'][0] : '',
                 'measurearea' => $row['measurearea'],
                 'category' => $row['category'],
                 'category_name' =>PrivateHomeManage::CATEGORY_CONFIG[$row['category']],

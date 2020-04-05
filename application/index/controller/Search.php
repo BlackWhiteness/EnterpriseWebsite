@@ -419,7 +419,7 @@ class Search extends Homebase
             'cityList' => $cityList,
             'href' => $href,
             'ad' => $adList,
-            'info' => $info
+            'info' => LandFormat::getInstance()->formatDetail($info)
         ]);
         return $this->fetch('land_detail');
     }

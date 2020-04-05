@@ -4,8 +4,10 @@ namespace app\index\controller;
 
 use app\admin\model\AdManage;
 use app\admin\model\HrefManage;
+use app\admin\model\PrivateHomeManage;
 use app\admin\model\Workshop;
 use app\common\controller\Homebase;
+use app\format\PrivateHomeFormat;
 use app\format\WorkShopFormat;
 use app\admin\model\City;
 use \think\Db;
@@ -31,13 +33,20 @@ class PrivateHome extends Homebase
         $areaInfo = Db::name('area')->where('parentId', 'in', $city)->select();
         $cityList = Db::name('city')->where('id', 'not in', $city)->select();
 
-        $recommend = Officebuilding::where(["type" => 1])->order(array('releasetime' => 'DESC'))
-            ->limit(0, 10)->select();
-        $new = Officebuilding::order(array('releasetime' => 'DESC'))
-            ->limit(0, 10)->select();
-        $hot = Officebuilding::where(["type" => 2])
-            ->order(array('releasetime' => 'DESC'))->limit(10)->select();
-        $href = HrefManage::order('sort', 'desc')->select()->toArray();
+        $recommend = PrivateHomeManage::where(["type" => 1])
+            ->order(array('releasetime' => 'DESC'))
+            ->limit(0, 10)
+            ->select();
+        $new = PrivateHomeManage::order(array('releasetime' => 'DESC'))
+            ->limit(0, 10)
+            ->select();
+        $hot = PrivateHomeManage::where(["type" => 2])
+            ->order(array('releasetime' => 'DESC'))
+            ->limit(10)
+            ->select();
+        $href = HrefManage::order('sort', 'desc')
+            ->select()
+            ->toArray();
         $ad = AdManage::where('is_enable', '=', 1)->order(['code' => 'asc', 'sort' => 'desc'])->select();
         $adList = [];
         foreach ($ad as $row) {
@@ -55,19 +64,24 @@ class PrivateHome extends Homebase
             }
         }
 
+        $formatInstance = PrivateHomeFormat::getInstance();
         $this->assign([
-            'recommend' => $this->formatOffice($recommend),
-            'new' => $this->formatOffice($new),
-            'hot' => $this->formatOffice($hot),
+            'recommend' => $formatInstance->formatList($recommend),
+            'newList' => $formatInstance->formatList($new),
+            'hotList' => $formatInstance->formatList($hot),
             'cityInfo' => $cityInfo,
             'areaInfo' => $areaInfo,
             'cityList' => $cityList,
             'empty' => '<span class="empty">没有数据</span>',
             'href' => $href,
             'ad' => $adList,
+            'categoryList' => PrivateHomeManage::CATEGORY_CONFIG,
+            'struckList' => PrivateHomeManage::STRUCT_CONFIG,
+            'floorType' => PrivateHomeManage::FLOOR_TYPE,
+            'measureList' => PrivateHomeManage::MEASURE_LIST,
         ]);
 
-        return $this->fetch('rentalofworkshop');
+        return $this->fetch('index');
     }
 
     public function detail(Request $request)
@@ -145,19 +159,15 @@ class PrivateHome extends Homebase
 
     /**
      * 获取数据
-     * @param Workshop_Model $workshop
+     * @param PrivateHomeManage $privateHomeManage
      * @return \think\response\Json
      * @throws \think\exception\DbException
      */
-    public function ajaxSearchWs(Workshop $workshop)
+    public function ajaxSearchHome(PrivateHomeManage $privateHomeManage)
     {
-        $category = request()->param('category');
-        if (empty($category)) {
-            return json(['status' => false, 'msg' => '参数错误!']);
-        }
-        $data = $workshop->getWorkShopBySearch();
+        $data = $privateHomeManage->getWorkShopBySearch();
         return json([
-            'data' => WorkShopFormat::getInstance()->formatList($data),
+            'data' => PrivateHomeFormat::getInstance()->formatList($data),
             'page' => paginate($data)
         ]);
     }
