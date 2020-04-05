@@ -40,6 +40,10 @@ Route::domain('m', function () {
     Route::get('land/detail', 'mobile/Search/landdetail');
     Route::get('shop/detail', 'mobile/Search/shopdetail');
 
+    // 关于我们
+    Route::get('about', 'mobile/About/index');
+    Route::get('concat', 'mobile/About/shopdetail');
+
     // 异步获取
 
     Route::get('ajax_search_ws/:category', 'mobile/Search/ajaxSearchWs');
