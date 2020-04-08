@@ -1,0 +1,158 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="renderer" content="webkit" />
+    <title>{:config('web_site_title')}</title>
+    <meta name="keywords" content="{:config('web_site_keywords')}"/>
+    <meta name="description" content="{:config('web_site_description')}"/>
+    <link rel="icon" href="/static/mobile/image/favicon.ico">
+    <link href="/static/mobile/style/index.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="/static/mobile/script/jquery-1.7.1.min.js"></script>
+</head>
+
+<body>
+<div class="wal" id="app">
+    <!--wal-->
+    <div class="g-headD"></div>
+    <div class="g-head">
+        <div class="wal">
+            <div class="btn btn-left"><a href="/static/mobile/javascript:window.history.go(-1);" class="back"></a></div>
+            <h2>关于我们</h2>
+            <div class="btn btn-right">
+                <a href="/static/mobile/javascript:;" class="search"></a>
+                <a href="/static/mobile/javascript:;" class="nav"></a>
+            </div>
+        </div>
+    </div>
+    {include file="layout/nav" /}
+    <div class="g-search">
+        <div class="wal">
+            <div class="form">
+                <div class="input"><input type="text" placeholder="请输入关键词进行搜索"></div>
+                <a href="/static/mobile/javascript:;" class="close">取消</a>
+            </div>
+            <div class="tab-btn">
+                <ul>
+                    <li><span>厂房</span></li>
+                    <li><span>写字楼</span></li>
+                    <li><span>土地</span></li>
+                    <li><span>产业园区</span></li>
+                    <li><span>仓库</span></li>
+                </ul>
+            </div>
+            <!--厂房-->
+            <div class="tab-box">
+                <div class="title">最近热搜</div>
+                <div class="list">
+                    <ul>
+                        <li><a href="/static/mobile/">标准厂房</a></li>
+                        <li><a href="/static/mobile/">龙岗小面积厂房出租</a></li>
+                        <li><a href="/static/mobile/">独院厂房</a></li>
+                        <li><a href="/static/mobile/">二楼以上</a></li>
+                        <li><a href="/static/mobile/">钢结构</a></li>
+                    </ul>
+                </div>
+                <div class="title">搜索历史</div>
+                <div class="msg">暂无搜索历史记录</div>
+            </div>
+            <!--写字楼-->
+            <div class="tab-box">
+                <div class="title">最近热搜</div>
+                <div class="list">
+                    <ul>
+                        <li><a href="/static/mobile/">宝安写字楼</a></li>
+                        <li><a href="/static/mobile/">交通便利</a></li>
+                        <li><a href="/static/mobile/">带装修</a></li>
+                        <li><a href="/static/mobile/">近地铁口</a></li>
+                        <li><a href="/static/mobile/">龙华写字楼出租</a></li>
+                    </ul>
+                </div>
+                <div class="title">搜索历史</div>
+                <div class="msg">暂无搜索历史记录</div>
+            </div>
+            <!--土地-->
+            <div class="tab-box">
+                <div class="title">最近热搜</div>
+                <div class="list">
+                    <ul>
+                        <li><a href="/static/mobile/">工业土地出售</a></li>
+                        <li><a href="/static/mobile/">地皮出售</a></li>
+                        <li><a href="/static/mobile/">土地买卖</a></li>
+                        <li><a href="/static/mobile/">南京土地</a></li>
+                        <li><a href="/static/mobile/">成都土地</a></li>
+                    </ul>
+                </div>
+                <div class="title">搜索历史</div>
+                <div class="msg">暂无搜索历史记录</div>
+            </div>
+            <!--产业园区-->
+            <div class="tab-box">
+                <div class="title">最近热搜</div>
+                <div class="list">
+                    <ul>
+                        <li><a href="/static/mobile/">粤海装备技术产业园</a></li>
+                        <li><a href="/static/mobile/">帝豪智造科技园</a></li>
+                        <li><a href="/static/mobile/">江门智能制造产业园</a></li>
+                        <li><a href="/static/mobile/">霸州智能测控装备产业园</a></li>
+                    </ul>
+                </div>
+                <div class="title">搜索历史</div>
+                <div class="msg">暂无搜索历史记录</div>
+            </div>
+            <!--仓库-->
+            <div class="tab-box">
+                <div class="title">搜索历史</div>
+                <div class="msg">暂无搜索历史记录</div>
+            </div>
+            <!---->
+            <div class="search-list">
+                <div class="list">
+                    <!--<ul>
+                        <li><a href="/static/mobile/">粤海装备技术产业园</a></li>
+                        <li><a href="/static/mobile/">帝豪智造科技园</a></li>
+                        <li><a href="/static/mobile/">江门智能制造产业园</a></li>
+                        <li><a href="/static/mobile/">霸州智能测控装备产业园</a></li>
+                    </ul>-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div><img src="/static/mobile/image/demand_1.jpg" alt=""></div>
+
+    <div class="about-1">
+        <div class="about-title">
+            <h2>网站简介</h2>
+        </div>
+        <div class="content">
+            {$contact.detail|raw}
+        </div>
+    </div>
+
+
+    <a href="javascript:;" class="topA"><img src="/static/mobile/image/homepage_icon_return_top.png" alt=""></a>
+    <div class="g-foot">
+        <p>粤ICP备19115088号</p>
+        <p>广东厂房网 版权所有</p>
+        <p>东莞市众鑫房地产投资有限公司 版权所属</p>
+    </div>
+    <!--wal-END-->
+</div>
+</body>
+</html>
+
+<link rel="stylesheet" href="/static/mobile/script/swiper/swiper-3.4.2.min.css">
+<script type="text/javascript" src="/static/mobile/script/swiper/swiper-3.4.2.jquery.min.js"></script>
+<script type="text/javascript" src="/static/mobile/script/js.js"></script>
+<script type="text/javascript">
+    $(function(){
+        swiperFun({
+            dom: $('.indexFlash')
+        });
+
+        new tabFun({dom: $('.index-1'), curr: 0})
+    })
+</script>

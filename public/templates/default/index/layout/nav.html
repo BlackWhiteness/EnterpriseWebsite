@@ -14,11 +14,12 @@
                                 class="menubox"><span>土地</span></a></li>
                 <li class=""><a href="/index/search/officebuilding?city={$cityInfo[0]['id']}"
                                 class="menubox"><span>写字楼</span></a></li>
-                <li class=""><a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1"
+                <li class=""><a href="/index/park/index?city={$cityInfo[0]['id']}"
                                 class="menubox"><span>园区招商</span></a></li>
-                <li class=""><a href="/index/search/shopList?city={$cityInfo[0]['id']}"
-                                class="menubox"><span>私宅商铺</span></a></li>
-
+                <li class=""><a href="/index/search/shopList"
+                                class="menubox"><span>商铺</span></a></li>
+                <li class=""><a href="/index/private_home/index"
+                                class="menubox"><span>私宅</span></a></li>
                 <li class=""><a href="/index/publish/customer" class="menubox"
                                 target="_blank"><span>求租求购</span></a></li>
 
@@ -70,6 +71,19 @@
         }else if(site_url.indexOf("/index/search/shopdetail") > 0){
             $(".nav li").attr("class", "");
             $(".nav li").eq(7).attr("class", "current");
+        } else if(site_url.indexOf("/index/park/index") > 0){
+            $(".nav li").attr("class", "");
+            $(".nav li").eq(6).attr("class", "current");
+        }else if(site_url.indexOf("/index/park/detail") > 0){
+            $(".nav li").attr("class", "");
+            $(".nav li").eq(6).attr("class", "current");
+        }
+        else if(site_url.indexOf("/index/private_home/index") > 0){
+            $(".nav li").attr("class", "");
+            $(".nav li").eq(8).attr("class", "current");
+        }else if(site_url.indexOf("/index/private_home/detail") > 0){
+            $(".nav li").attr("class", "");
+            $(".nav li").eq(8).attr("class", "current");
         }
 
         $(".nav li").hover(function () {

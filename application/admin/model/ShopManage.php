@@ -21,6 +21,25 @@ class ShopManage extends Model
         'imgs' => 'serialize',
     ];
 
+    const FLOOR_CONFIG = [
+        0=>'不限',
+        1=>'一楼',
+        2=>'独栋',
+        3=>'独院',
+    ];
+    const STRUCK_CONFIG = [
+        0=>'不限',
+        1=>'钢混结构',
+        2=>'钢结构',
+        3=>'简易结构',
+    ];
+
+    const SALE_CONFIG = [
+        -1 => '不限',
+        0 => '出租',
+        1 => '出售',
+    ];
+
     public function del($id)
     {
         $id = (int)$id;
@@ -95,7 +114,7 @@ class ShopManage extends Model
     public function getShopBuild()
     {
         $query = $this->filterCommon();
-        $query = $query->paginate(20);
+        $query = $query->paginate(request()->param('per_page',20));
         return $query;
     }
 

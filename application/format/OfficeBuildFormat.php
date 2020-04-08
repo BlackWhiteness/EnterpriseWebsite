@@ -3,6 +3,7 @@
 namespace app\format;
 
 use app\admin\model\Area;
+use app\admin\model\Officebuilding;
 
 /**
  * 写字楼格式化
@@ -37,14 +38,21 @@ class OfficeBuildFormat
 
     /**
      * 格式化用于列表
+     *
      * @param $data
      * @return array
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     * @since  2020/4/2
+     * @author WangShuai
      */
     public function formatList($data)
     {
         $rtn = [];
 
         foreach ($data as $row) {
+            $area = Area::where('id', '=', $row['area'])->find();
             $rtn[] = [
                 'id' => $row['id'],
                 'region' => $row['region'],
@@ -64,7 +72,8 @@ class OfficeBuildFormat
                 'area' => $row['area'],
                 'type' => $row['type'],
                 'title' => $row['title'],
-                'detail' => $row['detail']
+                'detail' => $row['detail'],
+                'area_name' => $area->name . '区',
             ];
 
         }
@@ -128,6 +137,7 @@ class OfficeBuildFormat
             'tel' => $data['tel'],
             'detail' => $data['detail'],
             'tag' => $data['tag'],
+            'tag_name' => $data['tag']?Officebuilding::TAG_CONFIG[$data['tag']]:'',
             'imgs' => $data['imgs'],
             'buildingname' => $data['buildingname'],
             'address' => $data['address'],
@@ -138,7 +148,8 @@ class OfficeBuildFormat
             'type' => $data['type'],
             'title' => $data['title'],
             'floor' => $data['floor'],
-            'is_sep' => $data['is_sep'],
+            'floor_type' => empty($data['floor_type'])?'':Officebuilding::FLOOR_CONFIG[$data['floor_type']],
+            'is_sep' => $data['is_sep']==1?'是':'否',
             'pay_type' => $data['pay_type'],
             'use_year' => $data['use_year'],
             'level' => $data['level'],
@@ -146,7 +157,9 @@ class OfficeBuildFormat
             'other' => $data['other'],
             'city_name' => $city ? $city->name : '',
             'area_name' => $area ? $area->name : '',
-            'category' => $data['category']
+            'category' => $data['category'],
+            'category_name' => !empty($data['category'])?Officebuilding::SALE_LIST[$data['category']]:'',
+            'indus_type' => empty($data['indus_type'])?'':Officebuilding::INDUS_TYPE[$data['indus_type']]
         ];
     }
 

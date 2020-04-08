@@ -30,17 +30,17 @@ class City extends Model
 //
 //    protected $resultSetType = 'collection';
 //
-//    /**
-//     * 返回用户组列表
-//     * 默认返回正常状态的管理员用户组列表
-//     * @param array $where   查询条件,供where()方法使用
-//     */
-//    public function gets($where = array())
-//    {
-//        $map = array();
-//        $map = array_merge($map, $where);
-//        return $this->where($map)->select();
-//    }
+    /**
+     * 返回用户组列表
+     * 默认返回正常状态的管理员用户组列表
+     * @param array $where   查询条件,供where()方法使用
+     */
+    public function gets($where = array())
+    {
+        $map = array();
+        $map = array_merge($map, $where);
+        return $this->where($map)->select();
+    }
 //
 //    /**
 //     * 根据角色Id获取角色名

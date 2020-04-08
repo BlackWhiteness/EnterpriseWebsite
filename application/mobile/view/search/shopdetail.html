@@ -1,0 +1,313 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="renderer" content="webkit" />
+    <title>{:config('web_site_title')}</title>
+    <meta name="keywords" content="{:config('web_site_keywords')}"/>
+    <meta name="description" content="{:config('web_site_description')}"/>
+    <link rel="icon" href="/static/mobile/image/favicon.ico">
+    <link href="/static/mobile/style/index.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="/static/mobile/script/jquery-1.7.1.min.js"></script>
+</head>
+
+<body>
+<div class="wal" id="app">
+    <!--wal-->
+    <div class="g-head g-head-2">
+        <div class="wal">
+            <h2>{$info.title}</h2>
+            <div class="btn btn-left"><a href="javascript:window.history.go(-1);" class="back"></a></div>
+            <div class="btn btn-right">
+                <a href="javascript:;" class="search"></a>
+                <a href="javascript:;" class="nav"></a>
+            </div>
+        </div>
+    </div>
+    {include file="layout/nav" /}
+    <div class="g-search">
+        <div class="wal">
+            <div class="form">
+                <div class="input"><input type="text" placeholder="请输入关键词进行搜索"></div>
+                <a href="javascript:;" class="close">取消</a>
+            </div>
+            <div class="tab-btn">
+                <ul>
+                    <li><span>厂房</span></li>
+                    <li><span>写字楼</span></li>
+                    <li><span>土地</span></li>
+                    <li><span>产业园区</span></li>
+                    <li><span>仓库</span></li>
+                </ul>
+            </div>
+            <!--厂房-->
+            <div class="tab-box">
+                <div class="title">最近热搜</div>
+                <div class="list">
+                    <ul>
+                        <li><a href="">标准厂房</a></li>
+                        <li><a href="">龙岗小面积厂房出租</a></li>
+                        <li><a href="">独院厂房</a></li>
+                        <li><a href="">二楼以上</a></li>
+                        <li><a href="">钢结构</a></li>
+                    </ul>
+                </div>
+                <div class="title">搜索历史</div>
+                <div class="msg">暂无搜索历史记录</div>
+            </div>
+            <!--写字楼-->
+            <div class="tab-box">
+                <div class="title">最近热搜</div>
+                <div class="list">
+                    <ul>
+                        <li><a href="">宝安写字楼</a></li>
+                        <li><a href="">交通便利</a></li>
+                        <li><a href="">带装修</a></li>
+                        <li><a href="">近地铁口</a></li>
+                        <li><a href="">龙华写字楼出租</a></li>
+                    </ul>
+                </div>
+                <div class="title">搜索历史</div>
+                <div class="msg">暂无搜索历史记录</div>
+            </div>
+            <!--土地-->
+            <div class="tab-box">
+                <div class="title">最近热搜</div>
+                <div class="list">
+                    <ul>
+                        <li><a href="">工业土地出售</a></li>
+                        <li><a href="">地皮出售</a></li>
+                        <li><a href="">土地买卖</a></li>
+                        <li><a href="">南京土地</a></li>
+                        <li><a href="">成都土地</a></li>
+                    </ul>
+                </div>
+                <div class="title">搜索历史</div>
+                <div class="msg">暂无搜索历史记录</div>
+            </div>
+            <!--产业园区-->
+            <div class="tab-box">
+                <div class="title">最近热搜</div>
+                <div class="list">
+                    <ul>
+                        <li><a href="">粤海装备技术产业园</a></li>
+                        <li><a href="">帝豪智造科技园</a></li>
+                        <li><a href="">江门智能制造产业园</a></li>
+                        <li><a href="">霸州智能测控装备产业园</a></li>
+                    </ul>
+                </div>
+                <div class="title">搜索历史</div>
+                <div class="msg">暂无搜索历史记录</div>
+            </div>
+            <!--仓库-->
+            <div class="tab-box">
+                <div class="title">搜索历史</div>
+                <div class="msg">暂无搜索历史记录</div>
+            </div>
+            <!---->
+            <div class="search-list">
+                <div class="list">
+                    <!--<ul>
+                        <li><a href="">粤海装备技术产业园</a></li>
+                        <li><a href="">帝豪智造科技园</a></li>
+                        <li><a href="">江门智能制造产业园</a></li>
+                        <li><a href="">霸州智能测控装备产业园</a></li>
+                    </ul>-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-img">
+        <ul class="swiper-wrapper">
+            {foreach $info['imgs'] as $image}
+            <li class="swiper-slide"><img src="{$image}" alt=""></li>
+            {/foreach}
+        </ul>
+        <!--        <div class="num">-->
+        <!--            <div>编号:A14167701</div>-->
+        <!--            <div><span class="num-curr"></span>/<span class="num-total"></span></div>-->
+        <!--        </div>-->
+    </div>
+    <script type="text/javascript">
+        $(function(){
+            swiperFun({
+                dom: $('.product-img')
+            })
+        })
+    </script>
+    <div class="product-show">
+        <div class="info">
+            <div class="label"><span></span></div>
+            <div class="time">{$info.releasetime}</div>
+        </div>
+        <h2 class="title">{$info.title}</h2>
+        <div class="msg">
+            <ul>
+                <li>
+                    <h3>{$info.measurearea}<span>m²</span></h3>
+                    <p>总面积</p>
+                </li>
+                <li>
+                    <h3>{$info.price}<span>元</span></h3>
+                    <p>租金</p>
+                </li>
+                <li>
+                    <h3>{$info.area_name}</h3>
+                    <p>区域</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="p-line"></div>
+
+    <div class="product-show-2">
+        <div class="p-title">
+            <h2>基本信息</h2>
+        </div>
+        <div class="list">
+            <ul>
+                <li>
+                    <div class="name">楼盘名称</div>
+                    <p>{$info.buildingname}</p>
+                </li>
+                <li>
+                    <div class="name">楼盘区域</div>
+                    <p>{$info.area_name}</p>
+                </li>
+                <li>
+                    <div class="name">楼盘地址</div>
+                    <p>{$info.address}</p>
+                </li>
+                <li>
+                    <div class="name">面积信息</div>
+                    <p>{$info.measurearea}</p>
+                </li>
+                <li>
+                    <div class="name">楼层类别</div>
+                    <p>{$info.floor_type}</p>
+                </li>
+                <li>
+                    <div class="name">结构</div>
+                    <p>{$info.struck}</p>
+                </li>
+                <li>
+                    <div class="name">租售</div>
+                    <p>{$info.is_sale}</p>
+                </li>
+                <li>
+                    <div class="name">支付方式</div>
+                    <p>{$info.pay_type}</p>
+                </li>
+                <li>
+                    <div class="name">楼层</div>
+                    <p>{$info.floor}</p>
+                </li>
+                <li>
+                    <div class="name">商铺类型</div>
+                    <p>{$info.type}</p>
+                </li>
+                <li>
+                    <div class="name">商铺性质</div>
+                    <p>{$info.shop_nature}</p>
+                </li>
+                <li>
+                    <div class="name">经营状态</div>
+                    <p>{$info.manage_status}</p>
+                </li>
+                <li>
+                    <div class="name">经营类型</div>
+                    <p>{$info.manage_type}</p>
+                </li>
+                <li>
+                    <div class="name">规格</div>
+                    <p>{$info.size}</p>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="p-line"></div>
+
+    <div class="product-show-2">
+        <div class="p-title">
+            <h2>概况</h2>
+        </div>
+        <div class="content">
+            {$info.detail|raw}
+        </div>
+    </div>
+    <div class="p-line"></div>
+
+    <div class="product-show-3">
+        <div class="p-title">
+            <h2>选址预约</h2>
+        </div>
+        <div class="form">
+            <ul>
+                <li>
+                    <div class="input"><input type="text" placeholder="请输入联系方式"></div>
+                </li>
+                <li>
+                    <div class="input"><textarea placeholder="请描述您的具体需求，如：找一个靠近高速，大小1200到1500平，带装修的厂房等。"></textarea></div>
+                </li>
+            </ul>
+            <div class="submit">
+                <div><input type="button" value="马上预约"></div>
+            </div>
+        </div>
+    </div>
+    <div class="p-line"></div>
+
+    <div class="product-list">
+        <div class="p-title">
+            <h2>猜你喜欢</h2>
+            <a href="/of_build" class="more">更多</a>
+        </div>
+        <ul>
+            {foreach $recommend as $row}
+            <li>
+                <a href="/shop/detail?id={$row.id}">
+                    <div class="img"><img src="{$row.imgs}" alt=""><em>{$row.area_name}</em></div>
+                    <div class="name">{$row.title}</div>
+                    <div class="label"></div>
+                    <div class="price"><span>{$row.price}/㎡</span><em>{$row.measurearea}㎡</em></div>
+                </a>
+            </li>
+            {/foreach}
+        </ul>
+    </div>
+
+    <a href="javascript:;" class="topA"><img src="/static/mobile/image/homepage_icon_return_top.png" alt=""></a>
+    <div class="g-foot">
+        <div class="tel">
+            <a href="">
+                <img src="/static/mobile/image/bottom_phone_icon.png" alt="">
+                <div>
+                    <span>4008863806</span>
+                    <p>点击拨打免费咨询</p>
+                </div>
+            </a>
+        </div>
+        <div class="link"><a href="about.html">关于我们</a></div>
+        <p>粤ICP备19115088号</p>
+        <p>广东厂房网 版权所有</p>
+        <p>东莞市众鑫房地产投资有限公司 版权所属</p>
+    </div>
+    <div class="foot-btn-d"></div>
+    <div class="foot-btn">
+        <div class="wal">
+            <a href="" class="btn"><img src="/static/mobile/image/ic_message.png" alt=""><span>需求登记</span></a>
+            <a href="" class="tel">点击免费拨打 <em>0769-87819917</em></a>
+        </div>
+    </div>
+    <!--wal-END-->
+</div>
+</body>
+</html>
+
+<link rel="stylesheet" href="script/swiper/swiper-3.4.2.min.css">
+<script type="text/javascript" src="/static/mobile/script/swiper/swiper-3.4.2.jquery.min.js"></script>
+<script type="text/javascript" src="/static/mobile/script/js.js"></script>

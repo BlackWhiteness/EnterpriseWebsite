@@ -1,156 +1,59 @@
-<!DOCTYPE html>
-<!-- saved from url=(0044)/NewMain/Citylist/ -->
-<html lang="en" style="font-size: 66.6667px;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
-    <title>{:config('web_site_title')}-城市切换</title>
-    <link rel="icon" href="/static/mobile/img/favicon.ico">
-    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <meta name="Keywords" content="">
-    <meta name="description" content="">
-    <meta name="format-detection" content="telephone=no">
-    <meta http-equiv="Cache-Control" content="no-transform">
-    <meta http-equiv="Cache-Control" content="no-siteapp">
-    <meta name="applicable-device" content="mobile">
-    <link rel="stylesheet" href="/static/mobile/css/reset.css">
-    <link rel="stylesheet" href="/static/mobile/css/base.css">
-    <link rel="stylesheet" href="/static/mobile/css/citylist.css">
-     
-   
-	
-
-
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="renderer" content="webkit" />
+    <title>{:config('web_site_title')}</title>
+    <meta name="keywords" content="{:config('web_site_keywords')}"/>
+    <meta name="description" content="{:config('web_site_description')}"/>
+    <link rel="icon" href="/static/mobile/image/favicon.ico">
+    <link href="/static/mobile/style/index.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="/static/mobile/script/jquery-1.7.1.min.js"></script>
 </head>
+
 <body>
-
-    <!--头部-->
-    <header class="headBox">
-        <a href="javascript:history.go(-1);" class="back"></a>
-        <h2>城市切换</h2>
-        <a href="javascript:void(0)" class="nav" onclick="document.getElementById('nav').style.display='block';"></a>
-    </header>
-    <!--顶部导航频道-->
-<!--<nav id="nav"></nav>-->
-<style>
-    #nav .foot li{
-        width: 33.333%
-    }
-</style>
-<nav id="nav">
-    <div class="navCon">
-        <div class="head">
-            <img src="/static/mobile/img/navigation_banner.png" alt="">
-            <a href="javascript:void(0);" class="navIcon" onclick="document.getElementById('nav').style.display='none';"></a>
+<div class="wal" id="app">
+    <!--wal-->
+    <div class="g-headD"></div>
+    <div class="g-head">
+        <div class="wal">
+            <div class="btn btn-left"><a href="/static/mobile/javascript:window.history.go(-1);" class="back"></a></div>
+            <h2>城市切换</h2>
+            <div class="btn btn-right">
+                <a href="/static/mobile/javascript:;" class="nav"></a>
+            </div>
         </div>
-        <ul class="menuNav clearFix">
-            <li>
-                <a href="{:url('ws',['category'=>1])}">
-                <img src="/static/mobile/img/homepage_ic_navigation_plant.png" alt="厂房出租">
-                <p>厂房出租</p>
-                </a>
-            </li>
-            <li>
-                <a href="{:url('ws',['category'=>2])}">
-                    <img src="/static/mobile/img/homepage_ic_office_building.png" alt="厂房出售">
-                    <p>厂房出售</p>
-                </a>
-            </li>
-            <li>
-                <a href="{:url('ws',['category'=>3])}">
-                <img src="/static/mobile/img/homepage_ic_cangku.png" alt="写字楼">
-                <p>仓库出租</p>
-                </a>
-            </li>
-            <li>
-                <a href="{:url('land')}">
-                <img src="/static/mobile/img/homepage_ic_land.png" alt="土地">
-                <p>土地租售</p>
-                </a>
-            </li>
-            <li>
-                <a href="/y/">
-                    <img src="/static/mobile/img/homepage_ic_special.png" alt="产业园区">
-                    <p>园区招商</p>
-                </a>
-            </li>
-            <li>
-                <a href="{:url('of_build')}">
-                    <img src="/static/mobile/img/homepage_ic_garden.png" alt="写字楼">
-                    <p>写字楼</p>
-                </a>
-            </li>
-            <li>
-                <a href="/zhuanti/">
-                    <img src="/static/mobile/img/homepage_ic_broker.png" alt="商铺租售">
-                    <p>商铺租售</p>
-                </a>
-            </li>
-
-            <li>
-                <a href="/agents/sz/">
-                    <img src="/static/mobile/img/homepage_ic_investment.png" alt="民宅租售">
-                    <p>民宅租售</p>
-                </a>
-            </li>
-            
-           
-            <div style="clear:both"></div>
-        </ul>
-        <ul class="foot clearFix">
-            <li>
-                <a href="/">
-                    <img src="/static/mobile/img/navigation_ic_homepage.png" alt="首页">
-                    <p>首页</p>
-                </a>
-            </li>
-            <li>
-                <a href="/help/about.html">
-                    <img src="/static/mobile/img/navigation_ic_us.png" alt="关于我们">
-                    <p>关于我们</p>
-                </a>
-            </li>
-            <li>
-                <a href="/">
-                    <img src="/static/mobile/img/navigation_ic_group.png" alt="集团官网">
-                    <p>联系我们</p>
-                </a>
-            </li>
-          
-        </ul>
-        <div class="close"></div>
     </div>
-    <div class="mask"></div>
-</nav>
-    
+    {include file="layout/nav" /}
 
-    <main class="citySearBox">
-      
-      
-        <!--当前位置-->
-        <div class="nowCity plr30">
-        <div style="height:2em;"></div>
-            <p class="tips">当前位置</p>
-            <h3>深圳</h3>
-        </div>
-
-        <!--显示点击的是哪一个字母-->
-        
-        <!--城市索引查询-->
-        
-        <!--城市列表-->
+    <div class="city-shift">
+        <div class="title">当前位置</div>
+        <div class="name">{$currentCity.name}</div>
         <div class="container">
-            <div class="city" id="cityList"><div class="hotCityBox"><div class="tips">其他城市</div><div class="hot hotCity">
-            <a href="/gps/refindex/?ctyid=1" class="cityListA"><div data-id="1">广州</div></a>
-            <a href="/gps/refindex/?ctyid=2" class="cityListA"><div data-id="2">东莞</div></a>
-            <a href="/gps/refindex/?ctyid=5" class="cityListA"><div data-id="2">惠州</div></a>
-            <a href="/gps/refindex/?ctyid=7" class="cityListA"><div data-id="7">佛山</div></a>
-            <a href="/gps/refindex/?ctyid=17" class="cityListA"><div data-id="17">中山</div></a>            </div>
-            <div style="height:3em;"></div></div>
-            
-</div>
+            <div class="title">其他城市</div>
+            <div class="list">
+                <ul>
+                    {foreach $cityList as $city}
+                    <li><a href="#" onclick=setCityCookie("{$city.id}")>{$city.name}</a></li>
+                    {/foreach}
+                </ul>
+            </div>
         </div>
-    </main>
-    
-    
+    </div>
+    <!--wal-END-->
+</div>
+</body>
+</html>
+<script>
+    function setCityCookie(cityId){
+        console.log(cityId);
+        document.cookie = 'city' + "="+ cityId;
+        location.reload();
+    }
+</script>
 
-
-</body></html>
+<link rel="stylesheet" href="/static/mobile/script/swiper/swiper-3.4.2.min.css">
+<script type="text/javascript" src="/static/mobile/script/swiper/swiper-3.4.2.jquery.min.js"></script>
+<script type="text/javascript" src="/static/mobile/script/js.js"></script>

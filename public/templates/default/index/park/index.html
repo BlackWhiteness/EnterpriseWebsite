@@ -1,0 +1,1255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0039)/index/search/workshop?area=sz -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="shortcut icon" href="/static/index/img/favicon.ico" type="image/x-icon"/>
+    <title>{:config('web_site_title')}</title>
+    <meta name="keywords" content="{:config('web_site_keywords')}"/>
+    <meta name="description" content="{:config('web_site_description')}"/>
+    <link rel="stylesheet" href="/static/index/css/css.css"/>
+    <!--    <script type="text/javascript" src="/static/index/js/jquery-1.4.2.min.js"></script>-->
+    <script type="text/javascript" src="/static/index/js/jquery-1.10.2.js"></script>
+    <script src="/static/index/js/share.js"></script>
+    <link rel="stylesheet" href="/static/index/css/slide_share.css"/>
+</head>
+<body style="text-align:center">
+<style>
+    #page {
+        float: right;
+        font: 12px/16px arial;
+        margin: 25px 0px 0px 0px;
+        text-align: center;
+        height: 24px;
+    }
+
+    #page span {
+        margin: 0px 3px;
+        border: 1px solid #ddd;
+        padding: 3px 7px;
+        text-decoration: none;
+        color: #666
+    }
+
+    #page a {
+        margin: 0px 3px;
+        border: 1px solid #ddd;
+        padding: 3px 7px;
+        text-decoration: none;
+        color: #666
+    }
+
+    #page a.now_page, #page a:hover {
+        color: #fff;
+        background: #2f9a1e
+    }
+</style>
+<style>
+    .nav_bar {
+        background: url(/static/index/img/home4_02.jpg) repeat-x left top;
+        height: 39px;
+        line-height: 39px;
+        overflow: hidden;
+        color: #666;
+    }
+
+    .w960 {
+        width: 1000px;
+        margin: 0 auto;
+    }
+
+    .fl {
+        float: left;
+    }
+
+    .fr {
+        float: right;
+    }
+
+    .f12 {
+        font-size: 12px;
+    }
+
+    .c303 {
+        color: #AF5303
+    }
+
+    .nav_bar_left em {
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+
+    .nav_bar_left a {
+        color: #AF5303;
+    }
+
+    .nav_bar_left span {
+        font-weight: bold;
+        color: #fff;
+        padding: 3px 8px;
+        background-color: brown
+    }
+
+    #page ul {
+        display: flex;
+    }
+
+    .nav_bar_right {
+        font-style: normal;
+        color: #666;
+        padding: 0 0 0 25px;
+        background: url(/static/index/img/tel.png) no-repeat 10px center;
+        padding: 0 0 0 30px;
+        display: inline-block;
+    }
+
+</style>
+<div class="nav_bar">
+    <div class="w960 f12">
+        <div class="nav_bar_left fl">
+            当前城市：
+            <span>{$cityInfo[0]['name']}</span>
+            <em>|</em>切换城市：
+            {volist name="cityList" id="data"}
+            <a href="javascript:document.cookie = 'city={$data.id};path=/;';location.reload();">{$data.name}</a>
+            <em>|</em> {/volist}
+        </div>
+        <div class="nav_bar_right fr">
+            <strong>24小时免费服务热线：{:config('web_site_tel')}</strong>
+        </div>
+    </div>
+</div>
+
+<style>
+
+    .W1000 {
+        width: 1000px;
+        margin: 0 auto;
+    }
+
+    .LH24 {
+        line-height: 24px;
+    }
+
+    .F12 {
+        font-size: 12px;
+    }
+
+    .head .t-r .FL a {
+        color: #fd443b;
+        margin-right: 10px;
+    }
+
+    .head .t-r .FL a:hover {
+        color: #d90700;
+    }
+
+    .cGray {
+        color: #999;
+    }
+
+    .clear {
+        clear: both;
+    }
+
+    .mr_search {
+        width: 500px;
+        height: 32px;
+        border: 2px solid #009BE5;
+    }
+
+    .mr_search form {
+        display: block;
+    }
+
+    .mr_search form .select {
+        position: relative;
+    }
+
+    .mr_search form input {
+        display: block;
+        float: left;
+    }
+
+    .mr_search form .select input {
+        padding-left: 0px;
+        width: 77px;
+        cursor: pointer;
+        height: 32px;
+        overflow: hidden;
+        font: 12px/34px "宋体";
+        color: #676767;
+        border: none;
+        background: url(/static/index/img/zx_icons.jpg) no-repeat 0 -70px;
+        padding-right: 12px;
+    }
+
+    .mr_search form .select .s_xialamenu {
+        width: 69px;
+        border: 1px solid #D4D4D4;
+        border-top: none;
+        background-color: #F5F5F5;
+        position: absolute;
+        top: 32px;
+        left: 0;
+        z-index: 100;
+        display: none;
+    }
+
+    .mr_search form .select .s_xialamenu ul {
+        list-style: none;
+    }
+
+    .mr_search form .select .s_xialamenu ul li {
+        float: left;
+        font: 12px/26px "宋体";
+        text-align: center;
+        background-color: #F5F5F5;
+    }
+
+    .mr_search form .select .s_xialamenu ul li a {
+        display: block;
+        width: 69px;
+        height: 26px;
+        color: #676767;
+        text-decoration: none;
+    }
+
+    .mr_search form .select .s_xialamenu ul li a:hover {
+        background: #00499a;
+        color: white;
+    }
+
+    .mr_search form .text input {
+        width: 300px;
+        height: 30px;
+        vertical-align: middle;
+        border: none;
+        padding-left: 2px;
+        padding-top: 2px;
+        font: 12px/22px "宋体";
+        color: #c4c4c4;
+        outline: none;
+    }
+
+    .mr_search form .searbut input {
+        width: 87px;
+        height: 32px;
+        padding-left: 17px;
+        text-align: center;
+        font: bold 16px/32px "宋体";
+        color: white;
+        border: none;
+        cursor: pointer;
+        background: url(/static/index/img/zx_icons.jpg) no-repeat 0 -107px;
+    }
+
+    .fl {
+        float: left;
+    }
+
+    .fr {
+        float: right;
+    }
+
+    .cl {
+        clear: both;
+    }
+
+    textarea, input {
+        word-wrap: break-word;
+        word-break: break-all;
+        padding: 0px;
+    }
+
+    ul, li {
+        margin: 0px;
+        padding: 0px;
+        list-style-type: none;
+    }
+
+    .marginT5 {
+        margin-top: 5px;
+    }
+
+    .marginT8 {
+        margin-top: 8px;
+    }
+
+    .marginT10 {
+        margin-top: 10px;
+    }
+
+    .marginB20 {
+        margin-bottom: 20px;
+    }
+
+    .marginT14 {
+        margin-top: 14px;
+    }
+
+    .marginT15 {
+        margin-top: 15px;
+    }
+
+    .marginT17 {
+        margin-top: 17px;
+    }
+
+    .marginT20 {
+        margin-top: 20px;
+    }
+
+    .marginT40 {
+        margin-top: 40px;
+    }
+
+    .marginB10 {
+        margin-bottom: 10px;
+    }
+
+    .marginL9 {
+        margin-left: 9px;
+    }
+
+    .marginL13 {
+        margin-left: 13px;
+    }
+
+    .marginL15 {
+        margin-left: 13px;
+    }
+
+    .marginL20 {
+        margin-left: 20px;
+    }
+
+    .marginL25 {
+        margin-left: 25px;
+    }
+
+    .marginL35 {
+        margin-left: 35px;
+    }
+
+    .marginL40 {
+        margin-left: 40px;
+    }
+
+    .marginL45 {
+        margin-left: 47px;
+    }
+
+    .marginL65 {
+        margin-left: 65px;
+    }
+
+    .marginL85 {
+        margin-left: 85px;
+    }
+
+    .marginR10 {
+        margin-right: 10px;
+    }
+
+    .marginR15 {
+        margin-right: 15px;
+    }
+
+    .marginR20 {
+        margin-right: 20px;
+    }
+
+    .marginR30 {
+        margin-right: 30px;
+    }
+
+    .margin13 {
+        margin: 0 13px;
+    }
+
+    .t-l {
+        text-align: left;
+    }
+
+    .t-c {
+        text-align: center;
+    }
+
+    .t-r {
+        text-align: right;
+    }
+
+    .FL {
+        float: left;
+    }
+
+    .FR {
+        float: right;
+    }
+
+    .qhcity_box {
+        border: 1px solid #dbb876;
+        padding: 10px 15px 0px 15px;
+        width: 510px;
+        font-size: 12px;
+        background-color: #FFFFFF;
+        text-align: left;
+    }
+
+    .qhcity_hot {
+        color: #f24400;
+        border-bottom: 1px dashed #ccc;
+        line-height: 34px;
+        padding-left: 3px;
+    }
+
+    .qhcity_hot a {
+        color: #f24400;
+        text-decoration: none;
+        padding-right: 10px;
+    }
+
+    .qhcity_hot a:link {
+        color: #f24400;
+        text-decoration: none;
+    }
+
+    .qhcity_hot a:visited {
+        color: #f24400;
+        text-decoration: none;
+    }
+
+    .qhcity_hot a:hover {
+        color: #f24400;
+        text-decoration: underline;
+    }
+
+    .qhcity_hot a:active {
+        color: #f24400;
+        text-decoration: underline;
+    }
+
+    .qhcity_area {
+        color: #888888;
+        border-bottom: 1px dashed #ccc;
+        line-height: 34px;
+        padding-left: 3px;
+    }
+
+    .qhcity_area a {
+        color: #444444;
+        text-decoration: none;
+        padding-right: 10px;
+    }
+
+    .qhcity_area a:link {
+        color: #444444;
+        text-decoration: none;
+    }
+
+    .qhcity_area a:visited {
+        color: #444444;
+        text-decoration: none;
+    }
+
+    .qhcity_area a:hover {
+        color: #f24400;
+        text-decoration: underline;
+    }
+
+    .qhcity_area a:active {
+        color: #f24400;
+        text-decoration: underline;
+    }
+
+    .qhcity_more {
+        color: #f24400;
+        text-align: right;
+        line-height: 34px;
+    }
+
+    .qhcity_more a {
+        color: #f24400;
+    }
+
+    .qhcity_more a:link {
+        color: #f24400;
+        text-decoration: none;
+    }
+
+    .qhcity_more a:visited {
+        color: #f24400;
+        text-decoration: none;
+    }
+
+    .qhcity_more a:hover {
+        color: #f24400;
+        text-decoration: underline;
+    }
+
+    .qhcity_more a:active {
+        color: #f24400;
+        text-decoration: underline;
+    }
+
+    .qhcity_close {
+        float: right;
+    }
+
+    .nav li a span {
+        display: block;
+        float: left;
+        padding: 0 0 0 0;
+        height: 39px;
+        line-height: 39px;
+        font-size: 14px;
+        cursor: pointer;
+        color: #fff;
+    }
+
+    .nav li {
+        padding: 0 13px;
+    }
+</style>
+<script src="/static/index/js/push.js"></script>
+<script type="text/javascript">
+    var run = 0;
+    var rtime;
+
+    function time() {
+        ChangeCity(0);
+        clearTimeout(rtime);
+    }
+
+    function ChangeCity(show) {
+        $("#popwindow").css("position", "absolute");
+        $("#popwindow").css("top", 40);
+        // if ($.browser.msie)
+        //     $("#popwindow").css("left", 20);
+        // else
+        $("#popwindow").css("left", 20);
+        if (show == 1) {
+            $("#popwindow").slideDown(300, function () {
+                run = 0
+            });
+        } else {
+            $("#popwindow").slideUp(100, function () {
+                run = 0
+            });
+        }
+    }
+</script>
+<div class="marginT20 marginB20 W1000 head ">
+    <div class="FL marginT10">
+        <a href="/"><img src="/static/index/img/logo.png"/></a>
+    </div>
+    <div class="FL LH24 marginL20" style="margin-top:37px;">
+        <div class="m_city fl" style="position:relative;">
+            <div id="change_city">
+                <font color="#D90700" style="font-size:18px;"><strong class="c303"
+                                                                      style="font-size:18px; color:#D90700;">{$cityInfo[0]['name']}</strong></font>
+                <a class="F12 cGray" href="javascript:void(0);" onclick="javascript:ChangeCity(1);">[切换城市]</a>
+            </div>
+            <div class="qhcity_box" id="popwindow"
+                 style="z-index: 20; position: absolute; top: 40px; left: 20px; display: none; min-height:300px; position:relative;">
+                <div class="qhcity_close" onclick="javascript:ChangeCity
+();">
+                    <img src="/static/index/img/close.gif" alt="关闭" title="关闭"/>
+                </div>
+                <div class="qhcity_hot">
+                    热门城市：
+                    {volist name="cityList" id="data"}
+                    <a href="javascript:document.cookie = 'city={$data.id};path=/;';location.reload();">{$data.name}</a>
+                    {/volist}
+                </div>
+                <div class="qhcity_area" style="line-height:20px; padding-top:5px; padding-bottom:5px;">
+                    服务地区：
+                    {volist name="cityList" id="data"}
+                    <a href="javascript:document.cookie = 'city={$data.id};path=/;';location.reload();">{$data.name}</a>
+                    {/volist}
+                </div>
+                <div class="qhcity_more" style="position:absolute; bottom:5px; right:15px;">
+                    <a href="javascript:alert('其他城市正在开通中！！！')" target="_blank">其他城市正在开通中&gt;&gt;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="FR" style="width:504px;">
+        <div class="t-r F12">
+            <div class="FL">
+                <span style=" padding-right:5px;">热门搜索:</span>
+                <a target="_blank"
+                   href="/index/search/workshop?category=1&title=带装修">带装修厂房</a>
+                <a target="_blank" href="/index/search/workshop?category=1&title=一楼">一楼厂房</a>
+                <a target="_blank" href="/index/search/workshop?category=1&title=高新科技园">高新科技园厂房</a>
+            </div>
+            <div class="FR"></div>
+        </div>
+        <div class="clear"></div>
+
+        <div class="mr_search FR marginT5">
+            <form method="get"  class="form" id="search111" onsubmit="return false;">
+                <div class="text fl">
+                    <input id="top_search" name="title" type="text" placeholder="请输入园区名称或工业区商圈"/>
+                </div>
+                <div class="searbut fr" style="height:32px; overflow:hidden;">
+                    <input type="submit" class="searanniu" value="搜索"/>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+<script type="text/javascript">
+    function xiaoshi(obj) {
+        obj.value = "";
+    }
+
+    function xianshi(obj, message) {
+        if (obj.value == null || obj.value == "")
+            obj.value = message;
+    }
+
+    /*
+    导航条.显示函数
+    */
+    function block_show(id, isHome) {
+        var list = document.getElementsByClassName("n_ejmenu FR");
+        for (var i = 0, j = list.length; i < j; i++) {
+            list[i].style.display = "none";
+        }
+        if (!isHome) {
+            document.getElementById(id).style.display = "block";
+            document.getElementById("line").style.display = "none";
+        } else {
+            document.getElementById("line").style.display = "block";
+        }
+    }
+
+    function SelText(obj) {
+        document.getElementById("ct_input").value = obj.innerHTML;
+        document.getElementById("s_xlmenu").style.display = "none";
+        var tna = obj.innerHTML;
+        var soty = 0;
+        if (tna == "厂房") {
+            soty = 1;
+        } else if (tna == "写字楼") {
+            soty = 3;
+        } else if (tna == "土地") {
+            soty = 5;
+        } else if (tna == "商铺") {
+            soty = 4;
+        } else if (tna == "产业园区") {
+            soty = 2;
+        }
+        document.getElementById("sotype").value = soty;
+    }
+
+    function xiala(id, isShow) {
+        var _disply = "none";
+        if (isShow)
+            _disply = "block";
+        document.getElementById(id).style.display = _disply;
+    }
+
+    function xiala1() {
+        document.getElementById("ywhz").style.background = "url(/images/zs_topnavlibg2.jpg) no-repeat center";
+        document.getElementById("jtxl").style.display = "block";
+    }
+
+    function xiala2() {
+        document.getElementById("ywhz").style.background = "url(/images/zs_topnavlibg1.jpg) no-repeat center";
+        document.getElementById("jtxl").style.display = "none";
+    }
+
+    function xiala3(id, isShow) {
+        var _disply = "none";
+        if (isShow)
+            _disply = "block";
+        document.getElementById(id).style.display = _disply;
+    }
+</script>
+<div id="header">
+    <table width="960" border="0" cellspacing="0" cellpadding="0" align="center">
+        <tbody>
+        <tr>
+            <td>
+                <script type="text/javascript">
+                    (function (a) {
+                        a.fn.hoverClass = function (b) {
+                            var a = this;
+                            a.each(function (c) {
+                                a.eq(c).hover(function () {
+                                    $(this).addClass(b)
+                                }, function () {
+                                    $(this).removeClass(b)
+                                })
+                            });
+                            return a
+                        };
+                    })(jQuery);
+
+
+                </script>
+                <!--解决 IE6 背景缓存-->
+                <!--[if IE 6]>
+                <script type="text/javascript">document.execCommand("BackgroundImageCache", false, true);</script>
+                <![endif]-->
+                {include file="templates/default/index/layout/nav.html" /}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<!--<div class="zs_newmbx" style="display:none; width:936px;margin:auto;text-align:left;">-->
+<!--    <a target="_blank" href="/">东莞厂房网</a>&nbsp;&gt;&nbsp;-->
+<!--    <a target="_blank" href="/index/search/workshop?area=dg">东莞厂房出租</a>-->
+<!--</div>-->
+<table width="960" align="center">
+    <tbody>
+    <tr align="center">
+        <td align="center"><a href="javascript:void(0)" target="_blank"><img src="/static/index/img/img_13.jpg"
+                                                                             width="1000" height="267"/></a></td>
+    </tr>
+    </tbody>
+</table>
+<style>
+    .zs_newmbx {
+        padding-left: 24px;
+        width: 976px;
+        margin: 0 auto;
+        font-size: 12px;
+        color: #727272;
+        text-align: left;
+        line-height: 38px;
+        background: url(/static/index/img/mbxie.jpg) no-repeat 0px 12px;
+    }
+
+    .zs_newmbx a {
+        font-size: 12px;
+        color: #727272;
+    }
+
+    .zs_newmbx a:hover {
+        color: #404040;
+    }
+
+    .w998 {
+        width: 1000px;
+        margin: 0 auto;
+    }
+
+    .bor1 {
+        border: 1px solid #dfdfdf;
+    }
+
+    .ser_sx {
+        text-align: left;
+        margin-bottom: 8px;
+    }
+
+    .ser_sx dl {
+        width: 945px;
+        line-height: 38px;
+        font-size: 12px;
+        padding-left: 14px;
+        margin: 0px auto;
+        border-bottom: 1px dotted #ccc;
+    }
+
+    .ser_sx .borno {
+        border: none;
+    }
+
+    .ser_sx .disno {
+        display: none;
+    }
+
+    .ser_sx dt {
+        float: left;
+        color: #4b4b4b;
+        font-weight: bold;
+        margin-right: 8px;
+    }
+
+    .ser_sx dd a {
+        color: #2F2B2B;
+        margin-right: 18px;
+    }
+
+    .ser_sx dd a:hover {
+        color: #D42A24;
+        font-weight: bold;
+    }
+
+    .ser_sx dd a:hover.current {
+        color: #FFFFFF;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .ser_sx dd .current {
+        color: #FFFFFF;
+        background-color: #009BE5;
+        padding: 3px 8px;
+        font-weight: bold;
+    }
+
+    .clear {
+        clear: both;
+    }
+
+    .search_area-foot {
+        background: url(/static/index/img/searcharea_foot.jpg) no-repeat;
+        height: 10px;
+        background-size: 100% 100%;
+    }
+
+    .search_area-screen {
+        height: 45px;
+        line-height: 45px;
+        background-color: #F0F0F0;
+        padding-left: 15px;
+        text-align: left;
+        color: #666
+    }
+
+    .search_area-screen span {
+        border: 1px solid #ffbc89;
+        padding: 6px 22px 6px 8px;
+        background: url(/images/sprites.png) no-repeat right center #fff;
+        margin-left: 8px;
+    }
+
+    .search_area-screen a {
+        text-decoration: none;
+    }
+
+</style>
+<div class="zs_newmbx">
+    <a target="_blank" href="/" title="广东厂房网">广东厂房网</a>&nbsp;&gt;&nbsp;
+    <a target="_blank" href="" title="园区招商">园区招商</a>
+</div>
+
+<div class="w998 bor1 ser_sx">
+    <!--引入搜索区域城市文件-->
+    <style>
+        dd.screen_area {
+            overflow: hidden;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        dd.screen_area a {
+            height: 28px;
+            line-height: 28px;
+            float: left;
+        }
+
+        dd.screen_area a.current {
+            padding-top: 0px;
+            padding-bottom: 0px;
+        }
+    </style>
+    <dl>
+        <dt>
+            区域：
+        </dt>
+        <dd class="screen_area">
+            {volist name="cityInfo" id="data"}
+            <a id="city_id" class="current" href="javascript:void(0)" value="{$data.id}">全{$data.name}</a>
+            {/volist}
+            {volist name="areaInfo" id="data"}
+            <a href="javascript:void(0)" value="{$data.id}">{$data.name}</a>
+            {/volist}
+        </dd>
+    </dl>
+
+    <script type="text/javascript" src="/static/index/js/jquery.pagination.js"></script>
+    <script type="text/javascript" src="/static/index/js/search_park.js"></script>
+    <style>
+        #title_search {
+            width: 840px;
+            height: 50px;
+            margin: 20px auto;
+            position: relative;
+        }
+
+        .list-search {
+            position: absolute;
+            left: 3px;
+            width: 46px;
+            height: 46px;
+            background: url(http://sz.kongjianjia.com/Public/public/static/index/img/store/search.png) no-repeat center center;
+        }
+
+        #title_input {
+            background: #ffffff;
+            border: 3px solid #009BE5;
+            border-right: none;
+            border-radius: 2px 0px 0px 2px;
+            width: 600px;
+            height: 45px;
+            color: #929090;
+            font-size: 14px;
+            line-height: 44px;
+            padding: 0px 17px;
+            float: left;
+            text-indent: 29px;
+        }
+
+        #title_input:focus {
+            outline: none;
+        }
+
+        #title_click, #title_click_all {
+            float: left;
+            width: 80px;
+            height: 50px;
+            border-radius: 0px 2px 2px 0px;
+            text-align: center;
+            display: inline;
+            transition: 0.5s;
+            background-color: #009BE5;
+            line-height: 50px;
+            color: #ffffff;
+            font-size: 14px;
+            margin-right: 20px;
+            text-decoration: none;
+        }
+
+        #title_click:hover {
+            background-color: #00A2E9;
+        }
+    </style>
+    <div style="display:;">
+        <form name="form_title" method="get" action="/index/search/workshop">
+            <div id="title_search">
+                <div class="list-search"></div>
+                <!--                <input id="title_input" name="city" type="hidden" value="{$cityInfo[0]['id']}"/>-->
+                <input id="title_input" name="title" type="text" data-id="" data-key="keyword" value="" my_no_use="true"
+                       placeholder="请输入厂房区域、商圈、位置或特定需求等..." autocomplete="off"/>
+                <a id="title_click" href="javascript:void(0)">搜索</a>
+                <a id="title_click_all" href="javascript:void(0)">全站搜索</a>
+            </div>
+        </form>
+    </div>
+    <script language="javascript">
+        function search_title() {
+            document.form_title.submit();
+        }
+    </script>
+    <div class="clear"></div>
+
+    <div class="search_area-foot w998" style="height:45px;">
+        <div class="search_area-screen">
+        </div>
+    </div>
+</div>
+<style type="text/css">
+    .tab_cf {
+        width: 946px;
+        height: 36px;
+        padding-left: 10px;
+        background-color: #64d649;
+        border: solid 2px #098e06;
+        margin: 4px auto;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+    }
+
+    .tab_l {
+        width: 168px;
+        font-family: "微软雅黑";
+        float: left;
+        padding-top: 3px;
+    }
+
+    .tab_l h3 {
+        display: block;
+        padding-left: 22px;
+        font-size: 20px;
+        color: #994D1F;
+        line-height: 26px;
+        background: url(/static/index/img/zcficon.png) no-repeat left center;
+        margin-left: 20px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .tab_r {
+        float: left;
+        padding-top: 3px;
+    }
+
+    .tab_r input {
+        display: inline-block;
+        border-radius: 4px;
+        overflow: hidden;
+        padding-left: 22px;
+        height: 26px;
+        width: 130px;
+        color: #666;
+        font-size: 13px;
+        line-height: 26px;
+        border: 1px solid #ED9E05;
+        outline: none;
+        vertical-align: middle;
+    }
+
+    .t_i1 {
+        background: url(/static/index/img/tab_name.jpg) no-repeat left center #FFFBEF;
+    }
+
+    .t_i2 {
+        background: url(/static/index/img/tab_phone.jpg) no-repeat left center #FFFBEF;
+    }
+
+    .tab_r .shoux {
+        line-height: 26px;
+        font-size: 13px;
+        color: #9a5211;
+        font-weight: bold;
+        position: relative;
+        top: 2px;
+    }
+
+    .tab_r select {
+        display: inline-block;
+        border-radius: 4px;
+        overflow: hidden;
+        width: 100px;
+        height: 26px;
+        color: #666;
+        font-size: 13px;
+        line-height: 26px;
+        border: 1px solid #ED9E05;
+        vertical-align: middle;
+    }
+
+    .tab_r .tab_but {
+        width: 92px;
+        height: 26px;
+        margin-left: 10px;
+        background: url(/static/index/img/tab_but.png) no-repeat;
+        border: none;
+        cursor: pointer;
+    }
+
+    .cl {
+        clear: both;
+    }
+</style>
+
+</div>
+
+<script type="text/javascript">
+    $("#submitdatebutton").click(function () {
+        var c_name = $("#c_name").val();
+        var tel = $("#tel").val();
+        var area = $("#area1").val();
+        var mianji = $("#mianji1").val();
+        //判断客户提交的姓名是否为空
+        if (c_name == '') {
+            $("#c_name").focus();
+            alert("请输入您的称呼");
+            return false;
+        }
+        //判断客户提交的号码是否为空
+        if (tel == '') {
+            $("#tel").focus();
+            alert("请输入您的手机号码");
+            return false;
+        }
+        //判断客户提交的号码是否正确
+        if (!$("#tel").val().match(/^1[3|4|5|7|8][0-9]\d{8}$/)) {
+            alert('号码格式不正确');
+            $('#tel').focus();
+            return false;
+        }
+        //ajax提交表单
+        $.get("/save_submit.php", {c_name: c_name, tel: tel, area: area, mianji: mianji}, function (data) {
+                alert(data);
+                $("input").val("");
+                $("select").val("");
+            }//ajax的函数
+        );//ajax提交表单结束
+    })
+
+</script>
+<table width="960" border="0" cellspacing="0" cellpadding="0" align="center">
+    <tbody>
+    <tr>
+        <td>
+            <div id="mainbody">
+                <div id="main_right">
+                    <div id="right_title">
+                        <span>你搜索的结果是: </span>
+                    </div>
+                    <div class="right_cont">
+                        <div class="clear"></div>
+                        <div class="clear"></div>
+                    </div>
+                    <div id="page"></div>
+                </div>
+                <div id="main_left">
+                    <div class="left_one">
+                        <div class="left_one_title">
+                            <a href="/park/index?city={$cityInfo[0]['id']}" target="_blank">{$cityInfo[0]['name']}热门园区招商</a>
+                        </div>
+                        <div class="left_one_cont">
+                            <ul>
+                                {volist name="hotList" id="data"}
+
+                                <li>[<a href="/park/index?city={$cityInfo[0]['id']}" target="_blank">{$cityInfo[0]['name']}{$category_type_name}</a>]
+                                    <a href="/index/park/detail?id={$data.id}" target="_blank">
+                                        {:subText($data.title,13)}</a></li>
+                                {/volist}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div id="tuijian">
+    <div class="part_title">
+        <strong>推荐园区</strong>
+    </div>
+    <div id="tuijian_cont">
+        <div id="white_bg">
+            <div id="demo">
+                <div id="indemo">
+                    <div id="demo1">
+
+                        {volist name="recommend" id="data"}
+
+                            <div class="right_p_one">
+                                <div class="right_p_img">
+                                    <a href="/index/search/workshopdetail?id={$data.id}" target="_blank"><img
+                                            src="{$data.imgs}"/></a>
+                                    <span class="imgmid"></span>
+                                </div>
+                                <div class="right_p_title">
+                                    <a href="/index/search/workshopdetail?id={$data.id}" target="_blank">
+                                        {:subText($data.title,10)}</a>
+                                </div>
+                            </div>
+                        {/volist}
+
+                    </div>
+                </div>
+                <div id="demo2">
+                   {volist name="recommend" id="data"}
+                        <div class="right_p_one">
+                            <div class="right_p_img">
+                                <a href="/index/search/workshopdetail?id={$data.id}" target="_blank"><img
+                                        src="{$data.imgs}"/></a>
+                                <span class="imgmid"></span>
+                            </div>
+                            <div class="right_p_title">
+                                <a href="/index/search/workshopdetail?id={$data.id}" target="_blank">
+                                    {$data.title|mb_substr=0,10}...</a>
+                            </div>
+                        </div>
+                        {/volist}
+                </div>
+                <script type="text/javascript" src="/static/index/js/rolljs.js"></script>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="clear"></div>
+<div class="W960 link slideTxtBox1" id="demoContent">
+    <div class="top hd">
+        <div class="FL">
+            <a href="javascript:;" id="cc0" class="hov">深圳分站</a>
+            {volist name="cityInfo" id="data"}
+            <a href="javascript:;" id="cc1">{$data.name}分站</a>
+            {/volist}
+        </div>
+    </div>
+
+    <p class="infoList0" id="qlist0" style="display: block;">
+        {volist name="areaInfo" id="data"}<a href="/index/search/workshop?city={$cityInfo[0]['id']}&area={$data.id}"
+                                             target="_blank" title="{$data.name}">{$data.name}园区招商</a>{/volist} </p>
+    <p class="infoList1" id="qlist1" style="display: none;">
+        {volist name="areaInfo" id="data"}<a href="/index/search/workshop?city={$cityInfo[0]['id']}&area={$data.id}"
+                                             target="_blank" title="{$data.name}">{$data.name}园区招商</a>{/volist} </p>
+    <div class="cl"></div>
+    <script type="text/javascript">
+        $(document).ready(function (e) {
+            $(".link .top a").click(function () {
+                $(".link .top a").eq($(this).index()).addClass("hov").siblings().removeClass("hov");
+                $(".link  p").hide().eq($(this).index()).show();
+            })
+        });
+    </script>
+</div>
+<div class="link_list">
+    <div style="overflow:hidden">
+        <span style="float:left;">友情链接：</span>
+        <span style="float:left; height:28px;"><a
+                href="http://wpa.qq.com/msgrd?v=3&amp;uin=21814439&amp;site=qq&amp;menu=yes" target="_blank"><img
+                title="点击这里给我发消息" style="VERTICAL-ALIGN: middle" alt="点击这里给我发消息" src="/static/index/img/pa"
+                border="0"/></a></span>
+    </div>
+    {volist name="href" id="data"}
+    <span style="float:left;"><a href="{$data.href}" target="_blank">{$data.title}</a></span>
+    {/volist}
+</div>
+<div id="footer1">
+    <style>
+        #footer1 {
+            background: #434343;
+            color: #999;
+            width: 100%
+        }
+
+        #footer1 a {
+            color: #ccc
+        }
+    </style>
+    <div class="foot W960">
+        　&nbsp;
+        <a href="/index/about/index" target="_blank">关于我们</a>　&nbsp;|　&nbsp;<a href="//index/about/index"
+                                                                               target="_blank">联系方式</a>&nbsp;　|&nbsp;<a
+            href="/index/about/index" target="_blank">网站地图</a>&nbsp;　| <a
+            href="javascript:alert(&#39;当前IP未在管理者IP中,不允许登录,请联系管理人员&#39;)" target="_blank">后台登陆</a>&nbsp;　|&nbsp;<a
+            href="javascript:alert(&#39;请登录后使用！！！&#39;)" target="_blank">ERP(电脑版)</a>　&nbsp;|　&nbsp;<a
+            href="javascript:alert(&#39;请登录后使用！！！&#39;)" target="_blank">ERP(手机版)</a>
+        <br/>备案/许可证编号为：
+        <a href="http://www.beian.miit.gov.cn" target="_blank">{:config('web_site_icp')}</a>
+        地址：{:config('web_site_add')}&nbsp;&nbsp;邮编:518000
+        <br/> {:config('web_site_banquan')}- 电话:{:config('web_site_phone')}&nbsp;&nbsp;QQ:{:config('web_site_qq')}&nbsp;E-mail:
+        <a href="mailto:{:config('web_site_email')}">{:config('web_site_email')}</a>
+    </div>
+
+
+</div>
+<div class="bdshare-slide-button-box bdshare-slide-style-r7" style="top: 250px; width: 0px; z-index: 99999; right: 0px;"
+     data-bd-bind="1566556033721">
+    <a href="/index/search/workshop?area=sz#" onclick="return false;" class="bdshare-slide-button"
+       style="left: -24px;"></a>
+    <div class="bdshare-slide-list-box" style="width: 0px; display: none;">
+        <div class="bdshare-slide-top">
+            分享到
+        </div>
+        <div class="bdshare-slide-list">
+            <ul class="bdshare-slide-list-ul" style="width: 226px;"></ul>
+        </div>
+        <div class="bdshare-slide-bottom" style="width: 226px;">
+            <a href="/index/search/workshop?area=sz#" onclick="return false;" class="slide-more"
+               data-cmd="more">更多...</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

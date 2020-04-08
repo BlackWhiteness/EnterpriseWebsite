@@ -14,10 +14,7 @@
 // +----------------------------------------------------------------------
 namespace app\admin\model;
 
-use app\admin\model\AuthRule;
-use app\admin\service\User;
-use \think\Db;
-use \think\Model;
+use think\Model;
 
 /**
  * Class Workshop
@@ -25,21 +22,19 @@ use \think\Model;
  */
 class Workshop extends Model
 {
-    protected $pk = 'id';
-    protected $table = 'search_workshop';
     const CATEGORY_CONFIG = [
         1 => '厂房出租',
         2 => '厂房出售',
         3 => '仓库出租'
     ];
-
     const STRUCT_CONFIG = [
         1 => '标准',
         2 => '钢构结构',
         3 => '简易(铁皮房)',
         4 => '各类型仓库(单层仓库/多层仓库)'
     ];
-
+    protected $pk = 'id';
+    protected $table = 'search_workshop';
     protected $type = [
         'imgs' => 'serialize',
     ];
@@ -50,15 +45,16 @@ class Workshop extends Model
      */
     public function belongsToOneCity()
     {
-        return $this->belongsTo('City','city','id');
+        return $this->belongsTo('City', 'city', 'id');
     }
+
     /**
      * 对应一个地区
      * @return \think\model\relation\BelongsTo
      */
     public function belongsToOneArea()
     {
-        return $this->belongsTo('Area','area','id');
+        return $this->belongsTo('Area', 'area', 'id');
     }
 
     public function del($id)
@@ -77,6 +73,17 @@ class Workshop extends Model
     }
 
     /**
+     * @return \think\db\Query|\think\Paginator
+     * @throws \think\exception\DbException
+     */
+    public function getWorkShopBySearch()
+    {
+        $query = $this->filterComon();
+        $query = $query->paginate(5);
+        return $query;
+    }
+
+    /**
      * 通用过滤
      * @return \think\db\Query
      */
@@ -84,6 +91,9 @@ class Workshop extends Model
     {
         $query = self::getModel();
         $city = request()->param('city');
+//        if(empty($city)){
+//            $city = isset($_COOKIE['city']) ? $_COOKIE['city'] : 8;
+//        }
 
         if (!empty($city)) {
             $query = $query->where('city', '=', $city);
@@ -105,7 +115,7 @@ class Workshop extends Model
             }
         }
         $floor = request()->param('floor');
-        if (is_numeric($floor)) {
+        if (is_numeric($floor) && $floor) {
             $query = $query->where('floor', '=', $floor);
         }
 
@@ -125,17 +135,6 @@ class Workshop extends Model
 
         $query = $query->order(array('releasetime' => 'DESC'));
 
-        return $query;
-    }
-
-    /**
-     * @return \think\db\Query|\think\Paginator
-     * @throws \think\exception\DbException
-     */
-    public function getWorkShopBySearch()
-    {
-        $query = $this->filterComon();
-        $query = $query->paginate(20);
         return $query;
     }
 

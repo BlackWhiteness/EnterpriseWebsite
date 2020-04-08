@@ -123,6 +123,7 @@ class WorkShopFormat
             'dormitoryarea' => $detail['dormitoryarea'],
             'type' => $detail['type'],
             'category' => Workshop::CATEGORY_CONFIG[$detail['category']],
+            'category_id' => $detail['category'],
             'city_name' => $city ? $city->name : '',
             'area_name' => $area ? $area->name : '',
         ];
