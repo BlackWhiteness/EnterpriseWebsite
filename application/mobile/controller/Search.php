@@ -242,7 +242,7 @@ class Search extends MobileBase
             'struckList'=>ShopManage::STRUCK_CONFIG,
             'saleList'=>ShopManage::SALE_CONFIG,
         ]);
-        return $this->fetch('shoplist');
+        return $this->fetch('shopList');
     }
 
     public function createUrl()
