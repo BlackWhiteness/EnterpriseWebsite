@@ -132,7 +132,7 @@ function p_class_fun() {
     var dom_selected = $('.p-class-selected');
     dom_selected.find('ul').addClass('swiper-wrapper');
     dom_selected.find('li').addClass('swiper-slide');
-    new Swiper(dom_selected, {
+    class_select_swiper = new Swiper(dom_selected, {
         loop:false,
         autoplay: false,
         autoplayDisableOnInteraction: false,
@@ -141,6 +141,8 @@ function p_class_fun() {
         slidesPerView: 'auto'
     })
 }
+
+var class_select_swiper;
 
 function swiperFun(swiper) {
     this.dom = swiper.dom;

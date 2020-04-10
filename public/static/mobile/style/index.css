@@ -330,6 +330,16 @@ img {
         line-height: .78rem;
         padding: 0 .2rem;
         font-size: .28rem; }
+    .g-search .form .submit {
+      position: absolute;
+      z-index: 10;
+      left: auto;
+      right: 1.13rem;
+      top: 0;
+      bottom: 0;
+      width: .8rem;
+      background: url("../image/iserchIcon.png") center no-repeat;
+      background-size: .26rem; }
     .g-search .form a.close {
       display: block;
       position: absolute;
@@ -913,6 +923,8 @@ img {
         border-radius: 0.04rem;
         color: #979797;
         display: block; }
+      .p-class-d .drop-jg .list li.on span {
+        color: #dd2534; }
     .p-class-d .drop-jg .btn {
       position: absolute;
       z-index: 10;

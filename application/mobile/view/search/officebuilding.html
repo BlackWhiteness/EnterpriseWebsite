@@ -21,7 +21,7 @@
     <div class="g-head">
         <div class="wal">
             <a href="index.html" class="logo"></a>
-            <h2><a href="city_shift.html">深圳厂房</a></h2>
+            <h2><a href="city_shift.html">深圳写字楼</a></h2>
             <div class="btn btn-right">
                 <a href="javascript:;" class="search"></a>
                 <a href="javascript:;" class="nav"></a>
@@ -105,13 +105,7 @@
 
     </div>
     <div class="p-class-selected">
-        <ul>
-            <li><a href="" class="on">标准厂房</a></li>
-            <li><a href="">一楼</a></li>
-            <li><a href="">二楼以上</a></li>
-            <li><a href="">独院</a></li>
-            <li><a href="">钢结构</a></li>
-        </ul>
+        <ul></ul>
     </div>
 
     <!--<div class="no-data">
@@ -189,6 +183,7 @@
                 $('body').removeClass('noScroll');
             }
             //处理参数
+            var keyword = "";
             function get_parameter() {
                 var parameter = {};
                 if(search_area.value !== null){
@@ -215,14 +210,37 @@
                 if(search_sale.value !== null){
                     parameter.category = search_sale.value
                 }
-
+                if(keyword !== ""){
+                    parameter.keyword = keyword
+                }
                 return parameter
+            }
+            //搜索关键字
+            if (localStorage.gdcfKeyWord !== undefined || localStorage.gdcfKeyWord !== ""){
+                keyword = localStorage.gdcfKeyWord;
+                localStorage.gdcfKeyWord = ""
+            }
+            function selectedFun() {
+                var selected = $('.p-class-selected ul');
+                selected.html("");
+                $('.p-class-d').find('.drop-down').each(function (i) {
+                    var _ = $(this);
+                    _.find('li').each(function () {
+                        if($(this).hasClass('on') || $(this).find('a').hasClass('on')){
+                            selected.append('<li class="swiper-slide"><a href="javascript:;">'+$(this).text()+'</a></li>')
+                        }
+                    })
+                });
+                class_select_swiper.update()
             }
 
             var url = "/search_of",
                 page = {total:1, curr:1};
             getData();
             function getData() {
+                setTimeout(function () {
+                    selectedFun()
+                }, 500);
                 var parameter = get_parameter();
                 $.get(url, parameter, function (data) {
                     list_dom.html("");
