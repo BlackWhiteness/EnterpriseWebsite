@@ -1,0 +1,155 @@
+<div class="g-search">
+    <div class="wal">
+        <div class="form">
+            <div class="input"><input type="text" placeholder="请输入关键词进行搜索"></div>
+            <a href="javascript:;" class="close">取消</a>
+        </div>
+        <div class="tab-btn">
+            <ul>
+                <li data-url="/ajax_search_ws/1"><span>厂房</span></li>
+                <li data-url="/search_of"><span>写字楼</span></li>
+                <li data-url="/search_land"><span>土地</span></li>
+                <li data-url="/search_park"><span>产业园区</span></li>
+                <li data-url="/ajax_search_ws/3"><span>仓库</span></li>
+            </ul>
+        </div>
+        <!--厂房-->
+        <div class="tab-box">
+            <!--<div class="title">最近热搜</div>
+            <div class="list">
+                <ul>
+                    <li><a href="">标准厂房</a></li>
+                    <li><a href="">龙岗小面积厂房出租</a></li>
+                    <li><a href="">独院厂房</a></li>
+                    <li><a href="">二楼以上</a></li>
+                    <li><a href="">钢结构</a></li>
+                </ul>
+            </div>-->
+            <div class="title">搜索历史</div>
+            <div class="msg">暂无搜索历史记录</div>
+        </div>
+        <!--写字楼-->
+        <div class="tab-box">
+            <!--<div class="title">最近热搜</div>
+            <div class="list">
+                <ul>
+                    <li><a href="">宝安写字楼</a></li>
+                    <li><a href="">交通便利</a></li>
+                    <li><a href="">带装修</a></li>
+                    <li><a href="">近地铁口</a></li>
+                    <li><a href="">龙华写字楼出租</a></li>
+                </ul>
+            </div>-->
+            <div class="title">搜索历史</div>
+            <div class="msg">暂无搜索历史记录</div>
+        </div>
+        <!--土地-->
+        <div class="tab-box">
+            <!--<div class="title">最近热搜</div>
+            <div class="list">
+                <ul>
+                    <li><a href="">工业土地出售</a></li>
+                    <li><a href="">地皮出售</a></li>
+                    <li><a href="">土地买卖</a></li>
+                    <li><a href="">南京土地</a></li>
+                    <li><a href="">成都土地</a></li>
+                </ul>
+            </div>-->
+            <div class="title">搜索历史</div>
+            <div class="msg">暂无搜索历史记录</div>
+        </div>
+        <!--产业园区-->
+        <div class="tab-box">
+            <!--<div class="title">最近热搜</div>
+            <div class="list">
+                <ul>
+                    <li><a href="">粤海装备技术产业园</a></li>
+                    <li><a href="">帝豪智造科技园</a></li>
+                    <li><a href="">江门智能制造产业园</a></li>
+                    <li><a href="">霸州智能测控装备产业园</a></li>
+                </ul>
+            </div>-->
+            <div class="title">搜索历史</div>
+            <div class="msg">暂无搜索历史记录</div>
+        </div>
+        <!--仓库-->
+        <div class="tab-box">
+            <div class="title">搜索历史</div>
+            <div class="msg">暂无搜索历史记录</div>
+        </div>
+        <!---->
+        <div class="search-list">
+            <div class="list">
+                <ul></ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script>
+    $(function () {
+        //--搜索
+        var search = $('.g-search'),
+            input = search.find('.input input'),
+            btn = search.find('.tab-btn li'),
+            box = search.find('.tab-box'),
+            results = search.find('.search-list'),
+            close = search.find('.close'),
+            keyword = "",
+            url = "";
+
+        $('.index-search .search').click(function () {
+            search.addClass('show');
+            $('body').addClass('noScroll')
+        });
+        $('.g-head .search').click(function () {
+            search.addClass('show');
+            $('body').addClass('noScroll')
+        });
+
+        close.click(function () {
+            search.removeClass('show');
+            $('body').removeClass('noScroll')
+        });
+        input.keyup(function () {
+            keyword = $(this).val();
+            if($(this).val() !== ""){
+                searchFun();
+                results.addClass('show')
+            }else{
+                results.removeClass('show')
+            }
+        });
+
+        btn.each(function (i) {
+            $(this).click(function () {
+                change(i)
+            })
+        });
+        change(0);
+        function change(i) {
+            btn.removeClass('on');
+            btn.eq(i).addClass('on');
+            box.hide();
+            box.eq(i).show();
+            url = btn.eq(i).attr('data-url');
+            searchFun()
+        }
+
+        function searchFun() {
+            if (keyword === "" || url === "") return;
+            var parameter = {keyword: keyword};
+            $.get(url, parameter, function (data) {
+                creatHtml(data.data)
+            })
+        }
+
+        function creatHtml(data) {
+            var dom = results.find('ul');
+            dom.html("");
+            data.forEach(function (item) {
+                dom.append('<li><a href="">'+item.title+'</a></li>')
+            })
+        }
+    })
+</script>

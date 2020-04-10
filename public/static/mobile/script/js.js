@@ -68,29 +68,7 @@ $(function () {
     $('.g-nav .close').click(function () {
         $('.g-nav').removeClass('show');
         $('body').removeClass('noScroll')
-    });
-
-    //--搜索
-    $('.index-search .search').click(function () {
-        $('.g-search').addClass('show');
-        $('body').addClass('noScroll')
-    });
-    $('.g-head .search').click(function () {
-        $('.g-search').addClass('show');
-        $('body').addClass('noScroll')
-    });
-    $('.g-search .close').click(function () {
-        $('.g-search').removeClass('show');
-        $('body').removeClass('noScroll')
-    });
-    $('.g-search').find('.input input').keyup(function () {
-        if($(this).val() !== ""){
-            $('.g-search .search-list').addClass('show')
-        }else{
-            $('.g-search .search-list').removeClass('show')
-        }
-    });
-    tabFun({dom: $('.g-search'), curr: 0})
+    })
 
 });
 
