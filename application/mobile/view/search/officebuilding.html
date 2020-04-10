@@ -21,106 +21,15 @@
     <div class="g-head">
         <div class="wal">
             <a href="index.html" class="logo"></a>
-            <h2><a href="city_shift.html">深圳厂房</a></h2>
+            <h2><a href="city_shift.html">深圳写字楼</a></h2>
             <div class="btn btn-right">
                 <a href="javascript:;" class="search"></a>
                 <a href="javascript:;" class="nav"></a>
             </div>
         </div>
     </div>
+    {include file="layout/search" /}
     {include file="layout/nav" /}
-    <div class="g-search">
-        <div class="wal">
-            <div class="form">
-                <div class="input"><input type="text" placeholder="请输入关键词进行搜索"></div>
-                <a href="javascript:;" class="close">取消</a>
-            </div>
-            <div class="tab-btn">
-                <ul>
-                    <li><span>厂房</span></li>
-                    <li><span>写字楼</span></li>
-                    <li><span>土地</span></li>
-                    <li><span>产业园区</span></li>
-                    <li><span>仓库</span></li>
-                </ul>
-            </div>
-            <!--厂房-->
-            <div class="tab-box">
-                <div class="title">最近热搜</div>
-                <div class="list">
-                    <ul>
-                        <li><a href="">标准厂房</a></li>
-                        <li><a href="">龙岗小面积厂房出租</a></li>
-                        <li><a href="">独院厂房</a></li>
-                        <li><a href="">二楼以上</a></li>
-                        <li><a href="">钢结构</a></li>
-                    </ul>
-                </div>
-                <div class="title">搜索历史</div>
-                <div class="msg">暂无搜索历史记录</div>
-            </div>
-            <!--写字楼-->
-            <div class="tab-box">
-                <div class="title">最近热搜</div>
-                <div class="list">
-                    <ul>
-                        <li><a href="">宝安写字楼</a></li>
-                        <li><a href="">交通便利</a></li>
-                        <li><a href="">带装修</a></li>
-                        <li><a href="">近地铁口</a></li>
-                        <li><a href="">龙华写字楼出租</a></li>
-                    </ul>
-                </div>
-                <div class="title">搜索历史</div>
-                <div class="msg">暂无搜索历史记录</div>
-            </div>
-            <!--土地-->
-            <div class="tab-box">
-                <div class="title">最近热搜</div>
-                <div class="list">
-                    <ul>
-                        <li><a href="">工业土地出售</a></li>
-                        <li><a href="">地皮出售</a></li>
-                        <li><a href="">土地买卖</a></li>
-                        <li><a href="">南京土地</a></li>
-                        <li><a href="">成都土地</a></li>
-                    </ul>
-                </div>
-                <div class="title">搜索历史</div>
-                <div class="msg">暂无搜索历史记录</div>
-            </div>
-            <!--产业园区-->
-            <div class="tab-box">
-                <div class="title">最近热搜</div>
-                <div class="list">
-                    <ul>
-                        <li><a href="">粤海装备技术产业园</a></li>
-                        <li><a href="">帝豪智造科技园</a></li>
-                        <li><a href="">江门智能制造产业园</a></li>
-                        <li><a href="">霸州智能测控装备产业园</a></li>
-                    </ul>
-                </div>
-                <div class="title">搜索历史</div>
-                <div class="msg">暂无搜索历史记录</div>
-            </div>
-            <!--仓库-->
-            <div class="tab-box">
-                <div class="title">搜索历史</div>
-                <div class="msg">暂无搜索历史记录</div>
-            </div>
-            <!---->
-            <div class="search-list">
-                <div class="list">
-                    <!--<ul>
-                        <li><a href="">粤海装备技术产业园</a></li>
-                        <li><a href="">帝豪智造科技园</a></li>
-                        <li><a href="">江门智能制造产业园</a></li>
-                        <li><a href="">霸州智能测控装备产业园</a></li>
-                    </ul>-->
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div><img src="/static/mobile/image/list_banner.png" alt=""></div>
 
@@ -196,13 +105,7 @@
 
     </div>
     <div class="p-class-selected">
-        <ul>
-            <li><a href="" class="on">标准厂房</a></li>
-            <li><a href="">一楼</a></li>
-            <li><a href="">二楼以上</a></li>
-            <li><a href="">独院</a></li>
-            <li><a href="">钢结构</a></li>
-        </ul>
+        <ul></ul>
     </div>
 
     <!--<div class="no-data">
@@ -280,6 +183,7 @@
                 $('body').removeClass('noScroll');
             }
             //处理参数
+            var keyword = "";
             function get_parameter() {
                 var parameter = {};
                 if(search_area.value !== null){
@@ -306,14 +210,37 @@
                 if(search_sale.value !== null){
                     parameter.category = search_sale.value
                 }
-
+                if(keyword !== ""){
+                    parameter.keyword = keyword
+                }
                 return parameter
+            }
+            //搜索关键字
+            if (localStorage.gdcfKeyWord !== undefined || localStorage.gdcfKeyWord !== ""){
+                keyword = localStorage.gdcfKeyWord;
+                localStorage.gdcfKeyWord = ""
+            }
+            function selectedFun() {
+                var selected = $('.p-class-selected ul');
+                selected.html("");
+                $('.p-class-d').find('.drop-down').each(function (i) {
+                    var _ = $(this);
+                    _.find('li').each(function () {
+                        if($(this).hasClass('on') || $(this).find('a').hasClass('on')){
+                            selected.append('<li class="swiper-slide"><a href="javascript:;">'+$(this).text()+'</a></li>')
+                        }
+                    })
+                });
+                class_select_swiper.update()
             }
 
             var url = "/search_of",
                 page = {total:1, curr:1};
             getData();
             function getData() {
+                setTimeout(function () {
+                    selectedFun()
+                }, 500);
                 var parameter = get_parameter();
                 $.get(url, parameter, function (data) {
                     list_dom.html("");
@@ -362,20 +289,8 @@
         })
     </script>
 
-    <a href="javascript:;" class="topA"><img src="/static/mobile/image/homepage_icon_return_top.png" alt=""></a>
-    <div class="g-foot">
-        <div class="link"><a href="about.html">关于我们</a></div>
-        <p>粤ICP备19115088号</p>
-        <p>广东厂房网 版权所有</p>
-        <p>东莞市众鑫房地产投资有限公司 版权所属</p>
-    </div>
-    <div class="foot-btn-d"></div>
-    <div class="foot-btn">
-        <div class="wal">
-            <a href="" class="btn"><img src="/static/mobile/image/ic_message.png" alt=""><span>需求登记</span></a>
-            <a href="" class="tel">点击免费拨打 <em>0769-87819917</em></a>
-        </div>
-    </div>
+    {include file="layout/foot" /}
+    {include file="layout/foot-btn" /}
     <!--wal-END-->
 </div>
 </body>

@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/search_full.iml" filepath="$PROJECT_DIR$/.idea/search_full.iml" />
-      <module fileurl="file://F:/范强/web/.idea/广东厂房网.iml" filepath="F:/范强/web/.idea/广东厂房网.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/EnterpriseWebsite.iml" filepath="$PROJECT_DIR$/.idea/EnterpriseWebsite.iml" />
     </modules>
   </component>
 </project>

@@ -1,0 +1,131 @@
+<div class="g-search">
+    <div class="wal">
+        <div class="form">
+            <div class="input"><input type="text" placeholder="请输入关键词进行搜索"></div>
+            <div class="submit"></div>
+            <a href="javascript:;" class="close">取消</a>
+        </div>
+        <div class="tab-btn">
+            <ul>
+                <li data-url="/workshop/1"><span>厂房</span></li>
+                <li data-url="/of_build"><span>写字楼</span></li>
+                <li data-url="/land"><span>土地</span></li>
+                <li data-url="/park"><span>产业园区</span></li>
+                <li data-url="/workshop/3"><span>仓库</span></li>
+            </ul>
+        </div>
+        <!--厂房-->
+        <div class="tab-box">
+            <div class="title">搜索历史</div>
+        </div>
+        <!--写字楼-->
+        <div class="tab-box">
+            <div class="title">搜索历史</div>
+        </div>
+        <!--土地-->
+        <div class="tab-box">
+            <div class="title">搜索历史</div>
+        </div>
+        <!--产业园区-->
+        <div class="tab-box">
+            <div class="title">搜索历史</div>
+        </div>
+        <!--仓库-->
+        <div class="tab-box">
+            <div class="title">搜索历史</div>
+        </div>
+    </div>
+
+</div>
+<script>
+    $(function () {
+        //--搜索
+        var search = $('.g-search'),
+            input = search.find('.input input'),
+            submit = search.find('.submit'),
+            btn = search.find('.tab-btn li'),
+            box = search.find('.tab-box'),
+            close = search.find('.close'),
+            curr = 0,
+            keyword = "",
+            url = "";
+
+        $('.index-search .search').click(function () {
+            search.addClass('show');
+            $('body').addClass('noScroll')
+        });
+        $('.g-head .search').click(function () {
+            search.addClass('show');
+            $('body').addClass('noScroll')
+        });
+
+        close.click(function () {
+            search.removeClass('show');
+            $('body').removeClass('noScroll')
+        });
+        submit.click(function () {
+            keyword = input.val();
+            if(keyword === "") return;
+            var _ = JSON.parse(localStorage.getItem('gdcfHistory')),
+                isAdd = true;//判断是否储存过，如果储存过就不再储存
+            _[curr].forEach(function (item) {
+                if(item === keyword){
+                    isAdd = false
+                }
+            });
+            if(isAdd){
+                _[curr].unshift(keyword);
+                //最多存储15条记录
+                if(_[curr].length > 15){
+                    _[curr].pop()
+                }
+            }
+            localStorage.setItem('gdcfHistory',JSON.stringify(_));
+            searchFun()
+        });
+
+        var history = [];
+        btn.each(function (i) {
+            history[i] = new Array();
+            $(this).click(function () {
+                change(i)
+            })
+        });
+        change(curr);
+        function change(i) {
+            btn.removeClass('on');
+            btn.eq(i).addClass('on');
+            box.hide();
+            box.eq(i).show();
+            curr = i;
+            url = btn.eq(i).attr('data-url')
+        }
+
+        if(localStorage.gdcfHistory === undefined){
+            localStorage.setItem('gdcfHistory',JSON.stringify(history))
+        }else{
+            box.each(function (i) {
+                var _ = JSON.parse(localStorage.getItem('gdcfHistory'))[i],
+                    _box = $(this);
+                if(_.length > 0){
+                    _box.append('<div class="list"><ul></ul></div>');
+                    _.forEach(function (item) {
+                        _box.find('ul').append('<li><a href="javascript:;">'+item+'</a></li>')
+                    });
+                    _box.find('li a').click(function () {
+                        keyword = $(this).text();
+                        searchFun()
+                    })
+                }else{
+                    _box.append('<div class="msg">暂无搜索历史记录</div>')
+                }
+            })
+        }
+
+        function searchFun() {
+            if(keyword === "") return;
+            localStorage.gdcfKeyWord = keyword;
+            window.location.href = url;
+        }
+    })
+</script>

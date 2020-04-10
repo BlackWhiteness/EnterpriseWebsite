@@ -49,12 +49,12 @@
 }
 
 .g-search{position: fixed; z-index: 1000; left: 0; top: 0; right: 0; bottom: 0; background: #fff; opacity: 0; visibility: hidden; padding: .2rem .3rem; font-size: .28rem; color: #909090;
-  &.show{opacity: 1; visibility: visible}
   .wal{height: 100vh; position: relative}
   .form{height: .8rem; position: relative; padding-right: 1.13rem;
     .input{border: 1px solid #F0F0F0; height: .8rem; @include radius(.08rem);
       input{width: 100%; height: .78rem; line-height: .78rem; padding: 0 .2rem; font-size: .28rem}
     }
+    .submit{@include absolute($t:0, $r:1.13rem, $b:0); width: .8rem; background: url("../image/iserchIcon.png") center no-repeat; background-size: .26rem}
     a.close{display: block; @include absolute($t:0, $r:-.1rem, $b:0); width: 1.23rem; text-align: center; line-height: .8rem; font-size: .32rem}
   }
   .tab-btn{@include shadow(0 0.03rem 0.08rem rgba(0,0,0,0.10)); margin-right: -.3rem; margin-left: -.3rem;
@@ -71,11 +71,14 @@
   .list{
     ul{@extend .flexWrap; margin-left: -.2rem}
     li{padding: 0 0 .2rem .2rem}
-    a{display: block; height: .68rem; line-height: .66rem; padding: 0 .3rem; border: 1px solid rgba(48,48,48,0.10); @include radius(.08rem)}
+    a{display: block; height: .68rem; line-height: .66rem; @extend .ellipsis; padding: 0 .3rem; border: 1px solid rgba(48,48,48,0.10); @include radius(.08rem)}
   }
   .msg{text-align: center; font-size: .26rem; padding: .2rem 0}
-  .search-list{padding: .3rem; @include absolute($l:-.3rem, $t:1.2rem, $r:-.3rem, $b:0); background: #fff; border-top: #eee solid 1px; opacity: 0; visibility: hidden;
-    &.show{opacity: 1; visibility: visible}
+  .search-list{padding: .3rem; @include absolute($l:-.3rem, $t:1.7rem, $r:-.3rem, $b:0); background: #fff; border-top: #eee solid 1px; opacity: 0; visibility: hidden;
+    .list li{max-width: 50%}
+  }
+  &.show{opacity: 1; visibility: visible;
+    .search-list.show{opacity: 1; visibility: visible}
   }
 }
 
@@ -259,6 +262,7 @@
       ul{@extend .flexWrap; margin-left: -.2rem}
       li{width: 25%; padding: 0 0 .2rem .2rem;
         span{height: .58rem; line-height: .58rem; text-align: center; padding: 0 .06rem; background: #F8F8F8; @include radius(.04rem); @extend .ellipsis; color: #979797; display: block}
+        &.on span{color: #dd2534}
       }
     }
     .btn{@include absolute($l:0, $b:0, $r:0); background: #fff; @extend .flex; @extend .itemsCenter; @extend .flexBetween; height: 1.2rem; @include shadow(0 -0.02rem 0.1rem 0 rgba(0,0,0,0.10)); padding: 0 .3rem;
@@ -424,6 +428,9 @@ a.topA{display: block; width: .8rem; position: fixed; z-index: 30; right: .2rem;
   }
 }
 
+.p-loading{display: none; text-align: center; line-height: 1rem; font-size: .24rem;
+  &.show{display: block}
+}
 
 
 

@@ -42,6 +42,7 @@ class Index extends MobileBase
 //            }
 //        }
         $city = isset($_COOKIE['city']) ? $_COOKIE['city'] : 8;
+        $cityInfo = Db::name('city')->where('id', '=', $city)->find();
         $officeInstance = OfficeBuildFormat::getInstance();
         $workshopInstance = WorkShopFormat::getInstance();
         $landInstance = LandFormat::getInstance();
@@ -49,6 +50,7 @@ class Index extends MobileBase
         $office = Officebuilding::where(array('type' => 2))->order(array('releasetime' => 'DESC'))->page(1, 4)->select()->toArray();
         $land = Workshop_Model::where(array('type' => 2))->order(array('releasetime' => 'DESC'))->page(1, 6)->select()->toArray();
         $this->assign([
+            'currentCity' =>$cityInfo,
             'workshop'=>$workshopInstance->formatList($workshop),
             'office' => $officeInstance->formatList($office),
             'land' => $landInstance->formatList($land),

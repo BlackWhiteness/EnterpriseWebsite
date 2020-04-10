@@ -68,29 +68,7 @@ $(function () {
     $('.g-nav .close').click(function () {
         $('.g-nav').removeClass('show');
         $('body').removeClass('noScroll')
-    });
-
-    //--搜索
-    $('.index-search .search').click(function () {
-        $('.g-search').addClass('show');
-        $('body').addClass('noScroll')
-    });
-    $('.g-head .search').click(function () {
-        $('.g-search').addClass('show');
-        $('body').addClass('noScroll')
-    });
-    $('.g-search .close').click(function () {
-        $('.g-search').removeClass('show');
-        $('body').removeClass('noScroll')
-    });
-    $('.g-search').find('.input input').keyup(function () {
-        if($(this).val() !== ""){
-            $('.g-search .search-list').addClass('show')
-        }else{
-            $('.g-search .search-list').removeClass('show')
-        }
-    });
-    tabFun({dom: $('.g-search'), curr: 0})
+    })
 
 });
 
@@ -154,7 +132,7 @@ function p_class_fun() {
     var dom_selected = $('.p-class-selected');
     dom_selected.find('ul').addClass('swiper-wrapper');
     dom_selected.find('li').addClass('swiper-slide');
-    new Swiper(dom_selected, {
+    class_select_swiper = new Swiper(dom_selected, {
         loop:false,
         autoplay: false,
         autoplayDisableOnInteraction: false,
@@ -163,6 +141,8 @@ function p_class_fun() {
         slidesPerView: 'auto'
     })
 }
+
+var class_select_swiper;
 
 function swiperFun(swiper) {
     this.dom = swiper.dom;
