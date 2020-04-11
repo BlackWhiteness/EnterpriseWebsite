@@ -58,6 +58,7 @@
                         <div>民宅</div>
                     </li>
                 </ul>
+                <input type="text" value="仓库">
             </div>
             <div class="title">租售类型</div>
             <div class="list">
@@ -69,11 +70,12 @@
                         <div>求购</div>
                     </li>
                 </ul>
+                <input type="text" value="求租">
             </div>
             <div class="form">
                 <ul>
                     <li>
-                        <div class="select" id="city_select">请选择位置</div>
+                        <div class="select" id="city_select"><span>请选择位置</span><input type="text"></div>
                     </li>
                     <li>
                         <div class="input"><input type="text" placeholder="请输入联系人名称"></div>
@@ -103,44 +105,94 @@
                 <div class="row">
                     <div class="col prov">
                         <div class="name">省</div>
-                        <dl></dl>
+                        <dl>
+                            <dd data-id="001">广东</dd>
+                            <dd data-id="002">北京</dd>
+                            <dd data-id="003">上海</dd>
+                        </dl>
                     </div>
                     <div class="col city">
                         <div class="name">市</div>
                         <dl></dl>
                     </div>
-<!--                    <div class="col dist">-->
-<!--                        <div class="name">区</div>-->
-<!--                        <dl></dl>-->
-<!--                    </div>-->
                 </div>
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="/static/mobile/script/city/js.js"></script>
     <script>
         $(function () {
-            new city('#city1');
             var dom = $('.new-demand');
             dom.find('.list').each(function () {
-                var li = $(this).find('li');
+                var li = $(this).find('li'),
+                    input = $(this).find('input');
                 li.each(function () {
                     $(this).click(function () {
                         li.removeClass('on');
-                        $(this).addClass('on')
+                        $(this).addClass('on');
+                        input.val($(this).text().trim());
+                        console.log(input.val())
                     })
                 })
             });
 
-            dom.find('.select').click(function () {
-                $('.city-select').addClass('show')
+            var citySelect = $('.city-select'),
+                prov = citySelect.find('.prov'),
+                city = citySelect.find('.city');
+            dom.find('#city_select').click(function () {
+                citySelect.addClass('show')
             });
-            $('.city-select').find('.bg').click(function () {
-                $('.city-select').removeClass('show')
+            citySelect.find('.bg').click(function () {
+                citySelect.removeClass('show')
             });
-            $('.city-select').find('.close').click(function () {
-                $('.city-select').removeClass('show')
-            })
+            citySelect.find('.close').click(function () {
+                citySelect.removeClass('show')
+            });
+            prov.find('dd').click(function () {
+                prov.find('dd').removeClass('on');
+                $(this).addClass('on');
+                var url = '/api/city/getRegionByParentId?city='+$(this).attr('data-id');
+                var _ = $(this).text();
+                $.get(url, function (data) {
+                    var data = [];
+                    for (var i = 0; i < 9; i++) {
+                        data.push({name: _ + '区域' + i, id: i})
+                    }
+                    createCite(data)
+                })
+            });
+            function createCite(data) {
+                city.find('dl').html("");
+                data.forEach(function (item) {
+                    city.find('dl').append('<dd data-id="' + item.id + '">' + item.name + '</dd>')
+                });
+                city.find('dd').click(function () {
+                    city.find('dd').removeClass('on');
+                    $(this).addClass('on');
+                    citySelected()
+                })
+            }
+            function citySelected() {
+                citySelect.removeClass('show');
+                var prov_name = "",
+                    prov_id = "",
+                    city_name = "",
+                    city_id = "";
+                prov.find('dd').each(function () {
+                    if($(this).hasClass('on')){
+                        prov_name = $(this).text();
+                        prov_id = $(this).attr('data-id')
+                    }
+                });
+                city.find('dd').each(function () {
+                    if($(this).hasClass('on')){
+                        city_name = $(this).text();
+                        city_id = $(this).attr('data-id')
+                    }
+                });
+                dom.find('#city_select').find('span').html(prov_name + "-" + city_name);
+                dom.find('#city_select').find('input').val(prov_id + "-" + city_id);
+                console.log(dom.find('#city_select').find('input').val())
+            }
         })
     </script>
 
