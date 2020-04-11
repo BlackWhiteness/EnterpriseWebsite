@@ -25,12 +25,12 @@ class Publish extends Homebase
         $this->assign("cityList", $cityList);
         return $this->fetch("owner");
     }
-    
+
     public function customer()
     {
         $data = $this->request->param();
         $city = isset($_COOKIE['city'])?$_COOKIE['city']:8;
-        $cityInfo = Db::name('city')->where('id','in', $city)->select();
+        $cityInfo = Db::name('city')->where('id','=', $city)->find();
         $areaInfo = Db::name('area')->where('parentId','in', $city)->select();
         $cityList = Db::name('city')->where('id','not in', $city)->select();
         $recommend = Db::name('workshop')->order(array('releasetime' => 'DESC'))->paginate(1);

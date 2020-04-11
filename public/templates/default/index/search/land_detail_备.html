@@ -7,7 +7,7 @@
  <link rel="shortcut icon" href="/static/index/img/favicon.ico" type="image/x-icon"/>
 <title> {$info.title}</title>
 <meta name="description" content="
-    
+
          {$info.title}..." />
 </head>
 <link rel="stylesheet" href="/static/index/css/css.css"/>
@@ -32,7 +32,7 @@
 <div class="nav_bar">
   <div class="w1003 f12">
     <div class="nav_bar_left fl">
-    当前城市：<span>{$cityInfo[0]['name']}</span>
+    当前城市：<span>{$cityInfo['name']}</span>
     <em>|</em>切换城市：
         {volist name="cityList" id="data"}
      <a  href="javascript:document.cookie = 'city={$data.id}';location.href("/");">{$data.name}</a>
@@ -85,7 +85,7 @@ var rtime;
       <div class="FL LH24 marginL20" style="margin-top:37px;">
 				<div class="m_city fl" style="position:relative;">
 						<div id="change_city"><font color="#D90700" style="font-
-size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font> <a class="F12 cGray" href="javascript:void(0);" onclick="javascript:alert('写字楼目前只开通深圳，其他城市正在开放中');">[切换城市]</a></div>
+size:18px;"><strong class="F14 c303">{$cityInfo['name']}市</strong></font> <a class="F12 cGray" href="javascript:void(0);" onclick="javascript:alert('写字楼目前只开通深圳，其他城市正在开放中');">[切换城市]</a></div>
 					  <div class="qhcity_box" id="popwindow" style="z-index: 20; position: absolute; top: 40px; left: 20px; display: none; min-height:300px; position:relative;">
 							  <div class="qhcity_close" onclick="javascript:ChangeCity
 ();"><img src="http://www.zhaoshang800.com/images/close.gif" alt="关闭" title="关闭"></div>
@@ -109,7 +109,7 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font> <
 
       <div class="FR" style="width:504px; margin-top:10px;">
     <div class="t-r F12">
-          <div class="FL">  <span style=" padding-right:5px;">热门搜索:</span><a target="_blank" href="/index/search/officebuilding?city={$cityInfo[0]['id']}&title=带装修厂房">带装修厂房</a><a target="_blank" href="/index/search/officebuilding?city={$cityInfo[0]['id']}&floor=1">一楼厂房</a><a target="_blank" href="/index/search/officebuilding?city={$cityInfo[0]['id']}&title=高新科技园厂房">高新科技园厂房</a></div>
+          <div class="FL">  <span style=" padding-right:5px;">热门搜索:</span><a target="_blank" href="/index/search/officebuilding?city={$cityInfo['id']}&title=带装修厂房">带装修厂房</a><a target="_blank" href="/index/search/officebuilding?city={$cityInfo['id']}&floor=1">一楼厂房</a><a target="_blank" href="/index/search/officebuilding?city={$cityInfo['id']}&title=高新科技园厂房">高新科技园厂房</a></div>
           <div class="FR"></div>
         </div>
     <div class="clear"></div>
@@ -125,7 +125,7 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font> <
           </div>
             </div>
         <div class="text fl">
-            <input name="city" type="hidden" value="{$cityInfo[0]['id']}" />
+            <input name="city" type="hidden" value="{$cityInfo['id']}" />
 			<input name="title" type="text" placeholder="请输入园区名称或工业区商圈">
 		</div>
         <div class="searbut fr" style="height:32px; overflow:hidden;">
@@ -322,16 +322,16 @@ $(function(){
 <div class="nav">
 					<ul>
 						<li class=""> <a href="/" class="menubox"><span>首页</span></a> </li>
-           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>厂房出租</span></a> </li>
-           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>厂房出售</span></a> </li>
-           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>仓库出租</span></a> </li>
-           <li class="current"> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>土地</span></a> </li>
-           <li class=""> <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}" class="menubox"><span>写字楼</span></a> </li>
-           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>园区招商</span></a> </li>
-           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>商铺出租</span></a> </li>
-           <li class=""> <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1" class="menubox"><span>民宅出租</span></a> </li>
+           <li class=""> <a href="/index/search/workshop?city={$cityInfo['id']}&category=1" class="menubox"><span>厂房出租</span></a> </li>
+           <li class=""> <a href="/index/search/workshop?city={$cityInfo['id']}&category=1" class="menubox"><span>厂房出售</span></a> </li>
+           <li class=""> <a href="/index/search/workshop?city={$cityInfo['id']}&category=1" class="menubox"><span>仓库出租</span></a> </li>
+           <li class="current"> <a href="/index/search/workshop?city={$cityInfo['id']}&category=1" class="menubox"><span>土地</span></a> </li>
+           <li class=""> <a href="/index/search/officebuilding?city={$cityInfo['id']}" class="menubox"><span>写字楼</span></a> </li>
+           <li class=""> <a href="/index/search/workshop?city={$cityInfo['id']}&category=1" class="menubox"><span>园区招商</span></a> </li>
+           <li class=""> <a href="/index/search/workshop?city={$cityInfo['id']}&category=1" class="menubox"><span>商铺出租</span></a> </li>
+           <li class=""> <a href="/index/search/workshop?city={$cityInfo['id']}&category=1" class="menubox"><span>民宅出租</span></a> </li>
            <li class=""> <a href="/index/publish/customer" class="menubox" target="_blank"><span>求租求购</span></a> </li>
-           
+
 
 					</ul>
 				</div>
@@ -435,7 +435,7 @@ $(function(){
 
                 <div class="house_phone1" style="width:278px;">
 				  	<div class="house_phone2" style="width:223px;"><span class="number">
-                    
+
 陈生:159-1411-6601     </span><br>
 
                      <span class="gray">

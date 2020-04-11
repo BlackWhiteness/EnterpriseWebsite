@@ -104,21 +104,7 @@
     }
 
 </style>
-<div class="nav_bar">
-    <div class="w960 f12">
-        <div class="nav_bar_left fl">
-            当前城市：
-            <span>{$cityInfo[0]['name']}</span>
-            <em>|</em>切换城市：
-            {volist name="cityList" id="data"}
-            <a href="javascript:document.cookie = 'city={$data.id};path=/;';location.reload();">{$data.name}</a>
-            <em>|</em> {/volist}
-        </div>
-        <div class="nav_bar_right fr">
-            <strong>24小时免费服务热线：{:config('web_site_tel')}</strong>
-        </div>
-    </div>
-</div>
+{include file='layout/nav_bar' /}
 
 <style>
 
@@ -548,7 +534,7 @@
         <div class="m_city fl" style="position:relative;">
             <div id="change_city">
                 <font color="#D90700" style="font-size:18px;"><strong class="c303"
-                                                                      style="font-size:18px; color:#D90700;">{$cityInfo[0]['name']}</strong></font>
+                                                                      style="font-size:18px; color:#D90700;">{$cityInfo['name']}</strong></font>
                 <a class="F12 cGray" href="javascript:void(0);" onclick="javascript:ChangeCity(1);">[切换城市]</a>
             </div>
             <div class="qhcity_box" id="popwindow"
@@ -857,9 +843,9 @@
             区域：
         </dt>
         <dd class="screen_area">
-            {volist name="cityInfo" id="data"}
-            <a id="city_id" class="current" href="javascript:void(0)" value="{$data.id}">全{$data.name}</a>
-            {/volist}
+
+            <a id="city_id" class="current" href="javascript:void(0)" value="{$cityInfo.id}">全{$cityInfo.name}</a>
+
             {volist name="areaInfo" id="data"}
             <a href="javascript:void(0)" value="{$data.id}">{$data.name}</a>
             {/volist}
@@ -927,7 +913,7 @@
         <form name="form_title" method="get" action="/index/search/workshop">
             <div id="title_search">
                 <div class="list-search"></div>
-                <!--                <input id="title_input" name="city" type="hidden" value="{$cityInfo[0]['id']}"/>-->
+                <!--                <input id="title_input" name="city" type="hidden" value="{$cityInfo['id']}"/>-->
                 <input id="title_input" name="title" type="text" data-id="" data-key="keyword" value="" my_no_use="true"
                        placeholder="请输入厂房区域、商圈、位置或特定需求等..." autocomplete="off"/>
                 <a id="title_click" href="javascript:void(0)">搜索</a>
@@ -1097,13 +1083,13 @@
                 <div id="main_left">
                     <div class="left_one">
                         <div class="left_one_title">
-                            <a href="/park/index?city={$cityInfo[0]['id']}" target="_blank">{$cityInfo[0]['name']}热门园区招商</a>
+                            <a href="/park/index?city={$cityInfo['id']}" target="_blank">{$cityInfo['name']}热门园区招商</a>
                         </div>
                         <div class="left_one_cont">
                             <ul>
                                 {volist name="hotList" id="data"}
 
-                                <li>[<a href="/park/index?city={$cityInfo[0]['id']}" target="_blank">{$cityInfo[0]['name']}{$category_type_name}</a>]
+                                <li>[<a href="/park/index?city={$cityInfo['id']}" target="_blank">{$cityInfo['name']}{$category_type_name}</a>]
                                     <a href="/index/park/detail?id={$data.id}" target="_blank">
                                         {:subText($data.title,13)}</a></li>
                                 {/volist}
@@ -1171,17 +1157,17 @@
     <div class="top hd">
         <div class="FL">
             <a href="javascript:;" id="cc0" class="hov">深圳分站</a>
-            {volist name="cityInfo" id="data"}
+            {volist name="cityList" id="data"}
             <a href="javascript:;" id="cc1">{$data.name}分站</a>
             {/volist}
         </div>
     </div>
 
     <p class="infoList0" id="qlist0" style="display: block;">
-        {volist name="areaInfo" id="data"}<a href="/index/search/workshop?city={$cityInfo[0]['id']}&area={$data.id}"
+        {volist name="areaInfo" id="data"}<a href="/index/search/workshop?city={$cityInfo['id']}&area={$data.id}"
                                              target="_blank" title="{$data.name}">{$data.name}园区招商</a>{/volist} </p>
     <p class="infoList1" id="qlist1" style="display: none;">
-        {volist name="areaInfo" id="data"}<a href="/index/search/workshop?city={$cityInfo[0]['id']}&area={$data.id}"
+        {volist name="areaInfo" id="data"}<a href="/index/search/workshop?city={$cityInfo['id']}&area={$data.id}"
                                              target="_blank" title="{$data.name}">{$data.name}园区招商</a>{/volist} </p>
     <div class="cl"></div>
     <script type="text/javascript">

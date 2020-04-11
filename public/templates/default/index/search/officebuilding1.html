@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!-- saved from url=(0040)/index/search/officebuilding?city={$cityInfo[0]['id']} -->
+<!-- saved from url=(0040)/index/search/officebuilding?city={$cityInfo['id']} -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -9,7 +9,7 @@
     <meta name="description" content="{:config('web_site_description')}"/>
     <link rel="stylesheet" href="/static/index/css/css.css"/>
     <link rel="stylesheet" href="/static/index/css/xzl.css"/>
- 
+
     <script src="/static/index/js/share.js"></script>
     <link rel="stylesheet" href="/static/index/css/slide_share.css"/>
 </head>
@@ -67,7 +67,7 @@
     <div class="w1003 f12">
         <div class="nav_bar_left fl">
             当前城市：
-            <span>{$cityInfo[0]['name']}</span>
+            <span>{$cityInfo['name']}</span>
             <em>|</em>切换城市：
             {volist name="cityList" id="data"}
             <a href="javascript:document.cookie = 'city={$data.id};path=/;';location.reload();">{$data.name}</a>
@@ -127,7 +127,7 @@
         <div class="m_city fl" style="position:relative;">
             <div id="change_city">
                 <font color="#D90700" style="font-
-size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
+size:18px;"><strong class="F14 c303">{$cityInfo['name']}市</strong></font>
                 <a class="F12 cGray" href="javascript:void(0);" onclick="javascript:alert('写字楼目前只开通深圳，其他城市正在开放中');">[切换城市]</a>
             </div>
             <div class="qhcity_box" id="popwindow"
@@ -178,7 +178,7 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
                     </div>
                 </div>
                 <div class="text fl">
-                    <input name="city" type="hidden" value="{$cityInfo[0]['id']}"/>
+                    <input name="city" type="hidden" value="{$cityInfo['id']}"/>
                     <input name="title" type="text" value="" placeholder="请输入园区名称或工业区商圈"/>
                 </div>
                 <div class="searbut fr" style="height:32px; overflow:hidden;">
@@ -225,7 +225,7 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
             document.getElementById("search111").action = "/search.php";
         } else if (tna == "写字楼") {
             soty = 3;
-            document.getElementById("search111").action = "/index/search/officebuilding?city={$cityInfo[0]['id']}";
+            document.getElementById("search111").action = "/index/search/officebuilding?city={$cityInfo['id']}";
         } else if (tna == "土地") {
             soty = 5;
         } else if (tna == "商铺") {
@@ -387,21 +387,21 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
         <div class="nav">
             <ul>
                 <li class=""><a href="/" class="menubox"><span>首页</span></a></li>
-                <li class=""><a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1"
+                <li class=""><a href="/index/search/workshop?city={$cityInfo['id']}&category=1"
                                 class="menubox"><span>厂房出租</span></a></li>
-                <li class=""><a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1"
+                <li class=""><a href="/index/search/workshop?city={$cityInfo['id']}&category=1"
                                 class="menubox"><span>厂房出售</span></a></li>
-                <li class=""><a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1"
+                <li class=""><a href="/index/search/workshop?city={$cityInfo['id']}&category=1"
                                 class="menubox"><span>仓库出租</span></a></li>
-                <li class=""><a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1"
+                <li class=""><a href="/index/search/workshop?city={$cityInfo['id']}&category=1"
                                 class="menubox"><span>土地</span></a></li>
-                <li class="current"><a href="/index/search/officebuilding?city={$cityInfo[0]['id']}"
+                <li class="current"><a href="/index/search/officebuilding?city={$cityInfo['id']}"
                                        class="menubox"><span>写字楼</span></a></li>
-                <li class=""><a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1"
+                <li class=""><a href="/index/search/workshop?city={$cityInfo['id']}&category=1"
                                 class="menubox"><span>园区招商</span></a></li>
-                <li class=""><a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1"
+                <li class=""><a href="/index/search/workshop?city={$cityInfo['id']}&category=1"
                                 class="menubox"><span>民宅商铺</span></a></li>
-                <li class=""><a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1"
+                <li class=""><a href="/index/search/workshop?city={$cityInfo['id']}&category=1"
                                 class="menubox"><span>包租厂房</span></a></li>
                 <li class=""><a href="/index/publish/customer" class="menubox" target="_blank"><span>求租</span></a></li>
                 <li class=""><a href="/index/publish/owner" class="menubox"><span>求购</span></a></li>
@@ -411,11 +411,11 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
 </div>
 <div class=" w1003 zs_newmbx" style="margin: 8px auto;text-align:left;">
     <a target="_blank" href="/xiezilou/">886写字楼网</a>&nbsp;&gt;&nbsp;
-    <a target="_blank" href="/index/search/officebuilding?city={$cityInfo[0]['id']}?area=dg">深圳写字楼出租</a>
+    <a target="_blank" href="/index/search/officebuilding?city={$cityInfo['id']}?area=dg">深圳写字楼出租</a>
 </div>
 <div class="zs_newmbx" style="display:none;">
     <a target="_blank" href="/xiezilou/">深圳厂房网</a>&nbsp;&gt;&nbsp;
-    <a target="_blank" href="/index/search/officebuilding?city={$cityInfo[0]['id']}?area=">深圳厂房出租</a>
+    <a target="_blank" href="/index/search/officebuilding?city={$cityInfo['id']}?area=">深圳厂房出租</a>
 </div>
 <div class="w1003 bor1 ser_sx">
     <!--引入搜索区域城市文件-->
@@ -446,7 +446,7 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
             <a class="current" href="/index/search/officebuilding?city={$data.id}">全{$data.name}</a>
             {/volist}
             {volist name="areaInfo" id="data"}
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&area={$data.id}">{$data.name}</a>
+            <a href="/index/search/officebuilding?city={$cityInfo['id']}&area={$data.id}">{$data.name}</a>
             {/volist}
         </dd>
     </dl>
@@ -455,13 +455,13 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
             面积：
         </dt>
         <dd>
-            <a class="current" href="/index/search/officebuilding?city={$cityInfo[0]['id']}">不限</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=0-100">100平米以下</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=100-200">100-200平米</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=200-300">200-300平米</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=300-500">300-500平米</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=500-1000">500-1000平米</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&measurearea=1000">1000平米以上</a>
+            <a class="current" href="/index/search/officebuilding?city={$cityInfo['id']}">不限</a>
+            <a href="/index/search/officebuilding?city={$cityInfo['id']}&measurearea=0-100">100平米以下</a>
+            <a href="/index/search/officebuilding?city={$cityInfo['id']}&measurearea=100-200">100-200平米</a>
+            <a href="/index/search/officebuilding?city={$cityInfo['id']}&measurearea=200-300">200-300平米</a>
+            <a href="/index/search/officebuilding?city={$cityInfo['id']}&measurearea=300-500">300-500平米</a>
+            <a href="/index/search/officebuilding?city={$cityInfo['id']}&measurearea=500-1000">500-1000平米</a>
+            <a href="/index/search/officebuilding?city={$cityInfo['id']}&measurearea=1000">1000平米以上</a>
         </dd>
     </dl>
     <dl>
@@ -469,20 +469,20 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
             租金：
         </dt>
         <dd>
-            <a class="current" href="/index/search/officebuilding?city={$cityInfo[0]['id']}">不限</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&plantrent=0-40">40元/平米•月以下</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&plantrent=40-60">40-60元/m&sup2;⋅月</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&plantrent=60-80">60-80元/m&sup2;⋅月</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&plantrent=80-120">80-120元/m&sup2;⋅月</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&plantrent=120-140">120-140元/m&sup2;⋅月</a>
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}&plantrent=140">140元/m&sup2;⋅月以上</a>
+            <a class="current" href="/index/search/officebuilding?city={$cityInfo['id']}">不限</a>
+            <a href="/index/search/officebuilding?city={$cityInfo['id']}&plantrent=0-40">40元/平米•月以下</a>
+            <a href="/index/search/officebuilding?city={$cityInfo['id']}&plantrent=40-60">40-60元/m&sup2;⋅月</a>
+            <a href="/index/search/officebuilding?city={$cityInfo['id']}&plantrent=60-80">60-80元/m&sup2;⋅月</a>
+            <a href="/index/search/officebuilding?city={$cityInfo['id']}&plantrent=80-120">80-120元/m&sup2;⋅月</a>
+            <a href="/index/search/officebuilding?city={$cityInfo['id']}&plantrent=120-140">120-140元/m&sup2;⋅月</a>
+            <a href="/index/search/officebuilding?city={$cityInfo['id']}&plantrent=140">140元/m&sup2;⋅月以上</a>
         </dd>
     </dl>
     <div style="display:;">
         <form name="form_title" method="get" action="/index/search/officebuilding">
             <div id="title_search">
                 <div class="list-search"></div>
-                <input id="city" name="city" type="hidden" value="{$cityInfo[0]['id']}"/>
+                <input id="city" name="city" type="hidden" value="{$cityInfo['id']}"/>
                 <input id="title_input" name="title" type="text" data-id="" data-key="keyword" value="" my_no_use="true"
                        placeholder="请输入写字楼区域、商圈、位置或特定需求等..." autocomplete="off"/>
                 <a id="title_click" onclick="javascript:document.form_title.submit()">搜索</a>
@@ -646,7 +646,7 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
                 </a></li>
                 {/volist}
             </ul>
-            <a class="more_build" href="/index/search/officebuilding?city={$cityInfo[0]['id']}?area=sz">更多热门写字楼</a>
+            <a class="more_build" href="/index/search/officebuilding?city={$cityInfo['id']}?area=sz">更多热门写字楼</a>
         </div>
         <div class="hotList">
             <div class="hotTitle">
@@ -667,7 +667,7 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
                 </a></li>
                 {/volist}
             </ul>
-            <a class="more_build" href="/index/search/officebuilding?city={$cityInfo[0]['id']}?area=sz">更多最新写字楼</a>
+            <a class="more_build" href="/index/search/officebuilding?city={$cityInfo['id']}?area=sz">更多最新写字楼</a>
         </div>
     </div>
 </div>
@@ -809,7 +809,7 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
 </table>
 <div class="bdshare-slide-button-box bdshare-slide-style-r7" style="top: 250px; width: 0px; z-index: 99999; right: 0px;"
      data-bd-bind="1566556065349">
-    <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}#" onclick="return false;"
+    <a href="/index/search/officebuilding?city={$cityInfo['id']}#" onclick="return false;"
        class="bdshare-slide-button" style="left: -24px;"></a>
     <div class="bdshare-slide-list-box" style="width: 0px; display: none;">
         <div class="bdshare-slide-top">
@@ -819,7 +819,7 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
             <ul class="bdshare-slide-list-ul" style="width: 226px;"></ul>
         </div>
         <div class="bdshare-slide-bottom" style="width: 226px;">
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}#" onclick="return false;" class="slide-more"
+            <a href="/index/search/officebuilding?city={$cityInfo['id']}#" onclick="return false;" class="slide-more"
                data-cmd="more">更多...</a>
         </div>
     </div>

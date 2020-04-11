@@ -40,9 +40,9 @@ class Search extends Homebase
     //会员中心首页
     public function workshop(Request $request)
     {
-        $city = getCity($request);
+        $city = getCity();
         $cityList = Db::name('city')->where('id', '<>', $city)->select();
-        $cityInfo = Db::name('city')->where('id', '=', $city)->select();
+        $cityInfo = Db::name('city')->where('id', '=', $city)->find();
         $areaInfo = Db::name('area')->where('parentId', 'in', $city)->select();
         $category = request()->param('category');
 //        dump(in_array($category, Workshop::CATEGORY_CONFIG));die;
@@ -94,7 +94,7 @@ class Search extends Homebase
             'href' => $href,
             'ad' => $adList,
             'category' => $category,
-            'tag' => $cityInfo[0]['name'] . $tagName,
+            'tag' => $cityInfo['name'] . $tagName,
             'category_type_name' => $tagName ? mb_substr($tagName, 0, 2, 'utf8') : '厂房',
 
         ]);
@@ -118,7 +118,7 @@ class Search extends Homebase
             ->find();
 
         $cityInfo = Db::name('city')
-            ->where('id', 'in', $info['city'])->select();
+            ->where('id', '=', $info['city'])->find();
         $city = $cityInfo[0]['id'];
         $areaInfo = Db::name('area')
             ->where('parentId', 'in', $info['city'])->select();
@@ -177,8 +177,8 @@ class Search extends Homebase
     public function officebuilding(Request $request)
     {
 
-        $city = getCity($request);
-        $cityInfo = Db::name('city')->where('id', 'in', $city)->select();
+        $city = getCity();
+        $cityInfo = Db::name('city')->where('id', '=', $city)->find();
         $areaInfo = Db::name('area')->where('parentId', 'in', $city)->select();
         $cityList = Db::name('city')->where('id', 'not in', $city)->select();
 
@@ -258,7 +258,7 @@ class Search extends Homebase
     {
         $id = $this->request->param('id/d', '');
         $info = Officebuilding::where(['id' => $id])->find();
-        $cityInfo = Db::name('city')->where('id', 'in', $info['city'])->select();
+        $cityInfo = Db::name('city')->where('id', '=', $info['city'])->find();
         $areaInfo = Db::name('area')->where('parentId', 'in', $info['city'])->select();
         $cityList = Db::name('city')->where('id', 'not in', $info['city'])->select();
         $recommend = Officebuilding::where(["type" => 1])->order(array('releasetime' => 'DESC'))
@@ -336,8 +336,8 @@ class Search extends Homebase
 
     public function landList()
     {
-        $city = isset($_COOKIE['city']) ? $_COOKIE['city'] : 8;
-        $cityInfo = Db::name('city')->where('id', 'in', $city)->select();
+        $city = getCity();
+        $cityInfo = Db::name('city')->where('id', '=', $city)->find();
         $areaInfo = Db::name('area')->where('parentId', 'in', $city)->select();
         $cityList = Db::name('city')->where('id', 'not in', $city)->select();
 
@@ -382,7 +382,7 @@ class Search extends Homebase
     {
         $id = $this->request->param('id/d', '');
         $info = LandManage::where(['id' => $id])->find();
-        $cityInfo = Db::name('city')->where('id', 'in', $info['city'])->select();
+        $cityInfo = Db::name('city')->where('id', '=', $info['city'])->find();
         $areaInfo = Db::name('area')->where('parentId', 'in', $info['city'])->select();
         $cityList = Db::name('city')->where('id', 'not in', $info['city'])->select();
         $recommend = LandManage::where(["type" => 1])->order(array('releasetime' => 'DESC'))
@@ -426,8 +426,8 @@ class Search extends Homebase
 
     public function shopList()
     {
-        $city = isset($_COOKIE['city']) ? $_COOKIE['city'] : 8;
-        $cityInfo = Db::name('city')->where('id', 'in', $city)->select();
+        $city = getCity();
+        $cityInfo = Db::name('city')->where('id', '=', $city)->find();
         $areaInfo = Db::name('area')->where('parentId', 'in', $city)->select();
         $cityList = Db::name('city')->where('id', 'not in', $city)->select();
 
@@ -472,7 +472,7 @@ class Search extends Homebase
     {
         $id = $this->request->param('id/d', '');
         $info = ShopManage::where(['id' => $id])->find();
-        $cityInfo = Db::name('city')->where('id', 'in', $info['city'])->select();
+        $cityInfo = Db::name('city')->where('id', '=', $info['city'])->find();
         $areaInfo = Db::name('area')->where('parentId', 'in', $info['city'])->select();
         $cityList = Db::name('city')->where('id', 'not in', $info['city'])->select();
         $recommend = ShopManage::where(["category" => 1])->order(array('releasetime' => 'DESC'))

@@ -3,14 +3,12 @@
 namespace app\index\controller;
 
 use app\admin\model\AdManage;
+use app\admin\model\City;
 use app\admin\model\HrefManage;
 use app\admin\model\PrivateHomeManage;
-use app\admin\model\Workshop;
 use app\common\controller\Homebase;
 use app\format\PrivateHomeFormat;
-use app\format\WorkShopFormat;
-use app\admin\model\City;
-use \think\Db;
+use think\Db;
 use think\facade\Validate;
 use think\Request;
 
@@ -19,17 +17,11 @@ class PrivateHome extends Homebase
     public $City;
 
     //初始化
-    protected function initialize()
-    {
-        parent::initialize();
-        $this->City = new City();
-    }
 
-    //会员中心首页
     public function index(Request $request)
     {
-        $city = getCity($request);
-        $cityInfo = Db::name('city')->where('id', 'in', $city)->select();
+        $city = getCity();
+        $cityInfo = Db::name('city')->where('id', '=', $city)->find();
         $areaInfo = Db::name('area')->where('parentId', 'in', $city)->select();
         $cityList = Db::name('city')->where('id', 'not in', $city)->select();
 
@@ -84,6 +76,8 @@ class PrivateHome extends Homebase
         return $this->fetch('index');
     }
 
+    //会员中心首页
+
     public function detail(Request $request)
     {
         $validate = Validate::make([
@@ -94,33 +88,20 @@ class PrivateHome extends Homebase
         }
 
         $id = $request->param('id/d', '');
-        $category = request()->param('category');
-        $info = Workshop::where(['id' => $id])
+        $info = PrivateHomeManage::where(['id' => $id])
             ->with(['belongsToOneCity', 'belongsToOneArea'])
             ->find();
 
         $cityInfo = Db::name('city')
-            ->where('id', 'in', $info['city'])->select();
-        $city = $cityInfo[0]['id'];
+            ->where('id', '=', $info['city'])->find();
+        $city = $cityInfo['id'];
         $areaInfo = Db::name('area')
             ->where('parentId', 'in', $info['city'])->select();
 
         $cityList = Db::name('city')
-            ->where('id', 'not in', $info['city'])->select();
+            ->where('id', '<>', $info['city'])->select();
 
-        $recommend = Workshop::where(["type" => 1])
-            ->order(array('releasetime' => 'DESC'))
-            ->paginate(10);
-        $floor1 = Db::name('workshop')
-            ->where(["floor" => 3,'city'=>$city,'category'=>$category])
-            ->order(['releasetime' => 'DESC'])
-            ->paginate(10);
-        $floor2 = Db::name('workshop')->where(["floor" => 1,'city'=>$city,'category'=>$category])
-            ->order(array('releasetime' => 'DESC'))->paginate(10);
-        $floor3 = Db::name('workshop')
-            ->where(["is_decorate" => 1,'city'=>$city,'category'=>$category])
-            ->order(array('releasetime' => 'DESC'))
-            ->paginate(10);
+
         $ad = AdManage::where('is_enable', '=', 1)->order(['code' => 'asc', 'sort' => 'desc'])->select();
         $adList = [];
         foreach ($ad as $row) {
@@ -137,25 +118,31 @@ class PrivateHome extends Homebase
                 $adList['bottom_ad'][] = $detail;
             }
         }
-        $tagName = in_array($category, [1, 2, 3]) ? Workshop::CATEGORY_CONFIG[$category] : '';
-        $workInstance = WorkShopFormat::getInstance();
+        $new = PrivateHomeManage::order(array('releasetime' => 'DESC'))
+            ->limit(0, 10)
+            ->select();
+        $hot = PrivateHomeManage::where(["type" => 2])
+            ->order(array('releasetime' => 'DESC'))
+            ->limit(10)
+            ->select();
+        $formatInstance = PrivateHomeFormat::getInstance();
+//        dump($formatInstance->formatDetail($info));die;
+        $recommend = PrivateHomeManage::where(["type" => 1])
+            ->order(array('releasetime' => 'DESC'))
+            ->limit(0, 10)
+            ->select();
         $this->assign([
+            'recommend' => $formatInstance->formatList($recommend),
             'cityList' => $cityList,
-            'info' => $workInstance->formatDetail($info),
+            'info' => $formatInstance->formatDetail($info),
             'cityInfo' => $cityInfo,
             'areaInfo' => $areaInfo,
-            'recommend' => $workInstance->formatList($recommend),
-            'floor1' => $floor1,
-            'floor2' => $floor2,
-            'floor3' => $floor3,
+            'newList' => $formatInstance->formatList($new),
+            'hotList' => $formatInstance->formatList($hot),
             'ad' => $adList,
-            'category' => $category,
-            'tag' => $cityInfo[0]['name'] . $tagName,
-            'category_type_name' => $tagName ? mb_substr($tagName, 0, 2, 'utf8') : '厂房',
         ]);
-        return $this->fetch('workshopdetail');
+        return $this->fetch('detail');
     }
-
 
     /**
      * 获取数据
@@ -170,5 +157,11 @@ class PrivateHome extends Homebase
             'data' => PrivateHomeFormat::getInstance()->formatList($data),
             'page' => paginate($data)
         ]);
+    }
+
+    protected function initialize()
+    {
+        parent::initialize();
+        $this->City = new City();
     }
 }

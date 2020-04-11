@@ -1,0 +1,15 @@
+<div class="nav_bar">
+    <div class="w960 f12">
+        <div class="nav_bar_left fl">
+            当前城市：
+            <span>{$cityInfo.name}</span>
+            <em>|</em>切换城市：
+            {volist name="cityList" id="data"}
+            <a href="javascript:document.cookie = 'city={$data.id};path=/;';location.replace('/');">{$data.name}</a>
+            <em>|</em> {/volist}
+        </div>
+        <div class="nav_bar_right fr">
+            <strong>24小时免费服务热线：{:config('web_site_tel')}</strong>
+        </div>
+    </div>
+</div>

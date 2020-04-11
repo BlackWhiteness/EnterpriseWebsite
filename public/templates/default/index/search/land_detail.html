@@ -7,7 +7,7 @@
  <link rel="shortcut icon" href="/static/index/img/favicon.ico" type="image/x-icon"/>
 <title> {$info.title}</title>
 <meta name="description" content="
-    
+
          {$info.title}..." />
 </head>
 <link rel="stylesheet" href="/static/index/css/css.css"/>
@@ -29,20 +29,8 @@
 }
 </style>
 <body>
-<div class="nav_bar">
-  <div class="w1003 f12">
-    <div class="nav_bar_left fl">
-    当前城市：<span>{$cityInfo[0]['name']}</span>
-    <em>|</em>切换城市：
-        {volist name="cityList" id="data"}
-     <a  href="javascript:document.cookie = 'city={$data.id}';location.href("/");">{$data.name}</a>
-     <em>|</em> {/volist}
-  </div>
-<div class="nav_bar_right fr">
-<strong>24小时免费服务热线：{:config('web_site_tel')}</strong>
-	</div>
-  </div>
-</div><!--<table width="960" border="0" cellspacing="0" cellpadding="0" align="center">
+{include file='layout/nav_bar' /}
+<!--<table width="960" border="0" cellspacing="0" cellpadding="0" align="center">
   <tr align="center">
     <td align="center">
 
@@ -85,7 +73,7 @@ var rtime;
       <div class="FL LH24 marginL20" style="margin-top:37px;">
 				<div class="m_city fl" style="position:relative;">
 						<div id="change_city"><font color="#D90700" style="font-
-size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font> <a class="F12 cGray" href="javascript:void(0);" onclick="javascript:alert('写字楼目前只开通深圳，其他城市正在开放中');">[切换城市]</a></div>
+size:18px;"><strong class="F14 c303">{$cityInfo['name']}市</strong></font> <a class="F12 cGray" href="javascript:void(0);" onclick="javascript:alert('写字楼目前只开通深圳，其他城市正在开放中');">[切换城市]</a></div>
 					  <div class="qhcity_box" id="popwindow" style="z-index: 20; position: absolute; top: 40px; left: 20px; display: none; min-height:300px; position:relative;">
 							  <div class="qhcity_close" onclick="javascript:ChangeCity
 ();"><img src="http://www.zhaoshang800.com/images/close.gif" alt="关闭" title="关闭"></div>
@@ -109,7 +97,7 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font> <
 
       <div class="FR" style="width:504px; margin-top:10px;">
     <div class="t-r F12">
-          <div class="FL">  <span style=" padding-right:5px;">热门搜索:</span><a target="_blank" href="/index/search/officebuilding?city={$cityInfo[0]['id']}&title=带装修厂房">带装修厂房</a><a target="_blank" href="/index/search/officebuilding?city={$cityInfo[0]['id']}&floor=1">一楼厂房</a><a target="_blank" href="/index/search/officebuilding?city={$cityInfo[0]['id']}&title=高新科技园厂房">高新科技园厂房</a></div>
+          <div class="FL">  <span style=" padding-right:5px;">热门搜索:</span><a target="_blank" href="/index/search/officebuilding?city={$cityInfo['id']}&title=带装修厂房">带装修厂房</a><a target="_blank" href="/index/search/officebuilding?city={$cityInfo['id']}&floor=1">一楼厂房</a><a target="_blank" href="/index/search/officebuilding?city={$cityInfo['id']}&title=高新科技园厂房">高新科技园厂房</a></div>
           <div class="FR"></div>
         </div>
     <div class="clear"></div>
@@ -125,7 +113,7 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font> <
           </div>
             </div>
         <div class="text fl">
-            <input name="city" type="hidden" value="{$cityInfo[0]['id']}" />
+            <input name="city" type="hidden" value="{$cityInfo['id']}" />
 			<input name="title" type="text" placeholder="请输入园区名称或工业区商圈">
 		</div>
         <div class="searbut fr" style="height:32px; overflow:hidden;">
@@ -159,7 +147,7 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font> <
 <table width="960" align="center">
     <tr align="center">
         <td align="center">
-            <A href="/index/search/workshop?city={$cityInfo[0]['id']}" target=_blank><IMG
+            <A href="/index/search/workshop?city={$cityInfo['id']}" target=_blank><IMG
                     src="/static/index/img/img_13.jpg" width="1000" height="267"></A>
         </td>
     </tr>
@@ -178,9 +166,9 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font> <
 
                             <div id="main_right">
                                 <div id="right_title"><span>您当前的位置：<a
-                                        href="/index/search/workshop?city={$cityInfo[0]['id']}"
+                                        href="/index/search/workshop?city={$cityInfo['id']}"
                                         target="_blank"/>{$info.city_name}{$info.category}</a> ><a
-                                        href="/index/search/workshop?city={$cityInfo[0]['id']}" target="_blank"/>{$info.area_name}{$info.category}</a>
+                                        href="/index/search/workshop?city={$cityInfo['id']}" target="_blank"/>{$info.area_name}{$info.category}</a>
                                     </span>
                                 </div>
                                 <div class="right_cont">
@@ -400,7 +388,7 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font> <
 
                                 <div class="house_phone1">
                                     <div class="house_phone2"><span class="number">
-                    
+
 {$info.name}:{$info.tel}     </span><br/>
 
                                         <span class="gray">
@@ -434,14 +422,14 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font> <
                 <div id="main_left">
                     <div class="left_one">
                         <div class="left_one_title">
-                            <a href="/index/search/workshop?city={$cityInfo[0]['id']}&floor=3&category={$category}" target="_blank">{$cityInfo[0]['name']}独院{$category_type_name}</a>
+                            <a href="/index/search/workshop?city={$cityInfo['id']}&floor=3&category={$category}" target="_blank">{$cityInfo['name']}独院{$category_type_name}</a>
                         </div>
                         <div class="left_one_cont">
                             <ul>
                                 {volist name="floor1" id="data"}
 
-                                <li>[<a href="/index/search/workshop?city={$cityInfo[0]['id']}&category={$category}" target="_blank">{$cityInfo[0]['name']}{$category_type_name}</a>]
-                                    <a href="/index/search/workshopdetail?id={$data.id}&city={$cityInfo[0]['id']}&category={$category}" target="_blank">
+                                <li>[<a href="/index/search/workshop?city={$cityInfo['id']}&category={$category}" target="_blank">{$cityInfo['name']}{$category_type_name}</a>]
+                                    <a href="/index/search/workshopdetail?id={$data.id}&city={$cityInfo['id']}&category={$category}" target="_blank">
                                         {:subText($data.title,13)}</a></li>
                                 {/volist}
                             </ul>
@@ -449,13 +437,13 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font> <
                     </div>
                     <div class="left_one">
                         <div class="left_one_title">
-                            <a href="/index/search/workshop?city={$cityInfo[0]['id']}&floor=1&category={$category}" target="_blank">{$cityInfo[0]['name']}一楼{$category_type_name}</a>
+                            <a href="/index/search/workshop?city={$cityInfo['id']}&floor=1&category={$category}" target="_blank">{$cityInfo['name']}一楼{$category_type_name}</a>
                         </div>
                         <div class="left_one_cont" id="left_nav_cont">
                             <ul>
                                 {volist name="floor2" id="data"}
-                                <li>[<a href="/index/search/workshop?city={$cityInfo[0]['id']}&category={$category}" target="_blank">{$cityInfo[0]['name']}{$category_type_name}</a>]
-                                    <a href="/index/search/workshopdetail?id={$data.id}&city={$cityInfo[0]['id']}&category={$category}" target="_blank">
+                                <li>[<a href="/index/search/workshop?city={$cityInfo['id']}&category={$category}" target="_blank">{$cityInfo['name']}{$category_type_name}</a>]
+                                    <a href="/index/search/workshopdetail?id={$data.id}&city={$cityInfo['id']}&category={$category}" target="_blank">
                                         {:subText($data.title,13)}</a></li>
                                 {/volist}
                             </ul>
@@ -463,14 +451,14 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font> <
                     </div>
                     <div class="left_one">
                         <div class="left_one_title">
-                            <a href="/index/search/workshop?city={$cityInfo[0]['id']}&category={$category}"
-                               target="_blank">{$cityInfo[0]['name']}带装修{$category_type_name}</a>
+                            <a href="/index/search/workshop?city={$cityInfo['id']}&category={$category}"
+                               target="_blank">{$cityInfo['name']}带装修{$category_type_name}</a>
                         </div>
                         <div class="left_one_cont">
                             <ul>
                                 {volist name="floor3" id="data"}
-                                <li>[<a href="/index/search/workshop?city={$cityInfo[0]['id']}&category={$category}" target="_blank">{$cityInfo[0]['name']}{$category_type_name}</a>]
-                                    <a href="/index/search/workshopdetail?id={$data.id}&city={$cityInfo[0]['id']}&category={$category}" target="_blank">
+                                <li>[<a href="/index/search/workshop?city={$cityInfo['id']}&category={$category}" target="_blank">{$cityInfo['name']}{$category_type_name}</a>]
+                                    <a href="/index/search/workshopdetail?id={$data.id}&city={$cityInfo['id']}&category={$category}" target="_blank">
                                         {:subText($data.title,13)}</a></li>
                                 {/volist}
                             </ul>
@@ -667,17 +655,17 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font> <
     <div class="top hd">
         <div class="FL">
             <a href="javascript:;" id="cc0" class="hov">深圳分站</a>
-            {volist name="cityInfo" id="data"}
+            {volist name="cityList" id="data"}
             <a href="javascript:;" id="cc1">{$data.name}分站</a>
             {/volist}
         </div>
     </div>
     <p class="infoList0" id="qlist0" style="display: block;">
-        {volist name="areaInfo" id="data"}<a href="/index/search/workshop?city={$cityInfo[0]['id']}&area={$data.id}"
+        {volist name="areaInfo" id="data"}<a href="/index/search/workshop?city={$cityInfo['id']}&area={$data.id}"
                                              target="_blank" title="{$data.name}">{$data.name}厂房出租</a>{/volist}
     </p>
     <p class="infoList2" id="qlist2" style="display: none;">
-        {volist name="areaInfo" id="data"}<a href="/index/search/workshop?city={$cityInfo[0]['id']}&area={$data.id}"
+        {volist name="areaInfo" id="data"}<a href="/index/search/workshop?city={$cityInfo['id']}&area={$data.id}"
                                              target="_blank" title="{$data.name}">{$data.name}厂房出租</a>{/volist}
     </p>
 

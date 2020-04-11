@@ -28,7 +28,7 @@ class Park extends Homebase
     {
         $city = getCity($request);
         $cityList = Db::name('city')->where('id', '<>', $city)->select();
-        $cityInfo = Db::name('city')->where('id', '=', $city)->select();
+        $cityInfo = Db::name('city')->where('id', '=', $city)->find();
         $areaInfo = Db::name('area')->where('parentId', 'in', $city)->select();
         $recommend = ParkManage::where('type','=',1)
             ->order(array('releasetime' => 'DESC'))
@@ -87,8 +87,8 @@ class Park extends Homebase
             ->find();
 
         $cityInfo = Db::name('city')
-            ->where('id', 'in', $info['city'])->select();
-        $city = $cityInfo[0]['id'];
+            ->where('id', '=', $info['city'])->find();
+        $city = $cityInfo['id'];
         $areaInfo = Db::name('area')
             ->where('parentId', 'in', $info['city'])->select();
 

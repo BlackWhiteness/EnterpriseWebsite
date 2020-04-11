@@ -781,13 +781,13 @@ function subText($text, $length)
 }
 
 /**
- * 获取城市id
- * @param Request $request
+ * desc
+ *
  * @return int|mixed
  */
-function getCity(Request $request)
+function getCity()
 {
-    if (!empty($city = $request->param('city'))) {
+    if (!empty($city = \request()->param('c_id'))) {
         return $city;
     }
     return isset($_COOKIE['city']) ? $_COOKIE['city'] : 8;

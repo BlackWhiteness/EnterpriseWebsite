@@ -84,20 +84,8 @@
         padding: 0 13px;
     }
 </style>
-<div class="nav_bar">
-    <div class="w960 f12">
-        <div class="nav_bar_left fl">
-            当前城市：<span>{$cityInfo[0]['name']}</span>
-            <em>|</em>切换城市：
-            {volist name="cityList" id="data"}
-            <a href="javascript:document.cookie = 'city={$data.id};path=/;';location.reload();">{$data.name}</a>
-            <em>|</em> {/volist}
-        </div>
-        <div class="nav_bar_right fr">
-            <strong>24小时免费服务热线：陈生{:config('web_site_tel')}</strong>
-        </div>
-    </div>
-</div><!--<table width="960" border="0" cellspacing="0" cellpadding="0" align="center">
+{include file='layout/nav_bar' /}
+<!--<table width="960" border="0" cellspacing="0" cellpadding="0" align="center">
   <tr align="center">
     <td align="center">
 
@@ -523,7 +511,7 @@
     <div class="FL LH24 marginL20" style="margin-top:37px;">
         <div class="m_city fl" style="position:relative;">
             <div id="change_city"><font color="#D90700" style="font-
-size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityInfo[0]['name']}</strong></font> <a
+size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityInfo['name']}</strong></font> <a
                     class="F12 cGray" href="javascript:void(0);" onclick="javascript:ChangeCity(1);">[切换城市]</a></div>
             <div class="qhcity_box" id="popwindow"
                  style="z-index: 20; position: absolute; top: 40px; left: 20px; display: none; min-height:300px; position:relative;">
@@ -561,10 +549,10 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
     <div class="FR" style="width:504px;">
         <div class="t-r F12">
             <div class="FL"><span style=" padding-right:5px;">热门搜索:</span><a target="_blank"
-                                                                             href="/index/search/officebuilding?city={$cityInfo[0]['id']}&title=带装修厂房">带装修厂房</a><a
-                    target="_blank" href="/index/search/officebuilding?city={$cityInfo[0]['id']}&floor=1">一楼厂房</a><a
+                                                                             href="/index/search/officebuilding?city={$cityInfo['id']}&title=带装修厂房">带装修厂房</a><a
+                    target="_blank" href="/index/search/officebuilding?city={$cityInfo['id']}&floor=1">一楼厂房</a><a
                     target="_blank"
-                    href="/index/search/officebuilding?city={$cityInfo[0]['id']}&title=高新科技园厂房">高新科技园厂房</a></div>
+                    href="/index/search/officebuilding?city={$cityInfo['id']}&title=高新科技园厂房">高新科技园厂房</a></div>
             <div class="FR"></div>
         </div>
         <div class="clear"></div>
@@ -584,7 +572,7 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
                     </div>
                 </div>
                 <div class="text fl">
-                    <input name="city" type="hidden" value="{$cityInfo[0]['id']}">
+                    <input name="city" type="hidden" value="{$cityInfo['id']}">
                     <input name="title" type="text" placeholder="请输入园区名称或工业区商圈">
                 </div>
                 <div class="searbut fr" style="height:32px; overflow:hidden;">
@@ -784,19 +772,19 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
                                 <li class="">
                                     <a href="/" class="menubox"><span>首页</span></a>
                                 </li>
-                                <li class=""><a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1"
+                                <li class=""><a href="/index/search/workshop?city={$cityInfo['id']}&category=1"
                                                 class="menubox"><span>厂房出租</span></a></li>
-                                <li class=""><a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1"
+                                <li class=""><a href="/index/search/workshop?city={$cityInfo['id']}&category=1"
                                                 class="menubox"><span>厂房出售</span></a></li>
-                                <li class=""><a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1"
+                                <li class=""><a href="/index/search/workshop?city={$cityInfo['id']}&category=1"
                                                 class="menubox"><span>仓库出租</span></a></li>
-                                <li class=""><a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1"
+                                <li class=""><a href="/index/search/workshop?city={$cityInfo['id']}&category=1"
                                                 class="menubox"><span>土地</span></a></li>
-                                <li class=""><a href="/index/search/officebuilding?city={$cityInfo[0]['id']}"
+                                <li class=""><a href="/index/search/officebuilding?city={$cityInfo['id']}"
                                                 class="menubox"><span>写字楼</span></a></li>
-                                <li class=""><a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1"
+                                <li class=""><a href="/index/search/workshop?city={$cityInfo['id']}&category=1"
                                                 class="menubox"><span>园区招商</span></a></li>
-                                <li class=""><a href="/index/search/workshop?city={$cityInfo[0]['id']}&category=1"
+                                <li class=""><a href="/index/search/workshop?city={$cityInfo['id']}&category=1"
                                                 class="menubox"><span>私宅商铺</span></a></li>
                                 <li class="current"><a href="/index/publish/customer"
                                                        class="menubox"><span>求租求购</span></a></li>
@@ -1025,11 +1013,8 @@ size:18px;"><strong class="c303" style="font-size:18px; color:#D90700;">{$cityIn
                                                     <div id="city_list_css" style="display:inline">
                                                         <select name="city" id="list_city"
                                                                 onchange="get_district(this.value)">
-                                                            {volist name="cityInfo" id="data" key="k"}
-                                                            <option value="{$data.id}" {eq name="k" value="1"
-                                                                    }selected="" {
-                                                            /eq}>{$data.name}</option>
-                                                            {/volist}
+                                                            <option value="{$cityInfo.id}"
+                                                                    selected="" >{$cityInfo.name}</option>
                                                             {volist name="cityList" id="data" key="k"}
                                                             <option value="{$data.id}">{$data.name}</option>
                                                             {/volist}

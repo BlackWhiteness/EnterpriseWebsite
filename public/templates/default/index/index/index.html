@@ -84,21 +84,7 @@
         padding: 0 13px;
     }
 </style>
-<div class="nav_bar">
-    <div class="w960 f12">
-        <div class="nav_bar_left fl">
-            当前城市：
-            <span>{$cityInfo.name}</span>
-            <em>|</em>切换城市：
-            {volist name="cityList" id="data"}
-            <a href="javascript:document.cookie = 'city={$data.id};path=/;';location.reload();">{$data.name}</a>
-            <em>|</em> {/volist}
-        </div>
-        <div class="nav_bar_right fr">
-            <strong>24小时免费服务热线：{:config('web_site_tel')}</strong>
-        </div>
-    </div>
-</div>
+{include file='layout/nav_bar' /}
 
 <!--<table width="1000" border="0" cellspacing="0" cellpadding="0" align="center">
 <tr align="center">
@@ -527,7 +513,7 @@
         <div class="m_city fl" style="position:relative;">
             <div id="change_city">
                 <font color="#D90700" style="font-size:18px;"><strong class="c303"
-                                                                      style="font-size:18px; color:#D90700;">{$cityInfo[0]['name']}</strong></font>
+                                                                      style="font-size:18px; color:#D90700;">{$cityInfo['name']}</strong></font>
                 <a class="F12 cGray" href="javascript:void(0);" onclick="javascript:ChangeCity(1);">[切换城市]</a>
             </div>
             <div class="qhcity_box" id="popwindow"

@@ -43,7 +43,7 @@ class Index extends Homebase
      */
     public function index(Workshop $workshop, LandManage $landManage, Officebuilding $officeBuilding, ShopManage $shopManage)
     {
-        $city = isset($_COOKIE['city']) ? $_COOKIE['city'] : 8;
+        $city = getCity();
         $cityInfo = Db::name('city')->where('id', '=', $city)->find();
         $areaInfo = Db::name('area')->where('parentId', 'in', $city)->select();
         $cityList = Db::name('city')->where('id', '<>', $city)->select();

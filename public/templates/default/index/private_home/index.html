@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!-- saved from url=(0040)/index/search/officebuilding?city={$cityInfo[0]['id']} -->
+<!-- saved from url=(0040)/index/search/officebuilding?city={{$cityInfo['id']}} -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -63,21 +63,7 @@
         padding: 0 13px;
     }
 </style>
-<div class="nav_bar">
-    <div class="w1003 f12">
-        <div class="nav_bar_left fl">
-            当前城市：
-            <span>{$cityInfo[0]['name']}</span>
-            <em>|</em>切换城市：
-            {volist name="cityList" id="data"}
-            <a href="javascript:document.cookie = 'city={$data.id};path=/;';location.reload();">{$data.name}</a>
-            <em>|</em> {/volist}
-        </div>
-        <div class="nav_bar_right fr">
-            <strong>24小时免费服务热线：{:config('web_site_tel')}</strong>
-        </div>
-    </div>
-</div>
+{include file='layout/nav_bar' /}
 <!--<table width="960" border="0" cellspacing="0" cellpadding="0" align="center">
 <tr align="center">
   <td align="center">
@@ -125,7 +111,7 @@
         <div class="m_city fl" style="position:relative;">
             <div id="change_city">
                 <font color="#D90700" style="font-
-size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
+size:18px;"><strong class="F14 c303">{$cityInfo['name']}市</strong></font>
                 <a class="F12 cGray" href="javascript:void(0);" onclick="javascript:alert('写字楼目前只开通深圳，其他城市正在开放中');">[切换城市]</a>
             </div>
             <div class="qhcity_box" id="popwindow"
@@ -213,7 +199,7 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
             document.getElementById("search111").action = "/search.php";
         } else if (tna == "写字楼") {
             soty = 3;
-            document.getElementById("search111").action = "/index/search/officebuilding?city={$cityInfo[0]['id']}";
+            document.getElementById("search111").action = "/index/search/officebuilding?city={{$cityInfo['id']}}";
         } else if (tna == "土地") {
             soty = 5;
         } else if (tna == "商铺") {
@@ -282,7 +268,7 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
 <table width="960" align="center">
     <tr align="center">
         <td align="center">
-            <A href="/index/search/workshop?city={$cityInfo[0]['id']}" target=_blank><IMG
+            <A href="/index/search/workshop?city={{$cityInfo['id']}}" target=_blank><IMG
                     src="/static/index/img/img_13.jpg" width="1000" height="267"></A>
         </td>
     </tr>
@@ -291,7 +277,7 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
 
 <div class=" w1003 zs_newmbx" style="margin: 8px auto;text-align:left;">
     <a target="_blank" href="/xiezilou/">广东写字楼网</a>&nbsp;&gt;&nbsp;
-    <a target="_blank" href="/index/search/officebuilding?city={$cityInfo[0]['id']}">{$cityInfo[0]['name']}写字楼</a>
+    <a target="_blank" href="/index/search/officebuilding?">{$cityInfo['name']}写字楼</a>
 </div>
 <div class="zs_newmbx" style="display:none;">
     <a target="_blank" href="/">深圳厂房网</a>&nbsp;&gt;&nbsp;
@@ -322,9 +308,9 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
             区域：
         </dt>
         <dd class="screen_area">
-            {volist name="cityInfo" id="data"}
-            <a id="city_id" class="current" href="javascript:void(0)" value="{$data.id}">全{$data.name}</a>
-            {/volist}
+
+            <a id="city_id" class="current" href="javascript:void(0)" value="{$cityInfo.id}">全{$cityInfo.name}</a>
+
             {volist name="areaInfo" id="data"}
             <a href="javascript:void(0)" value="{$data.id}">{$data.name}</a>
             {/volist}
@@ -439,7 +425,7 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
                 <div id="mainbody">
                     <div id="main_right">
                         <div id="right_title">
-                            <span>你搜索的结果是: {$cityInfo[0]['name']}私宅</span>
+                            <span>你搜索的结果是: {$cityInfo['name']}私宅</span>
                         </div>
                         <div class="right_cont">
                             <div class="clear"></div>
@@ -469,7 +455,7 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
                                     </li>
                                 {/volist}
                             </ul>
-                            <a class="more_build" href="/index/private_home/index?city={$cityInfo[0]['id']}">更多热门私宅</a>
+                            <a class="more_build" href="/index/private_home/index?city={$cityInfo['id']}">更多热门私宅</a>
                         </div>
                         <div class="hotList">
                             <div class="hotTitle">
@@ -492,7 +478,7 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
                                 </li>
                                 {/volist}
                             </ul>
-                            <a class="more_build" href="/index/private_home/index?city={$cityInfo[0]['id']}">更多最新私宅</a>
+                            <a class="more_build" href="/index/private_home/index?city={$cityInfo['id']}">更多最新私宅</a>
                         </div>
                     </div>
                 </div>
@@ -552,7 +538,7 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
 {include file="templates/default/index/layout/foot.html" /}
 <div class="bdshare-slide-button-box bdshare-slide-style-r7" style="top: 250px; width: 0px; z-index: 99999; right: 0px;"
      data-bd-bind="1566556065349">
-    <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}#" onclick="return false;"
+    <a href="/index/search/officebuilding?city={$cityInfo['id']}#" onclick="return false;"
        class="bdshare-slide-button" style="left: -24px;"></a>
     <div class="bdshare-slide-list-box" style="width: 0px; display: none;">
         <div class="bdshare-slide-top">
@@ -562,7 +548,7 @@ size:18px;"><strong class="F14 c303">{$cityInfo[0]['name']}市</strong></font>
             <ul class="bdshare-slide-list-ul" style="width: 226px;"></ul>
         </div>
         <div class="bdshare-slide-bottom" style="width: 226px;">
-            <a href="/index/search/officebuilding?city={$cityInfo[0]['id']}#" onclick="return false;" class="slide-more"
+            <a href="/index/search/officebuilding?city={$cityInfo['id']}#" onclick="return false;" class="slide-more"
                data-cmd="more">更多...</a>
         </div>
     </div>

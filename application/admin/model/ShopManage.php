@@ -62,7 +62,7 @@ class ShopManage extends Model
     public function filterCommon()
     {
         $query = self::getModel();
-        $city = request()->param('city');
+        $city = getCity();
         if (!empty($city)) {
             $query = $query->where('city', '=', $city);
         }

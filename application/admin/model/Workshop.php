@@ -95,11 +95,7 @@ class Workshop extends Model
     public function filterComon()
     {
         $query = self::getModel();
-        $city = request()->param('city');
-//        if(empty($city)){
-//            $city = isset($_COOKIE['city']) ? $_COOKIE['city'] : 8;
-//        }
-
+        $city = getCity();
         if (!empty($city)) {
             $query = $query->where('city', '=', $city);
         }
