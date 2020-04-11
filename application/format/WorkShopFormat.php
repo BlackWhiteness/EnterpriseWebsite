@@ -76,7 +76,7 @@ class WorkShopFormat
                 'tel' => $row['tel'],
                 'title' => $row['title'],
                 'type' => $row['type'],
-                'area_name' => $area->name . '区',
+                'area_name' => $area->name,
                 'detail' => mb_substr(strip_tags($row['detail']), 0, 300)
             ];
         }

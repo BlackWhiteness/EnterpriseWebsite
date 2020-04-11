@@ -73,7 +73,7 @@ class OfficeBuildFormat
                 'type' => $row['type'],
                 'title' => $row['title'],
                 'detail' => $row['detail'],
-                'area_name' => $area->name . '区',
+                'area_name' => $area->name ,
             ];
 
         }
@@ -110,7 +110,7 @@ class OfficeBuildFormat
                 'area' => $row['area'],
                 'type' => $row['type'],
                 'title' => $row['title'],
-                'area_name' => $area->name . '区',
+                'area_name' => $area->name,
                 'detail' => mb_substr(strip_tags($row['detail']), 0, 300)
             ];
         }

@@ -30,7 +30,7 @@ class PrivateHome extends MobileBase
         $cityInfo = Db::name('city')->where('id', 'in', $city)->select();
         $areaInfo = Db::name('area')->where('parentId', 'in', $city)->select();
         $cityList = Db::name('city')->where('id', 'not in', $city)->select();
-
+        $title = $cityInfo[0]['name'].'民宅';
         $recommend = PrivateHomeManage::where(["type" => 1])
             ->order(array('releasetime' => 'DESC'))
             ->limit(0, 10)
@@ -77,6 +77,7 @@ class PrivateHome extends MobileBase
             'struckList' => PrivateHomeManage::STRUCT_CONFIG,
             'floorType' => PrivateHomeManage::FLOOR_TYPE,
             'measureList' => PrivateHomeManage::MEASURE_LIST,
+            'title' => $title
         ]);
 
         return $this->fetch('index');

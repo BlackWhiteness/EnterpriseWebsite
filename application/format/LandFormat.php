@@ -59,7 +59,7 @@ class LandFormat
                 'imgs' => $row['imgs'] ? $row['imgs'][0] : '',
                 'land_type' => $row['land_type'],
                 'land_card' => $row['land_card'] == 0 ? '有' : '无',
-                'area_name' => $area->name . '区',
+                'area_name' => $area->name,
                 'detail' => mb_substr(strip_tags($row['detail']), 0, 300)
             ];
         }

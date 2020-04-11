@@ -30,6 +30,7 @@ class Park extends MobileBase
         $cityList = Db::name('city')->where('id', '<>', $city)->select();
         $cityInfo = Db::name('city')->where('id', '=', $city)->select();
         $areaInfo = Db::name('area')->where('parentId', 'in', $city)->select();
+        $title = $cityInfo[0]['name'].'园区招商';
         $recommend = ParkManage::where('type','=',1)
             ->order(array('releasetime' => 'DESC'))
             ->page(1, 10)->select();

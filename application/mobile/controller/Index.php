@@ -28,19 +28,6 @@ class Index extends MobileBase
     //会员中心首页
     public function index(Request $request)
     {
-//        if ($request->isAjax()) {
-//            $para = $request->post();
-//            $CustomerValidate = new Customer();
-//            $result = $CustomerValidate->check($para);
-//            if (!$result) {
-//                return $this->error($CustomerValidate->getError());
-//            }
-//            if (OwnerDemand::create($para)) {
-//                return 1;
-//            } else {
-//                return 2;
-//            }
-//        }
         $city = isset($_COOKIE['city']) ? $_COOKIE['city'] : 8;
         $cityInfo = Db::name('city')->where('id', '=', $city)->find();
         $officeInstance = OfficeBuildFormat::getInstance();

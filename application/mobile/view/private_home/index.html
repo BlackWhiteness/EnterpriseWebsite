@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
     <meta name="format-detection" content="telephone=no"/>
-    <meta name="renderer" content="webkit" />
+    <meta name="renderer" content="webkit"/>
     <title>{:config('web_site_title')}</title>
     <meta name="keywords" content="{:config('web_site_keywords')}"/>
     <meta name="description" content="{:config('web_site_description')}"/>
@@ -21,7 +21,7 @@
     <div class="g-head">
         <div class="wal">
             <a href="index.html" class="logo"></a>
-            <h2><a href="city_shift.html">深圳厂房</a></h2>
+            <h2><a href="city_shift.html">{$title}</a></h2>
             <div class="btn btn-right">
                 <a href="javascript:;" class="search"></a>
                 <a href="javascript:;" class="nav"></a>
@@ -59,7 +59,7 @@
             <ul id="search_type">
                 <li data-value="0" class="on"><a href="javascript:;">不限</a></li>
                 {foreach $categoryList as $key=>$category}
-                    <li data-value="{$key}"><a href="javascript:;" >{$category}</a></li>
+                <li data-value="{$key}"><a href="javascript:;">{$category}</a></li>
                 {/foreach}
             </ul>
         </div>
@@ -67,7 +67,7 @@
             <ul id="floor_type">
                 <li data-value="0" class="on"><a href="javascript:;">不限</a></li>
                 {foreach $floorType as $key=>$floor}
-                <li data-value="{$key}"><a href="javascript:;" >{$floor}</a></li>
+                <li data-value="{$key}"><a href="javascript:;">{$floor}</a></li>
                 {/foreach}
             </ul>
         </div>
@@ -91,7 +91,7 @@
         <div class="drop-down drop-list">
             <ul id="search_struck">
                 {foreach $struckList as $key=>$struck}
-                <li data-value="{$key}"><a href="javascript:;" >{$struck}</a></li>
+                <li data-value="{$key}"><a href="javascript:;">{$struck}</a></li>
                 {/foreach}
             </ul>
         </div>
@@ -134,7 +134,7 @@
             });
 
             //面积
-            var search_mianji = {element: $('#search_mianji'), value: null, min:null, max:null};
+            var search_mianji = {element: $('#search_mianji'), value: null, min: null, max: null};
             search_mianji.element.find('li').click(function () {
                 search_mianji.value = $(this).attr('data-value');
                 getData()
@@ -142,7 +142,7 @@
             search_mianji.element.find('.submit input').click(function () {
                 var min = parseFloat(search_mianji.element.find('.input').eq(0).find('input').val()),
                     max = parseFloat(search_mianji.element.find('.input').eq(1).find('input').val());
-                if(isNaN(min) || isNaN(max)) return;
+                if (isNaN(min) || isNaN(max)) return;
                 search_mianji.min = min;
                 search_mianji.max = max;
                 drop_hide();
@@ -168,44 +168,56 @@
                 search_type.value = $(this).attr('data-value');
                 getData()
             });
+
             function drop_hide() {
                 $('.p-class-d').removeClass('on');
                 $('.p-class-d').find('.p-class').find('li').removeClass('open');
                 $('.p-class-d').find('.drop-down').removeClass('show');
                 $('body').removeClass('noScroll');
             }
+
+            var keyword = "";
+
             //处理参数
             function get_parameter() {
                 var parameter = {};
-                if(search_area.value !== null){
+                if (search_area.value !== null) {
                     parameter.area = search_area.value
                 }
-                if(search_mianji.value !== null){
+                if (search_mianji.value !== null) {
                     parameter.measurearea = search_mianji.value
                 }
-                if(search_mianji.min !== null){
+                if (search_mianji.min !== null) {
                     parameter.measurearea = search_mianji.min
                 }
-                if(search_mianji.max !== null){
+                if (search_mianji.max !== null) {
                     parameter.measurearea = search_mianji.max
                 }
 
-                if(floor_type.value !== null){
+                if (floor_type.value !== null) {
                     parameter.floor_type = search_rent.value
                 }
-                if(search_struck.value !== null){
+                if (search_struck.value !== null) {
                     parameter.struck = search_struck.value
                 }
-                if(search_type.value !== null){
+                if (search_type.value !== null) {
                     parameter.category = search_type.value
                 }
-
+                if (keyword !== "") {
+                    parameter.title = keyword
+                }
                 return parameter
             }
 
+            //搜索关键字
+            if (localStorage.gdcfKeyWord !== undefined || localStorage.gdcfKeyWord !== "") {
+                keyword = localStorage.gdcfKeyWord;
+                localStorage.gdcfKeyWord = ""
+            }
             var url = "/search_home",
-                page = {total:1, curr:1};
+                page = {total: 1, curr: 1};
             getData();
+
             function getData() {
                 var parameter = get_parameter();
                 $.get(url, parameter, function (data) {
@@ -221,10 +233,10 @@
             //--滚动到底加载更多
             var is_scroll = true;
             $(window).scroll(function () {
-                if(!is_scroll) return;
-                if($(window).scrollTop() > $('.g-foot').offset().top - $(window).height()){
+                if (!is_scroll) return;
+                if ($(window).scrollTop() > $('.g-foot').offset().top - $(window).height()) {
                     is_scroll = false;
-                    if(page.total === page.curr){
+                    if (page.total === page.curr) {
                         console.log("我是有底线的");
                         return;
                     }
@@ -232,7 +244,7 @@
                     parameter.page = page.curr;
                     $.get(url, parameter, function (data) {
                         //page.curr = data.page.current_page;
-                        page.curr ++;//为了测试，在这里每滚动一次自加1，实际开发请将些行删掉，将上面一行注释取消
+                        page.curr++;//为了测试，在这里每滚动一次自加1，实际开发请将些行删掉，将上面一行注释取消
                         domCreate(data.data);
                         is_scroll = true
                     })
@@ -243,11 +255,11 @@
             function domCreate(data) {
                 data.forEach(function (item) {
                     list_dom.append('<li>\n' +
-                        '                <a href="/home_detail?id='+item.id+'">\n' +
-                        '                    <div class="img"><img src="'+item.imgs+'" alt=""><em>'+item.area_name+'</em></div>\n' +
-                        '                    <div class="name">'+item.title+'</div>\n' +
+                        '                <a href="/home_detail?id=' + item.id + '">\n' +
+                        '                    <div class="img"><img src="' + item.imgs + '" alt=""><em>' + item.area_name + '</em></div>\n' +
+                        '                    <div class="name">' + item.title + '</div>\n' +
                         '                    <div class="label"></div>\n' +
-                        '                    <div class="price"><span>'+item.price+'/㎡</span><em>'+item.measurearea +'㎡</em></div>\n' +
+                        '                    <div class="price"><span>' + item.price + '/㎡</span><em>' + item.measurearea + '㎡</em></div>\n' +
                         '                </a>\n' +
                         '            </li>')
                 })

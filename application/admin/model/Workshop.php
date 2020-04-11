@@ -27,6 +27,11 @@ class Workshop extends Model
         2 => '厂房出售',
         3 => '仓库出租'
     ];
+    const MOBILE_LIST_TITLE = [
+        1 => '厂房',
+        2 => '厂房',
+        3 => '仓库'
+    ];
     const STRUCT_CONFIG = [
         1 => '标准',
         2 => '钢构结构',
