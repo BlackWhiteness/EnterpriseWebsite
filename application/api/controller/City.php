@@ -35,6 +35,6 @@ class City extends Base
             $region_list = Db::name('area')->field('id,name')->where(['parentid'=>$parent_id])->select();
             $res = array('status' => 1, 'msg' => '获取成功', 'result' => $region_list);
         }
-        exit(json_encode($res));
+        return json($res);
     }
 }

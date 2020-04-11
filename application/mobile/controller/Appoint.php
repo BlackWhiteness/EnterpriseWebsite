@@ -37,6 +37,8 @@ class Appoint extends MobileBase
 
     public function demand()
     {
+        $cityList = Db::name('city')->select();
+        $this->assign("cityList", $cityList);
         return $this->fetch('demand');
     }
 }

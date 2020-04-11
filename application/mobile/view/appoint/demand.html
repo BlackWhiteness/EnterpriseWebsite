@@ -106,9 +106,9 @@
                     <div class="col prov">
                         <div class="name">省</div>
                         <dl>
-                            <dd data-id="001">广东</dd>
-                            <dd data-id="002">北京</dd>
-                            <dd data-id="003">上海</dd>
+                            {foreach $cityList as $city}
+                                <dd data-id="{$city.id}">{$city.name}</dd>
+                            {/foreach}
                         </dl>
                     </div>
                     <div class="col city">
@@ -153,11 +153,7 @@
                 var url = '/api/city/getRegionByParentId?city='+$(this).attr('data-id');
                 var _ = $(this).text();
                 $.get(url, function (data) {
-                    var data = [];
-                    for (var i = 0; i < 9; i++) {
-                        data.push({name: _ + '区域' + i, id: i})
-                    }
-                    createCite(data)
+                    createCite(data.result)
                 })
             });
             function createCite(data) {
@@ -193,6 +189,9 @@
                 dom.find('#city_select').find('input').val(prov_id + "-" + city_id);
                 console.log(dom.find('#city_select').find('input').val())
             }
+        })
+        $('.submit').click(function(){
+
         })
     </script>
 

@@ -49,6 +49,7 @@ class Demand extends Base
 
     public function customer()
     {
+        dump($this->request->param());die;
         if ($this->request->isPost()) {
             $data = $this->request->param();
             /**if (!isset($data['status'])) {
