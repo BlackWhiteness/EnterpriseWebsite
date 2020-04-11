@@ -137,7 +137,7 @@ function resultFilter(result) {
         html += "<a href=/index/search/workshopdetail?id=" + row.id +'&category='+category+ " target='_blank' title=" + row.title + ">";
         html += "<img src=" + row.imgs + " alt=" + row.title + " border='0' width='146' height='130'/></a> ";
         html += "<span class='imgmid'></span></div><div class='list_one_text'> <strong>";
-        html += "<a href=/index/search/workshopdetail?id=" + row.id + +'&category='+category+" target='_blank'>";
+        html += "<a href=/index/search/workshopdetail?id=" + row.id  +"  target='_blank'>";
         html += row.title + "</a></strong>";
         html += "<div class='cf_jianjie'>" + row.detail + "</div>";
         html += "<div class='text_prm'><span>联系人:<font style='color: #C60;font-weight:bold;'>" + row.name + "</font><img src='/static/index/img/jjr_rz.jpg'/></span>";
