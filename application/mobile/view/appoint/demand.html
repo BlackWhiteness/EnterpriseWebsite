@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="renderer" content="webkit" />
+    <title>{:config('web_site_title')}</title>
+    <meta name="keywords" content="{:config('web_site_keywords')}"/>
+    <meta name="description" content="{:config('web_site_description')}"/>
+    <link rel="icon" href="/static/mobile/image/favicon.ico">
+    <link href="/static/mobile/style/index.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="/static/mobile/script/jquery-1.7.1.min.js"></script>
+</head>
+
+<body>
+<div class="wal" id="app">
+    <!--wal-->
+    <div class="g-head">
+        <div class="wal" style="background: none">
+            <div class="btn btn-left"><a href="javascript:window.history.go(-1);" class="back"></a></div>
+            <div class="btn btn-right">
+                <a href="javascript:;" class="nav"></a>
+            </div>
+        </div>
+    </div>
+    {include file="layout/search" /}
+    {include file="layout/nav" /}
+
+    <div class="new-demand">
+        <div class="head">
+            <div class="img"><img src="/static/mobile/image/banner.png" alt=""></div>
+            <div class="layer">
+                <div class="btn">求租求购</div>
+                <h3>盘源多/成交快/服务好<br>免中介费</h3>
+            </div>
+        </div>
+        <div class="container">
+            <div class="title">委托类型</div>
+            <div class="list">
+                <ul>
+                    <li>
+                        <div>厂房</div>
+                    </li>
+                    <li>
+                        <div>写字楼</div>
+                    </li>
+                    <li>
+                        <div>土地</div>
+                    </li>
+                    <li class="on">
+                        <div>仓库</div>
+                    </li>
+                    <li>
+                        <div>商铺</div>
+                    </li>
+                    <li>
+                        <div>民宅</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="title">租售类型</div>
+            <div class="list">
+                <ul>
+                    <li class="on">
+                        <div>求租</div>
+                    </li>
+                    <li>
+                        <div>求购</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="form">
+                <ul>
+                    <li>
+                        <div class="select" id="city_select">请选择位置</div>
+                    </li>
+                    <li>
+                        <div class="input"><input type="text" placeholder="请输入联系人名称"></div>
+                    </li>
+                    <li>
+                        <div class="input"><input type="text" placeholder="请输入联系方式"></div>
+                    </li>
+                    <li>
+                        <div class="input"><textarea placeholder="请描述您的具体需求，如：求购10-20亩，做食品行业的工业用地等。"></textarea></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="submit">
+                <div><input type="button" value="提交"></div>
+            </div>
+        </div>
+        <div class="foot-btn-d"></div>
+    </div>
+    <div class="city-select" id="city1">
+        <div class="bg"></div>
+        <div class="container">
+            <div class="wal">
+                <div class="title">
+                    <h2>选择省市区</h2>
+                    <a href="javascript:;" class="close"></a>
+                </div>
+                <div class="row">
+                    <div class="col prov">
+                        <div class="name">省</div>
+                        <dl></dl>
+                    </div>
+                    <div class="col city">
+                        <div class="name">市</div>
+                        <dl></dl>
+                    </div>
+<!--                    <div class="col dist">-->
+<!--                        <div class="name">区</div>-->
+<!--                        <dl></dl>-->
+<!--                    </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="/static/mobile/script/city/js.js"></script>
+    <script>
+        $(function () {
+            new city('#city1');
+            var dom = $('.new-demand');
+            dom.find('.list').each(function () {
+                var li = $(this).find('li');
+                li.each(function () {
+                    $(this).click(function () {
+                        li.removeClass('on');
+                        $(this).addClass('on')
+                    })
+                })
+            });
+
+            dom.find('.select').click(function () {
+                $('.city-select').addClass('show')
+            });
+            $('.city-select').find('.bg').click(function () {
+                $('.city-select').removeClass('show')
+            });
+            $('.city-select').find('.close').click(function () {
+                $('.city-select').removeClass('show')
+            })
+        })
+    </script>
+
+    {include file="layout/foot" /}
+    {include file="layout/foot-btn" /}
+    <!--wal-END-->
+</div>
+</body>
+</html>
+
+<link rel="stylesheet" href="/static/mobile/script/swiper/swiper-3.4.2.min.css">
+<script type="text/javascript" src="/static/mobile/script/swiper/swiper-3.4.2.jquery.min.js"></script>
+<script type="text/javascript" src="/static/mobile/script/js.js"></script>
