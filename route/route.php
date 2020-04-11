@@ -55,4 +55,6 @@ Route::domain('m', function () {
 
     // 预约
     Route::post('appoint', 'mobile/Appoint/saveAppoint');
+    Route::get('demand', 'mobile/Appoint/demand');
+    Route::post('demand', 'mobile/Appoint/saveDemand');
 });

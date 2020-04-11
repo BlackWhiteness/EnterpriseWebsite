@@ -34,4 +34,9 @@ class Appoint extends MobileBase
         ]);
         return json(['status' => 0, 'message' => '预约成功！']);
     }
+
+    public function demand()
+    {
+        return $this->fetch('demand');
+    }
 }
