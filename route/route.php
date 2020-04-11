@@ -53,4 +53,6 @@ Route::domain('m', function () {
     Route::get('search_park', 'mobile/Park/ajaxSearchPark');
     Route::get('search_home', 'mobile/PrivateHome/ajaxSearchHome');
 
+    // 预约
+    Route::post('appoint', 'mobile/Appoint/saveAppoint');
 });

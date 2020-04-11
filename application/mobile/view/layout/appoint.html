@@ -1,0 +1,45 @@
+<div class="product-show-3">
+    <div class="p-title">
+        <h2>选址预约</h2>
+    </div>
+    <div class="form">
+        <ul>
+            <li>
+                <div class="input phone"><input type="text" placeholder="请输入联系方式"></div>
+            </li>
+            <li>
+                <div class="input detail"><textarea placeholder="请描述您的具体需求，如：找一个靠近高速，大小1200到1500平，带装修的厂房等。"></textarea>
+                </div>
+            </li>
+        </ul>
+        <div class="submit">
+            <div><input type="button" value="马上预约"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let phone = '', detail = '';
+    let data = {};
+    $('.submit input').click(function () {
+        phone = $('.form .phone input').val();
+        detail = $('.form .detail textarea').val();
+        if (phone == '' || detail == '') {
+            alert('手机号与需求不能为空！');
+        }
+
+        if (phone.length != 11) {
+            alert('请输入正确的手机号格式！');
+        }
+        data.phone = phone;
+        data.detail = detail;
+        $.post('/appoint', data, function (res) {
+
+            if (res.status === 0) {
+                alert('预约成功！');
+            } else {
+                alert(res.message);
+            }
+        })
+    })
+</script>
