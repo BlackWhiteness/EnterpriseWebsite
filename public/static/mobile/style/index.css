@@ -1278,6 +1278,8 @@ a.topA {
       .new-demand .container .list li.on div {
         background: rgba(221, 37, 52, 0.1);
         color: #dd2534; }
+    .new-demand .container .list input {
+      display: none; }
     .new-demand .container .form {
       padding: .2rem 0 0 0; }
       .new-demand .container .form ul {
@@ -1290,6 +1292,8 @@ a.topA {
         position: relative;
         background: url("../image/agent_store_title_button_right_two.png") right center no-repeat;
         background-size: .11rem; }
+        .new-demand .container .form .select input {
+          display: none; }
       .new-demand .container .form .input input, .new-demand .container .form .input textarea {
         width: 100%;
         height: 1rem;
@@ -1381,7 +1385,7 @@ a.topA {
       background: url("../image/entrust_city_cancel.png") center no-repeat;
       background-size: .34rem; }
   .city-select .col {
-    width: 33.333%;
+    width: 50%;
     text-align: center; }
     .city-select .col .name {
       height: .9rem;
