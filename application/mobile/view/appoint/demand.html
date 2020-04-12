@@ -58,7 +58,7 @@
                         <div>民宅</div>
                     </li>
                 </ul>
-                <input type="text" value="仓库">
+                <input name="type" type="text" value="仓库">
             </div>
             <div class="title">租售类型</div>
             <div class="list">
@@ -70,21 +70,24 @@
                         <div>求购</div>
                     </li>
                 </ul>
-                <input type="text" value="求租">
+                <input name="sale" type="text" value="求租">
             </div>
             <div class="form">
                 <ul>
                     <li>
-                        <div class="select" id="city_select"><span>请选择位置</span><input type="text"></div>
+                        <div class="select" id="city_select">
+                            <span>请选择位置</span>
+                            <input  type="text">
+                        </div>
                     </li>
                     <li>
-                        <div class="input"><input type="text" placeholder="请输入联系人名称"></div>
+                        <div class="input"><input name='people' type="text" placeholder="请输入联系人名称"></div>
                     </li>
                     <li>
-                        <div class="input"><input type="text" placeholder="请输入联系方式"></div>
+                        <div class="input"><input name='phone' type="text" placeholder="请输入联系方式"></div>
                     </li>
                     <li>
-                        <div class="input"><textarea placeholder="请描述您的具体需求，如：求购10-20亩，做食品行业的工业用地等。"></textarea></div>
+                        <div class="input"><textarea name='detail' placeholder="请描述您的具体需求，如：求购10-20亩，做食品行业的工业用地等。"></textarea></div>
                     </li>
                 </ul>
             </div>
@@ -99,12 +102,12 @@
         <div class="container">
             <div class="wal">
                 <div class="title">
-                    <h2>选择省市区</h2>
+                    <h2>选择地区</h2>
                     <a href="javascript:;" class="close"></a>
                 </div>
                 <div class="row">
                     <div class="col prov">
-                        <div class="name">省</div>
+                        <div class="name">市</div>
                         <dl>
                             {foreach $cityList as $city}
                                 <dd data-id="{$city.id}">{$city.name}</dd>
@@ -112,7 +115,7 @@
                         </dl>
                     </div>
                     <div class="col city">
-                        <div class="name">市</div>
+                        <div class="name">区</div>
                         <dl></dl>
                     </div>
                 </div>
@@ -121,6 +124,7 @@
     </div>
     <script>
         $(function () {
+            var data = {};
             var dom = $('.new-demand');
             dom.find('.list').each(function () {
                 var li = $(this).find('li'),
@@ -187,12 +191,32 @@
                 });
                 dom.find('#city_select').find('span').html(prov_name + "-" + city_name);
                 dom.find('#city_select').find('input').val(prov_id + "-" + city_id);
-                console.log(dom.find('#city_select').find('input').val())
+                // dom.find('#city_select').find('input').val(prov_name + "-" + city_name);
+                // dom.find('#city_select').find('input[name=city_select]').val(prov_id + "-" + city_id);
+                // console.log(dom.find('#city_select').find('input [name=city_select]'));
+                // console.log(dom.find('#city_select').find('input').val())
             }
-        })
-        $('.submit').click(function(){
+            $('.submit').click(function(){
+                var data = {},  url = '/api/Demand/saveDemand';
+                data.city = dom.find('#city_select').find('input').val();
+                data.type = dom.find('.container').find('input[name=type]').val();
+                data.sale = dom.find('.container').find('input[name=sale]').val();
+                data.people = dom.find('.container').find('input[name=people]').val();
+                data.phone = dom.find('.container').find('input[name=phone]').val();
+                data.detail = dom.find('.container').find('textarea[name=detail]').val();
 
+                $.post(url, data, function (res) {
+                    console.log(res);
+                    if(res.status==0){
+                        alert('提交成功！');
+                        location.replace('/demand');
+                    }else{
+                        alert(res.message);
+                    }
+                })
+            })
         })
+
     </script>
 
     {include file="layout/foot" /}

@@ -14,11 +14,10 @@
 // +----------------------------------------------------------------------
 namespace app\api\controller;
 
-use app\common\controller\Base;
-use app\admin\model\OwnerDemand;
 use app\admin\model\CustomerDemand;
-
-use think\Db;
+use app\admin\model\OwnerDemand;
+use app\common\controller\Base;
+use think\Request;
 
 class Demand extends Base
 {
@@ -49,7 +48,6 @@ class Demand extends Base
 
     public function customer()
     {
-        dump($this->request->param());die;
         if ($this->request->isPost()) {
             $data = $this->request->param();
             /**if (!isset($data['status'])) {
@@ -70,6 +68,49 @@ class Demand extends Base
         } else {
             return $this->fetch();
         }
+    }
+
+    public function saveDemand(Request $request)
+    {
+        $cityInfo = $request->param('city', []);
+        if (empty($cityInfo)) {
+            return json(['status' => -1, 'message' => '城市不能为空！']);
+        }
+
+        list($city, $area) = explode('-',$cityInfo);
+        $title = $request->param('title', '');
+        $leibie = $request->param('type');
+        if (empty($leibie)) {
+            return json(['status' => -1, 'message' => '类别不能为空！']);
+        }
+
+        $leixing = $request->param('sale');
+        if (empty($leixing)) {
+            return json(['status' => -1, 'message' => '租售类别不能为空！']);
+        }
+
+
+        $name = $request->param('people');
+        $tel = $request->param('phone');
+        $detail = $request->param('detail');
+
+        $data = [
+            'city' => $city,
+            'area' => $area,
+            'title' => $title,
+            'leibie' => $leibie,
+            'leixing' => $leixing,
+            'name' => $name,
+            'tel' => $tel,
+            'detail' => $detail,
+        ];
+
+        if (CustomerDemand::create($data)) {
+            return json(['status' => 0, 'message' => '提交成功！']);
+        } else {
+            return json(['status' => -1, 'message' => '提交失败！']);
+        }
+
     }
 
 
