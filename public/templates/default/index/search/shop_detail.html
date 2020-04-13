@@ -732,6 +732,504 @@ $(function(){
         color: #30C;
     }
 </style>
+<div id="mainbody" style=" margin:0px auto; clear:both;">
+    <table width="1000" border="0" cellspacing="0" cellpadding="0" align="center">
+        <tr>
+
+            <td valign="top">
+
+
+                <table width="730" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td>
+
+                            <div id="main_right">
+                                <div id="right_title"><span>您当前的位置：<a
+                                        href="/index/search/workshop?city={$cityInfo['id']}"
+                                        target="_blank"/>{$info.city_name}{$info.category}</a> ><a
+                                        href="/index/search/workshop?city={$cityInfo['id']}" target="_blank"/>{$info.area_name}{$info.category}</a>
+                                    </span>
+                                </div>
+                                <div class="right_cont">
+
+                                    <div class="clear"></div>
+                                    <div class="cf_title"><h1>
+                                        {$info.title}
+                                    </h1></div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <div class="right_cont">
+                    <table width="730" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td valign="top" width="370" align="left">
+                                <!--<div class="p_show" style="margin-right:10px;">
+                                    <div class="p_img_bar">
+                                        <img src="{$info.imgs[0]}" width="350" height="265" class="m8"
+                                             onerror="this.src='/gg/img/text.jpg'"/></div>
+                                    <div class="p_small_bar">
+                                        <div class="p_control_l" id="the_control_l"></div>
+                                        <div class="p_small_in">
+                                            <ul class="list_in" id="list_in">
+
+
+                                                {volist name="info['imgs']" id="data"}
+                                                <li><img src="{$data}" name="{$data}"
+                                                         onerror="this.src='/gg/img/text.jpg'"/></li>
+                                                {/volist}
+                                            </ul>
+
+                                        </div>
+                                        <div class="p_control_r" id="the_control_r"></div>
+                                    </div>
+                                </div>-->
+                                <div id=preview>
+                                    <div class=jqzoom id=spec-n1 onClick="window.open('{$info.imgs[0]}')"><IMG
+                                            height=265
+                                            src="{$info.imgs[0]}" jqimg="{$info.imgs[0]}" width=350>
+                                    </div>
+                                    <div id=spec-n5>
+                                        <div class=control id=spec-left>
+                                            <img src="/static/index/img/left.gif"/>
+                                        </div>
+                                        <div id=spec-list>
+                                            <ul class=list-h>{volist name="info['imgs']" id="data"}
+                                                <li><img src="{$data}" name="{$data}"></li>
+                                                {/volist}
+
+                                            </ul>
+                                        </div>
+                                        <div class=control id=spec-right>
+                                            <img src="/static/index/img/right.gif"/>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <SCRIPT type=text/javascript>
+                                    $(function () {
+                                        $(".jqzoom").jqueryzoom({
+                                            xzoom: 400,
+                                            yzoom: 400,
+                                            offset: 10,
+                                            position: "right",
+                                            preload: 1,
+                                            lens: 1
+                                        });
+                                        $("#spec-list").jdMarquee({
+                                            deriction: "left",
+                                            width: 350,
+                                            height: 56,
+                                            step: 2,
+                                            speed: 4,
+                                            delay: 10,
+                                            control: true,
+                                            _front: "#spec-right",
+                                            _back: "#spec-left"
+                                        });
+                                        $("#spec-list img").bind("mouseover", function () {
+                                            var src = $(this).attr("src");
+                                            $("#spec-n1 img").eq(0).attr({
+                                                src: src.replace("\/n5\/", "\/n1\/"),
+                                                jqimg: src.replace("\/n5\/", "\/n0\/")
+                                            });
+                                            $(this).css({
+                                                "border": "2px solid #ff6600",
+                                                "padding": "1px"
+                                            });
+                                        }).bind("mouseout", function () {
+                                            $(this).css({
+                                                "border": "1px solid #ccc",
+                                                "padding": "2px"
+                                            });
+                                        });
+                                    })
+                                </SCRIPT>
+
+                                <SCRIPT src="/static/index/js/lib.js" type=text/javascript></SCRIPT>
+                                <SCRIPT src="/static/index/js/zzsc.js" type=text/javascript></SCRIPT>
+                                <div class="other" style="margin-top:8px; margin-left:0px; width:350px;">
+                                    <!--<div class="other_box2"><a href="/cf-shouchang-id-308224.html">收藏</a></div>-->
+                                    <div class="other_box3">
+                                        <div style="float:left; padding-right:20px; ">
+
+
+                                            此信息已被访问：<?php echo rand(0, 1000);?>次
+                                        </div>
+                                        <!-- Baidu Button BEGIN -->
+                                        <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+                                            <a class="bds_tsina"></a>
+                                            <a class="bds_qzone"></a>
+                                            <a class="bds_tqq"></a>
+                                            <a class="bds_renren"></a>
+                                            <span class="bds_more">更多</span>
+                                            <a class="shareCount"></a>
+                                        </div>
+                                        <script type="text/javascript" id="bdshare_js"
+                                                data="type=tools&amp;uid=599692"></script>
+                                        <script type="text/javascript" id="bdshell_js"></script>
+                                        <script type="text/javascript">
+                                            document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date() / 3600000)
+                                        </script>
+                                        <!-- Baidu Button END --></div>
+                                </div>
+                            </td>
+
+
+                            <td width="320" valign="top">
+
+                                <table width="343" border="0" cellspacing="0" cellpadding="0"
+                                       style=" padding-left:10px;">
+                                    <!--                                    <tr>-->
+                                    <!--                                        <td height="29" colspan="2" align="left"><p-->
+                                    <!--                                                style="height:29px;color:#fff; font:14px; line-height:25px; width:320px;">-->
+                                    <!--                                            <span style="background:#be38d6;">&nbsp;本周推荐&nbsp;</span>&nbsp;&nbsp;<span-->
+                                    <!--                                                style="background:#62B362;">&nbsp;分租㎡起&nbsp;</span>&nbsp;&nbsp;<span-->
+                                    <!--                                                style="background:#4093f0; ">&nbsp;提供租赁合同&nbsp;</span>&nbsp;&nbsp;<span-->
+                                    <!--                                                style="background: #F60;">&nbsp;消防验收合格&nbsp;</span></p></td>-->
+                                    <!--                                    </tr>-->
+                                    <tr align="left">
+                                        <td colspan="2" class="house_line"></td>
+                                    </tr>
+                                    <tr align="left">
+                                        <td height="29" colspan="2"><font size="2">所在区域： {$info.city_name}
+                                            {$info.area_name}</font>
+                                        </td>
+                                    </tr>
+                                    <tr align="left">
+                                        <td colspan="2" class="house_line"></td>
+                                    </tr>
+                                    <tr align="left">
+                                        <td width="177" height="29"><font size="2">类型：{$info.category}</font></td>
+                                        <td width="166"><font size="2">总面积：{$info.measurearea}㎡</font></td>
+                                    </tr>
+                                    <tr align="left">
+                                        <td colspan="2" class="house_line"></td>
+                                    </tr>
+                                    <tr align="left">
+                                        <td height="29"><font size="2">厂房面积：
+
+                                            {$info.lengthwidth}㎡ </font></td>
+                                        <td><font size="2">办公室面积：{$info.officespace}㎡</font></td>
+                                    </tr>
+                                    <tr align="left">
+                                        <td colspan="2" class="house_line"></td>
+                                    </tr>
+                                    <tr align="left">
+                                        <td height="29"><font size="2">宿舍面积：{$info.dormitoryarea}㎡</font></td>
+                                        <td>
+
+
+                                            <font size="2">占地面积：{$info.numberbuildings}亩</font></td>
+                                    </tr>
+                                    <tr align="left">
+                                        <td colspan="2" class="house_line"></td>
+                                    </tr>
+                                    <tr align="left">
+                                        <td height="29"><font size="2">所在楼层： {$info.layernumber} 层 </font></td>
+                                        <td><font size="2">结构：
+                                            {$info.structure} </font></td>
+                                    </tr>
+                                    <tr align="left">
+                                        <td colspan="2" class="house_line"></td>
+                                    </tr>
+                                    <tr align="left">
+                                        <td height="29"><font size="2">土地用途：{$info.canteen} </font></td>
+                                        <td><font size="2">使用年限：{$info.expire}年</font></td>
+                                    </tr>
+                                    <tr align="left">
+                                        <td colspan="2" class="house_line"></td>
+                                    </tr>
+                                    <tr align="left">
+                                        <td height="29"><font size="2">厂房价格：
+
+                                            {$info.plantrent}
+                                        </font></td>
+                                        <td><font size="2">新旧程度：{$info.newolddegree}成新</font></td>
+                                    </tr>
+                                    <tr align="left">
+                                        <td colspan="2" class="house_line"></td>
+                                    </tr>
+                                    <tr align="left">
+                                        <td height="29"><font size="2">厂房配电：
+                                            {$info.distributioncapacity} </font></td>
+                                        <td><font size="2">厂房电梯：{$info.elevator} </font></td>
+                                    </tr>
+                                    <tr align="left">
+                                        <td colspan="2" class="house_line"></td>
+                                    </tr>
+                                    <tr align="left">
+                                        <td height="31"><font size="2">消防：{$info.firecontrol}</font></td>
+                                        <td><font size="2">交易方式：{$info.applicableindustries} </font></td>
+                                    </tr>
+                                </table>
+
+                                <div class="house_phone1">
+                                    <div class="house_phone2"><span class="number">
+
+{$info.name}:{$info.tel}     </span><br/>
+
+                                        <span class="gray">
+
+注：联系我时请说明来源广东厂房网</span></div>
+                                </div>
+                            </td>
+
+                        </tr>
+                    </table>
+
+                    <!---厂房概况和照片--->
+                    <div class="box_gray1" style="width:730px; margin-top:15px; margin-bottom:15px;">
+                        <div class="tit_bg1">
+                            <div class="tit_icon2">厂房概况</div>
+                        </div>
+                        <div class="box_list2">
+                            {$info.detail|raw}
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </td>
+
+
+            <td valign="top">
+
+
+                <div id="main_left">
+                    <div class="left_one">
+                        <div class="left_one_title">
+                            <a href="/index/search/workshop?city={$cityInfo['id']}&floor=3&category={$category}" target="_blank">{$cityInfo['name']}独院{$category_type_name}</a>
+                        </div>
+                        <div class="left_one_cont">
+                            <ul>
+                                {volist name="floor1" id="data"}
+
+                                <li>[<a href="/index/search/workshop?city={$cityInfo['id']}&category={$category}" target="_blank">{$cityInfo['name']}{$category_type_name}</a>]
+                                    <a href="/index/search/workshopdetail?id={$data.id}&city={$cityInfo['id']}&category={$category}" target="_blank">
+                                        {:subText($data.title,13)}</a></li>
+                                {/volist}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="left_one">
+                        <div class="left_one_title">
+                            <a href="/index/search/workshop?city={$cityInfo['id']}&floor=1&category={$category}" target="_blank">{$cityInfo['name']}一楼{$category_type_name}</a>
+                        </div>
+                        <div class="left_one_cont" id="left_nav_cont">
+                            <ul>
+                                {volist name="floor2" id="data"}
+                                <li>[<a href="/index/search/workshop?city={$cityInfo['id']}&category={$category}" target="_blank">{$cityInfo['name']}{$category_type_name}</a>]
+                                    <a href="/index/search/workshopdetail?id={$data.id}&city={$cityInfo['id']}&category={$category}" target="_blank">
+                                        {:subText($data.title,13)}</a></li>
+                                {/volist}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="left_one">
+                        <div class="left_one_title">
+                            <a href="/index/search/workshop?city={$cityInfo['id']}&category={$category}"
+                               target="_blank">{$cityInfo['name']}带装修{$category_type_name}</a>
+                        </div>
+                        <div class="left_one_cont">
+                            <ul>
+                                {volist name="floor3" id="data"}
+                                <li>[<a href="/index/search/workshop?city={$cityInfo['id']}&category={$category}" target="_blank">{$cityInfo['name']}{$category_type_name}</a>]
+                                    <a href="/index/search/workshopdetail?id={$data.id}&city={$cityInfo['id']}&category={$category}" target="_blank">
+                                        {:subText($data.title,13)}</a></li>
+                                {/volist}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+            </td>
+
+
+        </tr>
+    </table>
+
+
+    <table width="1000" border="0" cellspacing="0" cellpadding="0" align="center">
+        <tr>
+            <td>
+
+
+                <!---推荐的厂房信息--->
+
+                <div class="box_gray1">
+                    <div class="tit_bg">
+                        <div class="tit_icon1">以下厂房信息可能会符合你的需求</div>
+
+                    </div>
+                    <div class="box_listpic">
+                        <table width="1000" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                {volist name="recommend" id="data"}
+                                <td>
+                                    <div class="box_listpic_box1">
+                                        <div class="box_listpic_box2">
+                                            <a href="/index/search/workshopdetail?id={$data.id}" target="_blank"
+                                            title="{:subText($data.title,6)}"> <img src="{$data.imgs}" width="100"
+                                                                        border="0" alt="{$data.title}"
+                                            "/>   </a></div>
+                                        <div class="box_listpic_name">
+                                            <a href="/index/search/workshopdetail?id={$data.id}"" target="_blank" >
+                                            {:subText($data.title,6)}</a></div>
+                                    </div>
+                                </td>
+                                {/volist}
+
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <script type="text/javascript" src="js/mz-packed.js"></script>
+    <!--功能商品小图片滚动js-->
+    <script type="text/javascript" language="javascript">
+        var opt_qu = "<option value='' selected>选择地区</option>";
+        var opt_town = "<option value='' selected>选择镇区</option>";
+        $(document).ready(function () {
+            $("#city").change(function () {
+                var pid = $(this).val();
+                $.get('/cf-ajax-type-2.html', 'city=' + pid, function (result) {
+                    $('#qu').html(opt_qu + result);
+                    $.get('/cf-ajax-type-3.html', 'qu=' + $("#qu").val(), function (result) {
+                        $('#town').html(opt_town + result);
+                        $('#town').css('visibility', 'hidden');
+                        $('#town').css('visibility', 'visible');
+                    });
+                    $('#qu').css('visibility', 'hidden');
+                    $('#qu').css('visibility', 'visible');
+                });
+            });
+            $("#qu").change(function () {
+                var pid = $(this).val();
+                $.get('/cf-ajax-type-3.html', 'qu=' + pid, function (result) {
+                    $('#town').html(opt_town + result);
+                    $('#town').css('visibility', 'hidden');
+                    $('#town').css('visibility', 'visible');
+                });
+            });
+            $('#demand_t').click(
+                function () {
+                    $("#demand_c").show();
+                    $("#wt_c").hide();
+                    $("#demand_t").attr("class", "tit_icon2a");
+                    $("#wt_t").attr("class", "tit_icon2b");
+                }
+            );
+
+            $('#wt_t').click(
+                function () {
+                    $("#demand_c").hide();
+                    $("#wt_c").show();
+                    $("#demand_t").attr("class", "tit_icon2b");
+                    $("#wt_t").attr("class", "tit_icon2a");
+                }
+            );
+//左右控制图片滚动
+            var the_item_li = $("#list_in li");
+            var the_num = the_item_li.length;
+            $("#list_in").width(the_num * 75);
+            var count = 0;
+            var iMax = the_num - 4;
+
+            $('#the_control_l').click(
+                function () {
+                    if (count <= 0) {
+                        $(this).attr({title: "已至最前"});
+                    } else {
+                        count--;
+                        $("#list_in").animate({left: count * (-75)}, 100);
+                    }
+                }
+            );
+
+            $('#the_control_r').click(
+                function () {
+                    if (count >= iMax) {
+                        $(this).attr({title: "已至最后"});
+                    } else {
+                        count++;
+                        $('#list_in').animate({left: count * (-75)}, 100);
+                    }
+                }
+            );
+
+//定义小图片鼠标点击后大图切换效果 调用ajax 切换大图
+            $('#list_in li').mouseover(
+                function () {
+
+                    $(this).find('img').addClass('imgcurt');
+                    $(this).siblings().find('img').removeClass('imgcurt');
+                    var bigimg = $(this).find('img').attr('name');
+
+                    //显示大图src
+                    $('.p_img_bar img').attr("src", bigimg);
+                    //替换大图预览图large
+                    var largeImg = $(this).find('img').attr('big')
+                    $('.p_img_bar .MagicZoom').attr("href", largeImg);
+                }
+            );
+
+        });
+
+    </script>
+    <div id="tuijian">
+    <div class="part_title">
+        <strong>推荐厂房</strong>
+    </div>
+    <div id="tuijian_cont">
+        <div id="white_bg">
+            <div id="demo">
+                <div id="indemo">
+                    <div id="demo1">
+                        {volist name="recommend" id="data"}
+
+                        <div class="right_p_one">
+                            <div class="right_p_img">
+                                <a href="/index/search/workshopdetail?id={$data.id}" target="_blank"><img
+                                        src="{$data.imgs}"/></a>
+                                <span class="imgmid"></span>
+                            </div>
+                            <div class="right_p_title">
+                                <a href="/index/search/workshopdetail?id={$data.id}" target="_blank">
+                                    {:subText($data.title,6)}</a>
+                            </div>
+                        </div>
+                        {/volist}
+                    </div>
+                </div>
+                <div id="demo2">
+                   {volist name="recommend" id="data"}
+                        <div class="right_p_one">
+                            <div class="right_p_img">
+                                <a href="/index/search/workshopdetail?id={$data.id}" target="_blank"><img
+                                        src="{$data.imgs}"/></a>
+                                <span class="imgmid"></span>
+                            </div>
+                            <div class="right_p_title">
+                                <a href="/index/search/workshopdetail?id={$data.id}" target="_blank">
+                                    {:subText($data.title,6)}</a>
+                            </div>
+                        </div>
+                        {/volist}
+                </div>
+                <script type="text/javascript" src="/static/index/js/rolljs.js"></script>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="clear"></div>
+</div>
 
 
 
