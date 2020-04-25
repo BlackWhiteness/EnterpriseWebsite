@@ -120,7 +120,7 @@ class ParkManage extends Model
     public function getRecommend($city)
     {
         return self::where('city', '=', $city)
-            ->page(1, 10)->select();
+            ->page(1, 5)->select();
     }
 
 }

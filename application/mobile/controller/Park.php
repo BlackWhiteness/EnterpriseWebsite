@@ -101,6 +101,7 @@ class Park extends MobileBase
             ->order(array('releasetime' => 'DESC'))
             ->page(1, 10)->select();
         $formatInstance = ParkFormat::getInstance();
+//        dump($formatInstance->formatDetail($info));die;
         $this->assign([
             'cityList' => $cityList,
             'info' => $formatInstance->formatDetail($info),

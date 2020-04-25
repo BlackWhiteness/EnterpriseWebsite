@@ -3,7 +3,6 @@
 namespace app\format;
 
 
-
 /**
  * park format
  *
@@ -55,8 +54,8 @@ class ParkFormat
                 'detail' => $row['detail'],
                 'title' => $row['title'],
                 'park_name' => $row['park_name'],
-                'city'=>$row['city'],
-                'area'=>$row['area'],
+                'city' => $row['city'],
+                'area' => $row['area'],
                 'city_name' => $city ? $city->name : '',
                 'area_name' => $area ? $area->name : '',
             ];
@@ -83,12 +82,12 @@ class ParkFormat
             'address' => $row['address'],
             'name' => $row['name'],
             'tel' => $row['tel'],
-            'imgs' => $row['imgs'],
+            'imgs' => $row['imgs'] ?? [],
             'detail' => $row['detail'],
             'title' => $row['title'],
             'park_name' => $row['park_name'],
-            'city'=>$row['city'],
-            'area'=>$row['area'],
+            'city' => $row['city'],
+            'area' => $row['area'],
             'city_name' => $city ? $city->name : '',
             'area_name' => $area ? $area->name : '',
         ];
