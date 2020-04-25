@@ -435,6 +435,9 @@ a.topA{display: block; width: .8rem; position: fixed; z-index: 30; right: .2rem;
   &.show{display: block}
 }
 
+.city-layer{position: fixed; z-index: 1000; left: 0; top: 0; right: 0; bottom: 0; background: #fff; display: none;
+  &.show{display: block}
+}
 
 
 

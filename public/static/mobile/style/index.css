@@ -1414,4 +1414,16 @@ a.topA {
   .p-loading.show {
     display: block; }
 
+.city-layer {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  display: none; }
+  .city-layer.show {
+    display: block; }
+
 /*# sourceMappingURL=index.css.map */

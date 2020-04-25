@@ -14,12 +14,13 @@
 </head>
 
 <body>
+<!--这个页面没用了，做成弹出层放在layout/city.html里面了-->
 <div class="wal" id="app">
     <!--wal-->
     <div class="g-headD"></div>
     <div class="g-head">
         <div class="wal">
-            <div class="btn btn-left"><a href="javascript:window.history.go(-1);" class="back"></a></div>
+            <div class="btn btn-left"><a href="javascript:window.history.go(-1)" class="back"></a></div>
             <h2>城市切换</h2>
             <div class="btn btn-right">
                 <a href="javascript:;" class="nav"></a>
@@ -36,7 +37,7 @@
             <div class="list">
                 <ul>
                     {foreach $cityList as $city}
-                    <li><a href="/" onclick=setCityCookie("{$city.id}")>{$city.name}</a></li>
+                    <li><a href="javascript:;" onclick=setCityCookie("{$city.id}")>{$city.name}</a></li>
                     {/foreach}
                 </ul>
             </div>
@@ -50,7 +51,8 @@
     function setCityCookie(cityId){
         console.log(cityId);
         document.cookie = 'city' + "="+ cityId;
-        location.reload();
+        sessionStorage.setItem('refresh', 'true');
+        history.go(-1);
     }
 </script>
 
