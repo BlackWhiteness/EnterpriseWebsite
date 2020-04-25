@@ -20,6 +20,10 @@ function fontSize() {
 }
 
 $(function () {
+    if(sessionStorage.getItem('refresh') === 'true') {
+        sessionStorage.removeItem('refresh');
+        location.reload();
+    }
     //--
     setTimeout(function () {
         $('body').addClass('show');
@@ -167,6 +171,7 @@ function swiperFun(swiper) {
         slidesPerView: swiper.slidesPerView !== undefined ? swiper.slidesPerView : 1,
         centeredSlides: swiper.centeredSlides !== undefined ? swiper.centeredSlides : false,
         pagination: that.dom.find('.dots'),
+        autoHeight: true,
         onSlideChangeStart: function(swiper){
             if(that.dom.find('.num').length > 0){
                 that.dom.find('.num-curr').html(swiper.realIndex + 1)
