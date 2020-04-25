@@ -43,8 +43,8 @@ class PrivateHomeManage extends Model
     ];
 
     const TYPE_CONFIG = [
-        1=> '推荐',
-        2=> '热门'
+        1 => '推荐',
+        2 => '热门'
     ];
 
     const MEASURE_LIST = [
@@ -139,7 +139,7 @@ class PrivateHomeManage extends Model
         }
 
         $structure = request()->param('structure');
-        if (is_numeric($structure)&&$structure) {
+        if (is_numeric($structure) && $structure) {
             $query = $query->where('structure', '=', $structure);
         }
         $title = request()->param('title');
@@ -174,6 +174,22 @@ class PrivateHomeManage extends Model
             ->page(1, 5)
             ->select();
         return $list;
+    }
+
+    /**
+     * 获取推荐
+     *
+     * @param $city
+     * @return array|\PDOStatement|string|\think\Collection
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     */
+    public function getRecommend($city)
+    {
+        return PrivateHomeManage::where(["city" => $city])
+            ->page(1, 5)
+            ->select();
     }
 
 }

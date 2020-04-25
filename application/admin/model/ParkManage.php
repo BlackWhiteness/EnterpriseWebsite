@@ -2,7 +2,7 @@
 
 namespace app\admin\model;
 
-use \think\Model;
+use think\Model;
 
 
 /**
@@ -12,16 +12,14 @@ use \think\Model;
  */
 class ParkManage extends Model
 {
+    const TYPE_CONFIG = [
+        1 => '推荐',
+        2 => '热门'
+    ];
     protected $pk = 'id';
     protected $table = 'search_park';
-
     protected $type = [
         'imgs' => 'serialize',
-    ];
-
-    const TYPE_CONFIG = [
-        1=> '推荐',
-        2=> '热门'
     ];
 
     /**
@@ -59,6 +57,19 @@ class ParkManage extends Model
     }
 
     /**
+     * 获取列表
+     *
+     * @return \think\db\Query|\think\Paginator
+     * @throws \think\exception\DbException
+     */
+    public function getList()
+    {
+        $query = $this->filterCommon();
+        $query = $query->paginate(request()->param('per_page', 20));
+        return $query;
+    }
+
+    /**
      * 通用过滤
      * @return \think\db\Query
      */
@@ -80,19 +91,6 @@ class ParkManage extends Model
     }
 
     /**
-     * 获取列表
-     *
-     * @return \think\db\Query|\think\Paginator
-     * @throws \think\exception\DbException
-     */
-    public function getList()
-    {
-        $query = $this->filterCommon();
-        $query = $query->paginate(request()->param('per_page',20));
-        return $query;
-    }
-
-    /**
      * 第一页
      *
      * @param $city
@@ -108,6 +106,21 @@ class ParkManage extends Model
             ->page(1, 5)
             ->select();
         return $list;
+    }
+
+    /**
+     * 获取推荐
+     *
+     * @param $city
+     * @return array|\PDOStatement|string|\think\Collection
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     */
+    public function getRecommend($city)
+    {
+        return self::where('city', '=', $city)
+            ->page(1, 10)->select();
     }
 
 }

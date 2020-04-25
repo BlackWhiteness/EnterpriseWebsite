@@ -24,16 +24,14 @@ class Park extends MobileBase
     }
 
     //会员中心首页
-    public function index(Request $request)
+    public function index(Request $request,ParkManage $parkManage)
     {
         $city = getCity($request);
         $cityList = Db::name('city')->where('id', '<>', $city)->select();
         $cityInfo = Db::name('city')->where('id', '=', $city)->select();
         $areaInfo = Db::name('area')->where('parentId', 'in', $city)->select();
         $title = $cityInfo[0]['name'].'园区招商';
-        $recommend = ParkManage::where('type','=',1)
-            ->order(array('releasetime' => 'DESC'))
-            ->page(1, 10)->select();
+        $recommend = $parkManage->getRecommend($city);
         $hotList = ParkManage::where('type','=',2)
             ->where('city','=',$city)
             ->order(array('releasetime' => 'DESC'))
@@ -68,12 +66,13 @@ class Park extends MobileBase
             'cityList' => $cityList,
             'href' => $href,
             'ad' => $adList,
-            'hotList' =>$hotList
+            'hotList' =>$hotList,
+            'title'=>$title
         ]);
         return $this->fetch('index');
     }
 
-    public function detail(Request $request)
+    public function detail(Request $request,ParkManage $parkManage)
     {
         $validate = Validate::make([
             'id' => 'require'
@@ -96,29 +95,11 @@ class Park extends MobileBase
         $cityList = Db::name('city')
             ->where('id', 'not in', $info['city'])->select();
 
-        $recommend = ParkManage::where('type','=',1)
-            ->order(array('releasetime' => 'DESC'))
-            ->page(1, 10)->select();
+        $recommend = $parkManage->getRecommend($city);
         $hotList = ParkManage::where('type','=',2)
             ->where('city','=',$city)
             ->order(array('releasetime' => 'DESC'))
             ->page(1, 10)->select();
-        $ad = AdManage::where('is_enable', '=', 1)->order(['code' => 'asc', 'sort' => 'desc'])->select();
-        $adList = [];
-        foreach ($ad as $row) {
-            $detail = [
-                'title' => $row->title,
-                'pic_path' => $row->pic_path,
-                'href' => $row->href
-            ];
-            if ($row->code == '001') {
-                $adList['top'] = $detail;
-            } elseif ($row->code == '002') {
-                $adList['mid_ad'][] = $detail;
-            } elseif ($row->code == '003') {
-                $adList['bottom_ad'][] = $detail;
-            }
-        }
         $formatInstance = ParkFormat::getInstance();
         $this->assign([
             'cityList' => $cityList,
@@ -127,7 +108,6 @@ class Park extends MobileBase
             'areaInfo' => $areaInfo,
             'recommend' => $formatInstance->formatList($recommend),
             'hotList' => $formatInstance->formatList($hotList),
-            'ad' => $adList,
         ]);
         return $this->fetch('detail');
     }
