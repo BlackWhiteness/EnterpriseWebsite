@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
     <meta name="format-detection" content="telephone=no"/>
-    <meta name="renderer" content="webkit" />
+    <meta name="renderer" content="webkit"/>
     <title>{:config('web_site_title')}</title>
     <meta name="keywords" content="{:config('web_site_keywords')}"/>
     <meta name="description" content="{:config('web_site_description')}"/>
@@ -41,7 +41,7 @@
         </div>
     </div>
     <script type="text/javascript">
-        $(function(){
+        $(function () {
             swiperFun({
                 dom: $('.product-img')
             })
@@ -81,16 +81,17 @@
                 <li>
                     <div class="name">建筑面积</div>
                     <p>{$info.measurearea}</p>
-                </li><li>
-                    <div class="name">发布时间</div>
-                    <p>{$info.releasetime}</p>
-                </li><li>
+                </li>
+
+                <li>
                     <div class="name">新旧程度</div>
                     <p>{$info.newolddegree}</p>
-                </li><li>
+                </li>
+                <li>
                     <div class="name">标签</div>
                     <p>{$info.tag_name}</p>
-                </li><li>
+                </li>
+                <li>
                     <div class="name">楼盘名称</div>
                     <p>{$info.buildingname}</p>
                 </li>
