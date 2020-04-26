@@ -48,7 +48,7 @@ class Upload extends Adminbase
                 // 输出 42a79759f284b767dfcb2a0197904287.jpg
                 $photo = $info->getFilename();
                 $returnPath = DIRECTORY_SEPARATOR . $s . DIRECTORY_SEPARATOR . $photo;
-                $fullPath = ROOT_PATH . 'public' .$returnPath;
+                $fullPath = ROOT_PATH . 'public' . $returnPath;
                 $this->compressPic($fullPath);
             } else {
                 // 上传失败获取错误信息
@@ -81,6 +81,28 @@ class Upload extends Adminbase
         imagecopy($newImage, $source, 0, 0, 0, 0, $width, $height);
         imagedestroy($source);
         return imagejpeg($newImage, $path, 75);//输出
+    }
+
+    public function video()
+    {
+        $file = request()->file('file');
+        ini_set('memory_limit', '216M');
+        $s = 'video' . DIRECTORY_SEPARATOR . date('Y-m-d');
+
+        $info = $file->validate(['size' => 50 * 1024 * 1024, 'ext' => 'mp4'])
+            ->move(ROOT_PATH . 'public' . DIRECTORY_SEPARATOR . $s);
+        if ($info) {
+            $videoName = $info->getFilename();
+        } else {
+            // 上传失败获取错误信息
+            echo $file->getError();
+        }
+
+        if ($videoName !== '') {
+            return ['code' => 1, 'msg' => '成功', 'path' => DIRECTORY_SEPARATOR . $s . DIRECTORY_SEPARATOR . $videoName];
+        } else {
+            return ['code' => 404, 'msg' => '失败'];
+        }
     }
 
     /**
