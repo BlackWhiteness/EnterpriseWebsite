@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
     <meta name="format-detection" content="telephone=no"/>
-    <meta name="renderer" content="webkit" />
+    <meta name="renderer" content="webkit"/>
     <title>{:config('web_site_title')}</title>
     <meta name="keywords" content="{:config('web_site_keywords')}"/>
     <meta name="description" content="{:config('web_site_description')}"/>
@@ -31,10 +31,15 @@
 
     <div class="product-img">
         <ul class="swiper-wrapper">
+            {if isset($info['video']) and !empty($info['video'])}
             <li>
-                <video src="/static/mobile/image/video.mp4" controls width="100%"></video></li>
+                <video src="{$info['video']}" controls width="100%">
+                </video>
+            </li>
+            {/if}
+
             {foreach $info['imgs'] as $image}
-                <li class="swiper-slide"><img src="http://m.cfcs1688.com/{$image}" alt=""></li>
+            <li class="swiper-slide"><img src="http://m.cfcs1688.com/{$image}" alt=""></li>
             {/foreach}
         </ul>
         <div class="num">
@@ -43,7 +48,7 @@
         </div>
     </div>
     <script type="text/javascript">
-        $(function(){
+        $(function () {
             swiperFun({
                 dom: $('.product-img')
             })
@@ -171,14 +176,14 @@
         </div>
         <ul>
             {foreach $recommend as $row}
-                <li>
-                    <a href="/work_shop/detail?id={$row.id}">
-                        <div class="img"><img src="http://m.cfcs1688.com/{$row.imgs}" alt=""><em>塘厦区</em></div>
-                        <div class="name">{$row.title}</div>
-                        <div class="label"></div>
-                        <div class="price"><span>{$row.plantrent}/㎡</span><em>{$row.measurearea}㎡</em></div>
-                    </a>
-                </li>
+            <li>
+                <a href="/work_shop/detail?id={$row.id}">
+                    <div class="img"><img src="http://m.cfcs1688.com/{$row.imgs}" alt=""><em>塘厦区</em></div>
+                    <div class="name">{$row.title}</div>
+                    <div class="label"></div>
+                    <div class="price"><span>{$row.plantrent}/㎡</span><em>{$row.measurearea}㎡</em></div>
+                </a>
+            </li>
             {/foreach}
         </ul>
     </div>
@@ -194,7 +199,7 @@
 <script type="text/javascript" src="/static/mobile/script/swiper/swiper-3.4.2.jquery.min.js"></script>
 <script type="text/javascript" src="/static/mobile/script/js.js"></script>
 <script>
-    $(function(){
+    $(function () {
         var currtime = new Date().Format("yyyy-M-dd");
         console.log(currtime);
         $('.time').text(currtime);
