@@ -103,6 +103,7 @@ class PrivateHomeFormat
             'certify' => $row['certify'],
             'price' => $row['price'],
             'releasetime' => $row['releasetime'],
+            'video' => $row['video'],
         ];
 
     }

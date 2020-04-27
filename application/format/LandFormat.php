@@ -97,6 +97,7 @@ class LandFormat
             'detail' => $row['detail'],
             'city_name' => $city ? $city->name : '',
             'area_name' => $area ? $area->name : '',
+            'video' => $row['video'],
         ];
     }
 
