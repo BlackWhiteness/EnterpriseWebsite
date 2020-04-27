@@ -90,6 +90,7 @@ class Upload extends Adminbase
         $s = 'video' . DIRECTORY_SEPARATOR . date('Y-m-d');
 
         $info = $file->validate(['size' => 50 * 1024 * 1024, 'ext' => 'mp4'])
+            ->rule('uniqid')
             ->move(ROOT_PATH . 'public' . DIRECTORY_SEPARATOR . $s);
         if ($info) {
             $videoName = $info->getFilename();
