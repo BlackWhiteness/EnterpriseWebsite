@@ -131,6 +131,19 @@
                     </div>
                 </div>
             </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">视频</label>
+                <div style="width:auto" class="layui-input-inline">
+                    <div class="layui-upload">
+                        <button type="button" class="layui-btn" id="video">视频上传</button>
+                        <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                            视频：
+                            <div class="layui-upload-list" id="video_show">
+                            </div>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
 
             <div class="layui-form-item">
                 <div class="layui-input-block">
@@ -275,7 +288,23 @@
             }
         });
 
+        upload.render({
+            elem: '#video' //绑定元素
+            , url: '/admin/upload/video' //上传接口
+            , accept: 'file'
+            , done: function (res) {
+                let add_html = '<video src="' + res.path + '" controls  width="50%" height="50%">' + '</video>';
+                let input = '<input type="hidden" name="video" value="' + res.path + '">';
+                $('#video_show').empty();
+                $('#video_show').append(add_html);
+                $('#video_show').append(input);
+            }
+            , error: function () {
+                console.log('上传失败！');
+            }
+            , size: 51200
 
+        });
         //指定允许上传的文件类型
         upload.render({
             elem: '#test3'

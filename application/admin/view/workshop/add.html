@@ -404,8 +404,11 @@
             , url: '/admin/upload/video' //上传接口
             , accept: 'file'
             , done: function (res) {
-                let add_html = '<video src="' + res.path + '" controls  width="100%">' + '</video>';
+                let add_html = '<video src="' + res.path + '" controls  width="50%" height="50%">' + '</video>';
+                let input = '<input type="hidden" name="video" value="' + res.path + '">';
+                $('#video_show').empty();
                 $('#video_show').append(add_html);
+                $('#video_show').append(input);
             }
             , error: function () {
                 console.log('上传失败！');
