@@ -404,7 +404,7 @@
             , url: '/admin/upload/video' //上传接口
             , accept: 'file'
             , done: function (res) {
-                let add_html = '<video src="' + res.path + '" controls="controls" width="500" height="300">' + '</video>';
+                let add_html = '<video src="' + res.path + '" controls  width="100%">' + '</video>';
                 $('#video_show').append(add_html);
             }
             , error: function () {
