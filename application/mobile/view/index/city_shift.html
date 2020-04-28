@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
     <meta name="format-detection" content="telephone=no"/>
-    <meta name="renderer" content="webkit" />
+    <meta name="renderer" content="webkit"/>
     <title>{:config('web_site_title')}</title>
     <meta name="keywords" content="{:config('web_site_keywords')}"/>
     <meta name="description" content="{:config('web_site_description')}"/>
@@ -51,10 +51,17 @@
     $(function () {
         is_city_shift = true
     });
-    function setCityCookie(cityId){
+
+    function setCityCookie(cityId) {
         console.log(cityId);
-        document.cookie = 'city' + "="+ cityId;
-        window.location = sessionStorage.getItem('prev_url')
+        document.cookie = 'city' + "=" + cityId;
+        let prev_url = sessionStorage.getItem('prev_url');
+        if (prev_url == null || prev_url == '') {
+            window.location = '/'
+        }else{
+            window.location = prev_url
+        }
+
         //history.go(-1);
     }
 </script>
