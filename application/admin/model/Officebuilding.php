@@ -160,4 +160,19 @@ class Officebuilding extends Model
             ->select();
         return $list;
     }
+
+    /**
+     * 推荐
+     *
+     * @param $city
+     * @return array|\PDOStatement|string|\think\Collection
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     */
+    public function getRecommend($city)
+    {
+       return  Officebuilding::where(["city" => $city])
+           ->page(1,5)->select();
+    }
 }

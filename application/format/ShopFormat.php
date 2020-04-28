@@ -90,7 +90,8 @@ class ShopFormat
             'is_sale' => $row['is_sale'] == 0 ? '出租' : '出售',
             'area_name' => $area->name,
             'detail' => mb_substr(strip_tags($row['detail']), 0, 300),
-            'struck' => empty($row['struck'])?'':ShopManage::STRUCK_CONFIG[$row['struck']]
+            'struck' => empty($row['struck'])?'':ShopManage::STRUCK_CONFIG[$row['struck']],
+            'video' => $row['video'],
         ];
 
     }

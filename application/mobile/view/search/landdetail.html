@@ -31,6 +31,12 @@
 
     <div class="product-img">
         <ul class="swiper-wrapper">
+            {if isset($info['video']) and !empty($info['video'])}
+            <li>
+                <video src="{$info['video']}" controls width="100%">
+                </video>
+            </li>
+            {/if}
             {foreach $info['imgs'] as $image}
                 <li class="swiper-slide"><img src="{$image}" alt=""></li>
             {/foreach}
@@ -143,3 +149,10 @@
 <link rel="stylesheet" href="/static/mobile/script/swiper/swiper-3.4.2.min.css">
 <script type="text/javascript" src="/static/mobile/script/swiper/swiper-3.4.2.jquery.min.js"></script>
 <script type="text/javascript" src="/static/mobile/script/js.js"></script>
+<script>
+    $(function(){
+        var currtime = new Date().Format("yyyy-M-dd");
+        console.log(currtime);
+        $('.time').text(currtime);
+    });
+</script>

@@ -19,16 +19,15 @@
     <!--wal-->
     <div class="g-head g-head-2">
         <div class="wal">
-            <a href="index.html" class="logo"></a>
+            <a href="/" class="logo"></a>
             <a href="tel:0769-87819917" class="tel">0769-87819917</a>
         </div>
     </div>
     <div class="indexFlash">
         <ul class="swiper-wrapper">
-            <li class="swiper-slide"><a href=""><img src="/static/mobile/image/iBanner1.jpg" alt=""></a></li>
-            <li class="swiper-slide"><a href=""><img src="/static/mobile/image/iBanner2.jpg" alt=""></a></li>
-            <li class="swiper-slide"><a href=""><img src="/static/mobile/image/iBanner3.jpg" alt=""></a></li>
-            <li class="swiper-slide"><a href=""><img src="/static/mobile/image/iBanner4.jpg" alt=""></a></li>
+            {foreach $adList as $ad}
+                <li class="swiper-slide"><a href="{$ad.href}"><img src="{$ad.pic_path}" alt="{$ad.title}"></a></li>
+            {/foreach}
         </ul>
         <div class="dots"></div>
     </div>
@@ -48,11 +47,11 @@
         <div class="container">
             <div class="tab-btn demand-commit">
                 <ul>
-                    <li style="width: 100%;">求租求购</li>
+                    <li style="width: 100%;">求租求购业主委托</li>
                 </ul>
             </div>
             <div class="tab-box">
-                <p>16年行业服务经验,盘源多,免中介费</p>
+                <p>专注工业地产10年，出租出售信息齐全。免中介费！</p>
                 <a href="/demand" class="btn">提交需求</a>
             </div>
         </div>

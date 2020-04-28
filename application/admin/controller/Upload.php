@@ -16,9 +16,7 @@ namespace app\admin\controller;
 
 use app\admin\model\Workshop as Workshop_Model;
 use app\common\controller\Adminbase;
-use think\Db;
 use think\Request;
-use think\response\Json;
 
 class Upload extends Adminbase
 {
@@ -27,14 +25,14 @@ class Upload extends Adminbase
     public function imgs()
     {
         $file = request()->file('file');
-
+        ini_set('memory_limit', '216M');
         // 移动到框架应用根目录/public/uploads/ 目录下
         if (!empty($file)) {
             // 移动到框架应用根目录/public/uploads/ 目录下
 
-            $s = 'uploads/' . date('Y-m-d');
+            $s = 'uploads' . DIRECTORY_SEPARATOR . date('Y-m-d');
 //,'ext'=>'jpg,png,gif'
-            $info = $file->validate(['size' => 1048576])->rule('uniqid')->move(ROOT_PATH . 'public' . DIRECTORY_SEPARATOR . $s);
+            $info = $file->validate(['size' => 10485760])->rule('uniqid')->move(ROOT_PATH . 'public' . DIRECTORY_SEPARATOR . $s);
             $error = $file->getError();
             //验证文件后缀后大小
             if (!empty($error)) {
@@ -49,7 +47,9 @@ class Upload extends Adminbase
                 $info->getSaveName();
                 // 输出 42a79759f284b767dfcb2a0197904287.jpg
                 $photo = $info->getFilename();
-
+                $returnPath = DIRECTORY_SEPARATOR . $s . DIRECTORY_SEPARATOR . $photo;
+                $fullPath = ROOT_PATH . 'public' . $returnPath;
+                $this->compressPic($fullPath);
             } else {
                 // 上传失败获取错误信息
                 $file->getError();
@@ -58,11 +58,52 @@ class Upload extends Adminbase
             $photo = '';
         }
         if ($photo !== '') {
-            return ['code' => 1, 'msg' => '成功', 'photo' => '/' . $s . '/' . $photo];
+            return ['code' => 1, 'msg' => '成功', 'photo' => $returnPath];
         } else {
             return ['code' => 404, 'msg' => '失败'];
         }
 
+    }
+
+    /**
+     * 压缩图片
+     *
+     * @param $path
+     * @return bool
+     */
+    public function compressPic($path)
+    {
+        $image = file_get_contents($path);
+        $source = imagecreatefromstring($image);
+        $width = imagesx($source);
+        $height = imagesy($source);
+        $newImage = imagecreatetruecolor($width, $height);
+        imagecopy($newImage, $source, 0, 0, 0, 0, $width, $height);
+        imagedestroy($source);
+        return imagejpeg($newImage, $path, 75);//输出
+    }
+
+    public function video()
+    {
+        $file = request()->file('file');
+        ini_set('memory_limit', '216M');
+        $s = 'video' . DIRECTORY_SEPARATOR . date('Y-m-d');
+
+        $info = $file->validate(['size' => 50 * 1024 * 1024, 'ext' => 'mp4'])
+            ->rule('uniqid')
+            ->move(ROOT_PATH . 'public' . DIRECTORY_SEPARATOR . $s);
+        if ($info) {
+            $videoName = $info->getFilename();
+        } else {
+            // 上传失败获取错误信息
+            echo $file->getError();
+        }
+
+        if ($videoName !== '') {
+            return ['code' => 1, 'msg' => '成功', 'path' => DIRECTORY_SEPARATOR . $s . DIRECTORY_SEPARATOR . $videoName];
+        } else {
+            return ['code' => 404, 'msg' => '失败'];
+        }
     }
 
     /**
@@ -83,12 +124,12 @@ class Upload extends Adminbase
                 $photo = $info->getFilename();
 //                $data[] = 'http://'.$request->host().'/'.$s. '/' . $photo;
 //                $data[] = url($s. '/' . $photo);
-                $data[] = url($s. '/' . $photo, '', '', true);;
+                $data[] = url($s . '/' . $photo, '', '', true);;
             }
         }
         if (empty($data)) {
             $res = ['errno' => 1, 'data' => []];
-        }else{
+        } else {
             $res = ['errno' => 0, 'data' => $data];
         }
         return json($res);

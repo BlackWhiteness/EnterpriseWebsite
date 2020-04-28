@@ -41,7 +41,8 @@ class Search extends MobileBase
         $tagName = in_array($category, [1, 2, 3]) ? Workshop::CATEGORY_CONFIG[$category] : '';
         $title = $cityInfo[0]['name'] . (in_array($category,
                 array_keys(Workshop::MOBILE_LIST_TITLE)) ? Workshop::MOBILE_LIST_TITLE[$category] : '');
-
+        // 猜你喜欢
+        $recommend = $workshop->getRecommendData($city, $category);
         $measureList = [
             '0' => '不限',
             '500' => '500平米以下',
@@ -77,12 +78,13 @@ class Search extends MobileBase
             'measureList' => $measureList,
             'floorList' => $floorList,
             'struckList' => $struckList,
-            'title' => $title
+            'title' => $title,
+            'recommend' => WorkShopFormat::getInstance()->formatList($recommend),
         ]);
         return $this->fetch('rentalofworkshop');
     }
 
-    public function workshopdetail()
+    public function workshopdetail(Workshop $workshop)
     {
         $id = $this->request->param('id/d', '');
         $info = Workshop::where(['id' => $id])
@@ -93,9 +95,7 @@ class Search extends MobileBase
         $workInstance = WorkShopFormat::getInstance();
 
 
-        $recommend = Workshop::where(["category" => $info['category']])
-            ->order(array('releasetime' => 'DESC'))
-            ->paginate(10);
+        $recommend = $workshop->getRecommendData($cityInfo[0]['id'],$info['category']);
 
         $this->assign([
             'info' => $workInstance->formatDetail($info),
@@ -120,7 +120,9 @@ class Search extends MobileBase
         $cityInfo = Db::name('city')->where('id', 'in', $city)->select();
         $areaInfo = Db::name('area')->where('parentId', 'in', $city)->select();
         $cityList = Db::name('city')->where('id', 'not in', $city)->select();
-        $title = $cityInfo[0]['name'].'土地';
+        $title = $cityInfo[0]['name'] . '土地';
+        $recommend = $landManage->getRecommend($city);
+
         $measureList = [
             '0' => '不限',
             '500' => '500平米以下',
@@ -166,7 +168,8 @@ class Search extends MobileBase
             'renList' => $renList,
             'tagList' => $tagList,
             'typeList' => $typeList,
-            'title'=>$title
+            'title' => $title,
+            'recommend' => LandFormat::getInstance()->formatList($recommend),
         ]);
         return $this->fetch('landlist');
     }
@@ -177,7 +180,9 @@ class Search extends MobileBase
         $cityInfo = Db::name('city')->where('id', 'in', $city)->select();
         $areaInfo = Db::name('area')->where('parentId', 'in', $city)->select();
         $cityList = Db::name('city')->where('id', 'not in', $city)->select();
-        $title = $cityInfo[0]['name'].'写字楼';
+        $title = $cityInfo[0]['name'] . '写字楼';
+        $recommend = $officebuilding->getRecommend($cityInfo[0]['id']);
+
         $measureList = [
             '0' => '不限',
             '100' => '100平米以下',
@@ -197,7 +202,8 @@ class Search extends MobileBase
             'tagList' => Officebuilding::TAG_CONFIG,
             'floorList' => Officebuilding::FLOOR_CONFIG,
             'saleList' => Officebuilding::SALE_LIST,
-            'title'=>$title
+            'title' => $title,
+            'recommend' => OfficeBuildFormat::getInstance()->formatAjaxList($recommend),
         ]);
         return $this->fetch('officebuilding');
     }
@@ -208,8 +214,9 @@ class Search extends MobileBase
         $cityInfo = Db::name('city')->where('id', 'in', $city)->select();
         $areaInfo = Db::name('area')->where('parentId', 'in', $city)->select();
         $cityList = Db::name('city')->where('id', 'not in', $city)->select();
-        $title = $cityInfo[0]['name'].'商铺';
+        $title = $cityInfo[0]['name'] . '商铺';
 //        $data = $shopManage->getShopBuild();
+        $recommend = $shopManage->getRecommend($city);
 
         $measureList = [
             '0' => '不限',
@@ -247,7 +254,8 @@ class Search extends MobileBase
             'floorList' => ShopManage::FLOOR_CONFIG,
             'struckList' => ShopManage::STRUCK_CONFIG,
             'saleList' => ShopManage::SALE_CONFIG,
-            'title' => $title
+            'title' => $title,
+            'recommend' => ShopFormat::getInstance()->formatList($recommend),
         ]);
         return $this->fetch('shopList');
     }
@@ -258,7 +266,7 @@ class Search extends MobileBase
         exit(url('index/search/workshop', $param));
     }
 
-    public function offbuilddetail()
+    public function offbuilddetail(Officebuilding $officebuilding)
     {
         $id = $this->request->param('id/d', '');
         $info = Officebuilding::where(['id' => $id])->find();
@@ -266,7 +274,7 @@ class Search extends MobileBase
         $areaInfo = Db::name('area')
             ->where('parentId', 'in', $info['city'])->select();
 
-        $recommend = Officebuilding::where(["type" => 1])->order(array('releasetime' => 'DESC'))->paginate(10);
+        $recommend = $officebuilding->getRecommend($cityInfo[0]['id']);
         $this->assign([
             'info' => OfficeBuildFormat::getInstance()->formatDetail($info),
             'cityInfo' => $cityInfo,
@@ -276,7 +284,7 @@ class Search extends MobileBase
         return $this->fetch('offbuilddetail');
     }
 
-    public function landdetail()
+    public function landdetail(LandManage $landManage)
     {
         $id = $this->request->param('id/d', '');
         $info = LandManage::where(['id' => $id])
@@ -285,8 +293,7 @@ class Search extends MobileBase
         $cityInfo = Db::name('city')->where('id', 'in', $info['city'])->select();
         $areaInfo = Db::name('area')->where('parentId', 'in', $info['city'])->select();
         $cityList = Db::name('city')->where('id', 'not in', $info['city'])->select();
-        $recommend = LandManage::where(["type" => 1])->order(array('releasetime' => 'DESC'))
-            ->limit(0, 10)->select();
+        $recommend = $landManage->getRecommend($cityInfo[0]['id']);
         $new = LandManage::order(array('releasetime' => 'DESC'))
             ->limit(0, 10)->select();
         $hot = LandManage::where(["type" => 2])
@@ -323,15 +330,14 @@ class Search extends MobileBase
         return $this->fetch('landdetail');
     }
 
-    public function shopdetail()
+    public function shopdetail(ShopManage $shopManage)
     {
         $id = $this->request->param('id/d', '');
         $info = ShopManage::where(['id' => $id])->find();
         $cityInfo = Db::name('city')->where('id', 'in', $info['city'])->select();
         $areaInfo = Db::name('area')->where('parentId', 'in', $info['city'])->select();
         $cityList = Db::name('city')->where('id', 'not in', $info['city'])->select();
-        $recommend = ShopManage::where(["category" => 1])->order(array('releasetime' => 'DESC'))
-            ->limit(0, 10)->select();
+        $recommend = $shopManage->getRecommend($cityInfo[0]['id']);
 
         $href = HrefManage::order('sort', 'desc')->select()->toArray();
         $ad = AdManage::where('is_enable', '=', 1)->order(['code' => 'asc', 'sort' => 'desc'])->select();

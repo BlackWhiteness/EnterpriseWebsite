@@ -31,6 +31,12 @@
 
     <div class="product-img">
         <ul class="swiper-wrapper">
+            {if isset($info['video']) and !empty($info['video'])}
+            <li>
+                <video src="{$info['video']}" controls width="100%">
+                </video>
+            </li>
+            {/if}
             {foreach $info['imgs'] as $image}
             <li class="swiper-slide"><img src="{$image}" alt=""></li>
             {/foreach}
@@ -50,7 +56,7 @@
     <div class="product-show">
         <div class="info">
             <div class="label"><span></span></div>
-            <div class="time">{$info.releasetime}</div>
+            <div class="time"></div>
         </div>
         <h2 class="title">{$info.title}</h2>
         <div class="msg">
@@ -182,3 +188,4 @@
 <link rel="stylesheet" href="/static/mobile/script/swiper/swiper-3.4.2.min.css">
 <script type="text/javascript" src="/static/mobile/script/swiper/swiper-3.4.2.jquery.min.js"></script>
 <script type="text/javascript" src="/static/mobile/script/js.js"></script>
+

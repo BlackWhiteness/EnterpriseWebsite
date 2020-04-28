@@ -126,6 +126,7 @@ class WorkShopFormat
             'category_id' => $detail['category'],
             'city_name' => $city ? $city->name : '',
             'area_name' => $area ? $area->name : '',
+            'video' => $detail['video'],
         ];
     }
 }

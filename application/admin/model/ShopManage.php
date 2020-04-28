@@ -135,4 +135,20 @@ class ShopManage extends Model
         return $list;
     }
 
+    /**
+     * 获取推荐
+     *
+     * @param $city
+     * @return array|\PDOStatement|string|\think\Collection
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     */
+    public function getRecommend($city)
+    {
+        return ShopManage::where(["city" => $city])
+            ->page(1, 5)->select();
+    }
+
+
 }

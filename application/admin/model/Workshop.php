@@ -108,7 +108,7 @@ class Workshop extends Model
         if (!empty($measurearea)) {
             $top = strpos($measurearea, '-');
             if ($top == false) {
-                $query = $query->where('measurearea', '>=', 10000);
+                $query = $query->where('measurearea', '>=', $measurearea);
             } else {
                 $range = explode('-', $measurearea);
                 $query = $query->where('measurearea', '>=', $range[0])
@@ -185,6 +185,24 @@ class Workshop extends Model
     public function getUrlAttr($value, $data)
     {
         return url('index/search/workshopdetail', 'id=' . $data['id']);
+    }
+
+    /**
+     * 猜你喜欢
+     *
+     * @param $city
+     * @param $category
+     * @return array|\PDOStatement|string|\think\Collection
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     */
+    public function getRecommendData($city, $category)
+    {
+        return Workshop::where('city', '=', $city)
+            ->where('category', '=', $category)
+            ->page(1, 5)
+            ->select();
     }
 
 }

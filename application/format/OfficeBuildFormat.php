@@ -159,7 +159,8 @@ class OfficeBuildFormat
             'area_name' => $area ? $area->name : '',
             'category' => $data['category'],
             'category_name' => !empty($data['category'])?Officebuilding::SALE_LIST[$data['category']]:'',
-            'indus_type' => empty($data['indus_type'])?'':Officebuilding::INDUS_TYPE[$data['indus_type']]
+            'indus_type' => empty($data['indus_type'])?'':Officebuilding::INDUS_TYPE[$data['indus_type']],
+            'video' => $data['video'],
         ];
     }
 

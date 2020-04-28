@@ -21,7 +21,7 @@
     <div class="g-head">
         <div class="wal">
             <a href="/" class="logo"></a>
-            <h2><a href="/city_shift.html">{$title}</a></h2>
+            <h2><a href="/city_shift">{$title}</a></h2>
             <div class="btn btn-right">
                 <a href="javascript:;" class="search"></a>
                 <a href="javascript:;" class="nav"></a>
@@ -113,6 +113,24 @@
             </li>-->
         </ul>
     </div>
+    <div class="product-list">
+        <div class="p-title">
+            <h2>猜你喜欢</h2>
+            <a href="/workshop/{$category}" class="more">更多</a>
+        </div>
+        <ul>
+            {foreach $recommend as $row}
+            <li>
+                <a href="/work_shop/detail?id={$row.id}">
+                    <div class="img"><img src="http://m.cfcs1688.com/{$row.imgs}" alt=""><em>{$row.area_name}</em></div>
+                    <div class="name">{$row.title}</div>
+                    <div class="label"></div>
+                    <div class="price"><span>{$row.plantrent}/㎡</span><em>{$row.measurearea}㎡</em></div>
+                </a>
+            </li>
+            {/foreach}
+        </ul>
+    </div>
     <div class="p-loading">加载中...</div>
     <script>
         $(function () {
@@ -189,7 +207,7 @@
                 //     parameter.zushou = search_zushou.value
                 // }
                 if(search_mianji.value !== null){
-                    parameter.mianji = search_mianji.value
+                    parameter.measurearea = search_mianji.value
                 }
                 if(search_mianji.min !== null){
                     parameter.measurearea = search_mianji.min

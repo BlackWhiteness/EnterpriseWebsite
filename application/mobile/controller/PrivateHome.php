@@ -24,7 +24,7 @@ class PrivateHome extends MobileBase
     }
 
     //会员中心首页
-    public function index(Request $request)
+    public function index(Request $request,PrivateHomeManage $privateHomeManage)
     {
         $city = getCity($request);
         $cityInfo = Db::name('city')->where('id', 'in', $city)->select();
@@ -61,6 +61,8 @@ class PrivateHome extends MobileBase
                 $adList['bottom_ad'][] = $detail;
             }
         }
+        $recommend =$privateHomeManage->getRecommend($city);
+//        $formatInstance = PrivateHomeFormat::getInstance();
 
         $formatInstance = PrivateHomeFormat::getInstance();
         $this->assign([
@@ -77,13 +79,14 @@ class PrivateHome extends MobileBase
             'struckList' => PrivateHomeManage::STRUCT_CONFIG,
             'floorType' => PrivateHomeManage::FLOOR_TYPE,
             'measureList' => PrivateHomeManage::MEASURE_LIST,
-            'title' => $title
+            'title' => $title,
+            'recommend' => $formatInstance->formatList($recommend),
         ]);
 
         return $this->fetch('index');
     }
 
-    public function detail(Request $request)
+    public function detail(Request $request,PrivateHomeManage $privateHomeManage)
     {
         $validate = Validate::make([
             'id' => 'require|integer'
@@ -108,26 +111,9 @@ class PrivateHome extends MobileBase
         $cityList = Db::name('city')
             ->where('id', 'not in', $info['city'])->select();
 
-        $recommend =PrivateHomeManage::where(["type" => 1])
-            ->order(array('releasetime' => 'DESC'))
-            ->paginate(10);
+        $recommend =$privateHomeManage->getRecommend($cityInfo[0]['id']);
 
-        $ad = AdManage::where('is_enable', '=', 1)->order(['code' => 'asc', 'sort' => 'desc'])->select();
-        $adList = [];
-        foreach ($ad as $row) {
-            $detail = [
-                'title' => $row->title,
-                'pic_path' => $row->pic_path,
-                'href' => $row->href
-            ];
-            if ($row->code == '001') {
-                $adList['top'] = $detail;
-            } elseif ($row->code == '002') {
-                $adList['mid_ad'][] = $detail;
-            } elseif ($row->code == '003') {
-                $adList['bottom_ad'][] = $detail;
-            }
-        }
+
         $formatInstance = PrivateHomeFormat::getInstance();
 
         $this->assign([
@@ -136,7 +122,6 @@ class PrivateHome extends MobileBase
             'cityInfo' => $cityInfo,
             'areaInfo' => $areaInfo,
             'recommend' => $formatInstance->formatList($recommend),
-            'ad' => $adList,
             'category' => $category,
         ]);
         return $this->fetch('detail');

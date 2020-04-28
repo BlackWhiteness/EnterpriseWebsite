@@ -31,6 +31,12 @@
 
     <div class="product-img">
         <ul class="swiper-wrapper">
+            {if isset($info['video']) and !empty($info['video'])}
+            <li>
+                <video src="{$info['video']}" controls width="100%">
+                </video>
+            </li>
+            {/if}
             {foreach $info['imgs'] as $image}
                 <li class="swiper-slide"><img src="{$image}" alt=""></li>
             {/foreach}

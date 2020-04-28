@@ -4,6 +4,7 @@
 /vendor/
 /runtime/
 /public/uploads/
+/public/video/
 *.log
 LICENSE.txt
 /log/
