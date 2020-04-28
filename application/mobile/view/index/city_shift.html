@@ -58,8 +58,10 @@
         let prev_url = sessionStorage.getItem('prev_url');
         if (prev_url == null || prev_url == '') {
             window.location = '/'
+        }else{
+            window.location = prev_url
         }
-        window.location = prev_url
+
         //history.go(-1);
     }
 </script>
