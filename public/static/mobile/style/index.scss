@@ -97,12 +97,11 @@
 .foot-btn-d{height: .88rem}
 .foot-btn{position: fixed; z-index: 50; left: 0; bottom: 0; right: 0; background: #fff; @include shadow(0 -0.04rem 0.08rem 0 rgba(2,4,51,0.10));
   .wal{height: .88rem; @extend .flex}
-  a{@extend .flex; @extend .itemsCenter; @extend .justifyCenter; color: #fff; height: .88rem}
-  a.btn{width: 35%; color: #333;
+  a.btn{width: 35%; color: #333; @extend .flex; @extend .itemsCenter; @extend .justifyCenter; height: .88rem;
     img{width: .56rem; margin-right: .12rem}
   }
-  a.tel{background-image: linear-gradient(138deg, #2B3991 0%, #0693DC 100%); -webkit-background-image: linear-gradient(138deg, #2B3991 0%, #0693DC 100%); width: 65%;
-    em{font-size: .32rem; padding-left: .1rem}
+  .tel{background-image: linear-gradient(138deg, #2B3991 0%, #0693DC 100%); -webkit-background-image: linear-gradient(138deg, #2B3991 0%, #0693DC 100%); width: 65%; color: #fff; @extend .flex; @extend .itemsCenter; @extend .justifyCenter; height: .88rem; font-size: .28rem;
+    a{font-size: .26rem; padding-left: .2rem; display: block; color: #fff; line-height: .36rem}
   }
 }
 

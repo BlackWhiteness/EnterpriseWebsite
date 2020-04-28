@@ -48,11 +48,14 @@
 </body>
 </html>
 <script>
+    $(function () {
+        is_city_shift = true
+    });
     function setCityCookie(cityId){
         console.log(cityId);
         document.cookie = 'city' + "="+ cityId;
-        sessionStorage.setItem('refresh', 'true');
-        history.go(-1);
+        window.location = sessionStorage.getItem('prev_url')
+        //history.go(-1);
     }
 </script>
 

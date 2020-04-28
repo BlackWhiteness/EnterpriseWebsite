@@ -19,10 +19,10 @@ function fontSize() {
     })
 }
 
+var is_city_shift = false;
 $(function () {
-    if(sessionStorage.getItem('refresh') === 'true') {
-        sessionStorage.removeItem('refresh');
-        location.reload();
+    if(!is_city_shift){
+        sessionStorage.setItem('prev_url', window.location)
     }
     //--
     setTimeout(function () {
