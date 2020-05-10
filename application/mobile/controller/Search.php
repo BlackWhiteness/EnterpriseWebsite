@@ -95,7 +95,7 @@ class Search extends MobileBase
         $workInstance = WorkShopFormat::getInstance();
 
 
-        $recommend = $workshop->getRecommendData($cityInfo[0]['id'],$info['category']);
+        $recommend = $workshop->getRecommendData($areaInfo[0]['id'],$info['category']);
 
         $this->assign([
             'info' => $workInstance->formatDetail($info),
@@ -274,7 +274,7 @@ class Search extends MobileBase
         $areaInfo = Db::name('area')
             ->where('parentId', 'in', $info['city'])->select();
 
-        $recommend = $officebuilding->getRecommend($cityInfo[0]['id']);
+        $recommend = $officebuilding->getRecommend($info['area']);
         $this->assign([
             'info' => OfficeBuildFormat::getInstance()->formatDetail($info),
             'cityInfo' => $cityInfo,
