@@ -71,8 +71,7 @@ var rtime;
       <div class="FL marginT10"><a href="/"><img src="/static/index/img/logo.png"></a></div>
       <div class="FL LH24 marginL20" style="margin-top:37px;">
 				<div class="m_city fl" style="position:relative;">
-						<div id="change_city"><font color="#D90700" style="font-
-size:18px;"><strong class="F14 c303">{$cityInfo['name']}市</strong></font> <a class="F12 cGray" href="javascript:void(0);" onclick="javascript:alert('写字楼目前只开通深圳，其他城市正在开放中');">[切换城市]</a></div>
+						
 					  <div class="qhcity_box" id="popwindow" style="z-index: 20; position: absolute; top: 40px; left: 20px; display: none; min-height:300px; position:relative;">
 							  <div class="qhcity_close" onclick="javascript:ChangeCity
 ();"><img src="http://www.zhaoshang800.com/images/close.gif" alt="关闭" title="关闭"></div>
@@ -895,73 +894,71 @@ $(function(){
                                     <tr align="left">
                                         <td height="29" colspan="2"><font size="2">所在区域： 
                                             </font>
-                                        </td>
+                                          <font size="2"> {$info.city_name}
+                                        {$info.area_name}</font></td>
                                     </tr>
                                     <tr align="left">
                                         <td colspan="2" class="house_line"></td>
                                     </tr>
                                     <tr align="left">
                                         <td width="177" height="29"><font size="2">类型：{$info.category}</font></td>
-                                        <td width="166"><font size="2">总面积：{$info.measurearea}㎡</font></td>
+                                        <td width="166"><font size="2">商铺类型：</font></td>
                                     </tr>
                                     <tr align="left">
                                         <td colspan="2" class="house_line"></td>
                                     </tr>
                                     <tr align="left">
-                                        <td height="29"><font size="2">厂房面积：
+                                        <td height="29"><font size="2">建筑面积：
 
-                                            {$info.lengthwidth}㎡ </font></td>
-                                        <td><font size="2">办公室面积：{$info.officespace}㎡</font></td>
+                                             </font></td>
+                                        <td><font size="2">价格：</font></td>
                                     </tr>
                                     <tr align="left">
                                         <td colspan="2" class="house_line"></td>
                                     </tr>
                                     <tr align="left">
-                                        <td height="29"><font size="2">宿舍面积：{$info.dormitoryarea}㎡</font></td>
+                                        <td height="29"><font size="2">商铺性质：</font></td>
                                         <td>
 
 
-                                            <font size="2">占地面积：{$info.numberbuildings}亩</font></td>
+                                            <font size="2">经营类型：</font></td>
                                     </tr>
                                     <tr align="left">
                                         <td colspan="2" class="house_line"></td>
                                     </tr>
                                     <tr align="left">
-                                        <td height="29"><font size="2">所在楼层： {$info.layernumber} 层 </font></td>
-                                        <td><font size="2">结构：
-                                            {$info.structure} </font></td>
+                                        <td height="29"><font size="2">经营状态：  </font></td>
+                                        <td><font size="2">规格：
+                                             </font></td>
                                     </tr>
                                     <tr align="left">
                                         <td colspan="2" class="house_line"></td>
                                     </tr>
                                     <tr align="left">
-                                        <td height="29"><font size="2">土地用途：{$info.canteen} </font></td>
-                                        <td><font size="2">使用年限：{$info.expire}年</font></td>
+                                        <td height="29"><font size="2">楼层：</font></td>
+                                        <td><font size="2">证件：$info.card}</font></td>
                                     </tr>
                                     <tr align="left">
                                         <td colspan="2" class="house_line"></td>
                                     </tr>
                                     <tr align="left">
-                                        <td height="29"><font size="2">厂房价格：
+                                        <td height="29"><font size="2">交易方式：
 
-                                            {$info.plantrent}
-                                        </font></td>
-                                        <td><font size="2">新旧程度：{$info.newolddegree}成新</font></td>
+                                            
+                                      </font></td>
+                                        <td><font size="2">其他：
+
+                                        {$info.other}</font></td>
                                     </tr>
                                     <tr align="left">
                                         <td colspan="2" class="house_line"></td>
                                     </tr>
                                     <tr align="left">
-                                        <td height="29"><font size="2">厂房配电：
-                                            {$info.distributioncapacity} </font></td>
-                                        <td><font size="2">厂房电梯：{$info.elevator} </font></td>
+                                        <td height="29"><font size="2"></font></td>
+                                        <td>&nbsp;</td>
                                     </tr>
                                     <tr align="left">
                                         <td colspan="2" class="house_line"></td>
-                                    </tr>
-                                    <tr align="left">
-                                        <td height="31"><font size="2">消防：{$info.firecontrol}</font></td>
-                                        <td><font size="2">交易方式：{$info.applicableindustries} </font></td>
                                     </tr>
                                 </table>
 
