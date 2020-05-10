@@ -61,12 +61,12 @@ class PrivateHome extends MobileBase
                 $adList['bottom_ad'][] = $detail;
             }
         }
-        $recommend =$privateHomeManage->getRecommend($city);
+//        $recommend =$privateHomeManage->getRecommend($city);
 //        $formatInstance = PrivateHomeFormat::getInstance();
 
         $formatInstance = PrivateHomeFormat::getInstance();
         $this->assign([
-            'recommend' => $formatInstance->formatList($recommend),
+//            'recommend' => $formatInstance->formatList($recommend),
             'newList' => $formatInstance->formatList($new),
             'hotList' => $formatInstance->formatList($hot),
             'cityInfo' => $cityInfo,
@@ -80,7 +80,6 @@ class PrivateHome extends MobileBase
             'floorType' => PrivateHomeManage::FLOOR_TYPE,
             'measureList' => PrivateHomeManage::MEASURE_LIST,
             'title' => $title,
-            'recommend' => $formatInstance->formatList($recommend),
         ]);
 
         return $this->fetch('index');
@@ -111,7 +110,7 @@ class PrivateHome extends MobileBase
         $cityList = Db::name('city')
             ->where('id', 'not in', $info['city'])->select();
 
-        $recommend =$privateHomeManage->getRecommend($cityInfo[0]['id']);
+        $recommend =$privateHomeManage->getRecommend($info['area']);
 
 
         $formatInstance = PrivateHomeFormat::getInstance();

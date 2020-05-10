@@ -141,15 +141,15 @@ class LandManage extends Model
     /**
      * 推荐
      *
-     * @param $city
+     * @param $id
      * @return array|\PDOStatement|string|\think\Collection
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\ModelNotFoundException
      * @throws \think\exception\DbException
      */
-    public function getRecommend($city)
+    public function getRecommend($id)
     {
-        return LandManage::where(['city'=>$city])->limit(0, 10)->select();
+        return LandManage::where(['area'=>$id])->limit(0, 10)->select();
     }
 
 }

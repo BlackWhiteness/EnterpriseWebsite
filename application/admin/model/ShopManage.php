@@ -101,7 +101,6 @@ class ShopManage extends Model
             $query = $query->where('title', 'like', '%' . $title . '%');
         }
 
-        $query = $query->order(array('releasetime' => 'DESC'));
 
         return $query;
     }
@@ -113,7 +112,8 @@ class ShopManage extends Model
      */
     public function getShopBuild()
     {
-        $query = $this->filterCommon();
+        $query = $this->filterCommon()->order('type', 'desc')
+            ->order('releasetime','desc');;
         $query = $query->paginate(request()->param('per_page',20));
         return $query;
     }
@@ -138,15 +138,15 @@ class ShopManage extends Model
     /**
      * 获取推荐
      *
-     * @param $city
+     * @param $id
      * @return array|\PDOStatement|string|\think\Collection
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\ModelNotFoundException
      * @throws \think\exception\DbException
      */
-    public function getRecommend($city)
+    public function getRecommend($id)
     {
-        return ShopManage::where(["city" => $city])
+        return ShopManage::where(["area" => $id])
             ->page(1, 5)->select();
     }
 

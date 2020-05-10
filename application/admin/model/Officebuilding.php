@@ -10,12 +10,6 @@ use think\Model;
  */
 class Officebuilding extends Model
 {
-    protected $pk = 'id';
-    protected $table = 'search_officebuilding';
-    protected $type = [
-        'imgs' => 'serialize',
-    ];
-
     const TAG_CONFIG = [
         0 => '不限',
         1 => '可注册',
@@ -42,6 +36,11 @@ class Officebuilding extends Model
         3 => '商务公寓',
         4 => '商务酒店',
         5 => '厂房办公'
+    ];
+    protected $pk = 'id';
+    protected $table = 'search_officebuilding';
+    protected $type = [
+        'imgs' => 'serialize',
     ];
 
     /**
@@ -75,6 +74,19 @@ class Officebuilding extends Model
             $this->error = '删除失败！';
             return false;
         }
+    }
+
+    /**
+     * 获取写字楼列表
+     * @return \think\db\Query|\think\Paginator
+     * @throws \think\exception\DbException
+     */
+    public function getOfficeBuild()
+    {
+        $query = $this->filterCommon()->order('type', 'desc')
+            ->order('releasetime','desc');
+        $query = $query->paginate(20);
+        return $query;
     }
 
     /**
@@ -118,8 +130,8 @@ class Officebuilding extends Model
         }
         $category = request()->param('category');
 
-        if(!empty($category)){
-            $query = $query->where('category', '=' ,$category);
+        if (!empty($category)) {
+            $query = $query->where('category', '=', $category);
         }
 
         $title = request()->param('title');
@@ -127,20 +139,7 @@ class Officebuilding extends Model
             $query = $query->where('title', 'like', '%' . $title . '%');
         }
 
-        $query = $query->order(array('releasetime' => 'DESC'));
 
-        return $query;
-    }
-
-    /**
-     * 获取写字楼列表
-     * @return \think\db\Query|\think\Paginator
-     * @throws \think\exception\DbException
-     */
-    public function getOfficeBuild()
-    {
-        $query = $this->filterCommon();
-        $query = $query->paginate(20);
         return $query;
     }
 
@@ -164,15 +163,15 @@ class Officebuilding extends Model
     /**
      * 推荐
      *
-     * @param $city
+     * @param $id
      * @return array|\PDOStatement|string|\think\Collection
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\ModelNotFoundException
      * @throws \think\exception\DbException
      */
-    public function getRecommend($city)
+    public function getRecommend($id)
     {
-       return  Officebuilding::where(["city" => $city])
-           ->page(1,5)->select();
+        return Officebuilding::where(["area" => $id])
+            ->page(1, 5)->select();
     }
 }

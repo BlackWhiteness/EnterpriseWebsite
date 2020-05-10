@@ -101,7 +101,9 @@ class PrivateHomeManage extends Model
      */
     public function getWorkShopBySearch()
     {
-        $query = $this->filterComon();
+        $query = $this->filterComon()
+            ->order('type', 'desc')
+            ->order('releasetime','desc');;
         $query = $query->paginate(5);
         return $query;
     }
@@ -152,8 +154,6 @@ class PrivateHomeManage extends Model
             $query = $query->where('category', '=', $category);
         }
 
-        $query = $query->order(array('releasetime' => 'DESC'));
-
         return $query;
     }
 
@@ -179,15 +179,15 @@ class PrivateHomeManage extends Model
     /**
      * 获取推荐
      *
-     * @param $city
+     * @param $id
      * @return array|\PDOStatement|string|\think\Collection
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\ModelNotFoundException
      * @throws \think\exception\DbException
      */
-    public function getRecommend($city)
+    public function getRecommend($id)
     {
-        return PrivateHomeManage::where(["city" => $city])
+        return PrivateHomeManage::where(["area" => $id])
             ->page(1, 5)
             ->select();
     }

@@ -83,7 +83,9 @@ class Workshop extends Model
      */
     public function getWorkShopBySearch()
     {
-        $query = $this->filterComon();
+        $query = $this->filterComon()
+            ->order('type', 'desc')
+            ->order('releasetime','desc');
         $query = $query->paginate(5);
         return $query;
     }
@@ -134,7 +136,6 @@ class Workshop extends Model
             $query = $query->where('category', '=', $category);
         }
 
-        $query = $query->order(array('releasetime' => 'DESC'));
 
         return $query;
     }
@@ -190,16 +191,16 @@ class Workshop extends Model
     /**
      * 猜你喜欢
      *
-     * @param $city
+     * @param $id
      * @param $category
      * @return array|\PDOStatement|string|\think\Collection
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\ModelNotFoundException
      * @throws \think\exception\DbException
      */
-    public function getRecommendData($city, $category)
+    public function getRecommendData($id, $category)
     {
-        return Workshop::where('city', '=', $city)
+        return Workshop::where('area', '=', $id)
             ->where('category', '=', $category)
             ->page(1, 5)
             ->select();

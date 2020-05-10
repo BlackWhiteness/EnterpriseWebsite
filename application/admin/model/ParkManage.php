@@ -64,7 +64,9 @@ class ParkManage extends Model
      */
     public function getList()
     {
-        $query = $this->filterCommon();
+        $query = $this->filterCommon()
+            ->order('type','desc')
+            ->order('releasetime','desc');
         $query = $query->paginate(request()->param('per_page', 20));
         return $query;
     }
@@ -84,8 +86,6 @@ class ParkManage extends Model
         if (!empty($area)) {
             $query = $query->where('area', '=', $area);
         }
-
-        $query = $query->order(array('releasetime' => 'DESC'));
 
         return $query;
     }
@@ -117,9 +117,9 @@ class ParkManage extends Model
      * @throws \think\db\exception\ModelNotFoundException
      * @throws \think\exception\DbException
      */
-    public function getRecommend($city)
+    public function getRecommend($id)
     {
-        return self::where('city', '=', $city)
+        return self::where('area', '=', $id)
             ->page(1, 5)->select();
     }
 

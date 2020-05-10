@@ -31,7 +31,7 @@ class Park extends MobileBase
         $cityInfo = Db::name('city')->where('id', '=', $city)->select();
         $areaInfo = Db::name('area')->where('parentId', 'in', $city)->select();
         $title = $cityInfo[0]['name'].'园区招商';
-        $recommend = $parkManage->getRecommend($city);
+//        $recommend = $parkManage->getRecommend($city);
         $hotList = ParkManage::where('type','=',2)
             ->where('city','=',$city)
             ->order(array('releasetime' => 'DESC'))
@@ -60,7 +60,7 @@ class Park extends MobileBase
         $formatInstance = ParkFormat::getInstance();
 
         $this->assign([
-            'recommend' => $formatInstance->formatList($recommend),
+//            'recommend' => $formatInstance->formatList($recommend),
             'cityInfo' => $cityInfo,
             'areaInfo' => $areaInfo,
             'cityList' => $cityList,
@@ -95,7 +95,7 @@ class Park extends MobileBase
         $cityList = Db::name('city')
             ->where('id', 'not in', $info['city'])->select();
 
-        $recommend = $parkManage->getRecommend($city);
+        $recommend = $parkManage->getRecommend($info['area']);
         $hotList = ParkManage::where('type','=',2)
             ->where('city','=',$city)
             ->order(array('releasetime' => 'DESC'))
