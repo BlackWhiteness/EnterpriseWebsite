@@ -177,7 +177,8 @@
             <div class="layui-form-item" hidden>
                 <label class="layui-form-label">详情</label>
                 <div style="width:80%" class="layui-input-inline">
-                                    <textarea id="detail-detail" name="detail" rows="10" class="layui-input" placeholder="" lay-verify="required"
+                                    <textarea id="detail-detail" name="detail" rows="10" class="layui-input"
+                                              placeholder="" lay-verify="required"
                                               autocomplete="off"></textarea>
                 </div>
             </div>
@@ -356,11 +357,9 @@
             , url: '/admin/upload/video' //上传接口
             , accept: 'file'
             , done: function (res) {
-                let add_html = '<video src="' + res.path + '" controls  width="50%" height="50%">' + '</video>';
-                let input = '<input type="hidden" name="video" value="' + res.path + '">';
+                let add_html = splitVideoPre(res);
                 $('#video_show').empty();
                 $('#video_show').append(add_html);
-                $('#video_show').append(input);
             }
             , error: function () {
                 console.log('上传失败！');

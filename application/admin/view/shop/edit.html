@@ -175,7 +175,7 @@
                 <label class="layui-form-label">详情</label>
                 <div style="width:80%" class="layui-input-inline">
                     <div id="editor">
-                        <p>{data.detail|raw}</p>
+                        <p>{$data.detail|raw}</p>
                     </div>
                 </div>
             </div>
@@ -219,8 +219,13 @@
                             视频：
                             <div class="layui-upload-list" id="video_show">
                                 {if !empty($data['video'])}
-                                <video src="{$data.video}" controls  width="50%" height="50%"></video>
-                                <input type="hidden" name="video" value="{$data.video}">
+
+                                <div class="img-pre">
+                                    <span class="close" onclick="delImage(this)">&times;</span>
+                                    <video src="{$data.video}" controls width="50%" height="50%"></video>
+                                    <input type="hidden" name="video" value="{$data.video}">
+                                </div>
+
                                 {/if}
                             </div>
                         </blockquote>
@@ -372,8 +377,7 @@
             , url: '/admin/upload/video' //上传接口
             , accept: 'file'
             , done: function (res) {
-                let add_html = '<video src="' + res.path + '" controls  width="50%" height="50%">' + '</video>';
-                let input = '<input type="hidden" name="video" value="' + res.path + '">';
+               let add_html = splitVideoPre(res);
                 $('#video_show').empty();
                 $('#video_show').append(add_html);
                 $('#video_show').append(input);
