@@ -119,7 +119,7 @@ class Search extends Homebase
 
         $cityInfo = Db::name('city')
             ->where('id', '=', $info['city'])->find();
-        $city = $cityInfo[0]['id'];
+        $city = $info['city'];
         $areaInfo = Db::name('area')
             ->where('parentId', 'in', $info['city'])->select();
 
@@ -263,9 +263,12 @@ class Search extends Homebase
         $cityList = Db::name('city')->where('id', 'not in', $info['city'])->select();
         $recommend = Officebuilding::where(["type" => 1])->order(array('releasetime' => 'DESC'))
             ->limit(0, 10)->select();
-        $new = Officebuilding::order(array('releasetime' => 'DESC'))
+        $floor1 = Officebuilding::where('city','=',$cityInfo['id'])
+            ->order(array('releasetime' => 'DESC'))
             ->limit(0, 10)->select();
-        $hot = Officebuilding::where(["type" => 2])
+
+        $floor2 = Officebuilding::where(["type" => 2])
+            ->where('city','=',$cityInfo['id'])
             ->order(array('releasetime' => 'DESC'))->limit(10)->select();
 
         $href = HrefManage::order('sort', 'desc')->select()->toArray();
@@ -285,11 +288,10 @@ class Search extends Homebase
                 $adList['bottom_ad'][] = $detail;
             }
         }
-
         $this->assign([
             'recommend' => $this->formatOffice($recommend),
-            'new' => $this->formatOffice($new),
-            'hot' => $this->formatOffice($hot),
+            'floor1' => $this->formatOffice($floor1),
+            'floor2' => $this->formatOffice($floor2),
             'cityInfo' => $cityInfo,
             'areaInfo' => $areaInfo,
             'cityList' => $cityList,

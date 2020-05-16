@@ -154,7 +154,7 @@ class Workshop extends Model
         $list = Workshop::where('city', '=', $city)
             ->order('releasetime', 'desc')
             ->where('category', '=', $type)
-            ->page(1, 5)
+            ->page(1, 6)
             ->select();
         return $list;
     }

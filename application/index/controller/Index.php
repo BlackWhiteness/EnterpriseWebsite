@@ -52,7 +52,7 @@ class Index extends Homebase
         foreach ($firstCity as $k => $value) {
             $sz = Workshop_Model::where(array('city' => $value['id']))
                 ->order(array('releasetime' => 'DESC'))
-                ->page(1, 5)
+                ->page(1, 6)
                 ->select()
                 ->toArray();
             $newWorkShop[$k]['city'] = $value;
