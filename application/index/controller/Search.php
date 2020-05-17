@@ -479,9 +479,9 @@ class Search extends Homebase
         $cityList = Db::name('city')->where('id', 'not in', $info['city'])->select();
         $recommend = ShopManage::where(["category" => 1])->order(array('releasetime' => 'DESC'))
             ->limit(0, 10)->select();
-        $new = ShopManage::order(array('releasetime' => 'DESC'))
+        $floor1 = ShopManage::order(array('releasetime' => 'DESC'))
             ->limit(0, 10)->select();
-        $hot = ShopManage::where(["category" => 2])
+        $floor2 = ShopManage::where(["category" => 2])
             ->order(array('releasetime' => 'DESC'))->limit(10)->select();
 
         $href = HrefManage::order('sort', 'desc')->select()->toArray();
@@ -504,14 +504,14 @@ class Search extends Homebase
 
         $this->assign([
             'recommend' => ShopFormat::getInstance()->formatList($recommend),
-            'new' => ShopFormat::getInstance()->formatList($new),
-            'hot' => ShopFormat::getInstance()->formatList($hot),
+            'floor1' => ShopFormat::getInstance()->formatList($floor1),
+            'floor2' => ShopFormat::getInstance()->formatList($floor2),
             'cityInfo' => $cityInfo,
             'areaInfo' => $areaInfo,
             'cityList' => $cityList,
             'href' => $href,
             'ad' => $adList,
-            'info' => $info
+            'info' => ShopFormat::getInstance()->formatDetail($info)
         ]);
         return $this->fetch('shop_detail');
     }

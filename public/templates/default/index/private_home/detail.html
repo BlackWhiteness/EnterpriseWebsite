@@ -515,7 +515,7 @@
     <div class="FL marginT10"><a href="/"><img src="/static/index/img/logo.png"></a></div>
     <div class="FL LH24 marginL20" style="margin-top:37px;">
         <div class="m_city fl" style="position:relative;">
-            
+
             <div class="qhcity_box" id="popwindow"
                  style="z-index: 20; position: absolute; top: 40px; left: 20px; display: none; min-height:300px; position:relative;">
                 <div class="qhcity_close" onclick="javascript:ChangeCity
@@ -1244,16 +1244,15 @@
                                     </tr>
                                     <tr align="left">
 
-                                        <td><font size="2">地址：{$info.address}</font></td>
+                                        <td height="29"><font size="2">类型：{$info.category_name}</font></td>
                                         <td><font size="2">总面积：{$info.measurearea}㎡</font></td>
                                     </tr>
                                     <tr align="left">
                                         <td colspan="2" class="house_line"></td>
                                     </tr>
                                     <tr align="left">
-                                        <td height="29"><font size="2">类型：
 
-                                            {$info.category_name}</font></td>
+                                        <td><font size="2">单层面积：{$info.single_area}</font></td>
                                         <td><font size="2">楼层：{$info.floor_type_name}</font></td>
                                     </tr>
 
@@ -1299,12 +1298,9 @@
                                     </tr>
                                     <tr align="left">
                                         <td height="29"><font size="2">证件：{$info.certify}</font></td>
-                                        <td>
 
+                                        <td><font size="2">地址：{$info.address}</font></td>
 
-                                            <font size="2">单层面积：
-
-                                                {$info.single_area}</font></td>
                                     </tr>
                                     <tr align="left">
                                         <td colspan="2" class="house_line"></td>
@@ -1336,7 +1332,7 @@
                     <!---厂房概况和照片--->
                     <div class="box_gray1" style="width:730px; margin-top:15px; margin-bottom:15px;">
                         <div class="tit_bg1">
-                            <div class="tit_icon2">写字楼概况</div>
+                            <div class="tit_icon2">私宅概况</div>
                         </div>
                         <div class="box_list2">
                             {$info.detail|raw}
@@ -1370,7 +1366,7 @@
 
                     <div class="left_one">
                         <div class="left_one_title"><a href="/index/private_home/index"
-                                                       target="_blank">{$cityInfo['name']}最新写字楼</a></div>
+                                                       target="_blank">{$cityInfo['name']}最新私宅</a></div>
                         <div class="left_one_cont" id="left_nav_cont">
                             <ul>
                                 {volist name="newList" id="data"}
@@ -1401,7 +1397,7 @@
 
                 <div class="box_gray1">
                     <div class="tit_bg">
-                        <div class="tit_icon1">相关写字楼信息</div>
+                        <div class="tit_icon1">相关私宅信息</div>
 
                     </div>
                     <div class="box_listpic">
