@@ -72,7 +72,7 @@ var rtime;
       <div class="FL marginT10"><a href="/"><img src="/static/index/img/logo.png"></a></div>
       <div class="FL LH24 marginL20" style="margin-top:37px;">
 				<div class="m_city fl" style="position:relative;">
-						
+
 					  <div class="qhcity_box" id="popwindow" style="z-index: 20; position: absolute; top: 40px; left: 20px; display: none; min-height:300px; position:relative;">
 							  <div class="qhcity_close" onclick="javascript:ChangeCity
 ();"><img src="http://www.zhaoshang800.com/images/close.gif" alt="关闭" title="关闭"></div>
@@ -165,9 +165,9 @@ var rtime;
 
                             <div id="main_right">
                                 <div id="right_title"><span>您当前的位置：<a
-                                        href="/index/search/workshop?city={$cityInfo['id']}"
-                                        target="_blank"/>{$info.city_name}{$info.category}</a> ><a
-                                        href="/index/search/workshop?city={$cityInfo['id']}" target="_blank"/>{$info.area_name}{$info.category}</a>
+                                        href="/index/search/landList?city={$cityInfo['id']}"
+                                        target="_blank"/>{$info.city_name}土地</a> >
+                                    <a href="/index/search/landList?city={$cityInfo['id']}" target="_blank"/>{$info.area_name}土地</a>
                                     </span>
                                 </div>
                                 <div class="right_cont">
@@ -301,14 +301,6 @@ var rtime;
 
                                 <table width="343" border="0" cellspacing="0" cellpadding="0"
                                        style=" padding-left:10px;">
-                                    <!--                                    <tr>-->
-                                    <!--                                        <td height="29" colspan="2" align="left"><p-->
-                                    <!--                                                style="height:29px;color:#fff; font:14px; line-height:25px; width:320px;">-->
-                                    <!--                                            <span style="background:#be38d6;">&nbsp;本周推荐&nbsp;</span>&nbsp;&nbsp;<span-->
-                                    <!--                                                style="background:#62B362;">&nbsp;分租㎡起&nbsp;</span>&nbsp;&nbsp;<span-->
-                                    <!--                                                style="background:#4093f0; ">&nbsp;提供租赁合同&nbsp;</span>&nbsp;&nbsp;<span-->
-                                    <!--                                                style="background: #F60;">&nbsp;消防验收合格&nbsp;</span></p></td>-->
-                                    <!--                                    </tr>-->
                                     <tr align="left">
                                         <td colspan="2" class="house_line"></td>
                                     </tr>
@@ -321,67 +313,35 @@ var rtime;
                                         <td colspan="2" class="house_line"></td>
                                     </tr>
                                     <tr align="left">
-                                        <td width="177" height="29"><font size="2">类型：{$info.category}</font></td>
+                                        <td width="177" height="29"><font size="2">类型：{$info.type}</font></td>
                                         <td width="166"><font size="2">总面积：{$info.measurearea}㎡</font></td>
                                     </tr>
                                     <tr align="left">
                                         <td colspan="2" class="house_line"></td>
                                     </tr>
                                     <tr align="left">
-                                        <td height="29"><font size="2">厂房面积：
-
-                                            {$info.lengthwidth}㎡ </font></td>
-                                        <td><font size="2">办公室面积：{$info.officespace}㎡</font></td>
+                                        <td height="29"><font size="2">土地使用年限： {$info.land_use} </font></td>
+                                        <td><font size="2">地址：{$info.address}㎡</font></td>
                                     </tr>
                                     <tr align="left">
                                         <td colspan="2" class="house_line"></td>
                                     </tr>
                                     <tr align="left">
-                                        <td height="29"><font size="2">宿舍面积：{$info.dormitoryarea}㎡</font></td>
+                                        <td height="29"><font size="2">单价：{$info.price}</font></td>
                                         <td>
 
 
-                                            <font size="2">占地面积：{$info.numberbuildings}亩</font></td>
+                                            <font size="2">土地性质：{$info.land_type}</font></td>
                                     </tr>
                                     <tr align="left">
                                         <td colspan="2" class="house_line"></td>
                                     </tr>
                                     <tr align="left">
-                                        <td height="29"><font size="2">所在楼层： {$info.layernumber} 层 </font></td>
-                                        <td><font size="2">结构：
-                                            {$info.structure} </font></td>
-                                    </tr>
-                                    <tr align="left">
-                                        <td colspan="2" class="house_line"></td>
-                                    </tr>
-                                    <tr align="left">
-                                        <td height="29"><font size="2">土地用途：{$info.canteen} </font></td>
-                                        <td><font size="2">使用年限：{$info.expire}年</font></td>
-                                    </tr>
-                                    <tr align="left">
-                                        <td colspan="2" class="house_line"></td>
-                                    </tr>
-                                    <tr align="left">
-                                        <td height="29"><font size="2">厂房价格：
+                                        <td height="29"><font size="2">房产证： {$info.land_card} </font></td>
 
-                                            {$info.plantrent}
-                                        </font></td>
-                                        <td><font size="2">新旧程度：{$info.newolddegree}成新</font></td>
                                     </tr>
                                     <tr align="left">
                                         <td colspan="2" class="house_line"></td>
-                                    </tr>
-                                    <tr align="left">
-                                        <td height="29"><font size="2">厂房配电：
-                                            {$info.distributioncapacity} </font></td>
-                                        <td><font size="2">厂房电梯：{$info.elevator} </font></td>
-                                    </tr>
-                                    <tr align="left">
-                                        <td colspan="2" class="house_line"></td>
-                                    </tr>
-                                    <tr align="left">
-                                        <td height="31"><font size="2">消防：{$info.firecontrol}</font></td>
-                                        <td><font size="2">交易方式：{$info.applicableindustries} </font></td>
                                     </tr>
                                 </table>
 
@@ -421,14 +381,16 @@ var rtime;
                 <div id="main_left">
                     <div class="left_one">
                         <div class="left_one_title">
-                            <a href="/index/search/workshop?city={$cityInfo['id']}&floor=3&category={$category}" target="_blank">{$cityInfo['name']}独院{$category_type_name}</a>
+                            <a href="/index/search/landList?city={$cityInfo['id']}" target="_blank">
+                                {$cityInfo['name']}土地
+                            </a>
                         </div>
                         <div class="left_one_cont">
                             <ul>
-                                {volist name="floor1" id="data"}
+                                {volist name="new" id="data"}
 
-                                <li>[<a href="/index/search/workshop?city={$cityInfo['id']}&category={$category}" target="_blank">{$cityInfo['name']}{$category_type_name}</a>]
-                                    <a href="/index/search/workshopdetail?id={$data.id}&city={$cityInfo['id']}&category={$category}" target="_blank">
+                                <li>[<a href="/index/search/landList?city={$cityInfo['id']}" target="_blank">{$cityInfo['name']}土地</a>]
+                                    <a href="/index/search/landdetail?id={$data.id}" target="_blank">
                                         {:subText($data.title,13)}</a></li>
                                 {/volist}
                             </ul>
@@ -436,28 +398,33 @@ var rtime;
                     </div>
                     <div class="left_one">
                         <div class="left_one_title">
-                            <a href="/index/search/workshop?city={$cityInfo['id']}&floor=1&category={$category}" target="_blank">{$cityInfo['name']}一楼{$category_type_name}</a>
-                        </div>
-                        <div class="left_one_cont" id="left_nav_cont">
-                            <ul>
-                                {volist name="floor2" id="data"}
-                                <li>[<a href="/index/search/workshop?city={$cityInfo['id']}&category={$category}" target="_blank">{$cityInfo['name']}{$category_type_name}</a>]
-                                    <a href="/index/search/workshopdetail?id={$data.id}&city={$cityInfo['id']}&category={$category}" target="_blank">
-                                        {:subText($data.title,13)}</a></li>
-                                {/volist}
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="left_one">
-                        <div class="left_one_title">
-                            <a href="/index/search/workshop?city={$cityInfo['id']}&category={$category}"
-                               target="_blank">{$cityInfo['name']}带装修{$category_type_name}</a>
+                            <a href="/index/search/landList?city={$cityInfo['id']}" target="_blank">
+                                {$cityInfo['name']}无证土地
+                            </a>
                         </div>
                         <div class="left_one_cont">
                             <ul>
-                                {volist name="floor3" id="data"}
-                                <li>[<a href="/index/search/workshop?city={$cityInfo['id']}&category={$category}" target="_blank">{$cityInfo['name']}{$category_type_name}</a>]
-                                    <a href="/index/search/workshopdetail?id={$data.id}&city={$cityInfo['id']}&category={$category}" target="_blank">
+                                {volist name="noCard" id="data"}
+
+                                <li>[<a href="/index/search/landList?city={$cityInfo['id']}" target="_blank">{$cityInfo['name']}土地</a>]
+                                    <a href="/index/search/landdetail?id={$data.id}" target="_blank">
+                                        {:subText($data.title,13)}</a></li>
+                                {/volist}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="left_one">
+                        <div class="left_one_title">
+                            <a href="/index/search/landList?city={$cityInfo['id']}" target="_blank">
+                                {$cityInfo['name']}有证土地
+                            </a>
+                        </div>
+                        <div class="left_one_cont">
+                            <ul>
+                                {volist name="hasCard" id="data"}
+
+                                <li>[<a href="/index/search/landList?city={$cityInfo['id']}" target="_blank">{$cityInfo['name']}土地</a>]
+                                    <a href="/index/search/landdetail?id={$data.id}" target="_blank">
                                         {:subText($data.title,13)}</a></li>
                                 {/volist}
                             </ul>
@@ -482,7 +449,7 @@ var rtime;
 
                 <div class="box_gray1">
                     <div class="tit_bg">
-                        <div class="tit_icon1">以下厂房信息可能会符合你的需求</div>
+                        <div class="tit_icon1">以下土地信息可能会符合你的需求</div>
 
                     </div>
                     <div class="box_listpic">
@@ -604,7 +571,7 @@ var rtime;
     </script>
     <div id="tuijian">
     <div class="part_title">
-        <strong>推荐厂房</strong>
+        <strong>推荐土地</strong>
     </div>
     <div id="tuijian_cont">
         <div id="white_bg">

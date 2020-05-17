@@ -3,24 +3,23 @@
 namespace app\index\controller;
 
 use app\admin\model\AdManage;
+use app\admin\model\City;
 use app\admin\model\HrefManage;
 use app\admin\model\LandManage;
 use app\admin\model\Officebuilding;
 use app\admin\model\ShopManage;
 use app\admin\model\Workshop;
-use app\common\controller\Homebase;
 use app\admin\model\Workshop as Workshop_Model;
+use app\common\controller\Homebase;
+use app\format\LandFormat;
 use app\format\OfficeBuildFormat;
 use app\format\ShopFormat;
 use app\format\WorkShopFormat;
-use app\search\model\Workshopsearch as Workshopsearch;
 use app\search\model\Offbuildingsearch as Offbuildingsearch;
-use app\admin\model\City;
-use app\admin\model\Area;
-use \think\Db;
+use app\search\model\Workshopsearch as Workshopsearch;
+use think\Db;
 use think\facade\Validate;
 use think\Request;
-use app\format\LandFormat;
 
 class Search extends Homebase
 {
@@ -29,15 +28,7 @@ class Search extends Homebase
     public $City;
 
     //初始化
-    protected function initialize()
-    {
-        parent::initialize();
-        $this->Workshopsearch = new Workshopsearch();
-        $this->Offbuildingsearch = new Offbuildingsearch();
-        $this->City = new City();
-    }
 
-    //会员中心首页
     public function workshop(Request $request)
     {
         $city = getCity();
@@ -53,13 +44,13 @@ class Search extends Homebase
             ->page(1, 10)->select();
 //        dump($recommend);die;
         $floor1 = Db::name('workshop')
-            ->where(["floor" => 3,'city'=>$city,'category'=>$category])
+            ->where(["floor" => 3, 'city' => $city, 'category' => $category])
             ->order(['releasetime' => 'DESC'])
             ->paginate(10);
-        $floor2 = Db::name('workshop')->where(["floor" => 1,'city'=>$city,'category'=>$category])
+        $floor2 = Db::name('workshop')->where(["floor" => 1, 'city' => $city, 'category' => $category])
             ->order(array('releasetime' => 'DESC'))->paginate(10);
         $floor3 = Db::name('workshop')
-            ->where(["is_decorate" => 1,'city'=>$city,'category'=>$category])
+            ->where(["is_decorate" => 1, 'city' => $city, 'category' => $category])
             ->order(array('releasetime' => 'DESC'))
             ->paginate(10);
         $href = HrefManage::order('sort', 'desc')
@@ -95,12 +86,15 @@ class Search extends Homebase
             'ad' => $adList,
             'category' => $category,
             'tag' => $cityInfo['name'] . $tagName,
-            'category_type_name' => $tagName ? mb_substr($tagName, 0, 2, 'utf8') : '厂房',
+//            'category_type_name' => $tagName ? mb_substr($tagName, 0, 2, 'utf8') : '厂房',
+            'category_type_name' => $tagName ,
 
         ]);
 
         return $this->fetch('rentalofworkshop');
     }
+
+    //会员中心首页
 
     public function workshopdetail(Request $request)
     {
@@ -130,13 +124,13 @@ class Search extends Homebase
             ->order(array('releasetime' => 'DESC'))
             ->paginate(10);
         $floor1 = Db::name('workshop')
-            ->where(["floor" => 3,'city'=>$city,'category'=>$category])
+            ->where(["floor" => 3, 'city' => $city, 'category' => $category])
             ->order(['releasetime' => 'DESC'])
             ->paginate(10);
-        $floor2 = Db::name('workshop')->where(["floor" => 1,'city'=>$city,'category'=>$category])
+        $floor2 = Db::name('workshop')->where(["floor" => 1, 'city' => $city, 'category' => $category])
             ->order(array('releasetime' => 'DESC'))->paginate(10);
         $floor3 = Db::name('workshop')
-            ->where(["is_decorate" => 1,'city'=>$city,'category'=>$category])
+            ->where(["is_decorate" => 1, 'city' => $city, 'category' => $category])
             ->order(array('releasetime' => 'DESC'))
             ->paginate(10);
         $ad = AdManage::where('is_enable', '=', 1)->order(['code' => 'asc', 'sort' => 'desc'])->select();
@@ -249,7 +243,8 @@ class Search extends Homebase
                 'city' => $row['city'],
                 'area' => $row['area'],
                 'type' => $row['type'],
-                'title' => $row['title']];
+                'title' => $row['title']
+            ];
         }
         return $rtn;
     }
@@ -263,12 +258,12 @@ class Search extends Homebase
         $cityList = Db::name('city')->where('id', 'not in', $info['city'])->select();
         $recommend = Officebuilding::where(["type" => 1])->order(array('releasetime' => 'DESC'))
             ->limit(0, 10)->select();
-        $floor1 = Officebuilding::where('city','=',$cityInfo['id'])
+        $floor1 = Officebuilding::where('city', '=', $cityInfo['id'])
             ->order(array('releasetime' => 'DESC'))
             ->limit(0, 10)->select();
 
         $floor2 = Officebuilding::where(["type" => 2])
-            ->where('city','=',$cityInfo['id'])
+            ->where('city', '=', $cityInfo['id'])
             ->order(array('releasetime' => 'DESC'))->limit(10)->select();
 
         $href = HrefManage::order('sort', 'desc')->select()->toArray();
@@ -391,9 +386,12 @@ class Search extends Homebase
             ->limit(0, 10)->select();
         $new = LandManage::order(array('releasetime' => 'DESC'))
             ->limit(0, 10)->select();
-        $hot = LandManage::where(["type" => 2])
+//        $hot = LandManage::where(["type" => 2])
+//            ->order(array('releasetime' => 'DESC'))->limit(10)->select();
+        $hasCard = LandManage::where(["land_card" => 0])
             ->order(array('releasetime' => 'DESC'))->limit(10)->select();
-
+        $noCard = LandManage::where(["land_card" => 1])
+            ->order(array('releasetime' => 'DESC'))->limit(10)->select();
         $href = HrefManage::order('sort', 'desc')->select()->toArray();
         $ad = AdManage::where('is_enable', '=', 1)->order(['code' => 'asc', 'sort' => 'desc'])->select();
         $adList = [];
@@ -415,13 +413,15 @@ class Search extends Homebase
         $this->assign([
             'recommend' => LandFormat::getInstance()->formatList($recommend),
             'new' => LandFormat::getInstance()->formatList($new),
-            'hot' => LandFormat::getInstance()->formatList($hot),
+//            'hot' => LandFormat::getInstance()->formatList($hot),
             'cityInfo' => $cityInfo,
             'areaInfo' => $areaInfo,
             'cityList' => $cityList,
             'href' => $href,
             'ad' => $adList,
-            'info' => LandFormat::getInstance()->formatDetail($info)
+            'info' => LandFormat::getInstance()->formatDetail($info),
+            'hasCard' => LandFormat::getInstance()->formatList($hasCard),
+            'noCard' => LandFormat::getInstance()->formatList($noCard),
         ]);
         return $this->fetch('land_detail');
     }
@@ -544,5 +544,13 @@ class Search extends Homebase
             'data' => ShopFormat::getInstance()->formatList($data),
             'page' => paginate($data)
         ]);
+    }
+
+    protected function initialize()
+    {
+        parent::initialize();
+        $this->Workshopsearch = new Workshopsearch();
+        $this->Offbuildingsearch = new Offbuildingsearch();
+        $this->City = new City();
     }
 }

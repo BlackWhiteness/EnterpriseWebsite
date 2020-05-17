@@ -109,7 +109,7 @@
     </div>
     <div class="FL LH24 marginL20" style="margin-top:37px;">
         <div class="m_city fl" style="position:relative;">
-            
+
             <div class="qhcity_box" id="popwindow"
                  style="z-index: 20; position: absolute; top: 40px; left: 20px; display: none; min-height:300px; position:relative;">
                 <div class="qhcity_close" onclick="javascript:ChangeCity
@@ -474,7 +474,7 @@
                                 <ul>
                                     {volist name="hot" id="data"}
                                     <?php $sz_img = json_decode($list[0]['imgs']); $sz_img = $sz_img[0]; ?>
-                                    <li><a class="clearfix" href="/index/search/offbuilddetail?id={$data.id}" target="_blank"> <img
+                                    <li><a class="clearfix" href="/index/search/landdetail?id={$data.id}" target="_blank"> <img
                                             class="hotImg" src="{$data.imgs}"/>
                                         <div class="hotInfo">
                                             <div class="hotName one" title="{$data.title}">
@@ -486,7 +486,7 @@
                                     </a></li>
                                     {/volist}
                                 </ul>
-                                <a class="more_build" href="/index/search/landList?city={$cityInfo['id']}?area=sz">更多热门土地信息</a>
+                                <a class="more_build" href="/index/search/landList?city={$cityInfo['id']}">更多热门土地信息</a>
                             </div>
                             <div class="hotList">
                                 <div class="hotTitle">
@@ -494,7 +494,7 @@
                                 <ul>
                                     {volist name="new" id="data"}
                                     <?php $sz_img = json_decode($list[0]['imgs']); $sz_img = $sz_img[0]; ?>
-                                    <li><a class="clearfix" href="/index/search/offbuilddetail?id={$data.id}" target="_blank"> <img
+                                    <li><a class="clearfix" href="/index/search/landdetail?id={$data.id}" target="_blank"> <img
                                             class="hotImg" src="{$data.imgs}"/>
                                         <div class="hotInfo">
                                             <div class="hotName one" title="{$data.title}">
@@ -506,7 +506,7 @@
                                     </a></li>
                                     {/volist}
                                 </ul>
-                                <a class="more_build" href="/index/search/landList?city={$cityInfo['id']}?area=sz">更多最新写字楼</a>
+                                <a class="more_build" href="/index/search/landList?city={$cityInfo['id']}">更多最新土地</a>
                             </div>
                         </div>
                     </div>
