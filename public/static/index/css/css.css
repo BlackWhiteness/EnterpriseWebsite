@@ -1045,7 +1045,7 @@ UL, P {
     float: left;
     font-size: 12px;
     margin-top: 5px;
-    overflow: hidden;
+    overflow: hidden; text-align:center;
 }
 
 .right_p_title a {
