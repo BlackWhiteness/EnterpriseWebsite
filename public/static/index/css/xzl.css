@@ -481,9 +481,9 @@ html,body{_background-image:url(about:blank);_background-attachment:fixed}
     }
 
     .house_phone2 {
-        width: 303px;
+       
         height: 52px;
-        padding-left: 30px;
+        padding-left: 60px;
         padding-top: 4px;
         border: 1px solid #fff;
         background: url(/static/index/img/phone.gif) no-repeat 8px 5px #f2f1f1;
