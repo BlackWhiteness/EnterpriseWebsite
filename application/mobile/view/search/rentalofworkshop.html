@@ -252,16 +252,18 @@
                 if(!is_scroll) return;
                 if($(window).scrollTop() > $('.g-foot').offset().top - $(window).height()){
                     is_scroll = false;
-                    if(page.total === page.curr){
+                    if(page.total <= page.curr){
                         console.log("我是有底线的");
                         return;
                     }
                     var parameter = get_parameter();
-                    parameter.page = page.curr;
+                    console.log(page.curr)
+                    // page.curr+=1;
+                    parameter.page = ++page.curr;
                     $('.p-loading').addClass('show');
                     $.get(url, parameter, function (data) {
                         //page.curr = data.page.current_page;
-                        page.curr ++;//为了测试，在这里每滚动一次自加1，实际开发请将些行删掉，将上面一行注释取消
+                        // page.curr ++;//为了测试，在这里每滚动一次自加1，实际开发请将些行删掉，将上面一行注释取消
                         domCreate(data.data);
                         is_scroll = true;
                         $('.p-loading').removeClass('show')

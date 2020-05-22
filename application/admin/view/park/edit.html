@@ -132,7 +132,7 @@
                             <div class="layui-upload-list" id="video_show">
                                 {if !empty($data['video'])}
                                 <div class="img-pre">
-                                        <span class="close" onclick="delImage(this)">&times;</span>
+                                        <span class="close" onclick="delVideo(this)">&times;</span>
                                         <video src="{$data.video}" controls  width="50%" height="50%"></video>
                                         <input type="hidden" name="video" value="{$data.video}">
                                     </div>

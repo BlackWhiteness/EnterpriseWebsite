@@ -3,6 +3,7 @@
 namespace app\mobile\controller;
 
 use app\admin\model\AdManage;
+use app\admin\model\LandManage;
 use app\admin\model\OwnerDemand;
 use app\admin\model\Workshop as Workshop_Model;
 use app\admin\model\Officebuilding;
@@ -36,7 +37,7 @@ class Index extends MobileBase
         $landInstance = LandFormat::getInstance();
         $workshop = Workshop_Model::order(array('releasetime' => 'DESC'))->page(1, 5)->select()->toArray();
         $office = Officebuilding::where(array('type' => 2))->order(array('releasetime' => 'DESC'))->page(1, 4)->select()->toArray();
-        $land = Workshop_Model::where(array('type' => 2))->order(array('releasetime' => 'DESC'))->page(1, 6)->select()->toArray();
+        $land = LandManage::order(array('id' => 'DESC'))->page(1, 6)->select()->toArray();
         $ad = AdManage::where('is_enable', '=', 1)
             ->where('code','=','004')
             ->order(['sort' => 'desc'])
@@ -49,6 +50,7 @@ class Index extends MobileBase
                 'href' => $row->href
             ];
         }
+
         $this->assign([
             'currentCity' =>$cityInfo,
             'workshop'=>$workshopInstance->formatList($workshop),
