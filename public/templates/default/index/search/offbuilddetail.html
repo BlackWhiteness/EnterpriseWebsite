@@ -823,7 +823,7 @@
     }
 
     .house_phone2 {
-        width: 303px;
+        
         height: 52px;
         padding-left: 60px;
         padding-top: 4px;
@@ -1255,15 +1255,16 @@
                                         <td colspan="2" class="house_line"></td>
                                     </tr>
                                     <tr align="left">
-                                        <td height="29" colspan="2"><font size="2">建筑面积： {$info.measurearea}</font></td>
-                                        <td height="29" colspan="2"><font size="2">新旧程度： {$info.newolddegree}</font></td>
+                                        <td height="29"><font size="2">建筑面积： {$info.measurearea}</font></td>
+                                        <td height="29"><font size="2">新旧程度： {$info.newolddegree}</font></td>
+                                        <td width="23" height="29" colspan="2">&nbsp;</td>
                                     </tr>
                                     <tr align="left">
                                         <td colspan="2" class="house_line"></td>
                                     </tr>
                                     <tr align="left">
-                                        <td><font size="2">标签：{$info.tag_name}</font></td>
-                                        <td><font size="2">楼盘名称：{$info.buildingname}</font></td>
+                                        <td width="166"><font size="2">标签：{$info.tag_name}</font></td>
+                                        <td width="154"><font size="2">楼盘名称：{$info.buildingname}</font></td>
                                     </tr>
                                     <tr align="left">
                                         <td colspan="2" class="house_line"></td>
@@ -1299,6 +1300,10 @@
                                     <tr align="left">
                                         <td><font size="2">楼层类别：{$info.floor_type}</font></td>
                                         <td><font size="2">租售：{$info.category_name}</font></td>
+                                    </tr>
+                                    <tr align="left">
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
                                     </tr>
 <!--                                    <tr align="left">-->
 <!--                                        <td colspan="2" class="house_line"></td>-->
@@ -1601,16 +1606,7 @@
                         <div id="demo1">
 
 
-                            <div class="right_p_one">
-                                <div class="right_p_img"><a
-                                        href="/index/search/workshopdetail?city={$cityInfo['id']}&id=13361"
-                                        target="_blank"><img
-                                        src="/city_sz/upImagescj/20131014/small/201310143264412320.jpg"/></a><span
-                                        class="imgmid"></span></div>
-                                <div class="right_p_title"><a
-                                        href="/index/search/workshopdetail?city={$cityInfo['id']}&id=13361"
-                                        target="_blank">横岗安良600平米豪...</a></div>
-                            </div>
+                            
                             {volist name="recommend" id="data"}
 
                             <div class="right_p_one">
@@ -1618,7 +1614,7 @@
                                                             target="_blank"><img src="{$data.imgs}"/></a><span
                                         class="imgmid"></span></div>
                                 <div class="right_p_title"><a href="/index/search/workshopdetail?city=id={$data.id}"
-                                                              target=}...</a></div>
+                                                             target="_blank">{:subText($data.title,6)}...</a></div>
                             </div>
                             {/volist}
                         </div>

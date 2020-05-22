@@ -1045,7 +1045,7 @@ UL, P {
     float: left;
     font-size: 12px;
     margin-top: 5px;
-    overflow: hidden;
+    overflow: hidden; text-align:center;
 }
 
 .right_p_title a {
@@ -1594,12 +1594,12 @@ table td em {
 
 
 .cf_title h1 {
-    width: 656px;
+   
     line-height: 30px;
-    float: left;
+  
     padding: 20px 0 8px;
     margin: 0;
-    font-size: 20px;
+    font-size: 20px; text-align:center;
     color: #f00;
 }
 
@@ -1755,7 +1755,7 @@ table td em {
 
 #preview {
     float: none;
-    margin: 20px auto;
+    
     text-align: center;
     width: 350px;
 }
