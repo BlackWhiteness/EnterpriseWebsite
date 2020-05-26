@@ -994,6 +994,7 @@
                     </script>
 
                     <div class="zuixin_cont">
+
                         {volist name="newWorkShop" id="data"}
                         <div class="zx_one">
                             <div class="zx_one_title">
@@ -1005,15 +1006,17 @@
                             <div class="zx_one_cont">
                                 <div class="zx_one_top">
                                     <div class="zx_one_top_img">
-                                        <?php $sz_img = $data['workshop'][0]['imgs']; $sz_img = $sz_img[0]; ?>
+                                        <?php $sz_img = $data['workshop'][0]['imgs']; $sz_img = $sz_img[0];?>
                                         <a href="/index/search/workshopdetail?id={$data['workshop'][0]['id']}"
-                                           target="_blank"><img src="{$sz_img}" width="130" height="103"/></a>
+                                           target="_blank">
+                                            <img src="{$sz_img}" width="130" height="103"/>
+                                        </a>
                                         <span class="imgmid"></span>
                                     </div>
                                     <div class="zx_one_top_text">
                                         <strong><a href="/index/search/workshopdetail?id={$data['workshop'][0]['id']}"
                                                    target="_blank"> {$data[0]['title']}</a></strong>
-                                        <span> {$shop[0]['detail']|strip_tags|mb_substr=0,50}..</span>
+                                        <span> {$data['workshop'][0]['detail']|strip_tags|mb_substr=0,50}..</span>
                                     </div>
                                 </div>
                                 <div class="zx_one_list">

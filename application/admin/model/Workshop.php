@@ -86,7 +86,7 @@ class Workshop extends Model
         $query = $this->filterComon()
             ->order('type', 'desc')
             ->order('releasetime','desc');
-        $query = $query->paginate(3);
+        $query = $query->paginate(15);
         return $query;
     }
 
